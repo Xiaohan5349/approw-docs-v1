@@ -1,0 +1,304 @@
+<template>
+  <footer class="footer">
+    <div
+      class="content-layout-container footer-container"
+      :class="{
+        'content-layout-container__without-sidebar': $frontmatter.noSidebar,
+      }"
+    >
+      <a class="footer-logo" href="https://authing.cn">
+        <img width="72px" :src="$withBase($site.themeConfig.logo)" />
+      </a>
+
+      <!-- <div v-for="(item, index) of mockLinks" :key="index">
+        <h4 class="footer-title">
+          {{ item.title }}
+          <span class="arrow-footer-outline"></span>
+        </h4>
+
+        <div
+          v-for="(linkItem, linkIndex) of item.links"
+          :key="linkIndex"
+          class="footer-link-wrapper"
+        >
+          <NavLink class="footer-link" :item="linkItem" />
+        </div>
+      </div> -->
+
+      <FooterCollapse
+        v-for="(item, index) of mockLinks"
+        :key="index"
+        :sectionInfo="item"
+      />
+
+      <div>
+        <FooterCollapse
+          :sectionInfo="{
+            title: '公司',
+          }"
+        >
+          <template #collapseContent>
+            <div class="footer-text-wrapper">
+              服务状态
+            </div>
+            <div class="footer-text-wrapper">
+              176-0250-2507
+            </div>
+            <div class="footer-text-wrapper">
+              xuziqiang@authing.cn
+            </div>
+            <div class="footer-text-wrapper">
+              北京市海淀区中关村东路威盛大厦 6 层
+            </div>
+          </template></FooterCollapse
+        >
+      </div>
+
+      <div class="footer-last-right-container">
+        <!-- <LangSelectOutline /> -->
+        <p class="footer-icp-record">京ICP备19051205号-1</p>
+        <p class="footer-company-name">© 北京蒸汽记忆科技有限公司</p>
+        <div class="footer-social-container">
+          <a
+            :title="item.title"
+            v-for="item of socials"
+            target="_blank"
+            :href="item.link"
+          >
+            <IconFont :type="item.icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script>
+import NavLink from '@theme/components/NavLink'
+import LangSelectOutline from '@theme/components/LangSelectOutline.vue'
+import IconFont from '@theme/components/IconFont/index.vue'
+import FooterCollapse from '@theme/components/Footer/Collapse.vue'
+
+export default {
+  name: 'Footer',
+  components: {
+    NavLink,
+    IconFont,
+    FooterCollapse,
+    LangSelectOutline,
+  },
+  data() {
+    return {
+      socials: [
+        {
+          icon: 'authing-github',
+          link: 'https://github.com/Authing',
+          title: 'Github',
+        },
+        {
+          icon: 'authing-gitter',
+          link: 'https://gitter.im/authing-chat/community',
+          title: 'Gitter',
+        },
+        {
+          icon: 'authing-zhihu',
+          link: 'https://www.zhihu.com/org/authing',
+          title: '知乎',
+        },
+      ],
+      mockLinks: [
+        {
+          title: '用户身份管理',
+          links: [
+            {
+              text: '集成第三方登录',
+              link: '/guides/connections/',
+            },
+            {
+              text: '手机号闪验',
+              link: 'https://authing.cn/verify',
+            },
+            {
+              text: '通用登录表单组件',
+              link: '/reference/ui-components/',
+            },
+            {
+              text: '自定义认证流程',
+              link: '/guides/pipeline/',
+            },
+          ],
+        },
+        {
+          title: '企业内部管理',
+          links: [
+            {
+              text: '单点登录',
+              link: '/guides/authentication/sso/',
+            },
+            {
+              text: '多因素认证',
+              link: '/guides/authentication/mfa/',
+            },
+            {
+              text: '权限管理',
+              link: '/guides/access-control/',
+            },
+          ],
+        },
+        {
+          title: '开发者',
+          links: [
+            {
+              text: '开发文档',
+              link: '/reference/',
+            },
+            {
+              text: '框架集成',
+              link: '/reference/frameworks',
+            },
+            {
+              text: '博客',
+              link: 'https://authing.cn/blog',
+            },
+            {
+              text: 'Github',
+              link: 'https://github.com/authing',
+            },
+            {
+              text: '社区用户中心',
+              link: 'https://gitter.im/authing-chat/community',
+            },
+          ],
+        },
+      ],
+    }
+  },
+  methods: {},
+}
+</script>
+
+<style lang="stylus">
+.footer
+  background #FAFAFB
+  box-shadow 0px -1px 0px 0px #EEEEEE
+  padding 50px 0
+  .footer-title
+    color #999
+    font-weight 400
+    margin-bottom 14px
+    margin-top 0
+  .footer-container
+    margin 0 auto
+    display flex
+    justify-content space-between
+    box-sizing border-box
+    padding 0 24px
+  .footer-link
+    color #666
+    &:hover
+      color #396aff
+  .footer-link-wrapper, .footer-text-wrapper
+    color #666
+    font-weight normal
+    font-size 14px
+    line-height 28px
+  .footer-text-wrapper
+    max-width 150px
+  .footer-last-right-container
+    color #999
+    display flex
+    flex-direction column
+    font-size 14px
+    p
+      margin 0
+    // .footer-icp-record
+    .footer-social-container
+      display flex
+      justify-content space-between
+      margin-top 20px
+      // margin-top auto
+      padding-bottom 4px
+      a
+        color #999
+        font-size 16px
+@media (max-width: $MQMobile)
+  .footer
+    margin-top 48px
+    padding-top 19px
+    padding 1.25rem 1.25rem 3.5rem 1.25rem
+    text-align left
+    .footer-link-wrapper, .footer-link-wrapper .footer-link, .footer-text-wrapper
+      font-size 12px
+      font-weight normal
+      color #666666
+    .footer-link-wrapper, .footer-text-wrapper
+      margin 18px 0
+    .footer-text-wrapper
+      max-width unset
+    .footer-container
+      padding 0
+      flex-direction column
+      .footer-link-wrapper
+        text-align left
+      .footer-logo
+        margin-bottom 1.5rem
+      .footer-title
+        font-size 0.875rem
+        font-weight 400
+        color #666666
+        display flex
+        justify-content space-between
+        align-items center
+        margin-bottom 0
+        padding 20px 0 12px 0
+        border-bottom 1px solid #EEEEEE
+      .arrow-footer-outline
+        display inline-block
+        height .5em
+        width .5em
+        border 1px solid #999
+        border-left-color transparent
+        border-bottom-color transparent
+        transition transform .3s
+        transform rotate(135deg)
+        margin-left .2em
+      .footer-social-container
+        order 1
+        justify-content center
+        margin-bottom 1.5rem
+        margin-top 20px
+        > a:not(:last-child)
+          margin-right 2.75rem
+      .lang-select-outline
+        order 2
+        margin-bottom 1.5rem
+        // .dropdown-title
+        //   display block
+        .mobile-dropdown-title
+          width 100%
+          height 100%
+          font-weight normal
+          &:focus
+            outline none
+        .nav-dropdown
+          list-style none
+          padding-left 0
+          background-color #fff
+          box-shadow 0px 4px 6px 0px rgba(228, 228, 228, 0.5)
+          position absolute
+          left 0
+          right 0
+          top 1.4rem
+          .nav-link
+            color #999
+            &.router-link-active
+              &:after
+                display none
+              color $accentColor
+      .footer-icp-record
+        order 3
+        text-align center
+      .footer-company-name
+        order 4
+        text-align center
+</style>
