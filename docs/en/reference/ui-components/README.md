@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-The Approw login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
+The {{$localeConfig.brandName}} login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
 
 Guard can be integrated into your React, Vue.js, Angular, and native JavaScript projects. You can use this component to quickly implement the login authentication process.
 
