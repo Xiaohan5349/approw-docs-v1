@@ -9,9 +9,9 @@ meta:
 <LastUpdated/>
 
 
-This is a pure Swift library for [Authing](https://authing.cn).
+This is a pure Swift library for [Approw](https://approw.com).
 
-> Gihutb Source Code: [https://github.com/Authing/SwiftyAuthing](https://github.com/Authing/SwiftyAuthing)
+> Gihutb Source Code: [https://github.com/Approw/SwiftyApprow](https://github.com/Approw/SwiftyApprow)
 
 <img src="../images/reference/Swift0.png" height="500px"></img>
 
@@ -26,7 +26,7 @@ This is a pure Swift library for [Authing](https://authing.cn).
 ### Swift Package Manager
 
 1. Xcode - Project - Swift Packages
-2. Add + https://github.com/Authing/SwiftyAuthing.git
+2. Add + https://github.com/Approw/SwiftyApprow.git
 3. Select the latest version
 
 ![image](../images/reference/Swift1.png)
@@ -41,19 +41,19 @@ This is a pure Swift library for [Authing](https://authing.cn).
 
 1. Clone repository
 
-2. Change **UserPoolId, Secret, and Host** in SwiftyAuthingExample - ViewController.swift
+2. Change **UserPoolId, Secret, and Host** in SwiftyApprowExample - ViewController.swift
 
-3. Run **SwiftyAuthingExample** with iOS simulator or device.
+3. Run **SwiftyApprowExample** with iOS simulator or device.
 
-4. Test and check data with web console [https://console.authing.cn](https://console.authing.cn)
+4. Test and check data with web console [https://console.approw.cn](https://console.approw.cn)
 
 ## How to use
 
 ```swift
-import SwiftyAuthing
+import SwiftyApprow
 
 /// Config Information, change your UserPoolId
-/// Find in https://console.authing.cn Setting - Basic Information & Application.
+/// Find in https://console.approw.cn Setting - Basic Information & Application.
 let userPoolId = "userPoolId"
 let appId = "appId"
 
