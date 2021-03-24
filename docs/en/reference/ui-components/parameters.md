@@ -2,14 +2,14 @@
 
 <LastUpdated/>
 
-The Approw login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. All configurations are as follows:
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. All configurations are as follows:
 
 |<p>Parameter Name</p><p></p>|<p>Parameter Description</p><p></p>|<p>Type</p><p></p>|<p>Required</p><p></p>|<p>Default</p><p></p>|
 | - | - | - | - | - |
 |<p>target</p><p></p><p></p>|<p>Specify the mount point of the Guard form, accept all the parameters or dom elements that querySelector (opens new window) can accept, if not passed in, Guard will automatically generate a div tag and put it at the end of the body.</p><p></p>|<p>String</p><p></p><p></p>|<p>HTMLElement</p><p></p>|<p>No</p><p></p><p></p>|
 |<p>mode</p><p></p>|<p>Guard display mode</p><p></p>|<p>[GuardMode](https://docs.authing.cn/v2/reference/ui-components/parameters.html#guardmode)</p><p></p>|<p>No</p><p></p><p></p>|<p>GuardMode.Normal</p><p></p>|
-|<p>title</p><p></p>|<p>**Product name**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>Approw</p><p></p>|
-|<p>logo</p><p></p>|<p>**Product logo**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>[Approw logo]</p><p></p>|
+|<p>title</p><p></p>|<p>**Product name**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>{{$localeConfig.brandName}}</p><p></p>|
+|<p>logo</p><p></p>|<p>**Product logo**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>[{{$localeConfig.brandName}} logo]</p><p></p>|
 |<p>contentCss</p><p></p>|<p>**Custom CSS style,**If specified, a node will be inserted into the head of the DOM.such as body {background:#6699 !important;}.</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>-</p><p></p>|
 |<p>loginMethods</p><p></p>|<p>List of common login methods(**include LDAP**) that need to be used.</p><p></p><p></p>|<p>[LoginMethods](https://docs.authing.cn/v2/reference/ui-components/parameters.html#loginmethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*LoginMethods.PhoneCode, LoginMethods.Password*]</p><p></p>|
 |<p>registerMethods</p><p></p>|<p>**Registration method that need to be used.**</p><p></p><p></p>|<p>[RegisterMethods](https://docs.authing.cn/v2/reference/ui-components/parameters.html#registermethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*RegisterMethods.Email*,*RegisterMethods.Phone*]</p><p></p>|
@@ -26,7 +26,7 @@ The Approw login component (Guard) provides many advanced configurations, such a
 |<p>isSSO</p><p></p>|<p>whether it is single sign on</p><p></p>|<p>Boolean</p><p></p>|<p>No</p><p></p>|<p>false</p><p></p>|
 |<p>appDomain</p><p></p>|<p>App domain name in SSO mode</p><p></p>|<p>String</p><p></p>|<p>Yes in SSO mode</p><p></p>|<p>-</p><p></p>|
 |<p>qrCodeScanOptions</p><p></p>|<p>QR code login configuration，details:options parameter in [QrCodeAuthenticationClient().startScanning(domId, options)(opens new window)](https://docs.authing.cn/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.html#一键开始扫码)</p><p></p>|<p>Objcect</p><p></p>|<p>No</p><p></p>|<p>null</p><p></p>|
-|<p>apiHost</p><p></p>|<p>API request address for private deployment</p><p></p><p></p>|<p>String</p><p></p>|<p>Yes in private deployment</p><p></p>|<p>[Approw official api address]</p><p></p>|
+|<p>apiHost</p><p></p>|<p>API request address for private deployment</p><p></p><p></p>|<p>String</p><p></p>|<p>Yes in private deployment</p><p></p>|<p>[{{$localeConfig.brandName}} official api address]</p><p></p>|
 
 
 The following is a description of all enumeration values that may be used in the advanced configuration:
@@ -100,7 +100,7 @@ Password reset methods supported by Guard
 
 ## SocialConnections
 
-Guard 支持的社会化登录方式
+Guard support Social Login
 
 | key       | value                                       | Description                           |
 | :-------- | :------------------------------------------ | :----------------------------- |
@@ -109,4 +109,4 @@ Guard 支持的社会化登录方式
 
 ## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)
