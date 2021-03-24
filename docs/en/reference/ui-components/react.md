@@ -167,7 +167,7 @@ To use Guard for single sign-on, you need to set `isSSO` to `true` during initia
 
 ```javascript
 const guard = new approwGuard("APPROW_APP_ID", {
-  appDomain: "xxx.approw.cn",
+  appDomain: "xxx.approw.com",
   isSSO: true,
 });
 ```
