@@ -5,13 +5,13 @@
 
 
 
-> This client is used to manage Approw groups. It can create/query/update/delete groups, add/delete users to/from groups, add/delete group's policy and perform other operations.
+> This client is used to manage {{$localeConfig.brandName}} groups. It can create/query/update/delete groups, add/delete users to/from groups, add/delete group's policy and perform other operations.
 
 
 
-Please use this client as instructed below. Do not initialize directly:
+Please follow the instructions below to use this client:. Do not initialize directly:
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",

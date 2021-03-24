@@ -2,12 +2,12 @@
 
 <LastUpdated/>
 
-> The core of Approw's access and authorization management model is **Resource** and **Policy**. A policy defines an operation privilege for a certain resource. By assigning the policy to a user (or role), you can know whether the user (or role) has operational privilege of a resource.
+> The core of {{$localeConfig.brandName}} 's access and authorization management model is **Resource** and **Policy**. A policy defines an operation privilege for a certain resource. By assigning the policy to a user (or role), you can know whether the user (or role) has operational privilege of a resource.
 
-Please use this client as instructed below:
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
   secret: "YOUR_USERPOOL_SECRET",
@@ -32,7 +32,7 @@ PoliciesManagementClient().create(code，policy statement)
 #### Example
 
 ```javascript
-import { PolicyEffect } from "authing-js-sdk";
+import { PolicyEffect } from "approw-js-sdk";
 
 const statements = [
   {
@@ -53,7 +53,7 @@ const policy = await managementClient.policies.create(code, statements);
 
 PoliciesManagementClient().delete(code)
 
-> Delete a policy. System built-in policies are maintained by Approw official. They can not be updated or deleted.
+> Delete a policy. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
 #### Parameter
 
@@ -73,7 +73,7 @@ const { code, message } = await managementClient.policies.delete("CODE"); // cod
 
 PoliciesManagementClient().deleteMany(codeList)
 
-> Bulk delete policies. System built-in policies are maintained by Approw official. They can not be updated or deleted.
+> Bulk delete policies. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
 #### Parameter
 
@@ -93,7 +93,7 @@ const { code, message } = await managementClient.policies.deleteMany(["CODE"]); 
 
 PoliciesManagementClient().update(code, updates)
 
-> Update a policy. System built-in policies are maintained by Approw official. They can not be updated or deleted.
+> Update a policy. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
 #### Parameter
 
@@ -212,7 +212,7 @@ PoliciesManagementClient().addAssignments(policies, targetType, targetIdentifier
 #### Example
 
 ```javascript
-import { PolicyAssignmentTargetType } from "authing-js-sdk";
+import { PolicyAssignmentTargetType } from "approw-js-sdk";
 
 await managementClient.policies.addAssignments(
   ["code1", "code2"],
@@ -246,7 +246,7 @@ PoliciesManagementClient().removeAssignments(policies, targetType, targetIdentif
 #### Example
 
 ```javascript
-import { PolicyAssignmentTargetType } from "authing-js-sdk";
+import { PolicyAssignmentTargetType } from "approw-js-sdk";
 
 await managementClient.policies.removeAssignments(
   ["code1", "code2"],

@@ -4,13 +4,13 @@
 <LastUpdated/>
 
 
-> An Approw user pool can create multiple organizations. This client is used to manage the Approw organization. It can create/query/update/delete organizations, create/update/delete nodes, and import organizations.
+> An {{$localeConfig.brandName}} user pool can create multiple organizations. This client is used to manage the {{$localeConfig.brandName}} organization. It can create/query/update/delete organizations, create/update/delete nodes, and import organizations.
 
 
 
-Please use the client as instructions below:
+Please follow the instructions below to use this client:
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",
@@ -491,14 +491,14 @@ const data = await managementClient.org.exportAll()
             "isRoot": true,
             "status": "Activated",
             "oauth": null,
-            "email": "root@authing.cn",
+            "email": "root@approw.com",
             "phone": null,
             "username": "root",
             "unionid": null,
             "openid": null,
             "nickname": null,
             "company": null,
-            "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
+            "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
             "browser": null,
             "device": null,
             "token": "",
@@ -665,14 +665,14 @@ const data = await managementClient.org.exportByOrgId("ORG_ID")
           "isRoot": true,
           "status": "Activated",
           "oauth": null,
-          "email": "root@authing.cn",
+          "email": "root@approw.com",
           "phone": null,
           "username": "root",
           "unionid": null,
           "openid": null,
           "nickname": null,
           "company": null,
-          "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
+          "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
           "browser": null,
           "device": null,
           "token": "",
