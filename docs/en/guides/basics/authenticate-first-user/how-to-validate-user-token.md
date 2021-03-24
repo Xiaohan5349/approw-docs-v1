@@ -17,7 +17,7 @@ An example of decoded `OIDC IdToken` is as follows:
   middle_name: null,
   name: null,
   nickname: null,
-  picture: 'https://files.authing.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
+  picture: 'https://files.approw.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
   preferred_username: 'test1',
   profile: null,
   updated_at: '2020-09-30T07:12:19.401Z',
@@ -32,7 +32,7 @@ An example of decoded `OIDC IdToken` is as follows:
   aud: '5f17a529f64fb009b794a2ff',
   exp: 1601453558,
   iat: 1601449959,
-  iss: 'https://oidc1.authing.cn/oidc'
+  iss: 'https://oidc1.approw.com/oidc'
 }
 ```
 

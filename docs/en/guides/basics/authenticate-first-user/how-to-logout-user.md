@@ -2,9 +2,9 @@
 
 <LastUpdated/>
 
-Approw supports multiple methods of logging out:
+{{$localeConfig.brandName}} supports multiple methods of logging out:
 
-- [Log out from the personal center](#Log out from the personal center): This method is suitable for you to use the online personal center hosted by Approw.
+- [Log out from the personal center](#Log out from the personal center): This method is suitable for you to use the online personal center hosted by {{$localeConfig.brandName}}.
 - [Log out from the front end](#Log out from the front end): This method is suitable for almost any scenario.
 - [Log out from the back end](#Log out from the back end): This method is suitable for scenarios where the administrator calls the API to force users to get offline.
 - [Force users to log out](Force users to log out): This method is suitable for scenarios where the administrator uses the console to force users to get offline.
@@ -23,16 +23,16 @@ Guide your end users to visit `https://{application_domain_name}.approw.com/logi
 
 ## Log out from the back end
 
-If you need to log out an Approw user on the backend, you need to use the following interface: 
+If you need to log out an {{$localeConfig.brandName}} user on the backend, you need to use the following interface: 
 
-- Interface description: The user pool administrator logs out the Approw user on the backend.
-- Interface：`POST` `https://<YOUR_APP_NAME>.authing.cn/api/v2/applications/:appId/kick-active-users`
+- Interface description: The user pool administrator logs out the {{$localeConfig.brandName}} user on the backend.
+- Interface：`POST` `https://<YOUR_APP_NAME>.approw.com/api/v2/applications/:appId/kick-active-users`
 - Request parameters: 
 
-| Parameters | Type    | Required | Description           |
+| Parameters | Type | Required | Description |
 | ------- | -------- | -------- | -------------- |
-| userIds | string[] | Yes       | User ID array |
-| appId   | string   | Yes       | Application ID      |
+| userIds | string[] | Yes | User ID array |
+| appId | string | Yes | Application ID |
 
 - Return data：
 
