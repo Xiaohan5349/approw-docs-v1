@@ -1,4 +1,4 @@
-# Migrate users to {{$localeConfig.brandName}}
+# Migrate Users to {{$localeConfig.brandName}}
 
 <LastUpdated/>
 
