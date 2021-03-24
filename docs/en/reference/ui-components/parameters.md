@@ -7,15 +7,15 @@ The {{$localeConfig.brandName}} login component (Guard) provides many advanced c
 |<p>Parameter Name</p><p></p>|<p>Parameter Description</p><p></p>|<p>Type</p><p></p>|<p>Required</p><p></p>|<p>Default</p><p></p>|
 | - | - | - | - | - |
 |<p>target</p><p></p><p></p>|<p>Specify the mount point of the Guard form, accept all the parameters or dom elements that querySelector (opens new window) can accept, if not passed in, Guard will automatically generate a div tag and put it at the end of the body.</p><p></p>|<p>String</p><p></p><p></p>|<p>HTMLElement</p><p></p>|<p>No</p><p></p><p></p>|
-|<p>mode</p><p></p>|<p>Guard display mode</p><p></p>|<p>[GuardMode](https://docs.authing.cn/v2/reference/ui-components/parameters.html#guardmode)</p><p></p>|<p>No</p><p></p><p></p>|<p>GuardMode.Normal</p><p></p>|
+|<p>mode</p><p></p>|<p>Guard display mode</p><p></p>|<p>[GuardMode](https://docs.approw.com/v2/reference/ui-components/parameters.html#guardmode)</p><p></p>|<p>No</p><p></p><p></p>|<p>GuardMode.Normal</p><p></p>|
 |<p>title</p><p></p>|<p>**Product name**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>{{$localeConfig.brandName}}</p><p></p>|
 |<p>logo</p><p></p>|<p>**Product logo**</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>[{{$localeConfig.brandName}} logo]</p><p></p>|
 |<p>contentCss</p><p></p>|<p>**Custom CSS style,**If specified, a node will be inserted into the head of the DOM.such as body {background:#6699 !important;}.</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>-</p><p></p>|
-|<p>loginMethods</p><p></p>|<p>List of common login methods(**include LDAP**) that need to be used.</p><p></p><p></p>|<p>[LoginMethods](https://docs.authing.cn/v2/reference/ui-components/parameters.html#loginmethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*LoginMethods.PhoneCode, LoginMethods.Password*]</p><p></p>|
-|<p>registerMethods</p><p></p>|<p>**Registration method that need to be used.**</p><p></p><p></p>|<p>[RegisterMethods](https://docs.authing.cn/v2/reference/ui-components/parameters.html#registermethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*RegisterMethods.Email*,*RegisterMethods.Phone*]</p><p></p>|
-|<p>defaultRegisterMethod</p><p></p>|<p>**Registration method displayed by default**</p><p></p>|<p>[RegisterMethods](https://docs.authing.cn/v2/reference/ui-components/parameters.html#registermethods)</p><p></p>|<p>No</p><p></p>|<p>\_RegisterMethods.Email\*</p><p></p>|
-|<p>defaultScenes</p><p></p>|<p>**The interface displayed when the component is opened.**</p><p></p>|<p>[GuardScenes](https://docs.authing.cn/v2/reference/ui-components/parameters.html#guardscenes)</p><p></p>|<p>No</p><p></p>|<p>\_GuardScenes.Login\*</p><p></p>|
-|<p>socialConnections</p><p></p>|<p>**Social login list that need to be used.**</p><p></p>|<p>[SocialConnections](https://docs.authing.cn/v2/reference/ui-components/parameters.html#socialconnections)[]</p><p></p>|<p>No</p><p></p>|<p>[]</p><p></p>|
+|<p>loginMethods</p><p></p>|<p>List of common login methods(**include LDAP**) that need to be used.</p><p></p><p></p>|<p>[LoginMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#loginmethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*LoginMethods.PhoneCode, LoginMethods.Password*]</p><p></p>|
+|<p>registerMethods</p><p></p>|<p>**Registration method that need to be used.**</p><p></p><p></p>|<p>[RegisterMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#registermethods)[]</p><p></p>|<p>No</p><p></p>|<p>[*RegisterMethods.Email*,*RegisterMethods.Phone*]</p><p></p>|
+|<p>defaultRegisterMethod</p><p></p>|<p>**Registration method displayed by default**</p><p></p>|<p>[RegisterMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#registermethods)</p><p></p>|<p>No</p><p></p>|<p>\_RegisterMethods.Email\*</p><p></p>|
+|<p>defaultScenes</p><p></p>|<p>**The interface displayed when the component is opened.**</p><p></p>|<p>[GuardScenes](https://docs.approw.com/v2/reference/ui-components/parameters.html#guardscenes)</p><p></p>|<p>No</p><p></p>|<p>\_GuardScenes.Login\*</p><p></p>|
+|<p>socialConnections</p><p></p>|<p>**Social login list that need to be used.**</p><p></p>|<p>[SocialConnections](https://docs.approw.com/v2/reference/ui-components/parameters.html#socialconnections)[]</p><p></p>|<p>No</p><p></p>|<p>[]</p><p></p>|
 |<p>enterpriseConnections</p><p></p>|<p>List of corporate identity sources(**exclude LDAP**) that need to be used,The list item value is the unique identifier of the configured corporate identity source, attention:The corporate identity source needs to be passed in the corresponding appId before it can be used.</p><p></p>|<p>Array</p><p></p><p></p>|<p>No</p><p></p>|<p>[]</p><p></p>|
 |<p>defaultLoginMethod</p><p></p>|<p>**Default login method**.Optional value is one of options.loginMethods.</p><p></p>|<p>String</p><p></p>|<p>No</p><p></p>|<p>*LoginMethods.Password*</p><p></p>|
 |<p>autoRegister</p><p></p>|<p>**Whether to merge registration and login**, after the merge, if the user does not exist, it will be automatically registered.</p><p></p>|<p>Boolean</p><p></p>|<p>No</p><p></p>|<p>false</p><p></p>|
@@ -25,7 +25,7 @@ The {{$localeConfig.brandName}} login component (Guard) provides many advanced c
 |<p>escCloseable</p><p></p>|<p>**Whether it is possible to close the login box through the keyboard ESC key in Modal mode.**</p><p></p>|<p>Boolean</p><p></p>|<p>No</p><p></p>|<p>true</p><p></p>|
 |<p>isSSO</p><p></p>|<p>whether it is single sign on</p><p></p>|<p>Boolean</p><p></p>|<p>No</p><p></p>|<p>false</p><p></p>|
 |<p>appDomain</p><p></p>|<p>App domain name in SSO mode</p><p></p>|<p>String</p><p></p>|<p>Yes in SSO mode</p><p></p>|<p>-</p><p></p>|
-|<p>qrCodeScanOptions</p><p></p>|<p>QR code login configuration，details:options parameter in [QrCodeAuthenticationClient().startScanning(domId, options)(opens new window)](https://docs.authing.cn/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.html#一键开始扫码)</p><p></p>|<p>Objcect</p><p></p>|<p>No</p><p></p>|<p>null</p><p></p>|
+|<p>qrCodeScanOptions</p><p></p>|<p>QR code login configuration，details:options parameter in [QrCodeAuthenticationClient().startScanning(domId, options)(opens new window)](https://docs.approw.com/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.html#一键开始扫码)</p><p></p>|<p>Objcect</p><p></p>|<p>No</p><p></p>|<p>null</p><p></p>|
 |<p>apiHost</p><p></p>|<p>API request address for private deployment</p><p></p><p></p>|<p>String</p><p></p>|<p>Yes in private deployment</p><p></p>|<p>[{{$localeConfig.brandName}} official api address]</p><p></p>|
 
 
@@ -36,11 +36,11 @@ The following is a description of all enumeration values that may be used in the
 Guard currently has two display methods: `modal | normal`. The `normal` method inserts the form into the specified dom node, which is suitable for scenarios where login is used as a separate page. The `modal` mode displays the form in the form of a modal box, which is suitable for popping up in an existing page. log in. The default display mode is `normal`, and the display mode can be configured by passing in the `mode` parameter:
 
 ```javascript
-import { AuthingGuard, GuardMode } from "@authing/native-js-ui-components";
+import { ApprowGuard, GuardMode } from "@approw/native-js-ui-components";
 // import css files 
-import "@authing/native-js-ui-components/lib/index.min.css";
+import "@approw/native-js-ui-components/lib/index.min.css";
 
-const guard = new AuthingGuard("AUTHING_APP_ID", {
+const guard = new ApprowGuard("APPROW_APP_ID", {
   mode: GuardMode.Modal,
 });
 
