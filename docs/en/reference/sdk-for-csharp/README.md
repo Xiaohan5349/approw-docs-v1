@@ -18,7 +18,7 @@ You should set the initialized `ManagementClient` instance to a global variable 
 Install via Nuget:
 
 ```
-Install-Package Authing.ApiClient
+Install-Package Approw.ApiClient
 ```
 
 ## Use ManagementClient
@@ -28,15 +28,15 @@ Initialization of ManagementClient requires `userPoolId` and `secret`:
 > You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
-var managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+var managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 ```
 
 Now the `managementClient()` instance is ready to be used. For example, you can get the list of users in the user pool:
 
 ```csharp
-var managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+var managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 var data = await managementClient.Users.List();
 ```
 
@@ -47,11 +47,11 @@ Initialization of `AuthenticationClient` requires `AppId`:
 > You can view your own **application** list in the application of the console.
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
 var authenticationClient = new AuthenticationClient(opt =>
             {
-                opt.AppId = "AUTHING_APP_ID";
+                opt.AppId = "APPROW_APP_ID";
             });
 ```
 
@@ -77,11 +77,11 @@ await authenticationClient.UpdateProfile(new UpdateUserInput() {
 You can also set the `AccessToken` parameter after initialization, so that it is unnecessary to call the the `LoginByXXX` method every time:
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
 var authenticationClient = new AuthenticationClient(opt =>
             {
-                opt.AppId = "AUTHING_APP_ID";
+                opt.AppId = "APPROW_APP_ID";
             });
 authenticationClient.AccessToken = "USER_TOKEN";
 ```
@@ -96,7 +96,7 @@ await authenticationClient.UpdateProfile(new UpdateUserInput() {
 
 ## Privatization deployment
 
-**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Approw service (**without protocol header and Path**). If you are not sure, you can contact the Approw IDaaS service administrator.
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service (**without protocol header and Path**). If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ## Interface index
 
@@ -156,4 +156,4 @@ ManagementClient contains the following sub-modules:
 
 ## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)
