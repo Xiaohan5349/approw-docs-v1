@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-The Approw login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
+The {{$localeConfig.brandName}} login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
 
 Guard can be integrated into your Native JavaScript project. You can use this component to quickly implement the login authentication process.
 
@@ -121,7 +121,7 @@ The Guard instance provides three methods:
 
 ## Complete parameter
 
-The Approw login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
 
 ## Event list
 
@@ -149,7 +149,7 @@ The Approw login component (Guard) provides many advanced configurations, such a
 
 ## Privatization deployment
 
-**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized Approw service(**without protocol header and Path**).If you are not sure, you can contact the Approw IDaaS service administrator.
+**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service(**without protocol header and Path**).If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```html
 <script>
