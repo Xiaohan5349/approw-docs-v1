@@ -34,7 +34,7 @@ If it is the first time to register for {{$localeConfig.brandName}}, you can ski
 
 Go to **Console** &gt; **Applications** &gt; **Application List**, and click the "Create Application" button.
 
-![](https://cdn.authing.cn/blog/20200927174331.png)
+![](https://cdn.approw.com/blog/20200927174331.png)
 
 ::: img-description
 Create application
@@ -46,7 +46,7 @@ In the pop-up dialog box, you only need to fill in the **application name**, **a
 
 **App name**, please give your app a name.
 
-**Authentication address**, a secondary domain name of authing.cn, users will log in at this website.
+**Authentication address**, a secondary domain name of approw.com, users will log in at this website.
 
 **Callback URL**, after successful login, call back to the address of the developer's own business. This tutorial is a demonstration. The address is http://localhost:8080. Please fill in your business address in the actual scenario.
 Click the newly created application in the application list, and record the AppID and the second-level domain name for future use.
@@ -59,11 +59,11 @@ Suppose our business logic is very simple: if it is **not logged in**, it needs 
 
 ### Develop web applications <a id="add-empty-html"></a>
 
-This tutorial is just for demonstration, so we did not choose an advanced framework, which allows us to focus on {{$localeConfig.brandName}} itself. We use the [AuthingSSO SDK](https://github.com/authing/AuthingSSO) to quickly integrate single sign-on capabilities for the application.
+This tutorial is just for demonstration, so we did not choose an advanced framework, which allows us to focus on {{$localeConfig.brandName}} itself. We use the [{{$localeConfig.brandName}}SSO SDK](https://github.com/approw/ApprowSSO) to quickly integrate single sign-on capabilities for the application.
 
 ### Create a new HTML file
 
-Create an HTML file, start coding our first web application, first introduce the [AuthingSSO SDK](https://github.com/authing/AuthingSSO.git), so that we can quickly ask Authing: **Is anyone currently logged in?**
+Create an HTML file, start coding our first web application, first introduce the [{{$localeConfig.brandName}}SSO SDK](https://github.com/approw/ApprowSSO.git), so that we can quickly ask {{$localeConfig.brandName}}: **Is anyone currently logged in?**
 
 ```html
 <!DOCTYPE html>
@@ -74,24 +74,24 @@ Create an HTML file, start coding our first web application, first introduce the
     <title>The first app</title>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   </body>
 </html>
 ```
 
-### Initialize the AuthingSSO SDK
+### Initialize the {{$localeConfig.brandName}}SSO SDK
 
 Perform the initialization in the following way, fill in the AppId and authentication address of the OIDC application recorded earlier, and complete the initialization of the SDK.
 
 ```html
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   <script>
-    let auth = new AuthingSSO({
+    let auth = new ApprowSSO({
       // OIDC app ID
       appId: '5e7343597f905c025e99e660',
       // OIDC app address 
-      appDomain: 'first-oidc-app.authing.cn'
+      appDomain: 'first-oidc-app.approw.com'
     });
   </script>
 </body>
@@ -108,13 +108,13 @@ When the web application starts, if no one is logged in, the login button is dis
   <h1 id="h1-user-info" style="display: none;">user information</h1>
   <input type="button" value="登出" id="btn-logout" style="display: none;" />
   <pre id="user-info"></pre>
-  <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   <script>
-    let auth = new AuthingSSO({
+    let auth = new ApprowSSO({
       // OIDC app ID 
       appId: '5e7343597f905c025e99e660',
       // OIDC app address
-      appDomain: 'first-oidc-app.authing.cn'
+      appDomain: 'first-oidc-app.approw.com'
     });
   </script>
 </body>
@@ -126,9 +126,9 @@ In order to check login status from {{$localeConfig.brandName}} before the web a
 
 ```html
 <script>
-  let auth = new AuthingSSO({
+  let auth = new ApprowSSO({
     appId: '5cded9bf4efab36f02fa666a',
-    appDomain: 'first-oidc-app.authing.cn',
+    appDomain: 'first-oidc-app.approw.com',
   });
   window.onload = async function () {
     let res = await auth.trackSession();
@@ -169,11 +169,11 @@ In order to check login status from {{$localeConfig.brandName}} before the web a
     <h1 id="h1-user-info" style="display: none;">user information</h1>
     <input type="button" value="登出" id="btn-logout" style="display: none;" />
     <pre id="user-info"></pre>
-    <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
     <script>
-      let auth = new AuthingSSO({
+      let auth = new ApprowSSO({
         appId: '5cded9bf4efab36f02fa666a',
-        appDomain: 'first-oidc-app.authing.cn',
+        appDomain: 'first-oidc-app.approw.com',
       });
       window.onload = async function () {
         let res = await auth.trackSession();
@@ -201,16 +201,16 @@ In order to check login status from {{$localeConfig.brandName}} before the web a
 
 ```
 
-The sample code can be found on [Github](https://github.com/authing/authing-sso-demo). It is recommended to download and run the code on Github.
-Please [see here](/reference/sdk-for-sso.md) for the complete parameter list of ApprowSSO single sign-on SDK.
+The sample code can be found on [Github](https://github.com/approw/approw-sso-demo). It is recommended to download and run the code on Github.
+Please [see here](/reference/sdk-for-sso.md) for the complete parameter list of {{$localeConfig.brandName}}SSO single sign-on SDK.
 
 ### **Operation method** <a id="run-the-demo"></a>
 
 Run the following command in the terminal
 
 ```bash
-$ git clone https://github.com/authing/authing-sso-demo
-$ cd authing-sso-demo
+$ git clone https://github.com/approw/approw-sso-demo
+$ cd approw-sso-demo
 $ npm install -g http-server
 $ http-server
 ```
@@ -225,14 +225,14 @@ If the local port 8080 is already occupied, the application may run on other por
 
 Open the web application written by us, the current is not logged in, the page prompts the user to log in, and displays the login button. We click "Login".
 
-![未登录](https://cdn.authing.cn/docs/20200405180101.png)
+![未登录](https://cdn.approw.com/docs/20200405180101.png)
 ::: img-description
 Log entry
 :::
 
 The browser will redirect to the user authentication page of the OIDC application, and input the user name and password to log in.
 
-![](https://cdn.authing.cn/blog/20200927174427.png)
+![](https://cdn.approw.com/blog/20200927174427.png)
 
 ::: img-description
 Login in
@@ -240,12 +240,12 @@ Login in
 
 The browser is redirected to the callback link we set up earlier. This example still calls back to localhost:8080.
 
-![已登录](https://cdn.authing.cn/docs/20200405180354.png)
+![已登录](https://cdn.approw.com/docs/20200405180354.png)
 ::: img-description
 User Info
 :::
 
-After logging in, we obtain user information by the `trackSession` function of the ApprowSSO SDK and display it on the page. The format of `trackSession` return data is as follows:
+After logging in, we obtain user information by the `trackSession` function of the {{$localeConfig.brandName}}SSO SDK and display it on the page. The format of `trackSession` return data is as follows:
 
 ```json
 {
@@ -267,7 +267,7 @@ After logging in, we obtain user information by the `trackSession` function of t
     "userInfo": {
         {
           "id": "5f702fcc913544c358cb2123",
-          "arn": "arn:cn:authing:59f86b4832eb28071bdd9214:user:5f702fcc913544c358cb2123",
+          "arn": "arn:com:approw:59f86b4832eb28071bdd9214:user:5f702fcc913544c358cb2123",
           "userPoolId": "59f86b4832eb28071bdd9214",
           "username": "xxx",
           "email": null,
@@ -326,7 +326,7 @@ After logging in, we obtain user information by the `trackSession` function of t
 
 You can refresh this page some times, because you are currently logged in and the browser will always display user information. Next, we click the "Logout" button to single sign out.
 
-![](https://cdn.authing.cn/docs/20200405180656.png)
+![](https://cdn.approw.com/docs/20200405180656.png)
 ::: img-description
 Logout button
 :::
@@ -338,14 +338,14 @@ In the SSO application, there is an independent user center page where users can
 Your end users can visit the following link to enter the profile modification page:
 
 ```
-https://<appDomain>.authing.cn/u
+https://<appDomain>.approw.com/u
 ```
 
 `<appDomain>` is the second-level domain name of your SSO application.
 
 If the user is not logged in, the user will be required to log in before entering the personal center; for the logged-in user, it will directly enter the personal center.
 
-![](https://cdn.authing.cn/blog/20200927174731.png)
+![](https://cdn.approw.com/blog/20200927174731.png)
 
 ::: img-description
 Personal center
