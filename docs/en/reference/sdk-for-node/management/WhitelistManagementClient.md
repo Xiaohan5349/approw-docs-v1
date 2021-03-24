@@ -4,12 +4,12 @@
 <LastUpdated/>
 
 
-> Add a registration whitelist for your user pool, which is similar to the invitation registration rule. After you add it, only users in the whitelist can register. Approw currently supports you to set phone number, email, and username in whitelist.
+> Add a registration whitelist for your user pool, which is similar to the invitation registration rule. After you add it, only users in the whitelist can register. {{$localeConfig.brandName}} currently supports you to set phone number, email, and username in whitelist.
 
 
-Please use this client as instructed below：
+Please follow the instructions below to use this client：
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",
@@ -36,7 +36,7 @@ WhitelistManagementClient().list(type)
 #### Example
 
 ```javascript
-import { WhitelistType } from "authing-js-sdk"
+import { WhitelistType } from "approw-js-sdk"
 const list = await managementClient.whitelist.list(WhitelistType.Email);
 ```
 
@@ -113,13 +113,13 @@ WhitelistManagementClient().enable(type)
 ```javascript
 // add a whitelist
 
-import { WhitelistType } from "authing-js-sdk"
+import { WhitelistType } from "approw-js-sdk"
 await managementClient.whitelist.enable(WhitelistType.Email);
 await managementClient.whitelist.add(WhitelistType.Email, [‘a@wxample.com’]);
 
 // try to register an account not in whitelist
 
-await authing.registerByEmail(email, 'b@example.com');
+await approw.registerByEmail(email, 'b@example.com');
 ```
 
 #### Return value
