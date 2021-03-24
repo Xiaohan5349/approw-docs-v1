@@ -9,7 +9,7 @@
 
 
 
-Please follow the instructions below to use this client:. Do not initialize directly:
+Please follow the instructions below to use this client. Do not initialize directly:
 ```javascript
 import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
