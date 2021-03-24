@@ -46,7 +46,7 @@ import ApprowSSO from "@approw/sso";
 
 let auth = new ApprowSSO({
   appId: "APP_ID",
-  appDomain: "example-app.approw.cn",
+  appDomain: "example-app.approw.com",
 });
 ```
 
@@ -56,7 +56,7 @@ let auth = new ApprowSSO({
 ```js
 let auth = new ApprowSSO({
   appId: "APP_ID",
-  appDomain: "example-app.you-approw-service.cn",
+  appDomain: "example-app.you-approw-service.com",
   host: {
     oauth: "https://core.you-approw-service.com/graphql",
   },
