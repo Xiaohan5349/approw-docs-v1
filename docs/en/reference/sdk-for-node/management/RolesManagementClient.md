@@ -4,13 +4,13 @@
 <LastUpdated/>
 
 
-> This client is used to manage Approw roles. It can create, query, update and delete roles, add/delete users to/from roles, add/delete role's policy and perform other operations.
+> This client is used to manage {{$localeConfig.brandName}} roles. It can create, query, update and delete roles, add/delete users to/from roles, add/delete role's policy and perform other operations.
 
 
 
-Please use the client via the methods shown below. Do not initialize this client directly:
+Please follow the instructions below to use this client. Do not initialize this client directly:
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",

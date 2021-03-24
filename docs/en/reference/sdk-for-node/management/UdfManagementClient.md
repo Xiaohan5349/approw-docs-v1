@@ -4,13 +4,13 @@
 <LastUpdated/>
 
 
-Udf is short for User Defined Field. Approw data entities (such as users, roles, groups, organizations, etc.) can add user defined fields which Approw does not built-in. For example, if you need to create a school-related application, you can add a user defined field: `school` field.
+Udf is short for User Defined Field. {{$localeConfig.brandName}} data entities (such as users, roles, groups, organizations, etc.) can add user defined fields which {{$localeConfig.brandName}} does not built-in. For example, if you need to create a school-related application, you can add a user defined field: `school` field.
 
 You can ask the user to supplement the information in this field after the user registration is completed, click [here](/guides/authentication/extensibility/user-defined-field.md) to check the details.
 
-Please use this client as instructed below:
+Please follow the instructions below to use this client:
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",
@@ -38,7 +38,7 @@ UdfManagementClient().set(targetType, key, dataType, label)
 #### Example
 
 ```javascript
-import { ManagementClient, UdfTargetType, UdfDataType  } from "authing-js-sdk"
+import { ManagementClient, UdfTargetType, UdfDataType  } from "approw-js-sdk"
 const udf = await managementClient.udf.set(
    UdfTargetType.User,
    'school',
@@ -49,7 +49,7 @@ const udf = await managementClient.udf.set(
 ```javascript
 // if user defined field "age" does not exist, it will create it automatically
 
-import { ManagementClient, UdfTargetType, UdfDataType  } from "authing-js-sdk"
+import { ManagementClient, UdfTargetType, UdfDataType  } from "approw-js-sdk"
 const udf = await managementClient.udf.set(
    UdfTargetType.User,
    'age',

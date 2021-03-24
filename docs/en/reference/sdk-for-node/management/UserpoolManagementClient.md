@@ -2,12 +2,12 @@
 
 <LastUpdated/>
 
-> Approw user pool configuration management client.
+> {{$localeConfig.brandName}} user pool configuration management client.
 
-Please use this client as instructed below:
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
   secret: "YOUR_USERPOOL_SECRET",
@@ -52,7 +52,7 @@ UserPoolManagementClient().update(updates)
 - `updates.emailVerifiedDefault` \<boolean\> Set the email to be verified as default (`emailVerified` field of the user is `true`)
 - `updates.sendWelcomeEmail` \<boolean\> Whether to send welcome email after user registration
 - `updates.registerDisabled` \<boolean\> Whether to disable the registration. When the user pool disables the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
-- `updates.allowedOrigins` \<string\> Allowed Origins is the URL that allows requests from JavaScript to the Approw API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: `https://*.sample.com`). 
+- `updates.allowedOrigins` \<string\> Allowed Origins is the URL that allows requests from JavaScript to the {{$localeConfig.brandName}}  API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: `https://*.sample.com`). 
 The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name. 
 If there are more than one, please separate them with line breaks.
 - `updates.whitelist` \<Object\> User pool whitelist configuration
@@ -85,7 +85,7 @@ const userpool = await managementClient.userpool.update({
 
 UserPoolManagementClient().listEnv()
 
-> Get the user pool environment variables list. The environment variables configured by the user pool can be used in the pipeline scenario. Please check: `https://docs.authing.co/extensibility/pipeline/env.html` for details.
+> Get the user pool environment variables list. The environment variables configured by the user pool can be used in the pipeline scenario. Please check: `https://docs.approw.co/extensibility/pipeline/env.html` for details.
 
 #### Parameter
 
@@ -116,7 +116,7 @@ UserPoolManagementClient().addEnv(key, value)
 const envList = await managementClient.userpool.addEnv(
   "LARK_WEBHOOK",
   "xxxxxxx"
-); // the webhppk address of adding a lark bot, you can use it later in pipeline function. (See more details in: https://docs.authing.co/extensibility/pipeline/usage.html)
+); // the webhppk address of adding a lark bot, you can use it later in pipeline function. (See more details in: https://docs.approw.co/extensibility/pipeline/usage.html)
 ```
 
 #### Return value
