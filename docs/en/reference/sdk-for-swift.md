@@ -45,7 +45,7 @@ This is a pure Swift library for [Approw](https://approw.com).
 
 3. Run **SwiftyApprowExample** with iOS simulator or device.
 
-4. Test and check data with web console [https://console.approw.cn](https://console.approw.cn)
+4. Test and check data with web console [https://console.approw.com](https://console.approw.com)
 
 ## How to use
 
@@ -53,7 +53,7 @@ This is a pure Swift library for [Approw](https://approw.com).
 import SwiftyApprow
 
 /// Config Information, change your UserPoolId
-/// Find in https://console.approw.cn Setting - Basic Information & Application.
+/// Find in https://console.approw.com Setting - Basic Information & Application.
 let userPoolId = "userPoolId"
 let appId = "appId"
 
@@ -971,25 +971,6 @@ func loginByLdap() {
         print(result)
     })
 }
-
-
-/// Login by WeChat Code.
-/// 通过微信认证码登录
-///
-func loginByWeChatCode() {
-    //通过微信SDK返回的认证码登录
-    let code = "code"
-    //Normal
-//        self.client?.loginByWeChatCode(code: code, completion: { status in
-//            print(status)
-//        })
-
-    //With result
-    self.client?.loginByWeChatCodeWithResult(code: code, completion: { result in
-        print(result)
-    })
-}
-
 
 /// User Id Verify.
 /// 实名认证 - 使用姓名，身份证号码，人脸图像，需要登录后调用
