@@ -4,24 +4,24 @@ meta:
     content: Node.js/JavaScript SDK
 ---
 
-# Approw - Node.js/JavaScript
+# {{$localeConfig.brandName}} - Node.js/JavaScript
 
 <LastUpdated/>
 
-Approw JavaScript/Node SDK consists of two parts: `ManagementClient` and `AuthenticationClient`. `AuthenticationClient` includes methods such as registering and logging in, resetting mobile phone number email, modifying account information, etc. It sends requests based on end user and is suitable for browsers and back-end use. `ManagementClient` is suitable for use in a back-end or **trusted** front-end environment.Generally speaking, all the operations you can do in the [Approw console](https://console.authing.cn/console/userpool) can be done with this SDK.
+{{$localeConfig.brandName}} JavaScript/Node SDK consists of two parts: `ManagementClient` and `AuthenticationClient`. `AuthenticationClient` includes methods such as registering and logging in, resetting mobile phone number email, modifying account information, etc. It sends requests based on end user and is suitable for browsers and back-end use. `ManagementClient` is suitable for use in a back-end or **trusted** front-end environment.Generally speaking, all the operations you can do in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) can be done with this SDK.
 
 ## Install
 
 Use `npm`:
 
 ```
-npm install authing-js-sdk
+npm install approw-js-sdk
 ```
 
 Use `yarn`:
 
 ```
-yarn add authing-js-sdk
+yarn add approw-js-sdk
 ```
 
 > If you want to use it in the React Native environment, you need to first run this command in the RN project root directory: 
@@ -39,11 +39,11 @@ import './shim.js'
 Use CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/authing-js-sdk/build/browser/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/approw-js-sdk/build/browser/index.min.js"></script>
 
 <script>
-  /** You can use global variable Authing to acquire AuthenticationClient and ManagementClient */
-  var authing = new Authing.AuthenticationClient({
+  /** You can use global variable Approw to acquire AuthenticationClient and ManagementClient */
+  var approw = new Approw.AuthenticationClient({
     appId: "AUTHING_APP_ID",
   });
 </script>
@@ -51,32 +51,33 @@ Use CDN:
 
 ## Use authentication client
 
-### Initialization
+### Initialize
 
 Initialization of `AuthenticationClient` needs `AppId`：
 
 > You can check your application list in **Applications** on your console.
 
 ```js
-import { AuthenticationClient } from "authing-js-sdk";
+import { AuthenticationClient } from "approw-js-sdk";
 
-const authing = new AuthenticationClient({
+const approw = new AuthenticationClient({
   appId: "YOUR_APP_ID",
 });
 ```
 
 The complete parameter list is as follows:
 
-- `appId`: Approw application ID (required);
+- `appId`: {{$localeConfig.brandName}} application ID (required);
+- `appDomain`: The host address of {{$localeConfig.brandName}} application (required), such as `https://my-awesome-app.approw.com`;
 - `token`: Initialize the SDK through the user's `id_token` (optional, you can cache the user `id_token` in the front-end localStorage to implement remember the login).
 - `timeout`: Request timeout time, in milliseconds, the default is 10000 (10 seconds).
-- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the Approw client.See [this document](/reference/error-code.md) for the complete error code. The function is defined as:
+- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the {{$localeConfig.brandName}} client.See [this document](/reference/error-code.md) for the complete error code. The function is defined as:
 
 ```js
 (code: number, message: string, data: any) => void
 ```
 
-- `host`: Approw server address.If you are using the public cloud version, please ignore the parameter. If you are using a privatized deployment version, this parameter is required.The format is as follows: `https://authing-api.mydomain.com` (without / at the end).
+- `host`: Approw server address.If you are using the public cloud version, please ignore the parameter. If you are using a privatized deployment version, this parameter is required.The format is as follows: `https://approw-api.mydomain.com` (without / at the end).
 - `preflight`: Precheck of whether the network status enabled or not, the default is false.This parameter is suitable for checking whether the Approw server domain name is blocked on the user's network (some companies' intranets will block third-party websites). If the check is successful, it won't send any notification. The error handling function will be called if the check fails. After performing the pre-check, the SDK initialization speed will slow down. Please use it with caution.
 - `cdnPreflight`: Precheck of whether the network status enabled or not, the default is false. This parameter is suitable for checking whether the user's network can connect to Qiniu Cloud CDN (it is not accessible in some scenarios such as using proxy). If the check is successful, it won't send any notification. The error handling function will be called if the check fails. After performing the CDN pre-check, the SDK initialization speed will slow down. Please use it with caution.
 
@@ -87,10 +88,10 @@ If you use the SDK in a browser environment, after the user logs in, the SDK wil
 ```js
 const email = "test@example.com";
 const password = "passw0rd";
-const user = await authing.loginByEmail(email, password); // store the token in localStorage after successfully logging in
+const user = await approw.loginByEmail(email, password); // store the token in localStorage after successfully logging in
 
 // this operation can be performed after logging in
-await authing.updateProfile((nickname: "Bob"));
+await approw.updateProfile((nickname: "Bob"));
 ```
 
 ### Social login
@@ -153,7 +154,7 @@ authenticationClient.qrcode.startScanning("qrcode", {
 > You can learn [how to get userPoolId and secret here](/guides/faqs/get-userpool-id-and-secret.md).
 
 ```js
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
@@ -167,7 +168,7 @@ The complete parameter list is as follows:
 - `secret`: the secret of user pool.
 - `accessToken`: Initialize the SDK with the administrator's token. (Optional, **one of secret and accessToken must be filled in**.)
 - `timeout`: Request timeout time, in milliseconds, the default is 10000 (10 seconds).
-- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the Approw client. The function is defined as:
+- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the {{$localeConfig.brandName}} client. The function is defined as:
 
 ```js
 (code: number, message: string, data: any) => void
@@ -175,13 +176,13 @@ The complete parameter list is as follows:
 
 > See [this document](/reference/error-code.md) for the complete error code.
 
-- `host`: Approw server address.If you are using the public cloud version, please ignore the parameter. If you are using a privatized deployment version, this parameter is required.The format is as follows: https://authing-api.mydomain.com (without / at the end).
+- `host`: {{$localeConfig.brandName}} server address.If you are using the public cloud version, please ignore the parameter. If you are using a privatized deployment version, this parameter is required.The format is as follows: https://approw-api.mydomain.com (without / at the end).
 - `preflight`: Precheck of whether the network status enabled or not, the default is false.This parameter is suitable for checking whether the Approw server domain name is blocked on the user's network (some companies' intranets will block third-party websites). If the check is successful, it won't send any notification. The error handling function will be called if the check fails. After performing the pre-check, the SDK initialization speed will slow down. Please use it with caution.
 - `cdnPreflight`: Precheck of whether the network status enabled or not, the default is false. This parameter is suitable for checking whether the user's network can connect to Qiniu Cloud CDN (it is not accessible in some scenarios such as using proxy). If the check is successful, it won't send any notification. The error handling function will be called if the check fails. After performing the CDN pre-check, the SDK initialization speed will slow down. Please use it with caution.
 
 ### Instrcutions
 
-`ManagementClient` can be used to manage users, roles, policies, groups, organizations, and user pool configuration. In theory, any operation you can do in the [Approw console](https://console.authing.cn/console/userpool) can be done with this SDK.
+`ManagementClient` can be used to manage users, roles, policies, groups, organizations, and user pool configuration. In theory, any operation you can do in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) can be done with this SDK.
 
 Get a list of user directories:
 
@@ -223,7 +224,7 @@ You can use `try catch` for error handling:
 
 ```js
 try {
-  const user = await authing.loginByEmail("test@example.com", "passw0rd");
+  const user = await approw.loginByEmail("test@example.com", "passw0rd");
 } catch (error) {
   console.log(error.code); // 2004
   console.log(error.message); // user does not exist
@@ -232,11 +233,11 @@ try {
 
 > You can find the whole error code document [here](/reference/error-code.md).
 
-You can also specify `onError` to uniformly capture all Authing request exceptions, such as using front-end components like `antd` to display error prompts.
+You can also specify `onError` to uniformly capture all {{$localeConfig.brandName}} request exceptions, such as using front-end components like `antd` to display error prompts.
 
 ```js
 import { message } from "antd";
-const authing = new AuthenticationClient({
+const approw = new AuthenticationClient({
   userPoolId,
   onError: (code, msg: any) => {
     message.error(msg);
@@ -249,17 +250,17 @@ const authing = new AuthenticationClient({
 The **privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Approw service (**without protocol header and Path**). If you are not sure about it, you can contact the Approw IDaaS service administrator.
 
 ```js
-import { AuthenticationClient, ManagementClient } from "authing-js-sdk";
+import { AuthenticationClient, ManagementClient } from "approw-js-sdk";
 
 const authenticationClient = new AuthenticationClient({
   appId: "YOUR_APP_ID",
-  host: "https://core.you-authing-service.com"
+  host: "https://core.you-approw-service.com"
 });
 
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
   secret: "YOUR_USERPOOL_SECRET",
-  host: "https://core.you-authing-service.com"
+  host: "https://core.you-approw-service.com"
 });
 ```
 
@@ -310,4 +311,4 @@ Management clients：
 
 ## Get Help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)
