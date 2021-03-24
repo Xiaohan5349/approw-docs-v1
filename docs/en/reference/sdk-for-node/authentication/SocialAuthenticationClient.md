@@ -9,7 +9,7 @@
 Initiate a social login authorization request:
 
 ```javascript
-import { AuthenticationClient } from "authing-js-sdk"
+import { AuthenticationClient } from "approw-js-sdk"
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })

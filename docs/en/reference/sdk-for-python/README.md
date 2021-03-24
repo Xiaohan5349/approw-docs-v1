@@ -18,7 +18,7 @@ You should set the initialized `ManagementClient` instance to a global variable 
 ## Installation
 
 ```
-pip install authing
+pip install approw
 ```
 
 ## Use ManagementClient
@@ -28,12 +28,12 @@ Initialization of ManagementClient requires `userPoolId` and `secret`:
 > You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```python
-from authing.v2.management import ManagementClient, ManagementClientOptions
+from approw.v2.management import ManagementClient, ManagementClientOptions
 
 management_client = ManagementClient(
   options=ManagementClientOptions(
-    user_pool_id='AUTHING_USERPOOL_ID',
-    secret='AUTHING_USERPOOL_SECRET',
+    user_pool_id='APPROW_USERPOOL_ID',
+    secret='APPROW_USERPOOL_SECRET',
 ))
 ```
 
@@ -51,7 +51,7 @@ The returned data is as follows:
   "list": [
     {
       "id": "5f7ddfe62ba819802422362e",
-      "arn": "arn:cn:authing:5f7a993eb9b49dcd5c021e40:user:5f7ddfe62ba819802422362e",
+      "arn": "arn:com:approw:5f7a993eb9b49dcd5c021e40:user:5f7ddfe62ba819802422362e",
       "userPoolId": "5f7a993eb9b49dcd5c021e40",
       "username": "nhxcpzmklk",
       "email": null,
@@ -62,7 +62,7 @@ The returned data is as follows:
       "openid": null,
       "nickname": null,
       "registerSource": ["import:manual"],
-      "photo": "https://usercontents.authing.cn/authing-avatar.png",
+      "photo": "https://usercontents.approw.com/approw-avatar.png",
       "password": "a56f21e5659428f9b353be4ed667fc05",
       "oauth": null,
       "token": null,
@@ -109,11 +109,11 @@ Initialization of `AuthenticationClient` requires `app_id`:
 
 
 ```python
-from authing.v2.authentication import AuthenticationClient, AuthenticationClientOptions
+from approw.v2.authentication import AuthenticationClient, AuthenticationClientOptions
 
 authentication_client = AuthenticationClient(
   options=AuthenticationClientOptions(
-    app_id='AUTHING_APP_ID'
+    app_id='APPROW_APP_ID'
 ))
 ```
 
@@ -139,12 +139,12 @@ authentication_client.update_profile({
 You can also use the `access_token` parameter to initialize the `AuthenticationClient`, so that it is unnecessary to call the `login` method every time:
 
 ```python
-from authing.v2.authentication import AuthenticationClient, AuthenticationClientOptions
+from approw.v2.authentication import AuthenticationClient, AuthenticationClientOptions
 
 authentication_client = AuthenticationClient(
   options=AuthenticationClientOptions(
-    app_id='AUTHING_APP_ID',
-    access_token='AUTHING_USER_TOKEN'
+    app_id='APPROW_APP_ID',
+    access_token='APPROW_USER_TOKEN'
 ))
 ```
 
@@ -158,14 +158,14 @@ user = authentication_client.update_profile({
 ## Error handling
 
 ```python
-from authing.v2.exceptions import AuthingException
+from approw.v2.exceptions import ApprowException
 
 try:
     authentication_client.login_by_username(
         username='bob',
         password='passw0rd',
     )
-except AuthingException as e:
+except ApprowException as e:
     print(e.code) # 2004
     print(e.message) # User does not exist
 ```
@@ -174,16 +174,16 @@ except AuthingException as e:
 
 ## Privatization deployment
 
-**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Approw service (**without protocol header and Path**). If you are not sure, you can contact the Approw IDaaS service administrator.
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service (**without protocol header and Path**). If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```python
-from authing.v2.management import ManagementClient, ManagementClientOptions
+from approw.v2.management import ManagementClient, ManagementClientOptions
 
 management_client = ManagementClient(
   options=ManagementClientOptions(
-    user_pool_id='AUTHING_USERPOOL_ID',
-    secret='AUTHING_USERPOOL_SECRET',
-    host="https://core.you-authing-service.com"
+    user_pool_id='APPROW_USERPOOL_ID',
+    secret='APPROW_USERPOOL_SECRET',
+    host="https://core.you-approw-service.com"
 ))
 ```
 
@@ -237,4 +237,4 @@ ManagementClient contains the following sub-modules:
 
 ## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

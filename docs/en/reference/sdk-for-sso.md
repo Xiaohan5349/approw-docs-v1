@@ -15,21 +15,21 @@ meta:
 ### Install via NPM <a id="npm-install"></a>
 
 ```bash
-$ npm install @authing/sso --save
+$ npm install @approw/sso --save
 ```
 
 Then it can be used in the following way
 
 ```js
-import AuthingSSO from "@authing/sso";
+import ApprowSSO from "@approw/sso";
 ```
 
 ### Install via CDN <a id="cdn-install"></a>
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
 <script>
-  console.log(AuthingSSO);
+  console.log(ApprowSSO);
 </script>
 ```
 
@@ -39,26 +39,26 @@ Before starting, you need to [create an application](/guides/app/create-app.md)�
 
 ### Initialization
 
-To initialize the AuthingSSO SDK, you need to pass in the [application ID](/faqs/get-app-id-and-secret.md) and application domain name. The format of the application domain name is `example-app.authing.cn` **without the protocol header and Path**. See the [initialization constructor](#初始化构造函数) for detailed parameters.
+To initialize the {{$localeConfig.brandName}} SSO SDK, you need to pass in the [application ID](/faqs/get-app-id-and-secret.md) and application domain name. The format of the application domain name is `example-app.approw.com` **without the protocol header and Path**. See the [initialization constructor](#初始化构造函数) for detailed parameters.
 
 ```js
-import AuthingSSO from "@authing/sso";
+import ApprowSSO from "@approw/sso";
 
-let auth = new AuthingSSO({
+let auth = new ApprowSSO({
   appId: "APP_ID",
-  appDomain: "example-app.authing.cn",
+  appDomain: "example-app.approw.cn",
 });
 ```
 
 ::: hint-info
-**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Authing service. If you are not sure, you can contact the Authing IDaaS service administrator.
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service. If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```js
-let auth = new AuthingSSO({
+let auth = new ApprowSSO({
   appId: "APP_ID",
-  appDomain: "example-app.you-authing-service.cn",
+  appDomain: "example-app.you-approw-service.cn",
   host: {
-    oauth: "https://core.you-authing-service.com/graphql",
+    oauth: "https://core.you-approw-service.com/graphql",
   },
 });
 ```
@@ -87,7 +87,7 @@ The business domain name callback address needs to host an html file, which is u
 
 For example, the callback address is [https://example.com/handle.html](https://example.com/handle.html. This html needs a piece of code to send `postMessage`, which is responsible for taking out relevant parameters from the `url` and passing them to the parent window.
 
-Github reference code: [https://github.com/Authing/oidc-window](https://github.com/Authing/oidc-window)。
+Github reference code: [https://github.com/Approw/oidc-window](https://github.com/Approw/oidc-window)。
 
 ### Redirect to registration page
 
@@ -103,9 +103,9 @@ auth.register();
 After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of[all fields of user information](/guides/user/user-profile.md).
 
 ::: hint-danger
-After version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on features** of Authing. In other similar updates, after Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
+After version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on features** of {{$localeConfig.brandName}}. In other similar updates, after Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
 
-This may have an impact on this method. For details, see the [impact of disabling third-party cookies on Authing](/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/guides/faqs/block-third-party-cookie-impact.md#如何解决).
+This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/guides/faqs/block-third-party-cookie-impact.md#如何解决).
 :::
 
 ```js
@@ -180,7 +180,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
     <tr>
       <td style="text-align:left">appDomain</td>
       <td style="text-align:left">yes</td>
-      <td style="text-align:left">Application domain name，E.g. <code>app1.authing.cn</code>
+      <td style="text-align:left">Application domain name，E.g. <code>app1.approw.com</code>
       </td>
       <td style="text-align:left">-</td>
     </tr>
@@ -209,16 +209,16 @@ The constructor accepts an object as a parameter. The list of parameters in the 
     <tr>
       <td style="text-align:left">host</td>
       <td style="text-align:left">no</td>
-      <td style="text-align:left">An object that specifies the GraphQL address. <b>The privatization deployment scenario needs to specify the GraphQL endpoint of your privatized Authing service. If you are not sure, you can contact the Authing IDaaS service administrator.</b></td>
+      <td style="text-align:left">An object that specifies the GraphQL address. <b>The privatization deployment scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service. If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.</b></td>
       <td style="text-align:left">
-        GraphQL endpoint using Authing public cloud
+        GraphQL endpoint using {{$localeConfig.brandName}} public cloud
       </td>
     </tr>
     <tr>
       <td style="text-align:left">host.oauth</td>
       <td style="text-align:left">no</td>
       <td style="text-align:left">GraphQL &#x901A;&#x4FE1;&#x5730;&#x5740;</td>
-      <td style="text-align:left">https://core.authing.cn/graphql</td>
+      <td style="text-align:left">https://core.approw.com/graphql</td>
     </tr>
     <tr>
       <td style="text-align:left">responseType</td>
@@ -232,7 +232,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
       <td style="text-align:left">redirectUrl</td>
       <td style="text-align:left">no</td>
       <td style="text-align:left">Application callback address</td>
-      <td style="text-align:left"><router-link to="/guides/app/create-app">The business domain name filled in when creating the application</router-link> in the Authing console. </td>
+      <td style="text-align:left"><router-link to="/guides/app/create-app">The business domain name filled in when creating the application</router-link> in the Approw console. </td>
     </tr>
     <tr>
       <td style="text-align:left">nonce</td>
@@ -252,9 +252,9 @@ The constructor accepts an object as a parameter. The list of parameters in the 
 Example:
 
 ```js
-let auth = new AuthingSSO({
+let auth = new ApprowSSO({
   appId: "APP_ID",
-  appDomain: "example-app.authing.cn",
+  appDomain: "example-app.approw.com",
 });
 ```
 
@@ -343,4 +343,4 @@ let res = await auth.logout();
 
 ## Get help <a id="get-help"></a>
 
-1. Join us on Gitter: [\#authing-chat](https://gitter.im/authing-chat/community)
+1. Join us on Gitter: [\#approw-chat](https://gitter.im/approw-chat/community)
