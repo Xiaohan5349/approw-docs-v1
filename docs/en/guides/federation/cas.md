@@ -26,7 +26,7 @@ In the "CAS Identity Provider" tag, enable the CAS IdP and save the settings.。
 
 ![](~@imagesZhCn/guides/federation/cas/1-1.png)
 
-## Web flow
+## The Web Flow
 
 Here is the web flow:
 
@@ -46,4 +46,6 @@ Here is the flow chart:
 
 ![](~@imagesZhCn/guides/federation/cas/cas-flow.png)
 
-Here is the integration [document](/v2/federation/cas/cas10)  with more details.
+Here is the integration [document](/approw-docs-v1/docs/en/federation/cas/cas10)  with more details.
+approw-docs-v1/docs/en/federation/cas/cas10/
+<!--/v2/federation/cas/cas10-->
