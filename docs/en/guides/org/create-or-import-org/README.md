@@ -1,4 +1,4 @@
-# Create or import an organization
+# Create Or Import An Organization
 
 <LastUpdated/>
 
@@ -12,9 +12,9 @@ You can choose to use the console or API & SDK to create an organization.
 
 ## Import organization
 
-{{$localeConfig.brandName}} organization supports importing organizations and users from the following channels:
+{{$localeConfig.brandName}} organization supports importing organizations and users from the following methods:
 
-- [Windows local Active Directory](https://en.wikipedia.org/wiki/Active_Directory)
+- [Windows Local Active Directory](https://en.wikipedia.org/wiki/Active_Directory)
 - [Excel](?import-org=excel#导入组织机构)
 - You can also use API & SDK to [write user import scripts](/guides/migrations/use-api.md). 
 
