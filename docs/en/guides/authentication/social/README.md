@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-Social login refers to the process in which users use social platform identity authentication information to authenticate and log in to third-party applications or URLs. For example, people often use personal Facebook, Twitter, Google and other social accounts to log in to Didi and NetEase Cloud Music. Social login not only helps simplify the user's login experience on third-party platforms, but also provides a simpler and more convenient way for users to create new accounts on third-party platforms. Both for normal users and enterprises, social login has unparalleled advantages.
+Social login refers to the process in which users use social platform identity authentication information to authenticate and log in to third-party applications or URLs. For example, people often use personal Facebook, Twitter and other social accounts to log in to Google and Spotify. Social login not only helps simplify the user's login experience on third-party platforms, but also provides a simpler and more convenient way for users to create new accounts on third-party platforms. Both for normal users and enterprises, social login has unparalleled advantages.
 
 ## Social login list
 
