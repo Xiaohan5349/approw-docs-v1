@@ -4,9 +4,9 @@
 
 ## Generate QR code
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/gene" description="The interface will return the QR code ID (random) and the QR code link.">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/gene" description="The interface will return the QR code ID (random) and the QR code link.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 </template>
 <template slot="bodyParams">
 <ApiMethodParam name="customeData" type="string" description="The custom data field will be written into the original data of the QR code.  " />
@@ -30,7 +30,7 @@ Field definition:
   "data": {
     "random": "SzZrszCJNCFfVBDUCKLDtAYNBR96SK",
     "expiresIn": 120,
-    "url": "https://files.authing.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png"
+    "url": "https://files.approw.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png"
   }
 }
 ```
@@ -41,7 +41,7 @@ Field definition:
 
 Example of generated QR code:
 
-![](https://files.authing.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png)
+![](https://files.approw.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png)
 
 Use the [online QR code decoding tool](https://cli.im/deqr) to view the QR code data as follows:
 
@@ -58,7 +58,7 @@ Use the [online QR code decoding tool](https://cli.im/deqr) to view the QR code 
 
 ## Query the status of the QR code
 
-<ApiMethodSpec method="get" host="https://core.authing.cn" path="/api/v2/qrcode/check">
+<ApiMethodSpec method="get" host="https://core.approw.com" path="/api/v2/qrcode/check">
 <template slot="queryParams">
 <ApiMethodParam name="random" type="string" required description="QR code ID" />
 </template>
@@ -98,7 +98,7 @@ Request result field description:
 
 ## To get user information by ticket
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/userinfo">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/userinfo">
 <template slot="bodyParams">
 <ApiMethodParam name="ticket" type="string" required description="Query the ticket returned by the QR code status interface" />
 </template>
@@ -117,7 +117,7 @@ Request result field description:
     "username": "983132@qq.com",
     "nickname": "",
     "company": "",
-    "photo": "https://usercontents.authing.co/authing-avatar.png",
+    "photo": "https://usercontents.approw.co/approw-avatar.png",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiOTgzMTMyQHFxLmNvbSIsImlxxxxxxxxx",
     "phone": "",
     "tokenExpiredAt": "2020-01-11T08:08:18.000Z",
@@ -139,14 +139,14 @@ Attention: By default, **this interface is only allowed to be called on the serv
 
 The default validity time of the ticket is 300 s.
 
-Developers can modify in the [{{$localeConfig.brandName}} console](https://console.authing.cn/console/userpool) **basic configuration** -&gt; **basic settings** -&gt; **app QR code scanning** login Web custom configuration. **See the [custom configuration item](./customize-settings.md) page for details**.
+Developers can modify in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) **basic configuration** -&gt; **basic settings** -&gt; **app QR code scanning** login Web custom configuration. **See the [custom configuration item](./customize-settings.md) page for details**.
 :::
 
 ## Mark the code scanned on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/scanned" description="APP 端标记已扫码，标记扫码之后 Web 端将可以获取到当前用户的昵称和头像。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/scanned" description="APP 端标记已扫码，标记扫码之后 Web 端将可以获取到当前用户的昵称和头像。">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
@@ -181,9 +181,9 @@ The APP needs to meet two conditions:
 
 ## Agrees to authorization on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/confirm" description="The APP agrees to the authorization, and the scanned interface needs to be called before calling this interface.">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/confirm" description="The APP agrees to the authorization, and the scanned interface needs to be called before calling this interface.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
@@ -217,9 +217,9 @@ The APP needs to meet two conditions:
 
 ## Cancel authorization on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/cancel" description="To cancel authorization on the APP, you need to call the scanned interface before calling this interface.">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/cancel" description="To cancel authorization on the APP, you need to call the scanned interface before calling this interface.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
