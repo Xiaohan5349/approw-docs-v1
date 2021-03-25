@@ -1,4 +1,4 @@
-# Managing the Member Lifecycle
+# Manage The Member Lifecycle
 
 <LastUpdated/>
 
@@ -14,7 +14,7 @@ Account life cycle management has the following advantages:
 
 You can read more about [account lifecycle management](/concepts/account-life-cycle-management.md).
 
-## Employee Onboarding
+## Employee onboarding
 
 You can perform employee onboarding operations on the organization management page of the console:
 
@@ -26,7 +26,7 @@ You can use your mobile phone number or email to create an account:
 
 <img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-41-35.png" alt="drawing"/>
 
-### Select the department of the employe
+### Select the department of the employee
 
 <img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-42-12.png" alt="drawing"/>
 
