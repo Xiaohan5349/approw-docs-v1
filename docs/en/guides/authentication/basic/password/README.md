@@ -18,10 +18,6 @@ To use {{$localeConfig.brandName}} to achieve these functions, we provide three 
 2. [Use embedded login component provided by {{$localeConfig.brandName}}](#Use-embedded-login-component) This can be integrated within your Web or mobile project and you don't need to implement your own login form UI.
 3. [Use API & SDK](#Use-api-sdk),{{$localeConfig.brandName}} provides two different forms of API: RESTFul and GraphQL and more than ten other language SDKs. You can customize your UI and anthentication workflow based on that.  
 
-1. Use Approw hosted login page. No coding work needed. You can experience it through sample-sso.Approw.com.
-2. Using the embedded login component provided by Approw. It can be integrated into your web and mobile projects. You don't need to implement the login form UI yourself.
-3. Use API & SDK. Approw provides APIs in two forms, RESTFul and GraphQL, and SDKs in more than 10 languages or frameworks. You can customize the UI and authentication process based on this.
-
 ## Use hosted login page
 
 ### Registration
