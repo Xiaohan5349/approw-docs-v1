@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-Organization management includes operations such as adding sub-nodes, modifying nodes, deleting sub-nodes, moving sub-nodes, obtaining sub-node lists, adding members, deleting members, and obtaining member lists. {{$localeConfig.brandName}} supports two operation modes: console and API & SDK.
+Management Organization includes operations such as adding sub-nodes, modifying nodes, deleting sub-nodes, moving sub-nodes, obtaining sub-node lists, adding members, deleting members, and obtaining member lists. {{$localeConfig.brandName}} supports two operation types: console and API & SDK.
 
 ## Add child nodes
 
@@ -16,7 +16,7 @@ Organization management includes operations such as adding sub-nodes, modifying 
 
 <StackSelector snippet="delete-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## Moving child nodes
+## Move child nodes
 
 <StackSelector snippet="move-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
