@@ -12,12 +12,12 @@ meta:
 
 {{$localeConfig.brandName}} currently supports Golang 1.8+ version.
 
-GitHub address：[https://github.com/authing/authing-go-sdk](https://github.com/authing/authing-go-sdk).
+GitHub address：[https://github.com/approw/approw-go-sdk](https://github.com/approw/approw-go-sdk).
 
 ## Installation
 
 ```bash
-go get github.com/authing/authing-go-sdk
+go get github.com/approw/approw-go-sdk
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ import (
     "os"
     "regexp"
 
-    authing "github.com/authing/authing-go-sdk"
+    approw "github.com/approw/approw-go-sdk"
     prettyjson "github.com/hokaccha/go-prettyjson"
     "github.com/kelvinji2009/graphql"
 )
@@ -44,7 +44,7 @@ const (
 
 func main() {
     // ---User Endpoint
-    client := authing.NewClient(userPoolId, userPoolSecret, false)
+    client := approw.NewClient(userPoolId, userPoolSecret, false)
     // Enable debug info for graphql client, just comment it if you want to disable the debug info
     client.Client.Log = func(s string) {
         b := []byte(s)
@@ -53,7 +53,7 @@ func main() {
     }
 
     // >>>Graphql Mutation: register
-    input := authing.UserRegisterInput{
+    input := approw.UserRegisterInput{
         Email:            graphql.String("kelvinji2009@gmail.com"),
         Password:         graphql.String("password"),
         RegisterInClient: graphql.String(userPoolId),
@@ -67,7 +67,7 @@ func main() {
     }
 
     // ---OAuth Endpoint
-    oauthClient := authing.NewOauthClient(userPoolId, userPoolSecret, false)
+    oauthClient := approw.NewOauthClient(userPoolId, userPoolSecret, false)
     // Enable debug info for graphql client, just comment it if you want to disable the debug info
     oauthClient.Client.Log = func(s string) {
         b := []byte(s)
@@ -76,7 +76,7 @@ func main() {
     }
 
     // >>>>Graphql Query: Read OAuth List
-    readOauthListQueryParameter := authing.ReadOauthListQueryParameter{
+    readOauthListQueryParameter := approw.ReadOauthListQueryParameter{
         ClientID:   graphql.String(userPoolId),
         DontGetURL: graphql.Boolean(false),
     }
@@ -109,7 +109,7 @@ func printJSON(v interface{}) {
 First, create a user Endpoint Client. Then you can perform a series of operations on the user, including registering, logging in, updating user information, deleting users, changing passwords, and so on.
 
 ```go
-client := authing.NewClient(userPoolId, userPoolSecret, false)
+client := approw.NewClient(userPoolId, userPoolSecret, false)
 // Enable debug info for graphql client, just comment it if you want to disable the debug info
 client.Client.Log = func(s string) { log.Println(s) }
 ```
@@ -117,7 +117,7 @@ client.Client.Log = func(s string) { log.Println(s) }
 ### **Register a new user**
 
 ```go
-input := authing.UserRegisterInput{
+input := approw.UserRegisterInput{
     Email:            graphql.String("kelvinji2009@gmail.com"),
     Password:         graphql.String("password"),
     RegisterInClient: graphql.String(userPoolId),
@@ -134,7 +134,7 @@ if err != nil {
 ### **User login**
 
 ```go
-loginInput := authing.UserLoginInput{
+loginInput := approw.UserLoginInput{
     Email:            graphql.String("kelvinji2009@gmail.com"),
     Password:         graphql.String("password!"),
     RegisterInClient: graphql.String(userPoolId),
@@ -164,7 +164,7 @@ if err != nil {
 ### **Query user information**
 
 ```go
-p := authing.UserQueryParameter{
+p := approw.UserQueryParameter{
     ID:               graphql.String("5ae3d830f0db4b000117a95e"),
     RegisterInClient: graphql.String(userPoolId),
 }
@@ -180,7 +180,7 @@ if err != nil {
 ### **Query all users**
 
 ```go
-p := authing.UsersQueryParameter{
+p := approw.UsersQueryParameter{
     RegisterInClient: graphql.String(userPoolId),
     Page:             graphql.Int(1),
     Count:            graphql.Int(10),
@@ -197,10 +197,10 @@ if err != nil {
 ### **Delete user**
 
 ```go
-removeUsersInput := authing.RemoveUsersInput{
+removeUsersInput := approw.RemoveUsersInput{
     IDs:              []graphql.String{"111", "222"}, // NOTE: Please use your real user IDs
     RegisterInClient: graphql.String(userPoolId),
-    // Operator should be your `authing.cn` account ID
+    // Operator should be your `approw.com` account ID
     // Operator:         graphql.String("5adb75be3055230001023b20"), // no more needed
 }
 
@@ -224,7 +224,7 @@ if err != nil {
 ### **Update user information**
 
 ```go
-userUpdateInput := authing.UserUpdateInput{
+userUpdateInput := approw.UserUpdateInput{
     ID:               graphql.String("5ae3d830f0db4b000117a95e"), // Mandotory in struct
     Username:         graphql.String("kelvinji2009x"),
     Nickname:         graphql.String("Sicario13th"),
@@ -243,7 +243,7 @@ if err != nil {
 ### **Send verification email**
 
 ```go
-sendVerifyEmailInput := authing.SendVerifyEmailInput{
+sendVerifyEmailInput := approw.SendVerifyEmailInput{
     Email:  graphql.String("kelvinji2009@gmail.com"),
     Client: graphql.String(userPoolId),
 }
@@ -257,7 +257,7 @@ if err != nil {
 ### **Send password reset email**
 
 ```go
-sendResetPasswordEmailInput := authing.SendResetPasswordEmailInput{
+sendResetPasswordEmailInput := approw.SendResetPasswordEmailInput{
     Client: graphql.String(userPoolId),
     Email:  graphql.String("kelvinji2009@gmail.com"),
 }
@@ -271,7 +271,7 @@ if err != nil {
 ### **Verify the code for reseting password**
 
 ```go
-verifyResetPasswordVerifyCodeInput := authing.VerifyResetPasswordVerifyCodeInput{
+verifyResetPasswordVerifyCodeInput := approw.VerifyResetPasswordVerifyCodeInput{
     Client:     graphql.String(userPoolId),
     Email:      graphql.String("kelvinji2009@gmail.com"),
     VerifyCode: graphql.String("7670"),
@@ -286,7 +286,7 @@ if err != nil {
 ### **Modify password**
 
 ```go
-changePasswordInput := authing.ChangePasswordInput{
+changePasswordInput := approw.ChangePasswordInput{
     Client:     graphql.String(userPoolId),
     Email:      graphql.String("kelvinji2009@gmail.com"),
     VerifyCode: graphql.String("7670"),
@@ -304,7 +304,7 @@ if err != nil {
 Create OAuth Endpoint Client first.
 
 ```go
-oauthClient := authing.NewOauthClient(userPoolId, userPoolSecret, false)
+oauthClient := approw.NewOauthClient(userPoolId, userPoolSecret, false)
 // Enable debug info for graphql client, just comment it if you want to disable the debug info
 oauthClient.Client.Log = func(s string) { log.Println(s) }
 ```
@@ -312,7 +312,7 @@ oauthClient.Client.Log = func(s string) { log.Println(s) }
 ### **Read OAuth list**
 
 ```go
-readOauthListQueryParameter := authing.ReadOauthListQueryParameter{
+readOauthListQueryParameter := approw.ReadOauthListQueryParameter{
     ClientID:   graphql.String(userPoolId),
     DontGetURL: graphql.Boolean(false),
 }

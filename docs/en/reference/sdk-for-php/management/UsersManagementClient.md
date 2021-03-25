@@ -10,7 +10,7 @@ meta:
 
 > {{$localeConfig.brandName}} User ManagementClient
 
-This client is used to manage {{$localeConfig.brandName}} users. It can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
+This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
 ## Create a user
 
@@ -92,7 +92,7 @@ UsersManagementClient \*().update(id, updates)
 - `updates.photo` \<string\> avatar
 - `updates.company` \<string\> company
 - `updates.browser` \<string\> browser
-- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to Approw.
+- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
 - `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
 - `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
 - `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
