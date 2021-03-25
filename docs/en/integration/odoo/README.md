@@ -4,8 +4,8 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: "Integrate Odoo with Approw to achieve SSO",
-  bannerTitle: " Integrate Odoo with Approw to achieve SSO",
+  title: "Integrate Odoo with Approw to Achieve SSO",
+  bannerTitle: " Integrate Odoo with Approw to Achieve SSO",
   steps:
     [
       { title: "Introduction of Odoo", subTitle: "" },
