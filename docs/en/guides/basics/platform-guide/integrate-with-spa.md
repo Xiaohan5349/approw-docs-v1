@@ -1,39 +1,39 @@
-# Integrate Approw with Single Page Application
+# Integrate {{$localeConfig.brandName}} with Single Page Application
 
 <LastUpdated/>
 
 Single Page Application (SPA) refers to a Web application or website model that interacts with users by dynamically rewriting the current page, rather than traditionally reloading the entire new page from the server. This method avoids switching between pages to interrupt the user experience, making the application more like a desktop application. In a single-page application, all necessary codes (HTML, JavaScript, and CSS) are retrieved through the loading of a single page, or appropriate resources are dynamically loaded and added to the page as needed (usually in response to user actions). Interaction with single-page applications usually involves dynamic communication with back-end servers.
 
-The easiest way to access Approw in SPA applications is to use [the embedded login component](/reference/ui-components/) and [Javascript SDK](/reference/sdk-for-node/) provided by Approw for login and authentication. This article takes the React project as an example.
+The easiest way to access {{$localeConfig.brandName}} in SPA applications is to use [the embedded login component](/reference/ui-components/) and [Javascript SDK](/reference/sdk-for-node/) provided by {{$localeConfig.brandName}} for login and authentication. This article takes the React project as an example.
 
 ## Get APP ID
 
-After logging in to Approw, Approw will create a default user pool and application for you. You can also create your own application. In the application details, you can get the application ID and click the copy button:
+After logging in to {{$localeConfig.brandName}}, {{$localeConfig.brandName}} will create a default user pool and application for you. You can also create your own application. In the application details, you can get the application ID and click the copy button:
 
 ![](./images/app-id-and-secret.png)
 
-## Integrate Approw in your SPA
+## Integrate {{$localeConfig.brandName}} in your SPA
 
-### Install Approw login component
+### Install {{$localeConfig.brandName}} login component
 
 ```bash
-yarn add @authing/react-ui-components
+yarn add @approw/react-ui-components
 
  # OR
 
-npm i @authing/react-ui-components --save
+npm i @approw/react-ui-components --save
 ```
 
-`@approw/react-ui-components` has some React components provided by Approw and APIs for obtaining [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient), including the [ApprowGuard](/reference/ui-components/) login component.
+`@approw/react-ui-components` has some React components provided by {{$localeConfig.brandName}} and APIs for obtaining [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient), including the [ApprowGuard](/reference/ui-components/) login component.
 
 ### Configure ApprowGuard
 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AuthingGuard } from '@authing/react-ui-components'
+import { ApprowGuard } from '@approw/react-ui-components'
 // import css file
-import '@authing/react-ui-components/lib/index.min.css'
+import '@approw/react-ui-components/lib/index.min.css'
 
 const App = () => {
   const appId = 'AUTHING_APP_ID'
@@ -45,7 +45,7 @@ const App = () => {
     // ...
   }
 
-  return <AuthingGuard appId={appId} onLogin={onLogin} />
+  return <ApprowGuard appId={appId} onLogin={onLogin} />
 }
 
 ReactDOM.render(<App />, root)
@@ -60,7 +60,7 @@ Now you can log in, and you need to implement a method for users to log out, whi
 ```js
 // src/index.js
 
-import { initAuthClient } from '@authing/react-ui-components'
+import { initAuthClient } from '@approw/react-ui-components'
 // initialize AuthenticationClient in project entry
 initAuthClient({
   appId: 'YOUR_APP_ID',
@@ -69,7 +69,7 @@ initAuthClient({
 
 ```js
 import React from 'react'
-import { getAuthClient } from '@authing/react-ui-components'
+import { getAuthClient } from '@approw/react-ui-components'
 
 const LogoutButton = () => {
   return <button onClick={() => getAuthClient().logout()}>logout</button>
@@ -85,7 +85,7 @@ After the user logs in, you may also need to obtain the user information of the 
 ```js
 // src/index.js
 
-import { initAuthClient } from '@authing/react-ui-components'
+import { initAuthClient } from '@approw/react-ui-components'
 // initialize AuthenticationClient in project entry
 initAuthClient({
   appId: 'YOUR_APP_ID',
@@ -94,7 +94,7 @@ initAuthClient({
 
 ```js
 import React, { useState, useEffect } from 'react'
-import { getAuthClient } from '@authing/react-ui-components'
+import { getAuthClient } from '@approw/react-ui-components'
 
 const UserInfo = () => {
   const [user, setUser] = useState()
