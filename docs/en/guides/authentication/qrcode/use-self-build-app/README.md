@@ -15,7 +15,7 @@ To implement the use of self-built mobile applications to scan QR codes to log i
 On the web side, we recommend using the [JavaScript SDK](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md) provided by {{$localeConfig.brandName}}, which provides a one-click interface for generating a QR code, polling for the latest status, and obtaining user information for callbacks. Developers only need to specify the `onSuccess` callback function:
 
 ```js
-import { AuthenticationClient } from "authing-js-sdk"
+import { AuthenticationClient } from "approw-js-sdk"
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
@@ -30,7 +30,7 @@ authenticationClient.qrcode.startScanning("qrcode", {
 
 After running, it will automatically generate a QR code for APP scanning login:
 
-<img src="https://cdn.authing.cn/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
 
 After the code is scanned successfully, {{$localeConfig.brandName}} will call back the `onSuccess` function passed in by the developer. The callback parameters include `userInfo` and `ticket`, and the `ticket` can be used to [get user information](./full-api-list.md#使用-ticket-换取用户信息).
 
@@ -70,12 +70,12 @@ To implement APP scanning and logging in to the Web, the APP user is required to
 
 Let's take Objective-C as an example to implement consent to authorize login:
 
-- The api address is: [http://core.authing.cn/api/v2/qrcode/confirm](http://core.authing.cn/api/v2/qrcode/confirm)
+- The api address is: [http://core.approw.com/api/v2/qrcode/confirm](http://core.approw.com/api/v2/qrcode/confirm)
 - Line 9 puts the user login credentials on the request header.
 
 ```objectivec
 - (void) ConfirmAuthorization:(NSString *) random{
-    NSURL * api =[NSURL URLWithString:@"http://core.authing.cn/api/v2/qrcode/confirm"];
+    NSURL * api =[NSURL URLWithString:@"http://core.approw.com/api/v2/qrcode/confirm"];
     NSDictionary *bodyDict = @{
         @"random": random,
     };
@@ -118,7 +118,7 @@ Let's take Objective-C as an example to implement consent to authorize login:
 
 After the mobile terminal confirms the authorization, you will see the relevant prompt on the web.
 
-<img src="https://cdn.authing.cn/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
 
 
 At this time, the entire login process is complete, and developers can use the ticket to get user information.
