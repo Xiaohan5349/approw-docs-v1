@@ -102,7 +102,7 @@ Through the OIDC ClientCredentials authorization mode, the caller needs to provi
 4. The caller carries the AccessToken to access the resource server. 
 5. The resource server returns the protected resource.
 In order for the caller to be able to access the protected API interface, it must first obtain an AccessToken with the privileges. To do this, the caller needs to send a POST request to the following address.
-Request URL: `https://{APP_DOMAIN_NAME}.authing.cn/oidc/token`
+Request URL: `https://{APP_DOMAIN_NAME}.approw.com/oidc/token`
 Parameters:
 
 | Parameter name| description  |
@@ -129,13 +129,13 @@ Sample code:
 const axios = require('axios').default;
 const options = {
   method: 'POST',
-  url: 'https://{应用域名}.authing.cn/oidc/token',
+  url: 'https://{APP_DOMAIN_NAME}.approw.com/oidc/token',
   headers: { 'content-type': 'application/x-www-form-urlencoded' },
   data: {
     grant_type: 'client_credentials',
-    client_id: '{编程访问账号 Key}',
-    client_secret: '{编程访问账号 Secret}',
-    scope: '{权限项目，空格分隔}',
+    client_id: '{programmatic access account Key}',
+    client_secret: '{programmatic access account Secret}',
+    scope: '{privilege, seperate by space}',
   },
 };
 
@@ -208,17 +208,17 @@ var jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://{应用域名}.authing.cn/oidc/.well-known/jwks.json',
+    jwksUri: 'https://{APP_DOMAIN_NAME}.approw.com/oidc/.well-known/jwks.json',
   }),
-  audience: '{编程访问账号 ID}',
-  issuer: 'https://{应用域名}.authing.cn/oidc',
+  audience: '{programmatic access account ID}',
+  issuer: 'https://{APP_DOMAIN_NAME}.approw.com/oidc',
   algorithms: ['RS256'],
 });
-// 检验 AccessToken 合法性
+// validate AccessToken 
 app.use(jwtCheck);
 
 app.post('/article', function(req, res) {
-  // 检验 AccessToken 是否具备所需要的权限项目
+  // verify if AccessToken has the specific privilege
   if (!req.user.scope.split(' ').incldues('write:article')) {
     return res.status(401).json({ code: 401, message: 'Unauthorized' });
   }
