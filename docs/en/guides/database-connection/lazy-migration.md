@@ -1,4 +1,4 @@
-# Migrate user to {{$localeConfig.brandName}} with Lazy Migration
+# Migrate Users to {{$localeConfig.brandName}} with Lazy Migration
 
 <LastUpdated/>
 
@@ -25,7 +25,7 @@ Registration flow:
 
 ## Setup Scripts
 
-You need to access [Approw console](https://console.authing.cn/console/userpool) and go to **Connect IdP** - **Customized database** to setup scripts of **login** and **searchUser**. You can find more details at:
+You need to access [Approw console](https://console.approw.com/console/userpool) and go to **Connect IdP** - **Customized database** to setup scripts of **login** and **searchUser**. You can find more details at:
 
 - [Compile login script](./configuration/#编写数据库操作脚本)。
 - [Compile searchUser script](./configuration/#编写数据库操作脚本)。
