@@ -15,8 +15,7 @@ As the boundary of software expands to all aspects of our lives, the need for un
 
 Since 2015, service providers such as Accenture and AWS have taken the lead in treating CIAM as an independent and necessary product. Completely different from EIAM products that take efficiency as the core, CIAM’s goal is to assist companies in completing the overall information transformation, unifying user identities in all external services. In the battle for users with experience as the core, CIAM provides end users with a complete identity self-service, provide a unified and smooth use and registration experience for users on different platforms, in this way, it can improve the retention and stickiness of users, further create value, and get ahead in the industry competition.
 
-> "The unique requirements of customer identity management, especially the requirements for scale, performance, availability, and seamless use of cross-platforms, make CIAM an independent market, completely different from EIAM for employee identity management.       
-> -Forrester"
+> "The unique requirements of customer identity management, especially the requirements for scale, performance, availability, and seamless use of cross-platforms, make CIAM an independent market, completely different from EIAM for employee identity management. -Forrester"
 
 
 So, what is IDaaS today? It is not just to upload EIAM that appeared 20 years ago to the cloud, but to upload both EIAM & CIAM to the cloud to help enterprises move towards the overall digital transformation with a complete IDaaS.
