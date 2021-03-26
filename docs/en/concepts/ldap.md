@@ -8,19 +8,19 @@ The directory tells the user the location of certain content on the network. On 
 
 ## The application of LDAP
 
-A common use of LDAP is to provide a central location for authentication, which means it stores usernames and passwords. Then, LDAP can be used in different applications or services to authenticate users through plug-ins. For example, LDAP can be used in `Docker`, `Jenkins`, `Kubernetes`, `Open VPN` and `Linux Samba` servers to verify usernames and passwords.System administrators can also use LDAP Single Sign-On to control access to LDAP databases.
+A common use of LDAP is to provide a central location for authentication, which means it stores usernames and passwords. Then, LDAP can be used in different applications or services to authenticate users through plug-ins. For example, LDAP can be used in `Docker`, `Jenkins`, `Kubernetes`, `Open VPN` and `Linux Samba` servers to verify usernames and passwords. System administrators can also use LDAP Single Sign-On to control access to LDAP databases.
 
 LDAP can also be used to add operations to the directory server database, authenticate or bind sessions, delete LDAP entries, search and compare entries using different commands, modify existing entries, extend entries, abandon requests or cancel binding.
 
-LDAP is used in Microsoft's Active Directory, but it can also be used in other tools such as Open LDAP, Red Hat Directory Server and IBM Tivoli Directory Server. Open LDAP is an open source LDAP application, which is a Windows LDAP client and management tool developed for LDAP database control. The tool should allow users to browse, find, delete, create and change the data displayed on the LDAP server. Open LDAP also allows users to manage passwords and browse by schema.
+LDAP is used in Microsoft's Active Directory, but it can also be used in other tools such as Open LDAP, Red Hat Directory Server and IBM Tivoli Directory Server. Open LDAP is an open-source LDAP application, which is a Windows LDAP client and management tool developed for LDAP database control. The tool should allow users to browse, find, delete, create and change the data displayed on the LDAP server. Open LDAP also allows users to manage passwords and browse by schema.
 
 Red Hat Directory Servers are tools for managing multiple systems through Red Hat Directory Server in a UNIX environment. Red Hat Directory Server allows users to store user details in an LDAP server. The tool provides users with secure and restricted access to directory data, group membership, remote access, and access through the verification process.
 
-IBM Tivoli Directory Server is based on IBM's LDAP implementation. Based on the LDAP framework, the tool focuses on faster development and distribution of identity control, security and web applications. Tivoli Directory Server includes different verification methods, such as verification through digital certificates,Simple Authentication and Security Layer(SASL), and CRAM-MD5.
+IBM Tivoli Directory Server is based on IBM's LDAP implementation. Based on the LDAP framework, the tool focuses on faster development and distribution of identity control, security and web applications. Tivoli Directory Server includes different verification methods, such as verification through digital certificates, Simple Authentication and Security Layer(SASL), and CRAM-MD5.
 
 If an organization has trouble deciding when to use LDAP, it should be considered in some cases. The situations where should be considered as follows:
 
-- The organization has the requirement to find and access individual data on a regular basis.
+- The organization has the requirement to find and access individual data regularly.
 - The organization has many smaller data entries.
 - The organization wants to concentrate all the smaller data blocks in a centralized location, and does not require too much organization between the data.
 
@@ -44,7 +44,7 @@ Active Directory is a directory service used to manage domains, users, and distr
 
 Active Directory contains information about every user account on the entire network, which treats each user account as an object. Each user object also has multiple attributes. The examples of attributes are such as first name, last name, or email address. All this information exists in a large encrypted database on the domain controller (Active Directory). The main job of LDAP is to extract the information in a usable format, which is a challenge.
 
-LDAP uses relatively simple string-based queries to extract information from Active Directory. LDAP can store and retrieve objects such as usernames and passwords in Active Directory, and share the object data throughout the network. Happily, all this happens behind the scenes. End users will never have to perform LDAP queries manually, because Outlook has LDAP enabled and knows how to perform all necessary queries on its own.
+LDAP uses relatively simple string-based queries to extract information from Active Directory. LDAP can store and retrieve objects such as usernames and passwords in Active Directory, and share the object data throughout the network. Happily, all this happens behind the scenes. End-users will never have to perform LDAP queries manually, because Outlook has LDAP enabled and knows how to perform all necessary queries on its own.
 
 ## Use the LDAP user directory provided by {{$localeConfig.brandName}} 
 
