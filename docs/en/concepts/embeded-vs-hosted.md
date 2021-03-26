@@ -1,4 +1,4 @@
-# Hosted login page vs Embedded login component
+# Hosted Login Page vs Embedded Login Component
 
 <LastUpdated/>
 
@@ -6,7 +6,7 @@ A variety of authentication integration methods are provided in the {{$localeCon
 
 ![](./images/login-page.png)
 
-## Hosted Login Page
+## Hosted login page
 
 The Approw host mode is considered to be the simplest and most secure way of integration. This is because the login flow is maintained by Approw and kept secure by Approw. For most integrations, the login flow hosted by Approw is recommended. Your business system will redirect the user to Approw, where the user is authenticated, and then redirects back to the application callback connection configured in the console. This design is considered as the best security practice. In terms of custom configuration, the host mode provides a moderate level of custom form configuration of the login and registration, which can be customized by the console configuration and CSS.
 
