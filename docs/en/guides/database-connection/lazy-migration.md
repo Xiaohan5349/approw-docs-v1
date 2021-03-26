@@ -34,7 +34,7 @@ You need to access [Approw console](https://console.approw.com/console/userpool)
 
 After you enabled the user migration function, you can test migrated users in following ways:
 
-- Use [admin API for getting user list or seraching users](/reference/sdk-for-node/management/UsersManagementClient.md#获取用户列表).
+- Use [admin API for getting user list or seraching users](/doc/en/reference/sdk-for-node/management/UsersManagementClient.md#获取用户列表).
 - Check users in **User Management** - **User List** of the [Approw console](https://console.approw.com/console/userpool).
 
 ## After Migration
