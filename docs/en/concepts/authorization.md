@@ -91,4 +91,4 @@ The resource party must verify whether the caller carries an AccessToken with pe
 
 ## Permissions API
 
-In addition to using OIDC's client_credentials mode, you can also use the universal permissions API to create roles. Authorize can create roles to roles and determine whether users have certain permissions, etc, through the permissions API. We support [SDK](/guides/access-control/) in languages such as Node.js, Python, Java, PHP, C#, etc.
+In addition to using OIDC's client_credentials mode, you can also use the universal permissions API to create roles. Authorize can create roles to roles and determine whether users have certain permissions, etc, through the permissions API. We support [SDK](/doc/en/guides/access-control/) in languages such as Node.js, Python, Java, PHP, C#, etc.
