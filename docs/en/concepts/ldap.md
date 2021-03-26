@@ -6,7 +6,7 @@ LDAP (Lightweight Directory Access Protocol) is a software protocol that enables
 
 The directory tells the user the location of certain content on the network. On TCP/IP networks, the Domain Name System (DNS) is a directory system used to associate domain names with specific network addresses (the only locations on the network). However, the user may not know the domain name. LDAP allows users to search for individuals without knowing their location (although other information will help with the search).
 
-## The Application of LDAP
+## The application of LDAP
 
 A common use of LDAP is to provide a central location for authentication, which means it stores usernames and passwords. Then, LDAP can be used in different applications or services to authenticate users through plug-ins. For example, LDAP can be used in `Docker`, `Jenkins`, `Kubernetes`, `Open VPN` and `Linux Samba` servers to verify usernames and passwords.System administrators can also use LDAP Single Sign-On to control access to LDAP databases.
 
@@ -24,7 +24,7 @@ If an organization has trouble deciding when to use LDAP, it should be considere
 - The organization has many smaller data entries.
 - The organization wants to concentrate all the smaller data blocks in a centralized location, and does not require too much organization between the data.
 
-## LDAP Directory Level
+## LDAP directory Level
 
 The LDAP configuration is organized in a simple "tree" hierarchy, which consists of the following levels:
 
@@ -36,7 +36,7 @@ The LDAP configuration is organized in a simple "tree" hierarchy, which consists
 
 The LDAP directory can be distributed among many servers. Each server can have a replicated version of the general directory, which will be synchronized regularly. The LDAP server is called the Directory System Agent (DSA). The LDAP server that receives the request from the user is responsible for the request and passes it to other DSAs as needed, but it must ensure that a unified response is provided to the user.
 
-## LDAP and Active Directory
+## LDAP and active directory
 
 The Lightweight Directory Access Protocol is the protocol used by Exchange Server to communicate with Active Directory. To truly understand what LDAP is and what it does, it is important to understand the basic concepts behind Active Directory related to Exchange.
 
