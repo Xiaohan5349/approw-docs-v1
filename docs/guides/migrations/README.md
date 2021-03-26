@@ -4,7 +4,7 @@
 
 如果你有原有用户系统中的用户需要导入到 {{$localeConfig.brandName}}，请务必阅读此部分的指引。
 
-如果你想以不停机的形式平稳迁移用户到 {{$localeConfig.brandName}}，你需要使用自定义数据库功能，编写相对应的数据库脚本。用户第一次认证时会使用你配置的自定义数据脚本认证用户，认证成功之后会将其迁移到 {{$localeConfig.brandName}} 数据库；用户第二次认证的时候，会使用 {{$localeConfig.brandName}} 数据库进行检验。当所有用户都至少认证一次的时候，代表迁移过程完成。详情请见[惰性迁移用户到 {{$localeConfig.brandName}}](/docs/guides/database-connection/lazy-migration.md)。
+如果你想以不停机的形式平稳迁移用户到 {{$localeConfig.brandName}}，你需要使用自定义数据库功能，编写相对应的数据库脚本。用户第一次认证时会使用你配置的自定义数据脚本认证用户，认证成功之后会将其迁移到 {{$localeConfig.brandName}} 数据库；用户第二次认证的时候，会使用 {{$localeConfig.brandName}} 数据库进行检验。当所有用户都至少认证一次的时候，代表迁移过程完成。详情请见[惰性迁移用户到 {{$localeConfig.brandName}}](/guides/database-connection/lazy-migration.md)。
 
 如果你希望用自己的数据库存储用户数据，不想把用户数据暴露给 {{$localeConfig.brandName}}，可以[完全使用自定义数据库保存用户数据](/guides/database-connection/custom-user-store.md)。
 
