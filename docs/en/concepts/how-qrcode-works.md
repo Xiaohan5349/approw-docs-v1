@@ -45,7 +45,7 @@ When the APP side requests these interfaces, it needs to bring login credentials
 
 For more information, please check the following links:
 <ul>
-    <li>[**Scan code login actual combat series 1 Principle and process design**](https://zhuanlan.zhihu.com/p/100026915)</li>
+    <li>[**Scan code login actual combat series 1: Principle and process design**](https://zhuanlan.zhihu.com/p/100026915)</li>
     <li>[**Scan code login combat series 2: Back-end interface implementation**](https://zhuanlan.zhihu.com/p/100027688)</li>
     <li>[**Scan code login actual combat series 3: Front-end SDK package**](https://zhuanlan.zhihu.com/p/100027862)</li>
     <li>[**Scan code login actual combat series 4: Summary**](https://zhuanlan.zhihu.com/p/100028054)</li>
