@@ -14,7 +14,7 @@ User account management can be managed visually through the console, user person
 
 User account management can be divided into two methods: administrator operation and user self-service operation. User self-service operation needs to verify user identity through phone number verification code, MFA, etc., and administrator operation only needs to provide Management Token (if SDK is applied, only need to provide the [user pool secret](/guides/faqs/get-userpool-id-and-secret.md)).
 
-The following content is in no particular order, you can choose the content you are interested in to read:
+The following content is in no particular order, you can choose the content you are interested to read:
 
 - [Understand the interpretation of all fields in the user profile](./user-profile.md);
 - [Understand how the administrator creates an account](./create-user/);
