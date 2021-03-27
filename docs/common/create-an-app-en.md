@@ -1,5 +1,5 @@
 
-To connect the user and IdP, you need to create an application. In [**Console**](https://console.authing.cn) -> **Applications** -> click **Create**.
+To connect the user and IdP, you need to create an application. In [**Console**](https://console.approw.com) -> **Applications** -> click **Create**.
 
 ![](~@imagesZhCn/integration/ali-cloud/1-4.jpg)
 
