@@ -4,7 +4,7 @@ meta:
     content: Administrator create accounts
 ---
 
-# Administrator create accounts
+# Administrator Create Accounts
 
 <LastUpdated/>
 
