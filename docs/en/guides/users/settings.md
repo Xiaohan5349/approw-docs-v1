@@ -20,13 +20,13 @@ After turning on "registration disabled", common users will not be able to regis
 
 ## Restriction on frequent registration
 
-You can turn on the **restriction on frequent registration** in the console: **setting** -> **security information**, and limit the number of registrations for the **same IP** within a defined number of seconds
+You can turn on the **restriction on frequent registration** in the console: **setting** -> **security information**, and limit the number of registrations for the **same IP** within a defined number of seconds.
 
 ![](./images/registration-frequency-check-settings.jpg)
 
 ## Restriction on the number of failed login attempts
 
-You can turn on the **restriction on the number of failed login attempts** in the console: **setting** -> **security information**, and limit the number of failed registrations for the **same account** within a defined number of seconds
+You can turn on the **restriction on the number of failed login attempts** in the console: **setting** -> **security information**, and limit the number of failed registrations for the **same account** within a defined number of seconds.
 
 ![](./images/login-fail-frequency-check-settings.jpg)
 
