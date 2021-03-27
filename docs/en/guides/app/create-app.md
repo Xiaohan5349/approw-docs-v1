@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-You can check all owning application under **Applications** tab in [console](https://console.authing.cn):
+You can check all owning application under **Applications** tab in [console](https://console.approw.com):
 
 
 <img src="../../concepts/images/Xnip2021-02-26_10-46-59.png" alt="drawing"/>
