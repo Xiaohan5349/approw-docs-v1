@@ -108,7 +108,7 @@ Request result field description:
 ```json
 {
   "code": 200,
-  "message": "换取用户信息成功",
+  "message": "get user information success",
   "data": {
     "id": "5e05bbf2d51b3761d5c71070",
     "email": "983132@qq.com",
@@ -144,7 +144,7 @@ Developers can modify in the [{{$localeConfig.brandName}} console](https://conso
 
 ## Mark the code scanned on APP
 
-<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/scanned" description="APP 端标记已扫码，标记扫码之后 Web 端将可以获取到当前用户的昵称和头像。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/scanned" description="APP has scanned code.After scannimng, the web client can get the nickname and avatar of the user.">
 <template slot="headers">
 <ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
