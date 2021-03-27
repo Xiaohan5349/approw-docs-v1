@@ -1,4 +1,4 @@
-# Bind account
+# Bind Account
 
 <LastUpdated/>
 
@@ -9,7 +9,7 @@ You can bind the user's social account to his main account (phone number, email 
 <ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/users/link" summary="将社交账号绑定到主账号">
 <template slot="description">
 
-If you want to bind a social account to a main account, the end user must provide the credentials of the **social account** and the **main account** to prove that he is the owner of the two accounts, and then perform binding.
+If you want to bind a social account to the main account, the end-user must provide the credentials of the **social account** and the **main account** to prove that he is the owner of the two accounts, and then perform the binding.
 
 </template>
 <template slot="headers">
