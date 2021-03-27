@@ -16,7 +16,7 @@ Currently, Approw has three authentication methods that can be selected:
 
 If you want to directly authenticate your users through API, you can check the [interface documentation](/reference/) and SDK documentation in the development integration section.
 
-If you want to implement **single sign-on** or **authenticate** users first and then return to resources, it is recommended to use the **OIDC protocol**.
+If you want to implement **Single Sign-on** or **authenticate** users first and then return to resources, it is recommended to use the **OIDC protocol**.
 
 ## OAuth 2.0
 
