@@ -6,7 +6,7 @@ Security Assertion Markup Language (SAML) is an **XML** based open standard. It'
 
 In SAML Protocol there are **Identity Provider (IdP)** and **Service Provider (SP)**
 
-**Identity Provider (IdP)**. Authing as an IdP, we send SAML Assertion to Service Provider (SP). **SAML Assertion** is XML based **Token**. It can be used to identify the user. There are other IdP like: Okta, SSOCircle, Auth0.
+**Identity Provider (IdP)**. Approw as an IdP, we send SAML Assertion to Service Provider (SP). **SAML Assertion** is XML based **Token**. It can be used to identify the user. There are other IdP like: Okta, SSOCircle, Auth0.
 
 **Service Provide (SP)** is an individual or entity that provides services to another party. Like: Alibaba Cloud, Tencent Cloud, and AWS.
 
@@ -21,7 +21,7 @@ When user verification is required, SP sent SAML Request via browser to IdP to v
 Sample SAML Request from Alibaba Cloud:
 
 ```
-GET https://core.authing.cn/v2/api/saml-idp/5e10927e4ecfd464fb4edaf6?SAMLRequest=fZJLT%2BMwFIX3%2FIrI%2B7yct9Wk6kyFQGJERQKL2RnnJnWV2Blfp2L%2BPaGlDLOApaV7vnN0jlfrl3FwjmBQalWS0AuIA0roVqq%2BJI%2FNtZuTdXW1Qj4OdGKb2e7VA%2FyZAa2zQQRjF91PrXAewdRgjlLA48NdSfbWTsh8H2WvpPL4IP%2FOyhN69N9Qfl3fE2e7UKTi9mR9EQhtwOOLz5LAE8o%2FUp9P8qRyZTv5CYRBQTOIQXRtnMbdcwwt71LiXGsj4JSwJB0fEIhzuy0Jp9AXgvaHgwzzPA%2FjfXagbRYlebeP%2BmI5wh1HlEf4J0Oc4Vah5cqWhAY0cIPCpXkTRiwoWJJ5eZH%2BJs7OaKuFHn5IdS5sNoppjhKZ4iMgs4LVm193jHoBez4fIbtpmp27u68b4jxdiqdvxS9TKGTnqr9nTe%2FGpDovw06JzWfC9wB%2B2Y5UXy8VRlmcpkWUpUlGY5p8TLfyP7tW78%2F%2Fv0f1Cg%3D%3D
+GET https://core.approw.cn/v2/api/saml-idp/5e10927e4ecfd464fb4edaf6?SAMLRequest=fZJLT%2BMwFIX3%2FIrI%2B7yct9Wk6kyFQGJERQKL2RnnJnWV2Blfp2L%2BPaGlDLOApaV7vnN0jlfrl3FwjmBQalWS0AuIA0roVqq%2BJI%2FNtZuTdXW1Qj4OdGKb2e7VA%2FyZAa2zQQRjF91PrXAewdRgjlLA48NdSfbWTsh8H2WvpPL4IP%2FOyhN69N9Qfl3fE2e7UKTi9mR9EQhtwOOLz5LAE8o%2FUp9P8qRyZTv5CYRBQTOIQXRtnMbdcwwt71LiXGsj4JSwJB0fEIhzuy0Jp9AXgvaHgwzzPA%2FjfXagbRYlebeP%2BmI5wh1HlEf4J0Oc4Vah5cqWhAY0cIPCpXkTRiwoWJJ5eZH%2BJs7OaKuFHn5IdS5sNoppjhKZ4iMgs4LVm193jHoBez4fIbtpmp27u68b4jxdiqdvxS9TKGTnqr9nTe%2FGpDovw06JzWfC9wB%2B2Y5UXy8VRlmcpkWUpUlGY5p8TLfyP7tW78%2F%2Fv0f1Cg%3D%3D
 ```
 
 Request sent to IdP in URL query string:
@@ -34,7 +34,7 @@ fZJLT+MwFIX3/IrI+7yct9Wk6kyFQGJERQKL2RnnJnWV2Blfp2L+PaGlDLOApaV7vnN0jlfrl3FwjmBQ
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<saml2p:AuthnRequest AssertionConsumerServiceURL="https://signin.aliyun.com/saml/SSO" Destination="https://core.authing.cn/v2/api/saml-idp/5e10927e4ecfd464fb4edaf6" ForceAuthn="false" ID="a2eg9c2gjji188814h7j2d7358fh3g9" IsPassive="false" IssueInstant="2020-09-28T13:09:57.896Z" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Version="2.0"
+<saml2p:AuthnRequest AssertionConsumerServiceURL="https://signin.aliyun.com/saml/SSO" Destination="https://core.approw.cn/v2/api/saml-idp/5e10927e4ecfd464fb4edaf6" ForceAuthn="false" ID="a2eg9c2gjji188814h7j2d7358fh3g9" IsPassive="false" IssueInstant="2020-09-28T13:09:57.896Z" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Version="2.0"
 	xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol">
 	<saml2:Issuer
 		xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">https://signin.aliyun.com/1374669376572425/saml/SSO
@@ -84,7 +84,7 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 <samlp:Response
 	xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
 	xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_62b177c1-a919-42f6-9586-47f13b71081f" Version="2.0" IssueInstant="2020-09-28T13:30:31.788Z" Destination="https://signin.aliyun.com/saml/SSO" InResponseTo="a49f8edi31cj0a2a459g0331c3d9c10">
-	<saml:Issuer>https://20nqulvoqpbp.authing.cn</saml:Issuer>
+	<saml:Issuer>https://20nqulvoqpbp.approw.cn</saml:Issuer>
 	<samlp:Status>
 		<samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
 	</samlp:Status>
@@ -92,7 +92,7 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_fae95b47-cbf3-4a20-add0-99d856b4124e" Version="2.0" IssueInstant="2020-09-28T13:30:31.788Z">
-		<saml:Issuer>https://20nqulvoqpbp.authing.cn</saml:Issuer>
+		<saml:Issuer>https://20nqulvoqpbp.approw.cn</saml:Issuer>
 		<ds:Signature
 			xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 			<ds:SignedInfo>
@@ -115,7 +115,7 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 			</ds:KeyInfo>
 		</ds:Signature>
 		<saml:Subject>
-			<saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">yezuwei@authing.onaliyun.com</saml:NameID>
+			<saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">yezuwei@approw.onaliyun.com</saml:NameID>
 			<saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
 				<saml:SubjectConfirmationData NotOnOrAfter="2020-09-28T14:30:31.788Z" Recipient="https://signin.aliyun.com/saml/SSO" InResponseTo="a49f8edi31cj0a2a459g0331c3d9c10"/>
 			</saml:SubjectConfirmation>
@@ -134,7 +134,7 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 			<saml:Attribute Name="email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
 				<saml:AttributeValue
 					xmlns:xs="http://www.w3.org/2001/XMLSchema"
-					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">yezuwei@authing.cn
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">yezuwei@approw.cn
 				</saml:AttributeValue>
 			</saml:Attribute>
 			<saml:Attribute Name="name" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
@@ -145,7 +145,7 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 				<saml:Attribute Name="username" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
 					<saml:AttributeValue
 						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">yezuwei@authing.cn
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">yezuwei@approw.cn
 					</saml:AttributeValue>
 				</saml:Attribute>
 				<saml:Attribute Name="phone" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
@@ -161,4 +161,4 @@ After [base64 decode and inflate decrypt](https://www.samltool.com/decode.php):
 
 The Code above are users **SAML assertion**. Also be referred to users **Token** in XML format.
 
-SP, IdP and XML Token may overwhelm you. Don&#39;t worry, Authing will do the most part. Just **setup Authing IdP** and you are ready to talk with SP.
+SP, IdP and XML Token may overwhelm you. Don&#39;t worry, Approw will do the most part. Just **setup Approw IdP** and you are ready to talk with SP.
