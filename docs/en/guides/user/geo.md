@@ -4,7 +4,7 @@ meta:
     content: Check the user's geographic location
 ---
 
-# Check the User's Geographic Location
+# Check the user's geographic location
 
 <LastUpdated/>
 
