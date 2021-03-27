@@ -8,7 +8,7 @@ meta:
 
 Managing user accounts includes completed procedures such as forgetting passwords, verifying email addresses, modifying the bound phone number and email address, multi-factor authentication, disabling user accounts, binding social login, and account merging. If you use Approw, congratulations, these are all built-in functions in Approw, and you only need to spend a very short time to finish them.
 
-## Use Online Login Page and Personal Center
+## Use online login page and personal center
 
 Approw provides developers with a built-in, comprehensive, beautiful, and highly configurable login form. You can feel it by [clicking here](https://sample-sso.authing.cn/) (we will call this login form as `Guard` in the following paragraphs), the address is `https://< YOUR_DOMAIN>.approw.cn/`:
 
@@ -22,19 +22,19 @@ There will be a user personal center, you can feel it by clicking [here](https:/
 
 With the help of the hosted login page and personal center, users can complete personal information management by themselves.
 
-### Modify Account Information
+### Modify account information
 
 Approw provides a built-in user personal center page (address: `https://<YOUR_DOMAIN>.approw.cn/u`), which can modify the basic user information:
 
 ![](https://cdn.authing.cn/blog/20201019175127.png)
 
-### Modify Passwords
+### Modify passwords
 
 When users remember the current password, he/she can modify the password by verifying the current password:
 
 ![](https://cdn.authing.cn/blog/20201019181257.png)
 
-### Forgotten Passwords
+### Forgotten passwords
 
 When the user forgets the current password, the password can be reset through the following process:
 
@@ -48,13 +48,13 @@ You can choose to use your email or phone number for verification:
 
 <img src="https://cdn.authing.cn/blog/20201019193845.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
 
-### Bind Email
+### Bind email
 
 End users can bind and unbind mailboxes in the **account binding** tab of the personal center:
 
 ![](https://cdn.authing.cn/blog/20201019200112.png)
 
-### Bind Phone Number
+### Bind phone number
 
 End users can bind and unbind their phone numbers in the **account binding** tab of the personal center:
 
@@ -66,7 +66,7 @@ End users can bind MFA in the **MFA binding** tab of the personal center:
 
 ![](https://cdn.authing.cn/blog/20201019200549.png)
 
-## Use Console 
+## Use console 
 
 Administrators can use the console to manage user accounts visually.
 
@@ -74,13 +74,13 @@ Administrators can use the console to manage user accounts visually.
 
 ![](./images/Xnip2021-02-26_11-53-07.png)
 
-### Disable Account
+### Disable account
 
 The administrator can disable the account on the user details page, and the disabled account will not be able to log in again:
 
 ![](https://cdn.authing.cn/blog/20201019200707.png)
 
-### View Original User's Information
+### View original user's information
 
 ![](./images/Xnip2021-02-26_11-53-56.png)
 
