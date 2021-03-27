@@ -38,7 +38,7 @@ When users remember the current password, he/she can modify the password by veri
 
 When the user forgets the current password, the password can be reset through the following process:
 
-Click forgottten password
+Click forgotten password
 
 <img src="https://cdn.authing.cn/blog/20201019181634.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
