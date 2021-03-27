@@ -4,11 +4,11 @@
 
 Before choosing **a mode for authentication and authorization**, it is recommended to understand the **OAuth 2.0** and **OpenID Connect** protocols first, which will help you choose the authorization mode that is most suitable for your application.
 
-## Basic Authentication vs OAuth 2.0 vs OpenID Connect
+## Basic authentication vs OAuth 2.0 vs OpenID Connect
 
 Currently, Approw has three authentication methods that can be selected:
 
-- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgetten password. The [Guard Component](/reference/ui-components) and [SDK](/reference/sdk-for-node) of Approw are both based on these APIs.
+- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgotten password. The [Guard Component](/reference/ui-components) and [SDK](/reference/sdk-for-node) of Approw are both based on these APIs.
 
 - The **OAuth 2.0** protocol is mainly used for resource authorization.
 
@@ -57,10 +57,10 @@ OpenID Connect is an identity authentication protocol based on OAuth 2.0 with th
 In the [OIDC specification](https://openid.net/connect/), some terms are different from OAuth 2.0:
 
 - **OpenID Provider** refers to the authorization server, responsible for issuing ID Tokens. Approw is an OpenID Provider.
-- **End user**, the information of the end user will be included in the ID Token information.
+- **End-user**, the information of the end-user will be included in the ID Token information.
 - **Client**, the application requesting the ID Token.
-- **ID Token** is issued by OpenID Provider and contains information about end users.
-- **Claim** refers to the end user information field.
+- **ID Token** is issued by OpenID Provider and contains information about end-users.
+- **Claim** refers to the end-user information field.
 
 The authorization process of OIDC is the same as OAuth 2.0, the main difference is that an additional ID Token will be returned in the OIDC authorization process.
 

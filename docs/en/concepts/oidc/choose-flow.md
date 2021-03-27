@@ -2,7 +2,7 @@
 
 You need to choose an appropriate authorization mode according to your scenario and the type of application you are developing. This article will assist you in choosing the appropriate OIDC authorization mode.
 
-## Recommended Authorization Mode
+## Recommended authorization mode
 
 Different types of applications require different authorization modes. The following table is our recommended mode:
 
@@ -13,7 +13,7 @@ Different types of applications require different authorization modes. The follo
 | Between servers  | Client Credentials |
 
 
-## Does Your Application Need Id Token?
+## Does your application need Id Token?
 
 | Authorization Mode                | Access Token | Id Token |
 | ----------------------- | ------------ | -------- |
@@ -22,27 +22,27 @@ Different types of applications require different authorization modes. The follo
 | Password Mode                | ✅           | ✅       |
 | Client Credentials Mode | ✅           | ❌       |
 
-## What Type of Your Application is?
+## What type of your application is?
 
 How to choose the OIDC authorization model depends on which type of application you are developing. Refer to the following flowchart to select the authorization mode you need:
 
 ![](~@imagesZhCn/concepts/oidc/choose-flow.png)
 
-## Is Your Application Code can be Publicly Access?
+## Is your application code can be publicly accessed?
 
 If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications. 
 
-## Is Your Application a SPA or a Native Application?
+## Is your application a spa or a native application??
 
-If your application is a single page application, running in a new version of the browser, and the browser supports Web Crypto, you should use the PKCE + Authorization Code Mode. If your application is running in an old version of the browser, the browser does not support Web Crypto, you should use the Implicit Mode. The Implicit Mode is only suitable for scenarios where the application cannot safely store the key. If other modes are not available, you should consider using the Implicit Mode.
+If your application is a single-page application, running in a new version of the browser, and the browser supports Web Crypto, you should use the PKCE + Authorization Code Mode. If your application is running in an old version of the browser, the browser does not support Web Crypto, you should use the Implicit Mode. The Implicit Mode is only suitable for scenarios where the application cannot safely store the key. If other modes are not available, you should consider using the Implicit Mode.
 
 If your application is a native application, you should use PKCE + Authorization Code Mode.
 
-## Are There End Users Using Your App?
+## Are there end users using your app?
 
-If your application runs on the server side and is not directly used by end users, but only for interaction between servers, you should use Client Credentials Mode.
+If your application runs on the server-side and is not directly used by end-users, but only for interaction between servers, you should use Client Credentials Mode.
 
-## Are Applications And Resources Held by the Same Party?
+## Are applications and resources held by the same party?
 
 If your application and the resources that the application needs to access are all controlled by you, and your application can safely store user accounts and passwords with enough safe code logic. When the other authorization modes are not suitable, you can choose the Password Mode.
 
