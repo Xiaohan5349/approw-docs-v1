@@ -28,9 +28,9 @@ When Ajax cross-domain request Approw API interface is used, for example/cas/ses
 
 In addition to using trackSession, you have many other options, such as **maintaining the login state of the application** by yourself, instead of relying only on the central authentication server, and [using OIDC](https://docs.authing.cn/v2/guides/federation/oidc.html) to complete single sign-on.
 
-If you want to use trackSession, you can change the application domain name into your custom domain name from the perspective of the browser.To configure a custom domain name, please check the [documentation](https://docs.authing.cn/guides/deployment/custom-domain). In this way, the original three-party cookie becomes a one-party cookie. Ajax request sent to Approw domain name and application domain are same-origin, will not trigger the browser&#39;s mechanism to block third-party cookies.
+If you want to use trackSession, you can change the application domain name into your custom domain name from the perspective of the browser. To configure a custom domain name, please check the [documentation](https://docs.authing.cn/guides/deployment/custom-domain). In this way, the original three-party cookie becomes a one-party cookie. Ajax request sent to Approw domain name and application domain are same-origin, will not trigger the browser&#39;s mechanism to block third-party cookies.
 
-For example, your Approw application domain name is app1.Approw.cn, and your application server domain name is myapp.mysite.com. You need to use login.mysite.com to proxy app1.Approw.cn. In this way, the Approw service and your application service can be placed under the same domain.
+For example, your Approw application domain name is app1.approw.cn, and your application server domain name is myapp.mysite.com. You need to use login.mysite.com to proxy app1.approw.cn. In this way, the Approw service and your application service can be placed under the same domain.
 
 As long as the main domain name is the same, different subdomains in the above example will not affect the [same-origin policy](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html) of cookies.
 
