@@ -2,29 +2,28 @@
 
 <LastUpdated/>
 
-This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol
-You can understand the SAML2 protocol in depth [here](/concepts/saml/saml-overview.md).
+This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/concepts/saml/saml-overview.md).
 
 ## Create an Application
 
-For your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications** > **Application List**, click “Create Application”.
+In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, feel free to fill in an **authentication address**. Finally, click “Create”.
+Fill in the **application name**, for example, Web Note Project, feel free to fill in an **subdomain**. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/saml/1-1.png)
 
 ## Configure SAML2 Identity Provider
 
-To use your organization and users for SAML2 authentication, you need to enable and configure the application's SAML2 identity provider. Find your application and go to the "Enable Identity Provider" tab.
+To use your organization and users for SAML2 authentication, you need to enable and configure the application's SAML2 identity provider. Find your application and enter the "Enable Identity Provider" tab.
 
 ![](~@imagesZhCn/guides/federation/oauth/1-1.png)
 
 In the "SAML2 Identity Provider" card, turn on the Enable SAML2 Provider switch and fill in the **default ACS address** and **settings** information. Then click “Save”. The specific ACS address will be provided by the SAML SP, and the specific setting items need to be configured according to the requirements of the SAML SP.
 
 ::: hint-info
-When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP metadata first, then providing you with the corresponding configuration information. At this time, it is recommended to fill in an **arbitrary** ACS address and the default setting information. Then **download** the Approw IdP **metadata** and upload it to the SP. Then **modify** the ACS address and setting information to the correct content obtained from the SP.
+When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP metadata first, then it will provide you with the corresponding configuration information. At this time, it is recommended to fill in an **arbitrary** ACS address and the default setting information. Then **download** the Approw IdP **metadata** and upload it to the SP. Then **modify** the ACS address and setting information to the correct content obtained from the SP.
 :::
 
 ![](~@imagesZhCn/guides/federation/saml/1-3.png)
@@ -35,13 +34,13 @@ When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP me
 
 | key                     | Type    | Description                                                                                                                                                                                            | Default value                                                                                       |
 | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| samlRequestSigningCert  | string  | SAML Request verification certificate, you can get the content of this certificate from SP. After filling in this field, the SAML Request will be considered signed and check whether the signature is legal. If **the SP does not sign the request**, Approw will **reject the SAML Request and cause the authentication to fail**. | -                                                                                             |
+| samlRequestSigningCert  | string  | SAML Request verification certificate, you can get the content of this certificate from SP. After filling in this field, the SAML Request will be considered signed and check whether the signature is legal. If **the SP does not sign the request**, Approw will **reject the SAML Request and cause the authentication fail**. | -                                                                                             |
 | signResponse            | boolean | Whether to sign the SAML Response.                                                                                                                                                                       | false                                                                                         |
 | nameIdentifierFormat    | string  | The unique identifier format in the SAML Response.                                                                                                                                                              | urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified                                         |
 | lifetimeInSeconds       | number  | SAML assertion expiration time, in seconds.                                                                                                                                                             | 3600                                                                                          |
 | authnContextClassRef    | string  | SAML authentication context                                                                                                                                                                   | urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified                                            |
 | signatureAlgorithm      | string  | SAML assertion signature algorithm                                                                                                                                                                            | http://www.w3.org/2001/04/xmldsig-more#rsa-sha256                                             |
-| mappings                | object  | Attribute mapping dictionary, the fields in the Approw user information are mapped to the mapping dictionary in the SAML assertion. The key **on the left** represents the user's  **information field in Approw**, and the value **on the right** represents **the attribute name in the SAML assertion**.                | No field mapping                                                                          |
+| mappings                | object  | Attribute mapping dictionary, the fields in the Approw user information are mapped to the mapping dictionary in the SAML assertion. The key **on the left** represents the user's **information field in Approw**, and the value **on the right** represents **the attribute name in the SAML assertion**.                | No field mapping                                                                          |
 | destination             | string  | Destination in SAML Response.                                                                                                                                                              | `AssertionConsumerServiceURL` in the SAML Request by default. Or the default ACS address if not exist. |
 | recipient               | string  | Recipient in SAML Response.                                                                                                                                                                  | `AssertionConsumerServiceURL` in the SAML Request by default. Or the default ACS address if not exist. |
 | audience                | string  | Audience in SAML Response.                                                                                                                                                                 | `AssertionConsumerServiceURL` in the SAML Request by default. Or the default ACS address if not exist. |
