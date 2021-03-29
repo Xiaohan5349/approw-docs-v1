@@ -63,7 +63,7 @@ When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP me
   "lifetimeInSeconds": 3600,
   "nameIdentifierFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
   "samlRequestSigningCert": "-----BEGIN CERTIFICATE-----\nMIICyDCCAjGgAwIBAgIBADANBgkqhkiG9w0BAQUFADCBgDELMAkGA1UEBhMCdXMx\nDTALBgNVBAgMBGFzZGYxDTALBgNVBAoMBGFzZGYxGDAWBgNVBAMMD2lkcDMuYXV0\naGluZy5jbjENMAsGA1UEBwwEYXNkZjENMAsGA1UECwwEYXNkZjEbMBkGCSqGSIb3\nDQEJARYMYXNkZkAxMjMuY29tMB4XDTE5MDUyNTA1NTgwMFoXDTIwMDUyNDA1NTgw\nMFowgYAxCzAJBgNVBAYTAnVzMQ0wCwYDVQQIDARhc2RmMQ0wCwYDVQQKDARhc2Rm\nMRgwFgYDVQQDDA9pZHAzLmF1dGhpbmcuY24xDTALBgNVBAcMBGFzZGYxDTALBgNV\nBAsMBGFzZGYxGzAZBgkqhkiG9w0BCQEWDGFzZGZAMTIzLmNvbTCBnzANBgkqhkiG\n9w0BAQEFAAOBjQAwgYkCgYEA2gggFHKUYkoEp83BfGgVjBiev+MIBm+AOuKVqIAX\naJDa1NHL+ApBWsfbKNoPPMy8sZdCBrDm6w5cx9cBjw4uBUap3elxr+MiFoCCc2Eg\nJundFhBVXkU6TafLzfoW4w6/yonmQ798nBKQrTmdc76tpT9xCwU2AmS5ooScQ9Xu\nNn0CAwEAAaNQME4wHQYDVR0OBBYEFMDHVJxYcOlCxnnRi1Lx4tj7gWKNMB8GA1Ud\nIwQYMBaAFMDHVJxYcOlCxnnRi1Lx4tj7gWKNMAwGA1UdEwQFMAMBAf8wDQYJKoZI\nhvcNAQEFBQADgYEAvDodW/ewvCEadY4PCFaBT0ZqoEvrb96hOrbP2hZV4lkCMbLq\noPWASgGTNr9TPnxGCvP9xOv77wzgLs7EAOI+ea1D+NIjUuKnjCLLBv034vMp8bRI\n/Ea9AsGqVCr8tK/3dPoJMxHIjs2cpqNdDcalCZkwBZ1Z0c0YtKIVDFnym5U=\n-----END CERTIFICATE-----",
-  "emailDomainSubstitution": "authing.onaliyun.com"
+  "emailDomainSubstitution": "approw.onaliyun.com"
 }
 ```
 
@@ -72,7 +72,7 @@ You can add some custom attributes to the SAML assertion, and the newly added at
 
 **Example**:
 
-![Setup Customized SAML Response Configurations](https://cdn.authing.cn/docs/20200929104332.png)
+![Setup Customized SAML Response Configurations](https://cdn.approw.cn/docs/20200929104332.png)
 ::: img-description
 Setup Customized SAML Response Configurations
 :::
@@ -83,7 +83,7 @@ The above configuration will add the following attributes to the SAML identity a
 <saml:Attribute Name="https://cloud.tencent.com/SAML/Attributes/Role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
   <saml:AttributeValue
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">qcs::cam::uin/2165337796:roleName/authing,qcs::cam::uin/2165337796:saml-provider/authing
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">qcs::cam::uin/2165337796:roleName/approw,qcs::cam::uin/2165337796:saml-provider/approw
   </saml:AttributeValue>
 </saml:Attribute>
 <saml:Attribute Name="https://cloud.tencent.com/SAML/Attributes/RoleSessionName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
