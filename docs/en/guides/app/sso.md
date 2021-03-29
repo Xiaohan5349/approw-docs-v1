@@ -6,7 +6,7 @@ After enabling single sign-on between applications, the login status between dif
 
 ## Create Two Applications
 
-At first you can create two applications follow the [guidelines](/docs/en/create-app.md).
+At first you can create two applications follow the [guidelines](./create-app.md).
 
 ## Enable Single Sign-on for Applications
 
