@@ -54,7 +54,7 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### Validate Password Successfully
+#### Validate password successfully
 
 When users' password is validated successfullt, you need to return `true`:
 
@@ -65,7 +65,7 @@ async function validatePassword(id, password, context) {
 }
 ```
 
-#### Validate Password Failed
+#### Validate password failed
 
 When users' password is validated failed, you need to return `false`:
 
@@ -76,7 +76,7 @@ async function validatePassword(id, password, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -92,13 +92,13 @@ async function validatePassword(id, password, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
@@ -116,7 +116,7 @@ try {
 Assume we are using `postgres` as our database:
 
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
-- Excute `SQL` command `SELECT password FROM users WHERE id = $1`, if `result.rows.length` is 0 which means the user does not exist, then throw error with error message: `User not exists!`.
+- Excute `SQL` command `SELECT password FROM users WHERE id = $1`, if `result.rows.length` is 0 which means the user does not exist, then throw error with error message: `User does not exists!`.
 - Use `bcrypt.compare` to validate if the password is correct.
 - Call `try/finally` in `client.end()` to disable database connection.
 
