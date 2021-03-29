@@ -72,7 +72,7 @@ You can add some custom attributes to the SAML assertion, and the newly added at
 
 **Example**:
 
-![Setup Customized SAML Response Configurations](https://cdn.authing.cn/docs/20200929104332.png)
+![Setup Customized SAML Response Configurations](https://cdn.approw.cn/docs/20200929104332.png)
 ::: img-description 
 Setup Customized SAML Response Configurations
 :::
@@ -95,7 +95,7 @@ The above configuration will add the following attributes to the SAML identity a
 ```
 
 You can also dynamically read the fields from Approw user information, and type in the rightmost text box in a row: `My email is ${user.email} and my gender is ${user.gender}`.
-![Get User Information Fields Dynamically](https://cdn.authing.cn/docs/20200929110025.png)
+![Get User Information Fields Dynamically](https://cdn.approw.cn/docs/20200929110025.png)
 ::: img-description
 Get User Information Fields Dynamically
 :::
