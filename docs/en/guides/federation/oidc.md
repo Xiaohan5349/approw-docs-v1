@@ -48,7 +48,7 @@ Below is the workflow:
 
 ![](~@imagesZhCn/guides/federation/oidc/authorization-code-flow.png)
 
-[Check the document.](/federation/oidc/authorization-code/)。
+[Check the document.](/federation/oidc/authorization-code/).
 
 ## Implicit mode
 
