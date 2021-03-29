@@ -20,7 +20,7 @@ PoliciesManagementClient().create(code，statement)
 
 - `code` \<string\> Unique id of the policy
 - `statements` \<PolicyStatement[]\>
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -81,7 +81,7 @@ PoliciesManagementClient().update(code, updates)
 
 - `code` \<string\> Unique id of the policy
 - `updates` \<Object\>
-- `updates.description` \<string\> description
+- `updates.description` \<string\> Description
 - `updates.statements` \<PolicyStatement[]\>
 - `updates.newCode` \<string\> The new unique id. If it is passed in, it must be unique in the user pool.
 
@@ -138,8 +138,8 @@ PoliciesManagementClient().list(options)
 ```python
 data = management_client.policies.list()
 totalCount, _list = data['totalCount'], data['list']
-# totalCount 总数
-# _list 当前页列表
+# totalCount: total ammount
+# _list: current page
 ```
 
 ## Get policy assignment record
@@ -161,8 +161,8 @@ data = management_client.policies.list_assignments(
     code='PolicyCode'
 )
 totalCount, _list = data['totalCount'], data['list']
-# totalCount 总数
-# _list 当前页列表
+# totalCount: total amount
+# _list: current page
 ```
 
 ## Add a policy assignment
@@ -173,23 +173,23 @@ PoliciesManagementClient().add_assignments(policies, targetType, targetIdentifie
 
 #### Parameters
 
-- `policies` \<string[]\> policy code list
+- `policies` \<string[]\> Policy code list
 - `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> user id list and role code list
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
 #### Example
 
 ```python
 management_client.policies.add_assignments(
     policies=['PolicyCode'],
-    targetType='USER', # 授权给用户
-    targetIdentifiers=['USERID'] # 用户的 ID
+    targetType='USER', # authorize the user
+    targetIdentifiers=['USERID'] # user ID
 )
 
 management_client.policies.add_assignments(
     policies=['PolicyCode'],
-    targetType='ROLE', # 授权给角色
-    targetIdentifiers=['PolicyCode'] # 角色的唯一标志
+    targetType='ROLE', # authorize to role
+    targetIdentifiers=['PolicyCode'] # user unique ID
 )
 ```
 
@@ -201,9 +201,9 @@ PoliciesManagementClient().remove_assignments(policies, targetType, targetIdenti
 
 #### Parameters
 
-- `policies` \<string[]\> policy code list
+- `policies` \<string[]\> Policy code list
 - `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> user id list and role code list
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
 #### Example
 
