@@ -12,25 +12,25 @@ At first you can create two applications follow the [guidelines](./create-app.md
 
 On the console’s **Applications** page, turn on the application single sign-on switch.
 
-![](https://cdn.authing.cn/docs/20201216143359.png)
+![](https://cdn.approw.cn/docs/20201216143359.png)
 
 ## Experience the Single Sign-on
 
 In console > applications, click the application’s login button.
 
-![](https://cdn.authing.cn/docs/20201216143536.png)
+![](https://cdn.approw.cn/docs/20201216143536.png)
 
 Finish login on the login page:
-![](https://cdn.authing.cn/docs/20201216143744.png)
+![](https://cdn.approw.cn/docs/20201216143744.png)
 
 After login success, it will redirect to the application callback address:
-![](https://cdn.authing.cn/docs/20201216143917.png)
+![](https://cdn.approw.cn/docs/20201216143917.png)
 
 Next, click another application’s login button:
-![](https://cdn.authing.cn/docs/20201216144049.png)
+![](https://cdn.approw.cn/docs/20201216144049.png)
 
 The user doesn’t need to enter the password again, the user can directly enter the application callback address:
-![](https://cdn.authing.cn/docs/20201216144215.png)
+![](https://cdn.approw.cn/docs/20201216144215.png)
 
 ## Using SDK for Single Sign-on
 
