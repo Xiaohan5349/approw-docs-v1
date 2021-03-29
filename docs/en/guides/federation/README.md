@@ -4,9 +4,9 @@
 
 ## What is Federation Authentication?
 
-In the early days of the Internet, your different type of account information was separated in different sites and applications, this has the following problems:
+In the early days of the Internet, your different type of account information was separated in different sites and applications, which has the following problems:
 
-1. You need to register a new username and password every time you visit a new site.
+1. You need to register a new account with username and password every time you visit a new site.
 2. This account is only stored on this site.
 3. You cannot keep logging in under different sites. User’s information cannot be communicated between different sites.
 
@@ -25,7 +25,7 @@ Using federation authentication has the following benefits:
 
 ## The Federation Authentication Principle
 
-The following is the process of federation authentication, the user is redirected to the identity federation for authentication, the user first authenticates in the identity federation, and the identity federation authentication sends an assertion to Approw, which is equivalent to the user completing the authentication in Approw, Approw then sends the assertion to the business system, and the business system completes the login.
+The following is the process of federation authentication, the user is redirected to the identity federation for authentication, the user authenticates in the identity federation first, and the identity federation authentication sends an assertion to Approw, which is equivalent to the user completing the authentication in Approw, Approw then sends the assertion to the business system, and the business system completes the login.
 
 ![](~@imagesZhCn/concepts/federation/1-2.png)
 
