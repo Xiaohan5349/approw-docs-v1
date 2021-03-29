@@ -31,7 +31,7 @@ The following is the process of federation authentication, the user is redirecte
 
 ## Approw’s Federation Authentication Abilities
 
-Approw supports multiple standard protocols for federation authentication. You can use [this application](https://federation-poc.authing.cn/) to quickly experience.
+Approw supports multiple standard protocols for federation authentication. You can use [this application](https://federation-poc.approw.cn/) to quickly experience.
 
 ![](~@imagesZhCn/concepts/federation/1-3.png)
 
