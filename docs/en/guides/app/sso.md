@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-After enabling single sign-on between applications, the login status between different applications under the same user pool will be connected
+After enabling single sign-on between applications, the login status between different applications under the same user pool will be connected. End users only need to log in once to travel between different applications
 
 ## Create Two Applications
 
@@ -26,7 +26,7 @@ Finish login on the login page:
 After login success, it will redirect to the application callback address:
 ![](https://cdn.authing.cn/docs/20201216143917.png)
 
-Next click another application’s login button:
+Next, click another application’s login button:
 ![](https://cdn.authing.cn/docs/20201216144049.png)
 
 The user doesn’t need to enter the password again, the user can directly enter the application callback address:
