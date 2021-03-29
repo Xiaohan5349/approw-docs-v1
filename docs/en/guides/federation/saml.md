@@ -121,7 +121,7 @@ Please check [the integrated documentation](integration/ali-cloud/).
 
 ### Log in Alibaba Cloud Console (International)
 
-Please check [the integrated documentation](docs/en/integration/ali-cloud-intl/).
+Please check [the integrated documentation](/docs/en/integration/ali-cloud-intl/).
 
 ### Log in Tencent Cloud Console
 
