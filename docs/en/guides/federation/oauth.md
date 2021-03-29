@@ -46,7 +46,7 @@ Below is the workflow:
 
 ![](~@imagesZhCn/guides/federation/oauth/authorization-code-flow.png)
 
-[Check the document.](/docs/en/federation/oauth2/authorization-code)。
+[Check the document](/docs/en/federation/oauth2/authorization-code).
 
 ## Implicit Mode
 
