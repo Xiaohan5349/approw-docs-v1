@@ -117,7 +117,7 @@ Approw has already integrated SAML2 with Alibaba Cloud, Tencent Cloud, Huawei Cl
 
 ### Log in Alibaba Cloud Console (China)
 
-Please check [the integrated documentation](docs/en/integration/ali-cloud/).
+Please check [the integrated documentation](integration/ali-cloud/).
 
 ### Log in Alibaba Cloud Console (International)
 
