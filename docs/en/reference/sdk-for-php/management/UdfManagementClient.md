@@ -20,9 +20,9 @@ UdfManagementClient().set(targetType, key, dataType, label)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> user defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 - `key` \<string\> Field key
-- `dataType` \<UdfDataType\> Data type. It currently supports five data types: string, number, datetime, boolean and object. 
+- `dataType` \<UdfDataType\> Data type. It currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT. 
 - `label` \<string\> Field Label, which commonly is a Human Readable string.
 
 #### Example
@@ -35,7 +35,7 @@ $udf = $managementClient->udf()->set(UDFTargetType::USER, "key", UDFDataType::ST
 
 UdfManagementClient().remove(targetType, key)
 
-> Delete a user defined field
+> Delete a user defined field.
 
 #### Parameters
 

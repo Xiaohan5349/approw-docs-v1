@@ -20,7 +20,7 @@ UdfManagementClient().set(targetType, key, dataType, label)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> Uuser defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 - `key` \<string\> field key
 - `dataType` \<UdfDataType\> Data type. It currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT. 
 - `label` \<string\> Field Label, which commonly is a Human Readable string.
