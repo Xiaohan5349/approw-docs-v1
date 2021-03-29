@@ -17,7 +17,7 @@ meta:
 
 AclManagementClient().allow(userId, action, resource)
 
-> Allow a user to perform an operation on a resource
+> Allow a user to perform an operation on a resource.
 
 #### Parameters:
 
@@ -31,11 +31,11 @@ AclManagementClient().allow(userId, action, resource)
 CommonMessage message = managementClient.acl().allow("resource", "action").execute();
 ```
 
-## Get whether a user has operation authority of a resource
+## Check whether a user has operation authority of a resource
 
 AclManagementClient().isAllowed(userId, action, resource)
 
-> Get whether a user has operation authority of a resource
+> Check whether a user has operation authority of a resource.
 
 #### Parameters:
 

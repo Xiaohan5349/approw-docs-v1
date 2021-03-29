@@ -15,12 +15,12 @@ meta:
 
 RolesManagementClient().create(code, description)
 
-> Create a role
+> Create a role.
 
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -32,7 +32,7 @@ Role role = managementClient.roles().create(new CreateRoleParam("code")).execute
 
 RolesManagementClient().delete(code)
 
-> Delete a role
+> Delete a role.
 
 #### Parameter
 
@@ -72,7 +72,7 @@ RolesManagementClient().update(code, input)
 
 - `code` \<string\> Unique id of the role
 - `input` \<Object\>
-- `input.description` \<string\> description
+- `input.description` \<string\> Description
 - `input.newCode` \<string\> New unique id
 
 #### Example
@@ -195,7 +195,7 @@ RolesManagementClient().addPolicies(code, policies)
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 
@@ -209,12 +209,12 @@ CommonMessage message = managementClient.roles().addPolicies("code", policies).e
 
 RolesManagementClient().removePolicies(code, policies)
 
-> Remove policies for roles
+> Remove policies for roles.
 
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 

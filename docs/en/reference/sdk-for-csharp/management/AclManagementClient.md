@@ -31,11 +31,11 @@ AclManagementClient().allow(userId, action, resource)
 await managementClient.Acl.Allow("resource id", "role id");
 ```
 
-## Get whether a user has operation authority of a resource
+## Check whether a user has operation authority of a resource
 
 AclManagementClient().isAllowed(userId, action, resource)
 
-> Get whether a user has operation authority of a resource
+> Check whether a user has operation authority of a resource.
 
 #### Parameters:
 
