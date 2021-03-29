@@ -72,8 +72,8 @@ You can add some custom attributes to the SAML assertion, and the newly added at
 
 **Example**:
 
-![Setup Customized SAML Response Configurations](https://cdn.approw.cn/docs/20200929104332.png)
-::: img-description
+![Setup Customized SAML Response Configurations](https://cdn.authing.cn/docs/20200929104332.png)
+::: img-description 
 Setup Customized SAML Response Configurations
 :::
 
@@ -117,24 +117,24 @@ Approw has already integrated SAML2 with Alibaba Cloud, Tencent Cloud, Huawei Cl
 
 ### Log in Alibaba Cloud Console (China)
 
-Please check [the integrated documentation](/integration/ali-cloud/).
+Please check [the integrated documentation](docs/en/integration/ali-cloud/).
 
 ### Log in Alibaba Cloud Console (International)
 
-Please check [the integrated documentation](/integration/ali-cloud-intl/).
+Please check [the integrated documentation](docs/en/integration/ali-cloud-intl/).
 
 ### Log in Tencent Cloud Console
 
-Please check [the integrated documentation](/integration/tencent-cloud/).
+Please check [the integrated documentation](docs/en/integration/tencent-cloud/).
 
 ### Log in AWS Console (China)
 
-Please check [the integrated documentation](/integration/aws/).
+Please check [the integrated documentation](docs/en/integration/aws/).
 
 ### Log in Huawei Cloud Console (China)
 
-Please check [the integrated documentation](/integration/huawei-cloud/).
+Please check [the integrated documentation](docs/en/integration/huawei-cloud/).
 
 ### Log in Kibana Console (AWS China)
 
-Please check [the integrated documentation](/integration/aws-kibana/).
+Please check [the integrated documentation](docs/en/integration/aws-kibana/).
