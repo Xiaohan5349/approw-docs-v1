@@ -111,7 +111,7 @@ After setup configuration URI, click **Save** and then **Test** button at the bo
 
 <img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" />
 
-In the jump out window, you need to fill in a user in the user list of the template userpool
+In the jump out window, you need to fill in a user in the user list of the template userpool.
 
 ![](https://cdn.authing.cn/blog/20201130173505.png)
 
