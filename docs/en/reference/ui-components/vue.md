@@ -173,7 +173,12 @@ export default {
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+| Social login                         | Scenario       | Manual                                                                                                         |
+| ---------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Github                             | PC website        | <router-link to="/connections/github/" target="_blank">document</router-link>                                |
+| Google                             | PC website        | <router-link to="/connections/google/" target="_blank">document</router-link>                                |
+| Sign in with Apple（Web）       | PC website        | <router-link to="/connections/apple-web/" target="_blank">document</router-link>                             |
+| Sign in with Apple（mobile）       | mobile APP       | <router-link to="/connections/apple/" target="_blank">document</router-link>                                 |
 
 </details>
 
