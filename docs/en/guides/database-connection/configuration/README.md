@@ -8,7 +8,7 @@
 
 You can authenticate users with your customized database. For that, you need to setup database connection, prepare database operation script and setup environment variable (optional).
 
-> Please make sure that your database has following fields like `id`, `email`, `photo`,`nickname`, `username`, `phone` which are required by Approw identity profile. You can learn more about schemas of Approw user profile in the document of [Approw user profile fields and explanations](/guides/user/user-profile.md).
+> Please make sure that your database has following fields like `id`, `email`, `photo`,`nickname`, `username`, `phone` which are required by Approw identity profile. You can learn more about schemas of Approw user profile in the document of [Approw user profile fields and explanations](/docs/en/guides/user/user-profile.md).
 
 Approw now support direct connection with these common databases and self-designed Web Service:
 
@@ -35,7 +35,7 @@ You need to login to the [Approw Console](https://console.approw.com/console/use
 
 There are two different modes for customized databases and you can choose suitable mode according to diffferent user scenarios:
 
-- **Migrate user information to Approw with lazy migration**: In **lazy migration** mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the customized database with customized script and will migrate this user to Approw if authenticate succeed. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](https://docs.authing.co/connections/custom-db/lazy-migrations.html).
+- **Migrate user information to Approw with lazy migration**: In **lazy migration** mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the customized database with customized script and will migrate this user to Approw if authenticate succeed. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](https://docs.approw.com/connections/custom-db/lazy-migrations.html).
 - **Only use customized databases to store user information**: You can use your own database to store user information. In this mode, Approw won't store any user information. However you need to compile scripts for user management to make the system work normally.
 
 ## Setup Database Connection Configuration
@@ -99,7 +99,7 @@ When using **CUSTOM_USER_STORE** mode, you need to compile following functions:
 
 ## Test Database Scripts
 
-We provide an online database for developers to test their scripts quickly. You can access this database from [here](https://db-connections.authing.cn).
+We provide an online database for developers to test their scripts quickly. You can access this database from [here](https://db-connections.approw.com).
 
 :::hint-success
 This database is open-source for all user freely, the connection information of this database is postgres://postgres:postgres_root_local@47.74.20.164:31000/custom-db-connection. You can create your own users or use template users in the list.
@@ -111,7 +111,7 @@ After setup configuration URI, click **Save** and then **Test** button at the bo
 
 <img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" />
 
-In the jump out window, you need to fill in a user in the user list of the template userpool
+In the jump out window, you need to fill in a user in the user list of the template userpool.
 
 ![](https://cdn.authing.cn/blog/20201130173505.png)
 

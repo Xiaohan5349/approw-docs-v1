@@ -72,9 +72,9 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### User's Profile is Updated Successfully
+#### User's profile is updated successfully
 
-When the user's profile is updated successfully, you need to return the latest user information to Approw, the format of user information can be found in the document of [detailed fields of the user profile](/guides/user/user-profile.md). For example:
+When the user's profile is updated successfully, you need to return the latest user information to Approw, the format of user information can be found in the document of [detailed fields of the user profile](/docs/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function updateUser(id, updates, context) {
@@ -89,7 +89,7 @@ async function updateUser(id, updates, context) {
 }
 ```
 
-#### The User Does not Exist
+#### The user does not exist
 
 When the user does not exist, you need to throw an error. You can design different error messages. For example:
 
@@ -100,7 +100,7 @@ async function updateUser(id, updates, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -116,13 +116,13 @@ async function updateUser(id, updates, context) {
 
 ## Best Practice
 
-### Provide Friendly Error Annoncements
+### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
@@ -142,7 +142,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `updates` to generate `update` `SQL`  command(`updates.id`, `updates.email`, `updates.username` and `updates.phone`, these four parameters won't be empty at the same time).
 - If `insertResult.rowCount` is 0 which means the user does not exist, then throw error with error message `User not exists!`.
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript

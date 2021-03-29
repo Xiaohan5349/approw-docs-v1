@@ -62,9 +62,9 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### The User Exists and the Password is Correct
+#### The user already exists and the password is correct
 
-When the user exists and the password is correct, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md). For example:
+When the user already exists and the password is correct, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function login(query, password, context) {
@@ -79,7 +79,7 @@ async function login(query, password, context) {
 }
 ```
 
-#### The User Does not Exist
+#### The user does not exist
 
 When the user does not exist, you need to throw an error. You can design different error messages. For example:
 
@@ -90,7 +90,7 @@ async function login(query, password, context) {
 }
 ```
 
-#### The User Exists but the Password is Incorrect
+#### The user exists but the password is incorrect
 
 When the user exists but the password is wrong, you need to throw an error. You can design different error messages. For example:
 
@@ -101,7 +101,7 @@ async function login(query, password, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -117,13 +117,13 @@ async function login(query, password, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Use `bcrypt` to Encrypt Password
+#### Use `bcrypt` to encrypt password
 
 We recommend using `bcrypt` to encrypt user information such as:
 
@@ -142,7 +142,7 @@ const bcrypt = require('bcrypt');
 const valid = await bcrypt.compare('passw0rd', user.password);
 ```
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
@@ -163,7 +163,7 @@ Assume we are using `postgres` as our database:
 - According to the query conditions in the `query` to generate query command(`query.email`, `query.username` and `query.phone`, these three parameters won't be empty at the same time).
 - If user does not exist, then throw an error with the error message `User not exists!`.
 - If user exists but the password is wrong, then throw an error with the error message `Password is not valid!`.
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript

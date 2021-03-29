@@ -20,7 +20,7 @@ RolesManagementClient().create(code, description)
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -73,7 +73,7 @@ RolesManagementClient().update(code, input)
 
 - `code` \<string\> Unique id of the role
 - `input` \<Object\>
-- `input.description` \<string\> description
+- `input.description` \<string\> Description
 - `input.newCode` \<string\> New unique id
 
 #### Example
