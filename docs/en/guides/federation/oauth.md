@@ -6,7 +6,7 @@ This article introduces how to make Approw an OAuth2.0 identity resource, other 
 
 OAuth2.0 protocol has the following authorization modes, which are: **Authorization Code Mode**、**Implicit Mode**、**Password Mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
-You can understand the OAuth2.0 protocol in depth [here](/concepts/oidc/oidc-overview.md).
+You can understand the OAuth2.0 protocol in depth [here](/docs/en/concepts/oidc/oidc-overview.md).
 
 ## Create an Application
 
@@ -46,7 +46,7 @@ Below is the workflow:
 
 ![](~@imagesZhCn/guides/federation/oauth/authorization-code-flow.png)
 
-[Check the document.](/federation/oauth2/authorization-code)。
+[Check the document.](/docs/en/federation/oauth2/authorization-code)。
 
 ## Implicit Mode
 
@@ -66,7 +66,7 @@ Below is the workflow:
 
 ![](~@imagesZhCn/guides/federation/oauth/implicit-flow.png)
 
-[Check the document](/federation/oauth2/implicit).
+[Check the document](/docs/en/federation/oauth2/implicit).
 
 ## Password Mode
 
@@ -86,4 +86,4 @@ Below is the workflow:
 
 ![](~@imagesZhCn/guides/federation/oauth/password-flow.png)
 
-[Check the document](/federation/oauth2/password).
+[Check the document](/docs/en/federation/oauth2/password).
