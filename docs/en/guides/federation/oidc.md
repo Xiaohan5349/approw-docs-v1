@@ -14,17 +14,17 @@ OpenID Connect protocol has the following authorization modes, which are:
 - [Client Credentials mode](#client-credentials-mode)
 - [Password mode](#password-mode)
 
-After becoming an OpenID Connect identity source, Other applications can use the corresponding process of the mode to complete user authentication and authorization.
+After becoming an OpenID Connect identity source, other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
 You can understand the OIDC protocol in depth [here](/concepts/oidc/oidc-overview.md).
 
 ## Create an Application
 
-In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications** > **Application List**, click “Create Application”.
+In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, specify an **authentication address** for your project, where your users will complete authentication. Fill in the **callback address** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
+Fill in the **application name**, for example, Web Note Project, specify an **subdomain** for your project, where your users will complete authentication. Fill in the **callback address** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-2.png)
 
@@ -52,10 +52,10 @@ Below is the workflow:
 
 ## Implicit mode
 
-If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely**(such as in front-end browsers). In **implicit mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
+If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
 
 :::hint-info
-Implicit mode **fits the scenario that the secrete key cannot be stored safely**, so it does not support get refresh token.
+Implicit mode **fits the scenario that the secrete key cannot be stored safely**, so it does not support obtaining refresh token.
 :::
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `implicit` in the authorization mode, check `id_token token` and `id_token` in the return type, and then click Save.
@@ -90,7 +90,7 @@ There are the following processes.
 3. Your application retrieves code and token from URL.
 4. Your application can save AccessToken and IdToken for further use. Such as carrying AccessToken to access the resource service, carrying IdToken to request the service so that the server can identify the user's identity.
 5. Your application can send code to the back-end.
-6. Application back-end can use code to obtain users’ AccessToken, IdTokn and refresh token. In the future to save user information, use AccessToken to call other APIs of the resource party, and so on.
+6. Application back-end can use code to obtain users’ AccessToken, IdTokn and refresh token. To save user information in the future, use AccessToken to call other APIs of the resource party, and so on.
 
 Below is the workflow:
 
@@ -100,7 +100,7 @@ Below is the workflow:
 
 ## Client Credentials mode
 
-Client Credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account. And give AK, SK secret key to your resource caller.
+Client Credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `RS256` as the id_token signature algorithm, check `client_credentials` in the authorization mode, and then click Save.
 
@@ -119,7 +119,7 @@ Below is the workflow:
 
 ## Password Mode
 
-It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
+It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `password` in the authorization mode, and then click Save.
 
@@ -139,7 +139,7 @@ Below is the workflow:
 
 ## Refresh Access Token
 
-Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token and keep the user sign in.
+Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
 
 ### Obtain Refresh Token
 
@@ -150,9 +150,9 @@ Only **authorization code mode** and **password mode** can support [Refresh Toke
 When the combination of authorization mode and Scope shown in the following table is sent to the Token endpoint, Approw will return Refresh Token.
 
 | Authroization mode      | Scope          |
-| ------------- | -------------- |
-| refresh_token | offline_access |
-| password      | offline_access |
+| -------------           | -------------- |
+| refresh_token           | offline_access |
+| password                | offline_access |
 
 ::: hint-warning
 Warning : When using the **authorization code mode**, you must carry the scope when requesting the **authorization endpoint**(`/oidc/auth`), scope value **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Otherwise, Approw **will not return any Refresh Token**.
