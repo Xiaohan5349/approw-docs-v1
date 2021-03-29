@@ -106,7 +106,7 @@ The content of this article will add the following attributes to the SAML assert
 <saml:Attribute Name="CustomName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
   <saml:AttributeValue
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">My email is yezuwei@authing.cn and my gender is M
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">My email is yezuwei@approw.cn and my gender is M
   </saml:AttributeValue>
 </saml:Attribute>
 ```
