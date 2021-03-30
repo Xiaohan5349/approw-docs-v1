@@ -14,7 +14,7 @@ Currently, Approw has three authentication methods that can be selected:
 
 - The **OpenID Connect** protocol, as known as **OIDC**, is a superset of the OAuth 2.0 protocol, which can **authenticate** users and complete resource **authorization**. If OIDC can be selected, **OIDC should be selected**.
 
-If you want to directly authenticate your users through API, you can check the [interface documentation](/reference/) and SDK documentation in the development integration section.
+If you want to directly authenticate your users through API, you can check the [interface documentation](/docs/en/reference/) and SDK documentation in the development integration section.
 
 If you want to implement **Single Sign-on** or **authenticate** users first and then return to resources, it is recommended to use the **OIDC protocol**.
 
