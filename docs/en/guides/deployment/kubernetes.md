@@ -4,7 +4,7 @@
 
 ## Overview
 
-Approw will not change the user's existing cloud infrastructure, Approw will be as much as  compatible with the user's cloud environment. Therefore, Approw proposed the concepts of "Cloud Neutrality" and "Approw Inside". Approw can maintain it's neutral characteristics in a multi-cloud environment, and it can be deployed in AWS, Tencent Cloud, Alibaba Cloud or private cloud environments.In a hybrid cloud or private cloud environment, Approw will be integrated into the customer's IT system like Intel.
+Approw will not change the user's existing cloud infrastructure, Approw will be as much as  compatible with the user's cloud environment. Therefore, Approw proposed the concepts of "Cloud Neutrality" and "Approw Inside". Approw can maintain it's neutral characteristics in a multi-cloud environment, and it can be deployed in AWS, Tencent Cloud, Alibaba Cloud or private cloud environments. In a hybrid cloud or private cloud environment, Approw will be integrated into the customer's IT system like Intel.
 This article will introduce the Kubernetes-based deployment plan and specific operation guidance of the Approw IDaaS platform.
 ## Overall structure
 

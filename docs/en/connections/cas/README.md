@@ -9,9 +9,9 @@
   steps:
     [
       {
-        title: 'Create CAS IdP',
+        title: 'Create an CAS IdP',
       },
-      { title: 'Configure CAS IdP in {{$localeConfig.brandName}}' },
+      { title: 'Configure the CAS IdP in {{$localeConfig.brandName}}' },
       {
         title: 'Create an application in {{$localeConfig.brandName}}'
       },

@@ -9,7 +9,7 @@
 
 
 Docker Compose is a set of orchestration tools based on the Docker engine. You can use Docker Compose to quickly deploy the Approw IDaaS platform with one click
-Approw under the Docker deployment scheme is a stand-alone deployment. If you want to deploy a highly available version of Approw, please refer to:[Kubernetes Deployment](./kubernetes.md).
+Approw under the Docker deployment scheme is a stand-alone deployment. If you want to deploy a highly available version of Approw, please refer to: [Kubernetes Deployment](./kubernetes.md).
 This article will introduce the Docker Compose-based deployment plan of the Approw IDaaS platform and specific operation instructions.
 
 ## Overall structure

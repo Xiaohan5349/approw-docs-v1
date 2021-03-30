@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/concepts/saml/saml-overview.md).
+This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/docs/en/concepts/saml/saml-overview.md).
 
 ## Create an Application
 
