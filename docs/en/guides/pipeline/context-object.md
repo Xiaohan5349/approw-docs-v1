@@ -24,7 +24,7 @@ The context object saves the context of the current authentication process, incl
 | appId       | string | ID of the current user                                                                                                |
 | appName     | string | The name of the current application                                                                                                 |
 | appMetadata | object | Configuration information of the current application                                                                                                 |
-| request          | object | Details of the current request, including: <br> `ip`: Client IP <br> `geo`: The geographical location of the client resolved by IP <br> `body`: request body <br> `query`: query string object，you can get the corresponding query parameters through `request.query.xxx` |
+| request          | object | Details of the current request, including: <br> `ip`: Client IP <br> `geo`: The geographical location of the client resolved by IP <br> `body`: request body <br> `query`: query string object, you can get the corresponding query parameters through `request.query.xxx` |
 
 ## protocol
 
@@ -35,9 +35,9 @@ Authentication protocol.
 | password | Authentication method based on account password                                                                                        |
 | sms      | Authentication method based on SMS verification code                                                                                      |
 | social   | The social login authentication default value when logging in with the {{$localeConfig.brandName}} integrated social login method.                                         |
-| ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../authentication/ldap/ldap.md)。              |
-| saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../authentication/use-saml/)。                      |
-| oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../authentication/oidc/oidc-authorization.md)。 |
+| ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../authentication/ldap/ldap.md).              |
+| saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../authentication/use-saml/).                    |
+| oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../authentication/oidc/oidc-authorization.md). |
 
 ## connection
 
