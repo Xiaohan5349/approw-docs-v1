@@ -139,7 +139,7 @@ Below is the workflow:
 
 ## Refresh Access Token
 
-Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
+Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/docs/en/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
 
 ### Obtain Refresh Token
 
