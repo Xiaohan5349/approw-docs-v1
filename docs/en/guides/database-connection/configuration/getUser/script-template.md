@@ -20,7 +20,7 @@ async function getUser(query, context) {
   // query.phone
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -29,7 +29,7 @@ async function getUser(query, context) {
   //
   // There are three ways this script can finish:
   // 1. A user was successfully found. The profile should be in the following
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return profile
   // 2. A user was not found
   //     return null
@@ -144,7 +144,7 @@ async function getUser(query, context) {
   const { id, email, username, phone } = query;
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
@@ -165,7 +165,7 @@ async function getUser(query, context) {
 
   await client.connect();
 
-  // 构建查询参数
+  // build up query conditions
   const queries = [];
   const parameters = [];
   let index = 1;
