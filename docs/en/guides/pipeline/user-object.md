@@ -4,7 +4,7 @@ meta:
     content: user object
 ---
 
-# User object
+# User Object
 
 <LastUpdated/>
 
