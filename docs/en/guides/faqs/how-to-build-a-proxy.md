@@ -12,12 +12,12 @@ Here taking [goproxy](https://github.com/snail007/goproxy/blob/master/README_ZH.
 
 Run as root user:
 
-```
-curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh | bash   
+```bash
+curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh    
 ```
 
 Waiting for its running to complete, when the following prompt is displayed, it means the installation has been successful:
-```
+```bash
 >>> installing ...
 >>> install done, thanks for using snail007/goproxy free_10.0
 >>> install path /usr/bin/proxy
@@ -27,13 +27,13 @@ Waiting for its running to complete, when the following prompt is displayed, it 
 ```
 
 Run (replace $PORT with the port you want to use):
-```
+```bash
 proxy http -t tcp -p "0.0.0.0:$PORT"
 ```
 
 When the following prompt appears, the operation is successful:
 
-```
+```bash
 2020/09/23 19:25:34 tcp http(s) proxy on [::]:xxxxxx
 ```
 
