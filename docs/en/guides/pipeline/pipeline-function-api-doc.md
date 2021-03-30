@@ -4,7 +4,7 @@ meta:
     content: Pipeline function development guide
 ---
 
-# Pipeline function development guide
+# Pipeline Function Development Guide
 
 <LastUpdated/>
 
@@ -14,7 +14,7 @@ Pipeline is a set of functions. The difference from ordinary Hooks is that the f
 :::
 
 ::: hint-danger
-For security reasons， {{$localeConfig.brandName}} will use userPoolId and secret to initialize approw-js-sdk in a special way. This process will not send your user pool key to the public network. You can use the global variable **approw**，**please do not initialize the SDK again！**
+For security reasons, {{$localeConfig.brandName}} will use userPoolId and secret to initialize approw-js-sdk in a special way. This process will not send your user pool key to the public network. You can use the global variable **approw**, **please do not initialize the SDK again！**
 :::
 
 ## Pipeline function type <a id="pipeline-type"></a>
@@ -71,13 +71,13 @@ function callback(error, user, context)
 Description：
 
 1. The first parameter of the callback function represents the error that the developer wants to pass to the end user. **If it is not null, the entire authentication process will be interrupted and the error will be returned directly to the front end**.
-2. 2. If the first parameter is null, be sure to pass the latest user and context to the callback function, otherwise the subsequent pipeline function will not work properly.
+2. If the first parameter is null, be sure to pass the latest user and context to the callback function, otherwise the subsequent pipeline function will not work properly.
 
-### Setting up asynchronous execution <a id="async"></a>
+### Set up asynchronous execution <a id="async"></a>
 
 The pipeline function set to asynchronous execution（ **asynchronous non-language level** ）will not block the execution of the registration, login, and OIDC processes. The parameters passed in the callback function have no effect on the subsequent processes. It is suitable for asynchronous notification scenarios, such as social media group notification, trigger external system statistics, etc.
 
-As shown in the figure below, checking this box means to let the pipeline function execute asynchronously:
+As shown in the image below, checking this box means to let the pipeline function execute asynchronously:
 
 ![](https://cdn.authing.cn/blog/20200927195654.png)
 
@@ -103,6 +103,6 @@ async function pipe(context, callback) {
 
 Briefly explain the code here:
 
-- Lines 2-6 determine whether email is included in the request parameters, and if so, it means the email registration method. If not, skip the pipe function directly, and call callback with null and context parameters（**don’t forget this parameter!**）. If you just want to register by email, this step is okay if there is no email to return an error.
+- Lines 2-6 determine whether email is included in the request parameters. If the parameters include email, it means this is email registration method. If not, skip the pipe function directly, and call callback with null and context parameters（**don’t forget this parameter!**）. If you just want to register by email, this step is okay if there is no email to return an error.
 - Lines 8-10 determine whether the domain name of the mailbox is`example.com`. If the callback function is not called, the first parameter is `new Error('Access Denied.')`.
-- On line 11, call `return callback(null, context)`, and then enter the next pipe function, if there have the next function.
+- Line 11, call `return callback(null, context)`, and then enter the next pipe function, if there have the next function.
