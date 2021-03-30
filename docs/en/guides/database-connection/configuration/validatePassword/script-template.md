@@ -14,12 +14,12 @@ async function validatePassword(id, password, context) {
   // The second argument `password` is the password user input in palin text format.
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
   // 1. The password
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return profile
   // 2. A user was not found
   //     return null
