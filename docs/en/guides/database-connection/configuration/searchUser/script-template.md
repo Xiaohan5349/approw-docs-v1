@@ -8,7 +8,7 @@ async function searchUser(keyword, context) {
   // The first argument keyword is the keywork used to Search Users
 
   // The Second argument context contains information about the authentication context.
-  // see http://docs.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://docs.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -129,7 +129,7 @@ async function searchUser(keyword, context) {
   });
 
   if (!client) {
-    throw new Error('连接数据库失败');
+    throw new Error('Connection to database failed');
   }
 
   const queries = [
