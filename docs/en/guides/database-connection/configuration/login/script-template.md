@@ -14,7 +14,7 @@ async function login(query, password, context) {
   // The second argument password is user's password in plain text format.
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -24,7 +24,7 @@ async function login(query, password, context) {
   //
   // There are three ways this script can finish:
   // 1. A user was successfully found, and password is valid, The profile should be in the following
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return profile
   // 2. A user was not found
   //    throw new Error('User not exists!');
@@ -202,7 +202,7 @@ async function login(query, password, context) {
   // more info here: https://github.com/kelektiv/node.bcrypt.js
   const bcrypt = require('bcrypt');
 
-  // 构建查询参数
+  // build query conditions
   const queries = [];
   const parameters = [];
   let index = 1;
