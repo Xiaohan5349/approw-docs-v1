@@ -74,7 +74,7 @@ After a successful test you will see detailed request and return information.
 | user:updated          | Password modification event, this event will be triggered when the user changes the password or the administrator manually changes the password, regardless of success or failure               |
 | user:password-changed | Modify user information time, when users modify their own information or administrators manually modify user information will trigger the word time, regardless of success or failure will be triggered |
 | user:email-verified   | User mailbox is verified event                                                                             |
-| permission:add        | Add authorization events, authorization objects can be users, roles, and organizational structures                                             |
+| permission:add        | Add authorization events. Authorization objects can be users, roles, and organizational structures                                             |
 | permission:revoke     | Cancel authorization events. Cancel the rule of Authorization objects can be users, roles, and organizational structures                                                |
 
 ### Request type
