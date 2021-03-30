@@ -177,7 +177,7 @@ async function login(query, password, context) {
   // The second argument password is user's password in plain text format.
 
   // The last argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
