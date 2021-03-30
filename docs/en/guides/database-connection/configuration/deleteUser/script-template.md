@@ -12,7 +12,7 @@ async function deleteUser(id, context) {
   // The first argument `id` is the user'id in your database
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
