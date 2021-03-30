@@ -21,12 +21,12 @@ async function updateUser(id, updates, context) {
   // * and many other fields
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
   // 1. A user was successfully created
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return null
   // 2. This user already exists in your database
   //    throw new Error("user allready exists")
@@ -166,7 +166,7 @@ async function updateUser(id, updates, context) {
 
   await client.connect();
 
-  // Authing user attribute to database column
+  // Approw user attribute to database column
   const userColumnMap = {
     id: 'id',
     email: 'email',
