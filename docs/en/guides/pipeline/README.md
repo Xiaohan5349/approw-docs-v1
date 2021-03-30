@@ -1,4 +1,4 @@
-# Custom authentication process（Pipeline）
+# User-defined Authentication Process（Pipeline）
 
 <LastUpdated/>
 
