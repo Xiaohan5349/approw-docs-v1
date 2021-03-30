@@ -1,18 +1,18 @@
 ---
 meta:
   - name: description
-    content: Using Webhook to monitor user events
+    content: Using Webhook to Listen User Events
 ---
 
-# Using Webhook to monitor user events
+# Use Webhook to Listen User Events
 
 <LastUpdated/>
 
-Webhook allows you to monitor user registration, login and other behaviors, so as to do some custom processing.
+Webhook allows you to listen user registration, login and other behaviors, so as to do some user-defined processing.
 
 The method of using Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
 
-## Configuring Webhook
+## Configure Webhook
 
 On the **Extention Capabilities** - **Webhook** page，you can manage the webhook you defined：
 
@@ -40,7 +40,7 @@ Configuring Webhook
 | Trigger event     | [Whether to enable this Hook](use-webhook.md#支持的事件)                                                                                            |
 | Whether to enable this Hook         | Whether to enable this Hook                                                                                                                          |
 
-## Debugging Webhook
+## Debug Webhook
 
 The Hook request events you just created are empty, so you can trigger a "test event" by clicking on "Test".
 
@@ -62,9 +62,9 @@ After a successful test you will see detailed request and return information.
 
 ![](https://cdn.authing.cn/blog/20200927201638.png)
 
-## Supported Events
+## Supported events
 
-### Event List
+### Event list
 
 | Event name                | Event description                                                                                           |
 | :-------------------- | :------------------------------------------------------------------------------------------------- |
@@ -89,7 +89,7 @@ Each event will carry some specific request parameters.
 
 We will carry some custom header information in the HTTP POST header, as shown in the following table:
 
-| Header                     | 描述                                                                                        |
+| Header                     | Description                                                                                        |
 | :------------------------- | :------------------------------------------------------------------------------------------ |
 | `user-agent`               | The value is `'authing-webhook@2.0'`，which means this request is from Approw                                    |
 | `x-authing-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
@@ -320,7 +320,7 @@ The request body will also carry some specific parameters
 }
 ```
 
-- Adding authorization event
+- Add authorization event
 
 ```json
 {
