@@ -1,7 +1,7 @@
 ---
 meta:
   - name: description
-    content: 移动应用 SSO
+    content: Mobile Application SSO
 ---
 
 # Implement Single Sign-on on Mobile
