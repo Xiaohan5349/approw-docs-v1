@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-Mobile application single sign-on (SSO) is similar to traditional[Web application SSO](../sso/README.md), which means that in multiple application systems, users only need to log in once to access all trusted application systems.
+Mobile application single sign-on (SSO) is similar to traditional [Web application SSO](../sso/README.md), which means that in multiple application systems, users only need to log in once to access all trusted application systems.
 
 Approw currently supports two forms of mobile SSO:
 
