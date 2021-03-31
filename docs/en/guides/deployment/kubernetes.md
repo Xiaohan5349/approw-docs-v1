@@ -4,7 +4,7 @@
 
 ## Overview
 
-Approw will not change the user's existing cloud infrastructure, Approw will be as much as  compatible with the user's cloud environment. Therefore, Approw proposed the concepts of "Cloud Neutrality" and "Approw Inside". Approw can maintain it's neutral characteristics in a multi-cloud environment, and it can be deployed in AWS, Tencent Cloud, Alibaba Cloud or private cloud environments. In a hybrid cloud or private cloud environment, Approw will be integrated into the customer's IT system like Intel.
+Approw will not change the user's existing cloud infrastructure, Approw will be as much as compatible with the user's cloud environment. Therefore, Approw proposed the concepts of "Cloud Neutrality" and "Approw Inside". Approw can maintain its neutral characteristics in a multi-cloud environment, and it can be deployed in AWS, Tencent Cloud, Alibaba Cloud, or private cloud environments. In a hybrid cloud or private cloud environment, Approw will be integrated into the customer's IT system like Intel.
 This article will introduce the Kubernetes-based deployment plan and specific operation guidance of the Approw IDaaS platform.
 ## Overall structure
 
@@ -19,8 +19,8 @@ The high-availability architecture of the Approw IDaaS platform is running in VP
 <img src="./images/k8s-2.png" style="margin-top: 20px;" class="md-img-padding" />
 <div style="height: 10px;"></div>
 
-Each availability zone is composed of a set of Kubernetes Nodes, and each availability zone is equipped with a complete set of Approw IDaaS platform. IDaaS cluster is a stateless service, while the database cluster is a stateful master-slave synchronization architecture. If a server appears in a certain availability zone fails or the server is unavailable, LB will transfer the traffic to another available zone, which will also assign the role of master cluster.
-Load balancing will detect the health status of each availability zone in real time, and automatically isolate the availability zones with abnormal states, thereby improving the overall service capabilities of the application.
+Each availability zone is composed of a set of Kubernetes Nodes, and each availability zone is equipped with a complete set of Approw IDaaS platforms. IDaaS cluster is a stateless service, while the database cluster is a stateful master-slave synchronization architecture. If a server appears in a certain availability zone fails or the server is unavailable, LB will transfer the traffic to another available zone, which will also assign the role of master cluster.
+Load balancing will detect the health status of each availability zone in real-time, and automatically isolate the availability zones with abnormal states, thereby improving the overall service capabilities of the application.
 
 **Deployment plan**
 
