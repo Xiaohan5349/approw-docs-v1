@@ -15,7 +15,7 @@ var list = await authenticationClient.SetUdv(key, anyValue);
 Console.WriteLine(list.Count());
 ```
 
-Get users' latest user-defined fields.
+Get users' latest values of user-defined-fields.
 
 ```csharp
 var list = await authenticationClient.ListUdv();
