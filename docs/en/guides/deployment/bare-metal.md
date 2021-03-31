@@ -4,7 +4,7 @@
 
 ## Overview
 
-Orchestration-based containerized deployment operation and maintenance has gradually become the current mainstream method. Whether it is an infrastructure environment based on Kubernetes or Docker, business components can be built quickly through orchestration, and efficient operation and maintenance management can also be achieved. Here we It is recommended that you use a container-based deployment scheme.
+Orchestration-based containerized deployment operation and maintenance have gradually become the current mainstream method. Whether it is an infrastructure environment based on Kubernetes or Docker, business components can be built quickly through orchestration, and efficient operation and maintenance management can also be achieved. Here we recommend you use a container-based deployment scheme.
 
 - [Docker deployment](./docker-compose.md)
 - [Kubernetes deployment](./kubernetes.md) 
@@ -15,7 +15,7 @@ This article will introduce the basic deployment plan of Approw IDaaS platform a
 
 <img src="./images/basic-deployment.png" style="margin-top: 10px;" class="md-img-padding" />
 
-The main components of the Approw IDaaS platform architecture include: object storage service, Redis, ElasticSearch, Postgres and Approw Server.Approw Server, as the main service of the Approw IDaaS platform, receives requests from clients; object storage is used as a service for storing static resources; Redis stores session information, data caching, etc.; Postgres is used to store core business data; ElasticSearch is used for data statistical analysis and logs collection and analyze the work.
+The main components of the Approw IDaaS platform architecture includes: object storage service, Redis, ElasticSearch, Postgres and Approw Server.Approw Server, as the main service of the Approw IDaaS platform, receives requests from clients; object storage is used as a service for storing static resources; Redis stores session information, data caching, etc.; Postgres is used to store core business data; ElasticSearch is used for data statistical analysis and logs collection and analyzes the work.
 ## Deployment plan
 
 **1. Component planning**
