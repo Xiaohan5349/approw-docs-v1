@@ -10,7 +10,7 @@ meta:
 
 Here taking [goproxy](https://github.com/snail007/goproxy/blob/master/README_ZH.md) as an example, briefly introduce the deployment process of https proxy. For detailed official documents, please see:[https://github.com/snail007/goproxy/blob/master/README_ZH.md](https://github.com/snail007/goproxy/blob/master/README_ZH.md)
 
-Run as root user:
+Run as a root user:
 
 ```bash
 curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh    
@@ -37,7 +37,7 @@ When the following prompt appears, the operation is successful:
 2020/09/23 19:25:34 tcp http(s) proxy on [::]:xxxxxx
 ```
 
-Please make sure that the firewall rules of the server allow Approw server access.The external IP of the Approw server is:
+Please make sure that the firewall rules of the server allow Approw server access. The external IP of the Approw server is:
 ```
 52.80.250.250
 140.179.19.50
