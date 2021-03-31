@@ -1,4 +1,4 @@
-# What is User Pool
+# What Is User Pool
 
 <LastUpdated/>
 
@@ -34,11 +34,11 @@ In most cases, your company or project has only one user pool. A single user poo
 
 ## Fee collection
 
-In {{$localeConfig.brandName}}, we use the user pool as the dimension for service management, and each user pool can have an independent service plan. It is divided into 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. The "Developer Edition" is suitable for CIAM scenarios for external customers. It has a larger monthly usage and provides a low price. The "Enterprise Edition" is suitable In complex scenarios within the enterprise, there are rich user directory synchronization and application connection solutions. You can choose freely according to the usage scenario, or you can contact a business consultant (telephone 176-0250-2507) for consultation.
+In {{$localeConfig.brandName}}, we use the user pool as the dimension for service management, and each user pool can have an independent service plan. It is divided into 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. The "Developer Edition" is suitable for CIAM scenarios for external customers. It has a larger monthly usage and provides a low price. The "Enterprise Edition" is suitable for complex scenarios within the enterprise. There are rich user directory synchronization and application connection solutions. You can choose freely according to the usage scenario, or you can contact a business consultant (telephone 176-0250-2507) for consultation.
 
 ### Function comparison of different versions
 
-The following is a detailed comparison of the functions and services of the 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. For more details, please see 
+The following is a detailed comparison of the functions and services of the 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. For more details, please refer to
 https://{{$localeConfig.brandName}}.cm/pricing (opens new window).
 
 #### Authentication Solutions
