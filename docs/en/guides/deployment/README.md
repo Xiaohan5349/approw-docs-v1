@@ -1,7 +1,7 @@
 # Private Deployment Plan
 
 ::: description
-Approw has been providing many famous companies with authentication and user management solutions, as well as public cloud/private cloud/mixed cloud. Private deployment plan can deploy the platform inside client's intranet server, where all data store are encrypted with individual occupation of cloud resources. It's faster, safer and more stable.
+Approw has been providing many famous companies with authentication and user management solutions, as well as public cloud/private cloud/mixed cloud. Private deployment plan can deploy the platform inside the client's intranet server, where all data stores are encrypted with the individual occupation of cloud resources. It's faster, safer and more stable.
 :::
 
 ### Advantages Of Private Deployment
@@ -49,7 +49,7 @@ If your business scenario has a certain scale of 20-2000 people, the IDaaS platf
 <img src="./images/private-deployment-2.png" width="400"/>
 
 #### Kubernetes
-If your business scenario carries a relatively high number of users, with ammount of 2,000 or more, you need to consider performance and reliability when deploying privatization. We recommend that you use the Kubernetes cloud native model to operate and maintain your IDaaS platform.
+If your business scenario carries a relatively high number of users, with amount of 2,000 or more, you need to consider performance and reliability when deploying privatization. We recommend that you use the Kubernetes cloud-native model to operate and maintain your IDaaS platform.
 
 - Required environment: Kubernetes 1.16 and above.
 - Recommended operating system: CentOS 7.2 and above Ubuntu 18.04 and above.
@@ -69,4 +69,4 @@ If your business scenario carries a relatively high number of users, with ammoun
 
 1. Servers can access each other through the intranet.
 2. Provide a pan-domain name (or a single domain name if it is a small number) and corresponding certificates.
-3. Provide internal network domain name resolution server, which needs to resolve internal and external network domain names at the same time. Cluster deployment is recommended.
+3. Provide an internal network domain name resolution server, which needs to resolve internal and external network domain names at the same time. Cluster deployment is recommended.
