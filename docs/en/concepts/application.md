@@ -1,10 +1,10 @@
-# What is Application
+# What Is Application
 
 <LastUpdated/>
 
 Earlier we introduced that the user pool(./user-pool.md) is the smallest unit of tenant isolation in {{$localeConfig.brandName}}. This stores all user data in your user system, and the application corresponds to the business application you create in reality.
 
-A user pool may have multiple applications. For example, all students at  school are using a user pool. The school will develop multiple applications such as course selection application, email application, teacher-student service center, etc.. These applications use the same user system.
+A user pool may have multiple applications. For example, all students at school are using a user pool. The school will develop multiple applications such as course selection application, email application, teacher-student service center, etc. These applications use the same user system.
 
 ## Where can I see all my apps
 
@@ -16,9 +16,9 @@ You can view all your applications on the application page of the [console](http
 
 The first thing you need to remember is that all applications in a user pool share a user directory. This design fundamentally solves the problem of user system fragmentation that is common in old systems.
 
-## Single sign-on between applications
+## Single Sign-on between applications
 
-You need to enable single sign-on between applications on the application management page, as shown in the following figure:
+You need to enable Single Sign-On between applications on the application management page, as shown in the following figure:
 
 ![](./images/Xnip2021-02-26_10-48-40.png)
 
