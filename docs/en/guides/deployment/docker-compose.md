@@ -9,14 +9,14 @@
 
 
 Docker Compose is a set of orchestration tools based on the Docker engine. You can use Docker Compose to quickly deploy the Approw IDaaS platform with one click
-Approw under the Docker deployment scheme is a stand-alone deployment. If you want to deploy a highly available version of Approw, please refer to: [Kubernetes Deployment](./kubernetes.md).
-This article will introduce the Docker Compose-based deployment plan of the Approw IDaaS platform and specific operation instructions.
+Approw under the Docker deployment scheme is a stand-alone deployment. If you want to deploy a highly available version of Approw, please refer to [Kubernetes Deployment](./kubernetes.md).
+This article will introduce the Docker Compose-based deployment plan of the Approw IDaaS platform and specific operating instructions.
 
 ## Overall structure
 
 
 <img src="./images/docker.png" style="margin-top: 20px;" class="md-img-padding" />
-The main components of the Approw IDaaS platform architecture include: object storage service, Redis, ElasticSearch, Postgres and Approw Server.Approw Server, as the main service of the Approw IDaaS platform, receives requests from clients; object storage is used as a service for storing static resources; Redis stores session information, data caching, etc.; Postgres is used to store core business data; ElasticSearch is used for data statistical analysis and logs collection and analyze the work.
+The main components of the Approw IDaaS platform architecture include object storage service, Redis, ElasticSearch, Postgres and Approw Server. Approw Server, as the main service of the Approw IDaaS platform, receives requests from clients; object storage is used as a service for storing static resources; Redis stores session information, data caching, etc.; Postgres is used to store core business data; ElasticSearch is used for data statistical analysis and logs collection and analyzes the work.
 Approw IDaaS platform uses the ELK architecture for logging system. The Approw Server writes logs into the Log File. Logstash writes the log information into the ElasticSearch service by reading the Log File. This ensures that multiple IDaaS clusters follow a unified pipeline: Collection -> Transmission -> Storage -> Analysis process, and Kibana is used as a graphical UI management interface for operation and maintenance management, which greatly reduces the complexity and error rate of operation and maintenance work, and improves the work efficiency of operation and maintenance staff.
 
 ## Deployment plan
@@ -58,7 +58,7 @@ server configuration:
 | hard disk | 500 GB | 2 TB |
 | Intranet bandwidth | 100 Mbps | 1 Gbps |
 
-**3. Related Documents**
+**3. Related documents**
 
 | name | Description |
 | --- | --- |
