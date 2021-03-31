@@ -1,12 +1,12 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-首先使用用户的 token 初始化 SDK：
+Initialize the SDK with user's token.
 
 ```java
 authenticationClient.AccessToken = "user token";
 ```
 
-设置自定义字段：
+Setup user-defined fields.
 
 ```csharp
 var key = "key";
@@ -15,7 +15,7 @@ var list = await authenticationClient.SetUdv(key, anyValue);
 Console.WriteLine(list.Count());
 ```
 
-获取该用户最新的自定义数据：
+Get users' latest user-defined fields.
 
 ```csharp
 var list = await authenticationClient.ListUdv();
