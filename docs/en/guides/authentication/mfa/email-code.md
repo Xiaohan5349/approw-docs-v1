@@ -6,7 +6,7 @@ MFA is a security system as a secondary identity verification for verifying the 
 
 ## Prerequisite
 
-1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.cn)
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com)
 2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Enable Email-based MFA
