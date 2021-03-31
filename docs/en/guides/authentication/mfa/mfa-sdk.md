@@ -138,7 +138,7 @@ MFA Password
 
 ### Return MFA Token after first authentication
 
-Call the login method in approw-js-sdk, refer t o[Login](/docs/en/sdk/sdk-for-javascript/README.md#登录). Or call [GraphQL interface](/docs/en/sdk/open-graphql.md#登录). You need store mfaToken for future use.
+Call the login method in approw-js-sdk, refer to [Login](/docs/en/sdk/sdk-for-javascript/README.md#登录). Or call [GraphQL interface](/docs/en/sdk/open-graphql.md#登录). You need store mfaToken for future use.
 
 Call the SDK:
 
