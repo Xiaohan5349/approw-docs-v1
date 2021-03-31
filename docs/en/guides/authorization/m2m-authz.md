@@ -227,4 +227,4 @@ app.post('/article', function(req, res) {
 
 app.listen(port);
 ```
-For other content about Token validation, please refer to how to [validate user token](/guides/faqs/how-to-validate-user-token.md).
+For other content about Token validation, please refer to how to [validate user token](/docs/en/guides/faqs/how-to-validate-user-token.md).
