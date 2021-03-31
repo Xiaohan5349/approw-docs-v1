@@ -2,7 +2,7 @@
 
 ## Overview
 
-MFA is a security system that is a secondary identity verification for verifying the legitimacy of an operation. For example, remote login requires email verification. This article introduces the multi-factor authentication method based on email verification code.
+MFA is a security system as a secondary identity verification for verifying the legitimacy of an operation. For example, remote login requires email verification. This article introduces the multi-factor authentication method based on email verification code.
 
 ## Prerequisite
 
