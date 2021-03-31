@@ -375,4 +375,4 @@ axios.get({
 })
 ```
 
-The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](、docs/en/guides/faqs/how-to-validate-user-token). After identifying the user, you may also need to [perform permission management on the user](/docs/en/guides/access-control/) to determine whether the user has operating permissions for this API.
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/docs/en/guides/faqs/how-to-validate-user-token). After identifying the user, you may also need to [perform permission management on the user](/docs/en/guides/access-control/) to determine whether the user has operating permissions for this API.
