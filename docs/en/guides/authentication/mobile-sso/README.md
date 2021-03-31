@@ -21,12 +21,12 @@ The automatic detection method is similar to the Meituan App. As long as one of 
 
 As shown below:
 
-<img src="https://cdn.authing.cn/blog/image%20%28595%29.png" height=500 style="display:block;margin: 0 auto;">
+<img src="https://cdn.approw.cn/blog/image%20%28595%29.png" height=500 style="display:block;margin: 0 auto;">
 
 You can view the demo of this video：
 
 <video controls>
-  <source src="./Authing-App-SSO-Demo.mp4" type="video/mp4">
+  <source src="./Approw-App-SSO-Demo.mp4" type="video/mp4">
 </video>
 
 [Learn more](./track-session.md)
