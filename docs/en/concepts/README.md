@@ -1,4 +1,4 @@
-# What is {{$localeConfig.brandName}} 
+# What Is {{$localeConfig.brandName}} 
 
 <LastUpdated/>
 
