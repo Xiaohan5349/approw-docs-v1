@@ -210,7 +210,7 @@ MFA Password
 ```json
 {
   "code": 200,
-  "message": "二次验证成功",
+  "message": "Second verification success",
   "data": {
     "thirdPartyIdentity": {
       "provider": null,
