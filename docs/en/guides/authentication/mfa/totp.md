@@ -8,7 +8,7 @@ Multi-factor authentication (MFA) is a security system that is a secondary ident
 ## Before the start
 
 1. <a :href="`${$themeConfig.consoleDomain}`">Register an {{$localeConfig.brandName}} account</a>
-2. [Complete the creation of the user pool and application](/guides/basics/authenticate-first-user/use-hosted-login-page)
+2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Set up a new MFA
 
