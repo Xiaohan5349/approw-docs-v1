@@ -23,7 +23,7 @@ Approw IDaaS platform uses the ELK architecture for logging system. The Approw S
 
 **1. Component planning**
 
-| server | Component package | Function Description |
+| Server | Component package | Function Description |
 | --- | --- | --- |
 | ElasticSearch | elasticsearch-7.7.0 | Search engine, log service |
 | Approw Server | Approw-server-1.2.0 | Approw main service |
@@ -37,21 +37,21 @@ Approw IDaaS platform uses the ELK architecture for logging system. The Approw S
 
 Docker version requirements:
 
-| project | version |
+| Project | Version |
 | --- | --- |
 | Client | 19.03.14 and above |
 | Server | 19.03.14 and above |
 
 Operating system environment requirements:
 
-| project | Minimum configuration | Recommended configuration |
+| Project | Minimum configuration | Recommended configuration |
 | --- | --- | --- |
 | Operating system platform | linux/amd64 | - |
 | Kernel version | linux 3.10.0 and above | - |
 
 server configuration:
 
-| project | Minimum configuration | Recommended configuration |
+| Project | Minimum configuration | Recommended configuration |
 | --- | --- | --- |
 | CPU | X86 64 bit 8 core | X86 64 bit 16 core |
 | RAM | 32 GB | 64 GB and above |
@@ -60,7 +60,7 @@ server configuration:
 
 **3. Related documents**
 
-| name | Description |
+| Name | Description |
 | --- | --- |
 | &quot;Approw IDaaS Platform User Guide Version 1.2.0&quot; | Introduce Approw IDaaS platform operation guide |
 | &quot;Approw IDaaS Platform Product Documentation Version 1.2.0&quot; | Introduce Approw IDaaS platform product features |
@@ -69,7 +69,7 @@ server configuration:
 
 **4. Installation packages**
 
-| name | Description |
+| Name | Description |
 | --- | --- |
 | Approw-jdbc-logstash-river-1.0.0-90875fa84d87.tar | Approw back-end data service image package |
 | Approw-server-1.2.0-32d8b4130bae.tar | Approw main service image package |
@@ -83,7 +83,7 @@ server configuration:
 
 **5. Component files**
 
-| name | Description |
+| Name | Description |
 | --- | --- |
 | docker-compose.yml | Approw Docker Compose One-click file layout |
 
