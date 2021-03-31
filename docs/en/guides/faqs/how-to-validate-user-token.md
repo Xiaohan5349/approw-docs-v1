@@ -7,8 +7,8 @@ The following is a comparison of the advantages and disadvantages of local verif
 
 |                     | Verification speed | Code complexity | Reliability                  |
 | ------------------- | ------------------ | --------------- | ---------------------------- |
-| Online verification | Slow 🐢            | simple          | Single point of failure risk |
-| Local verification  | Fast 🐇            | moderate        | Distributed system           |
+| Online verification | Slow 🐢            | Simple          | Single point of failure risk |
+| Local verification  | Fast 🐇            | Moderate        | Distributed system           |
 
 ## Local verification
 
