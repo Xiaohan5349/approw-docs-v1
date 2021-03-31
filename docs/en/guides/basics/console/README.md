@@ -10,7 +10,7 @@ meta:
 
 The console is where you can manage manage all aspects of your Approw resource and configuration.
 
-In [Approw Console](https://console.authing.cn/console/userpool), you can configure and modify Approw's resources, users and other information.
+In [Approw Console](https://console.approw.com/console/userpool), you can configure and modify Approw's resources, users and other information.
 
 ![](./images/console-1.png)
 
