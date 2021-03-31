@@ -7,7 +7,7 @@ MFA is a security system that is a secondary identity verification for verifying
 ## Prerequisite
 
 1. <a :href="`${$themeConfig.consoleDomain}`">Register a new {{$localeConfig.brandName}} Account</a>
-2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page)
+2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Enable Email-based MFA
 
