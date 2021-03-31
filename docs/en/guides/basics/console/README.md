@@ -4,13 +4,13 @@ meta:
     content: Console Overview
 ---
 
-# Console Overview
+# Console Overview1
 
 <LastUpdated/>
 
 The console is where you can manage manage all aspects of your Approw resource and configuration.
 
-In [Approw Console](https://console.authing.cn/console/userpool), you can configure and modify Approw's resources, users and other information.
+In [Approw Console](https://console.approw.com/console/userpool), you can configure and modify Approw's resources, users and other information.
 
 ![](./images/console-1.png)
 
@@ -33,9 +33,9 @@ The following table contains a brief overview of the different Console pages and
       <td style="text-align:left">
         <p>Application Entrance:</p>
         <ol>
-          <li>1. Try Your Login Box.</li>
-          <li>2. Add an Identity Provider.</li>
-          <li>3. Create an Application. </li>
+          <li>Try Your Login Box.</li>
+          <li>Add an Identity Provider.</li>
+          <li>Create an Application. </li>
         </ol>
         <p>You can check users' Login Activities, such as: </p>
         <ol>
