@@ -4,7 +4,7 @@
 
 ## Overview
 Approw currently using the **domain name hosted** mode, using Approw secondary domain (eg:https://my-app.approw.cn).
-In the **domain name hosted mode**, the user can log in and access the application through Approw by two domain names, as for users want to use a custom domain name, Approw offers a solution based on Nginx reverse proxy.
+In the **domain name hosted mode**, the user can log in and access the application through Approw by two domain names, as for users who want to use a custom domain name, Approw offers a solution based on Nginx reverse proxy.
 This article will describe in detail how users configure a custom domain name, so as to realize Approw login and registration through a custom domain name.
 
 ## Preparation
