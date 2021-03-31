@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-If you use  Approw, your user information will be stored securely in a database on the  Approw cloud, and you do not need to save an additional user information. You need to associate your business data with the  Approw user locally, and associate it with the user ID (User ID) and business data.
+If you use  Approw, your user information will be stored securely in a database on the  Approw cloud, and you do not need to save additional user information. You need to associate your business data with the  Approw user locally, and associate it with the user ID (User ID) and business data.
 For example, there is an orders table (orders) in your business system, and its own table structure is as follows:
 
 ```sql
@@ -37,7 +37,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-You can create a field `owner_id` indicates the ID of the owner of the order:
+You can create a field `owner_id` that indicates the ID of the owner of the order:
 - The data type is varchar(32);
 - The value it stores should be the ID of the Approw user;
 ```sql
