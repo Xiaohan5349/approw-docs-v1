@@ -9,7 +9,7 @@ This includes: binding MFA authenticator, unbinding MFA authenticator, user seco
 
 ## Prerequisites
 
-1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.cn/)
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com/)
 2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Multi-Factor Authentication (MFA) API
