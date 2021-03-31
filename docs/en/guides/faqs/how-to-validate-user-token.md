@@ -202,7 +202,7 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 | token           | string   | Yes            | The token value to be checked.                                                                                                                                                                                                              |
 | token_type_hint | string   | Yes            | The token type to be checked, the optional value is access_token                                                                                                                                                                            |
 | client_id       | string   | no             | Application ID, it is required when configuring the verification token authentication method as client_secret_post and none in the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab.  |
-| client_secret   | string   | no             | Applicaiton Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
+| client_secret   | string   | no             | Application Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
 
 - Return data:
 
