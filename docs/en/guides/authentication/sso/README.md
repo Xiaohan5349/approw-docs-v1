@@ -357,7 +357,7 @@ After a successful login, the user information you get contains a token field,wh
 
 ### What is id_token?
 
-**id_token** is equivalent to the terminal user's ID card, used to authenticate the user's identity, and is issued after OIDC authorization. When you need to request resources from your **own server**, you should carry **id_token**. At the same time, your server should [verify the validity of this token](../../basics/authenticate-first-user/how-to-validate-user-token.md), and then return the corresponding resources. Please see the difference between id_token and access_token [here](/docs/en/concepts/oidc-common-questions#idtoken-与-accesstoken-的区别).
+**id_token** is equivalent to the terminal user's ID card, used to authenticate the user's identity, and is issued after OIDC authorization. When you need to request resources from your **own server**, you should carry **id_token**. At the same time, your server should [verify the validity of this token](../../basics/authenticate-first-user/how-to-validate-user-token.md), and then return the corresponding resources. Please see the difference between id_token and access_token [here](/docs/en/concepts/oidc-common-questions#id-token-and-access-token).
 
 ## Then
 
