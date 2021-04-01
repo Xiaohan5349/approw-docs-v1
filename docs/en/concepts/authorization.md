@@ -23,8 +23,7 @@ From the product point of view, authorization can ensure the safety of product s
 ## Authorization model
 
 There are mainly two Authorization modes:
-The first one, authorization code mode based on the OAuth 2.0 process.
-Second, centralized verification of user authorization through the API interface to the authorization center.
+The first is the authorization code mode based on the OAuth 2.0 process, and the second is the centralized verification of user authorization through the API interface to the authorization center.
 
 ### Authorization mode based on OAuth 2.0 framework
 
