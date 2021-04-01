@@ -1,4 +1,4 @@
-# Logging Overview
+# Audit Log
 
 Safety and legality are important for a company or organization, they are the basics for them to operating properly. It's not easy to realize both safety and legality, Approw provides operation audit and logging to help company and organization to run properly.
 ## Log Category
