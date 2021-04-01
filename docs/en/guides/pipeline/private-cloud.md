@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-You can deploy private cloud with {{$localeConfig.brandName}}（[Learn more](/guides/deployment/)), You need to provide the following information: 
+You can deploy private cloud with {{$localeConfig.brandName}}（[Learn more](/docs/en/guides/deployment/)), You need to provide the following information: 
 
 - ACCOUNT_ID: Alibaba Cloud Account ID，select your **profile picture** in the **upper right corner of the Alibaba Cloud console**，click **safety settings**，the account ID can be obtained on this page. [Click here for details](https://help.aliyun.com/document_detail/52984.html?spm=a2c4g.11186623.2.49.49772a364IfiEO#getAccountID)。
 
