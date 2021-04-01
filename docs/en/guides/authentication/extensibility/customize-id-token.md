@@ -43,7 +43,7 @@ An OIDC IdToken contains the following fields by default, refer to the [OIDC Spe
 
 ## IdToken add customize fields
 
-You can use Approw's [Pipeline Capability](/docs/en/guides/pipeline/)to insert custom code snippets in the user authentication process and add custom `IdToken` fields to users. For example, in the following example, we have added the `KEY` field to the user's `id_token` with a value of `VALUE`: 
+You can use Approw's [Pipeline Capability](/docs/en/guides/pipeline/) to insert custom code snippets in the user authentication process and add custom `IdToken` fields to users. For example, in the following example, we have added the `KEY` field to the user's `id_token` with a value of `VALUE`: 
 
 ```javascript
 async function pipe(user, context, callback) {
