@@ -1,11 +1,11 @@
-# What is Authorization
+# What Is Authorization
 
 <LastUpdated/>
 
 
 ## The meaning of Authorization
 
-In the general field, Authorization is the process by which leaders achieve organizational goals, by providing employees and subordinates with autonomy.
+In the general field, Authorization is the process by which leaders achieve organizational goals by providing employees and subordinates with autonomy.
 
 In field of computer science, the authorization has the right to process, store, or transmit information to an entity by the designated approval agency of the information system.
 
@@ -13,11 +13,11 @@ In the field of identity authentication, authorization refers to a mechanism tha
 
 ## Why do we need to "authorize"?
 
-In the built user system, when your API needs to determine whether the current user can access the current resource, you need to build your own permission system. Authorization is a very important concept in the permission system. This refers to the process of judging, which the permissions of a user has a completely different authentication.
+In the built user system, when your API needs to determine whether the current user can access the current resource, you need to build your own permission system. Authorization is a very important concept in the permission system. This refers to the process of judging, in which the permissions of a user have a completely different authentication.
 
 For enterprises, authorization can clarify the relationship between organization members, make responsibilities and boundaries clearer, and facilitate company management. At the same time, authorization can ensure data security, prevent and control risks, and different permissions allowing different operations to prevent Accidents such as user sabotage, data leakage, misoperation, etc. Authorization can improve the efficiency of decision-making. Excellent authorization and authority management make the system easier to operate and improve the work efficiency of employees.
 
-From the product point of view, authorization can ensure the safety of product system use and data security, and prevent illegal operations and data leakage. Authorization can also improve the operability of the system and enhance user experience. In addition, a good authorization function will enhance the value of the product. Make it more competitive in the market.
+From the product point of view, authorization can ensure the safety of product system use and data security, and prevent illegal operations and data leakage. Authorization can also improve the operability of the system and enhance user experience. In addition, a good authorization function will enhance the value of the product and make it more competitive in the market.
 
 
 ## Authorization model
