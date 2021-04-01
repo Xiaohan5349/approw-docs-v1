@@ -1,4 +1,4 @@
-# What is Authentication
+# What Is Authentication
 
 <LastUpdated/>
 
