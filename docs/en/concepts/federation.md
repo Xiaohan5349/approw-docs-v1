@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-In the early generation of the Internet, users’ with various accounts hold private information that would be scattered across different sites and applications. This have lead the following problems:
+In the early generation of the Internet, users’ with various accounts hold private information that would be scattered across different sites and applications. This has the following problems:
 1. Every time a user visits a new site, they must register an account with a new username and password.
 2. This account is only stored on this site.
 3. The end user is unable to save the logged in on different sites. User information cannot be shared between these sites.
