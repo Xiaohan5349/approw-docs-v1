@@ -31,15 +31,15 @@ For details, please refer to this article: [What is JWT](https://www.jianshu.com
 
 ## Security Restriction 
 
-To prevent malicious user registration, Authing set below restrictions for IP addresses as default:
+To prevent malicious user registration, Approw set below restrictions for IP addresses as default:
 
 - User register `3 times` or more in `5 min` with the same IP address. The IP address will be banned
 - User login failed `3 times` in `5 min` with same IP address. OTP verification will be required.
-> Threshold can be customized. Please refer to [Enable/Disable/Config Registration Counts Restriction](/docs/en/guides/security/config-register-limit)。
-
+> Threshold can be customized. Please refer to [Enable/Disable/Config Registration Counts Restriction](/docs/en/guides/security/config-register-limit.md).
+.md
 ## How to Present Client Stored JWT Token
 
-Authing return JWT Token to developer after authentication passed. Developer stored JWT token at Client side and present token to backend server for validation.
+Apporw return JWT Token to developer after authentication passed. Developer stored JWT token at Client side and present token to backend server for validation.
 
 **HTTP Header Authorization** is recommended to carry JWT Token. Eg (Axios in JavaScript): 
 
