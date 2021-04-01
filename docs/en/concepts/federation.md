@@ -20,7 +20,7 @@ Use Federated Authentication has the following benefits:
 
 ## Principles of Federated Authentication
 
-The following is the process of Federated Authentication. The end user is redirected to the federated identity for Authentication. First, the end user authenticates in the federated identity. Then, the federated identity sends an assertion to Approw, which is equivalent to the user completing the Authentication in Approw. Approw sends the assertion to the business system, and the login completes.
+The following is the process of Federated Authentication. The end user is redirected to the federated identity for Authentication. First, the end user authenticates in the federated identity. Then the federated identity sends an assertion to Approw, which is equivalent to the user completing the Authentication in Approw. Approw sends the assertion to the business system, and the business system completes the login.
 
 ![](~@imagesZhCn/concepts/federation/1-2.png)
 
