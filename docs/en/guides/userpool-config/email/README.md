@@ -11,7 +11,7 @@ Mail service is provided for users which registered with "Email". After entering
 
 There are six types of email templates that can be configured in the email template:
 1. Welcome Email-this email will be sent if the user registers with the email;
-2. Reset password confirmation-This email will be sent whenever the user resets the password successfully.；
+2. Reset password confirmation-This email will be sent whenever the user resets the password successfully；
 3. Verification email-The user will send a verification email to the user to verify the email when registering with the email, and the user can click the link in the email to complete the verification;
 4. Change the binding email address-this email will be sent whenever the user needs to modify the binding email address and send a verification code;
 5. Reset Password-The system will send this password reset email whenever the user forgets the password, with a verification code attached to the email, and the user will be able to reset the password after submitting the verification code and new password;
@@ -70,8 +70,8 @@ All currently supported variables are shown in the following table:
 
 Our built-in mail sending server uses Alibaba Cloud Enterprise Mailbox. If you want to customize the mail server, you can set it up on this page:
 
-Choose mail service providerAli Mail Enterprise Edition
+Choose mail service provider Ali Mail Enterprise Edition
 
-You canconfigure Ali Mail Enterprise Edition in the settings - Message Service 
+You can configure Ali Mail Enterprise Edition in the settings - Message Service 
 
 <StackSelector snippet="config-email-provider" selectLabel="Select Mail Provider" :order="['mxhichina', 'exmail', 'sendgrid', 'smtp']"/>
