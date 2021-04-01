@@ -52,6 +52,6 @@ For further details, please use the [embedded login component to complete the au
 
 The aforementioned managed login page, embedded login component, and the underlying capabilities of the Auth SDK are all supported by the Authentication API. {{$localeConfig.brandName}} Authentication API supports two calling methods: RESTful and GraphQL (endpoint is `https://core.{{$localeConfig.brandName}}.cn/graphql/v2`), you can also directly call Authentication API to implement authentication logic.
 
-## Single Sign On
+## Single Sign-On
 
 Single Sign-On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide [SSO SDK](/reference/sdk-for-sso.md) for developers to quickly implement Single Sign-On between applications.
