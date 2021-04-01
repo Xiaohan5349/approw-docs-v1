@@ -15,7 +15,7 @@ The login experience is one of the most important user experiences that software
 
 {{$localeConfig.brandName}} supports access to your application and user data through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, etc. You can safely use {{$localeConfig.brandName}} as your Identity Provider. If you use {{$localeConfig.brandName}} as an Identity Provider, you can also connect to other third-party Service Providers, such as logging in to Alibaba Cloud, AWS, Azure, Jira, etc.
 
-For example, you can log in to your application through Azure AD or local Windows AD. It can also use third-party social login to automatically pull the user information of the social login user to your user directory.
+Authing can also be used as a Service Provider to connect to a third-party Identity Provider through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, and AD. For example, you can log in to your application through Azure AD or local Windows AD. It can also use third-party social login to automatically pull the user information of the social login user to your user directory.
 
 You can understand the implementation principles of [OIDC, OAuth2.0](/concepts/oidc/oidc-overview.md), [SAML](/concepts/saml/saml-overview.md), [LDAP](/concepts/ldap.md), and AD respectively.
 
