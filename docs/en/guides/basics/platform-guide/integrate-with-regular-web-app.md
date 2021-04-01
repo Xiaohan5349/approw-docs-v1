@@ -1,14 +1,14 @@
-# Integrate Approw with regular Web App
+# Integrate {{$localeConfig.brandName}} with regular Web App
 
 <LastUpdated/>
 
-This article uses the Node.js Web framework [Express](https://expressjs.com/) as an example to introduce how to quickly access Approw in regular Web projects (such as Express MVC, Django, PHP Laravel, etc.) to achieve functions such as login, logout, and user information acquisition.
+This article uses the Node.js Web framework [Express](https://expressjs.com/) as an example to introduce how to quickly integrate {{$localeConfig.brandName}} with regular Web projects (such as Express MVC, Django, PHP Laravel, etc.) to achieve functions such as login, logout, and user information acquisition.
 
-There are three parties involved here: end users, application servers, and Approw servers. The complete flow is as follows:
+There are three parties involved here: end users, application servers, and {{$localeConfig.brandName}} servers. The complete flow is as follows:
 
-1. The user requests the application service and it turns out that the user is not logged in, so the request will be redirected to the login page hosted by Approw;
+1. The user requests the application service and it turns out that the user is not logged in, so the request will be redirected to the login page hosted by {{$localeConfig.brandName}};
 2. After the user logs in on this login page, the browser will carry the Authorization Code and other data in the request parameters to jump to the callback link pre-configured by the application server;
-3. The application server uses the authorization code (Authorization Code) to request the Approw server in exchange for user information; 
+3. The application server uses the authorization code (Authorization Code) to request the {{$localeConfig.brandName}} server in exchange for user information; 
 4. After the application server obtains the user information, it establishes a session with the end user; 
 5. The terminal user is prompted with a successful login, and the authentication workflow is completed.
 
@@ -16,13 +16,13 @@ The flow chart shows as below:
 
 ![](./images/regular-web-app-login-flow.jpeg)
 
-## Configure in Approw
+## Configure in {{$localeConfig.brandName}}
 
-Before starting, you need to create an application in Approw. You can go to the application list page of the Approw console to create an application.
+Before starting, you need to create an application in {{$localeConfig.brandName}}. You can go to the application list page of the {{$localeConfig.brandName}} console to create an application.
 
 ### Configure a callback link
 
-When the user successfully logs in in Approw, the browser will jump to the Callback URL you configured. This callback link should be a route in your application, and you need to complete operations such as exchanging user information in this route. You must configure this callback link, otherwise the user will not be able to log in, and an error message `invalid_redirect_uri` will be displayed.
+When the user successfully logs in in {{$localeConfig.brandName}}, the browser will jump to the Callback URL you configured. This callback link should be a route in your application, and you need to complete operations such as exchanging user information in this route. You must configure this callback link, otherwise the user will not be able to log in, and an error message `invalid_redirect_uri` will be displayed.
 
 The callback URL of this sample code is: `http://localhost:3000/auth/callback`, copy and paste it into login callback URL configuration, and click save.
 
@@ -30,7 +30,7 @@ The callback URL of this sample code is: `http://localhost:3000/auth/callback`, 
 
 ### Configure logout callback URL
 
-When user logout at Approw hosted login page, you need to configure the callback URL of logging out: Logout URLs. You must configure this callback URL otherwise user can not log out and get a `misconfiguration` error.
+When user logout at {{$localeConfig.brandName}} hosted login page, you need to configure the callback URL of logging out: Logout URLs. You must configure this callback URL otherwise user can not log out and get a `misconfiguration` error.
 The callback URL of this sample code is: `http://localhost:3000`, copy and paste it into logout callback URL configuration, and click save.
 
 ### Get application ID and secret
@@ -39,9 +39,9 @@ In the end, you need to copy and save these information:
 
 - clientId: application ID
 - clientSecet: application secret.
-- Issuer URL: https://sample-app.authing.cn/oidc
+- Issuer URL: https://sample-app.approw.com/oidc
 
-## Integrate Approw to your system
+## Integrate {{$localeConfig.brandName}} to your system
 
 ### Install dependencies
 
@@ -55,8 +55,8 @@ yarn add express express-session passport openid-client
 
 At the very beginning of the project, we need to initialize the `issuer` of `openid-client`. The initial parameters are as follows: 
 
-- client_id: OIDC Client ID, which is your [application ID](/guides/faqs/get-app-id-and-secret.md) in Approw; 
-- client_secret: OIDC Client Secret, which is [the secret key of your application](/guides/faqs/get-app-id-and-secret.md) in Approw; 
+- client_id: OIDC Client ID, which is your [application ID](/guides/faqs/get-app-id-and-secret.md) in {{$localeConfig.brandName}}; 
+- client_secret: OIDC Client Secret, which is [the secret key of your application](/guides/faqs/get-app-id-and-secret.md) in {{$localeConfig.brandName}}; 
 - issuer: OIDC Issuer, you can get it from the endpoint information of the application.
 
 <img src="~@imagesZhCn/guides/authentication/Xnip2021-03-02_13-00-24.png" alt="drawing"/>
@@ -137,7 +137,7 @@ const REDIRECT_URI = "http://localhost:3000/auth/callback";
 })();
 ```
 
-### Finish logic code of logging in
+### Finish login logic code
 
 First we initialize a login route:
 
@@ -152,11 +152,11 @@ app.get(
 );
 ```
 
-When calling `passport.authenticate` when accessing `/login`, the system will redirect to the online login address of Approw OIDC Provider:
+When calling `passport.authenticate` when accessing `/login`, the system will redirect to the online login address of {{$localeConfig.brandName}} OIDC Provider:
 
 ![](./images/login-page-1.png)
 
-After logging in using any of these login methods, the browser will redirect to `http://localhost:3000/auth/callback` (this is the callback link configured in the application details in the first step). Here, the user information will be obtained from the Approw server. After obtaining the user information successfully, it will redirect to the `/user` route.
+After logging in using any of these login methods, the browser will redirect to `http://localhost:3000/auth/callback` (this is the callback link configured in the application details in the first step). Here, the user information will be obtained from the {{$localeConfig.brandName}} server. After obtaining the user information successfully, it will redirect to the `/user` route.
 
 ### Finish logic code of showing user information
 

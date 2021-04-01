@@ -8,7 +8,7 @@
 Request to bind MFA authenticator:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
 })
@@ -20,7 +20,7 @@ await authenticationClient.mfa.assosicateMfaAuthenticator({
 Verify the MFA secondary password:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
 })
@@ -195,7 +195,7 @@ const authenticationClient = new AuthenticationClient({
 })
 const authenticators = await authenticationClient.mfa.verifyAppEmailMfa({
   mfaToken: 'xxxxxx',
-  email: 'example@authing.cn',
+  email: 'example@approw.com',
   code: 'xxxx',
 })
 ```
@@ -225,7 +225,7 @@ const authenticationClient = new AuthenticationClient({
 })
 const authenticators = await authenticationClient.mfa.phoneOrEmailBindable({
   mfaToken: 'xxxxxx',
-  email: 'example@authing.cn',
+  email: 'example@approw.com',
 })
 ```
 

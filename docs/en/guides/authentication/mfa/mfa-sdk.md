@@ -4,13 +4,13 @@
 
 {{$localeConfig.brandName}} can not only configure the MFA authentication process through the console, but you can also config the MFA authentication through the SDK.
 
-This article will take [{{$localeConfig.brandName}} - Node/JavaScript SDK](/reference/sdk-for-node) as an example to guide developers to complete SDK-based MFA custom development.
+This article will take [{{$localeConfig.brandName}} - Node/JavaScript SDK](/docs/en/reference/sdk-for-node) as an example to guide developers to complete SDK-based MFA custom development.
 This includes: binding MFA authenticator, unbinding MFA authenticator, user secondary authentication, etc.
 
 ## Prerequisites
 
-1. <a :href="`${$themeConfig.consoleDomain}`">Register a new {{$localeConfig.brandName}} Account</a>
-2. [Complete the creation of the user pool and application](/guides/basics/authenticate-first-user/use-hosted-login-page)
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com/)
+2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Multi-Factor Authentication (MFA) API
 
@@ -65,7 +65,7 @@ If MFA is not Enabled, return:
 
 <ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate" summary="Obtain the MFA QR code and Secret information for display, and wait for the user to confirm the binding" description="After requesting this endpoint, the MFA secondary authentication will not take effect before the user confirms the binding. The endpoint returns MFA Secret, MFA Uri, MFA QR code Data Url, and recovery code.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
@@ -102,7 +102,7 @@ Enter `totp`
 
 <ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/" summary="Confirm binding MFA" description="After requesting this endpoint, the user confirms the binding of MFA, and then logs in and asks to enter the MFA password for secondary verification.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
@@ -138,13 +138,13 @@ MFA Password
 
 ### Return MFA Token after first authentication
 
-Call the login method in authing-js-sdk, refer to[Login](/sdk/sdk-for-javascript/README.md#登录). Or call [GraphQL 接口](/sdk/open-graphql.md#登录). You need store mfaToken for future use.
+Call the login method in approw-js-sdk, refer to [Login](/docs/en/sdk/sdk-for-javascript/README.md#登录). Or call [GraphQL interface](/docs/en/sdk/open-graphql.md#登录). You need store mfaToken for future use.
 
 Call the SDK:
 
 ```js
-try {
-  window.user = await window.authing.login({ email, password })
+try 
+  window.user = await window.approw.login({ email, password })
   alert(`Login successfully, information:${JSON.stringify(window.user)}`)
 } catch (err) {
   if (err.message.code === 1635) {
@@ -173,7 +173,7 @@ The return information of calling the GraphQL interface:
           "nickname": null,
           "email": "q3@123.com",
           "username": null,
-          "avatar": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png"
+          "avatar": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png"
         }
       },
       "locations": [{ "line": 2, "column": 9 }],
@@ -194,7 +194,7 @@ For users who enable secondary authentication, an mfaToken will be returned afte
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
@@ -205,12 +205,12 @@ MFA Password
 </ApiMethodParam>
 </template>
 <template slot="response">
-<ApiMethodResponse description="登录成功">
+<ApiMethodResponse description="Login Success">
 
 ```json
 {
   "code": 200,
-  "message": "二次验证成功",
+  "message": "Second verification success",
   "data": {
     "thirdPartyIdentity": {
       "provider": null,
@@ -233,7 +233,7 @@ MFA Password
     "openid": null,
     "nickname": null,
     "company": null,
-    "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png",
+    "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png",
     "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36",
     "device": null,
     "password": "76847018c664261747924735403ee0a5",
@@ -275,10 +275,10 @@ MFA Password
 }
 ```
 
-<ApiMethodResponse httpCode="200" description="口令错误">
+<ApiMethodResponse httpCode="200" description="Wrong code">
 
 ```json
-{ "code": 6001, "message": "安全码错误，请重新输入" }
+{ "code": 6001, "message": "The security code is wrong, please re-enter" }
 ```
 
 </ApiMethodResponse>
@@ -295,13 +295,13 @@ If the user enables the secondary authentication and loses the MFA password, a r
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
 <ApiMethodParam name="recoveryCode" type="string" required>
 
-恢复代码，在绑定 MFA 口令时返回的
+Recovery code, returned when the MFA password is bound
 
 </ApiMethodParam>
 </template>
@@ -309,10 +309,10 @@ If the user enables the secondary authentication and loses the MFA password, a r
 <ApiMethodResponse>
 
 ```json
-登录成功
+Login Success
 {
     "code": 200,
-    "message": "二次验证成功",
+    "message": "Second verification succeeded",
     "data": {
         "thirdPartyIdentity": {
             "provider": null,
@@ -335,7 +335,7 @@ If the user enables the secondary authentication and loses the MFA password, a r
         "openid": null,
         "nickname": null,
         "company": null,
-        "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png",
+        "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png",
         "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36",
         "device": null,
         "password": "76847018c664261747924735403ee0a5",
@@ -379,8 +379,8 @@ If the user enables the secondary authentication and loses the MFA password, a r
     "recoveryCode": "9225-be3f-4646-fa3a-7a32-a098"
 }
 
-口令错误
-{"code":6002,"message":"恢复代码错误，请重新输入"}
+Wrong Code
+{"code":6002,"message":"The recovery code is wrong, please re-enter"}
 ```
 
 </ApiMethodResponse>
@@ -400,14 +400,14 @@ $ http-server
 
 Go to 127.0.0.1:8080 
 
-**You can refer to MFA demo provided by Approw [MFA Demo](https://github.com/authing/mfa-demo)**
+**You can refer to MFA demo provided by Approw [MFA Demo](https://github.com/approw/mfa-demo)**
 
 ## Multi-Factor Authentication (MFA) SDK
 
 ## Request to bind MFA authenticator：
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
@@ -421,7 +421,7 @@ await authenticationClient.mfa.assosicateMfaAuthenticator({
 ## Verify MFA secondary password:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',

@@ -10,11 +10,11 @@ You can enable multi-factor authentication for your applications here:
 
 ## Adaptive MFA:
 
-The multi-factor authentication of Approw is self-adaptive, which means dynamic authentication bases on authentication methods user-owned.
+Approw multi-factor authentication is self-adaptive, which means dynamic authentication bases on authentication methods user-owned.
 
 - If the user binds the phone number and the application has enabled the SMS verification code MFA, the mobile phone number verification code will be used as the MFA authentication method.
 - If the user binds the phone number and the application has enabled the Email MFA, the email verification code will be used as the MFA authentication method.
-- If the user does not bind a phone number or email, the user will be asked to bind a phone number first.
+- If the user does not bind any phone number or email, the user will be asked to bind a phone number first.
 
 ![](./images/Xnip2021-03-04_15-30-05.png)
 

@@ -9,7 +9,7 @@ Using customized databases can satisfy these use cases:
 - **Use your own databases to store user information**: You can use your own database to store user information. In this mode, {{$localeConfig.brandName}} won't store any user information.
 - **Migrate user information to {{$localeConfig.brandName}} with lazy migration**: In **lazy migration** mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the database with customized script and will migrate this user to Approw if authenticate succeeds. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw for one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](./lazy-migration.md).
 
-You can setup customized databases with these methods: Go to the [Approw Console](https://console.authing.cn/console/userpool) then find **Connect IdP** - **Customized Database** to setup customized database connection. More details can be found in document about [how to setup customized database](./configuration/README.md).
+You can setup customized databases with these methods: Go to the [Approw Console](https://console.approw.com/console/userpool) then find **Connect IdP** - **Customized Database** to setup customized database connection. More details can be found in document about [how to setup customized database](./configuration/README.md).
 
 ![](~@imagesZhCn/guides/database-connection/Xnip2021-02-24_16-58-19.png)
 
@@ -37,7 +37,7 @@ The npm module has several ways to connect databases like Client, axios, bcrypt 
 ```javascript
 const isPasswordValid = await bcrypt.compare(password, user.password);
 if (!isPasswordValid) {
-  throw new Error('密码错误');
+  throw new Error('The password is wrong.');
 }
 ```
 

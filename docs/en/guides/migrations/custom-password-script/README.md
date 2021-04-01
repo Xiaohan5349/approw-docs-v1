@@ -4,11 +4,11 @@ meta:
     content: Configure user-defined password function
 ---
 
-# Configure user-defined password function
+# Configure User-defined Password Function
 
 <LastUpdated/>
 
-If you want to customize the password encryption function, please upload the function fragment here（currently only supports Node.js）, please click [here](https://core.authing.cn/faas/template/download) to download the function template（Approw does not store the original password of the user）.
+If you want to customize the password encryption function, please upload the function fragment here（currently only supports Node.js）, please click [here](https://core.authing.cn/faas/template/download) to download the function template（Approw does not save the original password of the user）.
 
 This function is suitable for the following scenarios:
 
@@ -19,17 +19,17 @@ This document introduces how to configure the password encryption function.
 
 ## Configuration steps
 
-In the user pool, click ** Expansion Capabilities** -&gt; **Custom Password Encryption** , as shown in the figure below:
+In the user pool, click ** Expansion Capabilities** -&gt; **Custom Password Encryption** , as shown in the image below:
 
 ![](https://cdn.authing.cn/blog/20200927202818.png)
 
 ::: img-description
-自定义密码加密方法
+User-defined password encryption method
 :::
 
 ### Download template
 
-Click「Download template」on the page to download the Node.js code template, the template code is as follows:
+Click「Download template」on the page to download the Node.js code template. As shown below:
 
 ```js
 var getRawBody = require('raw-body')
@@ -124,7 +124,7 @@ If the developer needs to import a third-party NPM package, please use NPM to in
 NPM is a package management tool for the Node.js ecosystem.
 :::
 
-The following is a code example of the introduction of the `bcrypt` package：
+The following is a code example of the introduction of the `bcrypt` package:
 
 ```haskell
 $ npm install bcrypt
@@ -169,7 +169,7 @@ If you have not imported any package, you can directly upload the template file 
 
 ### Test password encryption function
 
-After the upload is successful, the developer can test the password encryption effect. As shown below, enter the original password in the input box and click「Encryption Test」to see the encrypted password result（if no encryption function is uploaded, the {{$localeConfig.brandName}} default password encryption will be displayed）.
+After the upload is successful, the developer can test the password encryption effect. As shown below, enter the original password in the input box and click「Encryption test」to see the encrypted password result（if no encryption function is uploaded, the {{$localeConfig.brandName}} default password encryption will be displayed）.
 
 ![](https://cdn.authing.cn/blog/image%20%28529%29.png)
 

@@ -135,7 +135,7 @@ First, initialize management SDK:
 > Here we take Node SDK as an example. We also support SDKs in languages such as Python, Java, C#, PHP, etc. For details, please click [here](/reference/).
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",

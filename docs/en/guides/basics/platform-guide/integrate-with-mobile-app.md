@@ -1,8 +1,8 @@
-# Integrate Approw with mobile client (iOS and Andriod)
+# Integrate {{$localeConfig.brandName}} with mobile client (iOS and Andriod)
 
 <LastUpdated/>
 
-Approw provides [Android SDK](/reference/sdk-for-android.md) and [iOS SDK](/reference/sdk-for-swift.md) to help developers quickly integrate Approw in mobile apps. 
+{{$localeConfig.brandName}} provides [Android SDK](/reference/sdk-for-android.md) and [iOS SDK](/reference/sdk-for-swift.md) to help developers quickly integrate {{$localeConfig.brandName}} in mobile apps. 
 
 Let's take the integration method of Android applications as an example.
 
@@ -12,12 +12,12 @@ Let's take the integration method of Android applications as an example.
 
 Jar package download address:
 
-- [https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar](https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar)
-- [https://download.authing.cn/packages/jar/core.jar](https://download.authing.cn/packages/jar/core.jar)
+- [https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar](https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar)
+- [https://download.approw.com/packages/jar/core.jar](https://download.approw.com/packages/jar/core.jar)
 
 Import jar package into lib, as the image shows below:
 
-![](https://cdn.authing.cn/blog/20201218134537.png)
+![](https://cdn.approw.com/blog/20201218134537.png)
 
 2. Configure `build.gradle`
 
@@ -28,9 +28,9 @@ implementation files('libs/core.jar')
 implementation files('libs/commons-codec-1.15-rep.jar')
 ```
 
-3. Install approw Java/Kotlin SDK
+3. Install {{$localeConfig.brandName}} Java/Kotlin SDK
 
-Detailed installation guide: [Approw Java/Kotlin SDK](/reference/sdk-for-java/README.md)
+Detailed installation guide: [{{$localeConfig.brandName}} Java/Kotlin SDK](/reference/sdk-for-java/README.md)
 
 ## Sample of use
 
@@ -42,9 +42,9 @@ Detailed installation guide: [Approw Java/Kotlin SDK](/reference/sdk-for-java/RE
 ```java
 AuthenticationClient client = new AuthenticationClient("YOUR_USERPOOL_ID");
 
-client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new cn.authing.core.http.Callback<cn.authing.core.types.User>() {
+client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new com.approw.core.http.Callback<com.approw.core.types.User>() {
     @Override
-    public void onSuccess(cn.authing.core.types.User user) {
+    public void onSuccess(com.approw.core.types.User user) {
 
     }
 
@@ -68,7 +68,7 @@ authenticationClient.registerByEmail(
         "xxx@.qq.com",
         "123456"
     )
-).enqueue(object : cn.authing.core.http.Callback<User> {
+).enqueue(object : com.approw.core.http.Callback<User> {
     override fun onFailure(error: ErrorInfo?) {
 
     }
@@ -81,7 +81,7 @@ authenticationClient.registerByEmail(
 
 ## User registration and login
 
-Approw Java SDK supports multiple registration and login methods such as mobile SMS verification code, email, username, etc. Take mobile phone number verification code login as an example:
+{{$localeConfig.brandName}} Java SDK supports multiple registration and login methods such as mobile SMS verification code, email, username, etc. Take mobile phone number verification code login as an example:
 
 1. Send SMS verification code:
 
@@ -102,4 +102,4 @@ For detailed document please see: [User registration and login API](/reference/s
 
 ## More help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

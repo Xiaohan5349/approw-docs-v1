@@ -1,18 +1,18 @@
 !!!include(common/init-js-auth-sdk.md)!!!
 
-首先使用用户的 token 初始化 SDK：
+Initialize the SDK with user's token.
 
 ```java
 authenticationClient.setToken("USER_TOKEN");
 ```
 
-设置自定义字段：
+Setup user-defined fields.
 
 ```java
-const list = authenticationClient.setUdv('school', '华中科技大学');
+const list = authenticationClient.setUdv('school', 'Huazhong University of Science and Technology');
 ```
 
-获取该用户最新的自定义数据：
+Get users' latest values of user-defined-fields.
 
 ```java
 const list = authenticationClient.listUdv();

@@ -8,7 +8,7 @@
   bannerTitle: 'Integrate LDAP IdP',
   steps:
     [
-      { title: 'Setup LDAP Server configuration in {{$localeConfig.brandName}}' },
+      { title: 'Setup LDAP Server Configuration in {{$localeConfig.brandName}}' },
       {
         title: 'Create the Application in {{$localeConfig.brandName}}'
       },

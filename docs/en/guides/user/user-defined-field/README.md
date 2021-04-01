@@ -1,9 +1,9 @@
-# Manage user-defined fields
+# Manage User-defined fields
 
 <LastUpdated/>
 
 
-User-defined fields are additional fields that can be added to user objects in addition to the [basic user fields](/guides/user/user-profile.md). Developers can store **a small amount of** business-related data by setting custom fields.
+User-defined fields are additional fields that can be added to user objects in addition to the [basic user fields](/docs/en/guides/user/user-profile.md). Developers can store **a small amount of** business-related data by setting custom fields.
 
 ## Configure user-defined fields
 
@@ -35,7 +35,7 @@ After the user clicks to register, it will be redirected to the following regist
 
 ![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-46-26.png)
 
-After the user has successfully registered, you can see the custom value that the user just entered on the user details page:
+After the user successfully registered, you can see the custom value that the user just entered on the user details page:
 
 ![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-48-29.png)
 
@@ -43,4 +43,4 @@ After the user has successfully registered, you can see the custom value that th
 
 !!!include(common/sdk-list.md)!!!
 
-<StackSelector snippet="udf" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp', 'swift']"/>
+<StackSelector snippet="udf" selectLabel="select your coding language:" :order="['java', 'javascript', 'python', 'csharp', 'swift']"/>

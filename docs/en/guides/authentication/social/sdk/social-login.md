@@ -5,7 +5,7 @@ Taking GitHub social login as an example, only the following lines of code need 
 - After the user successfully logs in, you can get the user information in the `onSuccess` callback function; if the login fails, you can get the error code and error information in the `onError` callback function. For complete error codes, please see: Error Code List.
 
 ```javascript
-import { AuthenticationClient } from "authing-js-sdk";
+import { AuthenticationClient } from "approw-js-sdk";
 
 const authenticationClient = new AuthenticationClient({
   appId: "YOUR_APP_ID",

@@ -12,7 +12,7 @@ Statistics also prove the effectiveness of MFA. At the end of last year, LastPas
 
 ![](./images/banner-multiple.png)
 
-## The Core Functions of Approw MFA
+## The core functions of Approw MFA
 
 - Approw guarantees business security through multiple authentication methods;
 - [Customize the authentication process](/guides/pipeline/), which is simple with one-touch open;
@@ -23,17 +23,17 @@ Statistics also prove the effectiveness of MFA. At the end of last year, LastPas
 - [User data management, operation log query](/guides/audit/);
 - Provide [SDK and open interfaces](/reference/) to help developers quickly call related capabilities(functions?) and build custom user management pages.
 
-## The Methods of MFA
+## The methods of MFA
 
-Approw provides multiple authentication methods to improve enterprises identity security.
+Approw provides multiple authentication methods to improve enterprise identity security.
 
-### Phone Token
+### Phone token
 
 With strong dynamic OTP password verification, it helps protect account security and avoid malicious attacks.
 
 <img src="./images/mfa-solution-token.png" height=400 style="display:block;margin: 0 auto;">
 
-### SMS/Email Verification Code
+### SMS/Email verification code
 
 - Easy to use
 - Convenient
@@ -42,7 +42,7 @@ With strong dynamic OTP password verification, it helps protect account security
 <img src="./images/mfa-mode-email.png" height=400 style="display:block;margin: 0 auto;">
 
 
-### Compatible with Third-party Authenticators
+### Compatible with third-party authenticators
 
 Compatible with third-party authenticators, including but not limited to:
 
@@ -81,7 +81,7 @@ Provides an out-of-the-box SDK to help end-to-end developers to quickly implemen
 - Built-in multiple MFA terminal components, such as OTP, verification code, fingerprint unlocking, facial recognition, graphic lock, etc.;
 - Only need to call a method to start the MFA certification component, get the certification result, and complete the certification process.
 
-### Report Customized Data
+### Report customized data
 
 Report customized data, participate in the process and initiate decision-making, and cover more complex and refined scenarios.
 
@@ -98,13 +98,13 @@ The trigger conditions of MFA are based on custom strategies, and the strategy s
 - Completed: The strategy is described based on function expressions, and developers can obtain enough information (including but not limited to user information, equipment, network, location, behavior, custom report data, etc.) to think strategy and logic;
 - Flexible: Judgment can be made based on multiple methods at the same time.
 
-### Simple Configuration
+### Simple configuration
 
 Based on a friendly user interface, quickly configure multi-factor authentication for specific applications.
 
 - One-click turn on/off multi-factor authentication;
 - One-click to enable the default security policy, without having to understand the policy configuration, can also greatly improve the security of the application;
-- Dozens of default, important and commonly used strategy to fit conditions, which will take effect upon selection and can be used by non-engineers.
+- Dozens of default, important and commonly used strategies to fit conditions, which will take effect upon selection and can be used by non-engineers.
 
 ## Adaptive MFA
 
@@ -113,8 +113,8 @@ Compared with traditional MFA, "adaptive" MFA can choose to apply different MFA 
 When the user is in the authentication process, the "adaptive" MFA generates multiple "key elements" for the currently logged-in user:
 
 - User attributes: such as user name, password, user identity and other attributes and information of the user;
-- Location awareness: Location awareness is divided into virtual location (IP address) and physical location (country, region, etc.);
-- Request source: Judge the source of the current user's request, such as: hardware device information, the user's current system, etc.;
+- Location awareness: Location awareness is divided into the virtual location (IP address) and physical location (country, region, etc.);
+- Request source: Judge the source of the current user's request, such as hardware device information, the user's current system, etc.;
 - Biometrics: Use the user's biological information for identification, such as fingerprint information, face recognition, etc.;
 - Behavior analysis: A series of user behaviors such as whether it comes from a frequently used login location, whether the wrong password is entered multiple times, and the user's previous operation records.
 

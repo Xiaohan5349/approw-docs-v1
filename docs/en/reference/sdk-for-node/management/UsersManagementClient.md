@@ -2,14 +2,14 @@
 
 <LastUpdated/>
 
-> Approw User ManagementClient
+> {{$localeConfig.brandName}} User ManagementClient
 
 This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
-Please use this client as instructed below:
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
   secret: "YOUR_USERPOOL_SECRET",
@@ -43,7 +43,7 @@ UsersManagementClient().create(userInfo)
 - `userInfo.photo` \<string\> avatar
 - `userInfo.company` \<string\> company
 - `userInfo.browser` \<string\> browser
-- `userInfo.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to Approw.
+- `userInfo.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
 - `userInfo.lastLogin` \<string\> Last login time, a time string conforming to the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
 - `userInfo.lastIP` \<string\> The last login (or other activity) IP of the user.
 - `userInfo.signedUp` \<string\> Registration time, a time string in ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
@@ -117,7 +117,7 @@ UsersManagementClient \*().update(id, updates)
 - `updates.photo` \<string\> avatar
 - `updates.company` \<string\> comapny
 - `updates.browser` \<string\> browser
-- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to Approw.
+- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
 - `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
 - `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
 - `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
@@ -164,7 +164,7 @@ const user = await managementClient.users.update("USERID", {
 
 - `Promise<User>`
 
-## 获取用户详情
+## Get user details
 
 UsersManagementClient().detail(userId)
 

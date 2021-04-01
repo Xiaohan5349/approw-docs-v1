@@ -13,11 +13,11 @@ $ npm install @approw/native-js-ui-components --save
 Or use `CDN` to import:
 
 ```html
-// JavaScript 代码
+// JavaScript code
 <script src="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components"></script>
 
 ...
-// CSS 文件
+// CSS file
 <link href="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components/lib/index.min.css" rel="stylesheet"></link>
 ```
 

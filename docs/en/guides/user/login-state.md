@@ -6,6 +6,6 @@ You can check all the users who are currently online in the application and thei
 
 ![](./images/Xnip2021-02-26_11-36-22.png)
 
-You can also click **Force offline** in the upper right corner of the **user details**, this operation will make the user log out of all applications in the user pool.
+You can also click **Force offline** in the upper right corner of the **user details**, which will make the user log out of all applications in the user pool.
 
 ![](./images/Xnip2021-02-26_11-38-03.png)

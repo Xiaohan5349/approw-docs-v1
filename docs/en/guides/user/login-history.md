@@ -4,7 +4,7 @@ meta:
     content: Check user's login history
 ---
 
-# Check user's login history
+# Check User's Login History
 
 <LastUpdated/>
 

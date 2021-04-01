@@ -11,7 +11,7 @@ This operation should be done in the browser. You can set a  button or Logo link
 
 You need to stitch the following links in the following format, YOUR_APP_ID is your application ID (it is not the user pool ID):
 
-`https://core.authing.cn/connection/social/<IDENTIFIER>?app_id=<YOUR_APP_ID>`
+`https://core.approw.com/connection/social/<IDENTIFIER>?app_id=<YOUR_APP_ID>`
 
 ### Process {$localeConfig.brandName}} callback request
 
@@ -19,8 +19,7 @@ After the user agrees to the authorization in the previous step, it will redirec
 
 | Parameter                  | Description                                      | Disadvantages                                                | Recommend   |
 |------------------------|-------------------------------------------|-----------------------------------------------------|------------|
-| code                   | 200: success
-other: failure |                                                     | Yes   |
+| code                   | 200: success other: failure |                                                     | Yes   |
 | message                | Success or error message                            |                                                     | Yes   |
 | data                   | userInfo, this parameter is not returned if code is not 200   | Cannot be embedded in your app                                | Yes   |
 

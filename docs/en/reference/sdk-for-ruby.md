@@ -14,7 +14,7 @@ meta:
 ## Install
 
 ```sh
-gem install authing
+gem install approw
 ```
 ## How to use
 
@@ -23,7 +23,7 @@ gem install authing
 > Initialize by token
 
 ```ruby
-authing = Authing::Client.new({
+approw = Approw::Client.new({
   userPoolId: "<Your userPoolId>",
   token: "<Your Token>"
 })
@@ -31,7 +31,7 @@ authing = Authing::Client.new({
 > Initialize by UserPoolId + Secret
 
 ```ruby
-authing = Authing::Client.new({
+approw = Approw::Client.new({
   userPoolId: "<Your userPoolId>",
   secret: "<Your Token>"
 })
@@ -40,10 +40,10 @@ authing = Authing::Client.new({
 > Initialize by user login information
 
 ```ruby
-authing = Authing::Client.new({userPoolId: "<Your userPoolId>"})
-res = authing.register({
+approw = Approw::Client.new({userPoolId: "<Your userPoolId>"})
+res = approw.register({
   userInfo: {
-    email: "c11j@authing.cn",
+    email: "c11j@approw.com",
     password: "username",
     username: "233",
   },
@@ -56,32 +56,32 @@ res = authing.register({
 
 ⚠️ The current version only supports the {{$localeConfig.brandName}} Graphql interface, and Restful needs additional support. 
   
-More interfaces: [{{$localeConfig.brandName}} Graphql](https://core.authing.cn/graphql/v2)  
+More interfaces: [{{$localeConfig.brandName}} Graphql](https://core.approw.com/graphql/v2)  
 
 #### Part of `Demo`
 
 > Login
 ```ruby
-authing.login({
-  email: "authing@tmp.cn",
-  password: "authing",
-  username: "authing",
+approw.login({
+  email: "approw@tmp.cn",
+  password: "approw",
+  username: "approw",
 })
 ```
 > Register
 ```ruby
-res = authing.register({
+res = approw.register({
   userInfo: {
-    email: "authing@tmp.cn",
-    password: "authing",
-    username: "authing",
+    email: "approw@tmp.cn",
+    password: "approw",
+    username: "approw",
   }
 })
 ```
 
 > Create user roles:
 ```ruby
-res = authing.createRBACRole({
+res = approw.createRBACRole({
   input: {
     userPoolId: "5f0c2597061ec4de51237379",
     name: "tmp",

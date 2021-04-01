@@ -8,7 +8,9 @@ This document will introduce how to quickly implement a complete user authentica
 
 ## Create a user pool
 
-[User pool](/concepts/user-pool.md)is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools. User pool is the smallest unit of isolation of your user system. You can divide users in different scenarios into different user pools.There can be users and applications under each user pool.The permissions, applications, and organizations between different user pools are completely isolated.
+[User pool](/concepts/user-pool.md)is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools.  There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
+
+If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [console](https://console.approw.com). Follow the instructions below to create your first user pool:
 
 <img src="~@imagesZhCn/guides/basics/Xnip2021-02-27_14-58-25.png" alt="drawing"/>
 
@@ -42,7 +44,7 @@ Go back to the login page, enter the email and password of the account you just 
 
 In actual applications, you need to change the **callback address** to your **actual business address**, which needs to be a **back-end address**.
 
-![](https://files.authing.co/authing-console/console-callback-address.png)
+![](https://files.approw.co/approw-console/console-callback-address.png)
 
 After obtaining the `code`, you need to use the `code` in exchange for user information. The Node.js sample code is as follows:
 
@@ -51,7 +53,7 @@ const axios = require("axios");
 const qs = require("querystring");
 const code2tokenResponse = await axios.post(
   // modify this to your application name
-  "https:/sample-app.authing.cn/oidc/token",
+  "https:/sample-app.approw.com/oidc/token",
   qs.stringify({
     code,
     client_id: "APP_ID",
@@ -111,7 +113,7 @@ You can use the `access_token` acquired in the previous step to get the user's d
 ```javascript
 const axios = require("axios");
 const token2UserInfoResponse = await axios.get(
-  "https://sample-app.authing.cn/oidc/me?access_token=" + access_token
+  "https://sample-app.approw.com/oidc/me?access_token=" + access_token
 );
 console.log(token2UserInfoResponse.data);
 ```
@@ -150,20 +152,20 @@ Approw provides another simple method for front-end to obtain user information w
 Use NPM to install:
 
 ```
-$ npm install @authing/sso --save
+$ npm install @approw/sso --save
 ```
 
 useCDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/Approw.umd.min.js"></script>
 ```
 
 2. Initialize SDK
 
 ```javascript
-const authing = new AuthingSSO({
-  appId: "AUTHING_APP_ID",
+const approw = new Approw({
+  appId: "APPROW_APP_ID",
   appDomain: "sample-app",
 });
 ```
@@ -171,7 +173,7 @@ const authing = new AuthingSSO({
 3. Call trackSession to get user login status
 
 ```javascript
-const res = await authing.trackSession();
+const res = await approw.trackSession();
 if (res.session) {
   // logged in
 } else {

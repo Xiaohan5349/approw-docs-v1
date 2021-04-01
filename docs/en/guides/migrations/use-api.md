@@ -1,8 +1,8 @@
-# Import users using SDK
+# Import Users Using SDK
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Go, Ruby, etc.：
+{{$localeConfig.brandName}} supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Go, Ruby, etc.
 
 - [Java/Kotlin](/reference/sdk-for-java/)
 - [JavaScript/Node.js](/reference/sdk-for-node/)
@@ -16,11 +16,11 @@ This article uses Node.js as an example of how to write a script to import users
 
 ## Step 1: Use a custom password function (optional)
 
-If the password field in your user data table is in plain text, you can skip this step. If it is in cipher text, you need to go to the **basic configuration** -&gt; **password management** -&gt; **user-defined  password encryption method** to enable the option and write functions for encrypting and verifying passwords. For details: [Writing custom password encryption functions](./custom-password-script/README.md).
+If the password field in your user data table is in plain text, you can skip this step. If it is in cipher text, you need to go to the **basic configuration** -&gt; **password management** -&gt; **user-defined password encryption method** to enable the option and write functions for encrypting and verifying passwords. For details: [Writing custom password encryption functions](./custom-password-script/README.md).
 
 ## Step 2: Export your user data
 
-Please export your user data to JSON format, the content is an array. Each element is an object. One of the elements corresponds to a piece of information about the user. As shown in the figure below:
+Please export your user data to JSON format, the content is an array. Each element is an object. One of the elements corresponds to a piece of information about the user. For eaxmple:
 
 ```json
 [
@@ -138,5 +138,5 @@ The code can be viewed on Github: [users-migration](https://github.com/Authing/u
 
 ## Help
 
-If you have any questions, please [Contact us](https://gitter.im/authing-chat/community)，Feel free to talk.
+If you have any questions, please [contact us](https://gitter.im/authing-chat/community)，Feel free to talk.
 

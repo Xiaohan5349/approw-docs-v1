@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-The Approw login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
+The {{$localeConfig.brandName}} login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
 
 Guard can be integrated into your Native JavaScript project. You can use this component to quickly implement the login authentication process.
 
@@ -71,7 +71,23 @@ guard.on("login", (user) => {
 
 <details><summary><b>What should we do after understanding user information?</b></summary>
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.
+
 
 </details>
 
@@ -91,7 +107,12 @@ var guard = new approwNativeJsUIComponents.approwGuard("APPROW_APP_ID", {
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+| Social login                         | Scenario       | Manual                                                                                                         |
+| ---------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Github                             | PC website        | <router-link to="/connections/github/" target="_blank">document</router-link>                                |
+| Google                             | PC website        | <router-link to="/connections/google/" target="_blank">document</router-link>                                |
+| Sign in with Apple（Web）       | PC website        | <router-link to="/connections/apple-web/" target="_blank">document</router-link>                             |
+| Sign in with Apple（mobile）       | mobile APP       | <router-link to="/connections/apple/" target="_blank">document</router-link>                                 |
 
 </details>
 
@@ -121,7 +142,7 @@ The Guard instance provides three methods:
 
 ## Complete parameter
 
-The Approw login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
 
 ## Event list
 
@@ -149,7 +170,7 @@ The Approw login component (Guard) provides many advanced configurations, such a
 
 ## Privatization deployment
 
-**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized Approw service(**without protocol header and Path**).If you are not sure, you can contact the Approw IDaaS service administrator.
+**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service(**without protocol header and Path**).If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```html
 <script>

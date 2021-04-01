@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-The Approw login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
+The {{$localeConfig.brandName}} login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
 
 Guard can be integrated into your Vue.js projects. You can use this component to quickly implement the login authentication process.
 
@@ -12,11 +12,11 @@ Guard can be integrated into your Vue.js projects. You can use this component to
 ### Installation
 
 ```bash
-$ yarn add @authing/vue-ui-components
+$ yarn add @approw/vue-ui-components
 
 # OR
 
-$ npm install @authing/vue-ui-components --save
+$ npm install @approw/vue-ui-components --save
 ```
 
 ### Initialization
@@ -25,21 +25,21 @@ Introduce `@approw/vue-ui-components` to the Vue.js project and initialize it.
 
 ```html
 <template>
-<AuthingGuard :appId="appId" />
+<ApprowGuard :appId="appId" />
 </template>
 
 
 <script>
-import { AuthingGuard } from "@authing/vue-ui-components"
-import "@authing/vue-ui-components/lib/index.min.css"
+import { ApprowGuard } from "@approw/vue-ui-components"
+import "@approw/vue-ui-components/lib/index.min.css"
 
 export default {
   components: {
-    AuthingGuard
+    ApprowGuard
   },
   data() {
     return {
-      appId: "AUTHING\_APP\_ID",
+      appId: "APPROW\_APP\_ID",
     };
   },
 };
@@ -51,18 +51,18 @@ export default {
 #### Import by CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/vue-ui-components"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/vue-ui-components"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/@authing/vue-ui-components/lib/index.min.css" rel="stylesheet"></link>
+<link href="https://cdn.jsdelivr.net/npm/@approw/vue-ui-components/lib/index.min.css" rel="stylesheet"></link>
 ```
 
 #### Initialize in Script code block
 
 ```vue
 <script>
-const appId = "AUTHING\_APP\_ID";
+const appId = "APPROW\_APP\_ID";
 const config = {
-  logo: "https://usercontents.authing.cn/client/logo@2.png",
+  logo: "https://usercontents.approw.com/client/logo@2.png",
   title: "{{$localeConfig.brandName}}",
   socialConnections: ["github"],
 };
@@ -70,7 +70,7 @@ const config = {
 const app = new Vue({
   el: "#app",
   render: (h) =>
-    h(AuthingVueUIComponents.AuthingGuard, {
+    h(ApprowVueUIComponents.ApprowGuard, {
       props: {
         appId,
         config,
@@ -88,20 +88,20 @@ const app = new Vue({
 
 ```vue
 <template>
-  <AuthingGuard :appId="appId" @login="handleLogin" />
+  <ApprowGuard :appId="appId" @login="handleLogin" />
 </template>
 
 <script>
-import { AuthingGuard } from "@authing/vue-ui-components";
-import "@authing/vue-ui-components/lib/index.min.css";
+import { ApprowGuard } from "@approw/vue-ui-components";
+import "@approw/vue-ui-components/lib/index.min.css";
 
 export default {
   components: {
-    AuthingGuard,
+    ApprowGuard,
   },
   data() {
     return {
-      appId: "AUTHING\_APP\_ID",
+      appId: "APPROW\_APP\_ID",
     };
   },
   methods: {
@@ -115,7 +115,23 @@ export default {
 
 <details><summary><b>What should we do after understanding user information?</b></summary>
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.
+
 
 </details>
 
@@ -125,20 +141,20 @@ Pass in the `socialConnections` list in the initialization parameter `config` to
 
 ```vue
 <template>
-  <AuthingGuard :appId="appId" :config="config"  />
+  <approwGuard :appId="appId" :config="config"  />
 </template>
 
 <script>
-import { AuthingGuard } from "@authing/vue-ui-components";
-import "@authing/vue-ui-components/lib/index.min.css";
+import { approwGuard } from "@approw/vue-ui-components";
+import "@approw/vue-ui-components/lib/index.min.css";
 
 export default {
   components: {
-    AuthingGuard,
+    ApprowGuard,
   },
   data() {
     return {
-      appId: "AUTHING\_APP\_ID",
+      appId: "APPROW\_APP\_ID",
       config: {
         socialConnections: ['github']
       }
@@ -157,7 +173,12 @@ export default {
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+| Social login                         | Scenario       | Manual                                                                                                         |
+| ---------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Github                             | PC website        | <router-link to="/connections/github/" target="_blank">document</router-link>                                |
+| Google                             | PC website        | <router-link to="/connections/google/" target="_blank">document</router-link>                                |
+| Sign in with Apple（Web）       | PC website        | <router-link to="/connections/apple-web/" target="_blank">document</router-link>                             |
+| Sign in with Apple（mobile）       | mobile APP       | <router-link to="/connections/apple/" target="_blank">document</router-link>                                 |
 
 </details>
 
@@ -166,7 +187,7 @@ export default {
 1. Initialize the [AuthenticationClient](/reference/sdk-for-node/#使用认证模块)in the project entry file.
 
 ```js
-import { initAuthClient } from '@authing/vue-ui-components'
+import { initAuthClient } from '@approw/vue-ui-components'
 
 initAuthClient({
   appId: 'YOUR_APP_ID',
@@ -181,11 +202,11 @@ initAuthClient({
 </template>
 
 <script>
-import { getAuthClient } from "@authing/vue-ui-components";
+import { getAuthClient } from "@approw/vue-ui-components";
 
 export default {
   components: {
-    AuthingGuard,
+    ApprowGuard,
   },
   methods: {
     handleLogout() {
@@ -202,21 +223,21 @@ To use Guard for single sign-on, you need to set `isSSO` to `true` during initia
 
 ```html
 <template>
-<AuthingGuard :appId="appId" :config="config"/>
+<ApprowGuard :appId="appId" :config="config"/>
 </template>
 
 
 <script>
-import { AuthingGuard } from "@authing/vue-ui-components"
-import "@authing/vue-ui-components/lib/index.min.css"
+import { ApprowGuard } from "@approw/vue-ui-components"
+import "@approw/vue-ui-components/lib/index.min.css"
 
 export default {
   components: {
-    AuthingGuard
+    ApprowGuard
   },
   data() {
     return {
-      appId: "AUTHING\_APP\_ID",
+      appId: "APPROW\_APP\_ID",
       config: {
         isSSO: true
       }
@@ -226,14 +247,14 @@ export default {
 </script>
 ```
 
-## Export `authing-js-sdk`
+## Export `approw-js-sdk`
 
 The Guard components are packaged based on the [approw JavaScript SDK](../sdk-for-node/). When you need to perform some more advanced operations (such as managing user-defined data, modifying user information, logging out):
 
 1. Call `initAuthClient` to initialize [AuthenticationClient](/reference/sdk-for-node/authentication/AuthenticationClient). Calling this function multiple times will only initialize it once.
 
 ```js
-import { initAuthClient } from "@authing/vue-ui-components";
+import { initAuthClient } from "@approw/vue-ui-components";
 
 initAuthClient({
   appId: "YOUR_APP_ID",
@@ -243,7 +264,7 @@ initAuthClient({
 2. Then use `getAuthClient` to get the `AuthenticationClient` instance.
 
 ```js
-import { getAuthClient } from "@authing/vue-ui-components";
+import { getAuthClient } from "@approw/vue-ui-components";
 
 const authClient = getAuthClient();
 ```
@@ -258,7 +279,7 @@ authClient.getCurrentUser().then((user) => console.log(user));
 
 ## Complete parameter
 
-The Approw login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
 
 ## Event list
 
@@ -289,27 +310,27 @@ Note that in React, event listeners should be named with small camels, such as: 
 
 ## Privatization deployment
 
-**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized Approw service(**without protocol header and Path**).If you are not sure, you can contact the Approw IDaaS service administrator.
+**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service(**without protocol header and Path**).If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```html
 <template>
-<AuthingGuard :appId="appId" :config="config" />
+<ApprowGuard :appId="appId" :config="config" />
 </template>
 
 
 <script>
-import { AuthingGuard } from "@authing/vue-ui-components"
-import "@authing/vue-ui-components/lib/index.min.css"
+import { ApprowGuard } from "@approw/vue-ui-components"
+import "@approw/vue-ui-components/lib/index.min.css"
 
 export default {
   components: {
-    AuthingGuard
+    ApprowGuard
   },
   data() {
     return {
-      appId: "AUTHING\_APP\_ID",
+      appId: "APPROW\_APP\_ID",
       config: {
-        apiHost: "https://core.you-authing-service.com"
+        apiHost: "https://core.you-approw-service.com"
       }
     };
   },
@@ -323,11 +344,11 @@ export default {
 
 <iframe src="https://codesandbox.io/embed/vibrant-beaver-s3gct?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="authing-vue-guard"
+     title="approw-vue-guard"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
 ## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

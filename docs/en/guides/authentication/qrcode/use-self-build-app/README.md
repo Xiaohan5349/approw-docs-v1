@@ -6,16 +6,16 @@ With the popularization of mobile Internet, mobile phones have become a necessit
 
 To implement the use of self-built mobile applications to scan QR codes to log in to website applications, it can be roughly divided into the following steps:
 
-- Generate a QR code on the Web and start polling the latest scanning status;
-- In the mobile APP, the user scans the code and agrees to authorize user information;
-- The web terminal receives the user information of the code scanning user, and the login is successful;
+1, Generate a QR code on the Web and start polling the latest scanning status;
+2, In the mobile APP, the user scans the code and agrees to authorize user information;
+3, The web terminal receives the user information of the code scanning user, and the login is successful;
 
 ## Generate a QR code on the web and poll the scanning status
 
 On the web side, we recommend using the [JavaScript SDK](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md) provided by {{$localeConfig.brandName}}, which provides a one-click interface for generating a QR code, polling for the latest status, and obtaining user information for callbacks. Developers only need to specify the `onSuccess` callback function:
 
 ```js
-import { AuthenticationClient } from "authing-js-sdk"
+import { AuthenticationClient } from "approw-js-sdk"
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
@@ -30,9 +30,9 @@ authenticationClient.qrcode.startScanning("qrcode", {
 
 After running, it will automatically generate a QR code for APP scanning login:
 
-<img src="https://cdn.authing.cn/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
 
-After the code is scanned successfully, {{$localeConfig.brandName}} will call back the `onSuccess` function passed in by the developer. The callback parameters include `userInfo` and `ticket`, and the `ticket` can be used to [get user information](./full-api-list.md#使用-ticket-换取用户信息).
+After the code is scanned successfully, {{$localeConfig.brandName}} will call back the `onSuccess` function passed in by the developer. The callback parameters include `userInfo` and `ticket`, and the `ticket` can be used to [get user information](./full-api-list.md#To-get-user-information-by-ticket).
 
 If you want to customize the UI or want more customization capabilities, you can view the [complete API list](./full-api-list.md) or [use other SDK methods](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md).
 
@@ -59,7 +59,7 @@ The meanings of the fields are as follows:
 - expireAt: the expiration time of the QR code.
 - customData: User-defined fields. To learn how to add custom data, please see the complete interface list page.
 
-> For how to scan and parse the QR code in IOS, you can view [this article](https://github.com/darkjoin/Learning/wiki/使用AVFoundation读取二维码).
+> For how to scan and parse the QR code in IOS, you can view [this article](https://github.com/darkjoin/Learning/wiki/use AVFoundation to get QR code).
 
 To implement APP scanning and logging in to the Web, the APP user is required to be in the login state (it is of course possible), and the end user's token is required when calling the relevant interface. A total of three interfaces are required for the mobile terminal:
 - Confirm code scanning
@@ -70,12 +70,12 @@ To implement APP scanning and logging in to the Web, the APP user is required to
 
 Let's take Objective-C as an example to implement consent to authorize login:
 
-- The api address is: [http://core.authing.cn/api/v2/qrcode/confirm](http://core.authing.cn/api/v2/qrcode/confirm)
+- The api address is: [http://core.approw.com/api/v2/qrcode/confirm](http://core.approw.com/api/v2/qrcode/confirm)
 - Line 9 puts the user login credentials on the request header.
 
 ```objectivec
 - (void) ConfirmAuthorization:(NSString *) random{
-    NSURL * api =[NSURL URLWithString:@"http://core.authing.cn/api/v2/qrcode/confirm"];
+    NSURL * api =[NSURL URLWithString:@"http://core.approw.com/api/v2/qrcode/confirm"];
     NSDictionary *bodyDict = @{
         @"random": random,
     };
@@ -118,7 +118,7 @@ Let's take Objective-C as an example to implement consent to authorize login:
 
 After the mobile terminal confirms the authorization, you will see the relevant prompt on the web.
 
-<img src="https://cdn.authing.cn/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
 
 
 At this time, the entire login process is complete, and developers can use the ticket to get user information.
@@ -132,4 +132,19 @@ const user = await authenticationClient.qrcode.exchangeUserInfo('TICKET')
 
 ## Then
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.

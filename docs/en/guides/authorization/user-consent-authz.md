@@ -4,12 +4,12 @@
 
 Assume your company is responsible for social communication business, and now another company wants to develop a tool for organizing and exporting chat records by calling your business API, and also has signed a contract with your company. Now that you want to authorize user information to this company safely, what you expect as follows:
 
-11. API are only open to partner companies.
+1. APIs are only open to partner companies.
 2. Different partners have different access rights, and the business APIs they can access are also different.
 3. The partner company must **obtain the user's consent** before obtaining its own company's user data from the business API.
-4. If the cooperation is finished in the future, or any changes occur, the certain data permissions can be withdrawn or disabled completely.
+4. If the cooperation is finished in the future, or any changes occur, certain data permissions can be withdrawn or disabled completely.
 
-## Privilege Management and Distribution
+## Privilege management and distribution
 
 Firstly, create two users in Approw, which are user1@123.com and user2@123.com respectively
 
@@ -44,7 +44,7 @@ Then we create a **programmable access account**, which will be handed over to t
 
 If the programmable access account is deleted, the caller will lose the ability to obtain user authorization.
 
-### AccessToken Expiration Time
+### AccessToken expiration time
 
 When you create a programmable access account, you need to specify the AccessToken expiration time. Approw uses the RS256 signature algorithm to sign when issuing the AccessToken to ensure that the AccessToken will not be tampered with.
 > Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/concepts/jwt-token.md).
@@ -60,10 +60,10 @@ Next, we add resource permissions for users. On the **resource authorization** c
 
 ![](~@imagesZhCn/guides/authorization/user-consent-authz-2.png)
 
-Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally click OK. 
+Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally, click OK. 
 At this point, the administrator's privileges management operations are all finished.
 
-## Obtain a AccessToken with Permission
+## Obtain an AccessToken with permission
 
 The caller needs to obtain resource authorization from the resource party through the **OIDC authorization code mode**. The user of the resource party will participate in the authorization process. After the user's authorization, Approw will issue an AccessToken with the authority scope and the subject is the resource holder. First, you need to splice the **authorization link**:
 
@@ -71,9 +71,9 @@ The caller needs to obtain resource authorization from the resource party throug
 https://{应用域名}.authing.cn/oidc/auth?client_id={应用ID}&response_type=code&scope=openid email message&redirect_uri={调用方业务地址}&state={随机字符串}
 ```
 
-The parameter of scope can be filled with the **resources** and the **corresponding operations** defined in the above steps . The specific format is as follows.
+The parameter of scope can be filled with the **resources** and the **corresponding operations** defined in the above steps. The specific format is as follows.
 
-### Scope Specification for Permission Term
+### Scope specification for permission term
 
 Approw's scope permission terms are **separated by spaces**, and the format of each item is `resource identifier: resource operation`.
 
@@ -115,7 +115,7 @@ You can see that the user's AccessToken has the message permission scope. The **
 
 ![](~@imagesZhCn/guides/authorization/user-consent-authz-6.png)
 
-## Add Authentication Interceptor
+## Add authentication interceptor
 
 After Approw defines the API, you need to add an **API authentication interceptor** to your actual business API interface. For protected resources, only visitors who carry a legal AccessToken and have the required permissions are allowed. The code example is as follows:
 

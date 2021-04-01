@@ -1,10 +1,10 @@
 ---
 meta:
   - name: description
-    content: Use environment variables in pipeline
+    content: Use Environment Variables in Pipeline
 ---
 
-# Use environment variables in pipeline
+# Use Environment Variables in Pipeline
 
 ::: hint-success
 The environment variables in the Pipeline function are consistent with the concept of environment variables in the operating system, and developers can get them through the global variable env. Environment variables are visible to all Pipelien functions in the application pool.
@@ -20,7 +20,7 @@ After entering Key and Value, click Add:
 
 ![](https://cdn.authing.cn/blog/20200927200707.png)
 
-We set an environment variable whose Key is `LARK_WEBHOOK`，and the corresponding value can be obtained through `env.LARK_WEBHOOK` in the Pipeline function.
+We set an environment variable whose Key is `LARK_WEBHOOK`, and the corresponding value can be obtained through `env.LARK_WEBHOOK` in the Pipeline function.
 
 ```js
 async function pipe(user, context, callback) {

@@ -20,9 +20,9 @@ UdfManagementClient().set(targetType, key, dataType, label)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> user defined field target type.
-- `key` \<string\> field key
-- `dataType` \<UdfDataType\> data type. It currently supports five data types: string, number, datetime, boolean and object. 
+- `targetType` \<UdfTargetType\> User defined field target type.
+- `key` \<string\> Field key
+- `dataType` \<UdfDataType\> Data type. It currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT. 
 - `label` \<string\> Field Label, which commonly is a Human Readable string.
 
 #### Example
@@ -39,8 +39,8 @@ UdfManagementClient().remove(targetType, key)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> user defined field target type.
-- `key` \<string\> field key
+- `targetType` \<UdfTargetType\> User defined field target type.
+- `key` \<string\> Field key
 
 #### Example
 
@@ -56,7 +56,7 @@ UdfManagementClient().list(targetType)
 
 #### Parameter
 
-- `targetType` \<UdfTargetType\> user defined field target type.
+- `targetType` \<UdfTargetType\> User defined field target type.
 
 #### Example
 

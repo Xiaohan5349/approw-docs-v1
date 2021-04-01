@@ -1,4 +1,4 @@
-# Open organizational data to the public using the LDAP protocol
+# Open Organizational Data to The Public Using The LDAP Protocol
 
 <LastUpdated/>
 
@@ -8,7 +8,7 @@ On the **User Management** - **LDAP** page of the console, open the LDAP user di
 
 ![](~@imagesZhCn/guides/org/Xnip2021-02-25_14-54-20.png)
 
-And check the `department` field in the **extended information field**:
+Check the `department` field in the **Extended information field**:
 
 ![](~@imagesZhCn/guides/org/Xnip2021-02-25_14-53-35.png)
 

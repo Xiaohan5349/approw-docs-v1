@@ -1,6 +1,6 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 [UsersManagementClient](/reference/sdk-for-java/management/UsersManagementClient.md) 的 `create` 方法创建用户：
+Use `create` function in [UsersManagementClient](/docs/en/reference/sdk-for-java/management/UsersManagementClient.md) to create a new user:
 
 ```java
 String email = "test@example.com";

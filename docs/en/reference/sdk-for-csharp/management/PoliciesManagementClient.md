@@ -20,7 +20,7 @@ PoliciesManagementClient().create(code，statement)
 
 - `code` \<string\> Unique id of the policy
 - `statements` \<PolicyStatement[]\>
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -54,7 +54,7 @@ PoliciesManagementClient().deleteMany(codeList)
 
 #### Parameter
 
-- `codeList` \<string\> Unique id of the policy list
+- `codeList` \<string\> Unique id of the policy list.
 
 #### Example
 
@@ -72,7 +72,7 @@ PoliciesManagementClient().update(code, updates)
 
 - `code` \<string\> Unique id of the policy
 - `updates` \<Object\>
-- `updates.description` \<string\> description
+- `updates.description` \<string\> Description
 - `updates.statements` \<PolicyStatement[]\>
 - `updates.newCode` \<string\> The new unique id. If it is passed in, it must be unique in the user pool.
 
@@ -147,7 +147,7 @@ PoliciesManagementClient().addAssignments(policies, targetType, targetIdentifier
 
 - `policies` \<string[]\> policy code list
 - `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> user id list and role code list
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
 #### Example
 
@@ -163,9 +163,9 @@ PoliciesManagementClient().removeAssignments(policies, targetType, targetIdentif
 
 #### Parameters
 
-- `policies` \<string[]\> policy code list
+- `policies` \<string[]\> Policy code list
 - `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> user id list and role code list
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
 #### Example
 

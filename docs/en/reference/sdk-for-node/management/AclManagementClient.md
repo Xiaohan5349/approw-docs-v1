@@ -8,10 +8,10 @@
 > This client abstracts this model into two methods: allow and isAllowed.
 
 
-Please use this client as shown below. Do not initialize this client directly.
+Please follow the instructions below to use this client. Do not initialize this client directly.
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",
@@ -56,12 +56,12 @@ managementClient.acl.isAllowed('USERID2', 'books:124', 'books:edit') // true
 
       
 
-## Get whether a user has operation privilege of a resource
+## Check whether a user has operation privilege of a resource
 
 
 AclManagementClient().isAllowed(userId, action, resource)
 
-> Get whether a user has operation authority of a resource
+> Check whether a user has operation authority of a resource.
 
 
 #### Parameter

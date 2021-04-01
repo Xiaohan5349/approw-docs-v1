@@ -9,9 +9,9 @@
   steps:
     [
       {
-        title: 'Create OIDC Client in IdP',
+        title: 'Create an OIDC Client in IdP',
       },
-      { title: 'Configur OIDC Client in ${$localeConfig.brandName}' },
+      { title: 'Configure the OIDC Client in ${$localeConfig.brandName}' },
       {
         title: 'Create an application in ${$localeConfig.brandName}'
       },

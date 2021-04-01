@@ -1,4 +1,4 @@
-# Custom authentication process（Pipeline）
+# User-defined Authentication Process（Pipeline）
 
 <LastUpdated/>
 
@@ -6,7 +6,7 @@
 
 Approw Pipeline is a set of user-defined JavaScript codes running in the cloud, allowing developers to extend and customize Approw capabilities. 
 
-Approw Pipeline functions are all user-definable, and we also provide a rich [function template](https://github.com/authing/pipeline)to help developers get started quickly.
+Approw Pipeline functions are all user-definable, and we also provide a rich [function template](https://github.com/authing/pipeline) to help developers get started quickly.
 
 Pipeline is a set of functions. The difference from ordinary Hooks is that the function data in the entire pipeline can be transferred to each other to achieve the same effect as an industrial pipeline. This design pattern can make the developer's custom function more modular and easy to manage.
 
