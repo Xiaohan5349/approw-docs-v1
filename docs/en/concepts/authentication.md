@@ -4,7 +4,7 @@
 
 No matter what type of application you are developing - an internal employee IT system, a customer account system or an API exposed to other developers. User authentication is a vital part of it and {{$localeConfig.brandName}} will provide you with appropriate authentication support.
 
-> Note: Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For further details, please see: 
+> Note: Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For further details, please refer to: 
 [FAQ：How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/guides/faqs/block-third-party-cookie-impact.md)
 
 The login experience is one of the most important user experiences that software developers need to consider. It is not easy to provide users with a seamless, convenient and secure authentication experience. Generally speaking, the login is also associated with the logic of registration, password reset, and account association. More importantly, enhancing security in the form of robust and adaptive authentication during the login process is often critical to many implementations.
@@ -54,4 +54,4 @@ The aforementioned managed login page, embedded login component, and the underly
 
 ## Single Sign On
 
-Single Sign On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide [SSO SDK](/reference/sdk-for-sso.md) for developers to quickly implement single sign-on between applications.
+Single Sign-On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide [SSO SDK](/reference/sdk-for-sso.md) for developers to quickly implement Single Sign-On between applications.
