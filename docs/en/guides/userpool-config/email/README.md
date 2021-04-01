@@ -20,7 +20,7 @@ As shown below:
 
 ![](../images/basic-config-email-template.png)
 
-### Mail Variables
+### Mail variables
 
 Mail variables are used to generate some dynamic content, such as:
 
