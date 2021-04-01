@@ -202,7 +202,7 @@ authenticationClient.loginByEmail(
  'test@example.com',
  'passw0rd',
  {
-   autoRegister: true，
+   autoRegister: true,
    captchaCode: 'xj72'
  }
 )
@@ -240,7 +240,7 @@ authenticationClient.loginByEmail(
  'test@example.com',
  'passw0rd',
  {
-   autoRegister: true，
+   autoRegister: true,
    captchaCode: 'xj72'
  }
 )
