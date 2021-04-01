@@ -34,7 +34,7 @@ For further details, please use the [embedded login component to complete the au
 
 ## Auth SDK
 
-{{$localeConfig.brandName}} provides front-end developers with a lightweight, developer-friendly Auth SDK (supports JavaScript/Node, Java, Python, PHP, C# and other languages). This allows you to implement your authentication logic more flexibly, quickly, and safely. The Auth SDK supports all authentication-related functions of {{$localeConfig.brandName}}, including basic authentication, password reset, and account binding. You can get the user's `id_token` through this SDK, as the user's identity credential, and pass it to downstream applications.
+{{$localeConfig.brandName}} provides front-end developers with a lightweight, developer-friendly Auth SDK (supports JavaScript/Node, Java, Python, PHP, C# and other languages). This SDK allows you to implement your authentication logic more flexibly, quickly, and safely. The Auth SDK supports all authentication-related functions of {{$localeConfig.brandName}}, including basic authentication, password reset, and account binding. You can get the user's `id_token` through this SDK, as the user's identity credential, and pass it to downstream applications.
 
 {{$localeConfig.brandName}} also supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Swift, Go, Ruby, etc. You can choose the SDK you are familiar with:
 
