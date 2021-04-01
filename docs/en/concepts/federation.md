@@ -14,7 +14,7 @@ The Federated Authentication unites different identity providers to authenticate
 
 Federated Authentication is a decentralized authentication. When a user logs in at an identity provider, the user can choose to log in to a federal identity provider trusted by the current identity provider. Users can log in to a new system through Federated Authentication without registering an account in the new organization. For example, many websites now have their registration and login methods; One way to log in is the app WeChat, it can scan codes to login directly. Among them, WeChat is the identity provider of this website. End users do not need to fill in the information to register an account and log in directly using WeChat.
 
-Using Federated Authentication has the following benefits:
+Use Federated Authentication has the following benefits:
 1. Users do not have to create a new account.
 2. After accessing federation, users can switch between different organizations and sites without extra authentication.
 
