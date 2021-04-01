@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-No matter what type of application you are developing - an internal employee IT system, a customer account system or an API exposed to other developers. User authentication is a vital part of it and {{$localeConfig.brandName}} will provide you with a suitable authentication method stand by.
+No matter what type of application you are developing - an internal employee IT system, a customer account system or an API exposed to other developers. User authentication is a vital part of it and {{$localeConfig.brandName}} will provide you with appropriate authentication support.
 
 > Note: Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For further details, please see: 
 [FAQ：How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/guides/faqs/block-third-party-cookie-impact.md)
