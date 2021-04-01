@@ -12,7 +12,7 @@ The Federated Authentication unites different identity providers to authenticate
 
 ## Why do you need Federated Identity Authentication
 
-Federated Authentication is a decentralized authentication. When a user logs in at an identity provider, the user can choose to log in to a federal identity provider trusted by the current identity provider. Users can log in to a new system through Federated Authentication without registering an account in the new organization. For example, many websites now have their registration and login methods; One way to log in is the app WeChat, it can scan codes to login directly. Among them, WeChat is the identity provider of this website. End users do not need to fill in the information to register an account and log in directly using WeChat.
+Federated Authentication is a decentralized authentication. When a user logs in at an identity provider, the user can choose to log in to a federal identity provider trusted by the current identity provider. Users can log in to a new system through Federated Authentication without registering an account in the new organization. For example, many websites now have their registration and login methods.
 
 Use Federated Authentication has the following benefits:
 1. Users do not have to create a new account.
@@ -24,7 +24,7 @@ The following is the process of Federated Authentication. The end user is redire
 
 ![](~@imagesZhCn/concepts/federation/1-2.png)
 
-## Approw's Federated Authentication capabilities
+## Federated Authentication capabilities of Approw
 
 Approw supports multiple [standard protocols](https://federation-poc.approw.com/) for Federated Authentication.
 
