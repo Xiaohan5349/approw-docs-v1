@@ -9,7 +9,7 @@ No matter what type of application you are developing - an internal employee IT 
 
 The login experience is one of the most important user experiences that software developers need to consider. It is not easy to provide users with a seamless, convenient and secure authentication experience. Generally speaking, the login is also associated with the logic of registration, password reset, and account association. More importantly, enhancing security in the form of robust and adaptive authentication during the login process is often critical to many implementations.
 
-{{$localeConfig.brandName}} provides a lot of authentication methods for developers to choose and combine, such as password policies, frequent login checks, custom authentication procedures, etc. can be easily completed through the management console (basically, these operations can also be completed through the Management API).
+{{$localeConfig.brandName}} provides a lot of authentication methods for developers to choose and combine, such as password policies, frequent login checks, custom authentication procedures, etc. All of these methods can be easily completed through the management console (these operations can also be completed through the Management API).
 
 ## OIDC / OAuth2.0 / SAML / AD / LDAP / Social Login
 
