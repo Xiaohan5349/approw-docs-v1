@@ -95,7 +95,7 @@ The above configuration will add the following attributes to the SAML identity a
 ```
 
 You can also dynamically read the fields from Approw user information, and type in the rightmost text box in a row: `My email is ${user.email} and my gender is ${user.gender}`.
-![Get User Information Fields Dynamically](https://cdn.approw.cn/docs/20200929110025.png)
+![Get User Information Fields Dynamically](https://cdn.approw.com/docs/20200929110025.png)
 ::: img-description
 Get User Information Fields Dynamically
 :::
@@ -106,7 +106,7 @@ The content of this article will add the following attributes to the SAML assert
 <saml:Attribute Name="CustomName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
   <saml:AttributeValue
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">My email is yezuwei@approw.cn and my gender is M
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">My email is yezuwei@approw.com and my gender is M
   </saml:AttributeValue>
 </saml:Attribute>
 ```
