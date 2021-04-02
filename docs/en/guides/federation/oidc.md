@@ -28,7 +28,7 @@ Fill in the **application name**, for example, Web Note Project, specify an **su
 
 ![](~@imagesZhCn/guides/federation/oidc/1-2.png)
 
-## Authorization code mode
+## Authorization Code Mode
 
 If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended. 
 
@@ -50,7 +50,7 @@ Below is the workflow:
 
 [Check the document](/docs/en/federation/oidc/authorization-code/).
 
-## Implicit mode
+## Implicit Mode
 
 If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
 
@@ -75,7 +75,7 @@ Below is the workflow:
 
 [Check the document](/docs/en/federation/oidc/implicit/).
 
-## Hybrid mode
+## Hybrid Mode
 
 In some scenarios, you may not only want to directly obtain token from the authentication endpoint but also obtain the authorization code for further obtaining the refresh token. It is recommended to use **hybrid mode**. In **hybrid mode**, applications will receive token and code. Applications can choose to send code to back-end services to obtain users’ AccessToken, IdToken, refresh token from `/token` endpoint.
 
@@ -98,7 +98,7 @@ Below is the workflow:
 
 [Check the document](/docs/en/federation/oidc/hybrid/).
 
-## Client Credentials mode
+## Client Credentials Mode
 
 Client Credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
 
@@ -160,7 +160,7 @@ Warning : When using the **authorization code mode**, you must carry the scope w
 
 #### Obtain Refresh Token in Authorization Code Mode
 
-When using the authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [using OIDC authorization code mode](/docs/en/federation/oidc/authorization-code/) to get further information.
+When using the authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/en/federation/oidc/authorization-code/) to get further information.
 
 #### Obtain authorization code and refresh token example
 
