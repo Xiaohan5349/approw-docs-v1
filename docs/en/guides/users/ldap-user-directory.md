@@ -52,14 +52,14 @@ If `secret` is incorrect:
 Return sample:
 
 ```bash
-# 用户池信息
+# UserPool info
 dn: ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 objectclass: organization
 objectclass: top
 o: 59f86b4832eb28071bdd9214
 name:: cm9vdCDnlKjmiLfmsaA=
 
-# 用户池下的用户信息（test）
+# user info in UserPool (test)
 dn: uid=601d54c27569df18f85e2c71,ou=users,o=59f86b4832eb28071bdd9214,dc=authin
  g,dc=cn
 id: 601d54c27569df18f85e2c71
@@ -82,14 +82,11 @@ objectclass: users
 cn: test
 uid: 601d54c27569df18f85e2c71
 
-# 用户池下的用户信息（root）
-dn: uid=5a597f35085a2000144a10ed,ou=users,o=59f86b4832eb28071bdd9214,dc=authin
- g,dc=cn
+# user info in UserPool (Root)
+dn: uid=5a597f35085a2000144a10ed,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 5a597f35085a2000144a10ed
-createdAt:: TW9uIEZlYiAwMSAyMDIxIDE3OjA1OjU0IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
-updatedAt:: TW9uIEZlYiAwMSAyMDIxIDE3OjI2OjU5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+createdAt:: TW9uIEZlYiAwMSAyMDIxIDE3OjA1OjU0IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
+updatedAt:: TW9uIEZlYiAwMSAyMDIxIDE3OjI2OjU5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 userPoolId: 59f86b4832eb28071bdd9214
 email: root@approw.com
 username: root
@@ -99,23 +96,18 @@ gender: U
 registerSource: offcial:import
 emailVerified: false
 phoneVerified: false
-lastLogin:: TW9uIEZlYiAwMSAyMDIxIDE3OjI2OjU5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+lastLogin:: TW9uIEZlYiAwMSAyMDIxIDE3OjI2OjU5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 blocked: false
-signedUp:: TW9uIEZlYiAwMSAyMDIxIDE3OjA1OjU0IEdNVCswODAwICjkuK3lm73moIflh4bml7b
- pl7Qp
+signedUp:: TW9uIEZlYiAwMSAyMDIxIDE3OjA1OjU0IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 objectclass: users
 cn: root
 uid: 5a597f35085a2000144a10ed
 
-# 用户池下的用户信息（17602502507）
-dn: uid=601d59a5f04ee72cb058bdbb,ou=users,o=59f86b4832eb28071bdd9214,dc=authin
- g,dc=cn
+# user info in UserPool（17602502507）
+dn: uid=601d59a5f04ee72cb058bdbb,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 601d59a5f04ee72cb058bdbb
-createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
-updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
+updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 userPoolId: 59f86b4832eb28071bdd9214
 phone: 17602502507
 photo: https://files.approw.co/approw-console/default-user-avatar.png
@@ -124,14 +116,12 @@ registerSource: import:manual
 emailVerified: false
 phoneVerified: false
 blocked: false
-signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7b
- pl7Qp
+signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 objectclass: users
 uid: 601d59a5f04ee72cb058bdbb
 
-# 用户池下的组织信息（小白）
-dn: o=601d14d1267b84c06a32e463,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,
- dc=cn
+# user info in UserPool (Org)
+dn: o=601d14d1267b84c06a32e463,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 601d14d1267b84c06a32e463
 createdAt: 2021-02-05T09:50:09.073Z
 updatedAt: 2021-02-05T09:50:09.073Z
@@ -147,14 +137,11 @@ parent: Root
 parentId: 0
 parentCode: root
 
-# 用户池下的小白组织下的用户信息（test）
-dn: uid=601d54c27569df18f85e2c71,o=601d14d1267b84c06a32e463,ou=users,o=59f86b4
- 832eb28071bdd9214,dc=approw,dc=cn
+# user info in Org in UserPool (test)
+dn: uid=601d54c27569df18f85e2c71,o=601d14d1267b84c06a32e463,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 601d54c27569df18f85e2c71
-createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
-updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
+updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 userPoolId: 59f86b4832eb28071bdd9214
 email: 1409458062@qq.com
 username: test
@@ -164,20 +151,16 @@ registerSource: import:manual
 emailVerified: false
 phoneVerified: false
 blocked: false
-signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7b
- pl7Qp
+signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 objectclass: organizationalPerson
 cn: test
 uid: 601d54c27569df18f85e2c71
 
-# 用户池下的小白组织下的用户信息（17602502507）
-dn: uid=601d59a5f04ee72cb058bdbb,o=601d14d1267b84c06a32e463,ou=users,o=59f86b4
- 832eb28071bdd9214,dc=approw,dc=cn
+# user info in Org in UserPool（17602502507）
+dn: uid=601d59a5f04ee72cb058bdbb,o=601d14d1267b84c06a32e463,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 601d59a5f04ee72cb058bdbb
-createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
-updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
+updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 userPoolId: 59f86b4832eb28071bdd9214
 phone: 17602502507
 photo: https://files.approw.co/approw-console/default-user-avatar.png
@@ -186,8 +169,7 @@ registerSource: import:manual
 emailVerified: false
 phoneVerified: false
 blocked: false
-signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7b
- pl7Qp
+signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjQzOjQ5IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 objectclass: organizationalPerson
 uid: 601d59a5f04ee72cb058bdbb
 
