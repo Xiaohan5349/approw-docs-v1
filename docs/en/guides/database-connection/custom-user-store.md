@@ -13,7 +13,7 @@ When using this mode, user data is always stored in your database, and Approw wi
 
 ## Script configuration 
 
-You need to write scripts on [Approw console](https://console.approw.com/console/userpool)，**database connection** - **customize database** for **Login**、**Search user**、**Create user**、**Update user**、**elete user**、**Get user list**、**Validata password**：
+You need to write scripts on [Approw console](https://console.approw.com/console/userpool)，**database connection** - **customize database** for **Login**, **Search user**, **Create user**, **Update user**, **elete user**, **Get user list**, **Validata password**：
 
 - [Login](./configuration/#编写数据库操作脚本)
 - [Search user](./configuration/#编写数据库操作脚本)
