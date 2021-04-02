@@ -60,13 +60,10 @@ o: 59f86b4832eb28071bdd9214
 name:: cm9vdCDnlKjmiLfmsaA=
 
 # user info in UserPool (test)
-dn: uid=601d54c27569df18f85e2c71,ou=users,o=59f86b4832eb28071bdd9214,dc=authin
- g,dc=cn
+dn: uid=601d54c27569df18f85e2c71,ou=users,o=59f86b4832eb28071bdd9214,dc=approw,dc=cn
 id: 601d54c27569df18f85e2c71
-createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
-updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7
- bpl7Qp
+createdAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
+updatedAt:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 userPoolId: 59f86b4832eb28071bdd9214
 email: 1409458062@qq.com
 username: test
@@ -76,8 +73,7 @@ registerSource: import:manual
 emailVerified: false
 phoneVerified: false
 blocked: false
-signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7b
- pl7Qp
+signedUp:: RnJpIEZlYiAwNSAyMDIxIDIyOjIyOjU4IEdNVCswODAwICjkuK3lm73moIflh4bml7bpl7Qp
 objectclass: users
 cn: test
 uid: 601d54c27569df18f85e2c71
