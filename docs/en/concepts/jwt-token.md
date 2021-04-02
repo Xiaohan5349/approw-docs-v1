@@ -6,10 +6,8 @@ meta:
 
 # Definition and Utilization of JWT Token
 
-How to verify token in the {{$localeConfig.brandName}} system:  
+How to verify token in the {{$localeConfig.brandName}} system: [Verify Token](/docs/en/guides/faqs/how-to-validate-user-token.md)
 
-::: page-ref /docs/en/guides/faqs/how-to-validate-user-token.md
-:::
 
 ## Introduction of JWT Token
 
