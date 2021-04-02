@@ -10,7 +10,7 @@ Pipeline is a set of functions. The difference from ordinary Hooks is that the f
 
 The back-end of Approw Pipeline uses a serverless architecture, and all user defined codes run in the cloud to ensure isolation between different tenants. Also, it can be elastically scaled, which not only ensures security, but also improves operating efficiency.
 
-![](https://cdn.approw.cn/blog/approw-pipeline.png)
+![](https://cdn.approw.com/blog/approw-pipeline.png)
 
 
 You can use Approw Pipeline to achieve the following functions:
