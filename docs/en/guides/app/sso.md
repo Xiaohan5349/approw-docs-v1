@@ -34,4 +34,4 @@ The user doesn’t need to enter the password again, the user can directly enter
 
 ## Using SDK for Single Sign-on
 
-For the details about access process, please refer to the documents which introduces the implementation of [single sign-on (SSO)](/docs/en/guides/authentication/sso/) and [single sign-on SDK](/docs/en/reference/sdk-for-sso.md).
+For the details about access process, please refer to the documents which introduces the implementation of [Single Sign-on (SSO)](/docs/en/guides/authentication/sso/) and [Single Sign-on SDK](/docs/en/reference/sdk-for-sso.md).
