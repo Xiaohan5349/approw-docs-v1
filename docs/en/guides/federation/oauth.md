@@ -4,7 +4,7 @@
 
 This article introduces how to make Approw an OAuth2.0 identity resource, other systems can connect to Approw as identity providers through OAuth2.0 protocol.
 
-OAuth2.0 protocol has the following authorization modes, which are: **Authorization Code Mode**、**Implicit Mode**、**Password Mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
+OAuth2.0 protocol has the following authorization modes, which are: **Authorization Code Mode**，**Implicit Mode**，**Password Mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
 You can understand the OAuth2.0 protocol in depth [here](/docs/en/concepts/oidc/oidc-overview.md).
 
