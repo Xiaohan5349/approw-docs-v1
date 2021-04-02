@@ -28,7 +28,7 @@ After Decode:
   "iat": 1612444871,
   "exp": 1613654471,
   "scope": "openid email message",
-  "iss": "https://steam-talk.authing.cn/oidc",
+  "iss": "https://steam-talk.approw.com/oidc",
   "aud": "60193c610f9117e7cb049159"
 }
 ```
