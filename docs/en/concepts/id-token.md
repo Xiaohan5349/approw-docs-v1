@@ -6,7 +6,7 @@ In `OIDC` Protocol, There are three type of Token: `id_token`, `access_token` an
 - [What is Access Token](./access-token.md)
 - [What is Refresh Token](./refresh-token.md)
 
-**ID Token** is the most important part that OpenID Connect [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) added from [OAuth 2.0](https://tools.ietf.org/html/rfc6749). **ID Token** contains user's identity information. It can be used to [verify](/guides/faqs/how-to-validate-user-token.md) user's identity when front end calling backend for resources. 
+**ID Token** is the most important part that OpenID Connect [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) added from [OAuth 2.0](https://tools.ietf.org/html/rfc6749). **ID Token** contains user's identity information. It can be used to [verify](/dcos/en/guides/faqs/how-to-validate-user-token.md) user's identity when front end calling backend for resources. 
 
 In general **ID Token** is [`JWT Token`](./jwt-token.md), it's including user's identity key/value pairs. Eg:
 
