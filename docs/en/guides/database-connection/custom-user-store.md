@@ -4,7 +4,7 @@
 
 
 <!-- ::: hint-warning
-Only **Enterprise Edition** users can use the custom database connection function. For details, please see [https://approw.cn/pricing](https://approw.cn/pricing). If you want to try it out, please contact 176-0250-2507 or xuziqiang@approw.cn
+Only **Enterprise Edition** users can use the custom database connection function. For details, please see [https://approw.cn/pricing](https://approw.com/pricing). If you want to try it out, please contact 176-0250-2507 or xuziqiang@approw.com
 ::: -->
 
 ## Migration process
