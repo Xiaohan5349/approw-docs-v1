@@ -54,7 +54,7 @@ Please refer to：
 | address | address |
 | email | email，email\_verified |
 | phone | phone\_number, phone\_number\_verified |
-| profile | birthdate，family\_name，gender，given\_name，locale，middle\_name，name，nickname，picture，preferred\_username，profile，updated\_at，website，zoneinfo |
+| profile | birthdate, family\_name，gender, given\_name, locale，middle\_name, name, nickname, picture, preferred\_username, profile, updated\_at，website, zoneinfo |
 | offline\_access | If present，return refresh\_token|
 | role | user role list |
 
@@ -89,7 +89,7 @@ When requesting resources, Access Token should be sent within the Authorization 
 const axios = require("axios");
 axios
   .get({
-    url: "https://core.approw.cn/api/v2/your/resources",
+    url: "https://core.approw.com/api/v2/your/resources",
     headers: {
       Authorization: "Bearer YOUR_OIDC_ACCESS_TOKEN",
     },
