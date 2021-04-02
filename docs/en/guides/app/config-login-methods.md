@@ -76,6 +76,6 @@ Please refer to [Configuring LDAP Identity Source Login](/docs/en/connections/ld
 
 ### Configuring Windows AD Identity Source Login
 
-Please refer to [Configuring Windows AD Identity Source Login](/docs/en/connections/windowns-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring Windows AD Identity Source Login](/docs/en/connections/windows-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-09-06.png)
