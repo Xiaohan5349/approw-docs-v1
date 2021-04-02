@@ -1,4 +1,4 @@
-# Enable Multi-factor Authentication
+# Enable Multi-Factor Authentication
 
 <LastUpdated/>
 
@@ -18,5 +18,5 @@ Approw multi-factor authentication is self-adaptive, which means dynamic authent
 
 ![](./images/Xnip2021-03-04_15-30-05.png)
 
-For more specific access procedures, see [setup Multi-factor authentication for users](/docs/en/guides/authentication/mfa/).
+For more specific access procedures, see [Setup Multi-Factor Authentication for Users](/docs/en/guides/authentication/mfa/).
 
