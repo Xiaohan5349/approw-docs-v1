@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-Approw supports using fields such as mailbox, user name, mobile phone number, nickname, etc to do the fuzzy search to users in both [console](./search.md##Search for users using console) and [SDK](##Search for users using SDK) modes:
+Approw supports using fields such as mailbox, user name, mobile phone number, nickname, etc to do the fuzzy search to users in both [console](./search.md#Search for users using console) and [SDK](#Search for users using SDK) modes:
 
 ## Search for users using console
 
