@@ -26,7 +26,7 @@ For details, please refer to this article: [What is JWT](https://www.jianshu.com
 - Server return JWT Token after validation successfully
 
 - **Client Stored JWT Token and presented it in each Request （**[**How to Present?**](#How-to-Present-Client-Stored-JWT-Token)**）**
-- **Server verify JWT Token and return resource to valid User（**[**How to verify?**](/docs/en/guides/faqs/how-to-validate-user-token.md)**）**
+- **Server verify JWT Token and return resource to valid User（**[**How to Verify?**](/docs/en/guides/faqs/how-to-validate-user-token.md)**）**
 
 ## Security Restriction 
 
