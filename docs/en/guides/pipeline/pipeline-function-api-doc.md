@@ -88,12 +88,12 @@ We implement a **Pre-Register Pipeline** for the whitelist of registered mailbox
 ```js
 async function pipe(context, callback) {
   const email = context.data.userInfo.email;
-  // 非邮箱注册方式, 跳过此 pipe 函数
+  // If the account is not register with email then skip this function.
   if (!email) {
     return callback(null, context);
   }
 
-  // 如果域名邮箱不是 example.com, 返回 Access denied. 错误给终端。
+  // If the domain name of the email is not example.com, then return Access denied. error to the backend.
   if (!email.endsWith("@example.com")) {
     return callback(new Error("Access denied."));
   }
@@ -103,6 +103,6 @@ async function pipe(context, callback) {
 
 Briefly explain the code here:
 
-- Lines 2-6 determine whether email is included in the request parameters. If the parameters include email, it means this is email registration method. If not, skip the pipe function directly, and call callback with null and context parameters（**don’t forget this parameter!**）. If you just want to register by email, this step is okay if there is no email to return an error.
+- Lines 2-6 determines whether email is included in the request parameters. If the parameters include email, it means this is email registration method. If not, skip the pipe function directly, and call callback with null and context parameters（**don’t forget this parameter!**）. If you just want to register by email, this step is okay if there is no email to return an error.
 - Lines 8-10 determine whether the domain name of the mailbox is`example.com`. If the callback function is not called, the first parameter is `new Error('Access Denied.')`.
 - Line 11, call `return callback(null, context)`, and then enter the next pipe function, if there have the next function.

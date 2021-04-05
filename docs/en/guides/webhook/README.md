@@ -10,7 +10,7 @@ meta:
 
 Webhook allows you to listen user registration, login and other behaviors, so as to do some user-defined processing.
 
-The method of using Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
+The method of using the Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
 
 ## Configure Webhook
 
@@ -91,9 +91,9 @@ We will carry some custom header information in the HTTP POST header, as shown i
 
 | Header                     | Description                                                                                        |
 | :------------------------- | :------------------------------------------------------------------------------------------ |
-| `user-agent`               | The value is `'authing-webhook@2.0'`，which means this request is from Approw                                    |
-| `x-authing-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
-| `x-authing-userpool-id`    | Approw user pool ID                                                                         |
+| `user-agent`               | The value is `'approw-webhook@2.0'`，which means this request is from Approw                                    |
+| `x-approw-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
+| `x-approw-userpool-id`    | Approw user pool ID                                                                         |
 
 ### Request body
 
@@ -138,7 +138,7 @@ The request body will also carry some specific parameters
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -196,7 +196,7 @@ The request body will also carry some specific parameters
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -266,7 +266,7 @@ The request body will also carry some specific parameters
         "isDeleted": false,
         "device": null,
         "browser": null,
-        "company": "Authing",
+        "company": "Approw",
         "name": null,
         "givenName": null,
         "familyName": null,
@@ -315,7 +315,7 @@ The request body will also carry some specific parameters
   "eventName": "mfaVerify",
   "data": {
     "userId": "xxxxx",
-    "isValid": true // 是否验证通过
+    "isValid": true // If the verification succeeds.
   }
 }
 ```
@@ -327,10 +327,10 @@ The request body will also carry some specific parameters
   "eventName": "permission:add",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```
@@ -342,10 +342,10 @@ The request body will also carry some specific parameters
   "eventName": "permission:revoke",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```

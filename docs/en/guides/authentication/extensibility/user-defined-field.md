@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-User defined fields are fields that can be added to user objects in addition to the [basci user fields](/guides/user/user-profile.md). Developers can store a small amount of business-related data by setting user defined fields.
+User defined fields are fields that can be added to user objects in addition to the [basic user fields](/docs/en/guides/user/user-profile.md). Developers can store a small amount of business-related data by setting user defined fields.
 You can define the following types of user defined fields:
 
 - String
