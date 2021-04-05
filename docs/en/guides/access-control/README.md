@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-In the [previous part](../authentication/README.md)we have introduced authentication. Authentication refers to the process of authenticating the user's identity (such as using passwords, SMS codes, etc.). After successfully authenticating the user's identity, the next thing we need to do is **privilege management**
+In the [previous part](../authentication/README.md) we have introduced authentication. Authentication refers to the process of authenticating the user's identity (such as using passwords, SMS codes, etc.). After successfully authenticating the user's identity, the next thing we need to do is **privilege management**
 
 Privilege management generally means that users only can access their authorized resources according to the security rules or security policies set by the system.
 
