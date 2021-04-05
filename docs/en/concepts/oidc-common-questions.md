@@ -12,7 +12,7 @@ OpenID Connect (OIDC) is a simple identity layer on top of the OAuth 2.0 protoco
 
 ## How OIDC works in Backend
 
-Example on Github: [oidc-demo](https://github.com/Authing/oidc-demo)
+Example on Github: [oidc-demo](https://github.com/Approw/oidc-demo)
 
 ## Flow Features
 
@@ -54,7 +54,7 @@ Please refer to：
 | address | address |
 | email | email，email\_verified |
 | phone | phone\_number, phone\_number\_verified |
-| profile | birthdate，family\_name，gender，given\_name，locale，middle\_name，name，nickname，picture，preferred\_username，profile，updated\_at，website，zoneinfo |
+| profile | birthdate, family\_name，gender, given\_name, locale，middle\_name, name, nickname, picture, preferred\_username, profile, updated\_at，website, zoneinfo |
 | offline\_access | If present，return refresh\_token|
 | role | user role list |
 
@@ -81,7 +81,7 @@ Refer to [OIDC Protocol](https://openid.net/specs/openid-connect-core-1_0.html#S
 ## ID Token and Access Token
 
 When calling Back End, ID Token should be sent with the request. Developer Server should validate ID Token and decrypt ID Token by OIDC Secret Key or Public Key
-Refer to [How to Verify Token](/guides/basics/authenticate-first-user/how-to-validate-user-token.md#使用应用密钥验证-hs256-算法签名的-token).
+Refer to [How to Verify Token](/docs/en/guides/basics/authenticate-first-user/how-to-validate-user-token.md).
 
 When requesting resources, Access Token should be sent within the Authorization Header. Eg:
 
@@ -89,7 +89,7 @@ When requesting resources, Access Token should be sent within the Authorization 
 const axios = require("axios");
 axios
   .get({
-    url: "https://core.authing.cn/api/v2/your/resources",
+    url: "https://core.approw.com/api/v2/your/resources",
     headers: {
       Authorization: "Bearer YOUR_OIDC_ACCESS_TOKEN",
     },

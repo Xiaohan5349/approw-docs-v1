@@ -7,7 +7,7 @@ Access Token and ID Token are [JSON Web Token](https://tools.ietf.org/html/rfc75
 
 **Refresh Token** are used to obtain new Access Token. It can shorten the lifetime of Access Token to improve security and user don't need to login frequently.
 
-During users first authentication, Authing return Refresh Token along with Access Token and ID Token. Due to the Refresh Token keeps user login, **it is as important as user password**. Your Application must securely stored Refresh Token.
+During users first authentication, Approw return Refresh Token along with Access Token and ID Token. Due to the Refresh Token keeps user login, **it is as important as user password**. Your Application must securely stored Refresh Token.
 
 Refresh Token Example:
 
@@ -22,5 +22,5 @@ Refresh Token Example:
 }
 ```
 
-When application request contain a Refresh Token. Authing will return the **SAME** Refresh Token and **NEW** Access Token along with **NEW** ID Token until the Refresh Token expired.
+When application request contain a Refresh Token. Approw will return the **SAME** Refresh Token and **NEW** Access Token along with **NEW** ID Token until the Refresh Token expired.
 
