@@ -17,14 +17,14 @@ With the combination of users, roles, resources, and authorizations, we can get 
 
 You can use the Approw console to create roles: In **Privilege Management** - **Role Management** Click **Add Role **:
 
-- Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore _ and hyphen -. Here we fill in `admin`。
-- Role description: the description of the role, here we fill in the`administrator`。
+- Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore _ and hyphen -. Here we fill in `admin`.
+- Role description: the description of the role, here we fill in the`administrator`.
 
 Add three roles:
 
 ![](~@imagesZhCn/guides/access-control/5186f15e-b02a-4b7b-b886-a3f26f5f07c8.png)
 
-You can also use API & SDK to create roles. For details, see[Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md)。
+You can also use API & SDK to create roles. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
 ## Grant user a role
 
@@ -34,13 +34,13 @@ On the role details page, you can grant this role to users. You can search for u
 
 After selecting the user, click OK, and you can view the list of users granted for this role.
 
-You can also use API & SDK to grant roles to users. For details, see[Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md)。
+You can also use API & SDK to grant roles to users. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
 ## Control privileges through user roles on the backend
 
-After the user is successfully authenticated and the Token is obtained, you can get the current user ID, and then you can use the API & SDK provided by us to get the role granted to the user on the backend. Here, take Node.js as an example:
+After the user is successfully authenticated and the Token is obtained, you can get the current user ID, and then you can use the API & SDK provided by us to get the role granted to the user on the backend. Take Node.js as an example:
 
-> Here we take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click[Here](/reference/)。
+> Take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click[Here](/reference/).
 
 First, we need to get a list of all the roles that the user has been granted:
 
@@ -89,12 +89,12 @@ In the following example, we authorize the Create and Delete permissions of the 
 
 In the previous step, through resource authorization, we authorized a user (role) to have specific operation permissions on a specific resource. When we perform interface authentication on the backend, we can make more fine-grained judgments:
 
-> Here we take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click [here](/reference/)。
+> Here we take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click [here](/reference/).
 
 Call the `managementClient.acl.isAllowed` the three parameters are:
 
 - userId: User ID, the user can be directly authorized to operate on a specific resource, or can inherit the authorized permissions of the role.
-- resource: Resource id. For example, `repository:123` represents a code repository with ID 123, and`repository:*` represents a type of resource such as a code repository.
+- resource: Resource id. For example, `repository:123` represents a code repository with ID 123, and `repository:*` represents a type of resource such as a code repository.
 - action: A specific operation, such as `repository:Delete` means deleting the code warehouse.
 
 ```javascript
@@ -113,6 +113,6 @@ const { totalCount, list } = await managementClient.acl.isAllowed(
 
 The Approw policy engine will dynamically execute the policy according to the permission policy you configured, and return true or false. You only need to determine whether the user has the operation privilege based on the return value.
 
-## Next step
+## Next
 
-You can learn how to[Authorize users based on the ABAC permission model.](./abac.md)。
+You can learn how to [Authorize users based on the ABAC permission model](./abac.md).
