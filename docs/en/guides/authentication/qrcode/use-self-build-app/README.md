@@ -132,4 +132,19 @@ const user = await authenticationClient.qrcode.exchangeUserInfo('TICKET')
 
 ## Then
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.

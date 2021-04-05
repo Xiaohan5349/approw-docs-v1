@@ -12,7 +12,7 @@ async function deleteUser(id, context) {
   // The first argument `id` is the user'id in your database
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
@@ -50,7 +50,7 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### User's Profile is Deleted Successfully
+#### User's profile is deleted successfully
 
 When the user's profile is deleted successfully, you need to return `true` in script.
 
@@ -61,7 +61,7 @@ async function deleteUser(id, updates, context) {
 }
 ```
 
-#### The User Does Not Exist
+#### The user does not exist
 
 When the user does not exist, you need to throw an error. You can design different error messages. For example:
 
@@ -72,7 +72,7 @@ async function deleteUser(id, updates, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -88,13 +88,13 @@ async function deleteUser(id, updates, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 

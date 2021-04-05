@@ -21,12 +21,12 @@ async function createUser(userinfo, context) {
   // * photo: the user's photo
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
   // 1. A user was successfully created
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return null
   // 2. This user already exists in your database
   //    throw new Error("user allready exists")
@@ -67,9 +67,9 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### User is Created Successfully
+#### User is created successfully
 
-When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/guides/user/user-profile.md). For example:
+When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/docs/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function getUser(userinfo, context) {
@@ -84,7 +84,7 @@ async function getUser(userinfo, context) {
 }
 ```
 
-#### The User Already Exists
+#### The user already exists
 
 When the user already exists, you need to throw an error. You can design different error messages. For example:
 
@@ -95,7 +95,7 @@ async function login(query, password, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -111,13 +111,13 @@ async function getUser(userinfo, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
@@ -137,7 +137,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `userinfo` to generate query command(`userinfo.id`, `userinfo.email`, `userinfo.username` and `userinfo.phone`, these four parameters won't be empty at the same time).
 - Check if the user exists. If the user already exists, return `User allready exists!`. 
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
@@ -145,7 +145,7 @@ async function createUser(userinfo, context) {
   // get exist user from database
   const queryUser = async (client, query) => {
     const { email, phone, username } = query;
-    // 构建查询参数
+    // build query conditions
     const queries = [];
     const parameters = [];
     let index = 1;

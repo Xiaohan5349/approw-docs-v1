@@ -9,6 +9,7 @@ Udf is short for User Defined Field. {{$localeConfig.brandName}} data entities (
 You can ask the user to supplement the information in this field after the user registration is completed, click [here](/guides/authentication/extensibility/user-defined-field.md) to check the details.
 
 Please follow the instructions below to use this client:
+
 ```javascript
 import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
@@ -30,9 +31,9 @@ UdfManagementClient().set(targetType, key, dataType, label)
 
 #### Parameter
 
-- `targetType` \<UdfTargetType\> user defined field target type.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 - `key` \<string\> field key 
-- `dataType` \<UdfDataType\> data type. Approw currently supports five data types: string, number, datetime, boolean and object.
+- `dataType` \<UdfDataType\> Data type. Approw currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT.
 - `label` \<string\> Field Label, which commonly is a Human Readable string.
 
 #### Example
@@ -83,8 +84,8 @@ UdfManagementClient().remove(targetType, key)
 
 #### Parameter
 
-- `targetType` \<UdfTargetType\> user defined field target type. Use `USER` to represent user and `ROLE` to represent reole.
-- `key` \<string\> field key 
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `key` \<string\> Field key 
 
 #### Example
 
@@ -108,7 +109,7 @@ UdfManagementClient().list(targetType)
 
 #### Parameter
 
-- `targetType` \<UdfTargetType\> user defined field target type. Use `USER` to represent user and `ROLE` to represent reole.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 
 #### Example
 

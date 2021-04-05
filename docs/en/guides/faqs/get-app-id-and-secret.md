@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-On the **application** list page of theconsole, you can view all your applications, as shown in the figure, you can get the application ID (AppId):
+On the **application** list page of the console, you can view all your applications, as shown in the figure, you can get the application ID (AppId):
 
 <img src="~@imagesZhCn/guides/faqs/Xnip2021-03-01_14-14-28.png" alt="drawing"/>
 

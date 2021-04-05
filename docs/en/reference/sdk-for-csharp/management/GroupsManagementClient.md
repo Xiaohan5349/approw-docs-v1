@@ -55,7 +55,7 @@ GroupsManagementClient().update(code, input)
 
 - `code` \<string\> The unique id of the group
 - `input` \<Object\>
-- `input.name` \<string\> new name
+- `input.name` \<string\> New name
 - `input.description` \<string\> New description information
 - `input.newCode` \<string\> New unique id
 

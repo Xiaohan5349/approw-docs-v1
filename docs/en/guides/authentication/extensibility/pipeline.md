@@ -10,7 +10,7 @@ Pipeline is a set of functions. The difference from ordinary Hooks is that the f
 
 The back-end of Approw Pipeline uses a serverless architecture, and all user defined codes run in the cloud to ensure isolation between different tenants. Also, it can be elastically scaled, which not only ensures security, but also improves operating efficiency.
 
-![](https://cdn.authing.cn/blog/authing-pipeline.png)
+![](https://cdn.approw.com/blog/approw-pipeline.png)
 
 
 You can use Approw Pipeline to achieve the following functions:
@@ -22,12 +22,12 @@ You can use Approw Pipeline to achieve the following functions:
 * Custom token: For example, add custom fields to the token.
 * ... and more, the imagination is endless.
 
-For example, through the following code, we can implement the logic of prohibiting registration of email that do not end with ** example.com **
+For example, through the following code, we can implement the logic of prohibiting registration of email that do not end with **example.com**
 
 ```javascript
 async function pipe(user, context, callback) {
   const { email } = context.request.body
-  // 非邮箱注册方式
+  // Non-email registration method
   if (!email) {
     return callback(null, user, context)
   }
@@ -38,4 +38,4 @@ async function pipe(user, context, callback) {
 }
 ```
 
-For more scenarios and detailed documents, please see[here](/guides/pipeline/)。
+For more scenarios and detailed documents, please see [here](/docs/en/guides/pipeline/)。

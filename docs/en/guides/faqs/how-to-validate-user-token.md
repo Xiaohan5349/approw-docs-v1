@@ -7,8 +7,8 @@ The following is a comparison of the advantages and disadvantages of local verif
 
 |                     | Verification speed | Code complexity | Reliability                  |
 | ------------------- | ------------------ | --------------- | ---------------------------- |
-| Online verification | Slow 🐢            | simple          | Single point of failure risk |
-| Local verification  | Fast 🐇            | moderate        | Distributed system           |
+| Online verification | Slow 🐢            | Simple          | Single point of failure risk |
+| Local verification  | Fast 🐇            | Moderate        | Distributed system           |
 
 ## Local verification
 
@@ -66,7 +66,7 @@ const res = jose.JWT.IdToken.verify(
   'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRmTE90M0xibjhfYThwUk11ZXNzYW1xai1vM0RCQ3MxLW93SExRLVZNcVEifQ.eyJzdWIiOiI1ZjcxOTk0NjUyNGVlMTA5OTIyOTQ5NmIiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vdXNlci1jb250ZW50cy9waG90b3MvOWE5ZGM0ZDctZTc1Ni00NWIxLTgxZDgtMDk1YTI4ZTQ3NmM2LmpwZyIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QxIiwicHJvZmlsZSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjAtMDktMzBUMDc6MTI6MTkuNDAxWiIsIndlYnNpdGUiOm51bGwsInpvbmVpbmZvIjpudWxsLCJlbWFpbCI6InRlc3QxQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJFNjViMVFvVVl0IiwiYXRfaGFzaCI6IkIzSWdPWUREYTBQejh2MV85cVpyQXciLCJhdWQiOiI1ZjE3YTUyOWY2NGZiMDA5Yjc5NGEyZmYiLCJleHAiOjE2MDE0NTM1NTgsImlhdCI6MTYwMTQ0OTk1OSwiaXNzIjoiaHR0cHM6Ly9vaWRjMS5hdXRoaW5nLmNuL29pZGMifQ.Z0TweYr9bCdYNJREVdvbJYcjXSfSsSNHBMqxTJeW-bnza0IIpBpEEVxlDG0Res6FZbcVzsQZzfJ9pj_nFgLjZxUUxv7Tpd13Sq_Ykg2JKepPf3-uoFqbORym07QEj4Uln0Quuh094MTb7z6bZZBEOYBac46zuj4uVp4vqk5HtCUSB4ASOAxwi7CeB1tKghISHz6PDcf6XJe_btHdzX1dparxtML-KvPxjpcHlt5emN88lpTAOX7Iq0EhsVE3PKrIDfCkG8XlL5y9TIW2Dz2iekcZ5PV17M35G6Dg2Q07Y_Apr18_oowOiQM5m_EbI90ist8CiqO9kBKreCOLMzub4Q',
   keystore,
   {
-    issuer: 'https://oidc1.Approw.cn/oidc',
+    issuer: 'https://oidc1.approw.cn/oidc',
     audience: '5f17a529f64fb009b794a2ff',
   }
 )
@@ -86,7 +86,7 @@ Result:
   middle_name: null,
   name: null,
   nickname: null,
-  picture: 'https://files.Approw.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
+  picture: 'https://files.approw.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
   preferred_username: 'test1',
   profile: null,
   updated_at: '2020-09-30T07:12:19.401Z',
@@ -101,7 +101,7 @@ Result:
   aud: '5f17a529f64fb009b794a2ff',
   exp: 1601453558,
   iat: 1601449959,
-  iss: 'https://oidc1.Approw.cn/oidc'
+  iss: 'https://oidc1.approw.cn/oidc'
 }
 ```
 
@@ -113,7 +113,7 @@ This endpoint can detect `access_token` and `id_token` effectiveness `refresh_to
 
 - Interface Description: check whether issued `access_token` or `id_token` is valid.
 
-- Interface Endpoint:`GET` `https://<your application domain>.Approw.cn/api/v2/oidc/validate_token`
+- Interface Endpoint:`GET` `https://<your application domain>.approw.cn/api/v2/oidc/validate_token`
 
 - Request parameters:
 
@@ -134,7 +134,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "iat": 1601456894,
     "exp": 1601460494,
     "scope": "openid profile email phone",
-    "iss": "https://oidc1.Approw.cn/oidc",
+    "iss": "https://oidc1.approw.cn/oidc",
     "aud": "5f17a529f64fb009b794a2ff"
 }
 
@@ -149,7 +149,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "middle_name": null,
     "name": null,
     "nickname": null,
-    "picture": "https://usercontents.Approw.cn/Approw-avatar.png",
+    "picture": "https://usercontents.approw.cn/approw-avatar.png",
     "preferred_username": "test1",
     "profile": null,
     "updated_at": "2020-09-27T06:06:29.853Z",
@@ -164,7 +164,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "aud": "5f17a529f64fb009b794a2ff",
     "exp": 1601460494,
     "iat": 1601456894,
-    "iss": "https://oidc1.Approw.cn/oidc",
+    "iss": "https://oidc1.approw.cn/oidc",
 }
 ```
 
@@ -186,7 +186,7 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 
 - Interface Description: You can verify whether `access_token` or `refresh_token` is valid.
 
-- Interface Endpoint:`POST` `https://<your applicaiton name>;.Approw.cn/oauth/token/introspection`
+- Interface Endpoint:`POST` `https://<your applicaiton name>.approw.cn/oauth/token/introspection`
 
 - Request header:
 
@@ -202,7 +202,7 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 | token           | string   | Yes            | The token value to be checked.                                                                                                                                                                                                              |
 | token_type_hint | string   | Yes            | The token type to be checked, the optional value is access_token                                                                                                                                                                            |
 | client_id       | string   | no             | Application ID, it is required when configuring the verification token authentication method as client_secret_post and none in the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab.  |
-| client_secret   | string   | no             | Applicaiton Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
+| client_secret   | string   | no             | Application Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
 
 - Return data:
 
@@ -215,7 +215,7 @@ When the token is valid, the following content will be returned
   "client_id": "5cded22b4efab31716fa665f",
   "exp": 1602423020,
   "iat": 1602419420,
-  "iss": "https://core.Approw.cn/oauth",
+  "iss": "https://core.approw.cn/oauth",
   "jti": "SaPg48dbO66T77xkT8wy0",
   "scope": "user",
   "token_type": "Bearer"

@@ -8,13 +8,13 @@ Before choosing **a mode for authentication and authorization**, it is recommend
 
 Currently, Approw has three authentication methods that can be selected:
 
-- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgotten password. The [Guard Component](/reference/ui-components) and [SDK](/reference/sdk-for-node) of Approw are both based on these APIs.
+- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgotten password. The [Guard Component](/docs/en/reference/ui-components) and [SDK](/docs/en/reference/sdk-for-node) of Approw are both based on these APIs.
 
 - The **OAuth 2.0** protocol is mainly used for resource authorization.
 
 - The **OpenID Connect** protocol, as known as **OIDC**, is a superset of the OAuth 2.0 protocol, which can **authenticate** users and complete resource **authorization**. If OIDC can be selected, **OIDC should be selected**.
 
-If you want to directly authenticate your users through API, you can check the [interface documentation](/reference/) and SDK documentation in the development integration section.
+If you want to directly authenticate your users through API, you can check the [interface documentation](/docs/en/reference/) and SDK documentation in the development integration section.
 
 If you want to implement **Single Sign-on** or **authenticate** users first and then return to resources, it is recommended to use the **OIDC protocol**.
 

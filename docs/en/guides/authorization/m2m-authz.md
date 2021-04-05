@@ -41,13 +41,13 @@ If the program access account is deleted, the caller will lose the access.
 
 When you create a programmatic access account, you need to specify the AccessToken expiration time. Approw uses the RS256 signature algorithm when issuing the AccessToken to ensure that the AccessToken will not be tampered with.
 
->Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/concepts/jwt-token.md).
+>Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/docs/en/concepts/jwt-token.md).
 
 
 RS256 is an asymmetric signature algorithm. Approw holds the private key to sign the Token, and consumers of JWT use the public key to verify the signature. The RS256 signature algorithm has the following advantages:
 1. Anyone can use the application public key to verify the signature, and the signer must be Approw. 
 2. There is no risk of private key leakage. If you use HS256 but leak the application key, you need to refresh the key and redeploy all APIs.
-For more details on signature issues, please refer to [Verify the Token](/guides/faqs/how-to-validate-user-token.md). 
+For more details on signature issues, please refer to [Verify the Token](/docs/en/guides/faqs/how-to-validate-user-token.md). 
 We have just created two programming access accounts, which will need to be handed over to outsourcers in the future.
 
 ![](~@imagesZhCn/guides/authorization/ak-sk-result.png)
@@ -227,4 +227,4 @@ app.post('/article', function(req, res) {
 
 app.listen(port);
 ```
-For other content about Token validation, please refer to how to [validate user token](/guides/faqs/how-to-validate-user-token.md).
+For other content about Token validation, please refer to how to [validate user token](/docs/en/guides/faqs/how-to-validate-user-token.md).

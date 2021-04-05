@@ -63,7 +63,7 @@ Next, we add resource permissions for users. On the **resource authorization** c
 Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally, click OK. 
 At this point, the administrator's privileges management operations are all finished.
 
-## Obtain an accesstoken with permission
+## Obtain an AccessToken with permission
 
 The caller needs to obtain resource authorization from the resource party through the **OIDC authorization code mode**. The user of the resource party will participate in the authorization process. After the user's authorization, Approw will issue an AccessToken with the authority scope and the subject is the resource holder. First, you need to splice the **authorization link**:
 

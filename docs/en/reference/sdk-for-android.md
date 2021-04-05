@@ -8,16 +8,16 @@ Developers can use [{{$localeConfig.brandName}} Java/Kotlin SDK](./sdk-for-java/
 
 ## Integration method
 
-1. 1. Download the jar package and import the jar package into lib.
+1. Download the jar package and import the jar package into lib.
 
 Download jar package here:
 
-- [https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar](https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar)
-- [https://download.authing.cn/packages/jar/core.jar](https://download.authing.cn/packages/jar/core.jar)
+- [https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar](https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar)
+- [https://download.approw.com/packages/jar/core.jar](https://download.approw.com/packages/jar/core.jar)
 
 Import the Jar package into lib, as shown in the following image:
 
-![](https://cdn.authing.cn/blog/20201218134537.png)
+![](https://cdn.approw.com/blog/20201218134537.png)
 
 2. Configure `build.gradle`
 
@@ -42,9 +42,9 @@ For detailed installation instructions, please see:[{{$localeConfig.brandName}} 
 ```java
 AuthenticationClient client = new AuthenticationClient("YOUR_USERPOOL_ID");
 
-client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new cn.authing.core.http.Callback<cn.authing.core.types.User>() {
+client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new com.approw.core.http.Callback<com.approw.core.types.User>() {
     @Override
-    public void onSuccess(cn.authing.core.types.User user) {
+    public void onSuccess(com.approw.core.types.User user) {
 
     }
 
@@ -68,7 +68,7 @@ authenticationClient.registerByEmail(
         "xxx@.qq.com",
         "123456"
     )
-).enqueue(object : cn.authing.core.http.Callback<User> {
+).enqueue(object : com.approw.core.http.Callback<User> {
     override fun onFailure(error: ErrorInfo?) {
 
     }
@@ -83,14 +83,14 @@ authenticationClient.registerByEmail(
 
 {{$localeConfig.brandName}} Java SDK supports multiple registration and login methods such as mobile phone number verification code, email, username, etc. Take mobile phone number verification code login as an example:
 
-1. 1. Send SMS code
+1. Send SMS code
 
 ```java
 String phone = "phone number";
 authenticationClient.sendSmsCode(phone).execute();
 ```
 
-2. 2. Use the SMS code to login
+2. Use the SMS code to login
 
 ```java
 String phone = "phone number";

@@ -164,7 +164,7 @@ const user = await managementClient.users.update("USERID", {
 
 - `Promise<User>`
 
-## 获取用户详情
+## Get user details
 
 UsersManagementClient().detail(userId)
 

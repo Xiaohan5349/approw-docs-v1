@@ -20,26 +20,26 @@ UdfManagementClient().set(targetType, key, dataType, label)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> user defined field target type.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 - `key` \<string\> field key
-- `dataType` \<UdfDataType\> data type. It currently supports five data types: string, number, datetime, boolean and object. 
+- `dataType` \<UdfDataType\> Data type. It currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT. 
 - `label` \<string\> Field Label, which commonly is a Human Readable string.
 
 #### Example
 
 ```python
 udf = management.udf.set(
-    targetType='USER', # 目标类型为用户
-    key='school', # key 为 school
-    dataType='STRING', # 数据类型为字符串
-    label='学校', # 显示的 label 为学校
+    targetType='USER', # target type is 'USER'
+    key='school', # key is 'school'
+    dataType='STRING', # data type is 'STRING'
+    label='school', # shown label is 'school'
 )
 
 udf = management.udf.set(
-    targetType='USER', # 目标类型为用户
-    key='age', # key 为 age
-    dataType='NUMBER', # 数据类型为数字
-    label='年龄', # 显示的 label 为年龄
+    targetType='USER', # target type is 'USER'
+    key='age', # key is 'age'
+    dataType='NUMBER', # data type is 'NUMBER'
+    label='age', # shown label is 'age'
 )
 ```
 
@@ -51,15 +51,15 @@ UdfManagementClient().remove(targetType, key)
 
 #### Parameters
 
-- `targetType` \<UdfTargetType\> user defined field target type.
-- `key` \<string\> field key
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `key` \<string\> Field key
 
 #### Example
 
 ```python
 management.udf.remove(
-    targetType='USER', # 目标类型为用户
-    key='school'  # key 为 school
+    targetType='USER', # target type is 'USER'
+    key='school'  # key is 'school'
 )
 ```
 
@@ -71,12 +71,12 @@ UdfManagementClient().list(targetType)
 
 #### Parameter
 
-- `targetType` \<UdfTargetType\> user defined field target type.
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 
 #### Example
 
 ```python
 udfs = management.udf.list(
-  targetType="USER" # 目标类型为用户
+  targetType="USER" # tarfet type is 'USER'
 )
 ```

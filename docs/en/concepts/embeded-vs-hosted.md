@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-A variety of authentication integration methods are provided in the {{$localeConfig.brandName}} system, among which the most recommended and most commonly used are "Hosted Mode" and "Embedded Component " mode. Both modes provided by Approw are easy to implement. You can read the access flow of the [hosted login page](/guides/basics/authenticate-first-user/use-hosted-login-page.md) and the [embedded login component](/guides/basics/authenticate-first-user/use-embeded-login-component/) separately. The main differences between these two are in application scenarios, customization flexibility, and the cost of maintaining management.
+A variety of authentication integration methods are provided in the {{$localeConfig.brandName}} system, among which the most recommended and most commonly used are "Hosted Mode" and "Embedded Component " mode. Both modes provided by Approw are easy to implement. You can read the access flow of the [hosted login page](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md) and the [embedded login component](/docs/en/guides/basics/authenticate-first-user/use-embeded-login-component/) separately. The main differences between these two are in application scenarios, customization flexibility, and the cost of maintaining management.
 
 ![](./images/login-page.png)
 
@@ -10,13 +10,13 @@ A variety of authentication integration methods are provided in the {{$localeCon
 
 The Approw host mode is considered to be the simplest and most secure way of integration. This is because the login flow is maintained by Approw and kept secure by Approw. For most integrations, the login flow hosted by Approw is recommended. Your business system will redirect the user to Approw, where the user is authenticated, and then redirects back to the application callback connection configured in the console. This design is considered the best security practice. In terms of custom configuration, the host mode provides a moderate level of custom form configuration of the login and registration, which can be customized by the console configuration and CSS.
 
-For details about access, please refer to [Use the hosted login page to complete the authentication](/guides/basics/authenticate-first-user/use-hosted-login-page.md).
+For details about access, please refer to [Use the hosted login page to complete the authentication](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md).
 
 ## Embedded login component
 
 The customer-hosted login component (Guard) is considered to be the best balance between flexibility and integration. If the integration requires a deeper level of customization or the host mode cannot be used in some scenarios where the frontend and backend are separated, it is recommended to use the "embedded Component " mode. The customer embedded component connects and embeds the page by open-source-provided Guard. The embedded login component is built and updated by Approw, using best industry practice security design, only a few lines of JavaScript code can be integrated into your development project. It can be loaded directly from CDN or NPM, or it can be built from source code. The Approw login component also provides multiple integration modes of Javascript native, React, Vue and Angular, which can be seamlessly integrated into any of your projects and enjoy a high degree of customization flexibility.
 
-For details about access, please refer to [Use the embedded login component to complete the authentication.](/guides/basics/authenticate-first-user/use-embeded-login-component/)
+For details about access, please refer to [Use the embedded login component to complete the authentication.](/docs/en/guides/basics/authenticate-first-user/use-embeded-login-component/)
 
 ## Why need Approw host?
 

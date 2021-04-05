@@ -9,9 +9,9 @@
   steps:
     [
       {
-        title: 'Create SAML IdP',
+        title: 'Create an SAML IdP',
       },
-      { title: 'Configure SAML IdP in Approw' },
+      { title: 'Configure the SAML IdP in Approw' },
       {
         title: 'Create an application in {{$localeConfig.brandName}}'
       },

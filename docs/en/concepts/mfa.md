@@ -15,13 +15,13 @@ Statistics also prove the effectiveness of MFA. At the end of last year, LastPas
 ## The core functions of Approw MFA
 
 - Approw guarantees business security through multiple authentication methods;
-- [Customize the authentication process](/guides/pipeline/), which is simple with one-touch open;
+- [Customize the authentication process](/docs/en/guides/pipeline/), which is simple with one-touch open;
 - Support environmental data report for equipments and multi-dimensional analysis of security levels;
 - Support configuration strategy to achieve environmental risk self-adaptation;
-- Suitable for [privilege control in APP](/guides/access-control/);
-- Integrated into the [universal login component (Guard)](/reference/ui-components/) by default;
-- [User data management, operation log query](/guides/audit/);
-- Provide [SDK and open interfaces](/reference/) to help developers quickly call related capabilities(functions?) and build custom user management pages.
+- Suitable for [privilege control in APP](/docs/en/guides/access-control/);
+- Integrated into the [universal login component (Guard)](/docs/en/reference/ui-components/) by default;
+- [User data management, operation log query](/docs/en/guides/audit/);
+- Provide [SDK and open interfaces](/docs/en/reference/) to help developers quickly call related capabilities(functions?) and build custom user management pages.
 
 ## The methods of MFA
 
@@ -77,7 +77,7 @@ Fingerprint/face, as key factors of human body characteristics, is widely used i
 
 Provides an out-of-the-box SDK to help end-to-end developers to quickly implement MFA.
 
-- Support multiple terminals: [Web](/reference/ui-components/)、[iOS](/reference/sdk-for-swift.md)、[Android](/reference/sdk-for-android.md);
+- Support multiple terminals: [Web](/docs/en/reference/ui-components/)、[iOS](/docs/en/reference/sdk-for-swift.md)、[Android](/docs/en/reference/sdk-for-android.md);
 - Built-in multiple MFA terminal components, such as OTP, verification code, fingerprint unlocking, facial recognition, graphic lock, etc.;
 - Only need to call a method to start the MFA certification component, get the certification result, and complete the certification process.
 
@@ -85,7 +85,7 @@ Provides an out-of-the-box SDK to help end-to-end developers to quickly implemen
 
 Report customized data, participate in the process and initiate decision-making, and cover more complex and refined scenarios.
 
-- Support data reporting during [Approw SDK](/reference/) initialization;
+- Support data reporting during [Approw SDK](/docs/en/reference/) initialization;
 - Support regular data reporting;
 - Support active data reporting when the application is running;
 
