@@ -24,7 +24,6 @@ For details, please refer to this article: [What is JWT](https://www.jianshu.com
 - User send Username/Password Authentication Request
 - Server verify Username/Password against Database
 - Server return JWT Token after validation successfully
-
 - **Client Stored JWT Token and presented it in each Request （**[**How to Present?**](#How-to-Present-Client-Stored-JWT-Token)**）**
 - **Server verify JWT Token and return resource to valid User（**[**How to Verify?**](/docs/en/guides/faqs/how-to-validate-user-token.md)**）**
 
@@ -34,13 +33,11 @@ To prevent malicious user registration, Approw set below restrictions for IP add
 
 - User register `3 times` or more in `5 min` with the same IP address. The IP address will be banned
 - User login failed `3 times` in `5 min` with same IP address. OTP verification will be required.
-
 > Threshold can be customized. Please refer to [Enable/Disable/Config Registration Counts Restriction](/docs/en/guides/security/config-register-limit.md)。
 
 ## How to Present Client Stored JWT Token
 
 Approw return JWT Token to developer after authentication passed. Developer stored JWT token at Client side and present token to backend server for validation.
-
 
 **HTTP Header Authorization** is recommended to carry JWT Token. Eg (Axios in JavaScript): 
 
