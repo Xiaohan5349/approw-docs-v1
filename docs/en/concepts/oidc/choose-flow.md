@@ -6,20 +6,19 @@ You need to choose an appropriate authorization mode according to your scenario 
 
 Different types of applications require different authorization modes. The following table is our recommended mode:
 
-| Application Type    | Authorization Mode           |
-| ----------- | ------------------ |
-| With backend  | Authorization Code Mode         |
-| SPA, no backend | Implicit Mode        |
-| Between servers  | Client Credentials |
-
+| Application Type | Authorization Mode      |
+| ---------------- | ----------------------- |
+| With backend     | Authorization Code Mode |
+| SPA, no backend  | Implicit Mode           |
+| Between servers  | Client Credentials      |
 
 ## Does your application need Id Token?
 
-| Authorization Mode                | Access Token | Id Token |
+| Authorization Mode      | Access Token | Id Token |
 | ----------------------- | ------------ | -------- |
-| Authorization Code Mode              | ✅           | ✅       |
-| Implicit Mode               | ✅           | ✅       |
-| Password Mode                | ✅           | ✅       |
+| Authorization Code Mode | ✅           | ✅       |
+| Implicit Mode           | ✅           | ✅       |
+| Password Mode           | ✅           | ✅       |
 | Client Credentials Mode | ✅           | ❌       |
 
 ## What type of your application is?
@@ -30,7 +29,7 @@ How to choose the OIDC authorization model depends on which type of application 
 
 ## Is your application code can be publicly accessed?
 
-If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications. 
+If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications.
 
 ## Is your application a spa or a native application??
 
