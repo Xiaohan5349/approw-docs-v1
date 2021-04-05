@@ -1,4 +1,4 @@
-# Integrate RBAC permission model into your application system
+# Integrate RBAC Permission Model into Your Application System
 
 <LastUpdated/>
 
