@@ -1,4 +1,4 @@
-# Use embeded login component to authenticate
+# Use Embeded Login Component to Authenticate
 
 <LastUpdated/>
 
