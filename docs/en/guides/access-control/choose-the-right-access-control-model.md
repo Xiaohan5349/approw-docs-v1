@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and[Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
+There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and [Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
 
 
 ## What is role-based access control (RBAC)
