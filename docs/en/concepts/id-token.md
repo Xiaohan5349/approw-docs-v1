@@ -25,7 +25,7 @@ In general **ID Token** is [`JWT Token`](./jwt-token.md), it's including user's 
 **ID Token** is a `JWT Token` means:
 
 `id_token` include user's identity information. There is no need for another request for user info
-The integrity of `id_token` can be verified. [How to verify ID Token](/docs/en/guides/faqs/how-to-validate-user-token.md).
+The integrity of `id_token` can be verified. [How to Verify ID Token](/docs/en/guides/faqs/how-to-validate-user-token.md).
 
 
 ## ID Token Claims Example
