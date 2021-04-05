@@ -13,7 +13,7 @@ First, we need to understand a few core concepts in Approw:
 
 With the combination of users, roles, resources, and authorizations, we can get a flexible and fine-grained permission model.
 
-## Add roles
+## Create roles
 
 You can use the Approw console to create roles: In **Privilege Management** - **Role Management** Click **Add Role **:
 
