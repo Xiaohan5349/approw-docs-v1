@@ -46,7 +46,7 @@ fZJLT+MwFIX3/IrI+7yct9Wk6kyFQGJERQKL2RnnJnWV2Blfp2L+PaGlDLOApaV7vnN0jlfrl3FwjmBQ
 
 IdP request user login once receive SAML Request from SP:
 
-Img
+![](https://cdn.approw.com/docs/20200928211618.png)
 
 After Login success, IdP return SAML assertion to SP (via HTTP POST):
 
