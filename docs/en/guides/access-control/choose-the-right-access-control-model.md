@@ -35,7 +35,7 @@ In ABAC, whether an operation is allowed is determined based on the dynamic calc
 - Operation: The operation is the operation that the user tries to perform on the resource. Common operations include "read", "write", "edit", "copy" and "delete";
 - Environment: The environment is the context of each access request. Environmental attributes include the time and location of the access attempt, the object's device, communication protocol and encryption strength, etc.
 
-### How ABAC make decision
+### How ABAC uses attributes to dynamically calculate decision results
 
 During the execution of ABAC's decision statement, the decision engine will dynamically calculate the decision result based on the defined decision statement, combined with attributes such as objects, resources, operations, and environment. 
 
