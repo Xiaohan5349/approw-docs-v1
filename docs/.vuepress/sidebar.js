@@ -1,7 +1,7 @@
-const BRAND_NAME_ZH_CN = 'Authing'
-const BRAND_NAME_ZH_CN_LOWER_CASE = 'authing'
-const BRAND_NAME_EN_US = 'Authing'
-const BRAND_NAME_EN_US_LOWER_CASE = 'authing'
+const BRAND_NAME_ZH_CN = 'Approw'
+const BRAND_NAME_ZH_CN_LOWER_CASE = 'approw'
+const BRAND_NAME_EN_US = 'Approw'
+const BRAND_NAME_EN_US_LOWER_CASE = 'approw'
 
 const DATABASE_CONNECTION_MENU = {
   title: '自定义数据库',
