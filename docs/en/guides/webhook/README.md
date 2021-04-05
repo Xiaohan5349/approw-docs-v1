@@ -1,18 +1,18 @@
 ---
 meta:
   - name: description
-    content: Using Webhook to monitor user events
+    content: Using Webhook to Listen User Events
 ---
 
-# Using Webhook to monitor user events
+# Use Webhook to Listen User Events
 
 <LastUpdated/>
 
-Webhook allows you to monitor user registration, login and other behaviors, so as to do some custom processing.
+Webhook allows you to listen user registration, login and other behaviors, so as to do some user-defined processing.
 
-The method of using Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
+The method of using the Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
 
-## Configuring Webhook
+## Configure Webhook
 
 On the **Extention Capabilities** - **Webhook** page，you can manage the webhook you defined：
 
@@ -40,7 +40,7 @@ Configuring Webhook
 | Trigger event     | [Whether to enable this Hook](use-webhook.md#支持的事件)                                                                                            |
 | Whether to enable this Hook         | Whether to enable this Hook                                                                                                                          |
 
-## Debugging Webhook
+## Debug Webhook
 
 The Hook request events you just created are empty, so you can trigger a "test event" by clicking on "Test".
 
@@ -62,9 +62,9 @@ After a successful test you will see detailed request and return information.
 
 ![](https://cdn.authing.cn/blog/20200927201638.png)
 
-## Supported Events
+## Supported events
 
-### Event List
+### Event list
 
 | Event name                | Event description                                                                                           |
 | :-------------------- | :------------------------------------------------------------------------------------------------- |
@@ -74,7 +74,7 @@ After a successful test you will see detailed request and return information.
 | user:updated          | Password modification event, this event will be triggered when the user changes the password or the administrator manually changes the password, regardless of success or failure               |
 | user:password-changed | Modify user information time, when users modify their own information or administrators manually modify user information will trigger the word time, regardless of success or failure will be triggered |
 | user:email-verified   | User mailbox is verified event                                                                             |
-| permission:add        | Add authorization events, authorization objects can be users, roles, and organizational structures                                             |
+| permission:add        | Add authorization events. Authorization objects can be users, roles, and organizational structures                                             |
 | permission:revoke     | Cancel authorization events. Cancel the rule of Authorization objects can be users, roles, and organizational structures                                                |
 
 ### Request type
@@ -89,11 +89,11 @@ Each event will carry some specific request parameters.
 
 We will carry some custom header information in the HTTP POST header, as shown in the following table:
 
-| Header                     | 描述                                                                                        |
+| Header                     | Description                                                                                        |
 | :------------------------- | :------------------------------------------------------------------------------------------ |
-| `user-agent`               | The value is `'authing-webhook@2.0'`，which means this request is from Approw                                    |
-| `x-authing-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
-| `x-authing-userpool-id`    | Approw user pool ID                                                                         |
+| `user-agent`               | The value is `'approw-webhook@2.0'`，which means this request is from Approw                                    |
+| `x-approw-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
+| `x-approw-userpool-id`    | Approw user pool ID                                                                         |
 
 ### Request body
 
@@ -138,7 +138,7 @@ The request body will also carry some specific parameters
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -196,7 +196,7 @@ The request body will also carry some specific parameters
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -266,7 +266,7 @@ The request body will also carry some specific parameters
         "isDeleted": false,
         "device": null,
         "browser": null,
-        "company": "Authing",
+        "company": "Approw",
         "name": null,
         "givenName": null,
         "familyName": null,
@@ -315,22 +315,22 @@ The request body will also carry some specific parameters
   "eventName": "mfaVerify",
   "data": {
     "userId": "xxxxx",
-    "isValid": true // 是否验证通过
+    "isValid": true // If the verification succeeds.
   }
 }
 ```
 
-- Adding authorization event
+- Add authorization event
 
 ```json
 {
   "eventName": "permission:add",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```
@@ -342,10 +342,10 @@ The request body will also carry some specific parameters
   "eventName": "permission:revoke",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```

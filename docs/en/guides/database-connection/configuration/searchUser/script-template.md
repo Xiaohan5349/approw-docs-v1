@@ -8,7 +8,7 @@ async function searchUser(keyword, context) {
   // The first argument keyword is the keywork used to Search Users
 
   // The Second argument context contains information about the authentication context.
-  // see http://docs.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://docs.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -51,9 +51,9 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### Get User Lists Successfully
+#### Get user lists successfully
 
-When the user exists, you need to return the user list to Approw, the format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md). For example:
+When the user exists, you need to return the user list to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function searchUser(query, context) {
@@ -73,7 +73,7 @@ async function searchUser(query, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When user meets other errors, you can catch the error and return friendly a notice such as:
 
@@ -89,13 +89,13 @@ async function searchUser(keyword, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
@@ -115,7 +115,7 @@ Assume we are using `mongodb` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the keyword of fuzzy search in the `keyword` to search user.
 - If user does not exist, return `null`.
-- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
@@ -129,7 +129,7 @@ async function searchUser(keyword, context) {
   });
 
   if (!client) {
-    throw new Error('连接数据库失败');
+    throw new Error('Connection to database failed');
   }
 
   const queries = [

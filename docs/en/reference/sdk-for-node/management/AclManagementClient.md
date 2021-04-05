@@ -56,12 +56,12 @@ managementClient.acl.isAllowed('USERID2', 'books:124', 'books:edit') // true
 
       
 
-## Get whether a user has operation privilege of a resource
+## Check whether a user has operation privilege of a resource
 
 
 AclManagementClient().isAllowed(userId, action, resource)
 
-> Get whether a user has operation authority of a resource
+> Check whether a user has operation authority of a resource.
 
 
 #### Parameter

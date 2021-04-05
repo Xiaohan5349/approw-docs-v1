@@ -37,7 +37,7 @@ The npm module has several ways to connect databases like Client, axios, bcrypt 
 ```javascript
 const isPasswordValid = await bcrypt.compare(password, user.password);
 if (!isPasswordValid) {
-  throw new Error('密码错误');
+  throw new Error('The password is wrong.');
 }
 ```
 

@@ -1,7 +1,7 @@
 ---
 meta:
   - name: description
-    content: 自动检测登录
+    content: Automatic Detection Login
 ---
 
 # 移动端自动检测登录

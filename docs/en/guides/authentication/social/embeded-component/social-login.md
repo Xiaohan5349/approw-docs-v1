@@ -5,12 +5,12 @@ Guard supports React, Vue, Angular three front-end frameworks and native JS call
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AuthingGuard } from '@authing/react-ui-components'
+import { ApprowGuard } from '@approw/react-ui-components'
 // import css file
-import '@authing/react-ui-components/lib/index.min.css'
+import '@approw/react-ui-components/lib/index.min.css'
 
 const App = () => {
-  const appId = 'AUTHING_APP_ID'
+  const appId = 'APPROW_APP_ID'
   const onLogin = (userInfo) => {
     console.log(userInfo)
   }

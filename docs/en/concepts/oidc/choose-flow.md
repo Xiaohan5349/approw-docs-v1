@@ -2,47 +2,46 @@
 
 You need to choose an appropriate authorization mode according to your scenario and the type of application you are developing. This article will assist you in choosing the appropriate OIDC authorization mode.
 
-## Recommended Authorization Mode
+## Recommended authorization mode
 
 Different types of applications require different authorization modes. The following table is our recommended mode:
 
-| Application Type    | Authorization Mode           |
-| ----------- | ------------------ |
-| With backend  | Authorization Code Mode         |
-| SPA, no backend | Implicit Mode        |
-| Between servers  | Client Credentials |
+| Application Type | Authorization Mode      |
+| ---------------- | ----------------------- |
+| With backend     | Authorization Code Mode |
+| SPA, no backend  | Implicit Mode           |
+| Between servers  | Client Credentials      |
 
+## Does your application need Id Token?
 
-## Does Your Application Need Id Token?
-
-| Authorization Mode                | Access Token | Id Token |
+| Authorization Mode      | Access Token | Id Token |
 | ----------------------- | ------------ | -------- |
-| Authorization Code Mode              | ✅           | ✅       |
-| Implicit Mode               | ✅           | ✅       |
-| Password Mode                | ✅           | ✅       |
+| Authorization Code Mode | ✅           | ✅       |
+| Implicit Mode           | ✅           | ✅       |
+| Password Mode           | ✅           | ✅       |
 | Client Credentials Mode | ✅           | ❌       |
 
-## What Type of Your Application is?
+## What type of your application is?
 
 How to choose the OIDC authorization model depends on which type of application you are developing. Refer to the following flowchart to select the authorization mode you need:
 
 ![](~@imagesZhCn/concepts/oidc/choose-flow.png)
 
-## Is Your Application Code can be Publicly Access?
+## Is your application code can be publicly accessed?
 
-If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications. 
+If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications.
 
-## Is Your Application a SPA or a Native Application?
+## Is your application a spa or a native application??
 
-If your application is a single page application, running in a new version of the browser, and the browser supports Web Crypto, you should use the PKCE + Authorization Code Mode. If your application is running in an old version of the browser, the browser does not support Web Crypto, you should use the Implicit Mode. The Implicit Mode is only suitable for scenarios where the application cannot safely store the key. If other modes are not available, you should consider using the Implicit Mode.
+If your application is a single-page application, running in a new version of the browser, and the browser supports Web Crypto, you should use the PKCE + Authorization Code Mode. If your application is running in an old version of the browser, the browser does not support Web Crypto, you should use the Implicit Mode. The Implicit Mode is only suitable for scenarios where the application cannot safely store the key. If other modes are not available, you should consider using the Implicit Mode.
 
 If your application is a native application, you should use PKCE + Authorization Code Mode.
 
-## Are There End Users Using Your App?
+## Are there end users using your app?
 
-If your application runs on the server side and is not directly used by end users, but only for interaction between servers, you should use Client Credentials Mode.
+If your application runs on the server-side and is not directly used by end-users, but only for interaction between servers, you should use Client Credentials Mode.
 
-## Are Applications And Resources Held by the Same Party?
+## Are applications and resources held by the same party?
 
 If your application and the resources that the application needs to access are all controlled by you, and your application can safely store user accounts and passwords with enough safe code logic. When the other authorization modes are not suitable, you can choose the Password Mode.
 
@@ -52,7 +51,7 @@ The Authorization Code Mode is suitable for scenarios where the application has 
 
 ![](~@imagesZhCn/guides/federation/oidc/authorization-code-flow.png)
 
-For more information, please refer to [Using Authorization Code Mode](/federation/oidc/authorization-code/).
+For more information, please refer to [Using Authorization Code Mode](/docs/en/federation/oidc/authorization-code/).
 
 ## Implicit Mode
 
@@ -64,7 +63,7 @@ Because the Implicit Mode is used in **scenarios where the key cannot be stored 
 
 ![](~@imagesZhCn/guides/federation/oidc/implicit-flow.png)
 
-For more information, please refer to [Using Implicit Mode](/federation/oidc/implicit).
+For more information, please refer to [Using Implicit Mode](/docs/en/federation/oidc/implicit).
 
 ## Password Mode
 
@@ -72,7 +71,7 @@ The Password Mode is suitable for scenarios where you master both the applicatio
 
 ![](~@imagesZhCn/guides/federation/oidc/password-flow.png)
 
-For more information, please refer to [Using Password Mode](/federation/oidc/password/).
+For more information, please refer to [Using Password Mode](/docs/en/federation/oidc/password/).
 
 ## Client Credentials Mode
 
@@ -84,4 +83,4 @@ Client Credentials Mode does not support Refresh Token.
 
 ![](~@imagesZhCn/guides/federation/oidc/client-credentials-flow.png)
 
-For more information, please refer to [Use Client Credentials Mode](/federation/oidc/client-credentials/)
+For more information, please refer to [Use Client Credentials Mode](/docs/en/federation/oidc/client-credentials/)

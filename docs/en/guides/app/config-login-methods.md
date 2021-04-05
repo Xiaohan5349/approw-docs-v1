@@ -8,13 +8,13 @@ By default, your applicaiton only include basic Login method: OTP Login, Usernam
 Beside basic login method, Approw support:
 - Social Registration
 - Identity Source Login
-    - [OIDC](#添加-oidc-身份源登录)
-    - [SAML](#添加-saml-身份源登录)
-    - [OAuth2.0](#添加-oauth20-身份源登录)
-    - [CAS](#添加-cas-身份源登录)
-    - [Azure AD](#添加-微软-azure-ad-登录)
-    - [LDAP](#添加-ldap-用户目录登录)
-    - [Windows AD](#添加-windows-ad-用户目录登录)
+    - [OIDC](#Configuring-OIDC-Identity-Source-Login)
+    - [SAML](#Configuring-SAML-Identity-Source-Login)
+    - [OAuth2.0](#Configuring-OAuth2.0-Identity-Source-Login)
+    - [CAS](#Configuring-CAS-Identity-Source-Login)
+    - [Azure-AD](#Configuring-Azure-AD-Identity-Source-Login)
+    - [LDAP](#Configuring-LDAP-Identity-Source-Login)
+    - [Windows-AD](#Configuring-Windows-AD-Identity-Source-Login)
 
 ## Social Registration
 
@@ -38,44 +38,44 @@ Beside basic login method, Approw support:
 
 ### Configuring OIDC Identity Source Login
 
-Please refer to [Configuring OIDC Identity Source](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring OIDC Identity Source](/docs/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-05_13-23-10.png)
 
 ### Configuring SAML Identity Source Login
 
-Please refer to [Configuring SAML Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring SAML Identity Source Login](/docs/en/connections/saml/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-01-20.png)
 
 ### Configuring OAuth2.0 Identity Source Login
 
-Please refer to [Configuring OAuth2.0 Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring OAuth2.0 Identity Source Login](/docs/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-05-05.png)
 
 ### Configuring CAS Identity Source Login
 
-Please refer to [Configuring CAS Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring CAS Identity Source Login](/docs/en/connections/cas/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-05-54.png)
 
 
 ### Configuring Azure AD Identity Source Login
 
-Please refer to [Configuring Azure AD Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring Azure AD Identity Source Login](/docs/en/connections/azure-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-07-47.png)
 
 ### Configuring LDAP Identity Source Login
 
-Please refer to [Configuring LDAP Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring LDAP Identity Source Login](/docs/en/connections/ldap/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-10-03.png)
 
 
 ### Configuring Windows AD Identity Source Login
 
-Please refer to [Configuring Windows AD Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring Windows AD Identity Source Login](/docs/en/connections/windows-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-09-06.png)

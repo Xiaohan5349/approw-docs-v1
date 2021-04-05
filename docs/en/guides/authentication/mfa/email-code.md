@@ -2,12 +2,12 @@
 
 ## Overview
 
-MFA is a security system that is a secondary identity verification for verifying the legitimacy of an operation. For example, remote login requires email verification. This article introduces the multi-factor authentication method based on email verification code.
+MFA is a security system as a secondary identity verification for verifying the legitimacy of an operation. For example, remote login requires email verification. This article introduces the multi-factor authentication method based on email verification code.
 
 ## Prerequisite
 
-1. <a :href="`${$themeConfig.consoleDomain}`">Register a new {{$localeConfig.brandName}} Account</a>
-2. [Complete the creation of the user pool and application](/guides/basics/authenticate-first-user/use-hosted-login-page)
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com)
+2. [Complete the creation of the user pool and application](/docs/en/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
 ## Enable Email-based MFA
 

@@ -10,7 +10,7 @@ meta:
 
 The console is where you can manage manage all aspects of your Approw resource and configuration.
 
-In [Approw Console](https://console.authing.cn/console/userpool), you can configure and modify Approw's resources, users and other information.
+In [Approw Console](https://console.approw.com/console/userpool), you can configure and modify Approw's resources, users and other information.
 
 ![](./images/console-1.png)
 
@@ -33,9 +33,9 @@ The following table contains a brief overview of the different Console pages and
       <td style="text-align:left">
         <p>Application Entrance:</p>
         <ol>
-          <li>1. Try Your Login Box.</li>
-          <li>2. Add an Identity Provider.</li>
-          <li>3. Create an Application. </li>
+          <li>Try Your Login Box.</li>
+          <li>Add an Identity Provider.</li>
+          <li>Create an Application. </li>
         </ol>
         <p>You can check users' Login Activities, such as: </p>
         <ol>
@@ -107,7 +107,7 @@ The following table contains a brief overview of the different Console pages and
       <td style="text-align:left"><b>Rules & Hooks</b>
       </td>
       <td style="text-align:left">
-      <p>You can find Pipeline, Webhook, and custom password functions to enhance the flexibility and scalability of the authentication process. </p>
+      <p>You can find pipeline, webhook, and custom password functions to enhance the flexibility and scalability of the authentication process. </p>
       <ol>
         <li>Pipeline;</li>
         <li>Webhook;</li>
@@ -359,7 +359,7 @@ Basic Settings
 5. Limitation of failed logins.
 6. Set New Registered Email Default To be Verified.
 
-The security domain is the URL that allows requests from JavaScript to the Approw API (usually used with CORS). By default, the system will allow you to use all URLs (). If required, this field allows you to enter other sources. You can separate multiple valid URLs line by line, and use wildcards at the subdomain level（For example：[https://\*.sample.com）。](https://*.sample.com）) to verify these URLs without considering the query string and hash information, if you bring the query The string and hash information system will automatically ignore the entire domain name.
+The security domain is the URL that allows requests from JavaScript to the Approw API (usually used with CORS). By default, the system will allow you to use all URLs (). If required, this field allows you to enter other sources. You can separate multiple valid URLs line by line, and use wildcards at the subdomain level（For example：[https://\*.sample.com）](https://*.sample.com）) to verify these URLs without considering the query string and hash information, if you bring the query The string and hash information system will automatically ignore the entire domain name.
 
 ![](./images/console-26.png)
 

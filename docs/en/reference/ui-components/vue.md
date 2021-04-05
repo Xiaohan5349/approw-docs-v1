@@ -115,7 +115,23 @@ export default {
 
 <details><summary><b>What should we do after understanding user information?</b></summary>
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.
+
 
 </details>
 
@@ -157,7 +173,12 @@ export default {
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+| Social login                         | Scenario       | Manual                                                                                                         |
+| ---------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Github                             | PC website        | <router-link to="/connections/github/" target="_blank">document</router-link>                                |
+| Google                             | PC website        | <router-link to="/connections/google/" target="_blank">document</router-link>                                |
+| Sign in with Apple（Web）       | PC website        | <router-link to="/connections/apple-web/" target="_blank">document</router-link>                             |
+| Sign in with Apple（mobile）       | mobile APP       | <router-link to="/connections/apple/" target="_blank">document</router-link>                                 |
 
 </details>
 

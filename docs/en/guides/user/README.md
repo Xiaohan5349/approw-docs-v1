@@ -8,13 +8,13 @@ meta:
 
 <LastUpdated/>
 
-This chapter mainly introduces the operations of managing one single user, such as binding mailboxes, linking accounts, disabling accounts, etc. If you want to know how to manage user directory, please see [User Directory Management](../users/README.md).
+This chapter mainly introduces the operations of managing one single user, such as binding mailboxes, linking accounts, disabling accounts, etc. If you want to know how to manage user directory, please see [User Directory Management](/docs/en/users/README.md).
 
 User account management can be managed visually through the console, user personal center, or with the help of SDK & API. You can choose the method that suits you according to your business needs.
 
-User account management can be divided into two methods: administrator operation and user self-service operation. User self-service operation needs to verify user identity through phone number verification code, MFA, etc., and administrator operation only needs to provide Management Token (if SDK is applied, only need to provide the [user pool secret](/guides/faqs/get-userpool-id-and-secret.md)).
+User account management can be divided into two methods: administrator operation and user self-service operation. User self-service operation needs to verify user identity through phone number verification code, MFA, etc., and administrator operation only needs to provide Management Token (if SDK is applied, users only need to provide the [user pool secret](/guides/faqs/get-userpool-id-and-secret.md)).
 
-The following content is in no particular order, you can choose the content you are interested in to read:
+The following content is in no particular order, you can choose the content you are interested to read:
 
 - [Understand the interpretation of all fields in the user profile](./user-profile.md);
 - [Understand how the administrator creates an account](./create-user/);

@@ -5,7 +5,7 @@
 
 User-defined fields are additional fields that can be added to user objects in addition to the [basic user fields](/guides/user/user-profile.md). Developers can store **a small amount of** business-related data by setting custom fields.
 
-## Configure User-defined Fields
+## Configure user-defined fields
 
 You can define the following types of custom fields:
 
@@ -19,7 +19,7 @@ You can configure user-defined fields on the **Settings** -> **Extended Fields**
 
 ![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-43-23.png)
 
-## Open Registration Information Completion
+## Open registration information completion
 
 After configuring the custom fields, you can open the registration information completion page of the application to allow users to complete the information in these custom fields.
 
@@ -39,7 +39,7 @@ After the user has successfully registered, you can see the custom value that th
 
 ![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-48-29.png)
 
-## Use API & SDK to Manage User-defined Data
+## Use API & SDK to manage user-defined data
 
 !!!include(common/sdk-list.md)!!!
 

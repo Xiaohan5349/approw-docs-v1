@@ -1,8 +1,8 @@
-# Choose the suitable permission model
+# Choose The Suitable Permission Model
 
 <LastUpdated/>
 
-There are two permission models that are widely used by everyone:[Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and[Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
+There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and [Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
 
 
 ## What is role-based access control (RBAC)
@@ -35,7 +35,7 @@ In ABAC, whether an operation is allowed is determined based on the dynamic calc
 - Operation: The operation is the operation that the user tries to perform on the resource. Common operations include "read", "write", "edit", "copy" and "delete";
 - Environment: The environment is the context of each access request. Environmental attributes include the time and location of the access attempt, the object's device, communication protocol and encryption strength, etc.
 
-### How ABAC make decision
+### How ABAC uses attributes to dynamically calculate decision results
 
 During the execution of ABAC's decision statement, the decision engine will dynamically calculate the decision result based on the defined decision statement, combined with attributes such as objects, resources, operations, and environment. 
 
@@ -77,7 +77,7 @@ Condensed to one sentence, **you can grant fine-grained authorization under what
 There are several concepts in Approw:
 - User: End user;
 - Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
-- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc.. Each resource can define multiple operations, such as reading, editing, and deleting documents;
+- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc... Each resource can define multiple operations, such as reading, editing, and deleting documents;
 - Authorization: Authorize certain operations of a certain type of resources to roles or users.
 
 In Approw's permission system, we have implemented the role permission inheritance of the RBAC model through the two objects of users and roles. Above this, we can also dynamically and fine-grained authorization around attributes, to achieve the ABAC permission model. At the same time, in order to meet the design requirements of complex organizational structures in large-scale systems, we combine resources, roles, and authorizations into a single [authorization group ](./resource-group.md)which is convenient for developers to manage.
@@ -108,4 +108,4 @@ However, please consider RBAC if the following conditions are met:
 
 ## Next step
 
-Next, you can learn how to[integrate the RBAC permission model into your application system ](./rbac.md)or[integrate the ABAC permission model into your application system.](./abac.md)。
+Next, you can learn how to [integrate the RBAC permission model into your application system ](./rbac.md)or [integrate the ABAC permission model into your application system](./abac.md).

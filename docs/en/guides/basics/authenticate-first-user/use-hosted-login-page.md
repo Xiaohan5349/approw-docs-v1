@@ -1,16 +1,16 @@
-# use Approw hosted login page to authenticate
+# Use Approw Hosted Login Page to Authenticate
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} hosted login page is the easiest and safest way to integrate.This is because the login flow is maintained by {{$localeConfig.brandName}} and kept secure by {{$localeConfig.brandName}}. For most integrations, the login flow hosted by {{$localeConfig.brandName}} is recommended to use. Your business system redirects the user to {{$localeConfig.brandName}}, where the user is authenticated, and then redirected back to the application callback connection configured in the console. This design is considered as the best practice for security. In terms of custom configuration, the hosting mode provides a moderate level of custom configuration of the login and registration form, which can be customized through the console configuration and CSS.
+{{$localeConfig.brandName}} hosted login page is the easiest and safest way to integrate. Because the login flow is maintained by {{$localeConfig.brandName}} and kept secure by {{$localeConfig.brandName}}. For most integrations, it is recommended to use the login flow hosted by {{$localeConfig.brandName}}. Your business system redirects the user to {{$localeConfig.brandName}}, where the user is authenticated, and then redirected back to the application callback connection configured in the console. This design is considered as the best practice for security. In terms of custom configuration, the hosting mode provides a moderate level of custom configuration of the login and registration form, which can be customized through the console configuration and CSS.
 
 This document will introduce how to quickly implement a complete user authentication flow using {{$localeConfig.brandName}} hosted login page.
 
 ## Create a user pool
 
-[User pool](/concepts/user-pool.md)is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools.  There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
+[User pool](/concepts/user-pool.md) is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools.  There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
 
-If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [console](https://console.approw.com). Follow the instructions below to create your first user pool:
+If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [Console](https://console.approw.com). Follow the instructions below to create your first user pool:
 
 <img src="~@imagesZhCn/guides/basics/Xnip2021-02-27_14-58-25.png" alt="drawing"/>
 
@@ -22,21 +22,21 @@ In Console - Application, you can check your application list:
 
 ![](./images/app-list.png)
 
-Select "other application" and click the experience button on the right. In the popped-up window, you can see this online login page hosted by {{$localeConfig.brandName}}, which integrates features such as login, registration, forgot password, social login, and MFA:
+Select application and click the Login button on the right. In the popped-up window, you can see this online login page hosted by {{$localeConfig.brandName}}, which integrates features such as login, registration, forgot password, social login, and MFA:
 
 ![](./images/login-page-1.png)
 
 ## Create a user
 
-Switch to the registration page, select "register with email", enter the email and password, and click the register button:
+Switch to the registration page, select "Register with Email", enter the email and password, then click the register button:
 
 ![](./images/register.png)
 
-After registering successfully, you can see the user on the user list page of the console.
+After registering successfully, you can check the user on the user list page of the console.
 
 ## Experience login flow
 
-Go back to the login page, enter the email and password of the account you just created, and click Login. After logging in successfully, you will be redirected to a callback guidance page (on this page you can view the follow-up detailed guidance process and the best time. It is recommended to read it completely.), you can see that the query parameter `code` is included in the URL, and we will exchange `token` with `code` in the next step.
+Go back to the login page, enter the email and password of the account you just created, click Login. After logging in successfully, you will be redirected to a callback guidance page (on this page you can view the follow-up detailed guidance process and the best time. It is recommended to read it completely.), you can see that the query parameter `code` is included in the URL, and we will exchange `token` with `code` in the next step.
 
 ![](./images/succes-callback.png)
 
@@ -70,7 +70,7 @@ const code2tokenResponse = await axios.post(
 const { id_token, access_token } = code2tokenResponse.data;
 ```
 
-There are [id_token](/concepts/id-token.md) and [access_token](/concepts/access-token.md) in the returned data.Simply speaking, `id_token` is equivalent to the user's identity credential, and `access_token` is the key that allows access to resources. You can learn more about their differences [here](/concepts/access-token-vs-id-token.md).
+There are [id_token](/concepts/id-token.md) and [access_token](/concepts/access-token.md) in  returned data.Simply speaking, `id_token` is equivalent to the user's identity credential, and `access_token` is the key that allows access to resources. You can learn more about their differences [here](/concepts/access-token-vs-id-token.md).
 
 ```json
 {
@@ -123,13 +123,13 @@ After that, you need to pass the `id_token` back to the front end. The front end
 
 ::: hint-info
 
-### How to deal with none-back-end senario
+### How to deal with None-back-end Senario
 
 The process "exchange the token with code" mentioned before should be done in back end program. If you are in a none-back-end senario, you can use either method of the two below:
 
 #### Use OIDC implicit mode
 
-In console > Application, find your application, enable "implicit mode" in "authorization mode" and check the return token type "id_token", and then ask the users to login through this address:
+In console > Application, find your application, enable "Implicit mode" in "Authorization mode" and check the return token type "id_token", and then ask the users to login through this address:
 
 ```
 GET https://sample-app.Approw.com/oidc/auth?client_id=Approw_APP_ID&redirect_uri={callBackAddress}&scope=openid%20profile&response_type=id_token%20token&state={randomString}&nonce={randonString}

@@ -12,7 +12,7 @@ async function listUsers(page, limit, context) {
   // The second argument `limit` is page size.
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
@@ -52,7 +52,7 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### Get User List Successfully
+#### Get user list successfully
 
 When the user list is received successfully, you need to build up user information with following formats: the returned result should be an object, the key `totalCount` represents the total number of users in this list and the key `list` represents the pages of the list. For example, 
 
@@ -71,7 +71,7 @@ async function listUsers(id, updates, context) {
 }
 ```
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
@@ -87,13 +87,13 @@ async function listUsers(id, updates, context) {
 
 ### Best Practice
 
-#### Provide Friendly Error Annoncements
+#### Provide friendly error annoncements
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### Disable the Database Connection When Exit the Function
+#### Disable the database connection when exit the function
 
 Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 

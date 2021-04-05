@@ -12,7 +12,7 @@ You can understand the Approw user directory as a directory that stores all your
 
 > If you want to know how to manage the user information of a single user, please see [Manage User Accounts](../user/README.md).
 
-The following content is in no particular order, you can choose the content you are interested in to read:
+The following content is in no particular order, you can choose the content you are interested to read:
 
 - [Know what configuration items are available in the user directory.](./settings.md)；
 - [Know how to add user-defined fields](./user-defined-field/)；

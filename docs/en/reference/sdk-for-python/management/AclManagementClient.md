@@ -28,14 +28,14 @@ AclManagementClient().allow(userId, action, resource)
 #### Example:
 
 ```python
-# 允许某个用户操作某个角色
+# allow a user to operate on a user
 management_client.acl.allow(
     resource='books:123',
     action='books:edit',
     userId='USERID'
 )
 
-# 允许某个角色操作某个角色
+# allow a role to operate on a role
 management_client.acl.allow(
     resource='books:*',
     action='books:edit',
@@ -43,11 +43,11 @@ management_client.acl.allow(
 )
 ```
 
-## Get whether a user has operation authority of a resource
+## Check whether a user has operation authority of a resource
 
 AclManagementClient().is_allowed(userId, action, resource)
 
-> Get whether a user has operation authority of a resource
+> Check whether a user has operation authority of a resource.
 
 #### Parameters:
 

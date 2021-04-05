@@ -1,4 +1,4 @@
-# What is {{$localeConfig.brandName}} 
+# What Is {{$localeConfig.brandName}} 
 
 <LastUpdated/>
 
@@ -16,12 +16,12 @@ You can choose our SDK (software development kit)  or call related API (applicat
 
 ## Why use {{$localeConfig.brandName}}
 
-The following are some of the usage scenarios of {{$localeConfig.brandName}} we have compiled:
+Here are some of the usage scenarios we have put together for {{$localeConfig.brandName}}:
 
 - If you want to develop a program, then you want to add user authentication and authorization. For example, you want your users to be able to access the log in of  WeChat and Github. During this you also want to be able to track the user's registration source and activity data so that you can follow-up user‘s growth.
 - If you made an API, you would want to use the OAuth 2.0 protocol to ensure the security of the API.
-- You have made a lot of applications, and you hope that the user data of these applications can be exchanged through single sign-on (Single Sign On).
-- You made a JavaScript front-end application and a mobile-end application, and you hope that both client applications can safely access your API.
+- You have made a lot of applications, and you hope that the user data of these applications can be exchanged through Single Sign-On
+- You made a JavaScript front-end application and a mobile application, and you hope that both client applications can safely access your API.
 - You need to make a web application that supports SAML login.
 - You think the password is very fragile, so you want the users to log in with a one-time mobile verification code or email verification code.
 - If your client user's password is leaked on another website, you want to be notified right away so that you can notify your client's user to reset the password.
@@ -34,12 +34,12 @@ The following are some of the usage scenarios of {{$localeConfig.brandName}} we 
 
 ## What industry standards does {{$localeConfig.brandName}} follow?
 
-In the past, computers were an independent system, and the Internet did not break out, the identity authentication and user data existed in one computer. Now in this present generation times have changed. You can use the same login information on multiple applications and websites (such as the "Login with WeChat" that can be seen everywhere). This is achieved by following the same identity authentication standard. These standards are a set of open specifications and protocols. Following this set of standards can help developers and enterprises design good identity authentication and authorization systems. At the same time it can stipulate how to properly manage identities, transfer data, and authorization.
+In the past, computers were an independent system, and the Internet did not break out. The identity authentication and user data existed in one computer. Now in this present generation times have changed. You can use the same login information on multiple applications and websites (such as the "Login with WeChat" that can be seen everywhere). This is achieved by following the same identity authentication standard. These standards are a set of open specifications and protocols. Following this set of standards can help developers and enterprises design good identity authentication and authorization systems. At the same time, it can stipulate how to properly manage identities, transfer data, and authorization.
 
 **The industry standard protocols used by {{$localeConfig.brandName}} include:**
 
 - **OAuth 2.0:** An authorization standard allows users to grant limited access to their resources on one site to other sites without having to obtain their credentials (usually account passwords). For example, you will use this standard when you click "Log in with WeChat'' on your mobile phone. The system will ask you whether you agree to share your avatar, nickname and other data with the application.
-- **Open ID Connect:** This is a superset of OAuth 2.0. It provides more user information and access permissions and standards on top of OAuth 2.0. For example, User defines the avatar as a picture.
+- **Open ID Connect:** This is a superset of OAuth 2.0. It provides more user information and access permissions and standards on top of OAuth 2.0. For example, user defines the avatar as a picture.
 - **JSON Web Tokens:** An open standard, mainly used to transmit information securely. Its format is very compact and independent. After the parsing, it will alternate into a JSON format.
 - **Security Assertion Markup Language (SAML):** An open data format based on XML. SAML allows enterprise applications to seamlessly connect with internal and external programs.
 - **LDAP:** LDAP is a lightweight directory access protocol. The full English name is Lightweight Directory Access Protocol, which is generally referred to as LDAP for short. You can understand it as a tree-shaped database used to store user and organization information, often used for single sign-on (SSO) and corporate employee information management.

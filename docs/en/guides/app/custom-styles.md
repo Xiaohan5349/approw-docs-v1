@@ -29,7 +29,7 @@ Forgot Password button will not show up in Login UI
 {{$localeConfig.brandName}} allow developer to modify Login UI by changing CSS file. Eg: change background color.
 
 ```css
-.authing-guard-layout {
+.approw-guard-layout {
   background: gray;
 }
 ```

@@ -20,7 +20,7 @@ async function getUser(query, context) {
   // query.phone
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -29,7 +29,7 @@ async function getUser(query, context) {
   //
   // There are three ways this script can finish:
   // 1. A user was successfully found. The profile should be in the following
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return profile
   // 2. A user was not found
   //     return null
@@ -66,9 +66,9 @@ The context also includes the following information:
 
 ### The Rule of the Script's Return Value
 
-#### The User Exists
+#### The user already exists
 
-When the user exists, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md). For example:
+When the user already exists, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function getUser(query, context) {
@@ -83,12 +83,12 @@ async function getUser(query, context) {
 }
 ```
 
-#### The User Does not Exist
+#### The user does not exist
 
 When the user does not exist, you need to return `null`. Please do not throw an error.
 
 
-#### Other Abnormal Errors
+#### Other abnormal errors
 
 When user meets other errors, you can catch the error and return a friendly notice such as:
 
@@ -130,7 +130,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `query` to generate query command(`query.id`, `query.email`, `query.username` and `query.phone`, these four parameters won't be empty at the same time).
 - If user does not exist, return `null`.
-- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
@@ -144,7 +144,7 @@ async function getUser(query, context) {
   const { id, email, username, phone } = query;
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
@@ -165,7 +165,7 @@ async function getUser(query, context) {
 
   await client.connect();
 
-  // 构建查询参数
+  // build up query conditions
   const queries = [];
   const parameters = [];
   let index = 1;
