@@ -10,7 +10,7 @@ Different types of applications require different authorization modes. The follo
 | ---------------- | ----------------------- |
 | With backend     | Authorization Code Mode |
 | SPA, no backend  | Implicit Mode           |
-| Between servers  | Client Credentialsss    |
+| Between servers  | Client Credentials      |
 
 ## Does your application need Id Token?
 
