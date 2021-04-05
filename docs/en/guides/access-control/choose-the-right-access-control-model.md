@@ -77,7 +77,7 @@ Condensed to one sentence, **you can grant fine-grained authorization under what
 There are several concepts in Approw:
 - User: End user;
 - Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
-- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc.. Each resource can define multiple operations, such as reading, editing, and deleting documents;
+- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc... Each resource can define multiple operations, such as reading, editing, and deleting documents;
 - Authorization: Authorize certain operations of a certain type of resources to roles or users.
 
 In Approw's permission system, we have implemented the role permission inheritance of the RBAC model through the two objects of users and roles. Above this, we can also dynamically and fine-grained authorization around attributes, to achieve the ABAC permission model. At the same time, in order to meet the design requirements of complex organizational structures in large-scale systems, we combine resources, roles, and authorizations into a single [authorization group ](./resource-group.md)which is convenient for developers to manage.
