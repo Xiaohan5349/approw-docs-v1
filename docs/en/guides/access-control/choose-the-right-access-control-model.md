@@ -108,4 +108,4 @@ However, please consider RBAC if the following conditions are met:
 
 ## Next step
 
-Next, you can learn how to [integrate the RBAC permission model into your application system ](./rbac.md)or[integrate the ABAC permission model into your application system.](./abac.md).
+Next, you can learn how to [integrate the RBAC permission model into your application system ](./rbac.md)or[integrate the ABAC permission model into your application system](./abac.md).
