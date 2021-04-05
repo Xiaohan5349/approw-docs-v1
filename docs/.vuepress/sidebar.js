@@ -960,22 +960,47 @@ const addPrefixToLink = (navbar, prefix) => {
   if (!navbar) {
     return
   }
-  return navbar.map((item) => ({
-    ...item,
-    path: item.path && `${prefix}${item.path}`,
-    children:
-      item.children &&
-      item.children.map((link) => {
-        if (typeof link === 'string') {
-          return `${prefix}${link}`
-        }
-        return {
-          ...link,
-          path: `${prefix}${link.path}`,
-          children: addPrefixToLink(link.children, prefix),
-        }
-      }),
-  }))
+  return navbar.map((item) => {
+    if (typeof item === "string") {
+      return `${prefix}${item}`
+    }
+    return {
+      ...item,
+      path: item.path && `${prefix}${item.path}`,
+      children:
+        item.children &&
+        item.children.map((link) => {
+          if (typeof link === "string") {
+            // console.log(link);
+            return `${prefix}${link}`
+          }
+
+          return {
+            ...link,
+            path: `${prefix}${link.path}`,
+            children: addPrefixToLink(link.children, prefix),
+          }
+        }),
+    }
+  })
+  // return navbar.map((item) => ({
+  //   ...item,
+  //   path: item.path && `${prefix}${item.path}`,
+  //   children:
+  //     item.children &&
+  //     item.children.map((link) => {
+  //       if (typeof link === "string") {
+  //         // console.log(link);
+  //         return `${prefix}${link}`
+  //       }
+  //
+  //       return {
+  //         ...link,
+  //         path: `${prefix}${link.path}`,
+  //         children: addPrefixToLink(link.children, prefix),
+  //       }
+  //     }),
+  // }))
 }
 
 const getEnUsNavBar = () => {
