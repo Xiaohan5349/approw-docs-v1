@@ -98,9 +98,7 @@ PoliciesManagementClient().detail(code)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the policy
-
-const policy = await managementClient.policies.detail('CODE');
+- `code` \<string\> Unique id of the policy.
 
 #### Example
 
@@ -135,7 +133,7 @@ PoliciesManagementClient().listAssignments(code, page, limit)
 
 #### Parameters
 
-- `code` \<string\> Unique id of the policy
+- `code` \<string\> Unique id of the policy.
 - `page` \<number\> The default value is: `1`.
 - `limit` \<number\> The default value is: `10`.
 
@@ -153,9 +151,9 @@ PoliciesManagementClient().addAssignments(policies, targetType, targetIdentifier
 
 #### Parameters
 
-- `policies` \<string[]\> Policy code list
-- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> User id list and role code list
+- `policies` \<string[]\> Policy code list.
+- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE.
+- `targetIdentifiers` \<string[]\> User id list and role code list.
 
 #### Example
 
@@ -178,8 +176,8 @@ PoliciesManagementClient().removeAssignments(policies, targetType, targetIdentif
 #### Parameters
 
 - `policies` \<string[]\> Policy code list
-- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> User id list and role code list
+- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE.
+- `targetIdentifiers` \<string[]\> User id list and role code list.
 
 #### Example
 
