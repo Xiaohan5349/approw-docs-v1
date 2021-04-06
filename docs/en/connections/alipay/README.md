@@ -1,24 +1,22 @@
 ---
 {
-  noSidebar: true,
-  noToc: true,
-  noFeedback: true,
-  fullWidthPage: true,
-  title: '接入支付宝社会化登录',
-  bannerTitle: '接入支付宝社会化登录',
-  steps:
-    [
-      {
-        title: '在支付宝开放平台创建一个移动应用',
-      },
-      { title: '在 {{$localeConfig.brandName}} 填入支付宝应用配置' },
-      {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
-      },
-      {
-        title: '开始开发接入'
-      }
-    ],
+    noSidebar: true,
+    noToc: true,
+    noFeedback: true,
+    fullWidthPage: true,
+    title: "Access to Alipay social login",
+    bannerTitle: "Access to Alipay social login",
+    steps:
+        [
+            {
+                title: "Create a mobile application on the Alipay open platform",
+            },
+            {
+                title: "Fill in the Alipay application configuration in {{$localeConfig.brandName}}",
+            },
+            { title: "Create an application in {{$localeConfig.brandName}}" },
+            { title: "Start to develop access" },
+        ],
 }
 ---
 
