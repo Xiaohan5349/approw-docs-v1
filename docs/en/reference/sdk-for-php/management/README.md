@@ -12,17 +12,17 @@ ManagementClient can be  used to manage users, roles, policies, and user define
 
 The following is the list of clients:
 
-::: page-ref /reference/sdk-for-php/management/UsersManagementClient.md
+::: page-ref /docs/en/reference/sdk-for-php/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-php/management/RolesManagementClient.md
+::: page-ref /docs/en/reference/sdk-for-php/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-php/management/PoliciesManagementClient.md
+::: page-ref /docs/en/reference/sdk-for-php/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-php/management/AclManagementClient.md
+::: page-ref /docs/en/reference/sdk-for-php/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-php/management/UdfManagementClient.md
+::: page-ref /docs/en/reference/sdk-for-php/management/UdfManagementClient.md
 :::
