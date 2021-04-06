@@ -1,4 +1,4 @@
-# What Is User Pool
+# What is User Pool
 
 <LastUpdated/>
 
