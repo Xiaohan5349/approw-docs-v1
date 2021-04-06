@@ -6,7 +6,7 @@ In `OIDC` Protocol, There are three type of Token: `id_token`, `access_token` an
 - [What is Access Token](./access-token.md)
 - [What is Refresh Token](./refresh-token.md)
 
-**ID Token** is the most important part that OpenID Connect [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) added from [OAuth 2.0](https://tools.ietf.org/html/rfc6749). **ID Token** contains user's identity information. It can be used to [verify](/docs/en/guides/faqs/how-to-validate-user-token.md) user's identity when front end calling backend for resources. 
+**ID Token** is the most important part that OpenID Connect [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) added from [OAuth 2.0](https://tools.ietf.org/html/rfc6749). **ID Token** contains user's identity information. It can be used to [verify](/en/guides/faqs/how-to-validate-user-token.md) user's identity when front end calling backend for resources. 
 
 In general **ID Token** is [`JWT Token`](./jwt-token.md), it's including user's identity key/value pairs. Eg:
 
@@ -25,7 +25,7 @@ In general **ID Token** is [`JWT Token`](./jwt-token.md), it's including user's 
 **ID Token** is a `JWT Token` means:
 
 `id_token` include user's identity information. There is no need for another request for user info
-The integrity of `id_token` can be verified. [How to Verify ID Token](/docs/en/guides/faqs/how-to-validate-user-token.md).
+The integrity of `id_token` can be verified. [How to Verify ID Token](/en/guides/faqs/how-to-validate-user-token.md).
 
 
 ## ID Token Claims Example

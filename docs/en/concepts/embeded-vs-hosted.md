@@ -1,4 +1,4 @@
-# Hosted login page vs embedded login component
+# Hosted Login Page vs Embedded Login Component
 
 <LastUpdated/>
 

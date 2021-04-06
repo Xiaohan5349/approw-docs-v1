@@ -1,4 +1,4 @@
-# Access Token VS ID Token
+# Access Token vs ID Token
 
 There are two types of Token related to identity accesss: Access Token and ID Token.
 
@@ -33,7 +33,7 @@ In particular scenario, developer can use Access Token to retrieve user informat
 ID token is [JWT](https://tools.ietf.org/html/rfc7519) format. It is used for identification process. For exapmle: Application allow Login via Google and sync user information with Google Calendar. Google will return ID Token to the application, which contains basic user information (Username, Icon, etc.). Application can decrypt ID Token and read user information.
 
 ::: hint-warning
-Request will be rejected if ID Token is not valid. [How to verify](/docs/en/guides/faqs/how-to-validate-user-token.md).
+Request will be rejected if ID Token is not valid. [How to verify](/en/guides/faqs/how-to-validate-user-token.md).
 :::
 
 Use ID Token for API access is NOT recommended.

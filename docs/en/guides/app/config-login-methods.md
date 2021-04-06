@@ -8,13 +8,13 @@ By default, your applicaiton only include basic Login method: OTP Login, Usernam
 Beside basic login method, Approw support:
 - Social Registration
 - Identity Source Login
-    - [OIDC](#Configuring-OIDC-Identity-Source-Login)
-    - [SAML](#Configuring-SAML-Identity-Source-Login)
-    - [OAuth2.0](#Configuring-OAuth2.0-Identity-Source-Login)
-    - [CAS](#Configuring-CAS-Identity-Source-Login)
-    - [Azure-AD](#Configuring-Azure-AD-Identity-Source-Login)
-    - [LDAP](#Configuring-LDAP-Identity-Source-Login)
-    - [Windows-AD](#Configuring-Windows-AD-Identity-Source-Login)
+    - [OIDC](#configuring-oidc-identity-source-login)
+    - [SAML](#configuring-saml-identity-source-login)
+    - [OAuth2.0](#configuring-oauth2.0-identity-source-login)
+    - [CAS](#configuring-cas-identity-source-login)
+    - [Azure-AD](#configuring-azure-ad-identity-source-login)
+    - [LDAP](#configuring-ldap-identity-source-login)
+    - [Windows-AD](#configuring-windows-ad-identity-source-login)
 
 ## Social Registration
 
@@ -38,44 +38,44 @@ Beside basic login method, Approw support:
 
 ### Configuring OIDC Identity Source Login
 
-Please refer to [Configuring OIDC Identity Source](/docs/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring OIDC Identity Source](/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-05_13-23-10.png)
 
 ### Configuring SAML Identity Source Login
 
-Please refer to [Configuring SAML Identity Source Login](/docs/en/connections/saml/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring SAML Identity Source Login](/en/connections/saml/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-01-20.png)
 
 ### Configuring OAuth2.0 Identity Source Login
 
-Please refer to [Configuring OAuth2.0 Identity Source Login](/docs/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring OAuth2.0 Identity Source Login](/en/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-05-05.png)
 
 ### Configuring CAS Identity Source Login
 
-Please refer to [Configuring CAS Identity Source Login](/docs/en/connections/cas/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring CAS Identity Source Login](/en/connections/cas/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-05-54.png)
 
 
 ### Configuring Azure AD Identity Source Login
 
-Please refer to [Configuring Azure AD Identity Source Login](/docs/en/connections/azure-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring Azure AD Identity Source Login](/en/connections/azure-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-07-47.png)
 
 ### Configuring LDAP Identity Source Login
 
-Please refer to [Configuring LDAP Identity Source Login](/docs/en/connections/ldap/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring LDAP Identity Source Login](/en/connections/ldap/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-10-03.png)
 
 
 ### Configuring Windows AD Identity Source Login
 
-Please refer to [Configuring Windows AD Identity Source Login](/docs/en/connections/windows-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
+Please refer to [Configuring Windows AD Identity Source Login](/en/connections/windows-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
 ![](./images/Xnip2021-03-03_21-09-06.png)

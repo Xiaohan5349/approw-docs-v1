@@ -1,4 +1,4 @@
-# What Is Authorization
+# What is Authorization
 
 <LastUpdated/>
 

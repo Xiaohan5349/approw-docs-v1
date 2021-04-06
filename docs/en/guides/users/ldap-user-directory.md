@@ -6,7 +6,7 @@ meta:
 
 # LDAP User Directory in {{$localeConfig.brandName}}
 
-{{$localeConfig.brandName}} support LDAP read, modify, add and delete user information. This page will introduce basic information and guidance for LDAP. If you are not familiar with LDAP protocol, here is a pre-introduction: [What is LDAP](/docs/en/concepts/ldap.md).
+{{$localeConfig.brandName}} support LDAP read, modify, add and delete user information. This page will introduce basic information and guidance for LDAP. If you are not familiar with LDAP protocol, here is a pre-introduction: [What is LDAP](/en/concepts/ldap.md).
 
 ## Basic Information
 
@@ -222,7 +222,7 @@ Search under UserPool and code <= 50.
 $ ldapsearch -H ldap://localhost:1389 -x -D "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -w "APPROW_USERPOOL_SECRET" -LLL -b "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -s sub '((code<=50)'
 ```
 
-#### Search Mode
+### Search Mode
 ```txt
 dc=approw,dc=cn                                        - {{$localeConfig.brandName}}        
 └── o=APPROW_USERPOOL_ID                               - userPool
@@ -231,7 +231,7 @@ dc=approw,dc=cn                                        - {{$localeConfig.brandNa
             └── o=develop                               - Organization
                         └── uid=USER_ID                 - user under organization
 ```
-##### Base mode
+#### Base mode
 
 Base mode only search and return BaseDN information.
 
@@ -244,7 +244,7 @@ dn: ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn
 $ ldapsearch -H ldap://localhost:1389 -x -D "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -w "APPROW_USERPOOL_SECRET" -b "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -s base
 ```
 
-##### One mode
+#### One mode
 
 One mode only search and return `BaseDN` and `BaseDN Child node` information.
 ```
@@ -262,7 +262,7 @@ dn: o=develop,ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn
 $ ldapsearch -H ldap://localhost:1389 -x -D "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -w "APPROW_USERPOOL_SECRET" -b "ou=users,o=APPROW_USERPOOL_ID,dc=approw,dc=cn" -s one
 ```
 
-##### Sub mode
+#### Sub mode
 
 Sub mode search and return `BaseDN` and `All node under BaseDN`.
 ```
