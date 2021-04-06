@@ -38,7 +38,7 @@ UserPoolManagementClient().update(updates)
 - `updates.emailVerifiedDefault` <boolean> Set the email to be verified as default (emailVerified field is true)
 - `updates.sendWelcomeEmail` <boolean> Whether to send welcome email after user registration
 - `updates.registerDisabled` <boolean> Whether to close the registration. When the user pool closes the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
-- `updates.allowedOrigins` <string> Allowed Origins configuration. TAllowed Origins is the URL that allows requests from JavaScript to the Authing API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: https://*.sample.com). The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name. If there are more than one, please separate them with line breaks.
+- `updates.allowedOrigins` <string> Allowed Origins configuration. TAllowed Origins is the URL that allows requests from JavaScript to the Approw API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: https://*.sample.com). The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name. If there are more than one, please separate them with line breaks.
 - `updates.whitelist` <Object> User pool whitelist configuration
 - `updates.whitelist.phoneEnabled` <boolean> Whether to enable the whitelist of mobile phone numbers
 - `updates.whitelist.emailEnabled` <boolean> Whether to enable the mailbox whitelist
@@ -63,7 +63,7 @@ UserPool userPool = managementClient.userpool().update(new UpdateUserpoolInput()
 
 UserPoolManagementClient().listEnv()
 
-> Get the user pool environment variables list. The environment variables configured by the user pool can be used in the pipeline scenario. Please check: https://docs.authing.co/extensibility/pipeline/env.html for details.
+> Get the user pool environment variables list. The environment variables configured by the user pool can be used in the pipeline scenario. Please check: https://docs.approw.co/extensibility/pipeline/env.html for details.
 
 #### Example:
 
