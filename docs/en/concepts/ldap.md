@@ -48,4 +48,4 @@ LDAP uses relatively simple string-based queries to extract information from Act
 
 ## Use the LDAP user directory provided by {{$localeConfig.brandName}}
 
-For more details, please refer to the [LDAP user directory using {{$localeConfig.brandName}}](/docs/en/guides/users/ldap-user-directory.md). To learn how to use the LDAP protocol to export organization data, please refer to [Use LDAP protocol to open organization data](/docs/en/guides/org/ldap-user-directory/).
+For more details, please refer to the [LDAP user directory using {{$localeConfig.brandName}}](/en/guides/users/ldap-user-directory.md). To learn how to use the LDAP protocol to export organization data, please refer to [Use LDAP protocol to open organization data](/en/guides/org/ldap-user-directory/).
