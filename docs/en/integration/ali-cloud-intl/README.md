@@ -4,20 +4,20 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 SAML2 登录阿里云控制台（国际区）',
-  bannerTitle: '使用 SAML2 登录阿里云控制台（国际区）',
+  title: 'Login Alibaba Cloud with SAML2',
+  bannerTitle: 'Login Alibaba Cloud with SAML2',
   steps:
     [
       {
-        title: '配置 {{$localeConfig.brandName}} SAML2 IdP',
-        subTitle: '{{$localeConfig.brandName}} 应用开启 SAML2 Provider 并配置',
+        title: 'Configure {{$localeConfig.brandName}} SAML2 IdP',
+        subTitle: 'Enable and configure SAML2 Provider for {{$localeConfig.brandName}} applicaitons',
       },
-      { title: '配置阿里云', subTitle: '在阿里云创建用户，并开启用户 SSO' },
+      { title: 'Configure Alibaba Cloud', subTitle: 'Create user in Alibaba cloud, and enable SSO' },
       {
-        title: '配置 {{$localeConfig.brandName}} 用户',
-        subTitle: '创建 {{$localeConfig.brandName}} 用户并关联阿里云用户',
+        title: 'Configure {{$localeConfig.brandName}} Users',
+        subTitle: 'Create {{$localeConfig.brandName}} user and link it to Alibaba cloud user.',
       },
-      { title: '配置完成', subTitle: '使用 {{$localeConfig.brandName}} IdP 登录阿里云' },
+      { title: 'Login Alibaba Cloud with Approw IDP', subTitle: 'Use Approw IdP to log in to Alibaba Cloud' },
     ],
 }
 ---

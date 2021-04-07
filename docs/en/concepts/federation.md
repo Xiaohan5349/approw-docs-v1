@@ -1,4 +1,4 @@
-# What Is Federated Authentication
+# What is Federated Authentication
 
 <LastUpdated/>
 

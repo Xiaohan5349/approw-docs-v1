@@ -28,14 +28,14 @@ async function pipe(user, context, callback) {
   await axios.post(webhook, {
     title: "New User Registered - From {{$localeConfig.brandName}} Rules Pipeline",
     text: `
-                用户信息：
+                User Profile：
                 ID: ${user.id}
-                昵称：${user.username}
-                注册方式：${user.registerSource}
-                邮箱：${user.email}
-                手机号：${user.phone}
+                Nickname：${user.username}
+                RegisterationSource：${user.registerSource}
+                Email Address：${user.email}
+                Phone Number：${user.phone}
                 UA: ${user.device}
-                用户池 ID: ${user.userPoolId}
+                Userpool ID: ${user.userPoolId}
           `,
   });
   return callback(null, user, context);

@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-**Access Token** allows applications to use resource API. Authing provide **Access Token** to application after user successfully consent. When requesting resources from API. API will check `scope` in **Access Token** to verify if the request is valid. 
+**Access Token** allows applications to use resource API. Approw provide **Access Token** to application after user successfully consent. When requesting resources from API. API will check `scope` in **Access Token** to verify if the request is valid. 
 If user login through Social Media Account. For example: WeChat, as an Identity Provider, provides its Access Token. Your application could request API from WeChat by using Access Token. These Token are customized by Social Media Provider and token format could vary.
 
 ## Opaque Access Token
@@ -28,7 +28,7 @@ After Decode:
   "iat": 1612444871,
   "exp": 1613654471,
   "scope": "openid email message",
-  "iss": "https://steam-talk.authing.cn/oidc",
+  "iss": "https://steam-talk.approw.com/oidc",
   "aud": "60193c610f9117e7cb049159"
 }
 ```

@@ -1,4 +1,4 @@
-# What Is Application
+# What is Application
 
 <LastUpdated/>
 

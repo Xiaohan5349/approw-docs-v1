@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-In Approw, [User Pool](/concepts/user-pool.md) is the minimum unit to separate renter. It's stored user information in your system.  One User Pool may have multiple [applications](/concepts/application.md). Eg: Students in a User Pool, need to access course reservation application, email application and student service center etc. Those applications may share one User Pool.
+In Approw, [User Pool](/en/concepts/user-pool.md) is the minimum unit to separate renter. It's stored user information in your system.  One User Pool may have multiple [applications](/en/concepts/application.md). Eg: Students in a User Pool, need to access course reservation application, email application and student service center etc. Those applications may share one User Pool.
 
 If you have not created application in Approw, please refer to [How to create Application](./create-app.md).
 

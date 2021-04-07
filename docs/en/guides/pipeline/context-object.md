@@ -9,7 +9,7 @@ meta:
 <LastUpdated/>
 
 
-The context object saves the context of the current authentication process, including authentication means, identity provider, and request IP, address, etc.
+The context object saves the context of the current authentication process, including authentication methods, identity providers, and request IPs, addresses, etc.
 
 
 ## Attributes
@@ -26,20 +26,20 @@ The context object saves the context of the current authentication process, incl
 | appMetadata | object | Configuration information of the current application                                                                                                 |
 | request          | object | Details of the current request, including: <br> `ip`: Client IP <br> `geo`: The geographical location of the client resolved by IP <br> `body`: request body <br> `query`: query string object, you can get the corresponding query parameters through `request.query.xxx` |
 
-## protocol
+## Protocol
 
 Authentication protocol.
 
 | Possible value   | Description                                                                                                          |
 | :------- | :------------------------------------------------------------------------------------------------------------ |
-| password | Authentication method based on account password                                                                                        |
-| sms      | Authentication method based on SMS verification code                                                                                      |
+| password | Authentication method based on account password.                                                                                        |
+| sms      | Authentication method based on SMS verification code.                                                                                      |
 | social   | The social login authentication default value when logging in with the {{$localeConfig.brandName}} integrated social login method.                                         |
 | ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../authentication/ldap/ldap.md).              |
 | saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../authentication/use-saml/).                    |
 | oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../authentication/oidc/oidc-authorization.md). |
 
-## connection
+## Connection
 
 Identity provider.
 
@@ -53,7 +53,7 @@ Identity provider.
   <tbody>
     <tr>
       <td style="text-align:left">ldap	</td>
-      <td style="text-align:left">Use lDAP protocol to log in. An {{$localeConfig.brandName}} LDAP service corresponds to an {{$localeConfig.brandName}} user directory or a third-party user directory. For details, refer to
+      <td style="text-align:left">Use LDAP protocol to log in. An {{$localeConfig.brandName}} LDAP service corresponds to an {{$localeConfig.brandName}} user directory or a third-party user directory. For details, refer to
         <a
         href="../../authentication/ldap/ldap">Configuring LDAP Service</a> and <a href="../../authentication/ldap/ldap-idp"> Using {{$localeConfig.brandName}} LDAP User Directory</a>.</td>
     </tr>
@@ -77,16 +77,16 @@ Identity provider.
 
 ### Before and after registration
 
-Before and after registration, the requested fields of the data object in the Pipeline are as follows: For details, refer to [{{$localeConfig.brandName}} GraphQL Debugger](https://authing.cn/graphiql/) **User Authentication** - **Registration**Interface.
+Before and after registration, the requested fields of the data object in the Pipeline are as follows: For details, refer to [{{$localeConfig.brandName}} GraphQL Debugger](https://approw.com/graphiql/) **User Authentication** - **Registration**Interface.
 
 ::: hint-warning
-email, phone, unionid and other fields may not exist at the same time, please check whether they exist before using them. For example:
+Email, phone, unionid and other fields may not exist at the same time, please check whether they exist before using them. For example:
 
 ```js
 const email = context.request.body.email;
 if (email) {
-  // 表示是用邮箱注册
-  // 可以进行邮箱注册白名单的逻辑
+  // Which means user registered the account with an email.
+  // The logic that can be used for registering whitelist with emails.
 
   if (!email.endsWith("example.com")) {
     return callback(new Error("Access Denied!"));
@@ -98,11 +98,11 @@ if (email) {
 
 | Field Name     | Type    | Exist | Description                                       |
 | :--------- | :------ | ------------ | :----------------------------------------- |
-| username   | string  | No           | User name. It is not empty when registering with the user name       |
-| email      | string  | No           | Email address. It is not empty when registering with the user name         |
-| phone      | string  | No           | Mobile phone number. It is not empty when using the mobile phone number to register      |
-| forceLogin | boolean | No           | Whether to automatically perform the login process when registering, the default is false |
-| profile    | object  | Yes           | User information filled in for user registration                |
+| username   | string  | No           | User name. It is not empty when registering with the user name.       |
+| email      | string  | No           | Email address. It is not empty when registering with the user name.         |
+| phone      | string  | No           | Mobile phone number. It is not empty when using the mobile phone number to register.      |
+| forceLogin | boolean | No           | Whether to automatically perform the login process when registering, the default is false. |
+| profile    | object  | Yes           | User information filled in for user registration.                |
 
 ### Before and after authentication
 
@@ -131,8 +131,8 @@ Sample data:
 
 ```json
 {
-  "province": "北京市",
-  "city": "北京市",
+  "province": "Beijing",
+  "city": "Beijing",
   "adcode": "110000",
   "rectangle": "116.0119343,39.66127144;116.7829835,40.2164962"
 }
