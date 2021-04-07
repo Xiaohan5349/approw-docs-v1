@@ -223,7 +223,7 @@ RolesManagementClient.listAuthorizedResources(roleCode, namespace, opts = [])
 #### Parameters
 
 - `roleCode` \<string\> role code
-- `namespace` \<string\> The code of the permission group, please refer to the [resource of using permission group management](/docs/en/guides/access-control/resource-group.md) for details;
+- `namespace` \<string\> The code of the permission group, please refer to the [resource of using permission group management](/en/guides/access-control/resource-group.md) for details;
 - `resourceType` \<string\> Optional, resource type. All authorized resources will be returned by default. The existing resource types are as follows:
   - `DATA`
   - `API`
