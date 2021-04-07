@@ -17,10 +17,10 @@ You should set the initialized `ManagementClient` instance to a global variable 
 Add to dependencies in build.gradle:
 
 ```
-implementation "cn.authing:java-core:<LATEST_VERSION>"
+implementation "com.approw:java-core:<LATEST_VERSION>"
 ```
 
-> You can check the latest version at [https://search.maven.org/artifact/cn.authing/java-core](https://search.maven.org/artifact/cn.authing/java-core) .
+> You can check the latest version at [https://search.maven.org/artifact/com.approw/java-core](https://search.maven.org/artifact/com.approw/java-core) .
 
 ### maven project
 Add to dependencies in pom.xml:
@@ -29,7 +29,7 @@ Add to dependencies in pom.xml:
 
 ```
 <dependency>
-    <groupId>cn.authing</groupId>
+    <groupId>com.approw</groupId>
     <artifactId>java-core</artifactId>
     <version><LATEST_VERSION></version>
 </dependency>
@@ -42,16 +42,16 @@ Add to dependencies in pom.xml:
 
 Initializing `ManagementClient` requires `userPoolId` and `secret`:
 
-> You can learn how to get [ UserPoolId and Secret here](/guides/faqs/get-userpool-id-and-secret.md) .
+> You can learn how to get [ UserPoolId and Secret here](/en/guides/faqs/get-userpool-id-and-secret.md) .
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-      ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+      ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 
-      // 获取管理员权限
+      // get admin privileges
       managementClient.requestToken().execute();
     }
 }
@@ -60,12 +60,12 @@ public class ManagementClientTest {
 Now the `ManagementClient` instance is ready to use. For example, you can get the list of users in the user pool.
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-        ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-        // 获取管理员权限
+        ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+        // get admin privileges
         managementClient.requestToken().execute();
 
         PaginatedUsers users = managementClient.users().list().execute();
@@ -78,15 +78,15 @@ public class ManagementClientTest {
 
 Initializing `ManagementClient` requires `userPoolId` and `appId`:
 
-> You can learn how to get[UserPoolId here](/guides/faqs/get-userpool-id-and-secret.md), and view your own **application** list in the console.
+> You can learn how to get[UserPoolId here](/en/guides/faqs/get-userpool-id-and-secret.md), and view your own **application** list in the console.
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
     }
 }
 ```
@@ -94,12 +94,12 @@ public class AuthenticationClientTest {
 Next, you can perform operations such as registration and login:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
 
         String email = "test@example.com";
         String password = "123456";
@@ -111,12 +111,12 @@ public class AuthenticationClientTest {
 After login, `update_profile` and the other methods that require users to log in are available:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
 
         String email = "test@example.com";
         String password = "123456";
@@ -129,12 +129,12 @@ public class AuthenticationClientTest {
 You can also set the `AccessToken` parameter after initialization, so that it is unnecessary to call the `LoginByXXX` method:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
     }
 }
@@ -143,11 +143,11 @@ public class AuthenticationClientTest {
 Executing the `UpdateProfile` method can also succeed:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
         User user = authenticationClient.updateProfile(new UpdateUserInput().withNickname("nickname")).execute();
     }
@@ -157,14 +157,14 @@ public class AuthenticationClientTest {
 ## Error handling
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
-import cn.authing.core.graphql.GraphQLException;
+import com.approw.core.auth.AuthenticationClient;
+import com.approw.core.graphql.GraphQLException;
 import java.io.IOException;
 
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
 
         try {
@@ -178,23 +178,23 @@ public class AuthenticationClientTest {
 
 ## Privatization deployment
 
-**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Authing service (**without protocol header and Path**) and the password encryption public key. If you are not sure, you can contact the Authing IDaaS service administrator.
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Approw service (**without protocol header and Path**) and the password encryption public key. If you are not sure, you can contact the Approw IDaaS service administrator.
 
 ### Use ManagementClient
 
 Initializing `ManagementClient` requires `userPoolId` and `secret`:
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-      ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-      // 配置自定义域名
-      managementClient.setHost("https://core.you-authing-service.com");
-      // 配置自定义公钥
+      ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+      // config customized domain name
+      managementClient.setHost("https://core.you-approw-service.com");
+      // config customized public key
       managementClient.setPublicKey("public key");
-      // 获取管理员权限
+      // get admin privileges
       managementClient.requestToken().execute();
     }
 }
@@ -205,14 +205,14 @@ public class ManagementClientTest {
 Initializing `ManagementClient` requires `userPoolId` and `appId`:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        // 配置自定义域名
-        authenticationClient.setHost("https://core.you-authing-service.com");
-        // 配置自定义公钥
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        // config customized domain name
+        authenticationClient.setHost("https://core.you-approw-service.com");
+        // config customized public key
         authenticationClient.setPublicKey("public key");
     }
 }
@@ -245,41 +245,41 @@ Available Authentication methods
 
 Learn more:：
 
-::: page-ref /reference/sdk-for-java/authentication/
+::: page-ref /en/reference/sdk-for-java/authentication/
 :::
 
 ManagementClient contains the following sub-clients:
 
-::: page-ref /reference/sdk-for-java/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/UdfManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/GroupsManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/GroupsManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/OrgManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/OrgManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/UserpoolManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/UserpoolManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/WhitelistManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/WhitelistManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-java/management/ApplicationManagementClient.md
+::: page-ref /en/reference/sdk-for-java/management/ApplicationManagementClient.md
 :::
 
 ## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)
