@@ -69,7 +69,7 @@ The context also includes the following information:
 
 #### User is created successfully
 
-When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/docs/en/guides/user/user-profile.md). For example:
+When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function getUser(userinfo, context) {
@@ -137,7 +137,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `userinfo` to generate query command(`userinfo.id`, `userinfo.email`, `userinfo.username` and `userinfo.phone`, these four parameters won't be empty at the same time).
 - Check if the user exists. If the user already exists, return `User allready exists!`. 
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript

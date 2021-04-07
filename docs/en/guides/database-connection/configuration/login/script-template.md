@@ -64,7 +64,7 @@ The context also includes the following information:
 
 #### The user already exists and the password is correct
 
-When the user already exists and the password is correct, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
+When the user already exists and the password is correct, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function login(query, password, context) {
@@ -163,7 +163,7 @@ Assume we are using `postgres` as our database:
 - According to the query conditions in the `query` to generate query command(`query.email`, `query.username` and `query.phone`, these three parameters won't be empty at the same time).
 - If user does not exist, then throw an error with the error message `User not exists!`.
 - If user exists but the password is wrong, then throw an error with the error message `Password is not valid!`.
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
