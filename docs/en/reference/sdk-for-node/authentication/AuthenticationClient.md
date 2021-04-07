@@ -23,9 +23,9 @@ AuthenticationClient().registerByEmail(email, password, profile, options)
 
 #### Parameters
 
-- `email` \<string\> email
-- `password` \<string\> password
-- `profile` \<RegisterProfile\> user profile
+- `email` \<string\> Email
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -62,9 +62,9 @@ AuthenticationClient().registerByUsername(username, password, profile, options)
 
 #### Parameters
 
-- `username` \<string\> username
-- `password` \<string\> password
-- `profile` \<RegisterProfile\> user profile
+- `username` \<string\> Username
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -101,10 +101,10 @@ AuthenticationClient().registerByPhoneCode(phone, code, password, profile, optio
 
 #### Parameters
 
-- `phone` \<string\> phone number
+- `phone` \<string\> Phone number
 - `code` \<string\> SMS verification code
-- `password` \<string\> initial password
-- `profile` \<RegisterProfile\> user profile
+- `password` \<string\> Initial password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -138,7 +138,7 @@ authenticationClient.registerByPhoneCode('176xxxx6754', '1234')
 
 AuthenticationClient().checkPasswordStrength(password)
 
-> Check the strength of the password. [See more details here](/guides/security/config-password.md).
+> Check the strength of the password. [See more details here](/en/guides/security/config-password.md).
 
 #### Parameter
 
@@ -188,8 +188,8 @@ If your user pool is configured with login failure detection, the user will be a
 
 #### Parameter
 
-- `email` \<string\> email
-- `password` \<string\> password
+- `email` \<string\> Email
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
 - `options.captchaCode` \<string\> CAPTCHA code.
@@ -226,8 +226,8 @@ If your user pool is configured with login failure detection, the user will be a
 
 #### Parameter
 
-- `username` \<string\> username
-- `password` \<string\> password
+- `username` \<string\> Username
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
 - `options.captchaCode` \<string\> CAPTCHA code.
@@ -262,7 +262,7 @@ AuthenticationClient().loginByPhoneCode(phone, code)
 
 #### Parameter
 
-- `phone` \<string\> phone number
+- `phone` \<string\> Phone number
 - `code` \<string\> SMS verification code
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
@@ -284,7 +284,7 @@ AuthenticationClient().loginByPhonePassword(phone, password, options)
 
 #### Parameter
 
-- `phone` \<string\> phone number
+- `phone` \<string\> Phone number
 - `password` \<string\> SMS verification code
 - `options` \<Object\>
 - `options.captchaCode` \<string\> CAPTCHA code
@@ -310,7 +310,7 @@ authenticationClient.loginByPhonePassword('176xxxx6754', 'passw0rd')
 
 AuthenticationClient().getUdfValue()
 
-> Get all defined data of a user. Before doing this, you need to [set user-defined field](/guides/users/user-defined-field/) in the user pool.
+> Get all defined data of a user. Before doing this, you need to [set user-defined field](/en/guides/users/user-defined-field/) in the user pool.
 
 #### Example
 
@@ -336,7 +336,7 @@ const data = await authenticationClient.getUdfValue()
 
 AuthenticationClient().setUdfValue(data)
 
-> Set value for user-defined data field. Before you set a value, you need to [set user-defined field](/guides/users/user-defined-field/) in the user pool. Data type of the passed value must be the same as defined. If setting value failed, it will throw an exception and you need to capture it.
+> Set value for user-defined data field. Before you set a value, you need to [set user-defined field](/en/guides/users/user-defined-field/) in the user pool. Data type of the passed value must be the same as defined. If setting value failed, it will throw an exception and you need to capture it.
 
 #### Parameter
 
@@ -360,11 +360,11 @@ await authenticationClient.setUdfValue({
 
 AuthenticationClient().removeUdfValue(key)
 
-> Delete the user-defined data. Before doing so, you need to [set user-defined field](/guides/users/user-defined-field/) in the user pool. The type of passed value must be the same as defined.
+> Delete the user-defined data. Before doing so, you need to [set user-defined field](/en/guides/users/user-defined-field/) in the user pool. The type of passed value must be the same as defined.
 
 #### Parameter
 
-- `key` \<string\> the key of user-defined data field.
+- `key` \<string\> The key of user-defined data field.
 
 #### Example
 
@@ -385,7 +385,7 @@ AuthenticationClient().checkLoginStatus(token)
 
 #### Parameter
 
-- `token` \<string\> the user's login credentials token
+- `token` \<string\> The user's login credentials token.
 
 #### Example
 
@@ -422,7 +422,7 @@ AuthenticationClient().sendEmail(email, scene)
 
 #### Parameter
 
-- `email` \<string\> email
+- `email` \<string\> Email
 - `scene` \<EmailScene\> Sending scene, optional values are RESET_PASSWORD (send a reset password email, the email contains the verification code), VerifyEmail (send the email to verify the mailbox), ChangeEmail (send the modified email, the email contains the verification code)
 
 #### Example
@@ -444,9 +444,9 @@ AuthenticationClient().resetPasswordByPhoneCode(phone, code, newPassword)
 
 #### Parameter
 
-- `phone` \<string\> phone number
-- `code` \<string\> verification code
-- `newPassword` \<string\> new password
+- `phone` \<string\> Phone number
+- `code` \<string\> Verification code
+- `newPassword` \<string\> New password
 
 #### Example
 
@@ -466,9 +466,9 @@ AuthenticationClient().resetPasswordByEmailCode(phone, code, newPassword)
 
 #### Parameter
 
-- `phone` \<string\> phone number
-- `code` \<string\> verification code
-- `newPassword` \<string\> new password
+- `phone` \<string\> Phone number
+- `code` \<string\> Verification code
+- `newPassword` \<string\> New password
 
 #### Example
 
@@ -492,14 +492,14 @@ AuthenticationClient().updateProfile(updates)
 
 #### Parameter
 
-- `updates` \<UpdateUserInput\> modified user information
-- `updates.username` \<string\> username
-- `updates.nickname` \<string\> nickname
-- `updates.photo` \<string\> avatar
-- `updates.company` \<string\> company
-- `updates.browser` \<string\> browser
-- `updates.device` \<string\> device
-- `updates.lastIP` \<string\> last logged in IP
+- `updates` \<UpdateUserInput\> Modified user information
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Company
+- `updates.browser` \<string\> Browser
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP
 - `updates.name` \<string\> Name
 - `updates.givenName` \<string\> Given Name
 - `updates.familyName` \<string\> Family Name
@@ -507,18 +507,18 @@ AuthenticationClient().updateProfile(updates)
 - `updates.profile` \<string\> Profile Url
 - `updates.preferredUsername` \<string\> Preferred Name
 - `updates.website` \<string\> personal website
-- `updates.gender` \<string\> Gender, M (Man) means male, F (Female) means female, U (Unknown) means unknown.
-- `updates.birthdate` \<string\> birthday
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown.
+- `updates.birthdate` \<string\> Birthday
 - `updates.zoneinfo` \<string\> Time zone
-- `updates.locale` \<string\> language
-- `updates.address` \<string\> address
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
 - `updates.streetAddress` \<string\> Street address
 - `updates.locality` \<string\>
-- `updates.region` \<string\> region
-- `updates.postalCode` \<string\> zipcode
-- `updates.city` \<string\> city
-- `updates.province` \<string\> province
-- `updates.country` \<string\> country
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
 #### Example
 
@@ -541,7 +541,7 @@ AuthenticationClient().updatePassword(newPassword, oldPassword)
 
 #### Parameter
 
-- `newPassword` \<string\> new password
+- `newPassword` \<string\> New password
 - `oldPassword` \<string\> Old password, if the user has not set a password, it can be left blank.
 
 #### Example
@@ -571,7 +571,7 @@ AuthenticationClient().updatePhone(phone, phoneCode, oldPhone, oldPhoneCode)
 
 - `phone` \<string\> New phone number
 - `phoneCode` \<string\> The verification code of the new phone number
-- `oldPhone` \<string\> v
+- `oldPhone` \<string\> Old phone number
 - `oldPhoneCode` \<string\> The verification code of the old phone number
 
 #### Example
@@ -600,7 +600,7 @@ AuthenticationClient().updateEmail(email, emailCode, oldEmail, oldEmailCode)
 
 - `email` \<string\> New email address
 - `emailCode` \<string\> The verification code of the new email address
-- `oldEmail` \<string\> old email address
+- `oldEmail` \<string\> Old email address
 - `oldEmailCode` \<string\> The verification code of the old email address
 
 #### Example
@@ -630,8 +630,8 @@ AuthenticationClient().linkAccount(options)
 
 #### Parameter
 
-- `options.primaryUserToken` \<string\> main account Token
-- `options.secondaryUserToken` \<string\> social account Token
+- `options.primaryUserToken` \<string\> Main account Token
+- `options.secondaryUserToken` \<string\> Social account Token
 
 #### Example
 
@@ -712,7 +712,7 @@ authenticationClient.unbindPhone()
 
 AuthenticationClient().getCurrentUser()
 
-> Get the information of the current user
+> Get the information of the current user.
 
 #### Parameter
 
@@ -772,8 +772,8 @@ If your user pool is configured with login failure detection, the user will be a
 
 #### Parameter
 
-- `username` \<string\> username
-- `password` \<string\> password
+- `username` \<string\> Username
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
 - `options.captchaCode` \<string\> CAPTCHA code.
@@ -801,8 +801,8 @@ AuthenticationClient().loginByAd(username, password)
 
 #### Parameter
 
-- `username` \<string\> username
-- `password` \<string\> password
+- `username` \<string\> Username
+- `password` \<string\> Password
 
 #### Example
 
@@ -826,7 +826,7 @@ AuthenticationClient().computedPasswordSecurityLevel()
 
 #### Parameter
 
-`password`: the password needed to be calculated, must be in type of `string`
+`password`: The password needed to be calculated, must be in type of `string`
 
 #### Example
 
@@ -843,9 +843,9 @@ const securityLevel = authenticationClient.computedPasswordSecurityLevel(
 
 #### sample
 
-- `1`: level low
-- `2`: level medium
-- `3`: level high
+- `1`: Level low
+- `2`: Level medium
+- `3`: Level high
 
 ## Get security level of account
 
@@ -870,15 +870,15 @@ const securityLevel = await authenticationClient.getSecurityLevel()
 
 #### sample data
 
-- `email`: \<boolean\> whether bind a personal email
-- `mfa`: \<boolean\> whether bind a MFA
-- `password`: \<boolean\> whether set the password
-- `phone`: \<boolean\> whether bind phone number
-- `passwordSecurityLevel`: \<number\> password security level
+- `email`: \<boolean\> Whether bind a personal email
+- `mfa`: \<boolean\> Whether bind a MFA
+- `password`: \<boolean\> Whether set the password
+- `phone`: \<boolean\> Whether bind phone number
+- `passwordSecurityLevel`: \<number\> Password security level
   - `1`: low,
   - `2`: medium,
   - `3`: high,
-- `score`: \<number\>，account security rating score, maximum is 100
+- `score`: \<number\> Account security rating score, maximum is 100
 
 ## Get the list of all authorized resources of the user
 
@@ -888,7 +888,7 @@ AuthenticationClient.listAuthorizedResources(namespace)
 
 #### Parameter
 
-- `namespace` \<string\> code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/guides/access-control/resource-group.md).
+- `namespace` \<string\> Code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/en/guides/access-control/resource-group.md).
 
 #### Example
 
@@ -898,13 +898,13 @@ managementClient.users.listAuthorizedResources('namespace_code')
 
 #### sample data
 
-- `type` type is the type of resource, there are several different values that can be used:
+- `type` Type is the type of resource, there are several different values that can be used:
   - `DATA`: data type；
   - `API`: interface type；
   - `MENU`: menu type；
   - `BUTTON`: button type；
-- `code`: resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
-- `actions`: actions that user authorized to operate on the resource.
+- `code`: Resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
+- `actions`: Actions that user authorized to operate on the resource.
 
 ```json
 {
