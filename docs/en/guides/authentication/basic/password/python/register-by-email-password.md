@@ -1,6 +1,6 @@
 !!!include(common/init-python-auth-sdk.md)!!!
 
-使用 `register_by_email` 方法：
+Use `register_by_email` method：
 
 
 ```python

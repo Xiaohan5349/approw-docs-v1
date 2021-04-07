@@ -1,13 +1,13 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-如果用户之前没有设置过密码（比如由手机号、社会化登录等方式注册），不需要传入原始密码。
+If a user doesn't set a password before (for example, register by phone number or social IDP), this method does not require the original password.
 
 ```csharp
 var newPassword = "123456";
 await authenticationClient.UpdatePassword(newPassword);
 ```
 
-或者：
+Or：
 
 ```csharp
 var oldPassword = "111111";
