@@ -36,7 +36,7 @@ import { ApprowGuard } from '@approw/react-ui-components'
 import '@approw/react-ui-components/lib/index.min.css'
 
 const App = () => {
-  const appId = 'AUTHING_APP_ID'
+  const appId = 'APPROW_APP_ID'
 
   // successfully login
   const onLogin = (userInfo) => {
