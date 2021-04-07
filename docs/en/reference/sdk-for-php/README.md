@@ -23,7 +23,7 @@ $ composer require approw-sdk/php
 
 Initialization of ManagementClient requires `userPoolId` and `secret`:
 
-> You can [learn how to get UserPoolId and Secret](/docs/en/guides/faqs/get-userpool-id-and-secret.md) here.
+> You can [learn how to get UserPoolId and Secret](/en/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```php
 use Approw\Mgmt\ManagementClient;
@@ -48,7 +48,7 @@ $users = $management->users()->paginate();
 
 Initialization of `AuthenticationClient` requires `userPoolId`:
 
-> You can learn [how to get UserPoolId](/docs/en/guides/faqs/get-userpool-id-and-secret.md) .
+> You can learn [how to get UserPoolId](/en/guides/faqs/get-userpool-id-and-secret.md) .
 
 ```php
 use Approw\Auth\AuthenticationClient;
@@ -149,24 +149,24 @@ Available Authentication methods
 
 Learn more:
 
-::: page-ref /docs/en/reference/sdk-for-php/authentication/
+::: page-ref /en/reference/sdk-for-php/authentication/
 :::
 
 ManagementClient contains the following sub-modules:
 
-::: page-ref /docs/en/reference/sdk-for-php/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-php/management/UsersManagementClient.md
 :::
 
-::: page-ref /docs/en/reference/sdk-for-php/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-php/management/RolesManagementClient.md
 :::
 
-::: page-ref /docs/en/reference/sdk-for-php/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-php/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /docs/en/reference/sdk-for-php/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-php/management/AclManagementClient.md
 :::
 
-::: page-ref /docs/en/reference/sdk-for-php/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-php/management/UdfManagementClient.md
 :::
 
 ## Get help

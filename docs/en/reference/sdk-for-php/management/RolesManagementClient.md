@@ -20,7 +20,7 @@ RolesManagementClient().create(code, description)
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -189,7 +189,7 @@ RolesManagementClient().addPolicies(code, policies)
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 
@@ -206,7 +206,7 @@ RolesManagementClient().removePolicies(code, policies)
 #### Parameters
 
 - `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 
@@ -222,7 +222,7 @@ RolesManagementClient.listAuthorizedResources(roleCode, namespace, opts = [])
 
 #### Parameters
 
-- `roleCode` \<string\> role code
+- `roleCode` \<string\> Role code
 - `namespace` \<string\> The code of the permission group, please refer to the [resource of using permission group management](/en/guides/access-control/resource-group.md) for details;
 - `resourceType` \<string\> Optional, resource type. All authorized resources will be returned by default. The existing resource types are as follows:
   - `DATA`
@@ -245,8 +245,8 @@ $data = $rolesManagementClient->listAuthorizedResources('roleCode', "default");
 ```
 #### Sample data
 
-- `type` is the resource type;
-- `code`: resource descriptor, if it is a `DATA` type resource, the format is `resourceType:resourceId`, such as `books:*` means all books, `books:1` means the book with ID 1.
+- `type` Type is the resource type;
+- `code`: Resource descriptor, if it is a `DATA` type resource, the format is `resourceType:resourceId`, such as `books:*` means all books, `books:1` means the book with ID 1.
 - `actions`: The user is authorized to operate on the resource.
 
 ```json
