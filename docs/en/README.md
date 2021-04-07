@@ -1,8 +1,8 @@
 ---
 home: true
 noSidebar: true
-mainTitle: '文档中心'
-subTitle: '在这里，开启激动人心的第一步！学习如何使用 Authing 及 Authing 提供的 API。'
+mainTitle: "文档中心"
+subTitle: "这里，开启激动人心的第一步！学习如何使用 Authing 及 Authing 提供的 API。"
 searchPlaceholder: 请输入关键词搜索产品文档
 hotSearchText: 热门搜索
 hotSearch:
@@ -80,7 +80,7 @@ sdkConfig:
 applicationSdks:
   - title: 移动应用
     description: 在移动应用中快速接入认证服务
-    color: '#396AFF'
+    color: "#396AFF"
     sdks:
       - ios
       - android
@@ -88,7 +88,7 @@ applicationSdks:
       - cSharp
   - title: 单页应用
     description: 在浏览器运行的 Web 应用中快速接入认证服务并实现单点登录
-    color: '#75A3FF'
+    color: "#75A3FF"
     sdks:
       - javascript
       - react
@@ -96,7 +96,7 @@ applicationSdks:
       - vue
   - title: 标准 Web 应用
     description: 在服务器上运行的传统 Web 应用，实现统一认证和授权
-    color: '#28B1B0'
+    color: "#28B1B0"
     sdks:
       - javascript
       - python
@@ -107,7 +107,7 @@ applicationSdks:
       - golang
   - title: API 服务
     description: 对 API 服务进行统一认证和授权
-    color: '#F8BC00'
+    color: "#F8BC00"
     sdks:
       - javascript
       - python

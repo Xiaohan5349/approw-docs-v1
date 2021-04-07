@@ -2,12 +2,10 @@
 
 <LastUpdated/>
 
-
 No matter what type of application you are developing - internal employee IT system, toC account system or API exposed to other developers, user authentication is a vital part of it, and {{$localeConfig.brandName}}w will provide you with the most suitable authentication method.
 
-
 ::: hint-warning
- Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For details, please see: [FAQ: How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/docs/en/guides/faqs/block-third-party-cookie-impact.md) 
+Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For details, please see: [FAQ: How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/docs/en/guides/faqs/block-third-party-cookie-impact.md)
 :::
 
 The login experience is one of the most important user experiences that software developers need to consider. It is not easy to provide users with a seamless, convenient and secure authentication experience. Generally speaking, the login logic is also associated with the logic of registration, password reset, and account association. More importantly, enhancing security in the form of robust and adaptive authentication during the login process is often critical to many implementations.
@@ -38,7 +36,7 @@ For more details, please see [use embedded login component](/docs/en/guides/basi
 
 Approw also supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Swift, Go, Ruby, etc. You can choose the SDK you are familiar with:
 
-!!!include(/docs/en/common/sdk-list.md)!!!
+!!!include(en/common/sdk-list.md)!!!
 
 ## Authentication API
 
