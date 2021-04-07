@@ -8,20 +8,20 @@ For companies, the cost of data breach is getting worse. On the one hand, compan
 
 Therefore, the use of MFA has become a basic solution for enterprises to prevent data leakage. MFA requires users to use at least two factors to verify their identity, and only after passing the verification can they access applications, which is rapidly spreading among enterprises.
 
-Statistics also prove the effectiveness of MFA. At the end of last year, LastPass conducted a survey of 47,000 companies and found that 57% of companies worldwide are currently using MFA, an increase of 12% over the previous year. Earlier this year, Microsoft reported that 99.9% of its tracked offending accounts did not use MFA.
+Statistics also prove the effectiveness of MFA. At the end of last year, LastPass conducted a survey of 47,000 companies and found that 57% of companies worldwide are currently using MFA, an increase of 12% over the previous year.  Earlier this year, Microsoft reported that 99.9% of its tracked offending accounts did not use MFA.
 
 ![](./images/banner-multiple.png)
 
 ## The core functions of Approw MFA
 
 - Approw guarantees business security through multiple authentication methods;
-- [Customize the authentication process](/en/guides/pipeline/), which is simple with one-touch open;
+- [Customize the authentication process](/docs/en/guides/pipeline/), which is simple with one-touch open;
 - Support environmental data report for equipments and multi-dimensional analysis of security levels;
 - Support configuration strategy to achieve environmental risk self-adaptation;
-- Suitable for [privilege control in APP](/en/guides/access-control/);
-- Integrated into the [universal login component (Guard)](/en/reference/ui-components/) by default;
-- [User data management, operation log query](/en/guides/audit/);
-- Provide [SDK and open interfaces](/en/reference/) to help developers quickly call related capabilities(functions?) and build custom user management pages.
+- Suitable for [privilege control in APP](/docs/en/guides/access-control/);
+- Integrated into the [universal login component (Guard)](/docs/en/reference/ui-components/) by default;
+- [User data management, operation log query](/docs/en/guides/audit/);
+- Provide [SDK and open interfaces](/docs/en/reference/) to help developers quickly call related capabilities(functions?) and build custom user management pages.
 
 ## The methods of MFA
 
@@ -41,6 +41,7 @@ With strong dynamic OTP password verification, it helps protect account security
 
 <img src="./images/mfa-mode-email.png" height=400 style="display:block;margin: 0 auto;">
 
+
 ### Compatible with third-party authenticators
 
 Compatible with third-party authenticators, including but not limited to:
@@ -48,20 +49,27 @@ Compatible with third-party authenticators, including but not limited to:
 - Google Authenticator
 - Microsoft Authenticator
 
+
 <img src="./images/mfa-mode-third.png" height=400 style="display:block;margin: 0 auto;">
+
+
 
 ### Biometrics
 
 Fingerprint/face, as key factors of human body characteristics, is widely used in the field of security authentication.
 
+
 <img src="./images/product-mfa-biology.png" height=400 style="display:block;margin: 0 auto;">
+
 
 ### Graphic lock
 
 - Simple and easy to use;
 - Security can be enhanced with more complex graphics.
 
+
 <img src="./images/mfa-solution-graphlock.png" height=400 style="display:block;margin: 0 auto;">
+
 
 ## Advantages of Approw MFA
 
@@ -69,7 +77,7 @@ Fingerprint/face, as key factors of human body characteristics, is widely used i
 
 Provides an out-of-the-box SDK to help end-to-end developers to quickly implement MFA.
 
-- Support multiple terminals: [Web](/en/reference/ui-components/)、[iOS](/en/reference/sdk-for-swift.md)、[Android](/en/reference/sdk-for-android.md);
+- Support multiple terminals: [Web](/docs/en/reference/ui-components/)、[iOS](/docs/en/reference/sdk-for-swift.md)、[Android](/docs/en/reference/sdk-for-android.md);
 - Built-in multiple MFA terminal components, such as OTP, verification code, fingerprint unlocking, facial recognition, graphic lock, etc.;
 - Only need to call a method to start the MFA certification component, get the certification result, and complete the certification process.
 
@@ -77,7 +85,7 @@ Provides an out-of-the-box SDK to help end-to-end developers to quickly implemen
 
 Report customized data, participate in the process and initiate decision-making, and cover more complex and refined scenarios.
 
-- Support data reporting during [Approw SDK](/en/reference/) initialization;
+- Support data reporting during [Approw SDK](/docs/en/reference/) initialization;
 - Support regular data reporting;
 - Support active data reporting when the application is running;
 
@@ -109,3 +117,4 @@ When the user is in the authentication process, the "adaptive" MFA generates mul
 - Request source: Judge the source of the current user's request, such as hardware device information, the user's current system, etc.;
 - Biometrics: Use the user's biological information for identification, such as fingerprint information, face recognition, etc.;
 - Behavior analysis: A series of user behaviors such as whether it comes from a frequently used login location, whether the wrong password is entered multiple times, and the user's previous operation records.
+

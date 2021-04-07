@@ -13,20 +13,20 @@ meta:
 
 If you need to use basic login registration, modify user information, etc., please use:
 
-::: page-ref /en/reference/sdk-for-node/authentication/AuthenticationClient.md
+::: page-ref /reference/sdk-for-node/authentication/AuthenticationClient.md
 :::
 
 If you need to use the WeChat Mini Program QR code login or other APP QR code login, please use:
 
-::: page-ref /en/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md
+::: page-ref /reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md
 :::
 
 If you need multi-factor authentication, please use: 
 
-::: page-ref /en/reference/sdk-for-node/authentication/MfaAuthenticationClient.md
+::: page-ref /reference/sdk-for-node/authentication/MfaAuthenticationClient.md
 :::
 
 If you need to use social authentication, please use:
 
-::: page-ref /en/reference/sdk-for-node/authentication/SocialAuthenticationClient.md
+::: page-ref /reference/sdk-for-node/authentication/SocialAuthenticationClient.md
 :::

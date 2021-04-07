@@ -188,8 +188,8 @@ OrgManagementClient().listChildren(orgId, nodeId)
 
 #### Parameters
 
-- `orgId` \<string\> Organization ID
-- `nodeId` \<string\> Node ID
+- `orgId` \<string\> Node ID
+- `nodeId` \<string\> Organization ID
 
 #### Example
 
@@ -247,23 +247,23 @@ OrgManagementClient().importByJson(json)
 json examples:
 
 {
-  name: 'Beijing Feifan Technology',
+  name: '北京非凡科技有限公司',
   code: 'feifan',
   children: [
      {
          code: 'operation',
-         name: 'operate',
-         description: 'commercial department'
+         name: '运营',
+         description: '商业化部门'
      },
      {
         code: 'dev',
-        name: 'develop',
-        description: 'research department',
+        name: '研发',
+        description: '研发部门',
         children: [
           {
             code: 'backend',
-            name: 'backend',
-            description: 'backend research department'
+            name: '后端',
+            description: '后端研发部门'
           }
         ]
      }
@@ -296,7 +296,7 @@ OrgManagementClient().addMembers(nodeId, userIds)
 
 #### Parameters
 
-- `nodeId` \<string\> Node ID
+- `nodeId` \<string\> node ID
 - `userIds` \<string[]\> User ID list
 
 #### Example
@@ -318,7 +318,7 @@ OrgManagementClient().listMembers(nodeByIdWithMembersParam)
 - `nodeByIdWithMembersParam.limit` \<number\> Default value: `10`
 - `nodeByIdWithMembersParam.sortBy` \<SortByEnum\> sorting rules
 - `nodeByIdWithMembersParam.includeChildrenNodes` \<boolean\> Whether to get the members of all child nodes. Default value: `false`
-- `nodeByIdWithMembersParam.id` \<string\> Node ID
+- `nodeByIdWithMembersParam.id` \<string\> node ID
 
 #### Example
 
@@ -334,7 +334,7 @@ OrgManagementClient().removeMembers(nodeId, userIds)
 
 #### Parameters
 
-- `nodeId` \<string\> Node ID
+- `nodeId` \<string\> node ID
 - `userIds` \<string[]\> User ID list
 
 #### Example
@@ -365,7 +365,7 @@ List<Node> nodes = this.orgManagementClient.exportAll().execute();
     "updatedAt": "2021-02-07T03:07:03.822Z",
     "userPoolId": "59f86b4832eb28071bdd9214",
     "orgId": "601f59573abea48cceb188c6",
-    "name": "technology company",
+    "name": "科技公司",
     "nameI18n": null,
     "description": null,
     "descriptionI18n": null,
@@ -378,7 +378,7 @@ List<Node> nodes = this.orgManagementClient.exportAll().execute();
         "updatedAt": "2021-02-07T03:07:18.835Z",
         "userPoolId": "59f86b4832eb28071bdd9214",
         "orgId": "601f59573abea48cceb188c6",
-        "name": "product",
+        "name": "产品",
         "nameI18n": null,
         "description": null,
         "descriptionI18n": null,
@@ -404,14 +404,14 @@ List<Node> nodes = this.orgManagementClient.exportAll().execute();
             "isRoot": true,
             "status": "Activated",
             "oauth": null,
-            "email": "root@approw.com",
+            "email": "root@authing.cn",
             "phone": null,
             "username": "root",
             "unionid": null,
             "openid": null,
             "nickname": null,
             "company": null,
-            "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+            "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
             "browser": null,
             "device": null,
             "token": "",
@@ -496,7 +496,7 @@ List<Node> nodes = this.orgManagementClient.exportAll().execute();
         "updatedAt": "2021-02-07T03:07:26.919Z",
         "userPoolId": "59f86b4832eb28071bdd9214",
         "orgId": "601f59573abea48cceb188c6",
-        "name": "commercial",
+        "name": "商业化",
         "nameI18n": null,
         "description": null,
         "descriptionI18n": null,
@@ -539,7 +539,7 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
   "updatedAt": "2021-02-07T03:07:03.822Z",
   "userPoolId": "59f86b4832eb28071bdd9214",
   "orgId": "601f59573abea48cceb188c6",
-  "name": "technology company",
+  "name": "科技公司",
   "nameI18n": null,
   "description": null,
   "descriptionI18n": null,
@@ -552,7 +552,7 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
       "updatedAt": "2021-02-07T03:07:18.835Z",
       "userPoolId": "59f86b4832eb28071bdd9214",
       "orgId": "601f59573abea48cceb188c6",
-      "name": "product",
+      "name": "产品",
       "nameI18n": null,
       "description": null,
       "descriptionI18n": null,
@@ -578,14 +578,14 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
           "isRoot": true,
           "status": "Activated",
           "oauth": null,
-          "email": "root@approw.com",
+          "email": "root@authing.cn",
           "phone": null,
           "username": "root",
           "unionid": null,
           "openid": null,
           "nickname": null,
           "company": null,
-          "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+          "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
           "browser": null,
           "device": null,
           "token": "",
@@ -635,7 +635,7 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
       "updatedAt": "2021-02-07T03:07:14.163Z",
       "userPoolId": "59f86b4832eb28071bdd9214",
       "orgId": "601f59573abea48cceb188c6",
-      "name": "research",
+      "name": "研发",
       "nameI18n": null,
       "description": null,
       "descriptionI18n": null,
@@ -648,7 +648,7 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
           "updatedAt": "2021-02-07T03:07:42.475Z",
           "userPoolId": "59f86b4832eb28071bdd9214",
           "orgId": "601f59573abea48cceb188c6",
-          "name": "backend",
+          "name": "后端",
           "nameI18n": null,
           "description": null,
           "descriptionI18n": null,
@@ -670,7 +670,7 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
       "updatedAt": "2021-02-07T03:07:26.919Z",
       "userPoolId": "59f86b4832eb28071bdd9214",
       "orgId": "601f59573abea48cceb188c6",
-      "name": "commercial",
+      "name": "商业化",
       "nameI18n": null,
       "description": null,
       "descriptionI18n": null,
