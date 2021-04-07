@@ -6,7 +6,7 @@ When you start to build an application, oftentimes the first thing is to build a
 
 The first step in using {{$localeConfig.brandName}} is to create a user pool. A user pool is the smallest unit of isolation of your user system. You can divide users in different scenarios into different user pools. Each user pool has its own users and applications, permissions, applications, and organizations. Between different user pools are completely isolated.
 
-<!-- （建议此处加一个用户池和多应用的架构图） -->
+<!-- （建议这里加一个用户池和多应用的架构图） -->
 
 <img src="~@imagesZhCn/concepts/userpool.png" alt="drawing"/>
 
