@@ -70,7 +70,7 @@ RolesManagementClient().update(code, input)
 
 - `code` \<string\> Unique id of the role
 - `input` \<Object\>
-- `input.description` \<string\> description
+- `input.description` \<string\> Description
 - `input.newCode` \<string\> New unique id
 
 #### Example
@@ -213,3 +213,60 @@ RolesManagementClient().removePolicies(code, policies)
 ```php
 $message = $managementClient->roles()->removePolicies("code", ["policy id"]);
 ```
+
+## Get a list of all resources authorized by the role
+
+RolesManagementClient.listAuthorizedResources(roleCode, namespace, opts = [])
+
+>Get a list of all resources authorized by the role
+
+#### Parameters
+
+- `roleCode` \<string\> role code
+- `namespace` \<string\> The code of the permission group, please refer to the [resource of using permission group management](/docs/en/guides/access-control/resource-group.md) for details;
+- `resourceType` \<string\> Optional, resource type. All authorized resources will be returned by default. The existing resource types are as follows:
+  - `DATA`
+  - `API`
+  - `MENU`
+  - `BUTTON`
+
+#### Example
+
+```php
+use Authing\Mgmt\RolesManagementClient;
+use Authing\Mgmt\ManagementClient;
+
+$managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
+$managementClient->requestToken();
+
+$rolesManagementClient = new RolesManagementClient($managementClient);
+
+$data = $rolesManagementClient->listAuthorizedResources('roleCode', "default");
+```
+#### Sample data
+
+- `type` is the resource type;
+- `code`: resource descriptor, if it is a `DATA` type resource, the format is `resourceType:resourceId`, such as `books:*` means all books, `books:1` means the book with ID 1.
+- `actions`: The user is authorized to operate on the resource.
+
+```json
+{
+  "totalCount": 12,
+  "list": [
+    {
+      "code": "menu_a",
+      "type": "MENU"
+    },
+    {
+      "code": "menu_b",
+      "type": "MENU"
+    },
+    {
+      "code": "books:1",
+      "type": "DATA",
+      "actions": ["books:delete", "books:update"]
+    }
+  ]
+}
+```
+

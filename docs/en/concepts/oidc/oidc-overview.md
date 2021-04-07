@@ -8,13 +8,13 @@ Before choosing **a mode for authentication and authorization**, it is recommend
 
 Currently, Approw has three authentication methods that can be selected:
 
-- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgotten password. The [Guard Component](/docs/en/reference/ui-components) and [SDK](/docs/en/reference/sdk-for-node) of Approw are both based on these APIs.
+- **Basic authentication** is based on the API interface, which directly completes user authentication by sending account, password, and mobile phone verification codes to the Approw backend, which also provide functions such as MFA and forgotten password. The [Guard Component](/en/reference/ui-components) and [SDK](/en/reference/sdk-for-node) of Approw are both based on these APIs.
 
 - The **OAuth 2.0** protocol is mainly used for resource authorization.
 
 - The **OpenID Connect** protocol, as known as **OIDC**, is a superset of the OAuth 2.0 protocol, which can **authenticate** users and complete resource **authorization**. If OIDC can be selected, **OIDC should be selected**.
 
-If you want to directly authenticate your users through API, you can check the [interface documentation](/docs/en/reference/) and SDK documentation in the development integration section.
+If you want to directly authenticate your users through API, you can check the [interface documentation](/en/reference/) and SDK documentation in the development integration section.
 
 If you want to implement **Single Sign-on** or **authenticate** users first and then return to resources, it is recommended to use the **OIDC protocol**.
 
@@ -63,4 +63,3 @@ In the [OIDC specification](https://openid.net/connect/), some terms are differe
 - **Claim** refers to the end-user information field.
 
 The authorization process of OIDC is the same as OAuth 2.0, the main difference is that an additional ID Token will be returned in the OIDC authorization process.
-
