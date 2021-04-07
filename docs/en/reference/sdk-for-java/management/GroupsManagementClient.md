@@ -15,7 +15,7 @@ meta:
 
 GroupsManagementClient().create(groupInfo)
 
-> Create a Group
+> Create a Group.
 
 #### Parameters
 
@@ -58,10 +58,10 @@ GroupsManagementClient().update(groupInfo)
 
 #### Parameters
 
-- `groupInfo` \<CreateGroupParam\> group information
+- `groupInfo` \<CreateGroupParam\> Group information
 - `groupInfo.code` \<string\> Group unique id
-- `groupInfo.name` \<boolean\> group name
-- `groupInfo.description` \<string\> description
+- `groupInfo.name` \<boolean\> Group name
+- `groupInfo.description` \<string\> Description
 - `groupInfo.newCode` \<string\> New unique id
 
 #### Example
@@ -121,7 +121,7 @@ GroupsManagementClient().deleteMany(codeList)
 
 #### Parameter
 
-- `codeList` \<string[]\> a list of unique id of the groups
+- `codeList` \<string[]\> A list of unique id of the groups.
 
 #### Example
 
@@ -141,8 +141,8 @@ GroupsManagementClient().listUsers(groupWithUsersParam)
 
 - `groupWithUsersParam` \<GroupWithUsersParam\>
 - `groupWithUsersParam.code` \<string\> Group unique id
-- `groupWithUsersParam.page` \<number\>  Page number, default value:  `1`
-- `groupWithUsersParam.limit` \<number\> Users per page, default value:  `10`
+- `groupWithUsersParam.page` \<number\>  Page number, default value:  `1`.
+- `groupWithUsersParam.limit` \<number\> Users per page, default value:  `10`.
 
 #### Example
 
@@ -157,7 +157,7 @@ PaginatedUsers users = managementClient.group().listUsers(code, page, limit).exe
 
 GroupsManagementClient().addUsers(addUserToGroupParam)
 
-> Add users to a group
+> Add users to a group.
 
 #### Parameters
 
@@ -178,9 +178,9 @@ CommonMessage message = managementClient.group().addUsers(new AddUserToGroupPara
 
 GroupsManagementClient().removeUsers(removeUserFromGroupParam)
 
-> Delete users from a group
+> Delete users from a group.
 
-#### 参数
+#### Parameters
 
 - `removeUserFromGroupParam` \<RemoveUserFromGroupParam\>
 - `removeUserFromGroupParam.code` \<string\> Group unique id
