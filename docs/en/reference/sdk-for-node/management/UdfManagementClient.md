@@ -6,7 +6,7 @@
 
 Udf is short for User Defined Field. {{$localeConfig.brandName}} data entities (such as users, roles, groups, organizations, etc.) can add user defined fields which {{$localeConfig.brandName}} does not built-in. For example, if you need to create a school-related application, you can add a user defined field: `school` field.
 
-You can ask the user to supplement the information in this field after the user registration is completed, click [here](/guides/authentication/extensibility/user-defined-field.md) to check the details.
+You can ask the user to supplement the information in this field after the user registration is completed, click [here](/en/guides/authentication/extensibility/user-defined-field.md) to check the details.
 
 Please follow the instructions below to use this client:
 

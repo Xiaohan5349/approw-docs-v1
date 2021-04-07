@@ -48,7 +48,7 @@ UserPoolManagementClient().update(updates)
 - `updates.name` \<string\> User pool name
 - `updates.logo` \<string\> User pool logo
 - `updates.domain` \<string\> User pool enterprise application panel second-level domain name
-- `updates.description` \<string\> 描述信息
+- `updates.description` \<string\> Description information
 - `updates.emailVerifiedDefault` \<boolean\> Set the email to be verified as default (`emailVerified` field of the user is `true`)
 - `updates.sendWelcomeEmail` \<boolean\> Whether to send welcome email after user registration
 - `updates.registerDisabled` \<boolean\> Whether to disable the registration. When the user pool disables the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
@@ -59,7 +59,7 @@ If there are more than one, please separate them with line breaks.
 - `updates.whitelist.phoneEnabled` \<boolean\> Whether to enable the whitelist of mobile phone numbers
 - `updates.whitelist.emailEnabled` \<boolean\> Whether to enable the mailbox whitelist
 - `updates.whitelist.usernameEnabled` \<boolean\> Whether to enable the username whitelist
-- `updates.tokenExpiresAfter` \<number\> token expiration time
+- `updates.tokenExpiresAfter` \<number\> Token expiration time
 - `updates.loginFailCheck` \<Object\>  Frequent login failure limit. If a user exceeds the number of times within the specified time, the system will require a verification code for login again. If you need to concurrent login in the same area at the same time period, please disable it.
 - `updates.loginFailCheck.enabled` \<boolean\> Whether to enable
 - `updates.loginFailCheck.timeInterval` \<number\> Check period, in seconds.
@@ -121,7 +121,7 @@ const envList = await managementClient.userpool.addEnv(
 
 #### Return value
 
-- `Promise<Env[]>` return the latest list of environment variables
+- `Promise<Env[]>` Return the latest list of environment variables.
 
 ## Delete environment variables
 
@@ -141,4 +141,4 @@ const envList = await managementClient.userpool.removeEnv("LARK_WEBHOOK");
 
 #### Return value
 
-- `Promise<Env[]>` return the latest list of environment variables
+- `Promise<Env[]>` Return the latest list of environment variables

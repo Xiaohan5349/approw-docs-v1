@@ -82,7 +82,7 @@ WhitelistManagementClient().remove(type, list)
 #### Parameter
 
 - `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
-- `list` \<string[]\> Whitelist list. (email is not case sensitive)
+- `list` \<string[]\> Whitelist list. (Email is not case sensitive.)
 
 #### Example
 

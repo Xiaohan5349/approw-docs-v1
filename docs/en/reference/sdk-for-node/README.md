@@ -44,7 +44,7 @@ Use CDN:
 <script>
   /** You can use global variable Approw to acquire AuthenticationClient and ManagementClient */
   var approw = new Approw.AuthenticationClient({
-    appId: "AUTHING_APP_ID",
+    appId: "APPROW_APP_ID",
   });
 </script>
 ```
