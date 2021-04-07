@@ -18,7 +18,7 @@ The login experience is one of the most important user experiences that software
 
 {{$localeConfig.brandName}} can also be used as a Service Provider to connect to a third-party Identity Provider through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, and AD. For example, you can log in to your application through Azure AD or local Windows AD. {{$localeConfig.brandName}} can also use a third-party social login to automatically pull the user information of the social login user to your user directory.
 
-You can understand the implementation principles of [OIDC & OAuth2.0](en/concepts/oidc/oidc-overview.md), [SAML](en/concepts/saml/saml-overview.md), [LDAP](en/concepts/ldap.md), and AD here.
+You can understand the implementation principles of [OIDC & OAuth2.0](/docs/en/concepts/oidc/oidc-overview.md), [SAML](en/concepts/saml/saml-overview.md), [LDAP](en/concepts/ldap.md), and AD here.
 
 ## Hosted login page authentication
 
