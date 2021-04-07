@@ -11,9 +11,9 @@
       {
         title: 'Create an OIDC Client in IdP',
       },
-      { title: 'Configure the OIDC Client in ${$localeConfig.brandName}' },
+      { title: 'Configure the OIDC Client in {{$localeConfig.brandName}}' },
       {
-        title: 'Create an application in ${$localeConfig.brandName}'
+        title: 'Create an application in {{$localeConfig.brandName}}'
       },
       {
         title: 'Login via OIDC'

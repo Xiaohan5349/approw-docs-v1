@@ -1,4 +1,4 @@
-# Access Token VS ID Token
+# Access Token vs ID Token
 
 There are two types of Token related to identity accesss: Access Token and ID Token.
 
@@ -20,20 +20,20 @@ Access Token Example:
   "iat": 1612415013,
   "exp": 1613624613,
   "scope": "openid profile offline_access",
-  "iss": "https://yelexin-test1.authing.cn/oidc",
+  "iss": "https://yelexin-test1.approw.com/oidc",
   "aud": "601ad382d02a2ba94cf996c4"
 }
 ```
 Be Aware: Access Token do not contain any other user information except userid. The scope claim is using to access protected API. In that case, **Access Token are used for API access rather than user identification**.
 
-In particular scenario, developer can use Access Token to retrieve user information by access **User Information Endpoint** from Authing.
+In particular scenario, developer can use Access Token to retrieve user information by access **User Information Endpoint** from Approw.
 
 ## ID Token
 
 ID token is [JWT](https://tools.ietf.org/html/rfc7519) format. It is used for identification process. For exapmle: Application allow Login via Google and sync user information with Google Calendar. Google will return ID Token to the application, which contains basic user information (Username, Icon, etc.). Application can decrypt ID Token and read user information.
 
 ::: hint-warning
-Request will be rejected if ID Token is not valid. [How to verify](/guides/faqs/how-to-validate-user-token)。
+Request will be rejected if ID Token is not valid. [How to verify](/en/guides/faqs/how-to-validate-user-token.md).
 :::
 
 Use ID Token for API access is NOT recommended.
@@ -52,7 +52,7 @@ ID Token Example:
   "middle_name": null,
   "name": null,
   "nickname": null,
-  "picture": "https://files.authing.co/authing-console/default-user-avatar.png",
+  "picture": "https://files.approw.co/approw-console/default-user-avatar.png",
   "preferred_username": null,
   "profile": null,
   "updated_at": "2021-02-04T05:02:25.932Z",
@@ -62,6 +62,6 @@ ID Token Example:
   "aud": "601ad382d02a2ba94cf996c4",
   "exp": 1613624613,
   "iat": 1612415013,
-  "iss": "https://oidc1.authing.cn/oidc"
+  "iss": "https://oidc1.approw.cn/oidc"
 }
 ```

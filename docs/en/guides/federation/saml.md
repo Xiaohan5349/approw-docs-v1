@@ -28,7 +28,7 @@ When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP me
 
 ![](~@imagesZhCn/guides/federation/saml/1-3.png)
 
-**Default ACS address**: By default, SAML2 Identity Provider will send the SAML Response to the consumer address specified in the SAML Request (go back where it comes from, by default, Approw will send the SAML assertion to the address specified by the `AssertionConsumerServiceURL` parameter in the SAML Request). If the consumer address is not specified in the SAML Request, Approw will send the SAML Response to the address filled in here. You can **get this address from SP** and fill it in here. If you can't find it at the SP, you can fill in one arbitrarily, but **some SPs will not specify the consumer address in the SAML Request**. In this case, **the correct address must be filled in here**.
+**Default ACS Address**: By default, SAML2 Identity Provider will send the SAML Response to the consumer address specified in the SAML Request (go back where it comes from, by default, Approw will send the SAML assertion to the address specified by the `AssertionConsumerServiceURL` parameter in the SAML Request). If the consumer address is not specified in the SAML Request, Approw will send the SAML Response to the address filled in here. You can **get this address from SP** and fill it in here. If you can't find it at the SP, you can fill in one arbitrarily, but **some SPs will not specify the consumer address in the SAML Request**. In this case, **the correct address must be filled in here**.
 
 **Settings**: Advanced configuration of SAML2 Identity Provider, you need to fill in an object in **JSON format**, including the following:
 
@@ -111,7 +111,7 @@ The content of this article will add the following attributes to the SAML assert
 </saml:Attribute>
 ```
 
-## Integration with applications
+## Integration with Applications
 
 Approw has already integrated SAML2 with Alibaba Cloud, Tencent Cloud, Huawei Cloud, AWS, and Kibana (AWS). Check the corresponding configuration documents for detailed steps.
 

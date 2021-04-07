@@ -51,7 +51,7 @@ The Authorization Code Mode is suitable for scenarios where the application has 
 
 ![](~@imagesZhCn/guides/federation/oidc/authorization-code-flow.png)
 
-For more information, please refer to [Using Authorization Code Mode](/docs/en/federation/oidc/authorization-code/).
+For more information, please refer to [Using Authorization Code Mode](/en/federation/oidc/authorization-code/).
 
 ## Implicit Mode
 
@@ -63,7 +63,7 @@ Because the Implicit Mode is used in **scenarios where the key cannot be stored 
 
 ![](~@imagesZhCn/guides/federation/oidc/implicit-flow.png)
 
-For more information, please refer to [Using Implicit Mode](/docs/en/federation/oidc/implicit).
+For more information, please refer to [Using Implicit Mode](/en/federation/oidc/implicit).
 
 ## Password Mode
 
@@ -71,7 +71,7 @@ The Password Mode is suitable for scenarios where you master both the applicatio
 
 ![](~@imagesZhCn/guides/federation/oidc/password-flow.png)
 
-For more information, please refer to [Using Password Mode](/docs/en/federation/oidc/password/).
+For more information, please refer to [Using Password Mode](/en/federation/oidc/password/).
 
 ## Client Credentials Mode
 
@@ -83,4 +83,4 @@ Client Credentials Mode does not support Refresh Token.
 
 ![](~@imagesZhCn/guides/federation/oidc/client-credentials-flow.png)
 
-For more information, please refer to [Use Client Credentials Mode](/docs/en/federation/oidc/client-credentials/)
+For more information, please refer to [Use Client Credentials Mode](/en/federation/oidc/client-credentials/)

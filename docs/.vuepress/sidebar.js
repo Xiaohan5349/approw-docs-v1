@@ -1,7 +1,7 @@
-const BRAND_NAME_ZH_CN = 'Authing'
-const BRAND_NAME_ZH_CN_LOWER_CASE = 'authing'
-const BRAND_NAME_EN_US = 'Authing'
-const BRAND_NAME_EN_US_LOWER_CASE = 'authing'
+const BRAND_NAME_ZH_CN = 'Approw'
+const BRAND_NAME_ZH_CN_LOWER_CASE = 'approw'
+const BRAND_NAME_EN_US = 'Approw'
+const BRAND_NAME_EN_US_LOWER_CASE = 'approw'
 
 const DATABASE_CONNECTION_MENU = {
   title: '自定义数据库',
@@ -960,22 +960,47 @@ const addPrefixToLink = (navbar, prefix) => {
   if (!navbar) {
     return
   }
-  return navbar.map((item) => ({
-    ...item,
-    path: item.path && `${prefix}${item.path}`,
-    children:
-      item.children &&
-      item.children.map((link) => {
-        if (typeof link === 'string') {
-          return `${prefix}${link}`
-        }
-        return {
-          ...link,
-          path: `${prefix}${link.path}`,
-          children: addPrefixToLink(link.children, prefix),
-        }
-      }),
-  }))
+  return navbar.map((item) => {
+    if (typeof item === "string") {
+      return `${prefix}${item}`
+    }
+    return {
+      ...item,
+      path: item.path && `${prefix}${item.path}`,
+      children:
+        item.children &&
+        item.children.map((link) => {
+          if (typeof link === "string") {
+            // console.log(link);
+            return `${prefix}${link}`
+          }
+
+          return {
+            ...link,
+            path: `${prefix}${link.path}`,
+            children: addPrefixToLink(link.children, prefix),
+          }
+        }),
+    }
+  })
+  // return navbar.map((item) => ({
+  //   ...item,
+  //   path: item.path && `${prefix}${item.path}`,
+  //   children:
+  //     item.children &&
+  //     item.children.map((link) => {
+  //       if (typeof link === "string") {
+  //         // console.log(link);
+  //         return `${prefix}${link}`
+  //       }
+  //
+  //       return {
+  //         ...link,
+  //         path: `${prefix}${link.path}`,
+  //         children: addPrefixToLink(link.children, prefix),
+  //       }
+  //     }),
+  // }))
 }
 
 const getEnUsNavBar = () => {
