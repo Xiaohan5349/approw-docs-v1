@@ -10,7 +10,7 @@
         [
             { title: "Create a mobile application in Apple developers" },
             {
-                title: "Fill in the Apple application configuration in {{$localeConfig.brandName}}",
+                title: "Fill in the Apple Application configuration in {{$localeConfig.brandName}}",
             },
             { title: "Create an application in {{$localeConfig.brandName}}" },
             { title: "Start to develop access" },
