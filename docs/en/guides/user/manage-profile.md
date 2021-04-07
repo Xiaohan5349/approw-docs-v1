@@ -14,7 +14,7 @@ Approw provides developers with a built-in, comprehensive, beautiful, and highly
 
 <img src="https://cdn.authing.cn/blog/20201019174920.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
-You can setup functions such as login and register, forgotten password, reset your email, send SMS verification code, scan code to log in.
+You can setup functions such as login and register, forgotten password, reset your email, send SMS verification code, scan code to log in. 
 
 There will be a user personal center, you can try it by clicking [here](https://sample-sso.approw.com/u), the address is `https://<YOUR_DOMAIN>.approw.com/u`:
 
@@ -66,7 +66,7 @@ End users can bind MFA in the **MFA binding** tab of the personal center:
 
 ![](https://cdn.authing.cn/blog/20201019200549.png)
 
-## Use console
+## Use console 
 
 Administrators can use the console to manage user accounts visually.
 
@@ -88,4 +88,4 @@ The administrator can deactivate the account on the user details page, and the d
 
 Approw provides Authentication SDK/API and Management SDK/API. You can use Authentication API and completed user self-service personal account information management and use Management SDK/API to manage user information as an administrator. Operations performed by an administrator are no need to perform verification methods such as phone number verification code, email verification code, and MFA.
 
-!!!include(en/common/sdk-list.md)!!!
+!!!include(common/sdk-list.md)!!!

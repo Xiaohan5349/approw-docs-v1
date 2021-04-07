@@ -20,6 +20,6 @@ The fields that support search include email, username, mobile phone number, nic
 
 ## Search for users using SDK
 
-!!!include(en/common/sdk-list.md)!!!
+!!!include(common/sdk-list.md)!!!
 
 You can use the **User Search** method of **UsersManagementClient** in each different language.

@@ -1,20 +1,24 @@
 ---
 {
-    noSidebar: true,
-    noToc: true,
-    noFeedback: true,
-    fullWidthPage: true,
-    title: "Access Apple Social Login",
-    bannerTitle: "Access Apple Social Login",
-    steps:
-        [
-            { title: "Create a mobile application in Apple developers" },
-            {
-                title: "Fill in the Apple Application configuration in {{$localeConfig.brandName}}",
-            },
-            { title: "Create an application in {{$localeConfig.brandName}}" },
-            { title: "Start to develop access" },
-        ],
+  noSidebar: true,
+  noToc: true,
+  noFeedback: true,
+  fullWidthPage: true,
+  title: '接入苹果社会化登录',
+  bannerTitle: '接入苹果社会化登录',
+  steps:
+    [
+      {
+        title: '在苹果开发者创建一个移动应用',
+      },
+      { title: '在 {{$localeConfig.brandName}} 填入苹果应用配置' },
+      {
+        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+      },
+      {
+        title: '开始开发接入'
+      }
+    ],
 }
 ---
 

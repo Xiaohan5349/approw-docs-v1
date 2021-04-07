@@ -21,7 +21,7 @@ AuthenticationClient().registerByEmail(email, password, profile, options)
 #### Parameters:
 
 - `email` \<string\> Email 
-- `password` \<string\> Password 
+- `password` \<string\> password 
 - `profile` \<RegisterProfile\> User profile 
 - `options` \<Object\>  
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false. 
@@ -46,8 +46,8 @@ AuthenticationClient().registerByUsername(username, password, profile, options)
 
 #### Parameters
 
-- `username` \<string\> Username 
-- `password` \<string\> Password 
+- `username` \<string\> username 
+- `password` \<string\> password 
 - `profile` \<RegisterProfile\> User profile 
 - `options` \<Object\>  
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
@@ -72,9 +72,9 @@ AuthenticationClient().registerByPhoneCode(phone, code, password, profile, optio
 
 #### Parameters:
 
-- `phone` \<string\> Phone number 
+- `phone` \<string\> phone number 
 - `code` \<string\> SMS verification code 
-- `password` \<string\> Initial password 
+- `password` \<string\> initial password 
 - `profile` \<RegisterProfile\> User profile 
 - `options` \<Object\>  
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false. 
@@ -122,10 +122,10 @@ If your user pool is configured with login failure detection, the user will be a
 #### Parameters:
 
 - `email` \<string\> Email 
-- `password` \<string\> Password 
+- `password` \<string\> password 
 - `options` \<Object\>  
 - `options.autoRegister` \<boolean\> Whether to register automatically. If it detects that the user does not exist, an account will be automatically created based on the login account password. 
-- `options.captchaCode` \<string\> CAPTCHA code
+- `options.captchaCode` \<string\> CAPTCHA
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user. 
 
 #### Example:
@@ -149,7 +149,7 @@ If your user pool is configured with login failure detection, the user will be a
 #### Parameters:
 
 - `email` \<string\> Email 
-- `password` \<string\> Password 
+- `password` \<string\> password 
 - `options` \<Object\>  
 - `options.autoRegister` \<boolean\> Whether to register automatically. If it detects that the user does not exist, an account will be automatically created based on the login account password. 
 - `options.captchaCode` \<string\> CAPTCHA
@@ -173,7 +173,7 @@ AuthenticationClient().loginByPhoneCode(phone, code)
 
 #### Parameters:
 
-- `phone` \<string\> Phone number 
+- `phone` \<string\> phone number 
 - `code` \<string\> SMS verification code
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user 
 
@@ -195,8 +195,8 @@ AuthenticationClient().loginByPhonePassword(phone, password, options)
 
 #### Parameters:
 
-- `phone` \<string\> Phone number 
-- `password` \<string\> Password 
+- `phone` \<string\> phone number 
+- `password` \<string\> password 
 - `options` \<Object\>  
 - `options.captchaCode` \<string\> CAPTCHA code 
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user 
@@ -215,7 +215,7 @@ User user = authenticationClient.loginByPhonePassword(new LoginByPhonePasswordIn
 
 AuthenticationClient().checkLoginStatus(token)
 
-> Check Token and login status.
+> Check Token and login status
 
 #### Parameter:
 
@@ -256,9 +256,9 @@ AuthenticationClient().resetPasswordByPhoneCode(phone, code, newPassword)
 
 #### Parameters:
 
-- `phone` \<string\> Phone number 
+- `phone` \<string\> phone number 
 - `code` \<string\> Verification code 
-- `newPassword` \<string\> New password 
+- `newPassword` \<string\> new password 
 
 #### Example:
 
@@ -279,9 +279,9 @@ AuthenticationClient().resetPasswordByEmailCode(phone, code, newPassword)
 
 #### Parameters:
 
-- `phone` \<string\> Phone number 
+- `phone` \<string\> phone number 
 - `code` \<string\> Verification code
-- `newPassword` \<string\> New password 
+- `newPassword` \<string\> new password 
 
 #### Example:
 
@@ -303,12 +303,12 @@ AuthenticationClient().updateProfile(updates)
 #### Parameters:
 
 - `updates` <UpdateUserInput> Modified user information
-- `updates.username` <string> Username
-- `updates.nickname` <string> Nickname
-- `updates.photo` <string> Avatar
-- `updates.company` <string> Company
-- `updates.browser` <string> Browser
-- `updates.device` <string> Device
+- `updates.username` <string> username
+- `updates.nickname` <string> nickname
+- `updates.photo` <string> avatar
+- `updates.company` <string> company
+- `updates.browser` <string> browser
+- `updates.device` <string> device
 - `updates.lastIP` <string> Last logged in IP
 - `updates.name` <string> Name
 - `updates.givenName` <string> Given Name
@@ -316,19 +316,19 @@ AuthenticationClient().updateProfile(updates)
 - `updates.middleName` <string> Middle Name
 - `updates.profile` <string> Profile Url
 - `updates.preferredUsername` <string> Preferred Name
-- `updates.website` <string> Personal website
-- `updates.gender` <string> Gender, M means male, F means female, U means unknown.
-- `updates.birthdate` <string> Birthday
+- `updates.website` <string> personal website
+- `updates.gender` <string> Gender, M (Man) means male, F (Female) means female, U (Unknown) means unknown.
+- `updates.birthdate` <string> birthday
 - `updates.zoneinfo` <string> Time zone
-- `updates.locale` <string> Language
-- `updates.address` <string> Address
+- `updates.locale` <string> language
+- `updates.address` <string> address
 - `updates.streetAddress` <string> Street address
 - `updates.locality` <string>
 - `updates.region` <string> Region
 - `updates.postalCode` <string> Zip code
 - `updates.city` <string> City
 - `updates.province` <string> Province
-- `updates.country` <string> Country
+- `updates.country` <string> country
 
 
 #### Example:
@@ -347,7 +347,7 @@ AuthenticationClient().updatePassword(newPassword, oldPassword)
 
 #### Parameters:
 
-- `newPassword` \<string\> New password 
+- `newPassword` \<string\> new password 
 - `oldPassword` \<string\> Old password, if the user has not set a password, it can be left blank.。 
 
 #### Example:
@@ -364,13 +364,13 @@ User user = authenticationClient.updatePassword(newPassword, oldPassword).execut
 
 AuthenticationClient().updatePhone(phone, phoneCode, oldPhone, oldPhoneCode)
 
-> Update the user's phone number. Same as update the email, by default, if the user has already bound a phone number, the original phone number (the phone number bound to the current account) and the current email (the phone number to be bound) need to be verified at the same time. In other words, the phone number currently bound to user A is 15888888888, and if you want to change it to 15899999999, you need to verify both phone numbers at the same time. Developers can also choose not to turn on "Verify original phone number", which can be turned off in the security information client under the settings directory of the Approw console. To bind a phone number for the first time, please use bindPhone interface.
+> Update the user's phone number. Same as update the email, by default, if the user has already bound a phone number, the original phone number (the phone number bound to the current account) and the current email (the phone number to be bound) need to be verified at the same time. In other words, the phone number currently bound to user A is 15888888888, and if you want to change it to 15899999999, you need to verify both phone numbers at the same time. Developers can also choose not to turn on "Verify original phone number", which can be turned off in the security information client under the settings directory of the Authing console. To bind a phone number for the first time, please use bindPhone interface.
 
 #### Parameters:
 
 - `phone` \<string\> New phone number 
 - `phoneCode` \<string\> The verification code of the new phone number
-- `oldPhone` \<string\> Old phone number 
+- `oldPhone` \<string\> old phone number 
 - `oldPhoneCode` \<string\> The verification code of the old phone number
 
 #### Example:
@@ -385,13 +385,13 @@ User user = authenticationClient.updatePhone("phone number", "1234").execute();
 
 AuthenticationClient().updateEmail(email, emailCode, oldEmail, oldEmailCode)
 
-> If the user has already bound the email, by default, the original email (the email bound to the current account) and the current email (the email to be bound) need to be verified at the same time. If the currently email bound to user A is 123456@gmail.com, and user A wants to change it to 1234567@gmail.com, then both email need to be verified at the same time. Developers can also choose not to turn on "Verify original mailbox", which can be turned off in the security information client under the settings directory of the Approw console. To bind an email for the first time, please use the bindEmail interface.
+> If the user has already bound the email, by default, the original email (the email bound to the current account) and the current email (the email to be bound) need to be verified at the same time. If the currently email bound to user A is 123456@gmail.com, and user A wants to change it to 1234567@gmail.com, then both email need to be verified at the same time. Developers can also choose not to turn on "Verify original mailbox", which can be turned off in the security information client under the settings directory of the Authing console. To bind an email for the first time, please use the bindEmail interface.
 
 #### Parameters:
 
 - `email` \<string\> New email 
 - `emailCode` \<string\> The verification code of the new email
-- `oldEmail` \<string\> Old email 
+- `oldEmail` \<string\> old email 
 - `oldEmailCode` \<string\> The verification code of the old email 
 
 #### Example:
@@ -526,8 +526,8 @@ AuthenticationClient().loginByLdap(loginByLdapParam)
 
 #### Parameters: 
 
-- `username` <string> Username
-- `password` <string> Password
+- `username` <string> username
+- `password` <string> password
 - `options` <LoginByLdapParamOptions>
 - `options.autoRegister` <boolean> Whether to register automatically. If it detects that the user does not exist, an account will be automatically created based on the login account and password.
 - `options.captchaCode` <string> CAPTCHA verification code
@@ -550,8 +550,8 @@ AuthenticationClient().loginByAd(username, password)
 
 #### Parameters:
 
-- `username` \<string\> Username
-- `password` \<string\> Password
+- `username` \<string\> username
+- `password` \<string\> password
 
 #### Example:
 
@@ -565,7 +565,7 @@ User user = authenticationClient.loginByAd(username, password).execute();
 
 AuthenticationClient().checkPasswordStrength(password)
 
-> Check the password strength,[ click here for details.](/en/guides/security/config-password.md)。
+> Check the password strength,[ click here for details.](/guides/security/config-password.md)。
 
 #### Parameter:
 
@@ -599,7 +599,7 @@ AuthenticationClient().listUdv()
 #### Example:
 
 ```java
-authenticationClient.setAppId("APPROW_APP_ID");
+authenticationClient.setAppId("AUTHING_APP_ID");
 authenticationClient.setAccessToken("ACCESS_TOKEN");
 
 List<UserDefinedData> list = authenticationClient.listUdv().execute();
@@ -616,8 +616,8 @@ List<UserDefinedData> list = authenticationClient.listUdv().execute();
   {
     "key": "school",
     "dataType": "STRING",
-    "value": "Huazhong Institute of Technology",
-    "label": "school"
+    "value": "华中科技大学",
+    "label": "学校"
   }
 ]
 ```
@@ -636,10 +636,10 @@ AuthenticationClient().setUdv(key, value)
 #### Example:
 
 ```java
-authenticationClient.setAppId("APPROW_APP_ID");
+authenticationClient.setAppId("AUTHING_APP_ID");
 authenticationClient.setAccessToken("ACCESS_TOKEN");
 
-List<UserDefinedData> list = authenticationClient.setUdv('school', 'Huazhong Institute of Technology').execute();
+List<UserDefinedData> list = authenticationClient.setUdv('school', '华中科技大学').execute();
 ```
 
 ## Delete user-defined value
@@ -655,7 +655,7 @@ AuthenticationClient().removeUdv(key)
 #### Example:
 
 ```java
-authenticationClient.setAppId("APPROW_APP_ID");
+authenticationClient.setAppId("AUTHING_APP_ID");
 authenticationClient.setAccessToken("ACCESS_TOKEN");
 
 List<UserDefinedData> list = authenticationClient.removeUdv('school').execute();

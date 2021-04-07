@@ -13,32 +13,32 @@ ManagementClient can be used to manage users, roles, policies, and user defined 
 
 The following is the list of clients:
 
-::: page-ref /en/reference/sdk-for-java/management/UsersManagementClient.md
+::: page-ref /reference/sdk-for-java/management/UsersManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/RolesManagementClient.md
+::: page-ref /reference/sdk-for-java/management/RolesManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/PoliciesManagementClient.md
+::: page-ref /reference/sdk-for-java/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/AclManagementClient.md
+::: page-ref /reference/sdk-for-java/management/AclManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/UdfManagementClient.md
+::: page-ref /reference/sdk-for-java/management/UdfManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/GroupsManagementClient.md
+::: page-ref /reference/sdk-for-java/management/GroupsManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/OrgManagementClient.md
+::: page-ref /reference/sdk-for-java/management/OrgManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/UserpoolManagementClient.md
+::: page-ref /reference/sdk-for-java/management/UserpoolManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/WhitelistManagementClient.md
+::: page-ref /reference/sdk-for-java/management/WhitelistManagementClient.md
 :::
 
-::: page-ref /en/reference/sdk-for-java/management/ApplicationManagementClient.md
+::: page-ref /reference/sdk-for-java/management/ApplicationManagementClient.md
 :::
