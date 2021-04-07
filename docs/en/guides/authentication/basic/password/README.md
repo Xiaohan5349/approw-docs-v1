@@ -61,9 +61,8 @@ Users can modify password in the personal center.
 ## Use embedded login component
 
 The embedded login component and the online hosting login page are basically the same in style and interaction. The difference is that the online hosting login page is fully managed and maintained by {{$localeConfig.brandName}}, which is completely independent of your application. The embedded login component can be integrated in your application.
-For detailed usage, please see: [Use the embedded login component to authenticate]().
+For detailed usage, please see: [Use the embedded login component to authenticate](/en/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
-。
 
 ## Use API & SDK
 
