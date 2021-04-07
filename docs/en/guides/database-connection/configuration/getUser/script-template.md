@@ -68,7 +68,7 @@ The context also includes the following information:
 
 #### The user already exists
 
-When the user already exists, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
+When the user already exists, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function getUser(query, context) {
@@ -130,7 +130,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `query` to generate query command(`query.id`, `query.email`, `query.username` and `query.phone`, these four parameters won't be empty at the same time).
 - If user does not exist, return `null`.
-- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
