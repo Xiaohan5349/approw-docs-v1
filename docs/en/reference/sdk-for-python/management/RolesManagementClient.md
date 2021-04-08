@@ -19,8 +19,8 @@ RolesManagementClient().create(code, description)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
-- `description` \<string\> description
+- `code` \<string\> Unique id of the role.
+- `description` \<string\> Description.
 
 #### Example
 
@@ -37,7 +37,7 @@ RolesManagementClient().delete(code)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
+- `code` \<string\> Unique id of the role.
 
 #### Example
 
@@ -54,7 +54,7 @@ RolesManagementClient().delete_many(codeList)
 
 #### Parameter
 
-- `codeList` \<string[]\> A list of unique ids for roles
+- `codeList` \<string[]\> A list of unique ids for roles.
 
 #### Example
 
@@ -75,10 +75,10 @@ RolesManagementClient().update(code, input)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
+- `code` \<string\> Unique id of the role.
 - `input` \<Object\>
-- `input.description` \<string\> description information
-- `input.newCode` \<string\> New unique id
+- `input.description` \<string\> description information.
+- `input.newCode` \<string\> New unique id.
 
 #### Example
 
@@ -97,11 +97,11 @@ role = management_client.roles.update(code='old', newCode="new")
 
 RolesManagementClient().detail(code)
 
-> Get role details
+> Get role details.
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
+- `code` \<string\> Unique id of the role.
 
 #### Example
 
@@ -114,7 +114,7 @@ management_client.roles.create(code=code)
 
 RolesManagementClient().list(page, limit)
 
-> Get roles list
+> Get roles list.
 
 #### Parameter
 
@@ -133,11 +133,11 @@ _list = data['list']
 
 RolesManagementClient().list_users(code)
 
-> Get role's users list
+> Get role's users list.
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
+- `code` \<string\> Unique id of the role.
 
 #### Example
 
@@ -155,8 +155,8 @@ RolesManagementClient().add_users(code, userIds)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
-- `userIds` \<string[]\> User ID list
+- `code` \<string\> Unique id of the role.
+- `userIds` \<string[]\> User ID list.
 
 #### Example
 
@@ -177,8 +177,8 @@ RolesManagementClient().remove_users(code, userIds)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
-- `userIds` \<string[]\> User ID list
+- `code` \<string\> Unique id of the role.
+- `userIds` \<string[]\> User ID list.
 
 #### Example
 
@@ -195,11 +195,11 @@ _list = data['list']
 
 RolesManagementClient().list_policies(code, page, limit)
 
-> Get the role policy list
+> Get the role policy list.
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
+- `code` \<string\> Unique id of the role.
 - `page` \<number\> Page number. The default value is: `1`.
 - `limit` \<number\> Number of policy records shown per page. The default value is: `10`.
 
@@ -219,8 +219,8 @@ RolesManagementClient().add_policies(code, policies)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `code` \<string\> Unique id of the role.
+- `policies` \<string[]\> Policy list.
 
 #### Example
 
@@ -241,8 +241,8 @@ RolesManagementClient().remove_policies(code, policies)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the role
-- `policies` \<string[]\> policy list
+- `code` \<string\> Unique id of the role.
+- `policies` \<string[]\> Policy list.
 
 #### Example
 
