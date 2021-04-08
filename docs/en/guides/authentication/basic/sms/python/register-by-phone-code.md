@@ -1,6 +1,6 @@
-!!!include(common/init-python-auth-sdk.md)!!!
+!!!include(en/common/init-python-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `register_by_phone_code` 方法：
+First call Send SMS verification code API to send SMS code, and then use `register_by_phone_code` method：
 
 ```python
 phone = '176xxxx6754'

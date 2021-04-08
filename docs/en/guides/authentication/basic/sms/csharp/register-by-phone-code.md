@@ -1,6 +1,6 @@
-!!!include(common/init-csharp-auth-sdk.md)!!!
+!!!include(en/common/init-csharp-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `RegisterByPhoneCode` 方法：
+First call Send SMS verification code API to send SMS code, and then use `RegisterByPhoneCode` method：
 
 
 ```csharp

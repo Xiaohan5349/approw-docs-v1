@@ -14,9 +14,9 @@ When providing users with account and password authentication methods, as an IT 
 
 To use {{$localeConfig.brandName}} to achieve these functions, we provide three different integrate methods:
 
-1. [Use {{$localeConfig.brandName}} hosted login page](#Use hosted login page) with no coding work needed. You can experience through {{$themeConfig.sampleAppDomain}}.
-2. [Use embedded login component provided by {{$localeConfig.brandName}}](#Use embedded login component) This can be integrated within your Web or mobile project and you don't need to implement your own login form UI.
-3. [Use API & SDK](#Use API & SDK),{{$localeConfig.brandName}} provides two different forms of API: RESTFul and GraphQL and more than ten other language SDKs. You can customize your UI and anthentication workflow based on that.  
+1. [Use {{$localeConfig.brandName}} hosted login page](#use-hosted-login-page) with no coding work needed. You can experience through {{$themeConfig.sampleAppDomain}}.
+2. [Use embedded login component provided by {{$localeConfig.brandName}}](#use-embedded-login-component) This can be integrated within your Web or mobile project and you don't need to implement your own login form UI.
+3. [Use API & SDK](#use-api-sdk), {{$localeConfig.brandName}} provides two different forms of API: RESTFul and GraphQL and more than ten other language SDKs. You can customize your UI and anthentication workflow based on that.  
 
 ## Use hosted login page
 
