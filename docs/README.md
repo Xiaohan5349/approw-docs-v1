@@ -2,9 +2,10 @@
 home: true
 noSidebar: true
 mainTitle: '文档中心'
-subTitle: '在这里，开启激动人心的第一步！学习如何使用 Authing 及 Authing 提供的 API。'
+subTitle: '在这里，开启激动人心的第一步！学习如何使用 {{$localeConfig.brandName}} 及 {{$localeConfig.brandName}} 提供的 API。'
 searchPlaceholder: 请输入关键词搜索产品文档
 hotSearchText: 热门搜索
+exploreUse: 探索使用 {{$localeConfig.brandName}}
 hotSearch:
   - text: 如何对用户进行认证
     link: /guides/authentication/
@@ -18,7 +19,7 @@ hotSearch:
     link: /guides/faqs/how-to-validate-user-token.html
 sdkConfig:
   ios:
-    name: IOS
+    name: IOS Swift
     link: /reference/sdk-for-swift.html
     img: ios.png
     img2x: ios@2x.png
@@ -32,6 +33,11 @@ sdkConfig:
     link: /reference/sdk-for-node/
     img: javascript.png
     img2x: javascript@2x.png
+  reactNative:
+    name: React Native
+    link: /reference/sdk-for-react-native/
+    img: react-native.svg
+    img2x: react-native.svg
   cSharp:
     name: C Sharp
     link: /reference/sdk-for-csharp/
@@ -78,13 +84,13 @@ sdkConfig:
     img: golang.png
     img2x: golang@2x.png
 applicationSdks:
-  - title: 移动应用
-    description: 在移动应用中快速接入认证服务
+  - title: 移动 / 客户端应用
+    description: 在移动 / 客户端应用中快速接入认证服务
     color: '#396AFF'
     sdks:
       - ios
       - android
-      - javascript
+      - reactNative
       - cSharp
   - title: 单页应用
     description: 在浏览器运行的 Web 应用中快速接入认证服务并实现单点登录
@@ -105,8 +111,8 @@ applicationSdks:
       - ruby
       - java
       - golang
-  - title: API 服务
-    description: 对 API 服务进行统一认证和授权
+  - title: 后端 / API 服务
+    description: 在后端调用 {{$localeConfig.brandName}} 并保护 API 接口
     color: '#F8BC00'
     sdks:
       - javascript
@@ -118,7 +124,7 @@ applicationSdks:
       - golang
 sections:
   - title: 概念
-    description: 了解 Authing 体系结构基础
+    description: 了解 {{$localeConfig.brandName}} 体系结构基础
     links:
       - text: 什么是用户池
         link: /concepts/user-pool
@@ -142,11 +148,11 @@ sections:
   - title: 应用集成
     description: 将现有或本地应用集成到 Authing。
     links:
-      - text: 通过 Authing 登录阿里云
+      - text: 通过 {{$localeConfig.brandName}} 登录阿里云
         link: /integration/ali-cloud/
-      - text: 通过 Authing 登录腾讯云
+      - text: 通过 {{$localeConfig.brandName}} 登录腾讯云
         link: /integration/tencent-cloud/
-      - text: 通过 Authing 登录华为云
+      - text: 通过 {{$localeConfig.brandName}} 登录华为云
         link: /integration/huawei-cloud/
     knowMore:
       link: /integration/
@@ -155,7 +161,7 @@ explores:
     links:
       - icon: authing-login-password
         link: /guides/authentication/basic/password/
-        text: 使用账号密码密码认证
+        text: 使用账号密码认证
       - icon: authing-xingzhuangjiehe1
         link: /guides/authentication/basic/sms/
         text: 使用短信验证码认证
@@ -187,7 +193,7 @@ explores:
         text: 添加自定义用户字段
       - icon: authing-bianzu3
         link: /guides/users/ldap-user-directory.html
-        text: 使用 Authing 的 LDAP 用户目录
+        text: 使用 {{$localeConfig.brandName}} 的 LDAP 用户目录
     knowMore:
       link: /guides/users/
   - title: 管理用户账号
