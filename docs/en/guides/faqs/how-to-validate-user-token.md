@@ -1,3 +1,4 @@
+
 # How To Validate User Token?
 
 <LastUpdated/>
@@ -27,12 +28,12 @@ try {
   let decoded = jwt.verify('JSON Web Token from client', 'your_secret'),
     expired = Date.parse(new Date()) / 1000 > decoded.exp
   if (expired) {
-    // 过期
+    // expired
   } else {
-    // 合法也没过期，正常放行
+    // valid, pass!
   }
 } catch (error) {
-  // 不合法
+  // invalid
 }
 ```
 
@@ -46,7 +47,7 @@ If you use javascript, you can use the jose library to verify the RS256 signatur
 
 ```javascript
 const jose = require('jose')
-// 下面的参数内容是将 https://<应用域名>.Approw.cn/oidc/.well-known/jwks.json 返回的内容原封不动复制过来
+// The following parameter content is to copy the return value of https://<APP_DOMAIN>.Approw.cn/oidc/.well-known/jwks.json 
 const keystore = jose.JWKS.asKeyStore({
   keys: [
     {
@@ -60,8 +61,8 @@ const keystore = jose.JWKS.asKeyStore({
     },
   ],
 })
-// 选项中 issuer 的内容是 https://<应用域名>.Approw.cn/oidc，audience 的内容是 应用 ID
-// id_token 很长，请向右滑动 ->
+// the content of the  issuer in options is: https://<APP_DOAMAIN>.Approw.cn/oidc; the content of audience is application ID
+// id_token is long ->
 const res = jose.JWT.IdToken.verify(
   'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRmTE90M0xibjhfYThwUk11ZXNzYW1xai1vM0RCQ3MxLW93SExRLVZNcVEifQ.eyJzdWIiOiI1ZjcxOTk0NjUyNGVlMTA5OTIyOTQ5NmIiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vdXNlci1jb250ZW50cy9waG90b3MvOWE5ZGM0ZDctZTc1Ni00NWIxLTgxZDgtMDk1YTI4ZTQ3NmM2LmpwZyIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QxIiwicHJvZmlsZSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjAtMDktMzBUMDc6MTI6MTkuNDAxWiIsIndlYnNpdGUiOm51bGwsInpvbmVpbmZvIjpudWxsLCJlbWFpbCI6InRlc3QxQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJFNjViMVFvVVl0IiwiYXRfaGFzaCI6IkIzSWdPWUREYTBQejh2MV85cVpyQXciLCJhdWQiOiI1ZjE3YTUyOWY2NGZiMDA5Yjc5NGEyZmYiLCJleHAiOjE2MDE0NTM1NTgsImlhdCI6MTYwMTQ0OTk1OSwiaXNzIjoiaHR0cHM6Ly9vaWRjMS5hdXRoaW5nLmNuL29pZGMifQ.Z0TweYr9bCdYNJREVdvbJYcjXSfSsSNHBMqxTJeW-bnza0IIpBpEEVxlDG0Res6FZbcVzsQZzfJ9pj_nFgLjZxUUxv7Tpd13Sq_Ykg2JKepPf3-uoFqbORym07QEj4Uln0Quuh094MTb7z6bZZBEOYBac46zuj4uVp4vqk5HtCUSB4ASOAxwi7CeB1tKghISHz6PDcf6XJe_btHdzX1dparxtML-KvPxjpcHlt5emN88lpTAOX7Iq0EhsVE3PKrIDfCkG8XlL5y9TIW2Dz2iekcZ5PV17M35G6Dg2Q07Y_Apr18_oowOiQM5m_EbI90ist8CiqO9kBKreCOLMzub4Q',
   keystore,
@@ -127,7 +128,7 @@ This endpoint can detect `access_token` and `id_token` effectiveness `refresh_to
 When `access_token` or `id_token` is legal, return decoded content of `access_token`/`id_token`
 
 ```json
-// access_token 检验后的返回结果：
+// return value of checking access_token：
 {
     "jti": "K5TYewNhvdGBdHiRifMyW",
     "sub": "5f64afd1ad501364e3b43c1e",
@@ -138,7 +139,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "aud": "5f17a529f64fb009b794a2ff"
 }
 
-// id_token 检验后的返回结果：
+// return value of checking id_token：
 {
     "sub": "5f64afd1ad501364e3b43c1e",
     "birthdate": null,
@@ -173,12 +174,12 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 ```javascript
 {
   code: 400,
-  message: 'id_token 不合法',
+  message: 'id_token invalid',
 }
 
 {
   code: 400,
-  message: 'access_token 不合法',
+  message: 'access_token invalid',
 }
 ```
 
