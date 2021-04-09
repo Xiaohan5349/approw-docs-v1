@@ -102,7 +102,7 @@ For detailed documentation, please see: [User Registration and Login API](./sdk-
 
 ## Manage user-defined data
 
-For an introduction to the use of [user-defined data](/guides/user/user-defined-field/), please see: User-defined fields. You can get, add, and delete user-defined data in the {{$localeConfig.brandName}} Java/Kotlin SDK. For details, see: [Manage user-defined data](/guides/user/user-defined-field/)。
+For an introduction to the use of [user-defined data](/en/guides/user/user-defined-field/), please see: User-defined fields. You can get, add, and delete user-defined data in the {{$localeConfig.brandName}} Java/Kotlin SDK. For details, see: [Manage user-defined data](/en/guides/user/user-defined-field/)。
 
 
 ## Other
