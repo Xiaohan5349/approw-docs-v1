@@ -100,7 +100,7 @@ Enter `totp`
 
 ### Confirm binding MFA password
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/" summary="Confirm binding MFA" description="After requesting this endpoint, the user confirms the binding of MFA, and then logs in and asks to enter the MFA password for secondary verification.">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate/confirm" summary="Confirm binding MFA" description="After requesting this endpoint, the user confirms the binding of MFA, and then logs in and asks to enter the MFA password for secondary verification.">
 <template slot="headers">
 <ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
@@ -143,7 +143,7 @@ Call the login method in approw-js-sdk, refer to [Login](/docs/en/sdk/sdk-for-ja
 Call the SDK:
 
 ```js
-try 
+try
   window.user = await window.approw.login({ email, password })
   alert(`Login successfully, information:${JSON.stringify(window.user)}`)
 } catch (err) {
@@ -389,7 +389,7 @@ Wrong Code
 
 ## Operation
 
-Open index.html 
+Open index.html
 
 Or start a http Server in the project directory
 
@@ -398,7 +398,7 @@ $ npm install -g http-server
 $ http-server
 ```
 
-Go to 127.0.0.1:8080 
+Go to 127.0.0.1:8080
 
 **You can refer to MFA demo provided by Approw [MFA Demo](https://github.com/approw/mfa-demo)**
 
@@ -455,11 +455,11 @@ const authenticators = await authenticationClient.mfa.getMfaAuthenticators({
 
 - `Promise<IMfaAuthenticators>`
 
-## Request MFA QR code and key 
+## Request MFA QR code and key
 
 MfaAuthenticationClient().assosicateMfaAuthenticator()
 
-> Request MFA QR code and key 
+> Request MFA QR code and key
 
 #### Sample
 
@@ -610,7 +610,7 @@ MfaAuthenticationClient().phoneOrEmailBindable()
 
 > When the phone number or email MFA login is required, and the user has not bound the phone number or email, the user can first enter the phone number or email address, use this endpoint to first check whether the mobile phone or email address can be bound, and then perform MFA.
 
-#### Reference 
+#### Reference
 
 - `options` \<Object\>
 - `[options.email]` \<string\> Email to be checked
