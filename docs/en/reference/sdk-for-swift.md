@@ -45,7 +45,7 @@ This is a pure Swift library for [Approw](https://approw.com).
 
 3. Run **SwiftyApprowExample** with iOS simulator or device.
 
-4. Test and check data with web console [https://console.approw.com](https://console.approw.com)
+4. Test and check data with web console: [https://console.approw.com](https://console.approw.com).
 
 ## How to use
 
