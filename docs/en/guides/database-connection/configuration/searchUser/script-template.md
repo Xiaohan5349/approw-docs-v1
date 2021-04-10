@@ -53,7 +53,7 @@ The context also includes the following information:
 
 #### Get user lists successfully
 
-When the user exists, you need to return the user list to Approw, the format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md). For example:
+When the user exists, you need to return the user list to Approw, the format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function searchUser(query, context) {
@@ -115,7 +115,7 @@ Assume we are using `mongodb` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the keyword of fuzzy search in the `keyword` to search user.
 - If user does not exist, return `null`.
-- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript

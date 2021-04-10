@@ -53,7 +53,7 @@ async function updateUser(id, updates, context) {
 | updates.emailVerified | bool            | true     | If the user's email is verified. This parameter can be empty.                                                       |
 | updates.phoneVerified | bool            | true     | If the user's telephone number is verified. This parameter can be empty.                                                    |
 | updates.loginsCount   | number          | true     | User's login counts. This parameter can be empty.                                                       |
-| updates.xxxx          | any             | true     | Other user's fields. The format of user information can be found in the document [detailed fields of the user profile](/guides/user/user-profile.md). |
+| updates.xxxx          | any             | true     | Other user's fields. The format of user information can be found in the document [detailed fields of the user profile](/en/guides/user/user-profile.md). |
 | context               | object          | true     | Requiring context.                                                                  |
 
 
@@ -74,7 +74,7 @@ The context also includes the following information:
 
 #### User's profile is updated successfully
 
-When the user's profile is updated successfully, you need to return the latest user information to Approw, the format of user information can be found in the document of [detailed fields of the user profile](/docs/en/guides/user/user-profile.md). For example:
+When the user's profile is updated successfully, you need to return the latest user information to Approw, the format of user information can be found in the document of [detailed fields of the user profile](/en/guides/user/user-profile.md). For example:
 
 ```javascript
 async function updateUser(id, updates, context) {
@@ -142,7 +142,7 @@ Assume we are using `postgres` as our database:
 - You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
 - According to the query conditions in the `updates` to generate `update` `SQL`  command(`updates.id`, `updates.email`, `updates.username` and `updates.phone`, these four parameters won't be empty at the same time).
 - If `insertResult.rowCount` is 0 which means the user does not exist, then throw error with error message `User not exists!`.
-- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/docs/en/guides/user/user-profile.md).
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/en/guides/user/user-profile.md).
 - Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript

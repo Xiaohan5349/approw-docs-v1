@@ -5,7 +5,7 @@
 No matter what type of application you are developing - internal employee IT system, toC account system or API exposed to other developers, user authentication is a vital part of it, and {{$localeConfig.brandName}}w will provide you with the most suitable authentication method.
 
 ::: hint-warning
-Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For details, please see: [FAQ: How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/docs/en/guides/faqs/block-third-party-cookie-impact.md)
+Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For details, please see: [FAQ: How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/en/guides/faqs/block-third-party-cookie-impact.md)
 :::
 
 The login experience is one of the most important user experiences that software developers need to consider. It is not easy to provide users with a seamless, convenient and secure authentication experience. Generally speaking, the login logic is also associated with the logic of registration, password reset, and account association. More importantly, enhancing security in the form of robust and adaptive authentication during the login process is often critical to many implementations.
@@ -18,7 +18,7 @@ The login experience is one of the most important user experiences that software
 
 {{$localeConfig.brandName}} can also be used as a Service Provider to connect to a third-party Identity Provider through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, and AD. For example, you can log in to your application through Azure AD or local Windows AD. {{$localeConfig.brandName}} can also use a third-party social login to automatically pull the user information of the social login user to your user directory.
 
-You can understand the implementation principles of [OIDC & OAuth2.0](/docs/en/concepts/oidc/oidc-overview.md), [SAML](/docs/en/concepts/saml/saml-overview.md), [LDAP](/docs/en/concepts/ldap.md), and AD here.
+You can understand the implementation principles of [OIDC & OAuth2.0](/en/concepts/oidc/oidc-overview.md), [SAML](/en/concepts/saml/saml-overview.md), [LDAP](/en/concepts/ldap.md), and AD here.
 
 ## Hosted login page authentication
 
@@ -28,7 +28,7 @@ Each application in {{$localeConfig.brandName}} has an independent second-level 
 
 The {{$localeConfig.brandName}} embedded login component is a lightweight, modern, and highly extensible front-end login component provided by {{$localeConfig.brandName}}. It supports native JavaScript and the three front-end frameworks of React, Vue, and Angular. This built-in login component is basically the same as the login page hosted by {{$localeConfig.brandName}}, and has strong customization capabilities. The component has built-in functions such as password reset, MFA, social login, and scan code login, all of which are highly configurable.
 
-For more details, please see [use embedded login component](/docs/en/guides/basics/authenticate-first-user/use-embeded-login-component/).
+For more details, please see [use embedded login component](/en/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
 ## Auth SDK
 
@@ -44,4 +44,4 @@ The hosted login page mentioned before, embedded login component, and the underl
 
 ## Single Sign On
 
-Single Sign On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide a dedicated [SSO SDK](/docs/en/reference/sdk-for-sso.md) for developers to quickly implement single sign-on between applications.
+Single Sign On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide a dedicated [SSO SDK](/en/reference/sdk-for-sso.md) for developers to quickly implement single sign-on between applications.

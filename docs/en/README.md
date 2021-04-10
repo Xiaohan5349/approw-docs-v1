@@ -1,24 +1,25 @@
 ---
 home: true
 noSidebar: true
-mainTitle: "文档中心"
-subTitle: "这里，开启激动人心的第一步！学习如何使用 Authing 及 Authing 提供的 API。"
-searchPlaceholder: 请输入关键词搜索产品文档
-hotSearchText: 热门搜索
+mainTitle: Document
+subTitle: Here, start an exciting first step! Learn how to use {{$localeConfig.brandName}} and the API provided by {{$localeConfig.brandName}}.
+searchPlaceholder: Please enter keywords to search product documents
+hotSearchText: Popular Searches
+exploreUse: Explore the use of {{$localeConfig.brandName}}
 hotSearch:
-  - text: 如何对用户进行认证
+  - text: How to authenticate users
     link: /guides/authentication/
-  - text: 如何对用户进行授权
+  - text: How to authorize users
     link: /guides/authorization/
-  - text: 快速实现单点登录
+  - text: Quickly implement single sign-on
     link: /guides/authentication/sso/
-  - text: 添加社会化登录
+  - text: Add social login
     link: /guides/authentication/social/
-  - text: 如何验证 token
+  - text: How to verify token
     link: /guides/faqs/how-to-validate-user-token.html
 sdkConfig:
   ios:
-    name: IOS
+    name: IOS Swift
     link: /reference/sdk-for-swift.html
     img: ios.png
     img2x: ios@2x.png
@@ -32,6 +33,11 @@ sdkConfig:
     link: /reference/sdk-for-node/
     img: javascript.png
     img2x: javascript@2x.png
+  reactNative:
+    name: React Native
+    link: /reference/sdk-for-react-native/
+    img: react-native.svg
+    img2x: react-native.svg
   cSharp:
     name: C Sharp
     link: /reference/sdk-for-csharp/
@@ -78,25 +84,25 @@ sdkConfig:
     img: golang.png
     img2x: golang@2x.png
 applicationSdks:
-  - title: 移动应用
-    description: 在移动应用中快速接入认证服务
-    color: "#396AFF"
+  - title: Mobile / Client Application
+    description: Quick access to authentication services in mobile/client applications
+    color: '#396AFF'
     sdks:
       - ios
       - android
-      - javascript
+      - reactNative
       - cSharp
-  - title: 单页应用
-    description: 在浏览器运行的 Web 应用中快速接入认证服务并实现单点登录
-    color: "#75A3FF"
+  - title: Single Page Application
+    description: Quickly access the authentication service and realize single sign-on in the web application running in the browser
+    color: '#75A3FF'
     sdks:
       - javascript
       - react
       - angular
       - vue
-  - title: 标准 Web 应用
-    description: 在服务器上运行的传统 Web 应用，实现统一认证和授权
-    color: "#28B1B0"
+  - title: Standard Web Application
+    description: Traditional Web applications running on the server to achieve unified authentication and authorization
+    color: '#28B1B0'
     sdks:
       - javascript
       - python
@@ -105,9 +111,9 @@ applicationSdks:
       - ruby
       - java
       - golang
-  - title: API 服务
-    description: 对 API 服务进行统一认证和授权
-    color: "#F8BC00"
+  - title: Backend / API service
+    description: Call {{$localeConfig.brandName}} on the backend and protect the API interface
+    color: '#F8BC00'
     sdks:
       - javascript
       - python
@@ -117,116 +123,116 @@ applicationSdks:
       - java
       - golang
 sections:
-  - title: 概念
-    description: 了解 Authing 体系结构基础
+  - title: Concept
+    description: Understand the basics of {{$localeConfig.brandName}} architecture
     links:
-      - text: 什么是用户池
+      - text: What is User Pool
         link: /concepts/user-pool
-      - text: 什么是认证
+      - text: What is Certification
         link: /concepts/authentication.html
-      - text: 什么是授权
+      - text: What is Authorization
         link: /concepts/authorization.html
     knowMore:
       link: /concepts/
-  - title: 快速开始
-    description: 了解如何按照我们的分步说明构建解决方案。
+  - title: Quick Start
+    description: Learn how to build a solution following our step-by-step instructions.
     links:
-      - text: 使用托管登录页面
+      - text: Use hosted login page
         link: /guides/basics/authenticate-first-user/use-hosted-login-page
-      - text: 使用登录表单组件
+      - text: Use the login form component
         link: /guides/basics/authenticate-first-user/use-embeded-login-component/
-      - text: 使用 API & SDK
+      - text: Use API & SDK
         link: /guides/basics/authenticate-first-user/use-api-sdk/
     knowMore:
       link: /guides/basics/authenticate-first-user/
-  - title: 应用集成
-    description: 将现有或本地应用集成到 Authing。
+  - title: Application Integration
+    description: Integrate existing or local applications into {{$localeConfig.brandName}}.
     links:
-      - text: 通过 Authing 登录阿里云
+      - text: Log in to Alibaba Cloud through {{$localeConfig.brandName}}
         link: /integration/ali-cloud/
-      - text: 通过 Authing 登录腾讯云
+      - text: Log in to Tencent Cloud through {{$localeConfig.brandName}}
         link: /integration/tencent-cloud/
-      - text: 通过 Authing 登录华为云
+      - text: Log in to HUAWEI CLOUD via {{$localeConfig.brandName}}
         link: /integration/huawei-cloud/
     knowMore:
       link: /integration/
 explores:
-  - title: 对用户进行认证
+  - title: Authenticate Users
     links:
       - icon: authing-login-password
         link: /guides/authentication/basic/password/
-        text: 使用账号密码密码认证
+        text: Use account password authentication
       - icon: authing-xingzhuangjiehe1
         link: /guides/authentication/basic/sms/
-        text: 使用短信验证码认证
+        text: Use SMS verification code to authenticate
       - icon: authing-wechat-webpage-authorization
         link: /guides/authentication/social/
-        text: 使用社会化登录认证
+        text: Use social login authentication
     knowMore:
       link: /guides/authentication/
-  - title: 对用户进行权限管理
+  - title: Manage User Privilege
     links:
       - icon: authing-certification
         link: /guides/access-control/choose-the-right-access-control-model.html
-        text: 选择合适的权限模型
+        text: Choose the right permission model
       - icon: authing-genggaimima
         link: /guides/access-control/rbac.html
-        text: 集成 RBAC 权限模型到你的应用系统
+        text: Integrate the RBAC permission model into your application system
       - icon: authing-Token-2
         link: /guides/access-control/abac.html
-        text: 集成 ABAC 权限模型到你的应用系统
+        text: Integrate ABAC permission model into your application system
     knowMore:
       link: /guides/access-control/
-  - title: 管理用户目录
+  - title: Manage User Directories
     links:
       - icon: authing-sousuo
         link: /guides/users/search.html
-        text: 搜索用户
+        text: Search users
       - icon: authing-zidingyiziduan-3
         link: /guides/users/user-defined-field/
-        text: 添加自定义用户字段
+        text: Add custom user fields
       - icon: authing-bianzu3
         link: /guides/users/ldap-user-directory.html
-        text: 使用 Authing 的 LDAP 用户目录
+        text: Use {{$localeConfig.brandName}} LDAP user directory
     knowMore:
       link: /guides/users/
-  - title: 管理用户账号
+  - title: Manage user accounts
     links:
       - icon: authing-login
         link: /guides/user/create-user/
-        text: 创建用户账号
+        text: Create user account
       - icon: authing-xiangqing
         link: /guides/user/user-profile
-        text: 查看用户详细信息
+        text: View user details
       - icon: authing-port-kz
         link: /guides/users/user-defined-field/
-        text: 扩展用户属性
+        text: Extended user attributes
     knowMore:
       link: /guides/user/
-  - title: 连接外部身份源（IdP）
+  - title: Connect to an external identity source (IdP)
     links:
       - icon: authing-wechat-webpage-authorization
         link: /guides/connections/social.html
-        text: 社会化登录配置文档
+        text: Social login configuration document
       - icon: authing-oidc_logo
         link: /guides/connections/enterprise.html
-        text: 企业身份源配置文档
+        text: Enterprise Identity Source Configuration Document
       - icon: authing-database
         link: /guides/database-connection/overview.html
-        text: 使用自定义数据库
+        text: Use a custom database
     knowMore:
       link: /guides/connections/
   - title: FAQ
     links:
       - icon: authing-ID1
         link: /guides/faqs/get-userpool-id-and-secret.html
-        text: 如何获取用户池 ID
+        text: How to get the user pool ID
       - icon: authing-anquanyuguanlibeifen
         link: /guides/security/config-domain.html
-        text: 如何配置 Web 安全域
+        text: How to configure a web security domain
       - icon: authing-token-3
         link: /guides/faqs/how-to-validate-user-token.html
-        text: 验证用户身份凭证（token）
+        text: Verify user credentials (token)
     knowMore:
       link: /guides/faqs/get-userpool-id-and-secret.html
 ---

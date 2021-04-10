@@ -101,7 +101,7 @@
 
 ### 确认绑定 MFA 口令
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/" summary="确认绑定 MFA。" description="请求此接口后，用户确认绑定 MFA，之后登录会要求输入二次验证 MFA 口令。">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate/confirm" summary="确认绑定 MFA。" description="请求此接口后，用户确认绑定 MFA，之后登录会要求输入二次验证 MFA 口令。">
 <template slot="headers">
 <ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />

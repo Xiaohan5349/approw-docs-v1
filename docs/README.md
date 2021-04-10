@@ -2,9 +2,10 @@
 home: true
 noSidebar: true
 mainTitle: "Document Center"
-subTitle: "Here, start an exciting first step! Learn how to use Approw and the API provided by Approw."
+subTitle: "Here, start the exciting first step! Learn how to use the API provided by {{$localeConfig.brandName}} and {{$localeConfig.brandName}}."
 searchPlaceholder: Please enter keywords to search product documents
 hotSearchText: Hot Searches
+exploreUse: Explore the use of {{$localeConfig.brandName}}
 hotSearch:
     - text: How to authenticate users
       link: /en/guides/authentication/
@@ -18,7 +19,7 @@ hotSearch:
       link: /en/guides/faqs/how-to-validate-user-token.html
 sdkConfig:
     ios:
-        name: IOS
+        name: IOS Swift
         link: /en/reference/sdk-for-swift.html
         img: ios.png
         img2x: ios@2x.png
@@ -32,6 +33,11 @@ sdkConfig:
         link: /en/reference/sdk-for-node/
         img: javascript.png
         img2x: javascript@2x.png
+    reactNative:
+        name: React Native
+        link: /reference/sdk-for-react-native/
+        img: react-native.svg
+        img2x: react-native.svg
     cSharp:
         name: C Sharp
         link: /en/reference/sdk-for-csharp/
@@ -78,13 +84,13 @@ sdkConfig:
         img: golang.png
         img2x: golang@2x.png
 applicationSdks:
-    - title: Mobile Applications
-      description: Quick access to authentication services in mobile applications.
+    - title: Mobile / Client Applications
+      description: Quick access to authentication services in mobile / client applications.
       color: "#396AFF"
       sdks:
           - ios
           - android
-          - javascript
+          - reactNative
           - cSharp
     - title: Single Page Application
       description: Quickly access the authentication service and implement single sign-on in the web application.
@@ -105,8 +111,8 @@ applicationSdks:
           - ruby
           - java
           - golang
-    - title: API Services
-      description: Unified authentication and authorization of API services.
+    - title: Back-end / API Services
+      description: Call {{$localeConfig.brandName}} on the back-end and protect the API interface.
       color: "#F8BC00"
       sdks:
           - javascript
@@ -118,7 +124,7 @@ applicationSdks:
           - golang
 sections:
     - title: Concepts
-      description: Understand the basics of Approw architecture.
+      description: Understand the basics of {{$localeConfig.brandName}} architecture.
       links:
           - text: What is a user pool
             link: /en/concepts/user-pool
@@ -140,13 +146,13 @@ sections:
       knowMore:
           link: /en/guides/basics/authenticate-first-user/
     - title: Application Integration
-      description: Integrate existing or local applications into Approw
+      description: Integrate existing or local applications into {{$localeConfig.brandName}}
       links:
-          - text: Log in to Alibaba Cloud with Approw
+          - text: Log in to Alibaba Cloud with {{$localeConfig.brandName}}
             link: /en/integration/ali-cloud/
-          - text: Log in to Tencent Cloud with Approw
+          - text: Log in to Tencent Cloud with {{$localeConfig.brandName}}
             link: /en/integration/tencent-cloud/
-          - text: Log in to Huawei Cloud with Approw
+          - text: Log in to Huawei Cloud with {{$localeConfig.brandName}}
             link: /en/integration/huawei-cloud/
       knowMore:
           link: /en/integration/
@@ -187,7 +193,7 @@ explores:
             text: Add User-defined fields
           - icon: authing-bianzu3
             link: /en/guides/users/ldap-user-directory.html
-            text: LDAP User Directory by Approw
+            text: LDAP User Directory by {{$localeConfig.brandName}}
       knowMore:
           link: /en/guides/users/
     - title: Manage User Accounts
@@ -226,7 +232,7 @@ explores:
             text: How To Configure A Web Security Domain
           - icon: authing-token-3
             link: /en/guides/faqs/how-to-validate-user-token.html
-            text: How To Validate User Token?
+            text: Verify user credentials (token)
       knowMore:
           link: /en/guides/faqs/get-userpool-id-and-secret.html
 ---
