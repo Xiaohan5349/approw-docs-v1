@@ -1,9 +1,9 @@
 !!!include(common/init-python-auth-sdk.md)!!!
 
-如果用户之前没有设置过密码（比如由手机号、社会化登录等方式注册），不需要传入原始密码。
+If the user has not set a password before (for example, registered by mobile phone number, social login, etc.), there is no need to pass in the original password.
 
 ```python
-# 由手机号、社会化登录等其他方式注册的，首次没有设置密码，old_password 留空。
+# If you register by other methods such as mobile phone number, social login, etc., the password is not set for the first time, and the old_password is left blank.
 authentication_client.update_password(
   new_password="passw0rd",
 )
@@ -12,7 +12,7 @@ authentication_client.update_password(
 或者：
 
 ```python
-# 用户之前设置了密码
+# The user has previously set a password
 authentication_client.update_password(
   new_password="passw0rd",
   old_password="123456!"

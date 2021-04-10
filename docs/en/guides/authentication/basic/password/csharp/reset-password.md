@@ -1,6 +1,6 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-使用手机号验证码重置密码：
+Use the mobile phone number verification code to reset the password:
 
 ```csharp
 var phone = "phone number";
@@ -9,7 +9,7 @@ var password = "123456";
 var message = await authenticationClient.ResetPasswordByPhoneCode(phone, code, password);
 ```
 
-使用邮箱验证码重置密码：
+Use email verification code to reset password:
 
 ```csharp
 var email = "test@example.com";

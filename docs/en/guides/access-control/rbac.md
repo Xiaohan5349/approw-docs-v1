@@ -6,10 +6,10 @@
 
 First, we need to understand a few core concepts in Approw:
 
-- User: End user;
-- Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
-- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc.. Each resource can define multiple operations, such as reading, editing, and deleting documents.
-- Authorization: Authorize certain operations of a certain type of resources to roles or users.
+-   User: End user;
+-   Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
+-   Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc.. Each resource can define multiple operations, such as reading, editing, and deleting documents.
+-   Authorization: Authorize certain operations of a certain type of resources to roles or users.
 
 With the combination of users, roles, resources, and authorizations, we can get a flexible and fine-grained permission model.
 
@@ -17,8 +17,8 @@ With the combination of users, roles, resources, and authorizations, we can get 
 
 You can use the Approw console to create roles: In **Privilege Management** - **Role Management** Click **Add Role **:
 
-- Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore _ and hyphen -. Here we fill in `admin`.
-- Role description: the description of the role, here we fill in the`administrator`.
+-   Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore \_ and hyphen -. Here we fill in `admin`.
+-   Role description: the description of the role, here we fill in the`administrator`.
 
 Add three roles:
 
@@ -48,8 +48,8 @@ First, we need to get a list of all the roles that the user has been granted:
 import { ManagementClient } from "authing-js-sdk";
 
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 const { totalCount, list } = await managementClient.users.listRoles("USER_ID");
 ```
@@ -58,7 +58,7 @@ After getting all the roles of the user, we can know whether the user has the `d
 
 ```javascript
 if (!list.map((role) => role.code).includes("devops")) {
-  throw new Error("无权限操作！");
+	throw new Error("No permission operation!");
 }
 ```
 
@@ -68,10 +68,10 @@ In the previous step, we do privilege management based on whether the user has a
 
 You can abstract some objects of the system as resources, and some operations can be defined on these resources. For example, in the scenario of this document, Repository, Tag, PR, Release Notes are all resources, and these resources have corresponding operations:
 
-- Repository: create, delete, etc.
-- PR: Open, comment, merge, etc.
-- Tag: create, delete, etc.
-- Release Notes: Create, read, edit, delete, etc.
+-   Repository: create, delete, etc.
+-   PR: Open, comment, merge, etc.
+-   Tag: create, delete, etc.
+-   Release Notes: Create, read, edit, delete, etc.
 
 We create these resources in Approw:
 
@@ -93,21 +93,21 @@ In the previous step, through resource authorization, we authorized a user (role
 
 Call the `managementClient.acl.isAllowed` the three parameters are:
 
-- userId: User ID, the user can be directly authorized to operate on a specific resource, or can inherit the authorized permissions of the role.
-- resource: Resource id. For example, `repository:123` represents a code repository with ID 123, and `repository:*` represents a type of resource such as a code repository.
-- action: A specific operation, such as `repository:Delete` means deleting the code warehouse.
+-   userId: User ID, the user can be directly authorized to operate on a specific resource, or can inherit the authorized permissions of the role.
+-   resource: Resource id. For example, `repository:123` represents a code repository with ID 123, and `repository:*` represents a type of resource such as a code repository.
+-   action: A specific operation, such as `repository:Delete` means deleting the code warehouse.
 
 ```javascript
 import { ManagementClient } from "authing-js-sdk";
 
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 const { totalCount, list } = await managementClient.acl.isAllowed(
-  "USER_ID",
-  "repository:123",
-  "repository:Delete"
+	"USER_ID",
+	"repository:123",
+	"repository:Delete"
 );
 ```
 

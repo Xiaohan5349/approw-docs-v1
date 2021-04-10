@@ -1,26 +1,27 @@
 # Configure Web Security Domain
 
-For web applications, there is a risk of userPoolId/secret being stolen, so we need to take some special defense action. The key point is that we must be able to ensure that other people can obtain your userPoolId and cannot directly use your server resources. The Web side can restrict the source of the request through the Web security domain name, which is simply a white list. 
+For web applications, there is a risk of userPoolId/secret being stolen, so we need to take some special defense action. The key point is that we must be able to ensure that other people can obtain your userPoolId and cannot directly use your server resources. The Web side can restrict the source of the request through the Web security domain name, which is simply a white list.
 
 After setting the "Web Security Domain Name", the server resources can only be called through the JavaScript SDK under this domain name. Note: The domain name configuration policy is consistent with the browser domain security policy. The domain name protocol, domain, and port number must be strictly consistent. Subdomains and wildcards are not supported, otherwise, access will be prohibited. Give an example to illustrate the difference between domain names:
+
 ```
-// 跨域
+// Cross-domain
 www.a.com:8080
 www.a.com
 
-// 跨域
+// Cross-domain
 www.a.com:8080
 www.a.com:80
 
-// 跨域
+// Cross-domain
 a.com
 www.a.com
 
-// 跨域
+// Cross-domain
 xxx.a.com
 www.a.com
 
-// 不同协议，跨域
+// Different protocols, cross-domain
 http:
 https:
 
