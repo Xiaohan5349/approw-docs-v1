@@ -1,6 +1,6 @@
 !!!include(common/init-python-auth-sdk.md)!!!
 
-使用手机号验证码重置密码：
+Use the mobile phone number verification code to reset the password:
 
 ```python
 authentication_client.reset_password_by_phone_code(
@@ -10,7 +10,7 @@ authentication_client.reset_password_by_phone_code(
 )
 ```
 
-使用邮箱验证码重置密码：
+Use email verification code to reset password:
 
 ```python
 authentication_client.reset_password_by_email_code(

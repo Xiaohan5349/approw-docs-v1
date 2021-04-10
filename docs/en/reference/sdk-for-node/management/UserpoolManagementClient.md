@@ -9,8 +9,8 @@ Please follow the instructions below to use this client:
 ```javascript
 import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 
 managementClient.userpool.detail; // get user pool detail information
@@ -34,7 +34,7 @@ const userpool = await managementClient.userpool.detail();
 
 #### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
 ## Update the user pool
 
@@ -44,42 +44,42 @@ UserPoolManagementClient().update(updates)
 
 #### Parameter
 
-- `updates` \<UpdateUserpoolInput\>
-- `updates.name` \<string\> User pool name
-- `updates.logo` \<string\> User pool logo
-- `updates.domain` \<string\> User pool enterprise application panel second-level domain name
-- `updates.description` \<string\> 描述信息
-- `updates.emailVerifiedDefault` \<boolean\> Set the email to be verified as default (`emailVerified` field of the user is `true`)
-- `updates.sendWelcomeEmail` \<boolean\> Whether to send welcome email after user registration
-- `updates.registerDisabled` \<boolean\> Whether to disable the registration. When the user pool disables the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
-- `updates.allowedOrigins` \<string\> Allowed Origins is the URL that allows requests from JavaScript to the {{$localeConfig.brandName}}  API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: `https://*.sample.com`). 
-The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name. 
-If there are more than one, please separate them with line breaks.
-- `updates.whitelist` \<Object\> User pool whitelist configuration
-- `updates.whitelist.phoneEnabled` \<boolean\> Whether to enable the whitelist of mobile phone numbers
-- `updates.whitelist.emailEnabled` \<boolean\> Whether to enable the mailbox whitelist
-- `updates.whitelist.usernameEnabled` \<boolean\> Whether to enable the username whitelist
-- `updates.tokenExpiresAfter` \<number\> token expiration time
-- `updates.loginFailCheck` \<Object\>  Frequent login failure limit. If a user exceeds the number of times within the specified time, the system will require a verification code for login again. If you need to concurrent login in the same area at the same time period, please disable it.
-- `updates.loginFailCheck.enabled` \<boolean\> Whether to enable
-- `updates.loginFailCheck.timeInterval` \<number\> Check period, in seconds.
-- `updates.loginFailCheck.limit` \<number\> The limit condition will be triggered when the number of login failures for the same IP is reached.
-- `updates.frequentRegisterCheck` \<Object\> Frequency registration restriction. Frequency limit will be triggered when the same IP frequently registers an account, and it will take a while to register again. If you need to concurrent register in the same area and time period, please turn it off.
-- `updates.frequentRegisterCheck.enabled` \<boolean\> Whether to enable
-- `updates.frequentRegisterCheck.timeInterval` \<Object\> The detection period, in seconds.
-- `updates.frequentRegisterCheck.limit` \<Object\> The frequency limit will be triggered when the number of registrations of the same IP in the same period reaches this number.
+-   `updates` \<UpdateUserpoolInput\>
+-   `updates.name` \<string\> User pool name
+-   `updates.logo` \<string\> User pool logo
+-   `updates.domain` \<string\> User pool enterprise application panel second-level domain name
+-   `updates.description` \<string\> Description
+-   `updates.emailVerifiedDefault` \<boolean\> Set the email to be verified as default (`emailVerified` field of the user is `true`)
+-   `updates.sendWelcomeEmail` \<boolean\> Whether to send welcome email after user registration
+-   `updates.registerDisabled` \<boolean\> Whether to disable the registration. When the user pool disables the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
+-   `updates.allowedOrigins` \<string\> Allowed Origins is the URL that allows requests from JavaScript to the {{$localeConfig.brandName}} API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: `https://*.sample.com`).
+    The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name.
+    If there are more than one, please separate them with line breaks.
+-   `updates.whitelist` \<Object\> User pool whitelist configuration
+-   `updates.whitelist.phoneEnabled` \<boolean\> Whether to enable the whitelist of mobile phone numbers
+-   `updates.whitelist.emailEnabled` \<boolean\> Whether to enable the mailbox whitelist
+-   `updates.whitelist.usernameEnabled` \<boolean\> Whether to enable the username whitelist
+-   `updates.tokenExpiresAfter` \<number\> token expiration time
+-   `updates.loginFailCheck` \<Object\> Frequent login failure limit. If a user exceeds the number of times within the specified time, the system will require a verification code for login again. If you need to concurrent login in the same area at the same time period, please disable it.
+-   `updates.loginFailCheck.enabled` \<boolean\> Whether to enable
+-   `updates.loginFailCheck.timeInterval` \<number\> Check period, in seconds.
+-   `updates.loginFailCheck.limit` \<number\> The limit condition will be triggered when the number of login failures for the same IP is reached.
+-   `updates.frequentRegisterCheck` \<Object\> Frequency registration restriction. Frequency limit will be triggered when the same IP frequently registers an account, and it will take a while to register again. If you need to concurrent register in the same area and time period, please turn it off.
+-   `updates.frequentRegisterCheck.enabled` \<boolean\> Whether to enable
+-   `updates.frequentRegisterCheck.timeInterval` \<Object\> The detection period, in seconds.
+-   `updates.frequentRegisterCheck.limit` \<Object\> The frequency limit will be triggered when the number of registrations of the same IP in the same period reaches this number.
 
 #### Example
 
 ```javascript
 const userpool = await managementClient.userpool.update({
-  registerDisabled: true, // disable the register system
+	registerDisabled: true, // disable the register system
 });
 ```
 
 #### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
 ## Get the environment variables list
 
@@ -97,7 +97,7 @@ const envList = await managementClient.userpool.listEnv();
 
 #### Return value
 
-- `Promise<Env[]>`
+-   `Promise<Env[]>`
 
 ## Add environment variables
 
@@ -107,21 +107,21 @@ UserPoolManagementClient().addEnv(key, value)
 
 #### Parameter
 
-- `key` \<string\> Environment variable key
-- `value` \<any\> Environment variable value
+-   `key` \<string\> Environment variable key
+-   `value` \<any\> Environment variable value
 
 #### Example
 
 ```javascript
 const envList = await managementClient.userpool.addEnv(
-  "LARK_WEBHOOK",
-  "xxxxxxx"
+	"LARK_WEBHOOK",
+	"xxxxxxx"
 ); // the webhppk address of adding a lark bot, you can use it later in pipeline function. (See more details in: https://docs.approw.co/extensibility/pipeline/usage.html)
 ```
 
 #### Return value
 
-- `Promise<Env[]>` return the latest list of environment variables
+-   `Promise<Env[]>` return the latest list of environment variables
 
 ## Delete environment variables
 
@@ -131,7 +131,7 @@ UserPoolManagementClient().removeEnv(key)
 
 #### Parameter
 
-- `key` \<string\> Environment variable key
+-   `key` \<string\> Environment variable key
 
 #### Example
 
@@ -141,4 +141,4 @@ const envList = await managementClient.userpool.removeEnv("LARK_WEBHOOK");
 
 #### Return value
 
-- `Promise<Env[]>` return the latest list of environment variables
+-   `Promise<Env[]>` return the latest list of environment variables

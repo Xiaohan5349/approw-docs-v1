@@ -3,11 +3,13 @@
 <LastUpdated/>
 
 ## Overview
+
 Approw currently using the **domain name hosted** mode, using Approw secondary domain (eg:https://my-app.approw.cn).
 In the **domain name hosted mode**, the user can log in and access the application through Approw by two domain names, as for users who want to use a custom domain name, Approw offers a solution based on Nginx reverse proxy.
 This article will describe in detail how users configure a custom domain name, so as to realize Approw login and registration through a custom domain name.
 
 ## Preparation
+
 1. The user needs to register the domain name, prepare HTTPS certificate and DNS resolution required for customization;
 2. Configure the registered domain name and HTTPS certificate in the Nginx reverse proxy service;
 3. Create an Approw application and configure the domain name of the Approw application in the Nginx reverse proxy service.
@@ -35,22 +37,23 @@ This application and domain name are just examples, you can create your own Appr
 <img src="./images/custom-domain-4.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **3. Configure the Approw application domain name created above in the Nginx reverse proxy**
+
 ```nginx
 upstream custom_domain {
-    # 上述配置的应用域名
+    # Application domain name configured above
     server custom-domain.approw.cn:443;
     keepalive 64;
 }
 
 server {
     listen 443;
-    # 示例中的自定义域名
+    # Custom domain name in the example
     server_name custom-domain.littleimp.cn;
 
     ssl                         on;
-    # 自定义域名的 HTTPS 证书
+    # HTTPS certificate for custom domain name
     ssl_certificate             /etc/nginx/certificate/fullchain.cer;
-    # 自定义域名的 HTTPS 私钥
+    # HTTPS private key for custom domain name
     ssl_certificate_key         /etc/nginx/certificate/littleimp.cn.key;
     ssl_session_cache           shared:SSL:1m;
     ssl_session_timeout         5m;
@@ -60,9 +63,9 @@ server {
     proxy_ssl_session_reuse     off;
 
     location / {
-        # 将应用域名重定向到自定义域名
+        # Redirect application domain name to custom domain name
         proxy_redirect https://custom-domain.approw.cn https://custom-domain.littleimp.cn:8088;
-        # 上述配置的应用域名
+        # Application domain name configured above
         proxy_set_header Host custom-domain.approw.cn;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header User-Agent $http_user_agent;
@@ -70,7 +73,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $host;
         proxy_ssl_server_name on;
-        # proxy_pass 配置与 upstream 配置保持一直
+        # The proxy_pass configuration remains the same as the upstream configuration
         proxy_pass https://custom_domain;
         index index.html index.htm;
         client_max_body_size 256m;

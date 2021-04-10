@@ -1,10 +1,10 @@
 !!!include(common/init-python-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `login_by_phone_code` 方法：
+First call the Send SMS Verification Code interface to send the SMS verification code, and then use the `login_by_phone_code` method:
 
 ```python
 phone = '176xxxx6754'
-# 手机号验证码登录，如果用户不存在会自动创建账号
+# Login with mobile phone number verification code, if the user does not exist, an account will be created automatically
 user = authentication_client.login_by_phone_code(
     phone=phone,
     code='1234',

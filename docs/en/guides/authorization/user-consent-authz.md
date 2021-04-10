@@ -47,6 +47,7 @@ If the programmable access account is deleted, the caller will lose the ability 
 ### AccessToken expiration time
 
 When you create a programmable access account, you need to specify the AccessToken expiration time. Approw uses the RS256 signature algorithm to sign when issuing the AccessToken to ensure that the AccessToken will not be tampered with.
+
 > Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/concepts/jwt-token.md).
 
 RS256 is an asymmetric signature algorithm. Approw holds the private key to sign the Token, and consumers of JWT use the public key to verify the signature. RS256 signature algorithm has the following benefits:
@@ -60,7 +61,7 @@ Next, we add resource permissions for users. On the **resource authorization** c
 
 ![](~@imagesZhCn/guides/authorization/user-consent-authz-2.png)
 
-Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally, click OK. 
+Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally, click OK.
 At this point, the administrator's privileges management operations are all finished.
 
 ## Obtain an AccessToken with permission
@@ -68,7 +69,7 @@ At this point, the administrator's privileges management operations are all fini
 The caller needs to obtain resource authorization from the resource party through the **OIDC authorization code mode**. The user of the resource party will participate in the authorization process. After the user's authorization, Approw will issue an AccessToken with the authority scope and the subject is the resource holder. First, you need to splice the **authorization link**:
 
 ```http
-https://{应用域名}.authing.cn/oidc/auth?client_id={应用ID}&response_type=code&scope=openid email message&redirect_uri={调用方业务地址}&state={随机字符串}
+https://{Application domain}.authing.cn/oidc/auth?client_id={Application ID}&response_type=code&scope=openid email message&redirect_uri={Caller business address}&state={Random string}
 ```
 
 The parameter of scope can be filled with the **resources** and the **corresponding operations** defined in the above steps. The specific format is as follows.
@@ -93,9 +94,9 @@ The following are all scope formats supported by Approw:
 
 `*:*:*` All operation permissions for all resources
 
-`*:*`  All operation permissions for all resources
+`*:*` All operation permissions for all resources
 
-`*`  All operation permissions for all resources
+`*` All operation permissions for all resources
 
 For example, the `message` resource and the `create` operation of the `message` resource are defined above, so `message:create` can be filled in the scope here.
 
@@ -120,31 +121,32 @@ You can see that the user's AccessToken has the message permission scope. The **
 After Approw defines the API, you need to add an **API authentication interceptor** to your actual business API interface. For protected resources, only visitors who carry a legal AccessToken and have the required permissions are allowed. The code example is as follows:
 
 ```javascript
-var express = require('express');
+var express = require("express");
 var app = express();
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
+var jwt = require("express-jwt");
+var jwks = require("jwks-rsa");
 var port = process.env.PORT || 8080;
 var jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: 'https://{应用域名}.authing.cn/oidc/.well-known/jwks.json',
-  }),
-  audience: '{编程访问账号 ID}',
-  issuer: 'https://{应用域名}.authing.cn/oidc',
-  algorithms: ['RS256'],
+	secret: jwks.expressJwtSecret({
+		cache: true,
+		rateLimit: true,
+		jwksRequestsPerMinute: 5,
+		jwksUri:
+			"https://{Application domain}.authing.cn/oidc/.well-known/jwks.json",
+	}),
+	audience: "{Programmatic access account ID}",
+	issuer: "https://{Application domain}.authing.cn/oidc",
+	algorithms: ["RS256"],
 });
-// 检验 AccessToken 合法性
+// Verify the legitimacy of AccessToken
 app.use(jwtCheck);
 
-app.post('/article', function(req, res) {
-  // 检验 AccessToken 是否具备所需要的权限项目
-  if (!req.user.scope.split(' ').incldues('write:article')) {
-    return res.status(401).json({ code: 401, message: 'Unauthorized' });
-  }
-  res.send('Secured Resource');
+app.post("/article", function(req, res) {
+	// Verify that AccessToken has the required permissions
+	if (!req.user.scope.split(" ").incldues("write:article")) {
+		return res.status(401).json({ code: 401, message: "Unauthorized" });
+	}
+	res.send("Secured Resource");
 });
 
 app.listen(port);

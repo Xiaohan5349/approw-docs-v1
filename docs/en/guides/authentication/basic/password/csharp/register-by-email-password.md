@@ -1,6 +1,6 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-使用 `RegisterByEmail` 方法：
+Use the `RegisterByEmail` method:
 
 ```csharp
 var email = "test@example.com";

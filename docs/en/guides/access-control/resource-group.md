@@ -1,5 +1,13 @@
 ---
-{ meta: [{ name: 'description', content: 'Use privilege grouping to manage privilege resources' }] }
+{
+    meta:
+        [
+            {
+                name: "description",
+                content: "Use privilege grouping to manage privilege resources",
+            },
+        ],
+}
 ---
 
 # Use privilege grouping to manage privilege resources
@@ -24,18 +32,18 @@ In the created privilege group, you can use the ABAC or RBAC permission model to
 ## How to use privilege groups to determine privileges
 
 ```javascript
-import { ManagementClient } from 'authing-js-sdk'
+import { ManagementClient } from "authing-js-sdk";
 
 const managementClient = new ManagementClient({
-  userPoolId: 'YOUR_USERPOOL_ID',
-  secret: 'YOUR_USERPOOL_SECRET',
-})
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
+});
 const { totalCount, list } = await managementClient.acl.isAllowed(
-  'USER_ID',
-  '资源',
-  '操作',
-  '权限分组标识符'
-)
+	"USER_ID",
+	"Resource",
+	"Operating",
+	"Permission group identifier"
+);
 ```
 
 ## The relationship between privilege groups and applications

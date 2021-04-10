@@ -37,7 +37,7 @@ phone: 186xxxx6952
 username: 小明
 unionid: ww:ww736adab7f131153d:shangsinian
 openid: ww:ww736adab7f131153d:shangsinian
-nickname: 
+nickname:
 company:
 photo: http://wework.qpic.cn/bizmail/TZLXMGsT0xbrBtlq0icNNMUSXJRg5lMbslFxibZApC8O2A9ibXibbRVeBg/0
 lastIp: 106.121.165.224
@@ -66,15 +66,15 @@ lastLogin: Thu Feb 25 2021 03:36:32 GMT+0000 (Coordinated Universal Time)
 blocked: false
 signedUp: Thu Jul 09 2020 04:37:57 GMT+0000 (Coordinated Universal Time)
 objectclass: organizationalPerson
-cn: 小明
+cn: Xiao Ming
 uid: 5f069f250a1a84316ab66319
-department: 研发
-departmentParent: 蒸汽记忆
+department: R&D
+departmentParent: Steam memory
 departmentId: 5f069f1e0a1a8485f9b662c0
 departmentParentId: 5f069f1e0a1a849931b662bd
 departmentCode:
 departmentParentCode: root
-departmentPath: 蒸汽记忆/研发
+departmentPath: Steam memory/R&D
 ```
 
 ## Configure the visible range of the organization
@@ -82,7 +82,6 @@ departmentPath: 蒸汽记忆/研发
 By default, `ldapsearch` can obtain the data of all organizations under the user pool, and you can modify its visible range to a certain department:
 
 ![](~@imagesZhCn/guides/org/Xnip2021-02-25_15-07-47.png)
-
 
 ## Next
 
