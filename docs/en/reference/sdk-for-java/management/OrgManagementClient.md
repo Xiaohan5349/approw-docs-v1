@@ -1,7 +1,7 @@
 ---
 meta:
-  - name: description
-    content: OrgManagementClient
+    - name: description
+      content: OrgManagementClient
 ---
 
 # OrgManagementClient
@@ -14,15 +14,15 @@ meta:
 
 OrgManagementClient().create(createOrgParam)
 
-> Create an organization with only one node. 
+> Create an organization with only one node.
 > If you want to import a complete organization tree, please use the importByJson method.
 
 #### Parameters
 
-- `createOrgParam` \<CreateOrgParam\>
-- `createOrgParam.name` \<string\> The name of the organization, which also will be the name of the root node of the organization
-- `createOrgParam.code` \<string\> The unique id of the root node, which must be English characters.
-- `createOrgParam.description` \<string\> Root node description
+-   `createOrgParam` \<CreateOrgParam\>
+-   `createOrgParam.name` \<string\> The name of the organization, which also will be the name of the root node of the organization
+-   `createOrgParam.code` \<string\> The unique id of the root node, which must be English characters.
+-   `createOrgParam.description` \<string\> Root node description
 
 #### Example
 
@@ -38,7 +38,7 @@ OrgManagementClient().deleteById(id)
 
 #### Parameter
 
-- `id` \<string\> Organization ID 
+-   `id` \<string\> Organization ID
 
 #### Example
 
@@ -54,10 +54,10 @@ OrgManagementClient().list(orgsParam)
 
 #### Parameters
 
-- `orgsParam` \<OrgsParam\>
-- `orgsParam.page` \<number\> Default value: `1`.
-- `orgsParam.limit` \<number\> Default value is: `10`.
-- `orgsParam.sortBy` \<SortByEnum\> Sorting rules.
+-   `orgsParam` \<OrgsParam\>
+-   `orgsParam.page` \<number\> Default value: `1`.
+-   `orgsParam.limit` \<number\> Default value is: `10`.
+-   `orgsParam.sortBy` \<SortByEnum\> Sorting rules.
 
 #### Example
 
@@ -73,12 +73,12 @@ OrgManagementClient().addNode(addNodeParam)
 
 #### Parameters
 
-- `addNodeParam` \<AddNodeV2Param\>
-- `addNodeParam.orgId` \<string\> Organization ID
-- `addNodeParam.parentNodeId` \<string\> Parent node ID
-- `addNodeParam.name` \<string\> Node name
-- `addNodeParam.code` \<string\> The unique identifier of the node
-- `addNodeParam.description` \<string\> Node description information
+-   `addNodeParam` \<AddNodeV2Param\>
+-   `addNodeParam.orgId` \<string\> Organization ID
+-   `addNodeParam.parentNodeId` \<string\> Parent node ID
+-   `addNodeParam.name` \<string\> Node name
+-   `addNodeParam.code` \<string\> The unique identifier of the node
+-   `addNodeParam.description` \<string\> Node description information
 
 #### Example
 
@@ -96,10 +96,10 @@ OrgManagementClient().updateNode(updateNodeParam)
 
 #### Parameters
 
-- `updateNodeParam` \<UpdateNodeParam\>
-- `updateNodeParam.id` \<string\> The unique id of the node
-- `updateNodeParam.name` \<string\> Node name
-- `updateNodeParam.description` \<string\> Node description
+-   `updateNodeParam` \<UpdateNodeParam\>
+-   `updateNodeParam.id` \<string\> The unique id of the node
+-   `updateNodeParam.name` \<string\> Node name
+-   `updateNodeParam.description` \<string\> Node description
 
 #### Example
 
@@ -119,7 +119,7 @@ OrgManagementClient().findById(id)
 
 #### Parameter
 
-- `id` \<string\> Organization ID 
+-   `id` \<string\> Organization ID
 
 #### Example
 
@@ -135,9 +135,9 @@ OrgManagementClient().deleteNode(deleteNodeParam)
 
 #### Parameters
 
-- `deleteNodeParam` \<DeleteNodeParam\>
-- `deleteNodeParam.orgId` \<string\> Organization ID
-- `deleteNodeParam.nodeId` \<string\> Node ID
+-   `deleteNodeParam` \<DeleteNodeParam\>
+-   `deleteNodeParam.orgId` \<string\> Organization ID
+-   `deleteNodeParam.nodeId` \<string\> Node ID
 
 #### Example
 
@@ -153,9 +153,9 @@ OrgManagementClient().moveNode(orgId, nodeId, targetParentId)
 
 #### Parameters
 
-- `orgId` \<string\> Organization ID
-- `nodeId` \<string\> The ID of the node that needs to be moved
-- `targetParentId` \<string\> Target parent node ID
+-   `orgId` \<string\> Organization ID
+-   `nodeId` \<string\> The ID of the node that needs to be moved
+-   `targetParentId` \<string\> Target parent node ID
 
 #### Example
 
@@ -171,8 +171,8 @@ OrgManagementClient().isRootNode(nodeId, orgId)
 
 #### Parameters
 
-- `nodeId` \<string\> Node ID
-- `orgId` \<string\> Organization ID
+-   `nodeId` \<string\> Node ID
+-   `orgId` \<string\> Organization ID
 
 #### Example
 
@@ -188,8 +188,8 @@ OrgManagementClient().listChildren(orgId, nodeId)
 
 #### Parameters
 
-- `orgId` \<string\> Organization ID
-- `nodeId` \<string\> Node ID
+-   `orgId` \<string\> Organization ID
+-   `nodeId` \<string\> Node ID
 
 #### Example
 
@@ -205,7 +205,7 @@ OrgManagementClient().searchNodes(searchNodesParam)
 
 #### Parameter
 
-- `searchNodesParam.keyword` \<string\> Organization name keyword
+-   `searchNodesParam.keyword` \<string\> Organization name keyword
 
 #### Example
 
@@ -221,8 +221,8 @@ OrgManagementClient().rootNode(rootNodeParam)
 
 #### Parameter
 
-- `rootNodeParam` \<RootNodeParam\>
-- `rootNodeParam.orgId` \<string\> Organization ID
+-   `rootNodeParam` \<RootNodeParam\>
+-   `rootNodeParam.orgId` \<string\> Organization ID
 
 #### Example
 
@@ -238,7 +238,7 @@ OrgManagementClient().importByJson(json)
 
 #### Parameter
 
-- `json` \<Object\> A tree structure in JSON format. Detailed format is in the sample code.
+-   `json` \<Object\> A tree structure in JSON format. Detailed format is in the sample code.
 
 #### Example
 
@@ -296,8 +296,8 @@ OrgManagementClient().addMembers(nodeId, userIds)
 
 #### Parameters
 
-- `nodeId` \<string\> Node ID
-- `userIds` \<string[]\> User ID list
+-   `nodeId` \<string\> Node ID
+-   `userIds` \<string[]\> User ID list
 
 #### Example
 
@@ -313,12 +313,12 @@ OrgManagementClient().listMembers(nodeByIdWithMembersParam)
 
 #### Parameters
 
-- `nodeByIdWithMembersParam` \<NodeByIdWithMembersParam\>
-- `nodeByIdWithMembersParam.page` \<number\> Default value: `1`
-- `nodeByIdWithMembersParam.limit` \<number\> Default value: `10`
-- `nodeByIdWithMembersParam.sortBy` \<SortByEnum\> sorting rules
-- `nodeByIdWithMembersParam.includeChildrenNodes` \<boolean\> Whether to get the members of all child nodes. Default value: `false`
-- `nodeByIdWithMembersParam.id` \<string\> Node ID
+-   `nodeByIdWithMembersParam` \<NodeByIdWithMembersParam\>
+-   `nodeByIdWithMembersParam.page` \<number\> Default value: `1`
+-   `nodeByIdWithMembersParam.limit` \<number\> Default value: `10`
+-   `nodeByIdWithMembersParam.sortBy` \<SortByEnum\> sorting rules
+-   `nodeByIdWithMembersParam.includeChildrenNodes` \<boolean\> Whether to get the members of all child nodes. Default value: `false`
+-   `nodeByIdWithMembersParam.id` \<string\> Node ID
 
 #### Example
 
@@ -334,8 +334,8 @@ OrgManagementClient().removeMembers(nodeId, userIds)
 
 #### Parameters
 
-- `nodeId` \<string\> Node ID
-- `userIds` \<string[]\> User ID list
+-   `nodeId` \<string\> Node ID
+-   `userIds` \<string[]\> User ID list
 
 #### Example
 
@@ -359,159 +359,159 @@ List<Node> nodes = this.orgManagementClient.exportAll().execute();
 
 ```json
 [
-  {
-    "id": "601f59578308478a692a71ea",
-    "createdAt": "2021-02-07T03:07:03.822Z",
-    "updatedAt": "2021-02-07T03:07:03.822Z",
-    "userPoolId": "59f86b4832eb28071bdd9214",
-    "orgId": "601f59573abea48cceb188c6",
-    "name": "technology company",
-    "nameI18n": null,
-    "description": null,
-    "descriptionI18n": null,
-    "order": null,
-    "code": null,
-    "children": [
-      {
-        "id": "601f5966800e61428d4190fb",
-        "createdAt": "2021-02-07T03:07:18.835Z",
-        "updatedAt": "2021-02-07T03:07:18.835Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "product",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [],
-        "depth": 1,
-        "root": false,
-        "members": [
-          {
-            "thirdPartyIdentity": {
-              "provider": null,
-              "refreshToken": null,
-              "accessToken": null,
-              "scope": null,
-              "expiresIn": null,
-              "updatedAt": null
-            },
-            "id": "5a597f35085a2000144a10ed",
-            "createdAt": "2021-02-02T02:36:32.172Z",
-            "updatedAt": "2021-02-05T11:30:14.050Z",
-            "userPoolId": "59f86b4832eb28071bdd9214",
-            "isRoot": true,
-            "status": "Activated",
-            "oauth": null,
-            "email": "root@approw.com",
-            "phone": null,
-            "username": "root",
-            "unionid": null,
-            "openid": null,
-            "nickname": null,
-            "company": null,
-            "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
-            "browser": null,
-            "device": null,
-            "token": "",
-            "tokenExpiredAt": "2021-02-19T11:30:13.927Z",
-            "loginsCount": 4,
-            "lastIp": "::1",
-            "name": null,
-            "givenName": null,
-            "familyName": null,
-            "middleName": null,
-            "profile": null,
-            "preferredUsername": null,
-            "website": null,
-            "gender": "U",
-            "birthdate": null,
-            "zoneinfo": null,
-            "locale": null,
-            "address": null,
-            "formatted": null,
-            "streetAddress": null,
-            "locality": null,
-            "region": null,
-            "postalCode": null,
-            "city": null,
-            "province": null,
-            "country": null,
-            "registerSource": ["offcial:import"],
-            "emailVerified": false,
-            "phoneVerified": false,
-            "lastLogin": "2021-02-05T11:30:14.019Z",
-            "blocked": false,
-            "isDeleted": false,
-            "sendSmsCount": 0,
-            "sendSmsLimitCount": 1000,
-            "signedUp": "2021-02-02T02:36:32.172Z",
-            "externalId": null,
-            "mainDepartmentId": null,
-            "mainDepartmentCode": null,
-            "lastMfaTime": null,
-            "passwordSecurityLevel": null
-          }
-        ]
-      },
-      {
-        "id": "601f59622a1dea5ae5ada750",
-        "createdAt": "2021-02-07T03:07:14.163Z",
-        "updatedAt": "2021-02-07T03:07:14.163Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "研发",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [
-          {
-            "id": "601f597e62eaeda4e17e3352",
-            "createdAt": "2021-02-07T03:07:42.475Z",
-            "updatedAt": "2021-02-07T03:07:42.475Z",
-            "userPoolId": "59f86b4832eb28071bdd9214",
-            "orgId": "601f59573abea48cceb188c6",
-            "name": "后端",
-            "nameI18n": null,
-            "description": null,
-            "descriptionI18n": null,
-            "order": null,
-            "code": null,
-            "children": [],
-            "depth": 2,
-            "root": false,
-            "members": []
-          }
-        ],
-        "depth": 1,
-        "root": false,
-        "members": []
-      },
-      {
-        "id": "601f596e89427f0549daf48f",
-        "createdAt": "2021-02-07T03:07:26.919Z",
-        "updatedAt": "2021-02-07T03:07:26.919Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "commercial",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [],
-        "depth": 1,
-        "root": false,
-        "members": []
-      }
-    ],
-    "depth": 0,
-    "root": true,
-    "members": []
-  }
+	{
+		"id": "601f59578308478a692a71ea",
+		"createdAt": "2021-02-07T03:07:03.822Z",
+		"updatedAt": "2021-02-07T03:07:03.822Z",
+		"userPoolId": "59f86b4832eb28071bdd9214",
+		"orgId": "601f59573abea48cceb188c6",
+		"name": "technology company",
+		"nameI18n": null,
+		"description": null,
+		"descriptionI18n": null,
+		"order": null,
+		"code": null,
+		"children": [
+			{
+				"id": "601f5966800e61428d4190fb",
+				"createdAt": "2021-02-07T03:07:18.835Z",
+				"updatedAt": "2021-02-07T03:07:18.835Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "product",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [],
+				"depth": 1,
+				"root": false,
+				"members": [
+					{
+						"thirdPartyIdentity": {
+							"provider": null,
+							"refreshToken": null,
+							"accessToken": null,
+							"scope": null,
+							"expiresIn": null,
+							"updatedAt": null
+						},
+						"id": "5a597f35085a2000144a10ed",
+						"createdAt": "2021-02-02T02:36:32.172Z",
+						"updatedAt": "2021-02-05T11:30:14.050Z",
+						"userPoolId": "59f86b4832eb28071bdd9214",
+						"isRoot": true,
+						"status": "Activated",
+						"oauth": null,
+						"email": "root@approw.com",
+						"phone": null,
+						"username": "root",
+						"unionid": null,
+						"openid": null,
+						"nickname": null,
+						"company": null,
+						"photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+						"browser": null,
+						"device": null,
+						"token": "",
+						"tokenExpiredAt": "2021-02-19T11:30:13.927Z",
+						"loginsCount": 4,
+						"lastIp": "::1",
+						"name": null,
+						"givenName": null,
+						"familyName": null,
+						"middleName": null,
+						"profile": null,
+						"preferredUsername": null,
+						"website": null,
+						"gender": "U",
+						"birthdate": null,
+						"zoneinfo": null,
+						"locale": null,
+						"address": null,
+						"formatted": null,
+						"streetAddress": null,
+						"locality": null,
+						"region": null,
+						"postalCode": null,
+						"city": null,
+						"province": null,
+						"country": null,
+						"registerSource": ["offcial:import"],
+						"emailVerified": false,
+						"phoneVerified": false,
+						"lastLogin": "2021-02-05T11:30:14.019Z",
+						"blocked": false,
+						"isDeleted": false,
+						"sendSmsCount": 0,
+						"sendSmsLimitCount": 1000,
+						"signedUp": "2021-02-02T02:36:32.172Z",
+						"externalId": null,
+						"mainDepartmentId": null,
+						"mainDepartmentCode": null,
+						"lastMfaTime": null,
+						"passwordSecurityLevel": null
+					}
+				]
+			},
+			{
+				"id": "601f59622a1dea5ae5ada750",
+				"createdAt": "2021-02-07T03:07:14.163Z",
+				"updatedAt": "2021-02-07T03:07:14.163Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "R&D",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [
+					{
+						"id": "601f597e62eaeda4e17e3352",
+						"createdAt": "2021-02-07T03:07:42.475Z",
+						"updatedAt": "2021-02-07T03:07:42.475Z",
+						"userPoolId": "59f86b4832eb28071bdd9214",
+						"orgId": "601f59573abea48cceb188c6",
+						"name": "Back-end",
+						"nameI18n": null,
+						"description": null,
+						"descriptionI18n": null,
+						"order": null,
+						"code": null,
+						"children": [],
+						"depth": 2,
+						"root": false,
+						"members": []
+					}
+				],
+				"depth": 1,
+				"root": false,
+				"members": []
+			},
+			{
+				"id": "601f596e89427f0549daf48f",
+				"createdAt": "2021-02-07T03:07:26.919Z",
+				"updatedAt": "2021-02-07T03:07:26.919Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "commercial",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [],
+				"depth": 1,
+				"root": false,
+				"members": []
+			}
+		],
+		"depth": 0,
+		"root": true,
+		"members": []
+	}
 ]
 ```
 
@@ -521,7 +521,7 @@ OrgManagementClient().exportByOrgId()
 
 #### Parameter
 
-- `orgId`: Organization ID
+-   `orgId`: Organization ID
 
 #### Example
 
@@ -534,156 +534,156 @@ Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
 
 ```json
 {
-  "id": "601f59578308478a692a71ea",
-  "createdAt": "2021-02-07T03:07:03.822Z",
-  "updatedAt": "2021-02-07T03:07:03.822Z",
-  "userPoolId": "59f86b4832eb28071bdd9214",
-  "orgId": "601f59573abea48cceb188c6",
-  "name": "technology company",
-  "nameI18n": null,
-  "description": null,
-  "descriptionI18n": null,
-  "order": null,
-  "code": null,
-  "children": [
-    {
-      "id": "601f5966800e61428d4190fb",
-      "createdAt": "2021-02-07T03:07:18.835Z",
-      "updatedAt": "2021-02-07T03:07:18.835Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "product",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [],
-      "depth": 1,
-      "root": false,
-      "members": [
-        {
-          "thirdPartyIdentity": {
-            "provider": null,
-            "refreshToken": null,
-            "accessToken": null,
-            "scope": null,
-            "expiresIn": null,
-            "updatedAt": null
-          },
-          "id": "5a597f35085a2000144a10ed",
-          "createdAt": "2021-02-02T02:36:32.172Z",
-          "updatedAt": "2021-02-05T11:30:14.050Z",
-          "userPoolId": "59f86b4832eb28071bdd9214",
-          "isRoot": true,
-          "status": "Activated",
-          "oauth": null,
-          "email": "root@approw.com",
-          "phone": null,
-          "username": "root",
-          "unionid": null,
-          "openid": null,
-          "nickname": null,
-          "company": null,
-          "photo": "https://files.approw.co/approw-console/default-user-avatar.png",
-          "browser": null,
-          "device": null,
-          "token": "",
-          "tokenExpiredAt": "2021-02-19T11:30:13.927Z",
-          "loginsCount": 4,
-          "lastIp": "::1",
-          "name": null,
-          "givenName": null,
-          "familyName": null,
-          "middleName": null,
-          "profile": null,
-          "preferredUsername": null,
-          "website": null,
-          "gender": "U",
-          "birthdate": null,
-          "zoneinfo": null,
-          "locale": null,
-          "address": null,
-          "formatted": null,
-          "streetAddress": null,
-          "locality": null,
-          "region": null,
-          "postalCode": null,
-          "city": null,
-          "province": null,
-          "country": null,
-          "registerSource": ["offcial:import"],
-          "emailVerified": false,
-          "phoneVerified": false,
-          "lastLogin": "2021-02-05T11:30:14.019Z",
-          "blocked": false,
-          "isDeleted": false,
-          "sendSmsCount": 0,
-          "sendSmsLimitCount": 1000,
-          "signedUp": "2021-02-02T02:36:32.172Z",
-          "externalId": null,
-          "mainDepartmentId": null,
-          "mainDepartmentCode": null,
-          "lastMfaTime": null,
-          "passwordSecurityLevel": null
-        }
-      ]
-    },
-    {
-      "id": "601f59622a1dea5ae5ada750",
-      "createdAt": "2021-02-07T03:07:14.163Z",
-      "updatedAt": "2021-02-07T03:07:14.163Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "research",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [
-        {
-          "id": "601f597e62eaeda4e17e3352",
-          "createdAt": "2021-02-07T03:07:42.475Z",
-          "updatedAt": "2021-02-07T03:07:42.475Z",
-          "userPoolId": "59f86b4832eb28071bdd9214",
-          "orgId": "601f59573abea48cceb188c6",
-          "name": "backend",
-          "nameI18n": null,
-          "description": null,
-          "descriptionI18n": null,
-          "order": null,
-          "code": null,
-          "children": [],
-          "depth": 2,
-          "root": false,
-          "members": []
-        }
-      ],
-      "depth": 1,
-      "root": false,
-      "members": []
-    },
-    {
-      "id": "601f596e89427f0549daf48f",
-      "createdAt": "2021-02-07T03:07:26.919Z",
-      "updatedAt": "2021-02-07T03:07:26.919Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "commercial",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [],
-      "depth": 1,
-      "root": false,
-      "members": []
-    }
-  ],
-  "depth": 0,
-  "root": true,
-  "members": []
+	"id": "601f59578308478a692a71ea",
+	"createdAt": "2021-02-07T03:07:03.822Z",
+	"updatedAt": "2021-02-07T03:07:03.822Z",
+	"userPoolId": "59f86b4832eb28071bdd9214",
+	"orgId": "601f59573abea48cceb188c6",
+	"name": "technology company",
+	"nameI18n": null,
+	"description": null,
+	"descriptionI18n": null,
+	"order": null,
+	"code": null,
+	"children": [
+		{
+			"id": "601f5966800e61428d4190fb",
+			"createdAt": "2021-02-07T03:07:18.835Z",
+			"updatedAt": "2021-02-07T03:07:18.835Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "product",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [],
+			"depth": 1,
+			"root": false,
+			"members": [
+				{
+					"thirdPartyIdentity": {
+						"provider": null,
+						"refreshToken": null,
+						"accessToken": null,
+						"scope": null,
+						"expiresIn": null,
+						"updatedAt": null
+					},
+					"id": "5a597f35085a2000144a10ed",
+					"createdAt": "2021-02-02T02:36:32.172Z",
+					"updatedAt": "2021-02-05T11:30:14.050Z",
+					"userPoolId": "59f86b4832eb28071bdd9214",
+					"isRoot": true,
+					"status": "Activated",
+					"oauth": null,
+					"email": "root@approw.com",
+					"phone": null,
+					"username": "root",
+					"unionid": null,
+					"openid": null,
+					"nickname": null,
+					"company": null,
+					"photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+					"browser": null,
+					"device": null,
+					"token": "",
+					"tokenExpiredAt": "2021-02-19T11:30:13.927Z",
+					"loginsCount": 4,
+					"lastIp": "::1",
+					"name": null,
+					"givenName": null,
+					"familyName": null,
+					"middleName": null,
+					"profile": null,
+					"preferredUsername": null,
+					"website": null,
+					"gender": "U",
+					"birthdate": null,
+					"zoneinfo": null,
+					"locale": null,
+					"address": null,
+					"formatted": null,
+					"streetAddress": null,
+					"locality": null,
+					"region": null,
+					"postalCode": null,
+					"city": null,
+					"province": null,
+					"country": null,
+					"registerSource": ["offcial:import"],
+					"emailVerified": false,
+					"phoneVerified": false,
+					"lastLogin": "2021-02-05T11:30:14.019Z",
+					"blocked": false,
+					"isDeleted": false,
+					"sendSmsCount": 0,
+					"sendSmsLimitCount": 1000,
+					"signedUp": "2021-02-02T02:36:32.172Z",
+					"externalId": null,
+					"mainDepartmentId": null,
+					"mainDepartmentCode": null,
+					"lastMfaTime": null,
+					"passwordSecurityLevel": null
+				}
+			]
+		},
+		{
+			"id": "601f59622a1dea5ae5ada750",
+			"createdAt": "2021-02-07T03:07:14.163Z",
+			"updatedAt": "2021-02-07T03:07:14.163Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "research",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [
+				{
+					"id": "601f597e62eaeda4e17e3352",
+					"createdAt": "2021-02-07T03:07:42.475Z",
+					"updatedAt": "2021-02-07T03:07:42.475Z",
+					"userPoolId": "59f86b4832eb28071bdd9214",
+					"orgId": "601f59573abea48cceb188c6",
+					"name": "backend",
+					"nameI18n": null,
+					"description": null,
+					"descriptionI18n": null,
+					"order": null,
+					"code": null,
+					"children": [],
+					"depth": 2,
+					"root": false,
+					"members": []
+				}
+			],
+			"depth": 1,
+			"root": false,
+			"members": []
+		},
+		{
+			"id": "601f596e89427f0549daf48f",
+			"createdAt": "2021-02-07T03:07:26.919Z",
+			"updatedAt": "2021-02-07T03:07:26.919Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "commercial",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [],
+			"depth": 1,
+			"root": false,
+			"members": []
+		}
+	],
+	"depth": 0,
+	"root": true,
+	"members": []
 }
 ```

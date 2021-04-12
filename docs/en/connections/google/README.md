@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '接入 Google 社会化登录',
-  bannerTitle: '接入 Google 社会化登录',
+  title: 'Integrate Google for Social Authentication',
+  bannerTitle: 'Integrate Google for Social Authentication',
   steps:
     [
       {
-        title: '在 Google 开发者控制台创建一个 OAuth 应用',
+        title: 'Create an OAuth Application on Google Developer Platform',
       },
-      { title: '在 {{$localeConfig.brandName}} 填入 Google OAuth 应用配置' },
+      { title: 'Setup Configurations of Google OAuth Application in {{$localeConfig.brandName}}' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an Application in {{$localeConfig.brandName}}'
       },
       {
-        title: '开始开发接入'
+        title: 'Begin Deploying Integration'
       }
     ],
 }

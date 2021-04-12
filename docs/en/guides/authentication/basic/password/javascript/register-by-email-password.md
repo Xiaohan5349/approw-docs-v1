@@ -1,23 +1,22 @@
 !!!include(common/init-js-auth-sdk.md)!!!
 
-使用 `registerByEmail` 方法：
-
+Use the `registerByEmail` method:
 
 ```javascript
 authenticationClient.registerByEmail("test@example.com", "passw0rd");
 ```
 
-或者：
+Or:
 
 ```javascript
 authenticationClient.registerByEmail(
-  "test@example.com",
-  "passw0rd",
-  {
-    nickname: "Nick",
-  },
-  {
-    generateToken: true,
-  }
+	"test@example.com",
+	"passw0rd",
+	{
+		nickname: "Nick",
+	},
+	{
+		generateToken: true,
+	}
 );
 ```

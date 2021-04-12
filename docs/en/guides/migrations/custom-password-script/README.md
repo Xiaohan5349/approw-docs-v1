@@ -1,7 +1,7 @@
 ---
 meta:
-  - name: description
-    content: Configure user-defined password function
+    - name: description
+      content: Configure user-defined password function
 ---
 
 # Configure User-defined Password Function
@@ -32,86 +32,85 @@ User-defined password encryption method
 Click「Download template」on the page to download the Node.js code template. As shown below:
 
 ```js
-var getRawBody = require('raw-body')
+var getRawBody = require("raw-body");
 
-const encryptPassword = password => {
-  // 在此编写加密密码的函数
+const encryptPassword = (password) => {
+	// Write the function to encrypt the password here
 
-  return password
-}
+	return password;
+};
 
 /**
  *
- * @param {String} password 明文密码
- * @param {String} encryptedPassword 密文密码
+ * @param {String} password password
+ * @param {String} encryptedPassword encrypted password
  */
 const comparePassword = (password, encryptedPassword) => {
-  // 在此编写校验密码的函数
+	// Write the function to verify the password here
 
-  return password === encryptedPassword
-}
+	return password === encryptedPassword;
+};
 
 module.exports.encrypt = function(request, response, context) {
-  // get request body
-  getRawBody(request, function(err, body) {
-    const queries = request.queries
-    const password = queries.password
+	// get request body
+	getRawBody(request, function(err, body) {
+		const queries = request.queries;
+		const password = queries.password;
 
-    if (!password) {
-      response.setStatusCode(500)
-      response.setHeader('content-type', 'application/json')
-      response.send(
-        JSON.stringify(
-          {
-            message: 'Please provide password via url query',
-          },
-          null,
-          4
-        )
-      )
-    }
+		if (!password) {
+			response.setStatusCode(500);
+			response.setHeader("content-type", "application/json");
+			response.send(
+				JSON.stringify(
+					{
+						message: "Please provide password via url query",
+					},
+					null,
+					4
+				)
+			);
+		}
 
-    const respBody = {
-      password: encryptPassword(password), // 在此加密密码
-    }
+		const respBody = {
+			password: encryptPassword(password), // Encrypt password here
+		};
 
-    response.setStatusCode(200)
-    response.setHeader('content-type', 'application/json')
-    response.send(JSON.stringify(respBody, null, 4))
-  })
-}
+		response.setStatusCode(200);
+		response.setHeader("content-type", "application/json");
+		response.send(JSON.stringify(respBody, null, 4));
+	});
+};
 
 module.exports.validate = function(request, response, context) {
-  // get request body
-  getRawBody(request, function(err, body) {
-    const queries = request.queries
-    const password = queries.password
-    const encryptedPassword = queries.encryptedPassword
+	// Get request body
+	getRawBody(request, function(err, body) {
+		const queries = request.queries;
+		const password = queries.password;
+		const encryptedPassword = queries.encryptedPassword;
 
-    if (!password) {
-      response.setStatusCode(500)
-      response.setHeader('content-type', 'application/json')
-      response.send(
-        JSON.stringify(
-          {
-            message: 'Please provide password via url query',
-          },
-          null,
-          4
-        )
-      )
-    }
+		if (!password) {
+			response.setStatusCode(500);
+			response.setHeader("content-type", "application/json");
+			response.send(
+				JSON.stringify(
+					{
+						message: "Please provide password via url query",
+					},
+					null,
+					4
+				)
+			);
+		}
 
-    const respBody = {
-      isValid: comparePassword(password, encryptedPassword), // 在此校验密码
-    }
+		const respBody = {
+			isValid: comparePassword(password, encryptedPassword), // Verify password here
+		};
 
-    response.setStatusCode(200)
-    response.setHeader('content-type', 'application/json')
-    response.send(JSON.stringify(respBody, null, 4))
-  })
-}
-
+		response.setStatusCode(200);
+		response.setHeader("content-type", "application/json");
+		response.send(JSON.stringify(respBody, null, 4));
+	});
+};
 ```
 
 ### Coding
@@ -131,7 +130,6 @@ $ npm install bcrypt
 ```
 
 After the installation is complete, there will be an additional node_modules folder in the folder, and then write the code:
-
 
 ```js
 var getRawBody = require("raw-body");

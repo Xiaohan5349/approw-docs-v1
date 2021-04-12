@@ -1,17 +1,17 @@
 ---
 {
-  noSidebar: true,
-  noToc: true,
-  noFeedback: true,
-  fullWidthPage: true,
-  title: "Express 集成 OIDC 单点登录指南",
-  bannerTitle: "Express 集成 OIDC 单点登录指南",
-  steps:
-    [
-      { title: "Express 简述", subTitle: "" },
-      { title: "配置 Authing OIDC 应用", subTitle: "" },
-      { title: "集成 Authing OIDC 应用", subTitle: "" },
-    ],
+    noSidebar: true,
+    noToc: true,
+    noFeedback: true,
+    fullWidthPage: true,
+    title: "Express integration OIDC single sign-on guide",
+    bannerTitle: "Express integration OIDC single sign-on guide",
+    steps:
+        [
+            { title: "Express in Brief", subTitle: "" },
+            { title: "Configure Approw OIDC application", subTitle: "" },
+            { title: "Integrate Authing OIDC application", subTitle: "" },
+        ],
 }
 ---
 

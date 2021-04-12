@@ -1,6 +1,6 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-使用 `SendSmsCode` 方法：
+Use the `SendSmsCode` method:
 
 ```csharp
 var phone = "phone number";

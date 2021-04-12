@@ -6,7 +6,7 @@
         'content-layout-container__without-sidebar': $frontmatter.noSidebar,
       }"
     >
-      <a class="footer-logo" href="https://authing.cn">
+      <a class="footer-logo" :href="$site.themeConfig.officeSiteUrl">
         <img width="72px" :src="$withBase($site.themeConfig.logo)" />
       </a>
 
@@ -26,7 +26,7 @@
       </div> -->
 
       <FooterCollapse
-        v-for="(item, index) of mockLinks"
+        v-for="(item, index) of sections"
         :key="index"
         :sectionInfo="item"
       />
@@ -34,21 +34,33 @@
       <div>
         <FooterCollapse
           :sectionInfo="{
-            title: '公司',
+            title: $themeLocaleConfig.company,
           }"
         >
           <template #collapseContent>
-            <div class="footer-text-wrapper">
-              服务状态
+            <div
+              v-if="footerLocaleConfig.serviceStatus"
+              class="footer-text-wrapper"
+            >
+              {{ footerLocaleConfig.serviceStatus }}
             </div>
-            <div class="footer-text-wrapper">
-              176-0250-2507
+            <div
+              v-if="footerLocaleConfig.contactPhone"
+              class="footer-text-wrapper"
+            >
+              {{ footerLocaleConfig.contactPhone }}
             </div>
-            <div class="footer-text-wrapper">
-              xuziqiang@authing.cn
+            <div
+              v-if="footerLocaleConfig.contactEmail"
+              class="footer-text-wrapper"
+            >
+              {{ footerLocaleConfig.contactEmail }}
             </div>
-            <div class="footer-text-wrapper">
-              北京市海淀区中关村东路威盛大厦 6 层
+            <div
+              v-if="footerLocaleConfig.contactAddress"
+              class="footer-text-wrapper"
+            >
+              {{ footerLocaleConfig.contactAddress }}
             </div>
           </template></FooterCollapse
         >
@@ -56,12 +68,15 @@
 
       <div class="footer-last-right-container">
         <!-- <LangSelectOutline /> -->
-        <p class="footer-icp-record">京ICP备19051205号-1</p>
-        <p class="footer-company-name">© 北京蒸汽记忆科技有限公司</p>
-        <div class="footer-social-container">
+        <p v-if="footerLocaleConfig.icp" class="footer-icp-record">
+          {{ footerLocaleConfig.icp }}
+        </p>
+        <p class="footer-company-name">{{ footerLocaleConfig.companyName }}</p>
+        <div v-if="socials && socials.length" class="footer-social-container">
           <a
             :title="item.title"
-            v-for="item of socials"
+            v-for="(item, index) of socials"
+            :key="index"
             target="_blank"
             :href="item.link"
           >
@@ -88,90 +103,18 @@ export default {
     LangSelectOutline,
   },
   data() {
-    return {
-      socials: [
-        {
-          icon: 'authing-github',
-          link: 'https://github.com/Authing',
-          title: 'Github',
-        },
-        {
-          icon: 'authing-gitter',
-          link: 'https://gitter.im/authing-chat/community',
-          title: 'Gitter',
-        },
-        {
-          icon: 'authing-zhihu',
-          link: 'https://www.zhihu.com/org/authing',
-          title: '知乎',
-        },
-      ],
-      mockLinks: [
-        {
-          title: '用户身份管理',
-          links: [
-            {
-              text: '集成第三方登录',
-              link: '/guides/connections/',
-            },
-            {
-              text: '手机号闪验',
-              link: 'https://authing.cn/verify',
-            },
-            {
-              text: '通用登录表单组件',
-              link: '/reference/ui-components/',
-            },
-            {
-              text: '自定义认证流程',
-              link: '/guides/pipeline/',
-            },
-          ],
-        },
-        {
-          title: '企业内部管理',
-          links: [
-            {
-              text: '单点登录',
-              link: '/guides/authentication/sso/',
-            },
-            {
-              text: '多因素认证',
-              link: '/guides/authentication/mfa/',
-            },
-            {
-              text: '权限管理',
-              link: '/guides/access-control/',
-            },
-          ],
-        },
-        {
-          title: '开发者',
-          links: [
-            {
-              text: '开发文档',
-              link: '/reference/',
-            },
-            {
-              text: '框架集成',
-              link: '/reference/frameworks',
-            },
-            {
-              text: '博客',
-              link: 'https://authing.cn/blog',
-            },
-            {
-              text: 'Github',
-              link: 'https://github.com/authing',
-            },
-            {
-              text: '社区用户中心',
-              link: 'https://gitter.im/authing-chat/community',
-            },
-          ],
-        },
-      ],
-    }
+    return {}
+  },
+  computed: {
+    footerLocaleConfig() {
+      return this.$themeLocaleConfig.footer
+    },
+    sections() {
+      return this.footerLocaleConfig.sections
+    },
+    socials() {
+      return this.footerLocaleConfig.socials
+    },
   },
   methods: {},
 }

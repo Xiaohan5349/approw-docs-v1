@@ -1,6 +1,6 @@
 !!!include(common/init-python-auth-sdk.md)!!!
 
-使用 `send_sms_code` 方法：
+Use the `send_sms_code` method:
 
 ```python
 authentication_client.send_sms_code(
