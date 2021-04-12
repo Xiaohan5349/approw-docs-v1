@@ -4,7 +4,7 @@
 
 Single Page Application (SPA) refers to a Web application or website model that interacts with users by dynamically rewriting the current page, rather than traditionally reloading the entire new page from the server. This method avoids switching between pages to interrupt the user experience, making the application more like a desktop application. In a single-page application, all necessary codes (HTML, JavaScript, and CSS) are retrieved through the loading of a single page, or appropriate resources are dynamically loaded and added to the page as needed (usually in response to user actions). Interaction with single-page applications usually involves dynamic communication with back-end servers.
 
-The easiest way to access {{$localeConfig.brandName}} in SPA applications is to use [the embedded login component](/reference/ui-components/) and [Javascript SDK](/reference/sdk-for-node/) provided by {{$localeConfig.brandName}} for login and authentication. This article takes the React project as an example.
+The easiest way to access {{$localeConfig.brandName}} in SPA applications is to use [the embedded login component](/en/reference/ui-components/) and [Javascript SDK](/en/reference/sdk-for-node/) provided by {{$localeConfig.brandName}} for login and authentication. This article takes the React project as an example.
 
 ## Get APP ID
 
@@ -24,7 +24,7 @@ yarn add @approw/react-ui-components
 npm i @approw/react-ui-components --save
 ```
 
-`@approw/react-ui-components` has some React components provided by {{$localeConfig.brandName}} and APIs for obtaining [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient), including the [ApprowGuard](/reference/ui-components/) login component.
+`@approw/react-ui-components` has some React components provided by {{$localeConfig.brandName}} and APIs for obtaining [AuthenticationClient](/en/sdk/sdk-for-node/authentication/AuthenticationClient), including the [ApprowGuard](/en/reference/ui-components/) login component.
 
 ### Configure ApprowGuard
 
@@ -36,7 +36,7 @@ import { ApprowGuard } from '@approw/react-ui-components'
 import '@approw/react-ui-components/lib/index.min.css'
 
 const App = () => {
-  const appId = 'AUTHING_APP_ID'
+  const appId = 'APPROW_APP_ID'
 
   // successfully login
   const onLogin = (userInfo) => {
@@ -55,7 +55,7 @@ ReactDOM.render(<App />, root)
 
 ### Logout
 
-Now you can log in, and you need to implement a method for users to log out, which can be achieved through [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient).
+Now you can log in, and you need to implement a method for users to log out, which can be achieved through [AuthenticationClient](/en/sdk/sdk-for-node/authentication/AuthenticationClient).
 
 ```js
 // src/index.js

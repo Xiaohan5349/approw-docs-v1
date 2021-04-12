@@ -1,6 +1,6 @@
-!!!include(common/init-java-auth-sdk.md)!!!
+!!!include(en/common/init-java-auth-sdk.md)!!!
 
-使用手机号验证码重置密码：
+Use phone number to reset password:
 
 ```java
 String phone = "phone number";
@@ -9,7 +9,7 @@ String password = "123456";
 authenticationClient.resetPasswordByPhoneCode(phone, code, password).execute();
 ```
 
-使用邮箱验证码重置密码：
+Use email to reset password：
 
 ```java
 String email = "test@example.com";

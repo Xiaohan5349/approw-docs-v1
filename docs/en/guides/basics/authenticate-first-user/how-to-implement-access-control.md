@@ -52,7 +52,7 @@ In one word, **you can fine-grained authorization under which circumstances have
 ## Authorization model introduction
 
 {{$localeConfig.brandName}} supports two authorization modes:
-1. Through the [authorization code mode](/v2/concepts/oidc/choose-flow#授权码模式) based on the OAuth 2.0 process.
+1. Through the [authorization code mode](/v2/en/concepts/oidc/choose-flow#authorization-code-mode) based on the OAuth 2.0 process.
 2. Authorize and manage users through the privilege API.
 
 ## Implement the privilege model with the help of {{$localeConfig.brandName}} 
@@ -69,7 +69,7 @@ Create three roles:
 
 ![](./images/create-role.png)
 
-You can also use API & SDK to create roles. For details, see [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
+You can also use API & SDK to create roles. For details, see [Role Management SDK](/en/reference/sdk-for-node/management/RolesManagementClient.md).
 
 ### Grant role to users
 
@@ -79,7 +79,7 @@ On the role details page, you can grant this role to users. You can search for u
 
 After selecting a user, click OK, and you can view the list of users granted with this role.
 
-You can also use API & SDK to grant roles to users. For details, see [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
+You can also use API & SDK to grant roles to users. For details, see [Role Management SDK](/en/reference/sdk-for-node/management/RolesManagementClient.md).
 
 ### User-role management on the backend in back-end
 
@@ -132,7 +132,7 @@ In the previous step, through resource authorization, we granted a user (or role
 
 First, initialize management SDK:
 
-> Here we take Node SDK as an example. We also support SDKs in languages such as Python, Java, C#, PHP, etc. For details, please click [here](/reference/).
+> Here we take Node SDK as an example. We also support SDKs in languages such as Python, Java, C#, PHP, etc. For details, please click [here](/en/reference/).
 
 ```javascript
 import { ManagementClient } from "approw-js-sdk";

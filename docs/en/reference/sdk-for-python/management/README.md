@@ -12,17 +12,17 @@ ManagementClient can be used to manage users, roles, policies, and user defined 
 
 The following is the list of clients:
 
-::: page-ref /reference/sdk-for-python/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UdfManagementClient.md
 :::

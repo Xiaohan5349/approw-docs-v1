@@ -30,7 +30,7 @@ The default registration method of the application is password login. You can mo
 
 ## Use embedded login component
 
-The embedded login component and the online hosting login page are basically the same in style and interaction. The difference is that the online hosting login page is fully managed by Authing, which is completely independent from your application, while the embedded login component can be embedded in your application. For detailed usage, please see: [Use the embedded login component to authenticate]().
+The embedded login component and the online hosting login page are basically the same in style and interaction. The difference is that the online hosting login page is fully managed by Authing, which is completely independent from your application, while the embedded login component can be embedded in your application. For detailed usage, please see: [Use the embedded login component to authenticate](/en/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
 ## Use API & SDK
 

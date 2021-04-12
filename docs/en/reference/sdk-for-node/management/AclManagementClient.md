@@ -32,7 +32,7 @@ AclManagementClient().allow(userId, action, resource)
 
 #### Parameter
 
-- `userId` \<string\> user ID 
+- `userId` \<string\> User ID 
 - `action` \<string\> The name of the action, which is recommended to use the format of \<resourceType\>:\<actionName\>, such as `books:edit`, `books:list`
 - `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or *, such as `*`, `books:123`,`books:\*`
 
@@ -66,7 +66,7 @@ AclManagementClient().isAllowed(userId, action, resource)
 
 #### Parameter
 
-- `userId` \<string\> user ID 
+- `userId` \<string\> User ID 
 - `action` \<string\> The name of the action, which is recommended to use the format of \<resourceType\>:\<actionName\>, such as `books:edit`, `books:list`
 - `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or *, such as `*`, `books:123`,`books:\*`
 
@@ -89,8 +89,8 @@ UsersManagementClient.listAuthorizedResources(userId, namespace)
 
 #### Parameter
 
-- `userId` \<string\> user ID;
-- `namespace` \<string\> code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/guides/access-control/resource-group.md).
+- `userId` \<string\> User ID.
+- `namespace` \<string\> Code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/en/guides/access-control/resource-group.md).
 
 #### Example
 
@@ -100,13 +100,13 @@ managementClient.users.listAuthorizedResources('USERID', 'code')
 
 #### Sample data
 
-- `type` type is the type of resource, there are several different values that can be used:
+- `type` Type is the type of resource, there are several different values that can be used:
   - `DATA`: data type;
   - `API`: interface type;
   - `MENU`: menu type;
-  - `BUTTON`: button type;
-- `code`: resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
-- `actions`: actions that user authorized to operate on the resource.
+  - `BUTTON`: button type.
+- `code`: Resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
+- `actions`: Actions that user authorized to operate on the resource.
 
 ```json
 {

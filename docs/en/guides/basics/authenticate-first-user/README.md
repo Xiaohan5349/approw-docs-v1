@@ -3,7 +3,7 @@
 <LastUpdated/>
 
 
-When using {{$localeConfig.brandName}} for user authentication, you don’t need to implement user management logic by yourself. All related operations (such as creating and deleting users, configuring the login process, resetting passwords, etc.) can be done through the {{$localeConfig.brandName}} console and hosting the login page, API & SDK carry out. User information will be stored securely in a {{$localeConfig.brandName}} database on cloud. You do not need to save an additional user information. [Click here for details.](/guides/faqs/how-to-join-approw-user-with-your-business-data.md)
+When using {{$localeConfig.brandName}} for user authentication, you don’t need to implement user management logic by yourself. All related operations (such as creating and deleting users, configuring the login process, resetting passwords, etc.) can be done through the {{$localeConfig.brandName}} console and hosting the login page, API & SDK carry out. User information will be stored securely in a {{$localeConfig.brandName}} database on cloud. You do not need to save an additional user information. [Click here for details.](/en/guides/faqs/how-to-join-approw-user-with-your-business-data.md)
 
 There are several ways to use Approw to implement the user authentication workflow: 
 

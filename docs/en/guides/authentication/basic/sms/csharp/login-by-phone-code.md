@@ -1,6 +1,6 @@
-!!!include(common/init-csharp-auth-sdk.md)!!!
+!!!include(en/common/init-csharp-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `LoginByPhoneCode` 方法：
+First call send SMS verification code API, and then use `LoginByPhoneCode` method：
 
 ```csharp
 var phone = "phone number";

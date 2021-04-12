@@ -1,13 +1,13 @@
-!!!include(common/init-js-auth-sdk.md)!!!
+!!!include(en/common/init-js-auth-sdk.md)!!!
 
-使用 `registerByEmail` 方法：
+Use `registerByEmail` method：
 
 
 ```javascript
 authenticationClient.registerByEmail("test@example.com", "passw0rd");
 ```
 
-或者：
+Or：
 
 ```javascript
 authenticationClient.registerByEmail(

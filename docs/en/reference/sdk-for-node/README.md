@@ -44,7 +44,7 @@ Use CDN:
 <script>
   /** You can use global variable Approw to acquire AuthenticationClient and ManagementClient */
   var approw = new Approw.AuthenticationClient({
-    appId: "AUTHING_APP_ID",
+    appId: "APPROW_APP_ID",
   });
 </script>
 ```
@@ -71,7 +71,7 @@ The complete parameter list is as follows:
 - `appDomain`: The host address of {{$localeConfig.brandName}} application (required), such as `https://my-awesome-app.approw.com`;
 - `token`: Initialize the SDK through the user's `id_token` (optional, you can cache the user `id_token` in the front-end localStorage to implement remember the login).
 - `timeout`: Request timeout time, in milliseconds, the default is 10000 (10 seconds).
-- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the {{$localeConfig.brandName}} client.See [this document](/reference/error-code.md) for the complete error code. The function is defined as:
+- `onError`: Error handling function, you can use it to globally catch all exceptions requested by the {{$localeConfig.brandName}} client.See [this document](/en/reference/error-code.md) for the complete error code. The function is defined as:
 
 ```js
 (code: number, message: string, data: any) => void
@@ -126,7 +126,7 @@ Approw currently supports more than 20 social logins around the world, such as  
 
 ### App QR code login
 
-App QR code login refers to use your own App scan QR code to log in to the website, [click here to learn more](/guides/authentication/qrcode/use-self-build-app/).
+App QR code login refers to use your own App scan QR code to log in to the website, [click here to learn more](/en/guides/authentication/qrcode/use-self-build-app/).
 
 You can use 5 lines of code to implement a complete scan code login form:
 
@@ -151,7 +151,7 @@ authenticationClient.qrcode.startScanning("qrcode", {
 
 `ManagementClient` initialization needs to pass in the user pool ID `userPoolId` and the user pool key `secret`：
 
-> You can learn [how to get userPoolId and secret here](/guides/faqs/get-userpool-id-and-secret.md).
+> You can learn [how to get userPoolId and secret here](/en/guides/faqs/get-userpool-id-and-secret.md).
 
 ```js
 import { ManagementClient } from "approw-js-sdk";
@@ -174,7 +174,7 @@ The complete parameter list is as follows:
 (code: number, message: string, data: any) => void
 ```
 
-> See [this document](/reference/error-code.md) for the complete error code.
+> See [this document](/en/reference/error-code.md) for the complete error code.
 
 - `host`: {{$localeConfig.brandName}} server address.If you are using the public cloud version, please ignore the parameter. If you are using a privatized deployment version, this parameter is required.The format is as follows: https://approw-api.mydomain.com (without / at the end).
 - `preflight`: Precheck of whether the network status enabled or not, the default is false.This parameter is suitable for checking whether the Approw server domain name is blocked on the user's network (some companies' intranets will block third-party websites). If the check is successful, it won't send any notification. The error handling function will be called if the check fails. After performing the pre-check, the SDK initialization speed will slow down. Please use it with caution.
@@ -231,7 +231,7 @@ try {
 }
 ```
 
-> You can find the whole error code document [here](/reference/error-code.md).
+> You can find the whole error code document [here](/en/reference/error-code.md).
 
 You can also specify `onError` to uniformly capture all {{$localeConfig.brandName}} request exceptions, such as using front-end components like `antd` to display error prompts.
 
@@ -268,45 +268,45 @@ const managementClient = new ManagementClient({
 
 Authentication clients：
 
-::: page-ref /reference/sdk-for-node/authentication/AuthenticationClient.md
+::: page-ref /en/reference/sdk-for-node/authentication/AuthenticationClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md
+::: page-ref /en/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/authentication/MfaAuthenticationClient.md
+::: page-ref /en/reference/sdk-for-node/authentication/MfaAuthenticationClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/authentication/SocialAuthenticationClient.md
+::: page-ref /en/reference/sdk-for-node/authentication/SocialAuthenticationClient.md
 :::
 
 Management clients：
 
-::: page-ref /reference/sdk-for-node/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/GroupsManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/GroupsManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/OrgManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/OrgManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/UdfManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/WhitelistManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/WhitelistManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-node/management/UserpoolManagementClient.md
+::: page-ref /en/reference/sdk-for-node/management/UserpoolManagementClient.md
 :::
 
 ## Get Help

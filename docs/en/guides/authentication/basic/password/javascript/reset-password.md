@@ -1,6 +1,6 @@
-!!!include(common/init-js-auth-sdk.md)!!!
+!!!include(en/common/init-js-auth-sdk.md)!!!
 
-使用手机号验证码重置密码：
+Use phone number to reset password:
 
 ```javascript
 authenticationClient.resetPasswordByPhoneCode(
@@ -10,7 +10,7 @@ authenticationClient.resetPasswordByPhoneCode(
 );
 ```
 
-使用邮箱验证码重置密码：
+Use email to reset password：
 
 ```javascript
 authenticationClient.resetPasswordByEmailCode(

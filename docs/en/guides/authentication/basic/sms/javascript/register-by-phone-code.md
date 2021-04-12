@@ -1,13 +1,13 @@
-!!!include(common/init-js-auth-sdk.md)!!!
+!!!include(en/common/init-js-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `registerByPhoneCode` 方法：
+First call Send SMS verification code API to send SMS code, and then use `RegisterByPhoneCode` method：
 
 
 ```javascript
 authenticationClient.registerByPhoneCode("176xxxx6754", "1234");
 ```
 
-或者：
+Or：
 
 ```javascript
 authenticationClient.registerByPhoneCode(

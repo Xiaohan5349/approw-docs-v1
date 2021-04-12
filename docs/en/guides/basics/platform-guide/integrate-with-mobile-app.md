@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} provides [Android SDK](/reference/sdk-for-android.md) and [iOS SDK](/reference/sdk-for-swift.md) to help developers quickly integrate {{$localeConfig.brandName}} in mobile apps. 
+{{$localeConfig.brandName}} provides [Android SDK](/en/reference/sdk-for-android.md) and [iOS SDK](/en/reference/sdk-for-swift.md) to help developers quickly integrate {{$localeConfig.brandName}} in mobile apps. 
 
 Let's take the integration method of Android applications as an example.
 
@@ -30,7 +30,7 @@ implementation files('libs/commons-codec-1.15-rep.jar')
 
 3. Install {{$localeConfig.brandName}} Java/Kotlin SDK
 
-Detailed installation guide: [{{$localeConfig.brandName}} Java/Kotlin SDK](/reference/sdk-for-java/README.md)
+Detailed installation guide: [{{$localeConfig.brandName}} Java/Kotlin SDK](/en/reference/sdk-for-java/README.md)
 
 ## Sample of use
 
@@ -98,7 +98,7 @@ String code = "1234";
 User user = authenticationClient.loginByPhoneCode(new LoginByPhoneCodeInput(phone, code)).execute();
 ```
 
-For detailed document please see: [User registration and login API](/reference/sdk-for-java/authentication/README.md).
+For detailed document please see: [User registration and login API](/en/reference/sdk-for-java/authentication/README.md).
 
 ## More help
 

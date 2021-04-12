@@ -8,11 +8,11 @@ Social authentication is an authentication method that allows users to use the i
 
 {{$localeConfig.brandName}} now supports social authentication from several platforms and they are shown in the lists below:
 
-!!!include(common/social-connections-table.md)!!!
+!!!include(common/social-connections-table-en.md)!!!
 
 ## Customized Social Authentication
 
-{{$localeConfig.brandName}} can provide integration with **customized OAuth 2.0 IdPs**. You can find more introductions in this <router-link to="/connections/custom-social-provider/" target="_blank"> document </router-link> if you need to integrate with other social platforms which are not supported by Approw now.
+{{$localeConfig.brandName}} can provide integration with **customized OAuth 2.0 IdPs**. You can find more introductions in this <router-link to="/en/connections/custom-social-provider/" target="_blank"> document </router-link> if you need to integrate with other social platforms which are not supported by Approw now.
 
 <!--
 ## 微信解决方案

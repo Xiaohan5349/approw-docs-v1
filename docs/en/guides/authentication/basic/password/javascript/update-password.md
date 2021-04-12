@@ -1,14 +1,14 @@
-!!!include(common/init-js-auth-sdk.md)!!!
+!!!include(en/common/init-js-auth-sdk.md)!!!
 
 
-如果用户之前没有设置过密码（比如由手机号、社会化登录等方式注册），不需要传入原始密码。
+If a user doesn't set a password before (for example, register by phone number or social IDP), this method does not require the original password.
 
 ```javascript
 authenticationClient.updatePassword("passw0rd"); 
 ```
 
-或者：
+Or：
 
 ```javascript
-authenticationClient.updatePassword("passw0rd", "oldPassw0rd"); // 用户之前设置了密码
+authenticationClient.updatePassword("passw0rd", "oldPassw0rd"); // user set a password before
 ```

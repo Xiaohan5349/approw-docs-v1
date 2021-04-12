@@ -19,9 +19,9 @@ AuthenticationClient().registerByEmail(email, password, profile, options)
 
 #### Parameter
 
-- `email` \<string\> email
-- `password` \<string\> password
-- `profile` \<RegisterProfile\> user profile
+- `email` \<string\> Email
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -43,9 +43,9 @@ AuthenticationClient().registerByUsername(username, password, profile, options)
 
 #### Parameter
 
-- `username` \<string\> username
-- `password` \<string\> password
-- `profile` \<RegisterProfile\> user profile
+- `username` \<string\> Username
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -67,10 +67,10 @@ AuthenticationClient().registerByPhoneCode(phone, code, password, profile, optio
 
 #### Parameter
 
-- `phone` \<string\> phone number
+- `phone` \<string\> Phone number
 - `code` \<string\> SMS verification
-- `password` \<string\> initial password
-- `profile` \<RegisterProfile\> user profile
+- `password` \<string\> Initial password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
 - `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is false.
 - `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is false.
@@ -112,8 +112,8 @@ If your user pool is configured with login failure detection, the user will be a
 
 #### Parameter
 
-- `email` \<string\> email
-- `password` \<string\> password
+- `email` \<string\> Email
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
 - `options.captchaCode` \<string\> CAPTCHA code
@@ -137,8 +137,8 @@ If your user pool is configured with login failure detection, the user will be a
 
 #### Parameter
 
-- `username` \<string\> username
-- `password` \<string\> password
+- `username` \<string\> Username
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
 - `options.captchaCode` \<string\> CAPTCHA code
@@ -160,7 +160,7 @@ AuthenticationClient().loginByPhoneCode(phone, code)
 
 #### Parameter
 
-- `phone` \<string\> phone number
+- `phone` \<string\> Phone number
 - `code` \<string\> SMS verification code
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
@@ -180,8 +180,8 @@ AuthenticationClient().loginByPhonePassword(phone, password, options)
 
 #### Parameter
 
-- `phone` \<string\> phone number
-- `password` \<string\> password
+- `phone` \<string\> Phone number
+- `password` \<string\> Password
 - `options` \<Object\>
 - `options.captchaCode` \<string\> CAPTCHA code
 - `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
@@ -202,7 +202,7 @@ AuthenticationClient().checkLoginStatus(token)
 
 #### Parameter
 
-- `token` \<string\> The user's login credentials token
+- `token` \<string\> The user's login credentials token.
 
 #### Example
 
@@ -218,7 +218,7 @@ AuthenticationClient().sendEmail(email, scene)
 
 #### Parameter
 
-- `email` \<string\> email
+- `email` \<string\> Email
 - `scene` \<EmailScene\> Sending scene, optional values are RESET_PASSWORD (send a reset password email, the email contains the verification code), VerifyEmail (send the email to verify the mailbox), ChangeEmail (send the modified email, the email contains the verification code)
 
 #### Example
@@ -236,9 +236,9 @@ AuthenticationClient().resetPasswordByPhoneCode(phone, code, newPassword)
 
 #### Parameter
 
-- `phone` \<string\> phone number
-- `code` \<string\> verification code
-- `newPassword` \<string\> new password
+- `phone` \<string\> Phone number
+- `code` \<string\> Verification code
+- `newPassword` \<string\> New password
 
 #### Example
 
@@ -257,9 +257,9 @@ AuthenticationClient().resetPasswordByEmailCode(phone, code, newPassword)
 
 #### Parameter
 
-- `phone` \<string\> phone number
-- `code` \<string\> verification code
-- `newPassword` \<string\> new password
+- `phone` \<string\> Phone number
+- `code` \<string\> Verification code
+- `newPassword` \<string\> New password
 
 #### Example
 
@@ -278,13 +278,13 @@ AuthenticationClient().updateProfile(updates)
 
 #### Parameter
 
-- `updates` \<UpdateUserInput\> modified user profile
-- `updates.username` \<string\> username
-- `updates.nickname` \<string\> nickanme
-- `updates.photo` \<string\> avatar
-- `updates.company` \<string\> company
-- `updates.browser` \<string\> browser
-- `updates.device` \<string\> device
+- `updates` \<UpdateUserInput\> Modified user profile
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickanme
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Company
+- `updates.browser` \<string\> Browser
+- `updates.device` \<string\> Device
 - `updates.lastIP` \<string\> Last log in IP
 - `updates.name` \<string\> Name
 - `updates.givenName` \<string\> Given Name
@@ -294,16 +294,16 @@ AuthenticationClient().updateProfile(updates)
 - `updates.preferredUsername` \<string\> Preferred Name
 - `updates.website` \<string\> personal website
 - `updates.gender` \<string\> Gender, M means male, F means female, U means unknown.
-- `updates.birthdate` \<string\> birthday
-- `updates.zoneinfo` \<string\> timezone
-- `updates.locale` \<string\> language
-- `updates.address` \<string\> address
-- `updates.streetAddress` \<string\> street address
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Timezone
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
 - `updates.locality` \<string\>
-- `updates.region` \<string\> region
-- `updates.postalCode` \<string\> zipcode
-- `updates.city` \<string\> city
-- `updates.province` \<string\> rpovince
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
 - `updates.country` \<string\> country
 
 #### Example
@@ -320,7 +320,7 @@ AuthenticationClient().updatePassword(newPassword, oldPassword)
 
 #### Parameter
 
-- `newPassword` \<string\> new password
+- `newPassword` \<string\> New password
 - `oldPassword` \<string\> Old password, if the user has not set a password, it can be left blank.
 
 #### Example
@@ -341,7 +341,7 @@ AuthenticationClient().updatePhone(phone, phoneCode, oldPhone, oldPhoneCode)
 
 - `phone` \<string\> New phone number
 - `phoneCode` \<string\> The verification code of the new phone number
-- `oldPhone` \<string\> old phone number
+- `oldPhone` \<string\> Old phone number
 - `oldPhoneCode` \<string\> The verification code of the old phone number
 
 #### Example
@@ -358,9 +358,9 @@ AuthenticationClient().updateEmail(email, emailCode, oldEmail, oldEmailCode)
 
 #### Parameter
 
-- `email` \<string\> new email
+- `email` \<string\> New email
 - `emailCode` \<string\> The verification code of the new email
-- `oldEmail` \<string\> old email
+- `oldEmail` \<string\> Old email
 - `oldEmailCode` \<string\> The verification code of the old email
 
 #### Example

@@ -26,9 +26,9 @@ QrCodeAuthenticationClient().startScanning(domId, options)
 
 #### Parameter
 
-- `domId` \<string\> id of the dom element.
+- `domId` \<string\> Id of the dom element.
 - `options` \<Object\>  
-- `options.interval` \<number\>  interval time, the unit of it is ms. Default value is 800ms.
+- `options.interval` \<number\>  Interval time, the unit of it is ms. Default value is 800ms.
 - `options.onStart` \<Function\> The event callback function to start polling, the first parameter is the timer returned by setInterval, you can use clearInterval to cancel this timer.
 - `options.onResult` \<Function\> Get the latest status event callback function of the QR code. The type of the first parameter is QRCodeStatus.
 - `options.onScanned` \<Function\> The callback function of the user's first scan code event.At this time, the user has not been authorized, and the callback user information only contains the nickname and avatar for display purposes.For security reasons, by default, userInfo will only contain two fields, nickname and photo, but developers can also configure it in the background to return complete user information. 
@@ -42,12 +42,12 @@ Ticket can be used to exchange for complete user information, see https://docs.a
 - `options.onCodeLoadFailed` \<Function\> The event that the QR code failed to load. 
 - `options.onCodeDestroyed` \<Function\> The event that the QR code is destroyed. 
 - `options.size` \<Object\> The size of QR code image. The default value is 240px * 240px.
-- `options.size.height` \<number\> height 
-- `options.size.width` \<number\> width 
+- `options.size.height` \<number\> Height 
+- `options.size.width` \<number\> Width 
 - `options.containerSize` \<Object\> The size of DOM element container. The default value is 300px * 300px. 
-- `options.containerSize.height` \<number\> height 
-- `options.containerSize.width` \<number\> width 
-- `options.tips` \<Object\> customed tip information 
+- `options.containerSize.height` \<number\> Height 
+- `options.containerSize.width` \<number\> Width 
+- `options.tips` \<Object\> Customed tip information 
 - `options.tips.title` \<number\>  
 - `options.tips.scanned` \<number\>  
 - `options.tips.succeed` \<Object\>  
@@ -143,7 +143,7 @@ QrCodeAuthenticationClient().exchangeUserInfo(ticket)
 
 #### Parameter
 
-- `ticket` \<string\> ticket 
+- `ticket` \<string\> Ticket 
 
 #### Example
 
@@ -171,9 +171,9 @@ QrCodeAuthenticationClient().startPolling(random, options)
 
 #### Paraneter
 
-- `random` \<string\> unique ID of QR code 
+- `random` \<string\> Unique ID of QR code 
 - `options` \<Object\>  
-- `options.interval` \<number\> interval time, the unit of it is ms. Default value is 800ms.
+- `options.interval` \<number\> Interval time, the unit of it is ms. Default value is 800ms.
 - `options.onStart` \<Function\> The event callback function to start polling, the first parameter is the timer returned by setInterval, you can use clearInterval to cancel this timer.
 - `options.onResult` \<Function\> Get the latest status event callback function of the QR code. The type of the first parameter is QRCodeStatus. 
 - `options.onScanned` \<Function\> The callback function of the user's first scan code event.At this time, the user has not been authorized, and the callback user information only contains the nickname and avatar for display purposes.For security reasons, by default, userInfo will only contain two fields, nickname and photo, but developers can also configure it in the background to return complete user information. 
