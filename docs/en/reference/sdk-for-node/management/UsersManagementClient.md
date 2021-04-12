@@ -1,8 +1,9 @@
-# Manage users
+
+# UsersManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} User ManagementClient
+> {{$localeConfig.brandName}} Users ManagementClient
 
 This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
