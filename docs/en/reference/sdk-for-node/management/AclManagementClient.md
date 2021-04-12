@@ -90,7 +90,7 @@ UsersManagementClient.listAuthorizedResources(userId, namespace)
 #### Parameter
 
 - `userId` \<string\> user ID;
-- `namespace` \<string\> code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/guides/access-control/resource-group.md).
+- `namespace` \<string\> code of the privilege group. For more details, please refer to: [Use privilege groups to manage privileged resources](/en/guides/access-control/resource-group.md).
 
 #### Example
 
