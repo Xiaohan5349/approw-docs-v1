@@ -25,7 +25,7 @@ pip install approw
 
 Initialization of ManagementClient requires `userPoolId` and `secret`:
 
-> You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
+> You can [learn how to get UserPoolId and Secret](/en/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```python
 from approw.v2.management import ManagementClient, ManagementClientOptions
@@ -170,7 +170,7 @@ except ApprowException as e:
     print(e.message) # User does not exist
 ```
 
-> See this [document](/reference/error-code.md) for the complete error code.
+> See this [document](/en/reference/error-code.md) for the complete error code.
 
 ## Privatization deployment
 
@@ -214,24 +214,24 @@ Available Authentication methods
 
 Learn more:
 
-::: page-ref /reference/sdk-for-python/authentication/
+::: page-ref /en/reference/sdk-for-python/authentication/
 :::
 
 ManagementClient contains the following sub-modules:
 
-::: page-ref /reference/sdk-for-python/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UdfManagementClient.md
 :::
 
 
