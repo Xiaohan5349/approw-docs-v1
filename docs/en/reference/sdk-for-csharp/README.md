@@ -25,7 +25,7 @@ Install-Package Approw.ApiClient
 
 Initialization of ManagementClient requires `userPoolId` and `secret`:
 
-> You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
+> You can [learn how to get UserPoolId and Secret](/en/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```csharp
 using Approw.ApiClient;
@@ -125,33 +125,33 @@ Available Authentication methods
 
 Learn more:
 
-::: page-ref /reference/sdk-for-csharp/authentication/
+::: page-ref /en/reference/sdk-for-csharp/authentication/
 :::
 
 ManagementClient contains the following sub-modules:
 
-::: page-ref /reference/sdk-for-csharp/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/GroupsManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/GroupsManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/UdfManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/UserpoolManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/UserpoolManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-csharp/management/WhitelistManagementClient.md
+::: page-ref /en/reference/sdk-for-csharp/management/WhitelistManagementClient.md
 :::
 
 ## Get help

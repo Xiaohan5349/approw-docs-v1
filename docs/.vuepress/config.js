@@ -5,8 +5,8 @@ const path = require('path')
 
 module.exports = {
   base: env.basePath,
-  title: '文档',
-  description: 'Authing 文档',
+  title: 'Approw Docs',
+  description: 'Approw Docs',
   plugins,
   feedbackUrl: `https://open.feishu.cn/open-apis/bot/v2/hook/f5e7517d-07cb-4519-ab6c-577ad8653ca2`,
   markdown: {
@@ -27,8 +27,8 @@ module.exports = {
     // As a special case, the default locale can use '/' as its path.
     '/': {
       lang: 'zh-CN', // this will be set as the lang attribute on <html>
-      title: 'Authing 文档',
-      description: 'Authing 文档',
+      title: 'Approw 文档',
+      description: 'Approw 文档',
       navbarTitle: '文档',
       relatedDocText: '相关文档',
       brandName: sidebar.BRAND_NAME_ZH_CN,
@@ -36,9 +36,9 @@ module.exports = {
     },
     '/en/': {
       lang: 'en-US',
-      title: 'Authing Docs',
-      description: 'Authing Docs',
-      navbarTitle: 'Documents',
+      title: 'Approw Docs',
+      description: 'Approw Docs',
+      navbarTitle: 'Document',
       relatedDocText: 'Related documents',
       brandName: sidebar.BRAND_NAME_EN_US,
       brandNameLowerCase: sidebar.BRAND_NAME_EN_US_LOWER_CASE,
@@ -56,13 +56,13 @@ module.exports = {
     ],
   ],
   themeConfig: {
-    logo: 'https://files.authing.co/authing-console/authing-logo-new.svg',
-    officeSiteDomain: 'authing.cn',
-    officeSiteUrl: 'https://authing.cn',
-    consoleDomain: 'https://console.authing.cn',
+    logo: 'https://www.approw.com/asset/approw_logo.svg',
+    officeSiteDomain: 'approw.cn',
+    officeSiteUrl: 'https://approw.cn',
+    consoleDomain: 'https://console.approw.cn',
     sampleAppDomain: 'sample-sso.authing.cn',
-    apiDomain: 'https://core.authing.cn',
-    oldDocUrl: 'https://docs.authing.cn',
+    apiDomain: 'https://core.approw.cn',
+    oldDocUrl: 'https://docs.approw.cn',
     smoothScroll: true,
     activeHeaderLinks: false,
     lastUpdated: 'Last Updated',
@@ -76,6 +76,11 @@ module.exports = {
         prevDoc: '上一篇',
         nextDoc: '下一篇',
         submitImmediate: '立即提交',
+        knowMore: '了解更多',
+        company: '公司',
+        sdkAccess: 'SDK 接入',
+        searchInDoc: '在文档中搜索',
+        oldVersion: '旧版',
         nav: [
           { text: '概念', link: '/concepts/' },
           { text: '使用指南', link: '/guides/' },
@@ -122,6 +127,96 @@ module.exports = {
               '请详细描述在文档使用中遇到的问题或改进建议（选填）',
           },
         },
+        footer: {
+          sections: [
+            {
+              title: '用户身份管理',
+              links: [
+                {
+                  text: '集成第三方登录',
+                  link: '/guides/connections/',
+                },
+                {
+                  text: '手机号闪验',
+                  link: 'https://authing.cn/verify',
+                },
+                {
+                  text: '通用登录表单组件',
+                  link: '/reference/ui-components/',
+                },
+                {
+                  text: '自定义认证流程',
+                  link: '/guides/pipeline/',
+                },
+              ],
+            },
+            {
+              title: '企业内部管理',
+              links: [
+                {
+                  text: '单点登录',
+                  link: '/guides/authentication/sso/',
+                },
+                {
+                  text: '多因素认证',
+                  link: '/guides/authentication/mfa/',
+                },
+                {
+                  text: '权限管理',
+                  link: '/guides/access-control/',
+                },
+              ],
+            },
+            {
+              title: '开发者',
+              links: [
+                {
+                  text: '开发文档',
+                  link: '/reference/',
+                },
+                {
+                  text: '框架集成',
+                  link: '/reference/frameworks',
+                },
+                {
+                  text: '博客',
+                  link: 'https://authing.cn/blog',
+                },
+                {
+                  text: 'Github',
+                  link: 'https://github.com/authing',
+                },
+                {
+                  text: '社区用户中心',
+                  link: 'https://gitter.im/authing-chat/community',
+                },
+              ],
+            },
+          ],
+          socials: [
+            {
+              icon: 'authing-github',
+              link: 'https://github.com/Authing',
+              title: 'Github',
+            },
+            {
+              icon: 'authing-gitter',
+              link: 'https://gitter.im/authing-chat/community',
+              title: 'Gitter',
+            },
+            {
+              icon: 'authing-zhihu',
+              link: 'https://www.zhihu.com/org/authing',
+              title: '知乎',
+            },
+          ],
+          serviceStatus: '服务状态',
+          contactPhone: '176-0250-2507',
+          contactEmail: 'xuziqiang@authing.cn',
+          contactAddress: '北京市海淀区中关村东路威盛大厦 6 层',
+          icp: '京ICP备19051205号',
+          companyName: '© 北京蒸汽记忆科技有限公司',
+        },
       },
       '/en/': {
         // text for the language dropdown
@@ -136,19 +231,147 @@ module.exports = {
         prevDoc: 'Prev',
         nextDoc: 'Next',
         submitImmediate: 'Submit',
+        knowMore: 'Know More',
+        company: 'Company',
+        sdkAccess: 'SDK Access',
+        searchInDoc: 'Search in Docs',
+        oldVersion: 'Old Version',
         nav: [
-          { text: '概念', link: '/en/concepts/' },
-          { text: '使用指南', link: '/en/guides/' },
-          { text: '开发集成', link: '/en/reference/' },
+          { text: 'Concept', link: '/en/concepts/' },
+          { text: 'Guides', link: '/en/guides/' },
+          { text: 'Development Integration', link: '/en/reference/' },
           {
-            text: '应用集成',
+            text: 'Application integration',
             link: '/en/integration/',
           },
         ],
         sidebar: sidebar.enUsNavBar,
         feedback: {
           title: 'Does this article solve your problem?',
-          help: `If you encounter other problems, you can contact us by consulting <a>online customer service</a>`,
+          help: `If you encounter other problems, you can contact us at <a href="https://gitter.im/authing-chat/community" target="_blank">authing-chat/community</a>.`,
+          successTip: `Submitted successfully! Thank you very much for your feedback, we will continue to work hard to do better!`,
+          uselessConfig: {
+            title: 'Does this article solve your problem?',
+            reasons: [
+              {
+                value: '内容错误',
+                label: 'Content error',
+              },
+              {
+                value: '缺少代码/图片示例',
+                label: 'Missing code/image example',
+              },
+              {
+                value: '更新不及时',
+                label: 'Update is not timely',
+              },
+              {
+                value: '太简单/步骤待完善',
+                label: 'Too simple/steps to be perfected',
+              },
+              {
+                value: '链接错误',
+                label: 'Link error',
+              },
+              {
+                value: '其他',
+                label: 'Other',
+              },
+            ],
+            customReasonPlaceholder:
+              'Please describe in detail the problems encountered in the use of the document or suggestions for improvement (optional)',
+          },
+        },
+        footer: {
+          sections: [
+            {
+              title: 'User identity management',
+              links: [
+                {
+                  text: 'Integrated third-party login',
+                  link: '/guides/connections/',
+                },
+                {
+                  text: 'Mobile phone number flash check',
+                  link: 'https://authing.cn/verify',
+                },
+                {
+                  text: 'Universal login form component',
+                  link: '/reference/ui-components/',
+                },
+                {
+                  text: 'Custom authentication process',
+                  link: '/guides/pipeline/',
+                },
+              ],
+            },
+            {
+              title: 'Enterprise internal management',
+              links: [
+                {
+                  text: 'Single Sign On',
+                  link: '/guides/authentication/sso/',
+                },
+                {
+                  text: 'Multi-factor Authentication',
+                  link: '/guides/authentication/mfa/',
+                },
+                {
+                  text: 'Authority Management',
+                  link: '/guides/access-control/',
+                },
+              ],
+            },
+            {
+              title: 'Developers',
+              links: [
+                {
+                  text: 'Development Document',
+                  link: '/reference/',
+                },
+                {
+                  text: 'Framework Integration',
+                  link: '/reference/frameworks',
+                },
+                {
+                  text: 'Blog',
+                  link: 'https://authing.cn/blog',
+                },
+                {
+                  text: 'Github',
+                  link: 'https://github.com/authing',
+                },
+                {
+                  text: 'Community User Center',
+                  link: 'https://gitter.im/authing-chat/community',
+                },
+              ],
+            },
+          ],
+          socials: [
+            {
+              icon: 'authing-github',
+              link: 'https://github.com/Authing',
+              title: 'Github',
+            },
+            {
+              icon: 'authing-gitter',
+              link: 'https://gitter.im/authing-chat/community',
+              title: 'Gitter',
+            },
+            {
+              icon: 'authing-zhihu',
+              link: 'https://www.zhihu.com/org/authing',
+              title: 'ZhiHu',
+            },
+          ],
+          serviceStatus: 'Service Status',
+          contactPhone: '176-0250-2507',
+          contactEmail: 'xuziqiang@authing.cn',
+          contactAddress:
+            '6th Floor, Weisheng Building, Zhongguancun East Road, Haidian District, Beijing',
+          icp: '京ICP备19051205号',
+          companyName: '© 北京蒸汽记忆科技有限公司',
         },
       },
     },

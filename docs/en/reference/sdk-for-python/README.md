@@ -214,24 +214,24 @@ Available Authentication methods
 
 Learn more:
 
-::: page-ref /reference/sdk-for-python/authentication/
+::: page-ref /en/reference/sdk-for-python/authentication/
 :::
 
 ManagementClient contains the following sub-modules:
 
-::: page-ref /reference/sdk-for-python/management/UsersManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UsersManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/RolesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/RolesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/PoliciesManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/PoliciesManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/AclManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/AclManagementClient.md
 :::
 
-::: page-ref /reference/sdk-for-python/management/UdfManagementClient.md
+::: page-ref /en/reference/sdk-for-python/management/UdfManagementClient.md
 :::
 
 

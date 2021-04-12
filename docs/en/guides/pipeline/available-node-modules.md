@@ -1,89 +1,91 @@
 ---
 meta:
   - name: description
-    content: 可用的 Node Modules
+    content: Available Node Modules
 ---
 
-# 可用的 Node Modules
+# **Available Node Modules**
 
-<LastUpdated/>
+Currently, the following Node Modules can be used in Approw Pipeline:
 
+- [Approw SDK for Node.js](https://github.com/Authing/authing.js)
 
-目前 {{$localeConfig.brandName}} Pipeline 中可以使用以下 Node Modules:
+- Network request library: [axios](https://github.com/axios/axios)
 
-* [Authing SDK for Node.js](https://github.com/Authing/authing.js)
-* 网络请求库 [axios](https://github.com/axios/axios)
-* lodash
-* {{$localeConfig.brandName}} 内置工具集函数 utils
+- lodash
 
-## {{$localeConfig.brandName}} SDK for Node.js
+- Approw built-in toolset functions: utils
 
-::: hint-danger
-出于安全考虑， {{$localeConfig.brandName}} 会通过特殊方式，使用你的用户池 ID（userPoolId） 和用户池密钥（secret） 初始化 authing-js-sdk，此过程不会将你的用户池密钥发送到公网。你可以使用使用全局变量 **authing**，**请勿再次初始化 SDK！**
-:::
+## **Approw SDK for Node.js**
 
-开发者可以直接使用[初始化](/reference/sdk-for-node/README.md)过后的 authing 实例，**无需手动初始化**！{{$localeConfig.brandName}} Pipeline 会自动帮助开发者  take care 初始化过程。
+For security reasons, Approw will use your user pool ID (userPoolId) and user pool key (secret) to initialize Approw-js-sdk in a special way. This process will not send your user pool key to the public network. You can use the global variable **Approw** , **please do not initialize the SDK again!**
 
-如下所示：
+Developers can directly use the [initialized](https://docs.authing.cn/v2/reference/sdk-for-node/) Approw instance **without manual initialization**! Approw Pipeline will automatically help developers take care of the initialize process.
+
+As follows:
 
 ```js
 async function pipe(user, context, callback) {
-  if (!user.email.endsWith('@authing.cn')) {
+  if (!user.email.endsWith('@Approw.cn')) {
     return callback(null, user, context)
   }
 
   try {
-    await authing.roles.addUsers('ROLE', [user.id])
+    await Approw.roles.addUsers('ROLE', [user.id])
   } catch (error) { }
 
   callback(null, user, context)
 }
+
 ```
 
-解释一下：
+explain:
 
-* 2-4 行判断用户邮箱是否已 `@authing.cn` 结尾，如果不是，可以直接跳过此  Pipeline 函数。
-* 6-11 行调用 SDK 的[角色管理 SDK](/reference/sdk-for-node/management/RolesManagementClient.md#添加用户) API，授权用户角色 `ROLE`。
-  * 在这里我们使用了 env.ROOT\_GROUP\_ID 通过环境变量来获取组 ID，这样可以避免硬编码。关于如何在 Pipelien 函数中使用环境变量，请见[使用环境变量](env.md)。
-* 13 行调用回调函数 callback，第一个参数为 null，表示没有错误抛出，可以继续执行下面的认证流程。关于如何使用 callback 以及 Pipelien 函数的完整 API，请见 [Pipeline 函数 API 文档](pipeline-function-api-doc.md)。
+- 2-4 line: Determining whether the user&#39;s mailbox has @Approw.cnends, if not, you can skip this Pipeline function.
 
-## 网络请求库
+- Lines 6-11 call the [role management SDK](https://docs.authing.cn/v2/reference/sdk-for-node/management/RolesManagementClient.html#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7) API to authorize user rolesROLE.
 
-目前 {{$localeConfig.brandName}} 支持使用 `axios`，且支持 async/await 语法 🚀！
+- Here we use env.ROOT\_GROUP\_ID to get the group ID through environment variables, which can avoid hard coding. For how to use environment variables in Pipelien functions, see [Using Environment Variables](https://docs.authing.cn/v2/guides/pipeline/env.html).
 
-axios 详细文档请移步[其官方文档](https://github.com/axios/axios)。
+- Call the callback function callback on line 13, and the first parameter is null, which means that no error is thrown, and the following authentication process can be continued.  For how to use the callback and the complete API of Pipeline functions, please refer to the [Pipeline function API documentation](https://docs.authing.cn/v2/guides/pipeline/pipeline-function-api-doc.html).
 
-## lodash
+## **Network request library**
 
-需要开发者手动导入：
+Currently Approw supports the useaxiosand supports async/await syntax 🚀!
 
+For detailed axios documentation, please move to [its official documentation](https://github.com/axios/axios).
+
+## **lodash**
+
+Need to be manually imported by the developer:
 ```js
 const _ = require("lodash")
 ```
 
-详细文档请移步[其官方文档](https://lodash.com/docs/)。
+For detailed documentation, please move to [its official documentation](https://lodash.com/docs/).
 
-## 内置工具集 utils
+## **Built-in toolset utils**
 
-{{$localeConfig.brandName}} 内置封装了一些实用的函数，供开发者直接调用。
+Approw encapsulates some useful functions for developers to call directly.
 
-需要开发者手动导入：
+Need to be manually imported by the developer:
 
 ```js
 const utils = require("./utils")
 ```
 
-### 检查 IP 是否位于 IP 段内 <a id="iprangecheck"></a>
+## **Check if the IP is in the IP range**
 
-使用方法：
+Instructions:
 
 ```js
-utils.ipRangeCheck(IP, [start, end])
+utils.ipRangeCheck(IP, [start, end]) 
 ```
 
-返回值为 boolean。
 
-示例：以下 Pipeline 函数实现注册 IP 段白名单功能。
+The return value is boolean.
+
+Example: The following Pipeline function implements the function of registering the whitelist of IP segments.
 
 ```js
 async function pipe(context, callback) {
@@ -94,10 +96,8 @@ async function pipe(context, callback) {
   }
   return callback(new Error('Access Denied!'))
 }
-
 ```
 
-## 其他 Node 自带 Module
+## **Other Node comes with Module**
 
- {{$localeConfig.brandName}} Pipeline 使用 node8 引擎，[node8 的所有内置模块](https://nodejs.org/dist/v8.17.0/docs/api/documentation.html)均可使用，如 `querystring` 等。
-
+Approw Pipeline uses node8 engine, all built-in modules of [node8](https://nodejs.org/dist/v8.17.0/docs/api/documentation.html) It can be used, such asquerystringand so on.

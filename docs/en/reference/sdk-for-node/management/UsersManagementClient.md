@@ -12,8 +12,8 @@ Please follow the instructions below to use this client:
 ```javascript
 import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 
 managementClient.users.list; // create user list
@@ -76,8 +76,8 @@ UsersManagementClient().create(userInfo)
 
 ```javascript
 const user = await managementClient.users.create({
-  username: "bob",
-  password: "passw0rd",
+	username: "bob",
+	password: "passw0rd",
 });
 ```
 
@@ -92,7 +92,7 @@ const user = await managementClient.users.create({
 
 #### Return value
 
-- `Promise<User>`
+-   `Promise<User>`
 
 ## Update user information
 
@@ -149,21 +149,21 @@ UsersManagementClient \*().update(id, updates)
 
 ```javascript
 const user = await managementClient.users.update("USERID", {
-  nickname: "Nick",
+	nickname: "Nick",
 });
 ```
 
 ```javascript
 const user = await managementClient.users.update("USERID", {
-  nickname: "Nick",
-  phone: "176xxxx6754", // since this is an admin operation, SMS code verification is required. If you need it, please use AuthenticationClient
-  tokenExpiredAt: "2020-10-15T17:55:37+08:00",
+	nickname: "Nick",
+	phone: "176xxxx6754", // since this is an admin operation, SMS code verification is required. If you need it, please use AuthenticationClient
+	tokenExpiredAt: "2020-10-15T17:55:37+08:00",
 });
 ```
 
 #### Return value
 
-- `Promise<User>`
+-   `Promise<User>`
 
 ## Get user details
 
@@ -173,7 +173,7 @@ UsersManagementClient().detail(userId)
 
 #### Parameter
 
-- `userId` \<string\> User ID
+-   `userId` \<string\> User ID
 
 #### Example
 
@@ -183,7 +183,7 @@ const user = await managementClient.users.detail("USERID");
 
 #### Return value
 
-- `Promise<User>`
+-   `Promise<User>`
 
 ## Get user defined data
 
@@ -205,8 +205,8 @@ const data = await managementClient.users.getUdfValue("USER_ID");
 
 ```json
 {
-  "school": "Huazhong Institute of Technology",
-  "age": 20
+	"school": "Huazhong Institute of Technology",
+	"age": 20
 }
 ```
 
@@ -224,8 +224,8 @@ UsersManagementClient().getUdfValueBatch(userIds)
 
 ```javascript
 const data = await managementClient.users.getUdfValueBatch([
-  "USER_ID1",
-  "USER_ID2"
+	"USER_ID1",
+	"USER_ID2",
 ]);
 ```
 
@@ -233,14 +233,14 @@ const data = await managementClient.users.getUdfValueBatch([
 
 ```json
 {
-  "USER_ID1": {
-    "school": "Huazhong Institute of Technology",
-    "age": 20
-  },
-  "USER_ID2": {
-    "school": "Peking University",
-    "age": 21
-  }
+	"USER_ID1": {
+		"school": "Huazhong Institute of Technology",
+		"age": 20
+	},
+	"USER_ID2": {
+		"school": "Peking University",
+		"age": 21
+	}
 }
 ```
 
@@ -259,8 +259,8 @@ UsersManagementClient().setUdfValue(userId, data)
 
 ```javascript
 await managementClient.users.setUdfValue(userId, {
-  school: 'Huazhong Institute of Technology',
-  age: 20
+	school: "Huazhong Institute of Technology",
+	age: 20,
 });
 ```
 
@@ -272,25 +272,25 @@ UsersManagementClient().setUdfValueBatch(input)
 
 #### Parameter
 
-- `input` \<string\> input data. See structure in example.
+-   `input` \<string\> input data. See structure in example.
 
 #### Example
 
 ```javascript
 await managementClient.users.setUdfValueBatch([
-  {
-    userId: 'USER_ID1',
-    data: {
-      school: 'Huazhong Institute of Technology'
-    }
-  },
-  {
-    userId: 'USER_ID2',
-    data: {
-      school: 'Tsinghua University',
-      age: 100
-    }
-  }
+	{
+		userId: "USER_ID1",
+		data: {
+			school: "Huazhong Institute of Technology",
+		},
+	},
+	{
+		userId: "USER_ID2",
+		data: {
+			school: "Tsinghua University",
+			age: 100,
+		},
+	},
 ]);
 ```
 
@@ -308,9 +308,8 @@ UsersManagementClient().removeUdfValue(userId, key)
 #### Example
 
 ```javascript
-await authenticationClient.removeUdfValue('USER_ID', 'school')
+await authenticationClient.removeUdfValue("USER_ID", "school");
 ```
-
 
 ## Delete a user
 
@@ -330,7 +329,7 @@ const user = await managementClient.users.delete("USERID");
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Batch delete users
 
@@ -350,7 +349,7 @@ const user = await managementClient.users.deleteMany(["USERID"]);
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Batch get users
 
@@ -370,7 +369,7 @@ const users = await managementClient.users.batch(["USERID"]);
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Get user list
 
@@ -380,8 +379,8 @@ UsersManagementClient().list(page, limit)
 
 #### Parameter
 
-- `page` \<number\> Page number, starting from 1. The default value is: `1`.
-- `limit` \<number\> The number of users per page. The default value is: `10`.
+-   `page` \<number\> Page number, starting from 1. The default value is: `1`.
+-   `limit` \<number\> The number of users per page. The default value is: `10`.
 
 #### Example
 
@@ -391,7 +390,7 @@ const user = await managementClient.users.list();
 
 #### Return value
 
-- `null`
+-   `null`
 
 ## Check if the user exists
 
@@ -410,13 +409,13 @@ UsersManagementClient().exists(options)
 
 ```javascript
 const exists = await managementClient.users.exists({
-  username: "bob",
+	username: "bob",
 });
 ```
 
 #### Return value
 
-- `Promise<boolean>`
+-   `Promise<boolean>`
 
 ## Find a user
 
@@ -457,7 +456,7 @@ const { totalCount, list } = await managementClient.users.search("Bob");
 
 #### Return value
 
-- `Promise<PaginatedUsers>`
+-   `Promise<PaginatedUsers>`
 
 ## Refresh user token
 
@@ -477,13 +476,13 @@ const { token } = await managementClient.users.refreshToken("USERID");
 // check the latest status of the token. It can get user's token
 
 const data = await managementClient.checkLoginStatus(token, {
-  fetchUserDetail: true,
+	fetchUserDetail: true,
 });
 ```
 
 #### Return value
 
-- `Promise<RefreshToken>`
+-   `Promise<RefreshToken>`
 
 ## Get user group list
 
@@ -503,7 +502,7 @@ const { list, totalCount } = await managementClient.users.listGroups("USERID");
 
 #### Return value
 
-- `Promise<DeepPartial<PaginatedGroups>>`
+-   `Promise<DeepPartial<PaginatedGroups>>`
 
 ## Join a group
 
@@ -520,14 +519,14 @@ UsersManagementClient().addGroup(userId, group)
 
 ```javascript
 const { code, message } = await managementClient.users.addGroup(
-  "USERID",
-  "GROUP_CODE"
+	"USERID",
+	"GROUP_CODE"
 );
 ```
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Quit a group
 
@@ -544,14 +543,14 @@ UsersManagementClient().removeGroup(userId, group)
 
 ```javascript
 const { code, message } = await managementClient.users.removeGroup(
-  "USERID",
-  "GROUP_CODE"
+	"USERID",
+	"GROUP_CODE"
 );
 ```
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Get user role list
 
@@ -571,7 +570,7 @@ const { list, totalCount } = await managementClient.users.listRoles("USERID");
 
 #### Return value
 
-- `Promise<DeepPartial<PaginatedRoles>>`
+-   `Promise<DeepPartial<PaginatedRoles>>`
 
 ## Add roles
 
@@ -588,13 +587,13 @@ UsersManagementClient().addRoles(userId, roles)
 
 ```javascript
 const { code, message } = await managementClient.users.addRoles("USERID", [
-  "ROLEA",
+	"ROLEA",
 ]);
 ```
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Remove roles
 
@@ -611,13 +610,13 @@ UsersManagementClient().removeRoles(userId, roles)
 
 ```javascript
 const { code, message } = await managementClient.users.removeRoles("USERID", [
-  "ROLEA",
+	"ROLEA",
 ]);
 ```
 
 #### Return value
 
-- `Promise<CommonMessage>`
+-   `Promise<CommonMessage>`
 
 ## Get the user's organization
 
@@ -637,8 +636,7 @@ const data = await managementClient.users.listOrgs("USERID");
 
 #### Return value
 
-- `Promise<UserOrgList>`
-
+-   `Promise<UserOrgList>`
 
 ## Get the list of authorized resources of the user
 
@@ -654,7 +652,7 @@ UsersManagementClient.listAuthorizedResources(userId, namespace)
 #### Example
 
 ```javascript
-managementClient.users.listAuthorizedResources('USERID', 'code')
+managementClient.users.listAuthorizedResources("USERID", "code");
 ```
 
 #### Sample data
@@ -669,24 +667,21 @@ managementClient.users.listAuthorizedResources('USERID', 'code')
 
 ```json
 {
-   "totalCount": 12,
-   "list": [
-      {
-         "code": "menu_a",
-         "type": "MENU",
-      },
-      {
-         "code": "menu_b",
-         "type": "MENU",
-      },
-      {
-         "code": "books:1",
-         "type": "DATA",
-         "actions": [
-            "books:delete",
-            "books:update"
-         ]
-      }
-   ]
+	"totalCount": 12,
+	"list": [
+		{
+			"code": "menu_a",
+			"type": "MENU"
+		},
+		{
+			"code": "menu_b",
+			"type": "MENU"
+		},
+		{
+			"code": "books:1",
+			"type": "DATA",
+			"actions": ["books:delete", "books:update"]
+		}
+	]
 }
 ```

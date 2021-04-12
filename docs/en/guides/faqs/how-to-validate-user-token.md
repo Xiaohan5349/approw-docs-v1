@@ -23,8 +23,9 @@ The key can be obtained in the **console>application>application details**, as s
 The following code to verify the legality takes Node as an example (need to install [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)).
 
 ```javascript
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 try {
+<<<<<<< HEAD
   let decoded = jwt.verify('JSON Web Token from client', 'your_secret'),
     expired = Date.parse(new Date()) / 1000 > decoded.exp
   if (expired) {
@@ -34,6 +35,17 @@ try {
   }
 } catch (error) {
   // invalid
+=======
+	let decoded = jwt.verify("JSON Web Token from client", "your_secret"),
+		expired = Date.parse(new Date()) / 1000 > decoded.exp;
+	if (expired) {
+		// Expired
+	} else {
+		// Legal and not expired, normal release
+	}
+} catch (error) {
+	// Illegal
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 }
 ```
 
@@ -47,8 +59,12 @@ If you use javascript, you can use the jose library to verify the RS256 signatur
 
 ```javascript
 const jose = require('jose')
+<<<<<<< HEAD
 // The following parameter content is to copy the return value of https://<APP_DOMAIN>.Approw.cn/oidc/.well-known/jwks.json 
 const keystore = jose.JWKS.asKeyStore({
+=======
+// The following parameter content is to copy the content returned from https://<application domain name>.Approw.cn/oidc/.well-known/jwks.json intactconst keystore = jose.JWKS.asKeyStore({
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
   keys: [
     {
       e: 'AQAB',
@@ -61,8 +77,13 @@ const keystore = jose.JWKS.asKeyStore({
     },
   ],
 })
+<<<<<<< HEAD
 // the content of the  issuer in options is: https://<APP_DOAMAIN>.Approw.cn/oidc; the content of audience is application ID
 // id_token is long ->
+=======
+// The content of issuer in the option is https://<application domain name>.Approw.cn/oidc, and the content of audience is the application ID
+// id_token is very long, please slide to the right ->
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 const res = jose.JWT.IdToken.verify(
   'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRmTE90M0xibjhfYThwUk11ZXNzYW1xai1vM0RCQ3MxLW93SExRLVZNcVEifQ.eyJzdWIiOiI1ZjcxOTk0NjUyNGVlMTA5OTIyOTQ5NmIiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vdXNlci1jb250ZW50cy9waG90b3MvOWE5ZGM0ZDctZTc1Ni00NWIxLTgxZDgtMDk1YTI4ZTQ3NmM2LmpwZyIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QxIiwicHJvZmlsZSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjAtMDktMzBUMDc6MTI6MTkuNDAxWiIsIndlYnNpdGUiOm51bGwsInpvbmVpbmZvIjpudWxsLCJlbWFpbCI6InRlc3QxQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJFNjViMVFvVVl0IiwiYXRfaGFzaCI6IkIzSWdPWUREYTBQejh2MV85cVpyQXciLCJhdWQiOiI1ZjE3YTUyOWY2NGZiMDA5Yjc5NGEyZmYiLCJleHAiOjE2MDE0NTM1NTgsImlhdCI6MTYwMTQ0OTk1OSwiaXNzIjoiaHR0cHM6Ly9vaWRjMS5hdXRoaW5nLmNuL29pZGMifQ.Z0TweYr9bCdYNJREVdvbJYcjXSfSsSNHBMqxTJeW-bnza0IIpBpEEVxlDG0Res6FZbcVzsQZzfJ9pj_nFgLjZxUUxv7Tpd13Sq_Ykg2JKepPf3-uoFqbORym07QEj4Uln0Quuh094MTb7z6bZZBEOYBac46zuj4uVp4vqk5HtCUSB4ASOAxwi7CeB1tKghISHz6PDcf6XJe_btHdzX1dparxtML-KvPxjpcHlt5emN88lpTAOX7Iq0EhsVE3PKrIDfCkG8XlL5y9TIW2Dz2iekcZ5PV17M35G6Dg2Q07Y_Apr18_oowOiQM5m_EbI90ist8CiqO9kBKreCOLMzub4Q',
   keystore,
@@ -112,23 +133,27 @@ Result:
 
 This endpoint can detect `access_token` and `id_token` effectiveness `refresh_token` can not be detected.
 
-- Interface Description: check whether issued `access_token` or `id_token` is valid.
+-   Interface Description: check whether issued `access_token` or `id_token` is valid.
 
-- Interface Endpoint:`GET` `https://<your application domain>.approw.cn/api/v2/oidc/validate_token`
+-   Interface Endpoint:`GET` `https://<your application domain>.approw.cn/api/v2/oidc/validate_token`
 
-- Request parameters:
+-   Request parameters:
 
 | Parameter    | Types of | Is it required | Description                 |
 | ------------ | -------- | -------------- | --------------------------- |
 | access_token | string   | no             | The content of AccessToken. |
 | id_token     | string   | no             | The content of the IdToken. |
 
-- Return data:
+-   Return data:
 
 When `access_token` or `id_token` is legal, return decoded content of `access_token`/`id_token`
 
 ```json
+<<<<<<< HEAD
 // return value of checking access_token：
+=======
+// Return result after access_token check:
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 {
     "jti": "K5TYewNhvdGBdHiRifMyW",
     "sub": "5f64afd1ad501364e3b43c1e",
@@ -139,7 +164,11 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "aud": "5f17a529f64fb009b794a2ff"
 }
 
+<<<<<<< HEAD
 // return value of checking id_token：
+=======
+// The returned result after id_token verification:
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 {
     "sub": "5f64afd1ad501364e3b43c1e",
     "birthdate": null,
@@ -174,29 +203,37 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 ```javascript
 {
   code: 400,
+<<<<<<< HEAD
   message: 'id_token invalid',
+=======
+  message: 'id_token illegal',
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 }
 
 {
   code: 400,
+<<<<<<< HEAD
   message: 'access_token invalid',
+=======
+  message: 'access_token illegal',
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 }
 ```
 
 ### Online verification OAuth2 AccessToken
 
-- Interface Description: You can verify whether `access_token` or `refresh_token` is valid.
+-   Interface Description: You can verify whether `access_token` or `refresh_token` is valid.
 
-- Interface Endpoint:`POST` `https://<your applicaiton name>.approw.cn/oauth/token/introspection`
+-   Interface Endpoint:`POST` `https://<your applicaiton name>.approw.cn/oauth/token/introspection`
 
-- Request header:
+-   Request header:
 
 | Parameter     | Types of | Is it required | Description                                                                                                                                                                                                                                                                      |
 | ------------- | -------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Content-Type  | string   | Yes            | application/x-www-form-urlencoded                                                                                                                                                                                                                                                |
 | Authorization | string   | no             | Is required if: In the console application configuration details, &quot;Configuring OAuth2.0 identity provider&quot; tab, the authentication method is set to verify token client_secret_basic. In the form of: Basic base64 (Application ID + &#39;:&#39; + Application Secret) |
 
-- Request parameters:
+-   Request parameters:
 
 | Parameter       | Types of | Is it required | Description                                                                                                                                                                                                                                 |
 | --------------- | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -205,21 +242,21 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 | client_id       | string   | no             | Application ID, it is required when configuring the verification token authentication method as client_secret_post and none in the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab.  |
 | client_secret   | string   | no             | Application Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
 
-- Return data:
+-   Return data:
 
 When the token is valid, the following content will be returned
 
 ```json
 {
-  "active": true,
-  "sub": "5dc10851ebafee30ce3fd5e9",
-  "client_id": "5cded22b4efab31716fa665f",
-  "exp": 1602423020,
-  "iat": 1602419420,
-  "iss": "https://core.approw.cn/oauth",
-  "jti": "SaPg48dbO66T77xkT8wy0",
-  "scope": "user",
-  "token_type": "Bearer"
+	"active": true,
+	"sub": "5dc10851ebafee30ce3fd5e9",
+	"client_id": "5cded22b4efab31716fa665f",
+	"exp": 1602423020,
+	"iat": 1602419420,
+	"iss": "https://core.approw.cn/oauth",
+	"jti": "SaPg48dbO66T77xkT8wy0",
+	"scope": "user",
+	"token_type": "Bearer"
 }
 ```
 
@@ -227,6 +264,6 @@ When the token is invalid (expired, error, withdrawn), the following content wil
 
 ```json
 {
-  "active": false
+	"active": false
 }
 ```

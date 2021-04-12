@@ -9,8 +9,8 @@ Please follow the instructions below to use this client:
 ```javascript
 import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 
 managementClient.userpool.detail; // get user pool detail information
@@ -34,7 +34,7 @@ const userpool = await managementClient.userpool.detail();
 
 #### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
 ## Update the user pool
 
@@ -73,13 +73,13 @@ If there are more than one, please separate them with line breaks.
 
 ```javascript
 const userpool = await managementClient.userpool.update({
-  registerDisabled: true, // disable the register system
+	registerDisabled: true, // disable the register system
 });
 ```
 
 #### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
 ## Get the environment variables list
 
@@ -97,7 +97,7 @@ const envList = await managementClient.userpool.listEnv();
 
 #### Return value
 
-- `Promise<Env[]>`
+-   `Promise<Env[]>`
 
 ## Add environment variables
 
@@ -107,15 +107,15 @@ UserPoolManagementClient().addEnv(key, value)
 
 #### Parameter
 
-- `key` \<string\> Environment variable key
-- `value` \<any\> Environment variable value
+-   `key` \<string\> Environment variable key
+-   `value` \<any\> Environment variable value
 
 #### Example
 
 ```javascript
 const envList = await managementClient.userpool.addEnv(
-  "LARK_WEBHOOK",
-  "xxxxxxx"
+	"LARK_WEBHOOK",
+	"xxxxxxx"
 ); // the webhppk address of adding a lark bot, you can use it later in pipeline function. (See more details in: https://docs.approw.co/extensibility/pipeline/usage.html)
 ```
 
@@ -131,7 +131,7 @@ UserPoolManagementClient().removeEnv(key)
 
 #### Parameter
 
-- `key` \<string\> Environment variable key
+-   `key` \<string\> Environment variable key
 
 #### Example
 

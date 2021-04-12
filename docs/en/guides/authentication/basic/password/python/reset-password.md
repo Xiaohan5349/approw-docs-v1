@@ -1,6 +1,10 @@
 !!!include(en/common/init-python-auth-sdk.md)!!!
 
+<<<<<<< HEAD
 Use phone number to reset password:
+=======
+Use the mobile phone number verification code to reset the password:
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 
 ```python
 authentication_client.reset_password_by_phone_code(
@@ -10,7 +14,11 @@ authentication_client.reset_password_by_phone_code(
 )
 ```
 
+<<<<<<< HEAD
 Use email to reset password：
+=======
+Use email verification code to reset password:
+>>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 
 ```python
 authentication_client.reset_password_by_email_code(

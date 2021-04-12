@@ -4,21 +4,21 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '配置自定义社会化登录',
-  bannerTitle: '配置自定义社会化登录',
+  title: 'Setup Customized Soical Provider for Social Authentication',
+  bannerTitle: 'Setup Customized Soical Provider for Social Authentication',
   steps:
     [
       {
-        title: '创建自定义社会化登录连接',
+        title: 'Create Login URL for Customized Soical Provider',
       },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用',
+        title: 'Create an application in {{$localeConfig.brandName}}',
       },
       {
-        title: '测试连接'
+        title: 'Test Connection'
       },
       {
-        title: '开始开发接入'
+        title: 'Begin Deploying Integration'
       },
     ],
 }

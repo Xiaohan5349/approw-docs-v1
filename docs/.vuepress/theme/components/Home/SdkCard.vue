@@ -14,7 +14,7 @@
         {{ cardInfo.description }}
       </p>
 
-      <p class="sdk-access">SDK 接入</p>
+      <p class="sdk-access">{{ $themeLocaleConfig.sdkAccess }}</p>
 
       <div class="sdk-link-container">
         <template v-for="(sdk, index) of sdkData">

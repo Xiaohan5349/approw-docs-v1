@@ -45,7 +45,7 @@
       </div>
 
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
-      <SearchInput placeholder="在文档中搜索" />
+      <SearchInput :placeholder="$themeLocaleConfig.searchInDoc" />
 
       <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
@@ -173,7 +173,7 @@ $navbar-horizontal-padding = 0
     // min-width $navbarHeight - 1.4rem
     width 90px
     margin-right 0
-    vertical-align top
+    vertical-align middle
   .site-name
     font-size 16px
     font-weight 400
