@@ -188,7 +188,7 @@ const user = await managementClient.users.detail("USERID");
 
 UsersManagementClient().getUdfValue(userId)
 
-> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
+> Before you get user defined data, you need to [set user defined field](/en/guides/users/user-defined-field/) in the user pool.
 
 #### Parameter
 
@@ -213,7 +213,7 @@ const data = await managementClient.users.getUdfValue("USER_ID");
 
 UsersManagementClient().getUdfValueBatch(userIds)
 
-> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
+> Before you get user defined data, you need to [set user defined field](/en/guides/users/user-defined-field/) in the user pool.
 
 #### Parameter
 
@@ -247,7 +247,7 @@ const data = await managementClient.users.getUdfValueBatch([
 
 UsersManagementClient().setUdfValue(userId, data)
 
-> Set user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Set user defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
@@ -267,7 +267,7 @@ await managementClient.users.setUdfValue(userId, {
 
 UsersManagementClient().setUdfValueBatch(input)
 
-> Set multiple users defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Set multiple users defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
@@ -297,7 +297,7 @@ await managementClient.users.setUdfValueBatch([
 
 UsersManagementClient().removeUdfValue(userId, key)
 
-> Delete user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Delete user defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
@@ -646,7 +646,7 @@ UsersManagementClient.listAuthorizedResources(userId, namespace)
 #### Parameter
 
 -   `userId` \<string\> user ID；
--   `namespace` \<string\> the code of the permission group. For more details, please refer to [resource group](/guides/access-control/resource-group.md).
+-   `namespace` \<string\> the code of the permission group. For more details, please refer to [resource group](/en/guides/access-control/resource-group.md).
 
 #### Example
 
