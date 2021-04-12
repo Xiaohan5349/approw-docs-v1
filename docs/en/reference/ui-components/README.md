@@ -22,9 +22,9 @@ Built-in rich login and registration methods for developers to choose:
 
 - Account password login (including mobile phone number + password, email + password, user name + password);
 - SMS login;
-- APP scan QR code login ([need to access APP scan code login first](/guides/authentication/qrcode/use-self-build-app/)）；
-- Social login, such as Github login ([need to be configured in the background](/guides/connections/social.md)）；
-- Enterprise identity source login ([needs to configure enterprise identity source](/guides/connections/enterprise.md)）；
+- APP scan QR code login ([need to access APP scan code login first](/en/guides/authentication/qrcode/use-self-build-app/)）；
+- Social login, such as Github login ([need to be configured in the background](/en/guides/connections/social.md)）；
+- Enterprise identity source login ([needs to configure enterprise identity source](/en/guides/connections/enterprise.md)）；
 
 #### Built-in forgot password process
 
