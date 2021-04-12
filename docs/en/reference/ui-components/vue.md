@@ -84,7 +84,7 @@ const app = new Vue({
 
 ### Monitor login events
 
-`ApprowGuard` Component Callback function for `@login` event, which is called when the user successfully logs in, and you can get the user information of the current user here. View the [complete list of events](#完整参数).
+`ApprowGuard` Component Callback function for `@login` event, which is called when the user successfully logs in, and you can get the user information of the current user here. View the [complete list of events](#event-list).
 
 ```vue
 <template>
@@ -130,14 +130,14 @@ axios
     // custom codes
   });
 ```
-The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/en/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/en/guides/access-control/) to determine whether the user has operating permissions for this API.
 
 
 </details>
 
 ### Add social login
 
-Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed([all social logins configured by the application](/guides/app/config-login-methods.md#添加社会化登录)are displayed by default).
+Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed([all social logins configured by the application](/en/guides/app/config-login-methods.md#添加社会化登录)are displayed by default).
 
 ```vue
 <template>
@@ -184,7 +184,7 @@ export default {
 
 ### Log out
 
-1. Initialize the [AuthenticationClient](/reference/sdk-for-node/#使用认证模块)in the project entry file.
+1. Initialize the [AuthenticationClient](/en/reference/sdk-for-node/#使用认证模块)in the project entry file.
 
 ```js
 import { initAuthClient } from '@approw/vue-ui-components'
@@ -251,7 +251,7 @@ export default {
 
 The Guard components are packaged based on the [approw JavaScript SDK](../sdk-for-node/). When you need to perform some more advanced operations (such as managing user-defined data, modifying user information, logging out):
 
-1. Call `initAuthClient` to initialize [AuthenticationClient](/reference/sdk-for-node/authentication/AuthenticationClient). Calling this function multiple times will only initialize it once.
+1. Call `initAuthClient` to initialize [AuthenticationClient](/en/reference/sdk-for-node/authentication/AuthenticationClient). Calling this function multiple times will only initialize it once.
 
 ```js
 import { initAuthClient } from "@approw/vue-ui-components";
@@ -269,7 +269,7 @@ import { getAuthClient } from "@approw/vue-ui-components";
 const authClient = getAuthClient();
 ```
 
-3. Call the method of the `AuthenticationClient` instance. For a complete list of methods, please see the [AuthenticationClient method list](/reference/sdk-for-node/authentication/AuthenticationClient).
+3. Call the method of the `AuthenticationClient` instance. For a complete list of methods, please see the [AuthenticationClient method list](/en/reference/sdk-for-node/authentication/AuthenticationClient).
 
 
 ```js
@@ -289,7 +289,7 @@ Note that in React, event listeners should be named with small camels, such as: 
 
 |<p>Event name</p><p></p>|<p>Event Introduction</p><p></p>|<p>Event parameter</p><p></p>|<p>Event parameter introduction</p><p></p>|
 | :- | :- | :- | :- |
-|<p>load</p><p></p><p></p>|<p>{{$localeConfig.brandName}} appId authenticate success，loading complete</p><p></p>|<p>authClient</p><p></p>|<p>AuthenticationClient object，can directly operate login， register，details in [approw-js-sdk](/reference/sdk-for-node/)</p><p></p>|
+|<p>load</p><p></p><p></p>|<p>{{$localeConfig.brandName}} appId authenticate success，loading complete</p><p></p>|<p>authClient</p><p></p>|<p>AuthenticationClient object，can directly operate login， register，details in [approw-js-sdk](/en/reference/sdk-for-node/)</p><p></p>|
 |<p>load-error</p><p></p>|<p>{{$localeConfig.brandName}} appId authenticate failed，loading failed</p><p></p>|<p>error</p><p></p><p></p>|<p>Error information</p><p></p>|
 |<p>login</p><p></p>|<p>User login success</p><p></p>|<p>user, authClient</p><p></p>|<p>user: user information authClient same as before</p><p></p><p></p>|
 |<p>login-error</p><p></p>|<p>User login failed</p><p></p>|<p>error</p><p></p>|<p>Error information，including information such as missing/illegal fields or server errors</p><p></p>|
