@@ -1,33 +1,33 @@
 ---
 meta:
   - name: description
-    content: 常见问题
+    content: FAQ
 ---
 
-# 常见问题
+# **FAQs**
 
-## Pipeline 函数支持  async await 语法吗？
+## **Does the Pipeline function support async await syntax?**
 
-支持。
+Yes.
 
-## Pipeline 函数中可以使用 {{$localeConfig.brandName}} SDK 吗？
+## **Can the Approw SDK be used in the Pipeline function?**
 
-可以，且无需导入和初始化。详情请见[可用的  Node Modules](available-node-modules.md)。
+Yes, and no import and initialization are required.See the [available Node Modules for](https://docs.authing.cn/v2/guides/pipeline/available-node-modules.html) details.
 
-## 我能用其他语言编写 Pipeline 函数吗？
+## **Can I write Pipeline functions in other languages?**
 
-暂时不能，当前仅支持 Node 语言。
+Not for the time being, only Node is currently supported.
 
-## 编写 Pipeline 函数有哪些注意事项？
+## *What are the precautions for writing Pipeline functions?**
 
-* 请不要重命名 pipe 函数。
-* 推荐不要硬编码，使用[环境变量](env.md)来存放常量值。
+- Please do not rename the pipe function.
 
-## 刷新用户池  secret 对 Pipeline 函数有何影响？
+- It is recommended not to hard code and use [environment variables](https://docs.authing.cn/v2/guides/pipeline/env.html) to store constant values.
 
-由于 {{$localeConfig.brandName}} Pipeline 函数完全运行在云端，所以刷新用户池 secret 会同时更新用户池内所有的 Pipeline 函数。这意味着在一小段时间之内 Pipeline 函数中将无法正常使用 authing-js-sdk。
+## **What effect does refreshing the user pool secret have on the Pipeline function?**
 
-## 有哪些性能优化方法？
+Since the Approw Pipeline function runs completely in the cloud, refreshing the user pool secret will also update all the Pipeline functions in the user pool.This means that the Approw-js-sdk will not be able to be used normally in the Pipeline function within a short period of time.
 
-* 如果是和 pipeline 流程不直接相关的函数，如新用户注册通知等，可以[设置为异步执行](pipeline-function-api-doc.md#设置异步执行)。
+## **What are the performance optimization methods?**
 
+- If it is a function that is not directly related to the pipeline process, such as a new user registration notification, it can be [set to be executed asynchronously](https://docs.authing.cn/v2/guides/pipeline/pipeline-function-api-doc.html#%E8%AE%BE%E7%BD%AE%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C).
