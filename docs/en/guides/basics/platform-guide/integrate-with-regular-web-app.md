@@ -56,7 +56,7 @@ yarn add express express-session passport openid-client
 At the very beginning of the project, we need to initialize the `issuer` of `openid-client`. The initial parameters are as follows: 
 
 - client_id: OIDC Client ID, which is your [application ID](/guides/faqs/get-app-id-and-secret.md) in {{$localeConfig.brandName}}; 
-- client_secret: OIDC Client Secret, which is [the secret key of your application](/guides/faqs/get-app-id-and-secret.md) in {{$localeConfig.brandName}}; 
+- client_secret: OIDC Client Secret, which is [the secret key of your application](/en/guides/faqs/get-app-id-and-secret.md) in {{$localeConfig.brandName}}; 
 - issuer: OIDC Issuer, you can get it from the endpoint information of the application.
 
 <img src="~@imagesZhCn/guides/authentication/Xnip2021-03-02_13-00-24.png" alt="drawing"/>
