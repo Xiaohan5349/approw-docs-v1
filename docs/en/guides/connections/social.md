@@ -16,6 +16,5 @@ Social authentication is an authentication method that allows users to use the i
 
 <!--
 ## 微信解决方案
-
 {{$localeConfig.brandName}} 针对微信生态有一套完整的解决方案，你可以查看[产品介绍](https://authing.cn/solutions/wechat)以及阅读[打通微信账号体系指引](/guides/wechat-ecosystem/)。
 -->
