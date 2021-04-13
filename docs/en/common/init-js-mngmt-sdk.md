@@ -1,4 +1,4 @@
-Use [user pool ID (`userPoolId`) and user pool key (`secret`)](/guides/faqs/get-userpool-id-and-secret.md)初始化 [Node.js SDK](/reference/sdk-for-node/) 的 `ManagementClient`:
+Use [user pool ID (`userPoolId`) and user pool key (`secret`)](/en/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Node.js SDK](/en/reference/sdk-for-node/):
 
 ```js
 import { ManagementClient } from "authing-js-sdk";

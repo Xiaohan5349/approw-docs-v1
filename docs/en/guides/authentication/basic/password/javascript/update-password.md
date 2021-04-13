@@ -1,21 +1,12 @@
 !!!include(en/common/init-js-auth-sdk.md)!!!
 
-<<<<<<< HEAD
-
-If a user doesn't set a password before (for example, register by phone number or social IDP), this method does not require the original password.
-=======
 If the user has not set a password before (for example, registered by mobile phone number, social login, etc.), there is no need to pass in the original password.
->>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 
 ```javascript
 authenticationClient.updatePassword("passw0rd");
 ```
 
-<<<<<<< HEAD
-Or：
-=======
 Or:
->>>>>>> 73ab4dd7c5da68c242b103b5fa2c1d26e1270e5b
 
 ```javascript
 authenticationClient.updatePassword("passw0rd", "oldPassw0rd"); // user set a password before

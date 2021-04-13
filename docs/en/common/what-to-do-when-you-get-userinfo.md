@@ -14,4 +14,4 @@ axios
   });
 ```
 
-The legitimacy of this `token` needs to be verified in the back-end interface to verify the user's identity. For details on the verification method, please see [Verify User Identity Credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [Permission Management for the User](/guides/access-control/) to determine whether the user has operating permissions for this API.
+The legitimacy of this `token` needs to be verified in the back-end interface to verify the user's identity. For details on the verification method, please see [Verify User Identity Credentials (token)](/en/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [Permission Management for the User](/en/guides/access-control/) to determine whether the user has operating permissions for this API.

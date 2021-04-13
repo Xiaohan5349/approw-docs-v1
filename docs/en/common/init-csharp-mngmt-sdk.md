@@ -1,4 +1,4 @@
-Use [userPoolId and secret](/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [C# SDK](/reference/sdk-for-csharp/):
+Use [userPoolId and secret](/en/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [C# SDK](/en/reference/sdk-for-csharp/):
 
 ```csharp
 using Authing.ApiClient;
