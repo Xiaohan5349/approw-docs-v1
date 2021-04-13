@@ -202,7 +202,7 @@ In order to check login status from {{$localeConfig.brandName}} before the web a
 ```
 
 The sample code can be found on [Github](https://github.com/approw/approw-sso-demo). It is recommended to download and run the code on Github.
-Please [see here](/docs/en/reference/sdk-for-sso.md) for the complete parameter list of {{$localeConfig.brandName}}SSO single sign-on SDK.
+Please [see here](/en/reference/sdk-for-sso.md) for the complete parameter list of {{$localeConfig.brandName}}SSO single sign-on SDK.
 
 ### **Operation method** <a id="run-the-demo"></a>
 
@@ -357,7 +357,7 @@ After a successful login, the user information you get contains a token field,wh
 
 ### What is id_token?
 
-**id_token** is equivalent to the terminal user's ID card, used to authenticate the user's identity, and is issued after OIDC authorization. When you need to request resources from your **own server**, you should carry **id_token**. At the same time, your server should [verify the validity of this token](../../basics/authenticate-first-user/how-to-validate-user-token.md), and then return the corresponding resources. Please see the difference between id_token and access_token [here](/docs/en/concepts/oidc-common-questions.md#id-token-and-access-token).
+**id_token** is equivalent to the terminal user's ID card, used to authenticate the user's identity, and is issued after OIDC authorization. When you need to request resources from your **own server**, you should carry **id_token**. At the same time, your server should [verify the validity of this token](../../basics/authenticate-first-user/how-to-validate-user-token.md), and then return the corresponding resources. Please see the difference between id_token and access_token [here](/en/concepts/oidc-common-questions.md#id-token-and-access-token).
 
 ## Then
 
@@ -375,4 +375,4 @@ axios.get({
 })
 ```
 
-The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/docs/en/guides/faqs/how-to-validate-user-token.md). After identifying the user, you may also need to [perform permission management on the user](/docs/en/guides/access-control/) to determine whether the user has operating permissions for this API.
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/en/guides/faqs/how-to-validate-user-token.md). After identifying the user, you may also need to [perform permission management on the user](/en/guides/access-control/) to determine whether the user has operating permissions for this API.
