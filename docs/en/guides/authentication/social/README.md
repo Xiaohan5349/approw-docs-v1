@@ -8,7 +8,7 @@ Social login refers to the process in which users use social platform identity a
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+!!!include(en/common/social-connections-table.md)!!!
 
 ## Custom social login
 
