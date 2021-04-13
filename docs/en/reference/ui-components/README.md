@@ -12,7 +12,7 @@ The {{$localeConfig.brandName}} login component (Guard) is an embeddable login f
 
 Guard can be integrated into your React, Vue.js, Angular, and native JavaScript projects. You can use this component to quickly implement the login authentication process.
 
-![Guard demo](../../images/reference/guard-demo.jpg)
+![Guard demo](../../images/reference/guard-demo.png)
 
 ## Function list
 
