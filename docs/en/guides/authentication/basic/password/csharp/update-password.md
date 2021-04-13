@@ -5,6 +5,7 @@ If the user has not set a password before (for example, registered by mobile pho
 ```csharp
 var newPassword = "123456";
 await authenticationClient.UpdatePassword(newPassword);
+
 ```
 
 Or:
