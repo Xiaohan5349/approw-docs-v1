@@ -10,7 +10,7 @@ In order for your application to have identity authentication capabilities, you 
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, feel free to fill in an **subdomain**. Finally, click “Create”.
+Fill in the **Application Name**, for example, Web Note Project, feel free to fill in an **Subdomain**. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/saml/1-1.png)
 
