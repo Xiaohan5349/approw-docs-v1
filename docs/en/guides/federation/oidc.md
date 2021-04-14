@@ -42,7 +42,7 @@ There are the following processes.
 2. The browser receives an **authorization code** from Approw service.
 3. The browser sends the **authorization code** to your application **back-end** using redirection.
 4. Your application service sends the **authorization code** to Approw to obtain **AccessToken** and **IdToken**, refresh token also will be returned if necessary.
-5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources’ API, etc.
+5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources API, etc.
 
 Below is the workflow:
 
