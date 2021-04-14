@@ -65,7 +65,7 @@ In **Console** > **Applications**, find your application, in the application det
 There are the following processes.
 
 1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
-2. Approw redirects the browser to your application callback address. AccessToken and IdToken are sent as **URL hash**.
+2. Approw redirects the browser to your application callback URL. AccessToken and IdToken are sent as **URL hash**.
 3. Your application retrieves token from URL.
 4. Your application can save AccessToken and IdToken for further use. Such as carrying AccessToken to access the resource service, carrying IdToken to request the service so that the server can identify the user's identity.
 
@@ -86,7 +86,7 @@ In **Console** > **Applications**, find your application, in the application det
 There are the following processes.
 
 1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
-2. Approw redirects the browser to your application callback address. Code, AccessToken and IdToken are sent as **URL hash**.
+2. Approw redirects the browser to your application callback URL. Code, AccessToken and IdToken are sent as **URL hash**.
 3. Your application retrieves code and token from URL.
 4. Your application can save AccessToken and IdToken for further use. Such as carrying AccessToken to access the resource service, carrying IdToken to request the service so that the server can identify the user's identity.
 5. Your application can send code to the back-end.
@@ -170,7 +170,7 @@ The following request example can obtain the authorization code and Refresh Toke
 https://{your application domain name}/oidc/auth?client_id={Application ID}
 &response_type=code
 &scope=openid%20profile%20email%20phone%20address%20offline_access
-&redirect_uri={Callback address}
+&redirect_uri={Callback URL}
 &state=4756806
 ```
 
@@ -180,7 +180,7 @@ The following request example can obtain Access Token, Id Token, and Refresh Tok
 
 ```http
 POST https://${your app domain name}/oidc/token?grant_type=authorization_code
-&redirect_uri={Callback address}
+&redirect_uri={Callback URL}
 &code={Authroization code}
 &client_id={Application ID}
 &client_secret={Application Secret}
