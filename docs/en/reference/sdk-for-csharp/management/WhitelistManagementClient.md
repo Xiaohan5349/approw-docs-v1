@@ -1,10 +1,10 @@
 ---
 meta:
   - name: description
-    content: Whitelist Management 
+    content: WhitelistManagementClient 
 ---
 
-# Whitelist Management
+# WhitelistManagementClient
 
 <LastUpdated/>
 
