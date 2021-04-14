@@ -26,7 +26,7 @@ Finish login on the login page:
 After login success, it will redirect to the application callback address:
 ![](https://cdn.approw.com/docs/20201216143917.png)
 
-Next, click another application’s login button:
+Next, click another application’s Login button:
 ![](https://cdn.approw.com/docs/20201216144049.png)
 
 The user doesn’t need to enter the password again, the user can directly enter the application callback address:
