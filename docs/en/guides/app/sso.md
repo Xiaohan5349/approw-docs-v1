@@ -10,7 +10,7 @@ At first you can create two applications follow the [guidelines](./create-app.md
 
 ## Enable Single Sign-on for Applications
 
-On the console’s **Applications** page, turn on the application single sign-on switch.
+On the console’s **Applications** page, turn on the Enable application SSO switch.
 
 ![](https://cdn.approw.com/docs/20201216143359.png)
 
