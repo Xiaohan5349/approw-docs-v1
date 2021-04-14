@@ -28,7 +28,7 @@ In the "OAuth2.0 Identity Provider" card below, turn on the Enable OAuth2.0 Prov
 
 ## Authorization Code Mode
 
-If your application project has a **back-end service** that can store secret key safety, the **Authorization Code mode** is recommended.
+If your application project has a **back-end service** that can store secret key safety, the **Authorization Code Mode** is recommended.
 
 In **Console** > **Applications**, find your application in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `authorization_code` in the authorization mode, and then click Save.
 
@@ -50,7 +50,7 @@ Below is the workflow:
 
 ## Implicit Mode
 
-If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode** applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken will be returned directly from the **authentication endpoint**.
+If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit Mode** to complete user authentication and authorization. Implicit Mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit Mode** applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken will be returned directly from the **authentication endpoint**.
 
 In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `implicit` in the authorization mode, and then click Save.
 ![](~@imagesZhCn/guides/federation/oauth/1-4.png)
@@ -70,7 +70,7 @@ Below is the workflow:
 
 ## Password Mode
 
-It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
+It is not recommended to use this mode, try to use other modes as much as you can. **Password Mode** will be considered only when all other modes cannot solve the problem. If using Password Mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
 In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `password` in the authorization mode, and then click Save.
 
