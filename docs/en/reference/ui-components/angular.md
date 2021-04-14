@@ -127,7 +127,7 @@ The validity of this `token` needs to be verified in the back-end interface to v
 
 ### Add social login
 
-Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/en/guides/app/config-login-methods.md#添加社会化登录)are displayed by default).
+Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/en/guides/app/config-login-methods.md#social-registration) are displayed by default).
 
 ```html
 <approw-guard [appId]="appId" [config]="config" ></approw-guard>
@@ -158,7 +158,7 @@ export class AppComponent {
 ### Log out
 
 
-1. Initialize the [AuthenticationClient](/en/reference/sdk-for-node/#使用认证模块) in the project entry file.
+1. Initialize the [AuthenticationClient](/en/reference/sdk-for-node/#use-authentication-client) in the project entry file.
 
 ```js
 import { initAuthClient } from '@approw/ng-ui-components'
