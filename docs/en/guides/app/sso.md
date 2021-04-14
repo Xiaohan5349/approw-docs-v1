@@ -16,7 +16,7 @@ On the console’s **Applications** page, turn on the Enable application SSO swi
 
 ## Experience the Single Sign-on
 
-In console > Applications, click the application’s login button.
+In console > Applications, click the application’s Login button.
 
 ![](https://cdn.approw.com/docs/20201216143536.png)
 
