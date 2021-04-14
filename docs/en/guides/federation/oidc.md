@@ -24,7 +24,7 @@ In order for your application to have identity authentication capabilities, you 
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, specify an **subdomain** for your project, where your users will complete authentication. Fill in the **callback address** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
+Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-2.png)
 
