@@ -100,12 +100,12 @@ auth.register();
 
 ### Check login status <a id="check-login-status"></a>
 
-After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of[all fields of user information](/en/guides/user/user-profile.md).
+After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of [all fields of user information](/en/guides/user/user-profile.md).
 
 ::: hint-danger
 After version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on features** of {{$localeConfig.brandName}}. In other similar updates, after Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
 
-This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/en/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/en/guides/faqs/block-third-party-cookie-impact.md#如何解决).
+This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/en/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/en/guides/faqs/block-third-party-cookie-impact.md#how-to-solve-it).
 :::
 
 ```js
@@ -196,7 +196,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
       <td style="text-align:left">scope</td>
       <td style="text-align:left">no</td>
       <td style="text-align:left">Authorized domain</td>
-      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-parameter_related_user_information">View the list of supported scopes</router-link>。</a>
+      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-parameter_related_user_information"> View the list of supported scopes</router-link>.</a>
       </td>
     </tr>
     <tr>
