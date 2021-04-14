@@ -4,6 +4,6 @@
 
 You can read the following web framework's quick start guide flow:
 
-- [Spring Security](/frameworks/spring-security/)
-- [Express](/frameworks/express/)
+- [Spring Security](/en/frameworks/spring-security/)
+- [Express](/en/frameworks/express/)
 

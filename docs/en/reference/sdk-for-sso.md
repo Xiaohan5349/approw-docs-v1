@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-**Single sign-on (SSO)** is one of the popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. You can read [this guide](/guides/authentication/sso/) to learn how to quickly implement single sign-on in your application.
+**Single sign-on (SSO)** is one of the popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. You can read [this guide](/en/guides/authentication/sso/) to learn how to quickly implement single sign-on in your application.
 
 ## Installation <a id="install"></a>
 
@@ -35,11 +35,11 @@ import ApprowSSO from "@approw/sso";
 
 ## Quick Start <a id="getting-started"></a>
 
-Before starting, you need to [create an application](/guides/app/create-app.md)。
+Before starting, you need to [create an application](/en/guides/app/create-app.md)。
 
 ### Initialization
 
-To initialize the {{$localeConfig.brandName}} SSO SDK, you need to pass in the [application ID](/faqs/get-app-id-and-secret.md) and application domain name. The format of the application domain name is `example-app.approw.com` **without the protocol header and Path**. See the [initialization constructor](#初始化构造函数) for detailed parameters.
+To initialize the {{$localeConfig.brandName}} SSO SDK, you need to pass in the [application ID](/en/faqs/get-app-id-and-secret.md) and application domain name. The format of the application domain name is `example-app.approw.com` **without the protocol header and Path**. See [initialize constructor](#initialize-constructor) for detailed parameters.
 
 ```js
 import ApprowSSO from "@approw/sso";
@@ -69,7 +69,7 @@ let auth = new ApprowSSO({
 
 #### Redirect login
 
-Initiating single sign-on, it will redirect to the login page. The relevant application needs to open the authorization code mode if use [authorization code mode](/guides/federation/oidc.html#%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F).
+Initiating single sign-on, it will redirect to the login page. The relevant application needs to open the authorization code mode if use [authorization code mode](/en/guides/federation/oidc.html#authorization-code-mode).
 
 ```js
 auth.login();
@@ -100,12 +100,12 @@ auth.register();
 
 ### Check login status <a id="check-login-status"></a>
 
-After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of[all fields of user information](/guides/user/user-profile.md).
+After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of [all fields of user information](/en/guides/user/user-profile.md).
 
 ::: hint-danger
 After version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on features** of {{$localeConfig.brandName}}. In other similar updates, after Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
 
-This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/guides/faqs/block-third-party-cookie-impact.md#如何解决).
+This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/en/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/en/guides/faqs/block-third-party-cookie-impact.md#how-to-solve-it).
 :::
 
 ```js
@@ -139,7 +139,7 @@ let res = await auth.trackSession();
  * */
 ```
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+!!!include(en/common/what-to-do-when-you-get-userinfo.md)!!!
 
 ### Sign out <a id="logout"></a>
 
@@ -187,7 +187,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
     <tr>
       <td style="text-align:left">appType</td>
       <td style="text-align:left">no</td>
-      <td style="text-align:left">Application type, optional values are oidc, oauth.<code>oidc</code>，<code>oauth</code>。
+      <td style="text-align:left">Application type, optional values are oidc, oauth.<code>oidc</code>, <code>oauth</code>.
       </td>
       <td style="text-align:left"><code>oidc</code>
       </td>
@@ -196,7 +196,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
       <td style="text-align:left">scope</td>
       <td style="text-align:left">no</td>
       <td style="text-align:left">Authorized domain</td>
-      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-参数对应的用户信息">View the list of supported scopes</router-link>。</a>
+      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-parameter_related_user_information"> View the list of supported scopes</router-link>.</a>
       </td>
     </tr>
     <tr>
@@ -217,13 +217,13 @@ The constructor accepts an object as a parameter. The list of parameters in the 
     <tr>
       <td style="text-align:left">host.oauth</td>
       <td style="text-align:left">no</td>
-      <td style="text-align:left">GraphQL &#x901A;&#x4FE1;&#x5730;&#x5740;</td>
+      <td style="text-align:left">GraphQL contact address;</td>
       <td style="text-align:left">https://core.approw.com/graphql</td>
     </tr>
     <tr>
       <td style="text-align:left">responseType</td>
       <td style="text-align:left">no</td>
-      <td style="text-align:left">Application authorization process, optional value is code <code>code</code>&#xFF0C;<code>implicit</code>
+      <td style="text-align:left">Application authorization process, optional value is code <code>code</code>, <code>implicit</code>
       </td>
       <td style="text-align:left"><code>code</code>
       </td>
@@ -232,7 +232,7 @@ The constructor accepts an object as a parameter. The list of parameters in the 
       <td style="text-align:left">redirectUrl</td>
       <td style="text-align:left">no</td>
       <td style="text-align:left">Application callback address</td>
-      <td style="text-align:left"><router-link to="/guides/app/create-app">The business domain name filled in when creating the application</router-link> in the Approw console. </td>
+      <td style="text-align:left"><router-link to="/en/guides/app/create-app">The business domain name filled in when creating the application</router-link> in the Approw console. </td>
     </tr>
     <tr>
       <td style="text-align:left">nonce</td>

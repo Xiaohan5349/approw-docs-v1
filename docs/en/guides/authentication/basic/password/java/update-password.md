@@ -1,4 +1,4 @@
-!!!include(common/init-java-auth-sdk.md)!!!
+!!!include(en/common/init-java-auth-sdk.md)!!!
 
 If the user has not set a password before (for example, registered by mobile phone number, social login, etc.), there is no need to pass in the original password.
 

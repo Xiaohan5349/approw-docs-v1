@@ -33,7 +33,7 @@ RolesManagementClient().create(code, description)
 #### Parameter
 
 - `code` \<string\> Unique id of the role
-- `description` \<string\> description
+- `description` \<string\> Description
 
 #### Example
 
@@ -81,7 +81,7 @@ RolesManagementClient().deleteMany(codeList)
 
 #### Parameter
 
-- `codeList` \<string[]\> A list of unique ids for roles 
+- `codeList` \<string[]\> A list of unique ids for roles.
 
 #### Example
 
@@ -107,7 +107,7 @@ RolesManagementClient().update(code, input)
 
 - `code` \<string\> Unique id of the role 
 - `input` \<Object\>  
-- `input.description` \<string\> description 
+- `input.description` \<string\> Description 
 - `input.newCode` \<string\> New unique id
 
 #### Example
@@ -282,7 +282,7 @@ RolesManagementClient().addPolicies(code, policies)
 #### Parameter
 
 - `code` \<string\> Unique id of the role 
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 
@@ -307,7 +307,7 @@ RolesManagementClient().removePolicies(code, policies)
 #### Parameter
 
 - `code` \<string\> Unique id of the role 
-- `policies` \<string[]\> policy list
+- `policies` \<string[]\> Policy list
 
 #### Example
 

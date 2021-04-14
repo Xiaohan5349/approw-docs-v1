@@ -1,4 +1,4 @@
-!!!include(common/init-java-auth-sdk.md)!!!
+!!!include(en/common/init-java-auth-sdk.md)!!!
 
 First call the Send SMS Verification Code interface to send the SMS verification code, and then use the `registerByPhoneCode` method:
 

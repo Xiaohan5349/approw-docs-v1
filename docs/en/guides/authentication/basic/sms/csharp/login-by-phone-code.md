@@ -1,4 +1,4 @@
-!!!include(common/init-csharp-auth-sdk.md)!!!
+!!!include(en/common/init-csharp-auth-sdk.md)!!!
 
 First call the Send SMS Verification Code interface to send the SMS verification code, and then use the `LoginByPhoneCode` method:
 

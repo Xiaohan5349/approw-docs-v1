@@ -1,4 +1,4 @@
-!!!include(common/init-python-auth-sdk.md)!!!
+!!!include(en/common/init-python-auth-sdk.md)!!!
 
 If the user has not set a password before (for example, registered by mobile phone number, social login, etc.), there is no need to pass in the original password.
 
@@ -9,7 +9,7 @@ authentication_client.update_password(
 )
 ```
 
-或者：
+Or：
 
 ```python
 # The user has previously set a password

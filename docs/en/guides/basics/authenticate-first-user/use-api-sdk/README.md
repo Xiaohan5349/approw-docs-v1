@@ -6,7 +6,7 @@ In the previous guide, you have learned how to [use the login page hosted by {{$
 
 ## Choose the SDK you are familiar with
 
-!!!include(common/sdk-list.md)!!!
+!!!include(en/common/sdk-list.md)!!!
 
 ## Initialize SDK
 
@@ -28,7 +28,7 @@ After successfully logging in, you can get the user's information. The `token` f
 
 ## Verify user token
 
-The `token` field of the user information is a standard OIDC IdToken. You can use the [Application ID and Secret](/guides/faqs/get-app-id-and-secret.md) to validate this `token` on the backend.
+The `token` field of the user information is a standard OIDC IdToken. You can use the [Application ID and Secret](/en/guides/faqs/get-app-id-and-secret.md) to validate this `token` on the backend.
 
 An example of `token` is like this:
 
@@ -44,8 +44,8 @@ Basically all languages provide libraries for validating IdToken. You can choose
 
 <StackSelector snippet="verify-id-token" selectLabel="choose language" :order="['java', 'javascript', 'swift', 'python', 'csharp']"/>
 
-If the validation is successful, you can get the user information of the `id_token`, where the `sub` field is the user ID, and the `aud` field is the application ID. You can click [here](/concepts/id-token.md) to understand the detailed definition of each field of IdToken.
+If the validation is successful, you can get the user information of the `id_token`, where the `sub` field is the user ID, and the `aud` field is the application ID. You can click [here](/en/concepts/id-token.md) to understand the detailed definition of each field of IdToken.
 
 ## Next
 
-After identifying the user, you may also need to perform [privilege management on the user](/guides/access-control/) to determine whether the user has privilege to operate on this API.
+After identifying the user, you may also need to perform [privilege management on the user](/en/guides/access-control/) to determine whether the user has privilege to operate on this API.

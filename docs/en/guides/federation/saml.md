@@ -72,7 +72,7 @@ You can add some custom attributes to the SAML assertion, and the newly added at
 
 **Example**:
 
-![Setup Customized SAML Response Configurations](https://cdn.approw.cn/docs/20200929104332.png)
+![Setup Customized SAML Response Configurations](https://cdn.approw.com/docs/20200929104332.png)
 ::: img-description 
 Setup Customized SAML Response Configurations
 :::

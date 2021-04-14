@@ -4,7 +4,7 @@
 
 The embedded login component (Guard) is considered to be the best balance between flexibility and integration.If the integration requires a deeper level of customization or the [hosting mode](../use-hosted-login-page.md) cannot be used in some scenarios where the front end and back end are separated, it is recommended to use this mode.The embedded login component is built and updated by {{$localeConfig.brandName}}, using the best practice security design in industry. Only a few lines of JavaScript code is needed and then it can be integrated into your development project.
 
-> You can click [here](/concepts/embeded-vs-hosted.md) to understand the difference between the {{$localeConfig.brandName}} hosted login page (Hosted) and the embedded login component (Embedded).
+> You can click [here](/en/concepts/embeded-vs-hosted.md) to understand the difference between the {{$localeConfig.brandName}} hosted login page (Hosted) and the embedded login component (Embedded).
 
 ## Embedded login component introduction
 
@@ -34,11 +34,11 @@ It has the following features:
 
 ## Integrate with different front-end frameworks
 
-<StackSelector snippet="ui-components-example" selectLabel="选择前端框架" :order="['react', 'vue', 'angular', 'native-javascript']"/>
+<StackSelector snippet="ui-components-example" selectLabel="Choose front-end framework" :order="['react', 'vue', 'angular', 'native-javascript']"/>
 
 ## Validate user token in back-end
 
-The `token` field of the user information is a standard [OIDC IdToken](/concepts/id-token.md). You can use the application ID and Secret to verify this `token` on the backend.
+The `token` field of the user information is a standard [OIDC IdToken](/en/concepts/id-token.md). You can use the application ID and Secret to verify this `token` on the backend.
 
 An example of `token`:
 
@@ -69,4 +69,4 @@ If the validation is successful, you can get the unique ID of the user through t
 
 ## Detailed parameter and event list
 
-The {{$localeConfig.brandName}} embedded login component is highly customizable. The {{$localeConfig.brandName}} embedded login component supports highly customizable.In addition to customizing the basic configuration such as the title and Logo, you can also control the visibility of the login method, fully customize the style through custom CSS, and so on. In addition to successful login events, the {{$localeConfig.brandName}} embedded login component also encapsulates events such as successful registration, login failure, and login registration mode switching. For detailed documentation, please refer to [the Guard document](/reference/ui-components/#api-reference).
+The {{$localeConfig.brandName}} embedded login component is highly customizable. The {{$localeConfig.brandName}} embedded login component supports highly customizable.In addition to customizing the basic configuration such as the title and Logo, you can also control the visibility of the login method, fully customize the style through custom CSS, and so on. In addition to successful login events, the {{$localeConfig.brandName}} embedded login component also encapsulates events such as successful registration, login failure, and login registration mode switching. For detailed documentation, please refer to [the Guard document](/en/reference/ui-components/#api-reference).

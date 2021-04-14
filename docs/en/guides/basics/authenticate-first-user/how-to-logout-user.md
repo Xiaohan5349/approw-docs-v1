@@ -4,10 +4,10 @@
 
 {{$localeConfig.brandName}} supports multiple methods of logging out:
 
-- [Log out from the personal center](#Log out from the personal center): This method is suitable for you to use the online personal center hosted by {{$localeConfig.brandName}}.
-- [Log out from the front end](#Log out from the front end): This method is suitable for almost any scenario.
-- [Log out from the back end](#Log out from the back end): This method is suitable for scenarios where the administrator calls the API to force users to get offline.
-- [Force users to log out](Force users to log out): This method is suitable for scenarios where the administrator uses the console to force users to get offline.
+- [Log out from the personal center](#log-out-from-the-personal-center): This method is suitable for you to use the online personal center hosted by {{$localeConfig.brandName}}.
+- [Log out from the front end](#log-out-from-the-front-end): This method is suitable for almost any scenario.
+- [Log out from the back end](#log-out-from-the-back-end): This method is suitable for scenarios where the administrator calls the API to force users to get offline.
+- [Force users to log out](#force-users-to-log-out): This method is suitable for scenarios where the administrator uses the console to force users to get offline.
 
 ## Log out from the personal center
 

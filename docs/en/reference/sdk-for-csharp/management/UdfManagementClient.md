@@ -1,10 +1,10 @@
 ---
 meta:
   - name: description
-    content: UdfManagementClien
+    content: UdfManagementClient
 ---
 
-# UdfManagementClien
+# UdfManagementClient
 
 <LastUpdated/>
 

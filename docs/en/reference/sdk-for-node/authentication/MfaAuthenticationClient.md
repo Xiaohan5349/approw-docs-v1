@@ -153,9 +153,9 @@ MfaAuthenticationClient().verifyAppSmsMfa()
 #### Parameter
 
 - `options` \<Object\>
-- `options.phone` \<string\> user phone number
+- `options.phone` \<string\> User phone number
 - `options.code` \<string\> SMS code
-- `options.mfaToken` \<string\> mfaToken returned from login interface.
+- `options.mfaToken` \<string\> MfaToken returned from login interface.
 
 #### Example
 
@@ -183,9 +183,9 @@ MfaAuthenticationClient().verifyAppEmailMfa()
 #### Parameter
 
 - `options` \<Object\>
-- `options.email` \<string\> user email
+- `options.email` \<string\> User email
 - `options.code` \<string\> OTP code
-- `options.mfaToken` \<string\> mfaToken returned from login interface
+- `options.mfaToken` \<string\> MfaToken returned from login interface
 
 #### Example
 
@@ -213,9 +213,9 @@ MfaAuthenticationClient().phoneOrEmailBindable()
 #### Parameter
 
 - `options` \<Object\>
-- `[options.email]` \<string\> email to be checked
-- `[options.phone]` \<string\> phone number to be checked
-- `options.mfaToken` \<string\> mfaToken returned from login interface.
+- `[options.email]` \<string\> Email to be checked
+- `[options.phone]` \<string\> Phone number to be checked
+- `options.mfaToken` \<string\> MfaToken returned from login interface.
 
 #### Example
 

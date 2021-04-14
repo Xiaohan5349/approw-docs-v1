@@ -1,1 +1,2 @@
-!!!include(common/init-csharp-auth-sdk-en.md)!!!
+
+!!!include(en/common/init-csharp-auth-sdk.md)!!!

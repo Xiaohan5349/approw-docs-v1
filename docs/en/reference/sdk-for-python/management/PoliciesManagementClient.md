@@ -18,9 +18,9 @@ PoliciesManagementClient().create(code，statement)
 
 #### Parameters
 
-- `code` \<string\> Unique id of the policy
+- `code` \<string\> Unique id of the policy.
 - `statements` \<PolicyStatement[]\>
-- `description` \<string\> Description
+- `description` \<string\> Description.
 
 #### Example
 
@@ -47,7 +47,7 @@ PoliciesManagementClient().delete(code)
 
 #### Parameter
 
-- `code` \<string\> Unique id of the policy
+- `code` \<string\> Unique id of the policy.
 
 #### Example
 
@@ -63,7 +63,7 @@ PoliciesManagementClient().delete_many(codeList)
 
 #### Parameter
 
-- `codeList` \<string\> Unique id of the policy list
+- `codeList` \<string\> Unique id of the policy list.
 
 #### Example
 
@@ -201,9 +201,9 @@ PoliciesManagementClient().remove_assignments(policies, targetType, targetIdenti
 
 #### Parameters
 
-- `policies` \<string[]\> Policy code list
-- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
-- `targetIdentifiers` \<string[]\> User id list and role code list
+- `policies` \<string[]\> Policy code list.
+- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE.
+- `targetIdentifiers` \<string[]\> User id list and role code list.
 
 #### Example
 

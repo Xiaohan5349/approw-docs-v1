@@ -1,8 +1,9 @@
-# Manage users
+
+# UsersManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} User ManagementClient
+> {{$localeConfig.brandName}} Users ManagementClient
 
 This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
@@ -29,47 +30,47 @@ UsersManagementClient().create(userInfo)
 
 #### Parameter
 
--   `userInfo` \<CreateUserInput\> user information
--   `userInfo.email` \<string\> email, unique in the user pool
--   `userInfo.emailVerified` \<boolean\> whether the email is verified
--   `userInfo.phone` \<string\> phone number
--   `userInfo.phoneVerified` \<boolean\> whether the phone number is verified
--   `userInfo.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider.
--   `userInfo.openid` \<string\> The openid returned by WeChat login
--   `userInfo.password` \<string\> password
--   `userInfo.registerSource` \<string\> Registration source, you can choose multiple
--   `userInfo.username` \<string\> username
--   `userInfo.nickname` \<string\> nickname
--   `userInfo.photo` \<string\> avatar
--   `userInfo.company` \<string\> company
--   `userInfo.browser` \<string\> browser
--   `userInfo.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
--   `userInfo.lastLogin` \<string\> Last login time, a time string conforming to the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
--   `userInfo.lastIP` \<string\> The last login (or other activity) IP of the user.
--   `userInfo.signedUp` \<string\> Registration time, a time string in ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
--   `userInfo.blocked` \<boolean\> Whether the account is disabled
--   `userInfo.isDeleted` \<boolean\> mark whether the account is deleted
--   `userInfo.device` \<string\> device
--   `userInfo.lastIP` \<string\> Last logged in IP
--   `userInfo.name` \<string\> Name
--   `userInfo.givenName` \<string\> Given Name
--   `userInfo.familyName` \<string\> Family Name
--   `userInfo.middleName` \<string\> Middle Name
--   `userInfo.profile` \<string\> Profile Url
--   `userInfo.preferredUsername` \<string\> Preferred Name
--   `userInfo.website` \<string\> personal website
--   `userInfo.gender` \<string\> Gender, M means male, F means female, U means unknown
--   `userInfo.birthdate` \<string\> birthday
--   `userInfo.zoneinfo` \<string\> timezone
--   `userInfo.locale` \<string\> language
--   `userInfo.address` \<string\> address
--   `userInfo.streetAddress` \<string\> street address
--   `userInfo.locality` \<string\>
--   `userInfo.region` \<string\> region
--   `userInfo.postalCode` \<string\> zipcode
--   `userInfo.city` \<string\> city
--   `userInfo.province` \<string\> province
--   `userInfo.country` \<string\> country
+- `userInfo` \<CreateUserInput\> User information
+- `userInfo.email` \<string\> Email, unique in the user pool.
+- `userInfo.emailVerified` \<boolean\> whether the email is verified.
+- `userInfo.phone` \<string\> Phone number
+- `userInfo.phoneVerified` \<boolean\> Whether the phone number is verified
+- `userInfo.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider.
+- `userInfo.openid` \<string\> The openid returned by WeChat login
+- `userInfo.password` \<string\> Password
+- `userInfo.registerSource` \<string\> Registration source, you can choose multiple
+- `userInfo.username` \<string\> Username
+- `userInfo.nickname` \<string\> Nickname
+- `userInfo.photo` \<string\> Avatar
+- `userInfo.company` \<string\> Company
+- `userInfo.browser` \<string\> Browser
+- `userInfo.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `userInfo.lastLogin` \<string\> Last login time, a time string conforming to the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.lastIP` \<string\> The last login (or other activity) IP of the user.
+- `userInfo.signedUp` \<string\> Registration time, a time string in ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.blocked` \<boolean\> Whether the account is disabled
+- `userInfo.isDeleted` \<boolean\> Mark whether the account is deleted
+- `userInfo.device` \<string\> Device
+- `userInfo.lastIP` \<string\> Last logged in IP
+- `userInfo.name` \<string\> Name
+- `userInfo.givenName` \<string\> Given Name
+- `userInfo.familyName` \<string\> Family Name
+- `userInfo.middleName` \<string\> Middle Name
+- `userInfo.profile` \<string\> Profile Url
+- `userInfo.preferredUsername` \<string\> Preferred Name
+- `userInfo.website` \<string\> Personal website
+- `userInfo.gender` \<string\> Gender, M means male, F means female, U means unknown
+- `userInfo.birthdate` \<string\> Birthday
+- `userInfo.zoneinfo` \<string\> Timezone
+- `userInfo.locale` \<string\> Language
+- `userInfo.address` \<string\> Address
+- `userInfo.streetAddress` \<string\> Street address
+- `userInfo.locality` \<string\>
+- `userInfo.region` \<string\> Region
+- `userInfo.postalCode` \<string\> Zipcode
+- `userInfo.city` \<string\> City
+- `userInfo.province` \<string\> Province
+- `userInfo.country` \<string\> Country
 
 #### Example
 
@@ -101,48 +102,48 @@ UsersManagementClient \*().update(id, updates)
 
 #### Parameter
 
--   `id` \<string\> User ID
--   `updates` \<UpdateUserInput\> Modified user information
--   `updates.email` \<string\> email
--   `updates.emailVerified` \<boolean\> whether the email is verified
--   `updates.phone` \<string\> phone number
--   `updates.phoneVerified` \<boolean\> whether the phone number is verified
--   `updates.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider
--   `updates.openid` \<string\> The openid returned by WeChat login
--   `updates.password` \<string\> password
--   `updates.registerSource` \<string\> Registration source, you can select multiple
--   `updates.tokenExpiredAt` \<string\> The token expiration time, a time string in the ISO8601 format. (Such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00"). Set the field to be earlier than the current time can make the user's token invalid.
--   `updates.username` \<string\> username
--   `updates.nickname` \<string\> nickname
--   `updates.photo` \<string\> avatar
--   `updates.company` \<string\> comapny
--   `updates.browser` \<string\> browser
--   `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
--   `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
--   `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
--   `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
--   `updates.blocked` \<boolean\> Whether the account is disabled
--   `updates.device` \<string\> device
--   `updates.lastIP` \<string\> Last logged in IP
--   `updates.name` \<string\> Name
--   `updates.givenName` \<string\> Given Name
--   `updates.familyName` \<string\> Family Name
--   `updates.middleName` \<string\> Middle Name
--   `updates.profile` \<string\> Profile Url
--   `updates.preferredUsername` \<string\> Preferred Name
--   `updates.website` \<string\> personal website
--   `updates.gender` \<string\> Gender, M means male, F means female, U means unknown
--   `updates.birthdate` \<string\> birthday
--   `updates.zoneinfo` \<string\> timezone
--   `updates.locale` \<string\> language
--   `updates.address` \<string\> address
--   `updates.streetAddress` \<string\> street address
--   `updates.locality` \<string\>
--   `updates.region` \<string\> region
--   `updates.postalCode` \<string\> zipcode
--   `updates.city` \<string\> city
--   `updates.province` \<string\> province
--   `updates.country` \<string\> country
+- `id` \<string\> User ID
+- `updates` \<UpdateUserInput\> Modified user information
+- `updates.email` \<string\> Email
+- `updates.emailVerified` \<boolean\> Whether the email is verified
+- `updates.phone` \<string\> Phone number
+- `updates.phoneVerified` \<boolean\> Whether the phone number is verified
+- `updates.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider
+- `updates.openid` \<string\> The openid returned by WeChat login
+- `updates.password` \<string\> Password
+- `updates.registerSource` \<string\> Registration source, you can select multiple
+- `updates.tokenExpiredAt` \<string\> The token expiration time, a time string in the ISO8601 format. (Such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00"). Set the field to be earlier than the current time can make the user's token invalid.
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Comapny
+- `updates.browser` \<string\> Browser
+- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
+- `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.blocked` \<boolean\> Whether the account is disabled
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP
+- `updates.name` \<string\> Name
+- `updates.givenName` \<string\> Given Name
+- `updates.familyName` \<string\> Family Name
+- `updates.middleName` \<string\> Middle Name
+- `updates.profile` \<string\> Profile Url
+- `updates.preferredUsername` \<string\> Preferred Name
+- `updates.website` \<string\> Personal website
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Timezone
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
+- `updates.locality` \<string\>
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
 #### Example
 
@@ -188,11 +189,11 @@ const user = await managementClient.users.detail("USERID");
 
 UsersManagementClient().getUdfValue(userId)
 
-> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
+> Before you get user defined data, you need to [set user defined field](/en/guides/users/user-defined-field/) in the user pool.
 
 #### Parameter
 
--   `userId` \<string\> user ID
+- `userId` \<string\> User ID
 
 #### Example
 
@@ -213,11 +214,11 @@ const data = await managementClient.users.getUdfValue("USER_ID");
 
 UsersManagementClient().getUdfValueBatch(userIds)
 
-> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
+> Before you get user defined data, you need to [set user defined field](/en/guides/users/user-defined-field/) in the user pool.
 
 #### Parameter
 
--   `userIds` \<string\> user ID list
+- `userIds` \<string\> User ID list
 
 #### Example
 
@@ -247,12 +248,12 @@ const data = await managementClient.users.getUdfValueBatch([
 
 UsersManagementClient().setUdfValue(userId, data)
 
-> Set user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Set user defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
--   `userId` \<string\> user ID
--   `data` \<KeyValuePair>\ user defined field data. It is an object.
+- `userId` \<string\> User ID
+- `data` \<KeyValuePair>\ User defined field data. It is an object.
 
 #### Example
 
@@ -267,7 +268,7 @@ await managementClient.users.setUdfValue(userId, {
 
 UsersManagementClient().setUdfValueBatch(input)
 
-> Set multiple users defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Set multiple users defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
@@ -297,12 +298,12 @@ await managementClient.users.setUdfValueBatch([
 
 UsersManagementClient().removeUdfValue(userId, key)
 
-> Delete user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
+> Delete user defined data. Before that, you need to [set user defined field](/en/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
 #### Parameter
 
--   `userId` \<string\> user ID
--   `key` \<string\> the key of the user defined data.
+- `userId` \<string\> User ID
+- `key` \<string\> The key of the user defined data.
 
 #### Example
 
@@ -318,7 +319,7 @@ UsersManagementClient().delete(userId)
 
 #### Parameter
 
--   `userId` \<string\> user ID
+- `userId` \<string\> User ID
 
 #### Example
 
@@ -338,7 +339,7 @@ UsersManagementClient().deleteMany(userIds)
 
 #### Parameter
 
--   `userIds` \<string[]\> user ID list
+- `userIds` \<string[]\> User ID list
 
 #### Example
 
@@ -358,7 +359,7 @@ UsersManagementClient().batch(userIds)
 
 #### Parameter
 
--   `userIds` \<string[]\> user ID list
+- `userIds` \<string[]\> User ID list
 
 #### Example
 
@@ -399,10 +400,10 @@ UsersManagementClient().exists(options)
 
 #### Parameter
 
--   `options` \<Object\>
--   `options.username` \<string\> User name, case sensitive.
--   `options.email` \<string\> The email address, not case sensitive.
--   `options.phone` \<string\> phone number
+- `options` \<Object\>
+- `options.username` \<string\> User name, case sensitive.
+- `options.email` \<string\> The email address, not case sensitive.
+- `options.phone` \<string\> Phone number
 
 #### Example
 
@@ -424,10 +425,10 @@ UsersManagementClient().find(options)
 
 #### Parameter
 
--   `options` \<Object\>
--   `options.username` \<string\> User name, case sensitive.
--   `options.email` \<string\> The email address, not case sensitive.
--   `options.phone` \<string\> phone number
+- `options` \<Object\>
+- `options.username` \<string\> User name, case sensitive.
+- `options.email` \<string\> The email address, not case sensitive.
+- `options.phone` \<string\> Phone number
 
 #### Example
 
@@ -441,11 +442,11 @@ UsersManagementClient().search(query, options, page, limit)
 
 #### Parameter
 
--   `query` \<null\> search content
--   `options` \<string[]\> options
--   `options.fields` \<string[]\> Search user fields. If not specified, the default will be fuzzy search from `username`, `nickname`, `email`, `phone`, `company`, `name`, `givenName`, `familyName`, `middleName`, `profile` and `preferredUsername` fields. If you need a precise search, please use the find method.
--   `page` \<number\> The default value is:`1`.
--   `limit` \<number\> The default value is: `10`.
+- `query` \<null\> Search content
+- `options` \<string[]\> Options
+- `options.fields` \<string[]\> Search user fields. If not specified, the default will be fuzzy search from `username`, `nickname`, `email`, `phone`, `company`, `name`, `givenName`, `familyName`, `middleName`, `profile` and `preferredUsername` fields. If you need a precise search, please use the find method.
+- `page` \<number\> The default value is:`1`.
+- `limit` \<number\> The default value is: `10`.
 
 #### Example
 
@@ -465,7 +466,7 @@ UsersManagementClient().refreshToken(id)
 
 #### Parameter
 
--   `id` \<string\> 用户 ID
+- `id` \<string\> User ID
 
 #### Example
 
@@ -491,7 +492,7 @@ UsersManagementClient().listGroups(userId)
 
 #### Parameter
 
--   `userId` \<string\> user ID
+- `userId` \<string\> User ID
 
 #### Example
 
@@ -511,8 +512,8 @@ UsersManagementClient().addGroup(userId, group)
 
 #### Parameter
 
--   `userId` \<string\> user ID
--   `group` \<string\> group code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
 #### Example
 
@@ -535,8 +536,8 @@ UsersManagementClient().removeGroup(userId, group)
 
 #### Parameter
 
--   `userId` \<string\> user ID
--   `group` \<string\> group code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
 #### Example
 
@@ -559,7 +560,7 @@ UsersManagementClient().listRoles(userId)
 
 #### Parameter
 
--   `userId` \<string\> user ID
+- `userId` \<string\> User ID
 
 #### Example
 
@@ -579,8 +580,8 @@ UsersManagementClient().addRoles(userId, roles)
 
 #### Parameter
 
--   `userId` \<string\> user ID
--   `roles` \<string\> role code list
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
 #### Example
 
@@ -602,8 +603,8 @@ UsersManagementClient().removeRoles(userId, roles)
 
 #### Parameter
 
--   `userId` \<string\> User ID
--   `roles` \<string\> role code list
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
 #### Example
 
@@ -625,7 +626,7 @@ UsersManagementClient().listOrg(userId)
 
 #### Parameter
 
--   `userId` \<string\> user ID
+- `userId` \<string\> User ID
 
 #### Example
 
@@ -645,8 +646,8 @@ UsersManagementClient.listAuthorizedResources(userId, namespace)
 
 #### Parameter
 
--   `userId` \<string\> user ID；
--   `namespace` \<string\> the code of the permission group. For more details, please refer to [resource group](/guides/access-control/resource-group.md).
+- `userId` \<string\> User ID.
+- `namespace` \<string\> The code of the permission group. For more details, please refer to [resource group](/en/guides/access-control/resource-group.md).
 
 #### Example
 
@@ -656,13 +657,13 @@ managementClient.users.listAuthorizedResources("USERID", "code");
 
 #### Sample data
 
--   `type`: type is the type of resource, there are several different values that can be used:
-    -   `DATA`: data type;
-    -   `API`: API interface type;
-    -   `MENU`: menu type;
-    -   `BUTTON`: button type;
--   `code`: resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
--   `actions`: actions that user is authorized to operate on the resource.
+- `type`: Type is the type of resource, there are several different values that can be used:
+  - `DATA`: data type;
+  - `API`: API interface type;
+  - `MENU`: menu type;
+  - `BUTTON`: button type.
+- `code`: Resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
+- `actions`: Actions that user is authorized to operate on the resource.
 
 ```json
 {

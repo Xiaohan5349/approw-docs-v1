@@ -1,4 +1,4 @@
-!!!include(common/init-python-auth-sdk.md)!!!
+!!!include(en/common/init-python-auth-sdk.md)!!!
 
 Use the mobile phone number verification code to reset the password:
 

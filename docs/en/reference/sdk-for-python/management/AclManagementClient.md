@@ -23,7 +23,7 @@ AclManagementClient().allow(userId, action, resource)
 
 - `userId` \<string\> User ID
 - `action` \<string\> The name of the action, which is recommended to use the format of  \<resourceType\>:\<actionName\> , such as `books:edit`, `books:list`
-- `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or _, such as `_`,`books:123`,`books:\*`
+- `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or _, such as `_`,`books:123`,`books:\*`.
 
 #### Example:
 
@@ -53,7 +53,7 @@ AclManagementClient().is_allowed(userId, action, resource)
 
 - `userId` \<string\> User ID
 - `action` \<string\> The name of the action, which is recommended to use the format of  \<resourceType\>:\<actionName\> , such as `books:edit`, `books:list`
-- `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or _, such as `_`,`books:123`,`books:\*`
+- `resource` \<string\> Resource name, which must be in the format of \<resourceType\>:\<resourceId\> or _, such as `_`,`books:123`,`books:\*`.
 
 #### Example:
 

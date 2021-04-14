@@ -1,4 +1,4 @@
-!!!include(common/init-js-auth-sdk.md)!!!
+!!!include(en/common/init-js-auth-sdk.md)!!!
 
 Use the mobile phone number verification code to reset the password:
 

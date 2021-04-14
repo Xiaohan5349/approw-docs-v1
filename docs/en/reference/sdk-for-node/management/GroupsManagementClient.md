@@ -54,7 +54,7 @@ managementClient.groups.create('group', 'Group xxx')
 
 GroupsManagementClient().delete(code)
 
-> Delete a group
+> Delete a group.
 
 
 #### Parameter
@@ -78,16 +78,16 @@ managementClient.groups.delete('rolea')
 
 GroupsManagementClient().update(code, input)
 
-> Update a group
+> Update a group.
 
 
 #### Parameter
 
 - `code` \<string\> Group unique id
 - `input` \<Object\>  
-- `input.name` \<string\> new group name
-- `input.description` \<string\> new description
-- `input.newCode` \<string\> new unique id
+- `input.name` \<string\> New group name
+- `input.description` \<string\> New description
+- `input.newCode` \<string\> New unique id
 
 #### Example
 
@@ -106,7 +106,7 @@ managementClient.groups.update('group', {newCode: 'newcode'})
 
 GroupsManagementClient().detail(code)
 
-> Get group details
+> Get group details.
 
 
 #### Parameter
@@ -121,7 +121,7 @@ managementClient.groups.detail('manager')
 
 #### Return value
 
--  `Promise<DeepPartial<Group>>` detailed formation of group
+-  `Promise<DeepPartial<Group>>` Detailed formation of group.
 
 
       
@@ -130,7 +130,7 @@ managementClient.groups.detail('manager')
 
 GroupsManagementClient().list(page, limit)
 
-> Get group list
+> Get group list.
 
 
 #### Parameter
@@ -155,12 +155,12 @@ managementClient.groups.list(1, 10)
 
 GroupsManagementClient().deleteMany(codeList)
 
-> Bulk delete groups
+> Bulk delete groups.
 
 
 #### Parameter
 
-- `codeList` \<string[]\> a list of unique id of the groups
+- `codeList` \<string[]\> A list of unique id of the groups.
 
 #### Example
 
@@ -230,13 +230,13 @@ managementClient.groups.addUsers(code, ['USERID1', 'USERID2'])
 
 GroupsManagementClient().removeUsers(code, userIds)
 
-> Remove users from a group
+> Remove users from a group.
 
 
 #### Parameter
 
 - `code` \<string\> Group unique id
-- `userIds` \<string[]\> user ID list
+- `userIds` \<string[]\> User ID list
 
 #### Example
 

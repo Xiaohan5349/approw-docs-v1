@@ -1,4 +1,4 @@
-Use [userPoolId and secret](/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Java SDK](/reference/sdk-for-java/):
+Use [userPoolId and secret](/en/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Java SDK](/en/reference/sdk-for-java/):
 
 ```java
 import cn.authing.core.mgmt.ManagementClient;

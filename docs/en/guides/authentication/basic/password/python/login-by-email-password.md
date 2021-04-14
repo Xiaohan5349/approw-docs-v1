@@ -1,4 +1,4 @@
-!!!include(common/init-python-auth-sdk.md)!!!
+!!!include(en/common/init-python-auth-sdk.md)!!!
 
 Use the `login_by_email` method:
 

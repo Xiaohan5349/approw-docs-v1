@@ -1,4 +1,4 @@
-Use [userPoolId and secret](/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Python SDK](/reference/sdk-for-python/):
+Use [userPoolId and secret](/en/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Python SDK](/en/reference/sdk-for-python/):
 
 ```python
 from authing.v2.management import ManagementClient, ManagementClientOptions

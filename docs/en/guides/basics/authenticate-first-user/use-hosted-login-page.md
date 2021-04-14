@@ -8,7 +8,7 @@ This document will introduce how to quickly implement a complete user authentica
 
 ## Create a user pool
 
-[User pool](/concepts/user-pool.md) is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools.  There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
+[User pool](/en/concepts/user-pool.md) is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools.  There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
 
 If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [Console](https://console.approw.com). Follow the instructions below to create your first user pool:
 
@@ -70,7 +70,7 @@ const code2tokenResponse = await axios.post(
 const { id_token, access_token } = code2tokenResponse.data;
 ```
 
-There are [id_token](/concepts/id-token.md) and [access_token](/concepts/access-token.md) in  returned data.Simply speaking, `id_token` is equivalent to the user's identity credential, and `access_token` is the key that allows access to resources. You can learn more about their differences [here](/concepts/access-token-vs-id-token.md).
+There are [id_token](/en/concepts/id-token.md) and [access_token](/en/concepts/access-token.md) in  returned data.Simply speaking, `id_token` is equivalent to the user's identity credential, and `access_token` is the key that allows access to resources. You can learn more about their differences [here](/en/concepts/access-token-vs-id-token.md).
 
 ```json
 {
@@ -118,7 +118,7 @@ const token2UserInfoResponse = await axios.get(
 console.log(token2UserInfoResponse.data);
 ```
 
-After that, you need to pass the `id_token` back to the front end. The front end should save the id_token and carry it every time when it send requests the back end interface. The back end interface should validate the id_token sent from the front end before processing the user request. Please refer to the [document](/guides/faqs/how-to-validate-user-token.md) for how to validate the token.
+After that, you need to pass the `id_token` back to the front end. The front end should save the id_token and carry it every time when it send requests the back end interface. The back end interface should validate the id_token sent from the front end before processing the user request. Please refer to the [document](/en/guides/faqs/how-to-validate-user-token.md) for how to validate the token.
 
 
 ::: hint-info
@@ -141,13 +141,13 @@ Approw directly returns id_token and access_token to the callback address in the
 https://example.com/#id_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Y2QwMjZlZjNlZDlmOTRkODBmZTM2YWUiLCJub25jZSI6IjE4MzEyODkiLCJzaWQiOiI4YzgzN2I5My01OTNlLTQzZjctYWMzNC0yYjRmZDU3ZGFhMTciLCJhdF9oYXNoIjoiVFFtbFlEVTVPZGF1Zjl0U0VKdHY5USIsInNfaGFzaCI6Ind3SDNXclV2b0hiSUp5TWVZVHU4bHciLCJhdWQiOiI1ZDAxZTM4OTk4NWY4MWM2YzFkZDMxZGUiLCJleHAiOjE1NjA0MDkzNjgsImlhdCI6MTU2MDQwNTc2OCwiaXNzIjoiaHR0cHM6Ly9vYXV0aC5hdXRoaW5nLmNuL29hdXRoL29pZGMifQ.T9M0s6rk4Teq6VOOBRIElgHK9KyM3q0ZJj2aS0VD_Fw&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OE9XcVJNVXJEUXpMMXpHVzVtUWoiLCJzdWIiOiI1Y2QwMjZlZjNlZDlmOTRkODBmZTM2YWUiLCJpc3MiOiJodHRwczovL29hdXRoLmF1dGhpbmcuY24vb2F1dGgvb2lkYyIsImlhdCI6MTU2MDQwNTc2OCwiZXhwIjoxNTYwNDA5MzY4LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIiwiYXVkIjoiNWQwMWUzODk5ODVmODFjNmMxZGQzMWRlIn0.mR0MZDwlZWGRMsAZjQ27sDFFqYoDgZ6WHTK4C7JbML4&expires_in=3600&token_type=Bearer&state=jazz&session_state=26ec053be9f47d68dc430f84b97efb1095469fe10169a9e00ef4092718714b8b
 ```
 
-You can extract `id_token` from `url hash`, and then you can get user information by decoding `id_token`. For details, please refer to [validate user token](/guides/faqs/how-to-validate-user-token.md).
+You can extract `id_token` from `url hash`, and then you can get user information by decoding `id_token`. For details, please refer to [validate user token](/en/guides/faqs/how-to-validate-user-token.md).
 
 #### Use trackSession
 
 Approw provides another simple method for front-end to obtain user information without processing callbacks or other configurations.
 
-1. Install the [single sign-on SDK](/reference/sdk-for-sso.md), complete the initialization, and call the trackSession function to obtain the user's login status.
+1. Install the [single sign-on SDK](/en/reference/sdk-for-sso.md), complete the initialization, and call the trackSession function to obtain the user's login status.
 
 Use NPM to install:
 
@@ -181,7 +181,7 @@ if (res.session) {
 }
 ```
 
- Please check the [document](/reference/sdk-for-sso.md) for detailed usage.
+ Please check the [document](/en/reference/sdk-for-sso.md) for detailed usage.
 
 :::
 
@@ -196,8 +196,8 @@ Here end users can view and modify their personal information, modify passwords,
 
 ## Use login component
 
-In the above process, we use the online login page of {{$localeConfig.brandName}} operation and maintenance. At the same time, we also provide login components that support various mainstream web frameworks. Compared with online login pages, the [login components](/reference/ui-components/) are more flexible and more customizable. You can integrate them into your own pages. For the detailed process, see [use the embedded login component to authenticate](/guides/basics/authenticate-first-user/use-embeded-login-component/).
+In the above process, we use the online login page of {{$localeConfig.brandName}} operation and maintenance. At the same time, we also provide login components that support various mainstream web frameworks. Compared with online login pages, the [login components](/en/reference/ui-components/) are more flexible and more customizable. You can integrate them into your own pages. For the detailed process, see [use the embedded login component to authenticate](/en/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
 ## Use API & SDK
 
-So far you have learned how to quickly implement the core login and registration process with the help of {{$localeConfig.brandName}} hosted login page. If you want to have stronger customization needs, you can also use the [API & SDK](/reference/) provided by {{$localeConfig.brandName}}. For the detailed process, please see [use API & SDK to authenticate](/guides/basics/authenticate-first-user/use-api-sdk/).
+So far you have learned how to quickly implement the core login and registration process with the help of {{$localeConfig.brandName}} hosted login page. If you want to have stronger customization needs, you can also use the [API & SDK](/en/reference/) provided by {{$localeConfig.brandName}}. For the detailed process, please see [use API & SDK to authenticate](/en/guides/basics/authenticate-first-user/use-api-sdk/).

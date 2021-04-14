@@ -8,11 +8,11 @@ Social login refers to the process in which users use social platform identity a
 
 {{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+!!!include(en/common/social-connections-table.md)!!!
 
 ## Custom social login
 
-{{$localeConfig.brandName}} provides the ability to integrate a **custom OAuth2.0 identity provider**. If you need to connect to a social login identity source that is not built in {{$localeConfig.brandName}}, you can <router-link to="/connections/custom-social-provider/" target="_blank">read this guide</router-link>.
+{{$localeConfig.brandName}} provides the ability to integrate a **custom OAuth2.0 identity provider**. If you need to connect to a social login identity source that is not built in {{$localeConfig.brandName}}, you can <router-link to="/en/connections/custom-social-provider/" target="_blank">read this guide</router-link>.
 
 ## Choose the appropriate development integration method
 
@@ -29,4 +29,4 @@ The following is a comparison of the advantages and disadvantages of various met
 
 The following is the details of integration method for each method:
 
-<StackSelector snippet="social-login" selectLabel="选择接入方式" :order="['sdk', 'embeded-component', 'hosted-page', 'manually']"/>
+<StackSelector snippet="social-login" selectLabel="Choose integration method" :order="['sdk', 'embeded-component', 'hosted-page', 'manually']"/>

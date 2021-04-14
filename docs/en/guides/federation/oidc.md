@@ -24,7 +24,7 @@ In order for your application to have identity authentication capabilities, you 
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, specify an **subdomain** for your project, where your users will complete authentication. Fill in the **callback address** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
+Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-2.png)
 
@@ -42,7 +42,7 @@ There are the following processes.
 2. The browser receives an **authorization code** from Approw service.
 3. The browser sends the **authorization code** to your application **back-end** using redirection.
 4. Your application service sends the **authorization code** to Approw to obtain **AccessToken** and **IdToken**, refresh token also will be returned if necessary.
-5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources’ API, etc.
+5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources API, etc.
 
 Below is the workflow:
 

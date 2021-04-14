@@ -1,4 +1,4 @@
-!!!include(common/init-java-auth-sdk.md)!!!
+!!!include(en/common/init-java-auth-sdk.md)!!!
 
 Use the `sendSmsCode` method:
 

@@ -53,7 +53,7 @@ const org = await managementClient.org.create('Beijing Feifan Tech', 'Beijing Fe
 
 OrgManagementClient().deleteById(id)
 
-> Delete the organization tree
+> Delete the organization tree.
 
 
 #### Parameter
@@ -107,8 +107,8 @@ OrgManagementClient().addNode(orgId, parentNodeId, data)
 
 - `orgId` \<string\> Organization ID 
 - `parentNodeId` \<string\> Parent node ID
-- `data` \<Object\> node data
-- `data.name` \<string\> node name
+- `data` \<Object\> Node data
+- `data.name` \<string\> Node name
 - `data.code` \<string\> The unique identifier of the node
 - `data.description` \<string\> Node description information 
 
@@ -136,9 +136,9 @@ OrgManagementClient().updateNode(id, updates)
 
 #### Parameter
 
-- `id` \<string\> node ID 
-- `updates` \<Object\> updated data 
-- `updates.name` \<string\> node name
+- `id` \<string\> Node ID 
+- `updates` \<Object\> Updated data 
+- `updates.name` \<string\> Node name
 - `updates.code` \<string\> Unique id of node
 - `updates.description` \<string\> Node description 
 
@@ -362,7 +362,7 @@ OrgManagementClient().addMembers(nodeId, userIds)
 
 #### Parameter
 
-- `nodeId` \<string\> node ID
+- `nodeId` \<string\> Node ID
 - `userIds` \<string[]\> User ID list 
 
 #### Example
@@ -388,8 +388,8 @@ OrgManagementClient().listMembers(nodeId, options)
 
 #### Parameter
 
-- `nodeId` \<string\> node ID
-- `options` \<Object\> 查询Parameter 
+- `nodeId` \<string\> Node ID
+- `options` \<Object\>Query Parameter 
 - `options.page` \<number\>  Default value: `1`.
 - `options.limit` \<number\>  Default value: `10`.
 - `options.includeChildrenNodes` \<boolean\> Whether to get the members of all child nodes. Default value: `false`.
@@ -416,8 +416,8 @@ OrgManagementClient().removeMembers(nodeId, userIds)
 
 #### Parameter
 
-- `nodeId` \<string\> node ID
-- `userIds` \<string[]\> user ID list
+- `nodeId` \<string\> Node ID
+- `userIds` \<string[]\> User ID list
 
 #### Example
 
