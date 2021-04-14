@@ -30,7 +30,7 @@ Fill in the **Application Name**, for example, Web Note Project, specify an **Su
 
 ## Authorization Code Mode
 
-If your application project has a **back-end service** that can store secret key safety, the **Authorization Code Mode** is recommended. 
+If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended. 
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `authorization_code` in the authorization mode, check `code` in the return type, and then click Save.
 
@@ -52,10 +52,10 @@ Below is the workflow:
 
 ## Implicit Mode
 
-If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **Implicit Mode** to complete user authentication and authorization. Implicit Mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **Implicit Mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
+If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
 
 :::hint-info
-Implicit Mode **fits the scenario that the secrete key cannot be stored safely**, so it does not support obtaining refresh token.
+Implicit mode **fits the scenario that the secrete key cannot be stored safely**, so it does not support obtaining refresh token.
 :::
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `implicit` in the authorization mode, check `id_token token` and `id_token` in the return type, and then click Save.
@@ -77,7 +77,7 @@ Below is the workflow:
 
 ## Hybrid Mode
 
-In some scenarios, you may not only want to directly obtain token from the authentication endpoint but also obtain the authorization code for further obtaining the refresh token. It is recommended to use **Hybrid Mode**. In **Hybrid Mode**, applications will receive token and code. Applications can choose to send code to back-end services to obtain users’ AccessToken, IdToken, refresh token from `/token` endpoint.
+In some scenarios, you may not only want to directly obtain token from the authentication endpoint but also obtain the authorization code for further obtaining the refresh token. It is recommended to use **hybrid mode**. In **hybrid mode**, applications will receive token and code. Applications can choose to send code to back-end services to obtain users’ AccessToken, IdToken, refresh token from `/token` endpoint.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `authorization_code` and `implicit` in the authorization mode, check `code id_token token`, `code id_token` and `code token` in the return type, and then click Save.
 
@@ -100,7 +100,7 @@ Below is the workflow:
 
 ## Client Credentials Mode
 
-Client Credentials Mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
+Client credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `RS256` as the id_token signature algorithm, check `client_credentials` in the authorization mode, and then click Save.
 
@@ -119,7 +119,7 @@ Below is the workflow:
 
 ## Password Mode
 
-It is not recommended to use this mode, try to use other modes as much as you can. **Password Mode** will be considered only when all other modes cannot solve the problem. If using Password Mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
+It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `password` in the authorization mode, and then click Save.
 
@@ -145,7 +145,7 @@ Refresh Token is required to refresh Access Token. You can learn about Refresh T
 
 If you want to obtain  [Refresh Token](/docs/en/concepts/refresh-token.md), you need to send the request to Approw to get [Refresh Token](/docs/en/concepts/refresh-token.md).
 
-Only **Authorization Code Mode** and **Password Mode** can support [Refresh Token](/docs/en/concepts/refresh-token.md).
+Only **authorization code mode** and **password mode** can support [Refresh Token](/docs/en/concepts/refresh-token.md).
 
 When the combination of authorization mode and Scope shown in the following table is sent to the Token endpoint, Approw will return Refresh Token.
 
@@ -155,12 +155,12 @@ When the combination of authorization mode and Scope shown in the following tabl
 | password                | offline_access |
 
 ::: hint-warning
-Warning : When using the **Authorization Code Mode**, you must carry the scope when requesting the **authorization endpoint**(`/oidc/auth`), scope value **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Otherwise, Approw **will not return any Refresh Token**.
+Warning : When using the **authorization code mode**, you must carry the scope when requesting the **authorization endpoint**(`/oidc/auth`), scope value **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Otherwise, Approw **will not return any Refresh Token**.
 :::
 
 #### Obtain Refresh Token in Authorization Code Mode
 
-When using the Authorization Code Mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/en/federation/oidc/authorization-code/) to get further information.
+When using the Authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/en/federation/oidc/authorization-code/) to get further information.
 
 #### Obtain authorization code and refresh token example
 
@@ -201,9 +201,9 @@ POST https://${your app domain name}/oidc/token?grant_type=authorization_code
 
 #### Obtain Refresh Token in Password Mode
 
-In Password Mode, you will only use the **Token Endpoint**. See [Using Password Mode](/docs/en/federation/oidc/password) for more information.
+In password mode, you will only use the **Token Endpoint**. See [Using Password Mode](/docs/en/federation/oidc/password) for more information.
 
-Include `offline_access` in the request scope of the Password Mode.
+Include `offline_access` in the request scope of the password mode.
 
 ```http
 POST https://${Your Application domain name}/oidc/token?grant_type=password
