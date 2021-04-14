@@ -93,7 +93,7 @@ The validity of this `token` needs to be verified in the back-end interface to v
 
 ### Add social login
 
-Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/en/guides/app/config-login-methods.md#添加社会化登录)are displayed by default).
+Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/en/guides/app/config-login-methods.md#social-registration) are displayed by default).
 
 ```html
 <script>
@@ -135,7 +135,7 @@ The Guard instance provides three methods:
 
 | Method name | Method parameters | Function |
 | :----- | :------------------------------------------------------------------------------------ | :------------------- |
-| on | <p>evtName: Event name,Please check the [event list](/en/reference/ui-components/#事件列表)</p><p>Handler: Corresponding event processing function</p> | Monitor  an event |
+| on | <p>evtName: Event name,Please check the [event list](/en/reference/ui-components/#event-list)</p><p>Handler: Corresponding event processing function</p> | Monitor  an event |
 | show | - | Display the form in modal mode |
 | hide | - | Hide the form in modal mode |
 
