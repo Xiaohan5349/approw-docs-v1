@@ -118,7 +118,7 @@ The validity of this `token` needs to be verified in the back-end interface to v
 
 ### Add social login
 
-Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed([all social logins configured by the application](/en/guides/app/config-login-methods.md#social-registration) are displayed by default).
+Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/en/guides/app/config-login-methods.md#social-registration) are displayed by default).
 
 ```javascript
 import { approwGuard, SocialConnections } from "@approw/react-ui-components";
