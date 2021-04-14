@@ -4,7 +4,7 @@ meta:
     content: UdfManagementClien
 ---
 
-# UdfManagementClien
+# UdfManagementClient
 
 <LastUpdated/>
 
