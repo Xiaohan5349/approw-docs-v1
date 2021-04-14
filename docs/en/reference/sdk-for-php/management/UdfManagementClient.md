@@ -1,7 +1,7 @@
 ---
 meta:
   - name: description
-    content: UdfManagementClien
+    content: UdfManagementClient
 ---
 
 # UdfManagementClient
