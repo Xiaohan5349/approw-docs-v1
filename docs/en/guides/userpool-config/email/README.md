@@ -26,46 +26,43 @@ Mail variables are used to generate some dynamic content, such as:
 
 ```html
 <div style="padding: 35px;">
-	<table
-		cellpadding="0"
-		align="center"
-		style="width: 600px; margin: 0px auto; text-align: left; position: relative; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; font-size: 14px; font-family:微软雅黑, 黑体; line-height: 1.5; box-shadow: rgb(153, 153, 153) 0px 0px 5px; border-collapse: collapse; background-position: initial initial; background-repeat: initial initial;background:#fff;"
-	>
-		<tbody>
-			<tr>
-				<th
-					valign="middle"
-					style="height: 25px; line-height: 25px; padding: 15px 35px; border-bottom-color: rgba(18, 24, 37, 0.87); background-color: #484f60; border-bottom-color: #C46200; background-color: #484f60; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;"
-				>
-					<font
-						face="微软雅黑"
-						size="5"
-						style="color: rgb(255, 255, 255); "
-						>{{client_name}}
-					</font>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<div style="padding:25px 35px 40px; background-color:#fff;">
-						<h2 style="margin: 5px 0px; ">
-							<font color="#333333" style="line-height: 20px; "
-								><font style="line-height: 22px; " size="4"
-									>你好，{{user_email}}</font
-								></font
-							>
-						</h2>
-						<p>欢迎加入 {{client_name}}</p>
-						<p>
-							{{client_description}}
-						</p>
-						<p align="right">{{client_name}} 团队</p>
-						<p align="right">{{time}}</p>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+  <table
+    cellpadding="0"
+    align="center"
+    style="width: 600px; margin: 0px auto; text-align: left; position: relative; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; font-size: 14px; font-family:微软雅黑, 黑体; line-height: 1.5; box-shadow: rgb(153, 153, 153) 0px 0px 5px; border-collapse: collapse; background-position: initial initial; background-repeat: initial initial;background:#fff;"
+  >
+    <tbody>
+      <tr>
+        <th
+          valign="middle"
+          style="height: 25px; line-height: 25px; padding: 15px 35px; border-bottom-color: rgba(18, 24, 37, 0.87); background-color: #484f60; border-bottom-color: #C46200; background-color: #484f60; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;"
+        >
+          <font face="Calibri" size="5" style="color: rgb(255, 255, 255); "
+            >{{client_name}}
+          </font>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <div style="padding:25px 35px 40px; background-color:#fff;">
+            <h2 style="margin: 5px 0px; ">
+              <font color="#333333" style="line-height: 20px; "
+                ><font style="line-height: 22px; " size="4"
+                  >你好，{{user_email}}</font
+                ></font
+              >
+            </h2>
+            <p>Welcome {{client_name}}</p>
+            <p>
+              {{client_description}}
+            </p>
+            <p align="right">{{client_name}} Group</p>
+            <p align="right">{{time}}</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 ```
 

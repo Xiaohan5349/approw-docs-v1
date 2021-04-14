@@ -8,11 +8,11 @@ OpenID Connect protocol (OIDC) is a lightweight and secure identity authenticati
 
 OpenID Connect protocol has the following authorization modes, which are:
 
-- [Authorization code mode](#authorization-code-mode)
-- [Implicit mode](#implicit-mode)
-- [Hybrid mode](#hybrid-mode)
-- [Client Credentials mode](#client-credentials-mode)
-- [Password mode](#password-mode)
+- [Authorization Code Mode](#authorization-code-mode)
+- [Implicit Mode](#implicit-mode)
+- [Hybrid Mode](#hybrid-mode)
+- [Client Credentials Mode](#client-credentials-mode)
+- [Password Mode](#password-mode)
 
 After becoming an OpenID Connect identity source, other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
@@ -42,7 +42,7 @@ There are the following processes.
 2. The browser receives an **authorization code** from Approw service.
 3. The browser sends the **authorization code** to your application **back-end** using redirection.
 4. Your application service sends the **authorization code** to Approw to obtain **AccessToken** and **IdToken**, refresh token also will be returned if necessary.
-5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources’ API, etc.
+5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use AccessTokan to call other resources API, etc.
 
 Below is the workflow:
 
@@ -65,7 +65,7 @@ In **Console** > **Applications**, find your application, in the application det
 There are the following processes.
 
 1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
-2. Approw redirects the browser to your application callback address. AccessToken and IdToken are sent as **URL hash**.
+2. Approw redirects the browser to your application callback URL. AccessToken and IdToken are sent as **URL hash**.
 3. Your application retrieves token from URL.
 4. Your application can save AccessToken and IdToken for further use. Such as carrying AccessToken to access the resource service, carrying IdToken to request the service so that the server can identify the user's identity.
 
@@ -86,7 +86,7 @@ In **Console** > **Applications**, find your application, in the application det
 There are the following processes.
 
 1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
-2. Approw redirects the browser to your application callback address. Code, AccessToken and IdToken are sent as **URL hash**.
+2. Approw redirects the browser to your application callback URL. Code, AccessToken and IdToken are sent as **URL hash**.
 3. Your application retrieves code and token from URL.
 4. Your application can save AccessToken and IdToken for further use. Such as carrying AccessToken to access the resource service, carrying IdToken to request the service so that the server can identify the user's identity.
 5. Your application can send code to the back-end.
@@ -100,7 +100,7 @@ Below is the workflow:
 
 ## Client Credentials Mode
 
-Client Credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
+Client credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `RS256` as the id_token signature algorithm, check `client_credentials` in the authorization mode, and then click Save.
 
@@ -149,7 +149,7 @@ Only **authorization code mode** and **password mode** can support [Refresh Toke
 
 When the combination of authorization mode and Scope shown in the following table is sent to the Token endpoint, Approw will return Refresh Token.
 
-| Authroization mode      | Scope          |
+| Authroization Mode      | Scope          |
 | -------------           | -------------- |
 | refresh_token           | offline_access |
 | password                | offline_access |
@@ -160,7 +160,7 @@ Warning : When using the **authorization code mode**, you must carry the scope w
 
 #### Obtain Refresh Token in Authorization Code Mode
 
-When using the authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/en/federation/oidc/authorization-code/) to get further information.
+When using the Authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/en/federation/oidc/authorization-code/) to get further information.
 
 #### Obtain authorization code and refresh token example
 
@@ -170,7 +170,7 @@ The following request example can obtain the authorization code and Refresh Toke
 https://{your application domain name}/oidc/auth?client_id={Application ID}
 &response_type=code
 &scope=openid%20profile%20email%20phone%20address%20offline_access
-&redirect_uri={Callback address}
+&redirect_uri={Callback URL}
 &state=4756806
 ```
 
@@ -180,7 +180,7 @@ The following request example can obtain Access Token, Id Token, and Refresh Tok
 
 ```http
 POST https://${your app domain name}/oidc/token?grant_type=authorization_code
-&redirect_uri={Callback address}
+&redirect_uri={Callback URL}
 &code={Authroization code}
 &client_id={Application ID}
 &client_secret={Application Secret}

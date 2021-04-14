@@ -4,7 +4,7 @@
 
 ## Overview
 
-Approw currently using the **domain name hosted** mode, using Approw secondary domain (eg:https://my-app.approw.cn).
+Approw currently using the **domain name hosted** mode, using Approw secondary domain (eg:https://my-app.approw.com).
 In the **domain name hosted mode**, the user can log in and access the application through Approw by two domain names, as for users who want to use a custom domain name, Approw offers a solution based on Nginx reverse proxy.
 This article will describe in detail how users configure a custom domain name, so as to realize Approw login and registration through a custom domain name.
 
@@ -22,39 +22,39 @@ Before proceeding with this session, please make sure that you have completed th
 
 **1. Log in to the Approw console, create a new application, and specify the application domain name**
 
-<img src="./images/custom-domain-1.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain1.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/custom-domain-2.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain2.png" style="margin-top: 20px;" class="md-img-padding" />
 
-As shown above, we have created a Approw application and configure the application for the domain name:**https://custom-domain.approw.cn**.
-Next, we will reverse proxy the user's custom domain name **https://custom-domain.approw.cn**.
+As shown above, we have created a Approw application and configure the application for the domain name:**https://custom-domain.approw.com**.
+Next, we will reverse proxy the user's custom domain name **https://custom-domain.approw.com**.
 This application and domain name are just examples, you can create your own Approw application and domain name.
 
 **2. Create a user to log in to the Approw application**
 
-<img src="./images/custom-domain-3.png" style="margin-top: 20px;" class="md-img-padding" />
+<!-- <img src="./images/domain3.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/custom-domain-4.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain4.png" style="margin-top: 20px;" class="md-img-padding" /> -->
 
 **3. Configure the Approw application domain name created above in the Nginx reverse proxy**
 
 ```nginx
 upstream custom_domain {
     # Application domain name configured above
-    server custom-domain.approw.cn:443;
+    server custom-domain.approw.com:443;
     keepalive 64;
 }
 
 server {
     listen 443;
     # Custom domain name in the example
-    server_name custom-domain.littleimp.cn;
+    server_name custom-domain.littleimp.com;
 
     ssl                         on;
     # HTTPS certificate for custom domain name
     ssl_certificate             /etc/nginx/certificate/fullchain.cer;
     # HTTPS private key for custom domain name
-    ssl_certificate_key         /etc/nginx/certificate/littleimp.cn.key;
+    ssl_certificate_key         /etc/nginx/certificate/littleimp.com.key;
     ssl_session_cache           shared:SSL:1m;
     ssl_session_timeout         5m;
     ssl_ciphers                 ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
@@ -64,9 +64,9 @@ server {
 
     location / {
         # Redirect application domain name to custom domain name
-        proxy_redirect https://custom-domain.approw.cn https://custom-domain.littleimp.cn:8088;
+        proxy_redirect https://custom-domain.approw.com https://custom-domain.littleimp.com:8088;
         # Application domain name configured above
-        proxy_set_header Host custom-domain.approw.cn;
+        proxy_set_header Host custom-domain.approw.com;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header User-Agent $http_user_agent;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -86,11 +86,11 @@ server {
 }
 ```
 
-**4. By custom domain example of `https://custom-domain.littleimp.cn:8088` to access applications Approw**
-<img src="./images/custom-domain-5.png" style="margin-top: 20px;" class="md-img-padding" />
+<!-- **4. By custom domain example of `https://custom-domain.littleimp.com:8088` to access applications Approw**
+<img src="./images/domain5.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **5. Enter the user and password created above to log in to the Approw application**
-<img src="./images/custom-domain-6.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain6.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **6. Successfully log in to the Approw application through the custom domain name and visit the personal center**
-<img src="./images/custom-domain-7.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain7.png" style="margin-top: 20px;" class="md-img-padding" /> -->

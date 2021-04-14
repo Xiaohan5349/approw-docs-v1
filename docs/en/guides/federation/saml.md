@@ -10,7 +10,7 @@ In order for your application to have identity authentication capabilities, you 
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, feel free to fill in an **subdomain**. Finally, click “Create”.
+Fill in the **Application Name**, for example, Web Note Project, feel free to fill in an **Subdomain**. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/saml/1-1.png)
 
@@ -20,7 +20,7 @@ To use your organization and users for SAML2 authentication, you need to enable 
 
 ![](~@imagesZhCn/guides/federation/oauth/1-1.png)
 
-In the "SAML2 Identity Provider" card, turn on the Enable SAML2 Provider switch and fill in the **default ACS address** and **settings** information. Then click “Save”. The specific ACS address will be provided by the SAML SP, and the specific setting items need to be configured according to the requirements of the SAML SP.
+In the "SAML2 Identity Provider" card, turn on the Enable SAML2 Provider switch and fill in the **Default ACS address** and **Settings** information. Then click “Save”. The specific ACS address will be provided by the SAML SP, and the specific setting items need to be configured according to the requirements of the SAML SP.
 
 ::: hint-info
 When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP metadata first, then it will provide you with the corresponding configuration information. At this time, it is recommended to fill in an **arbitrary** ACS address and the default setting information. Then **download** the Approw IdP **metadata** and upload it to the SP. Then **modify** the ACS address and setting information to the correct content obtained from the SP.
@@ -67,7 +67,7 @@ When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP me
 }
 ```
 
-**Custom SAML Response Attribute**:
+**Custom SAML Response attributes**:
 You can add some custom attributes to the SAML assertion, and the newly added attributes will appear in the Attribute of the SAML assertion.
 
 **Example**:

@@ -4,7 +4,7 @@
 
 This article introduces how to make Approw an OAuth2.0 identity resource, other systems can connect to Approw as identity providers through OAuth2.0 protocol.
 
-OAuth2.0 protocol has the following authorization modes, which are: **Authorization Code Mode**，**Implicit Mode**，**Password Mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
+OAuth2.0 protocol has the following authorization modes, which are: **authorization code mode**，**implicit mode**，**password mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
 You can understand the OAuth2.0 protocol in depth [here](/docs/en/concepts/oidc/oidc-overview.md).
 
@@ -14,7 +14,7 @@ In order for your application to have identity authentication capabilities, you 
 
 ![](~@imagesZhCn/guides/federation/oidc/1-1.png)
 
-Fill in the **application name**, for example, Web Note Project, specify an **subdomain** for your project, where your users will complete authentication. Fill in the **callback address** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
+Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
 ![](~@imagesZhCn/guides/federation/oidc/1-2.png)
 
@@ -28,7 +28,7 @@ In the "OAuth2.0 Identity Provider" card below, turn on the Enable OAuth2.0 Prov
 
 ## Authorization Code Mode
 
-If your application project has a **back-end service** that can store secret key safety, the **Authorization Code mode** is recommended.
+If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended.
 
 In **Console** > **Applications**, find your application in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `authorization_code` in the authorization mode, and then click Save.
 

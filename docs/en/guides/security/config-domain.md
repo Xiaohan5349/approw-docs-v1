@@ -31,4 +31,4 @@ This can prevent others from embezzling your server resources through other addr
 For usage in WebView, it is recommended to load a deployed Web with a domain name through WebView, and then cache it locally, so that the access can be restricted by the Web security domain name.
 If you use the JavaScript SDK on the front end, when you plan to officially release it, be sure to configure the web security domain name by going to the console> settings> security information> security domain (CORS).
 
-![](./images/config-domain.png)
+![](./images/websecurity.png)
