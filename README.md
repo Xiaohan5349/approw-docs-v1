@@ -1,6 +1,6 @@
 # Approw doc
 
-## Use
+## How to Use
 
 ```bash
 # start dev server
@@ -79,7 +79,7 @@ Use interpolation according to vue syntax, which can be defined in the header of
 -   \$themeConfig.sampleAppDomain，sample application domain
 -   \$themeConfig.consoleDomain，console domain
 
-## 注意！！！
+## Attention!!!
 
 After publishing the written document, check it online, refresh the page, and then click the menu to see if you can jump to other pages. In many cases, the following errors will be reported, which will cause the subsequent vue code to fail to execute and the page cannot be jumped:
 
