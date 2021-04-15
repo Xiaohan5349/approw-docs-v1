@@ -18,14 +18,13 @@ Based on {{$localeConfig.brandName}} powerful and flexible privilege system, you
 
 Role-based access control (RBAC) refers to the authorizing related privilege through a user's Role. Simply speaking, this is more flexible, efficient, and extensible than directly granting user privileges.
 
-<img src="~@imagesZhCn/guides/rbac.png" alt="drawing"/>
-
+<img src="./images/rbac.png" alt="drawing">
 
 When using RBAC, by analyzing the actual situation of system users, based on common responsibilities and needs, they are granted different roles. You can grant users one or more roles, and each role has one or more privileges. This relationship between user-role and role-privilege allows us to no longer need to manage every single user separately, and the user inherits the required privileges from the granted role.
 
 Take a simple scenario (Gitlab's privilege system) as an example. There are three roles in the user system: Admin, Maintainer, and Operator. These three roles have different privileges. For example, only Admin has the privilege to create code warehouses and delete code warehouses. Other roles do not.
 
-![](../authenticate-first-user/images/rbac.png)
+![](./images/rbac2.png)
 
 Not authorizing the users directly is for future extensibility consideration. For example, if there are multiple users with the same privilege, they must be assigned with the same privilege at first, and the privilege of these users must be modified one by one when modifying. With a role, we only need to assign different roles to different users after setting the privileges for the role, and then only need to modify the privileges of the roles to automatically modify the privileges of all users in the role.
 
@@ -33,7 +32,7 @@ Not authorizing the users directly is for future extensibility consideration. Fo
 
 Attribute-Based Access Control (ABAC) is a flexible authorization model that uses one or a group of attributes to control whether there is authority to operate objects.ABAC attributes are generally divided into four categories: user attributes (such as user age), environment attributes (such as current time), operational attributes (such as READ) and object attributes (such as an article, also known as resource attributes), so theoretically it is possible to achieve very flexible privilege control:
 
-<img src="./images/abac.png" height="400" style="display:block; margin:40px auto">
+<img src="./images/abac.png" height="400" style="display:block; margin:40px auto" >
 
 Under the ABAC authorization model, you can easily implement the following privilege control logic:
 1. Authorize (a user) the editing privilege to edit a specific book.
@@ -75,7 +74,7 @@ You can also use API & SDK to create roles. For details, see [Role Management SD
 
 On the role details page, you can grant this role to users. You can search for users by username, mobile phone number, email, or nickname:
 
-![](~@imagesZhCn/guides/access-control/Xnip2021-03-01_15-51-01.png)
+![](./images/assign-assign-permission-to-users.png)
 
 After selecting a user, click OK, and you can view the list of users granted with this role.
 

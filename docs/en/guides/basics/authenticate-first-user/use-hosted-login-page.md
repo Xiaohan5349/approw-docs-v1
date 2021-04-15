@@ -12,7 +12,7 @@ This document will introduce how to quickly implement a complete user authentica
 
 If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [Console](https://console.approw.com). Follow the instructions below to create your first user pool:
 
-<img src="~@imagesZhCn/guides/basics/Xnip2021-02-27_14-58-25.png" alt="drawing"/>
+<img src="./images/create-userpool.png" alt="drawing"/>
 
 After the creation is successful, you will automatically redirect to the user pool details page.
 
