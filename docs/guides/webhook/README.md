@@ -1,56 +1,56 @@
 ---
 meta:
   - name: description
-    content: 使用 Webhook 监听用户事件
+    content: Using Webhook to Listen User Events
 ---
 
-# 使用 Webhook 监听用户事件
+# Use Webhook to Listen User Events
 
 <LastUpdated/>
 
-Webhook 允许你对用户注册、登录等行为进行监听，从而对其做一些自定义处理。
+Webhook allows you to listen user registration, login and other behaviors, so as to do some user-defined processing.
 
-使用 Webhook 的方法是在 Authing 平台中配置 HTTP URL，当你的用户登录、注册、修改密码后，都会给远程 HTTP URL 发送一个 POST 请求。
+The method of using the Webhook is to configure the HTTP URL in the Approw platform. When your user logs in, registers, and changes the password, a POST request will be sent to the remote HTTP URL.
 
-## 配置 Webhook
+## Configure Webhook
 
-在 **扩展能力** - **Webhook** 页面，可以管理你定义的 webhook：
+On the **Extention Capabilities** - **Webhook** page，you can manage the webhook you defined：
 
 ![](https://cdn.authing.cn/blog/20200927201310.png)
 
 ::: img-description
-Webhook 列表
+Webhook List
 :::
 
-点击右上角创建按钮可以创建新的 Webhook 订阅特定事件：
+A new Webhook can be created to subscribe to a specific event by clicking on the Create button in the upper right corner:
 
 ![](https://cdn.authing.cn/blog/20200927201428.png)
 
 ::: img-description
-配置 Webhook
+Configuring Webhook
 :::
 
-### 参数解释
+### Parameter Explanation
 
-| 参数名称     | 参数解释                                                                                                                                 |
+| Parameter name     | Parameter explanation                                                                                                                               |
 | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| 回调链接     | 远程接收 webhook 事件的 HTTP URL 地址                                                                                                    |
-| 请求密钥     | 设置好密钥（值由开发者自定）后，Authing 将在每个请求中（HTTP Header：X-Authing-Token）附带此密钥，你可以通过验证此密钥来避免一些非法操作 |
-| 请求数据格式 | 指定发起 Webhook 请求时 Request body 的数据格式，可选值有 `application/json` 和 `application/x-www-form-urlencoded`                      |
-| 触发事件     | [请查看支持的事件](use-webhook.md#支持的事件)                                                                                            |
-| 激活         | 是否启用此 Hook                                                                                                                          |
+| Callback link     | The HTTP URL address for remotely receiving webhook events                                                                                                    |
+| Request key     | After setting the key (the value is set by the developer), Approw will attach this key to each request（HTTP Header：X-Authing-Token）. You can verify this key to avoid some illegal operations |
+| Request data format | Specify the data format of the Request body when initiating a Webhook request. The optional values are `application/json` and `application/x-www-form-urlencoded`                      |
+| Trigger event     | [Whether to enable this Hook](use-webhook.md#支持的事件)                                                                                            |
+| Whether to enable this Hook         | Whether to enable this Hook                                                                                                                          |
 
-## 调试 Webhook
+## Debug Webhook
 
-刚创建好的 Hook 请求事件都为空，这时你可以点击「测试」触发一个「测试事件」：
+The Hook request events you just created are empty, so you can trigger a "test event" by clicking on "Test".
 
 ![](https://cdn.authing.cn/blog/20200927201623.png)
 
 ::: img-description
-Webhook 测试
+Webhook test
 :::
 
-请求数据为：
+The requested data
 
 ```js
 {
@@ -58,55 +58,55 @@ Webhook 测试
 }
 ```
 
-测试成功后你将看到详细的请求信息和返回信息。
+After a successful test you will see detailed request and return information.
 
 ![](https://cdn.authing.cn/blog/20200927201638.png)
 
-## 支持的事件
+## Supported events
 
-### 事件列表
+### Event list
 
-| 事件名                | 事件描述                                                                                           |
+| Event name                | Event description                                                                                           |
 | :-------------------- | :------------------------------------------------------------------------------------------------- |
-| login                 | 登录事件，当用户进行登录时会触发此事件，无论是否登录成功都会触发。                                 |
-| register              | 注册事件，当用户注册或管理员手动创建用户时会触发此事件，无论是否成功都会触发                       |
-| mfaVerify             | MFA 验证事件，当用户登录并触发了 MFA，并输入了 MFA 验证码二次登录后触发，无论成功与否都会触发      |
-| user:updated          | 修改密码事件，当用户修改密码或管理员手动修改密码时会触发此事件，无论成功与否都会触发               |
-| user:password-changed | 修改用户信息时间，当用户修改自己的信息或管理员手动修改用户信息时会触发词时间，无论成功与否都会触发 |
-| user:email-verified   | 用户邮箱被验证事件                                                                                 |
-| permission:add        | 添加授权事件，授权对象可以是用户、角色、组织结构                                                   |
-| permission:revoke     | 取消授权事件，取消授权对象可以是用户、角色、组织机构                                               |
+| login                 | Login event, this event will be triggered when the user logs in, regardless of whether the login is successful or not                               |
+| register              | Registration event, this event will be triggered when the user registers or the administrator manually creates a user, regardless of whether it is successful or not, it will be triggered                       |
+| mfaVerify             | MFA verification event, when the user logs in and triggers MFA, and enters the MFA verification code after the second login, it will be triggered regardless of success or failure      |
+| user:updated          | Password modification event, this event will be triggered when the user changes the password or the administrator manually changes the password, regardless of success or failure               |
+| user:password-changed | Modify user information time, when users modify their own information or administrators manually modify user information will trigger the word time, regardless of success or failure will be triggered |
+| user:email-verified   | User mailbox is verified event                                                                             |
+| permission:add        | Add authorization events. Authorization objects can be users, roles, and organizational structures                                             |
+| permission:revoke     | Cancel authorization events. Cancel the rule of Authorization objects can be users, roles, and organizational structures                                                |
 
-### 请求类型
+### Request type
 
-指定发起 Webhook 请求时 Request body 的数据格式，可选值有 `application/json` 和 `application/x-www-form-urlencoded`
+Specify the data format of the Request body when initiating a Webhook request. The optional values are `application/json` and `application/x-www-form-urlencoded`
 
-## 附带的数据
+## Attached data
 
-每一个事件都会携带一些特定的请求参数。
+Each event will carry some specific request parameters.
 
 ### Request headers
 
-我们会在 HTTP POST 头中携带一些自定义头信息，如下表所示：
+We will carry some custom header information in the HTTP POST header, as shown in the following table:
 
-| Header                     | 描述                                                                                        |
+| Header                     | Description                                                                                        |
 | :------------------------- | :------------------------------------------------------------------------------------------ |
-| `user-agent`               | 值为 `'authing-webhook@2.0'`，表示此次请求来自 Authing                                      |
-| `x-authing-webhook-secret` | 请求秘钥，值为你在 Webhook 配置中设置的秘钥，对此秘钥进行验证，可以用来防止第三方的恶意请求 |
-| `x-authing-userpool-id`    | Authing 用户池 ID                                                                           |
+| `user-agent`               | The value is `'approw-webhook@2.0'`，which means this request is from Approw                                    |
+| `x-approw-webhook-secret` | The request secret key is the secret key you set in the Webhook configuration. This secret key can be verified to prevent malicious requests from third parties |
+| `x-approw-userpool-id`    | Approw user pool ID                                                                         |
 
 ### Request body
 
-请求体中也会携带一些特定参数
+The request body will also carry some specific parameters
 
-| 参数名      | 描述                                                                                                    |
+| Parameter name      | Description                                                                                                    |
 | :---------- | :------------------------------------------------------------------------------------------------------ |
-| `eventName` | 事件名称，可能的值为 `login`, `register`, `user:updated`,`user:password-changed`, `user:email-verified` |
-| `data`      | 该事件的对应的详细信息                                                                                  |
+| `eventName` | Event name. Possible values are `login`, `register`, `user:updated`,`user:password-changed`, `user:email-verified` |
+| `data`      | The corresponding details of the event                                                                                 |
 
-#### Request 示例
+#### Request example
 
-- 登录事件
+- Login event
 
   ```json
   {
@@ -138,7 +138,7 @@ Webhook 测试
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -164,7 +164,7 @@ Webhook 测试
   }
   ```
 
-- 注册事件
+- Registration Events
 
   ```json
   {
@@ -196,7 +196,7 @@ Webhook 测试
       "isDeleted": false,
       "device": null,
       "browser": null,
-      "company": "Authing",
+      "company": "Approw",
       "name": null,
       "givenName": null,
       "familyName": null,
@@ -222,7 +222,7 @@ Webhook 测试
   }
   ```
 
-- 修改密码事件
+- Change Password Event
 
   ```json
   {
@@ -233,7 +233,7 @@ Webhook 测试
   }
   ```
 
-- 修改用户信息事件
+- Modify user information event
 
   ```json
   {
@@ -266,7 +266,7 @@ Webhook 测试
         "isDeleted": false,
         "device": null,
         "browser": null,
-        "company": "Authing",
+        "company": "Approw",
         "name": null,
         "givenName": null,
         "familyName": null,
@@ -296,7 +296,7 @@ Webhook 测试
   }
   ```
 
-- 用户邮箱被验证事件
+- User mailbox verification event
 
 ```json
 {
@@ -308,44 +308,44 @@ Webhook 测试
 }
 ```
 
-- MFA 验证事件
+- MFA verification event
 
 ```json
 {
   "eventName": "mfaVerify",
   "data": {
     "userId": "xxxxx",
-    "isValid": true // 是否验证通过
+    "isValid": true // If the verification succeeds.
   }
 }
 ```
 
-- 添加授权事件
+- Add authorization event
 
 ```json
 {
   "eventName": "permission:add",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```
 
-- 取消授权事件
+- Cancellation of authorization events
 
 ```json
 {
   "eventName": "permission:revoke",
   "data": {
     "userPoolId": "xxxxx",
-    "policies": ["xxxx"], // 授权的策略 ID 列表
-    "targetType": "USER", // 授权对象类型，USER | ROLE | GROUP | ORG
-    "targetIdentifiers": ["xxxx"], // 授权对象 ID 列表，如 用户 ID
-    "namespace": "xxxx" // 授权的策略所属的权限组
+    "policies": ["xxxx"], // The ID list of permission policies.
+    "targetType": "USER", // The type of permission object such as USER, ROLE, GROUP, ORG.
+    "targetIdentifiers": ["xxxx"], // The ID list of permission objects, such as user ID.
+    "namespace": "xxxx" // The group that permission policies belongs to.
   }
 }
 ```

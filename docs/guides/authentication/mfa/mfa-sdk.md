@@ -1,31 +1,30 @@
-# 通过 SDK 接入 MFA
+# Configure MFA through SDK
 
-## 概述
+## Overview
 
-{{$localeConfig.brandName}} 不仅可以通过控制台来配置 MFA 认证流程，你还可以通过 SDK 的方式为 {{$localeConfig.brandName}} 的 MFA 认证流程进行定制化开发
+{{$localeConfig.brandName}} can not only configure the MFA authentication process through the console, but you can also config the MFA authentication through the SDK.
 
-本文将以 [{{$localeConfig.brandName}} - Node/JavaScript SDK](/reference/sdk-for-node) 为例，指引用户完成基于 SDK 的 MFA 自定义开发
+This article will take [{{$localeConfig.brandName}} - Node/JavaScript SDK](/docs/reference/sdk-for-node) as an example to guide developers to complete SDK-based MFA custom development.
+This includes: binding MFA authenticator, unbinding MFA authenticator, user secondary authentication, etc.
 
-其中包含：绑定 MFA 认证器、解绑 MFA 认证器、用户二次认证等
+## Prerequisites
 
-## 准备工作
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com/)
+2. [Complete the creation of the user pool and application](/docs/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
-1. <a :href="`${$themeConfig.consoleDomain}`">注册一个 {{$localeConfig.brandName}} 账号</a>
-2. [完成用户池和应用的创建](/guides/basics/authenticate-first-user/use-hosted-login-page)
+## Multi-Factor Authentication (MFA) API
 
-## 多因素认证（MFA）API
+### Query the MFA information opened by the user
 
-### 查询用户开启的 MFA 信息
-
-<ApiMethodSpec method="get" :host="$themeConfig.apiDomain" path="/api/v2/mfa/authenticator" summary="查询用户开启的 MFA 信息" description="返回用户开启的 MFA 信息">
+<ApiMethodSpec method="get" :host="$themeConfig.apiDomain" path="/api/v2/mfa/authenticator" summary="Query the MFA information opened by the user" description="Return  the MFA information opened by the user">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />
+<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="queryParams">
 <ApiMethodParam name="authenticator_type" type="string" required>
 
-填写 `totp`
+Enter `totp`
 
 </ApiMethodParam>
 </template>
@@ -35,7 +34,7 @@
 ```json
 {
   "code": 200,
-  "message": "获取 MFA Authenticator 成功",
+  "message": "Obtain MFA Authenticator Successfully",
   "data": [
     {
       "id": "5f8eea9b018e1407d2ce7975",
@@ -50,10 +49,10 @@
   ]
 }
 
-没有开启 MFA 时返回：
+If MFA is not Enabled, return:
 {
   "code": 200,
-  "message": "获取 MFA Authenticator 成功",
+  "message": "Obtain MFA Authenticator Successfully",
   "data": []
 }
 ```
@@ -62,17 +61,17 @@
 </template>
 </ApiMethodSpec>
 
-### 请求绑定 MFA 口令
+### Request to bind MFA password
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate" summary="获取 MFA 二维码以及 Secret 信息，用于展示，等待用户确认绑定" description="请求此接口后，用户确认绑定之前，MFA 二次认证不会生效。接口返回 MFA Secret，MFA Uri，MFA 二维码 Data Url，恢复代码。">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate" summary="Obtain the MFA QR code and Secret information for display, and wait for the user to confirm the binding" description="After requesting this endpoint, the MFA secondary authentication will not take effect before the user confirms the binding. The endpoint returns MFA Secret, MFA Uri, MFA QR code Data Url, and recovery code.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
 <ApiMethodParam name="authenticator_type" type="string" required>
 
-填写 `totp`
+Enter `totp`
 
 </ApiMethodParam>
 </template>
@@ -82,14 +81,14 @@
 ```json
 {
   "code": 200,
-  "message": "获取 MFA 密钥成功",
+  "message": "Successfully obtained MFA key",
   "data": {
     "authenticator_type": "totp",
-    "secret": "JAPDSOAZLV4BG3RA", // MFA Secret 可用于手动添加 MFA
-    "qrcode_uri": "otpauth://totp/playground:getstarted%40{{$themeConfig.officeSiteDomain}}?secret=JAPDSOAZLV4BG3RA&period=30&digits=6&algorithm=SHA1&issuer=playground", // MFA Uri，可用于手动添加 MFA
-    // MFA 二维码 Data Url，用于放在 <img> src 中展示二维码
+    "secret": "JAPDSOAZLV4BG3RA", // MFA Secret can be used to manually add MFA
+    "qrcode_uri": "otpauth://totp/playground:getstarted%40{{$themeConfig.officeSiteDomain}}?secret=JAPDSOAZLV4BG3RA&period=30&digits=6&algorithm=SHA1&issuer=playground", // MFA Uri，can be used to manually add MFA
+    // MFA QR Code Data Url，can be placed in <img> src to display QR Code.
     "qrcode_data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADkCAYAAACIV4iNAAAAAklEQVR4AewaftIAAAx3SURBVO3BQW4sy7LgQDKh/W+ZfYY+CiBRJd34r93M/mGtdYWHtdY1HtZa13hYa13jYa11jYe11jUe1lrXeFhrXeNhrXWNh7XWNR7WWtd4WGtd42GtdY2HtdY1HtZa13hYa13jhw+p/KWKN1Q+UfEJlTcqTlROKr5J5aRiUpkqJpU3Kk5UpopJ5S9VfOJhrXWNh7XWNR7WWtf44csqvknlExUnKlPFicpJxUnFpHKiMlVMKpPKVDGpTBWTyknFScVJxaRyovJNFd+k8k0Pa61rPKy1rvGw1rrGD79M5Y2KN1SmiknlpOKbVE5UTlROVL5J5aRiUnmjYlKZKt5Q+SaVNyp+08Na6xoPa61rPKy1rvHD/7iKSWVSmSomlZOKE5WTiknlpGJS+UTFpHJSMam8UTGpnFScVPwveVhrXeNhrXWNh7XWNX74/0zFpHJSMalMKicV36TyhsonVKaKqeINlaliUjmp+F/2sNa6xsNa6xoPa61r/PDLKv6SylTxCZWTihOVk4o3Kt5QmSreqJhUpopJ5aRiUjlRmSq+qeImD2utazysta7xsNa6xg9fpvJfqphUpopPVEwqU8VJxaQyVUwqJypTxRsqU8WkMlVMKlPFpPJGxaRyojJVnKjc7GGtdY2HtdY1HtZa1/jhQxU3q5hUpopJ5RMqU8VJxaTyRsUbKlPFN6lMFZPKVHFS8YmK/0se1lrXeFhrXeNhrXUN+4cPqEwVk8o3VZyonFR8k8pUMam8UTGp/KaKSeWNiknlL1WcqHxTxW96WGtd42GtdY2HtdY1fvhlFW+oTBUnKjdRmSpOVCaVb6p4o+JEZVKZKk5UpopJZaqYVN6omFROKv5LD2utazysta7xsNa6xg8fqphUpopJZaqYKiaVNyomlROVqWJSOamYVD5R8YbKicpUMalMFZPKVHGiclIxqUwVk8obKlPFScWJyhsVn3hYa13jYa11jYe11jV++LKKT6hMFZPKJ1SmijcqJpUTlTdU3qh4Q+WNihOVk4pJZaqYVKaKSeUNlTdUTiomlW96WGtd42GtdY2HtdY1fviQylQxqUwVk8pUMalMFZPKGxWTyknFpDJV/CaVqeJEZaqYKj6hMlVMKm+oTBUnFZPKVDGpTBUnFZPKX3pYa13jYa11jYe11jXsH/5DKicVb6i8UfGbVN6omFSmiknlpOJEZaqYVKaKSeUTFScq31RxojJVTCpTxTc9rLWu8bDWusbDWusa9g9fpDJVTCpTxYnKVDGpTBUnKicVk8pUMalMFZPKVDGp/KWKE5Wp4hMqJxWTyknFpDJVvKFyUjGpnFR84mGtdY2HtdY1HtZa17B/+IDKVHGiclLxCZWp4kTljYo3VN6omFSmikllqjhRmSomlaniEypTxaTyiYpPqHyi4pse1lrXeFhrXeNhrXWNHz5UcaIyVUwqk8onKiaVqeI3qUwVk8pUMalMFZPKJyomlaniROUTKlPFicqJyicqTlT+0sNa6xoPa61rPKy1rvHDh1TeUHmj4g2Vm1V8ouINlTdUpoqpYlKZKiaVqeJE5aTiROWk4o2KSeU3Pay1rvGw1rrGw1rrGvYPX6QyVXxC5ZsqJpWTikllqphU3qiYVL6p4kRlqphUPlExqUwVb6icVLyhclJxojJVfOJhrXWNh7XWNR7WWtewf/iAylQxqbxRcaLyRsVvUpkqJpWpYlKZKj6h8l+qmFQ+UXGiMlVMKm9U/Jce1lrXeFhrXeNhrXWNHz5UMalMFZPKVHGiclIxqZyoTBVvqEwVk8qJyhsqb1RMKt9UcaIyVZyoTBUnKicqU8WkMlWcqLxR8YmHtdY1HtZa13hYa13D/uEDKlPFJ1SmikllqriJylRxovJGxaTyRsWJyhsVb6hMFZPKVDGpTBUnKicVk8pUMalMFd/0sNa6xsNa6xoPa61r2D98kcpUcaLyTRWfUDmpmFTeqJhUpopJ5S9VvKHyRsUbKlPFpPJNFf+lh7XWNR7WWtd4WGtd44cvq5hU3qh4Q+VEZap4o+Kk4hMVk8pJxRsqU8WkMqlMFScV36TyiYo3VD6hMlV84mGtdY2HtdY1HtZa1/jhQyonFZPKGypTxYnKVPFGxYnKVPEJlU+oTBUnKicVb6hMFScqJxWTyidUpoo3VP7Sw1rrGg9rrWs8rLWu8cOHKk5UpopJ5aTiEypTxYnKVHGi8kbFVDGpvFHxTSonFVPFb6r4RMUbKlPFpDJVfNPDWusaD2utazysta7xw4dUTiomlROVT1RMKicqU8WkMlVMKlPFpPJNKt9UMal8k8obKp9Q+SaVqWJSmSo+8bDWusbDWusaD2uta9g/fEBlqphUTiq+SWWqmFROKj6h8kbFicobFScqv6nim1ROKiaVqWJSmSomlaniRGWq+MTDWusaD2utazysta7xw4cqJpWTiknlExVTxaTym1S+SWWqOFGZVKaKqeINlZOKSeWkYlKZKj5R8YbKVHGi8pse1lrXeFhrXeNhrXWNH76s4kRlqviEyknFX6r4RMWkclLxhspJxRsqJxWfqPimijdUporf9LDWusbDWusaD2uta9g/fJHKX6qYVE4qJpWp4kTlpOJEZar4JpWpYlJ5o2JSmSpOVKaKSeWbKk5UpopJZaqYVE4qPvGw1rrGw1rrGg9rrWv88GUVJypTxW+q+ITKScWJylRxovJGxYnKVPGGyhsqU8WkclLxCZWpYqqYVE5U/tLDWusaD2utazysta7xw5epnFScqHyTyk1U3qiYVD6hMlVMKicVJxUnFZPKpDJVvFFxojJVnKhMFb/pYa11jYe11jUe1lrX+OFDKlPFpHKiMlWcqLxRcaJyUnGiMlWcVEwqJypTxaQyVUwqU8VJxaQyqUwVk8pUMamcVJyonFRMKlPFpHJSMalMFd/0sNa6xsNa6xoPa61r2D/8IZWTikllqjhROan4SypTxaRyUjGpTBUnKicVk8pJxTepnFRMKlPFicpJxaQyVZyoTBWfeFhrXeNhrXWNh7XWNX74kMpU8UbFpDJVnKhMFScqU8U3qbxRMalMKlPFpPIJlZOKSeWNiknlDZWp4kRlqjhRmSr+Sw9rrWs8rLWu8bDWuob9wxepnFScqJxU/CaVqeINld9U8YbKGxVvqEwVn1D5pooTlTcqftPDWusaD2utazysta7xwy+rmFTeqPiEylRxUnGiMlWcVLyhMlVMKlPFScWkcqJyk4oTlaniRGWqeENlqvimh7XWNR7WWtd4WGtd44c/VnGiMqm8UfEJlaliqphUvqliUpkqJpWpYlKZKiaVqeJEZao4UTmpOFE5qZhUTio+UTGpTBWfeFhrXeNhrXWNh7XWNX74ZSonFVPFicpU8YbKVDFV/CWVk4pJ5URlqnhD5aRiUpkqpopvqjipOFGZKt5Q+U0Pa61rPKy1rvGw1rqG/cMHVN6oeEPljYoTlZOKb1KZKiaVv1QxqUwVk8pUcaIyVUwqN6uYVKaK3/Sw1rrGw1rrGg9rrWv88KGK31RxojKpnFRMKicqU8WkMlVMFZPKVHGiMlW8oTKpTBVvqEwVn6iYVKaKSeWk4g2VN1Smim96WGtd42GtdY2HtdY1fviQyl+qmCr+SxWTyl9SmSo+ofKGylQxqUwVk8qJylQxqZyoTBUnKicVk8pU8YmHtdY1HtZa13hYa13jhy+r+CaVE5WpYlKZKt6oeKNiUnlD5Y2KNyomlTcqJpVJZaqYVKaKE5VJ5Y2Kb1L5TQ9rrWs8rLWu8bDWusYPv0zljYpPqEwVk8pUMan8popPqHxCZap4Q2WqOFE5UTmpOFGZVD5RcaLymx7WWtd4WGtd42GtdY0f/sdUTCpTxaQyVUwq36RyUjGpnFS8ofKbVE4qJpWpYlKZKk4qJpU3VKaKk4pvelhrXeNhrXWNh7XWNX74H1dxUjGpnFS8oTJVTCqTyhsqJxVTxYnKScWkMlVMKpPKicpUMalMFScVk8pUcaIyVUwqU8UnHtZa13hYa13jYa11jR9+WcVvqvimihOVqWJSmSomlW+qeENlqjipOKl4o2JSOVGZKiaVqWJSeUPlv/Sw1rrGw1rrGg9rrWvYP3xA5S9VTCpTxRsq/5dUTConFScqU8WJyjdVnKhMFScqU8UnVN6o+MTDWusaD2utazysta5h/7DWusLDWusaD2utazysta7xsNa6xsNa6xoPa61rPKy1rvGw1rrGw1rrGg9rrWs8rLWu8bDWusbDWusaD2utazysta7x/wCP0c8uoTUAFwAAAABJRU5ErkJggg==",
-    // 恢复代码
+    // Recovery Code
     "recovery_code": "8477-a1a6-662c-a750-bbb4-72a9"
   }
 }
@@ -99,54 +98,54 @@
 </template>
 </ApiMethodSpec>
 
-### 确认绑定 MFA 口令
+### Confirm binding MFA password
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate/confirm" summary="确认绑定 MFA。" description="请求此接口后，用户确认绑定 MFA，之后登录会要求输入二次验证 MFA 口令。">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/associate/confirm" summary="Confirm binding MFA" description="After requesting this endpoint, the user confirms the binding of MFA, and then logs in and asks to enter the MFA password for secondary verification.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
 <ApiMethodParam name="authenticator_type" type="string" required>
 
-填写 `totp`
+Enter `totp`
 
 </ApiMethodParam>
 <ApiMethodParam name="totp" type="string" required>
 
-MFA 口令
+MFA Password
 
 </ApiMethodParam>
 </template>
 <template slot="response">
-<ApiMethodResponse description="绑定成功">
+<ApiMethodResponse description="Bind Successfully">
 
 ```json
-{ "code": 200, "message": "TOTP MFA 绑定成功" }
+{ "code": 200, "message": "TOTP MFA Bind Successfully" }
 ```
 
 </ApiMethodResponse>
 
-<ApiMethodResponse httpCode="400" description="绑定失败">
+<ApiMethodResponse httpCode="400" description="Bind failed">
 
 ```json
-{ "code": 400, "message": "安全码错误，请重新输入" }
+{ "code": 400, "message": "Incorrent security code, please enter again" }
 ```
 
 </ApiMethodResponse>
 </template>
 </ApiMethodSpec>
 
-### 一次认证后返回 MFA Token
+### Return MFA Token after first authentication
 
-调用 authing-js-sdk 中的登录方法，参考[登录](/sdk/sdk-for-javascript/README.md#登录)。或者直接调用 [GraphQL 接口](/sdk/open-graphql.md#登录)。你需要存储 mfaToken 以备后续使用。
+Call the login method in approw-js-sdk, refer to [Login](/docs/sdk/sdk-for-javascript/README.md#登录). Or call [GraphQL interface](/docs/sdk/open-graphql.md#登录). You need store mfaToken for future use.
 
-调用 SDK 的处理方式：
+Call the SDK:
 
 ```js
-try {
-  window.user = await window.authing.login({ email, password })
-  alert(`登录成功，信息：${JSON.stringify(window.user)}`)
+try
+  window.user = await window.approw.login({ email, password })
+  alert(`Login successfully, information:${JSON.stringify(window.user)}`)
 } catch (err) {
   if (err.message.code === 1635) {
     console.log(err.message.data.email)
@@ -160,7 +159,7 @@ try {
 }
 ```
 
-直接调用 GraphQL 接口的返回信息：
+The return information of calling the GraphQL interface:
 
 ```json
 {
@@ -168,13 +167,13 @@ try {
     {
       "message": {
         "code": 1635,
-        "message": "请输入二次认证安全码",
+        "message": "Please enter Secondary Authentication Code",
         "data": {
           "mfaToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJQb29sSWQiOiI1Y2NlNGFhODNlZDlmOTdiNGRmZDk1ZjAiLCJ1c2VySWQiOiI1ZjhlZTYyY2FmYzJmZmFkMzY0MzQ1YjciLCJhcm4iOiJhcm46Y246YXV0aGluZzo1Y2NlNGFhODNlZDlmOTdiNGRmZDk1ZjA6dXNlcjo1ZjhlZTYyY2FmYzJmZmFkMzY0MzQ1YjciLCJzdGFnZSI6MX0sImlhdCI6MTYwMzIwNjcwOCwiZXhwIjoxNjAzMjA3MDY4fQ.PR7LXqpyH--6sF4eAcOcK1yZBi14lRv_lr9qUtbTQM4",
           "nickname": null,
           "email": "q3@123.com",
           "username": null,
-          "avatar": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png"
+          "avatar": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png"
         }
       },
       "locations": [{ "line": 2, "column": 9 }],
@@ -186,32 +185,32 @@ try {
 }
 ```
 
-### 登录验证 MFA 口令
+### Login to verify MFA password
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/verify" summary="用于登录时一次认证成功后，检验二次认证口令是否正确。">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/verify" summary="It is used to check whether the password for the second authentication is correct after the first authentication is successful during login.">
 <template slot="description">
 
-对于开启二次认证的用户，第一次认证成功后会返回一个 **mfaToken**，需要携带 **mfaToken** 请求本接口完成二次认证
+For users who enable secondary authentication, an mfaToken will be returned after the first authentication is successful, and the mfaToken needs to be carried to request this endpoint to complete the secondary authentication
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
 <ApiMethodParam name="totp" type="string" required>
 
-MFA 口令
+MFA Password
 
 </ApiMethodParam>
 </template>
 <template slot="response">
-<ApiMethodResponse description="登录成功">
+<ApiMethodResponse description="Login Success">
 
 ```json
 {
   "code": 200,
-  "message": "二次验证成功",
+  "message": "Second verification success",
   "data": {
     "thirdPartyIdentity": {
       "provider": null,
@@ -234,7 +233,7 @@ MFA 口令
     "openid": null,
     "nickname": null,
     "company": null,
-    "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png",
+    "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png",
     "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36",
     "device": null,
     "password": "76847018c664261747924735403ee0a5",
@@ -276,10 +275,10 @@ MFA 口令
 }
 ```
 
-<ApiMethodResponse httpCode="200" description="口令错误">
+<ApiMethodResponse httpCode="200" description="Wrong code">
 
 ```json
-{ "code": 6001, "message": "安全码错误，请重新输入" }
+{ "code": 6001, "message": "The security code is wrong, please re-enter" }
 ```
 
 </ApiMethodResponse>
@@ -287,22 +286,22 @@ MFA 口令
 </template>
 </ApiMethodSpec>
 
-### 使用恢复代码
+### Use Recovery Code
 
-<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/recovery" summary="用于用户登录一次认证成功后，丢失 MFA 口令时恢复账号访问。">
+<ApiMethodSpec method="post" :host="$themeConfig.apiDomain" path="/api/v2/mfa/totp/recovery" summary="It is used to restore account access when the user loses the MFA password after a successful login.">
 <template slot="description">
 
-如果用户开启了二次认证而丢失了 MFA 口令，需要使用**恢复代码**来恢复账号的访问。使用恢复代码等效于使用 MFA 口令，使用过后会为用户**生成新的恢复代码**。用户可以在登录后解绑 MFA 并重新绑定新的 MFA。
+If the user enables the secondary authentication and loses the MFA password, a recovery code is required to restore access to the account. Using the recovery code is equivalent to using the MFA password, and a new recovery code will be generated for the user. The user can unbind the MFA and re-bind the new MFA after logging in.
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="Bearer <用户 Token>" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="formDataParams">
 <ApiMethodParam name="recoveryCode" type="string" required>
 
-恢复代码，在绑定 MFA 口令时返回的
+Recovery code, returned when the MFA password is bound
 
 </ApiMethodParam>
 </template>
@@ -310,10 +309,10 @@ MFA 口令
 <ApiMethodResponse>
 
 ```json
-登录成功
+Login Success
 {
     "code": 200,
-    "message": "二次验证成功",
+    "message": "Second verification succeeded",
     "data": {
         "thirdPartyIdentity": {
             "provider": null,
@@ -336,7 +335,7 @@ MFA 口令
         "openid": null,
         "nickname": null,
         "company": null,
-        "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/authing-avatar.png",
+        "photo": "https://usercontents.{{$themeConfig.officeSiteDomain}}/approw-avatar.png",
         "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36",
         "device": null,
         "password": "76847018c664261747924735403ee0a5",
@@ -380,35 +379,35 @@ MFA 口令
     "recoveryCode": "9225-be3f-4646-fa3a-7a32-a098"
 }
 
-口令错误
-{"code":6002,"message":"恢复代码错误，请重新输入"}
+Wrong Code
+{"code":6002,"message":"The recovery code is wrong, please re-enter"}
 ```
 
 </ApiMethodResponse>
 </template>
 </ApiMethodSpec>
 
-## 运行方法
+## Operation
 
-双击打开 index.html 文件。
+Open index.html
 
-或在项目目录启动一个 http 服务器。
+Or start a http Server in the project directory
 
 ```bash
 $ npm install -g http-server
 $ http-server
 ```
 
-然后访问 127.0.0.1:8080
+Go to 127.0.0.1:8080
 
-**你可以参考 {{$localeConfig.brandName}} 提供的 [MFA Demo](https://github.com/authing/mfa-demo)**
+**You can refer to MFA demo provided by Approw [MFA Demo](https://github.com/approw/mfa-demo)**
 
-## 多因素认证（MFA）SDK
+## Multi-Factor Authentication (MFA) SDK
 
-## 请求绑定 MFA 认证器：
+## Request to bind MFA authenticator：
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
@@ -419,10 +418,10 @@ await authenticationClient.mfa.assosicateMfaAuthenticator({
 })
 ```
 
-## 验证 MFA 二次口令：
+## Verify MFA secondary password:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
@@ -434,13 +433,13 @@ await authenticationClient.mfa.verifyTotpMfa({
 })
 ```
 
-## 获取 MFA 认证器
+## Request an MFA authenticator
 
 MfaAuthenticationClient().getMfaAuthenticators()
 
-> 获取 MFA 认证器
+> Request an MFA authenticator
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -452,17 +451,17 @@ const authenticators = await authenticationClient.mfa.getMfaAuthenticators({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<IMfaAuthenticators>`
 
-## 请求 MFA 二维码和密钥信息
+## Request MFA QR code and key
 
 MfaAuthenticationClient().assosicateMfaAuthenticator()
 
-> 请求 MFA 二维码和密钥信息
+> Request MFA QR code and key
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -474,17 +473,17 @@ const authenticators = await authenticationClient.mfa.assosicateMfaAuthenticator
 )
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<IMfaAssociation>`
 
-## 解绑 MFA
+## Disable MFA
 
 MfaAuthenticationClient().deleteMfaAuthenticator()
 
-> 解绑 MFA
+> Disable MFA
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -494,17 +493,17 @@ const authenticationClient = new AuthenticationClient({
 const authenticators = await authenticationClient.mfa.deleteMfaAuthenticator()
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<IMfaDeleteAssociation>`
 
-## 确认绑定 MFA
+## Confirm binding MFA
 
 MfaAuthenticationClient().confirmAssosicateMfaAuthenticator()
 
-> 确认绑定 MFA
+> Confirm binding MFA
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -516,17 +515,17 @@ const authenticators = await authenticationClient.mfa.confirmAssosicateMfaAuthen
 )
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<IMfaConfirmAssociation>`
 
-## 检验二次验证 MFA 口令
+## Verify the MFA password for the second verification
 
 MfaAuthenticationClient().verifyTotpMfa()
 
-> 检验二次验证 MFA 口令
+> Verify the MFA password for the second verification
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -539,24 +538,24 @@ const authenticators = await authenticationClient.mfa.verifyTotpMfa({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<User>`
 
-## 检验二次验证 MFA 短信验证码
+## Verify secondary verification MFA SMS verification code
 
 MfaAuthenticationClient().verifyAppSmsMfa()
 
-> 检验二次验证 MFA 短信验证码
+> Verify secondary verification MFA SMS verification code
 
-#### 参数
+#### Reference
 
 - `options` \<Object\>
-- `options.phone` \<string\> 用户手机号。
-- `options.code` \<string\> 手机验证码。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `options.phone` \<string\> Phone number
+- `options.code` \<string\> SMS code
+- `options.mfaToken` \<string\> MfaToken returned by the login endpoint
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -570,24 +569,24 @@ const authenticators = await authenticationClient.mfa.verifySmsMfa({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<User>`
 
-## 检验二次验证 MFA 邮箱验证码
+## Verify secondary verification MFA email verification code
 
 MfaAuthenticationClient().verifyAppEmailMfa()
 
-> 检验二次验证 MFA 邮箱验证码
+> Verify secondary verification MFA email verification code
 
-#### 参数
+#### Reference
 
 - `options` \<Object\>
-- `options.email` \<string\> 用户邮箱。
-- `options.code` \<string\> 手机验证码。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `options.email` \<string\> Email
+- `options.code` \<string\> SMS code
+- `options.mfaToken` \<string\> MfaToken returned by the login endpoint
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -601,24 +600,24 @@ const authenticators = await authenticationClient.mfa.verifyAppEmailMfa({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<User>`
 
-## 检测手机号或邮箱是否已被绑定
+## Check whether the phone number or email has been bound
 
 MfaAuthenticationClient().phoneOrEmailBindable()
 
-> 当需要手机或邮箱 MFA 登录，而用户未绑定手机或邮箱时，可先让用户输入手机号或邮箱，用此接口先检测手机或邮箱是否可绑定，再进行 MFA 验证
+> When the phone number or email MFA login is required, and the user has not bound the phone number or email, the user can first enter the phone number or email address, use this endpoint to first check whether the mobile phone or email address can be bound, and then perform MFA.
 
-#### 参数
+#### Reference
 
 - `options` \<Object\>
-- `[options.email]` \<string\> 要检测的邮箱。
-- `[options.phone]` \<string\> 要检测的手机号。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `[options.email]` \<string\> Email to be checked
+- `[options.phone]` \<string\> Phone number to be checked
+- `options.mfaToken` \<string\> MfaToken returned by the login endpoint
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -631,17 +630,17 @@ const authenticators = await authenticationClient.mfa.phoneOrEmailBindable({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<boolean>`
 
-## 检验二次验证 MFA 恢复代码
+## Verify the second verification MFA recovery code
 
 MfaAuthenticationClient().verifyTotpRecoveryCode()
 
-> 检验二次验证 MFA 恢复代码
+> Verify the second verification MFA recovery code
 
-#### 示例
+#### Sample
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -654,6 +653,6 @@ const authenticators = await authenticationClient.mfa.verifyTotpRecoveryCode({
 })
 ```
 
-#### 返回值
+#### Return Value
 
 - `Promise<User>`

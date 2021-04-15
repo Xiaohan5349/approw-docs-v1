@@ -1,30 +1,30 @@
-# 自定义认证流程（Pipeline）
+# User-defined Authentication Process（Pipeline）
 
 <LastUpdated/>
 
-## 简介
+## Introduction
 
-{{$localeConfig.brandName}} Pipeline 为一组运行在云端的用户自定义 JavaScript 代码，可以让开发者扩展、自定义  {{$localeConfig.brandName}} 能力。
+Approw Pipeline is a set of user-defined JavaScript codes running on the cloud, allowing developers to extend and customize Approw capabilities. 
 
-{{$localeConfig.brandName}} Pipeline 函数均为用户可自定义，同时我们还提供了[丰富的函数模版](https://github.com/authing/pipeline)，帮助开发者快速上手开发。
+Approw Pipeline functions are all user-definable, and we also provide a rich [function template](https://github.com/approw/pipeline) to help developers get started quickly.
 
-同时 Pipeline 为一组函数，和普通 Hooks 的区别在于，Pipeline 整个流程中的函数数据可以相互传递，实现工业流水线一样的效果。这种设计模式，可以使得开发者的自定义函数更加模块化，便于管理。
+Pipeline is a set of functions. The difference from ordinary Hooks is that the function data in the entire pipeline can be transferred to each other to achieve the same effect as an industrial pipeline. This design pattern can make the developer's custom function more modular and easy to manage.
 
-{{$localeConfig.brandName}} Pipeline 后端使用  serverless 架构，所有的用户自定义代码均运行在云端，保证不同租户之间的隔离性，同时能弹性伸缩，既保证了安全性，有提升了运行效率。
+The back-end of {{$localeConfig.brandName}} Pipeline uses a serverless architecture, and all user-defined codes run on the cloud to ensure isolation between different tenants, and at the same time, it can be elastically scaled, which not only ensures security, but also improves operating efficiency.
 
 ![](https://cdn.authing.cn/blog/authing-pipeline.png)
 
 
-## 应用场景
+## Application scenarios
 
-借助 {{$localeConfig.brandName}} Pipeline，开发者可以实现以下功能：
+With the help of {{$localeConfig.brandName}} Pipeline, developers can achieve the following functions:
 
-* 白名单机制：如注册邮箱后缀白名单、注册 IP 白名单等。
-* 事件通知：如用户注册之后发送群通知、用户登录 IP 异常通知等。
-* 权限控制：如用户登录之后根据邮箱将其加入某用户组等。
-* 扩展用户字段：如往给该请求用户添加自定义 metadata 等。
-* 自定义  token：如往 token 中加入自定义字段等。
-* ... 还有更多，想象空间是无穷的。
+* Whitelist mechanism: such as the whitelist of registered mailbox suffixes, the whitelist of registered IPs, etc.
+* Event notification: such as sending group notification after user registration, notification of user login IP exception, etc.
+* Permission control: such as adding users to a user group based on their mailbox after logging in.
+* Extended user fields: add custom metadata to the requesting user.
+* Custom token: For example, add custom fields to the token.
+* ... and more, the imagination is endless.
 
 
-接下来，就让我们一起[创建你的第一个 Pipeline 函数](./write-your-first-pipeline-function.md)吧！
+Let's [create your first Pipeline function](./write-your-first-pipeline-function.md)！

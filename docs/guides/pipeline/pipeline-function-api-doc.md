@@ -1,99 +1,99 @@
 ---
 meta:
   - name: description
-    content: Pipeline 函数开发指南
+    content: Pipeline function development guide
 ---
 
-# Pipeline 函数开发指南
+# Pipeline Function Development Guide
 
 <LastUpdated/>
 
 
 ::: hint-success
-Pipeline 为一组函数，和普通 Hooks 的区别在于，Pipeline 整个流程中的函数数据可以相互传递，实现工业流水线一样的效果。这种设计模式，可以使得开发者的自定义函数更加模块化，便于管理。
+Pipeline is a set of functions. The difference from ordinary Hooks is that the function data in the entire pipeline can be transferred to each other to achieve the same effect as an industrial pipeline. This design pattern can make the developer's custom function more modular and easy to manage.
 :::
 
 ::: hint-danger
-出于安全考虑， {{$localeConfig.brandName}} 会通过特殊方式，使用你的用户池 ID（userPoolId） 和用户池密钥（secret） 初始化 authing-js-sdk，此过程不会将你的用户池密钥发送到公网。你可以使用使用全局变量 **authing**，**请勿再次初始化 SDK！**
+For security reasons, {{$localeConfig.brandName}} will use userPoolId and secret to initialize approw-js-sdk in a special way. This process will not send your user pool key to the public network. You can use the global variable **approw**, **please do not initialize the SDK again！**
 :::
 
-## Pipeline 函数类型 <a id="pipeline-type"></a>
+## Pipeline function type <a id="pipeline-type"></a>
 
-目前 {{$localeConfig.brandName}} 支持三种类型的 Pipeline 函数：
+Currently {{$localeConfig.brandName}} supports three types of Pipeline functions:
 
-| 名称                         | 说明                                                                                                                                                                                                                                |
+| Name                         | Description                                                                                                                                                                                                                               |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pre-Register Pipeline <img width=300>       | 注册前 Pipeline，会在每次用户正式进入注册逻辑前触发，开发者可用此实现注册邮箱白名单、注册 IP 白名单等功能。                                                                                                                         |
-| Post-Register Pipeline       | 注册后 Pipeline， 会在每次用户完成注册逻辑之后触发（**此时已经保存至数据库**），开发者可用此实现往数据库写入自定义 metadata 、新用户注册 webhook 通知等功能。                                                                       |
-| Post-Authentication Pipeline | 认证后 Pipeline 会在每次用户完成认证之后触发，开发者可用此实现往 token 加入自定义字段等功能。                                                                                                                                       |
-| Pre-OIDCTokenIssued Pipeline | OIDC 应用 code 换 token 之前触发，开发者可用此实现往 idToken 中写入自定义字段等功能。OIDC 认证流程的 code 换 token 部分详情请见：[使用 OIDC 授权](/federation/oidc/authorization-code/?step=2)。 |
+| Pre-Register Pipeline <img width=300>       | The pipeline before registration will be triggered every time the user officially enters the registration logic. Developers can use this to implement functions such as the whitelist of registered mailboxes and the whitelist of registered IP.                                                                                                                         |
+| Post-Register Pipeline       | The registered pipeline will be triggered every time the user completes the registration logic（**it has been saved to the database at this time**），Developers can use this to implement functions such as writing custom metadata to the database and new user registration webhook notification.                                                                       |
+| Post-Authentication Pipeline | The authenticated pipeline will be triggered every time the user completes the authentication. Developers can use this to implement functions such as adding custom fields to the token.                                                                                                                                      |
+| Pre-OIDCTokenIssued Pipeline | Triggered before the OIDC application code is exchanged for the token. Developers can use this to implement functions such as writing custom fields to the idToken. For details of the code-to-token part of the OIDC authentication process, please check：[Using OIDC Authorization](/federation/oidc/authorization-code/?step=2) |
 
 ::: hint-info
-开发者创建 Pipeline 函数时必须选择一种 Pipeline 类型。
+Developers must choose a Pipeline type when creating a Pipeline function.
 :::
 
-## 函数定义 <a id="definition"></a>
+## Function definition <a id="definition"></a>
 
-Pipeline 函数定义：
+Pipeline function definition：
 
 ```js
 async function pipe(user, context, callback)
 ```
 
 ::: hint-success
-Pre-Register Pipeline 由于注册前无法确认此用户是谁，所以 user 为 null。
+Pre-Register Pipeline has a null user because it cannot confirm who this user is before registration.
 :::
 
 ::: hint-success
-pipe 函数支持 async / await 语法！
+pipe function supports async / await syntax!
 :::
 
 ::: hint-danger
-请勿重命名 pipe 函数！
+Do not rename the pipe function!
 :::
 
-参数说明：
+Parameter Description：
 
-| 参数     | 类型     | 说明                                                             |
+| Parameter     | Type     | Description                                                            |
 | :------- | :------- | :--------------------------------------------------------------- |
-| user     | object   | 当前请求用户。详细字段请见 [user 对象](user-object.md)。         |
-| context  | object   | 请求认证上下文。详细字段请见 [context 对象](context-object.md)。 |
-| callback | function | 回调函数，使用文档见下文。                                       |
+| user     | object   | The current requesting user. See the [user object](user-object.md) for detailed fields.         |
+| context  | object   | Request authentication context. See the [context object](context-object.md) for detailed fields. |
+| callback | function | The callback function, see below for usage documentation.                                       |
 
-### callback 函数 <a id="callback"></a>
+### callback function <a id="callback"></a>
 
-定义：
+Definition：
 
 ```js
 function callback(error, user, context)
 ```
 
-说明：
+Description：
 
-1. callback 函数的第一个参数表示是开发者希望传给终端用户的 error，**如果不为 null，整个认证流程将会中断，直接返回错误给前端**。
-2. 如果第一个参数为 null ，请务必将最新的 user 和 context 传给 callback 函数，否则之后的 pipeline 函数将无法正常工作。
+1. The first parameter of the callback function represents the error that the developer wants to pass to the end user. **If it is not null, the entire authentication process will be interrupted and the error will be returned directly to the front end**.
+2. If the first parameter is null, be sure to pass the latest user and context to the callback function, otherwise the subsequent pipeline function will not work properly.
 
-### 设置异步执行 <a id="async"></a>
+### Set up asynchronous execution <a id="async"></a>
 
-设置为异步执行（ **这里的异步非语言层面上** ）的 pipeline 函数不会阻塞注册、登录、OIDC 流程的执行，callback 函数传入的参数对后续流程无影响，适用于进行异步通知的场景，比如飞书群通知、钉钉群通知、触发外部系统统计等。
+The pipeline function set to asynchronous execution（ **asynchronous non-language level** ）will not block the execution of the registration, login, and OIDC processes. The parameters passed in the callback function have no effect on the subsequent processes. It is suitable for asynchronous notification scenarios, such as social media group notification, trigger external system statistics, etc.
 
-如下图所示，勾选上此框表示让该 pipeline 函数异步执行：
+As shown in the image below, checking this box means to let the pipeline function execute asynchronously:
 
 ![](https://cdn.authing.cn/blog/20200927195654.png)
 
-## Pipeline 函数示例 <a id="demo"></a>
+## Pipeline function example <a id="demo"></a>
 
-这里我们实现一个注册邮箱后缀白名单的 **Pre-Register Pipeline**。
+We implement a **Pre-Register Pipeline** for the whitelist of registered mailbox suffixes here.
 
 ```js
 async function pipe(context, callback) {
   const email = context.data.userInfo.email;
-  // 非邮箱注册方式, 跳过此 pipe 函数
+  // If the account is not register with email then skip this function.
   if (!email) {
     return callback(null, context);
   }
 
-  // 如果域名邮箱不是 example.com, 返回 Access denied. 错误给终端。
+  // If the domain name of the email is not example.com, then return Access denied. error to the backend.
   if (!email.endsWith("@example.com")) {
     return callback(new Error("Access denied."));
   }
@@ -101,8 +101,8 @@ async function pipe(context, callback) {
 }
 ```
 
-简要解释一下代码：
+Briefly explain the code here:
 
-- 2-6 行判断请求参数中是否包含 email, 如果有的话说明是邮箱注册方式。如果没有，直接跳过此 pipe 函数，调用 callback 的参数分别为 null 和 context（**请勿忘记此参数！**）。当然，如果你只是希望邮箱方式注册，这一步如果没有邮箱返回错误也是可以的 ～
-- 8-10 行判断邮箱域名是否为`example.com`，如果不是调用 callback 函数，第一个参数为 `new Error('Access Denied.')`。
-- 11 行，调用 `return callback(null, context)`，接着进入下一个 pipe 函数，如果有的话。
+- Lines 2-6 determines whether email is included in the request parameters. If the parameters include email, it means this is email registration method. If not, skip the pipe function directly, and call callback with null and context parameters（**don’t forget this parameter!**）. If you just want to register by email, this step is okay if there is no email to return an error.
+- Lines 8-10 determine whether the domain name of the mailbox is`example.com`. If the callback function is not called, the first parameter is `new Error('Access Denied.')`.
+- Line 11, call `return callback(null, context)`, and then enter the next pipe function, if there have the next function.

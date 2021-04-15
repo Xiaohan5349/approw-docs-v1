@@ -1,6 +1,6 @@
 !!!include(common/init-swift-auth-sdk.md)!!!
 
-设置自定义字段：
+Setup customized fields:
 
 ```swift
 self.client?.setUdv(key: "HelloDate", value: Date(), completion:{ status in
@@ -14,7 +14,7 @@ self.client?.setUdv(key: "HelloDate", value: Date(), completion:{ status in
 })
 ```
 
-获取该用户最新的自定义数据：
+Get users' latest values of user-defined-fields.
 
 ```swift
 self.client?.listUdv(completion:{ status in

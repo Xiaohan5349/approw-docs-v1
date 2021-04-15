@@ -4,21 +4,21 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 Windows Active Directory 身份源',
-  bannerTitle: '连接 Windows Active Directory 身份源',
+  title: 'Integrate Windows Active Directory IdP',
+  bannerTitle: 'Integrate Windows Active Directory IdP',
   steps:
     [
       {
-        title: '在 Windows 服务器安装 AD Connector',
+        title: 'Install AD Connector on Windows Server',
       },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create the Application in {{$localeConfig.brandName}}'
       },
       {
-        title: '使用 Windows Active Directory 用户目录登录'
+        title: 'Use Windows Active Directory to Login'
       },
       {
-        title: '从 Windows Active Directory 用户目录导入组织机构'
+        title: 'Import Organization Structure from Windows Active Directory'
       },
     ],
 }

@@ -1,21 +1,18 @@
-# 组织机构概览
+# Organization Overview
 
 <LastUpdated/>
 
-借助 {{$localeConfig.brandName}}, 可以快速[实现基于角色的访问控制（RBAC）](/guides/access-control/rbac.md)。简单来说，RBAC 指的是通过用户的角色（Role）授权其相关权限，这相比直接授予用户权限，要更加灵活、高效、可扩展。 
+With {{$localeConfig.brandName}}, [role-based access control（RBAC）](/guides/access-control/rbac.md) can be quickly implemented. RBAC refers to the authorization of the user's related permissions through the role of the user, which is more flexible, efficient, and scalable than directly granting user permissions.
 
-而在现实生活中，组、角色往往是分层嵌套的，呈树状结构，最常见的就是组织机构，如公司、学校等等。
+In real life, groups and roles are often nested hierarchically in a tree-like structure. The most common ones are organizations, such as companies, schools, etc.
 
-一个常见的的组织机构架构如下：
+A common organizational structure is as follows:
 
-* 一级部门有产品部、研发部、运营部、综合管理部
-* 一级部门下面又有二级部门，如产品部中包含产品经理和设计等。
+- The first-level departments include product department, research and development department, operation department, and comprehensive management department.
+- There are second-level departments under the first-level department, such as product manager and designer in the product department.
 
-<img src="~@imagesZhCn/guides/org/Lark20210302-193510.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Lark20210302-193510.png" alt="drawing"/>
 
+This is a typical tree structure with only one root node. Generally speaking, the root node is a company or an organization. Each node corresponds to a hierarchical department.
 
-这是一个典型的树状结构，其中有且仅有一个根节点，一般而言，根节点就是一家公司、一个组织。每个节点对应一个分层的部门。
-
-
-在{{$localeConfig.brandName}}中, 你可以[从企业微信、钉钉、LDAP、Active Directory 等第三方用户目录导入组织机构](./create-or-import-org/README.md), 我们还提供了[控制台、SDK 两种管理组织机构的方式](./manage-org/README.md)，你可以很方便地[管理成员生命周期](./staff-life-cycle-management/README.md)，还可以[使用 LDAP 协议对外开放组织机构数据](./ldap-user-directory/README.md)。
-
+In {{$localeConfig.brandName}}, you can [import organizations from third-party user directories such as LDAP, Active Directory, etc](./create-or-import-org/README.md). We also provide [two ways to manage organizations, console and SDK](./manage-org/README.md). Therefore, you can easily [manage the member lifecycle](./staff-life-cycle-management/README.md) and you can also [use the LDAP protocol to open organizational data to the outside world](./ldap-user-directory/README.md).

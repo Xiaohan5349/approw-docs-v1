@@ -1,115 +1,116 @@
-# Kubernetes 部署模式
+# Kubernetes Deployment
 
 <LastUpdated/>
 
-## 概述
+## Overview
 
-Authing 不会改变用户已有的云基础设施，Authing 只会最大程度去兼容用户的云环境。因此，Authing 提出了「云中立」和「Authing Inside」的概念。在多云环境下 Authing 可以保持其中立的特性，可以部署不论是 AWS、腾讯云、阿里云还是私有云环境。在混合云或者私有云环境下，Authing 都会像 Intel 一样被集成在客户的 IT 系统中。
+Approw will not change the user's existing cloud infrastructure, Approw will be as much as compatible with the user's cloud environment. Therefore, Approw proposed the concepts of "Cloud Neutrality" and "Approw Inside". Approw can maintain its neutral characteristics in a multi-cloud environment, and it can be deployed in AWS, Tencent Cloud, Alibaba Cloud, or private cloud environments. In a hybrid cloud or private cloud environment, Approw will be integrated into the customer's IT system like Intel.
+This article will introduce the Kubernetes-based deployment plan and specific operation guidance of the Approw IDaaS platform.
 
-本文将介绍 Authing IDaaS 平台基于 Kubernetes 的部署方案以及具体的操作指导。
+## Overall structure
 
-## 整体架构
-
-<img src="./images/k8s-1.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/kuber1.jpeg" style="margin-top: 20px;" class="md-img-padding" />
 <div style="height: 10px;"></div>
 
-Authing IDaaS 平台的高可用架构是运行在 VPC（虚拟私有云）中，通过 LB（负载均衡），将添加的同一地域的多可用区虚拟成一个高性能和高可用的服务池，并根据负载均衡规则，将来自客户端的请求分发给服务池中的可用区。
+The high-availability architecture of the Approw IDaaS platform is running in VPC (virtual private cloud), through LB (load balancing), multi-availability server clusters in the same region are virtualized into a high-performance and highly available service pool as a whole. Based on load balancing Rules, the request from the client is distributed to the availability zone in the service pool.
 
-<img src="./images/k8s-2.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/kuber2.jpeg" style="margin-top: 20px;" class="md-img-padding" />
 <div style="height: 10px;"></div>
 
-每个可用区由一组 Kubernetes Node 组成，每个可用区都搭载一套完整的 Authing IDaaS 平台，IDaaS 集群为无状态服务，数据库集群为有状态的主从同步架构，若某个可用区出现服务故障或服务不可用，则 LB 会将流量转移至另一个可用的可用区，该可用区将会承担起 Master 的作用。
+Each availability zone is composed of a set of Kubernetes Nodes, and each availability zone is equipped with a complete set of Approw IDaaS platforms. IDaaS cluster is a stateless service, while the database cluster is a stateful master-slave synchronization architecture. If a server appears in a certain availability zone fails or the server is unavailable, LB will transfer the traffic to another available zone, which will also assign the role of master cluster.
+Load balancing will detect the health status of each availability zone in real-time, and automatically isolate the availability zones with abnormal states, thereby improving the overall service capabilities of the application.
 
-负载均衡会实时检测每个可用区的健康状态，自动隔离异常状态的可用区，从而提高了应用的整体服务能力。
+**Deployment plan**
 
-## 部署方案
+**1. Component planning**
 
-**1. 组件规划**
+| server        | Component package         | Function Description                |
+| ------------- | ------------------------- | ----------------------------------- |
+| ElasticSearch | elasticsearch-7.7.0       | Search engine, log service          |
+| Approw Server | Approw-server-1.2.0       | Approw main service                 |
+| Redis         | redis-4.0.0               | Cache service                       |
+| PostgreSQL    | postgres-12.5             | Database service                    |
+| Logstash      | logstash-7.7.0            | Log collection and analysis service |
+| JDBC-River    | jdbc-logstash-river:1.0.0 | Background data service             |
+| Staticfiles   | Approw-staticfiles:1.0.0  | Static resource service             |
 
-|                         服务器                         |                            组件包                            |                          功能说明                           |
-| :----------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------------: |
-| ElasticSearch<img width=180 class="md-table-padding"/> | elasticsearch-7.7.0<img width=180 class="md-table-padding"/> | 搜索引擎、日志服务<img width=180 class="md-table-padding"/> |
-|                     Authing Server                     |                     authing-server-1.2.0                     |                       Authing 主服务                        |
-|                         Redis                          |                         redis-4.0.0                          |                          缓存服务                           |
-|                       PostgreSQL                       |                        postgres-12.5                         |                         数据库服务                          |
-|                        Logstash                        |                        logstash-7.7.0                        |                     日志收集、分析服务                      |
-|                       JDBC-River                       |                  jdbc-logstash-river:1.0.0                   |                        后台数据服务                         |
-|                      Staticfiles                       |                  authing-staticfiles:1.0.0                   |                        静态资源服务                         |
+**2. System environment requirements**
 
-**2. 系统环境要求**
+During the software installation, configuration, and commissioning process, a Kubernetes cluster needs to be prepared. The cluster requirements are as follows:
 
-软件安装、配置和调测过程中，需要准备一个 Kubernetes 集群，集群要求如下：
+Kubernetes version requirements:
 
-Kubernetes 版本要求：
+| project        | version           |
+| -------------- | ----------------- |
+| Client Version | v1.19.4 and above |
+| Server Version | v1.18.3 and above |
 
-| 项目 <img width=350 class="md-table-padding"/> | 版本 <img width=530 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|                 Client Version                 |                 v1.19.4 及以上                 |
-|                 Server Version                 |                 v1.18.3 及以上                 |
+Docker version requirements:
 
-Docker 版本要求：
+| project | version            |
+| ------- | ------------------ |
+| Client  | 19.03.14 and above |
+| Server  | 19.03.14 and above |
 
-| 项目 <img width=350 class="md-table-padding"/> | 版本 <img width=530 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|                     Client                     |                19.03.14 及以上                 |
-|                     Server                     |                19.03.14 及以上                 |
+Operating system environment requirements:
 
-操作系统环境要求：
-| 项目 <img width=180 class="md-table-padding"/> | 最低配置 <img width=180 class="md-table-padding"/> | 推荐配置 <img width=180 class="md-table-padding"/> |
-| :----: | :----: | :----: |
-| 操作系统平台 | linux/amd64 | - |
-| 内核版本 | linux 3.10.0 及以上 | - |
+| project                   | Minimum configuration  | Recommended configuration |
+| ------------------------- | ---------------------- | ------------------------- |
+| Operating system platform | linux/amd64            | -                         |
+| Kernel version            | linux 3.10.0 and above | -                         |
 
-Kubernetes Master 节点配置要求：
-| 项目 <img width=180 class="md-table-padding"/> | 最低配置 <img width=180 class="md-table-padding"/> | 推荐配置 <img width=180 class="md-table-padding"/> |
-| :----: | :----: | :----: |
-| CPU | X86 64 位 2 核 | X86 64 位 4 核
-| 内存 | 8 GB 及以上 | 16 GB 及以上
-| 硬盘 | 500 GB | 1 TB
-| 内网带宽 | 1 Gbps | 10 Gbps
+Kubernetes Master node configuration requirements:
 
-Kubernetes Worker 节点配置要求：
-| 项目 <img width=180 class="md-table-padding"/> | 最低配置 <img width=180 class="md-table-padding"/> | 推荐配置 <img width=180 class="md-table-padding"/> |
-| :----: | :----: | :----: |
-| CPU | X86 64 位 4 核 | X86 64 位 8 核
-| 内存 | 16 GB 及以上 | 32 GB 及以上
-| 硬盘 | 1 TB | 5 TB
-| 内网带宽 | 1 Gbps | 10 Gbps
+| project            | Minimum configuration | Recommended configuration |
+| ------------------ | --------------------- | ------------------------- |
+| CPU                | X86 64 bit 2 cores    | X86 64 bit 4 cores        |
+| RAM                | 8 GB and above        | 16 GB and above           |
+| hard disk          | 500 GB                | 1 TB                      |
+| Intranet bandwidth | 1 Gbps                | 10 Gbps                   |
 
-**3. 相关文档**
+Kubernetes Worker node configuration requirements:
 
-| 名称 <img width=350 class="md-table-padding"/> | 说明 <img width=350 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|   《Authing IDaaS 平台使用指南 1.2.0 版本》    |        介绍 Authing IDaaS 平台操作指导         |
-|   《Authing IDaaS 平台产品文档 1.2.0 版本》    |        介绍 Authing IDaaS 平台产品功能         |
+| project            | Minimum configuration | Recommended configuration |
+| ------------------ | --------------------- | ------------------------- |
+| CPU                | X86 64 bit 4 cores    | X86 64 bit 8 core         |
+| RAM                | 16 GB and above       | 32 GB and above           |
+| hard disk          | 1 TB                  | 5 TB                      |
+| Intranet bandwidth | 1 Gbps                | 10 Gbps                   |
 
-**注：以上资源请联系售前人员获取**
+**3. Related Documents**
 
-**4. 镜像安装包**
+| name                                                                  | Description                                      |
+| --------------------------------------------------------------------- | ------------------------------------------------ |
+| &quot;Approw IDaaS Platform User Guide Version 1.2.0&quot;            | Introduce Approw IDaaS platform operation guide  |
+| &quot;Approw IDaaS Platform Product Documentation Version 1.2.0&quot; | Introduce Approw IDaaS platform product features |
 
-|   名称 <img width=350 class="md-table-padding"/>   | 说明 <img width=350 class="md-table-padding"/> |
-| :------------------------------------------------: | :--------------------------------------------: |
-| authing-jdbc-logstash-river-1.0.0-90875fa84d87.tar |           Authing 后端数据服务镜像包           |
-|       authing-server-1.2.0-32d8b4130bae.tar        |              Authing 主服务镜像包              |
-|     authing-staticfiles-1.0.0-a70a58e3c115.tar     |               静态资源服务镜像包               |
-|        elasticsearch-7.7.0-7ec4f35ab452.tar        |            搜索、数据统计服务镜像包            |
-|          logstash-7.7.0-30dcca1db5e9.tar           |            日志收集、分析服务镜像包            |
-|           postgres-12.5-386fd8c60839.tar           |                数据库服务镜像包                |
-|            redis-4.0.0-3189e099eb0f.tar            |                 缓存服务镜像包                 |
+**Note: Please contact the pre-sales staff for the above resources**
 
-**注：以上资源请联系售前人员获取**
+**4. Installation package**
 
-**5. 编排文件**
+| name                                              | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- |
+| Approw-jdbc-logstash-river-1.0.0-90875fa84d87.tar | Approw back-end data service image package        |
+| Approw-server-1.2.0-32d8b4130bae.tar              | Approw main service image package                 |
+| Approw-staticfiles-1.0.0-a70a58e3c115.tar         | Static resource service image package             |
+| elasticsearch-7.7.0-7ec4f35ab452.tar              | Search and data statistics service mirror package |
+| logstash-7.7.0-30dcca1db5e9.tar                   | Log collection and analysis service image package |
+| postgres-12.5-386fd8c60839.tar                    | Database service mirroring package                |
+| redis-4.0.0-3189e099eb0f.tar                      | Cache service image package                       |
 
-| 名称 <img width=350 class="md-table-padding"/> | 说明 <img width=350 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|                 namespace.yaml                 |                命名空间编排文件                |
-|  Authing-jdbc-logstash-river-deployment.yaml   |          Authing 后端数据服务编排文件          |
-|        authing-server--deployment.yaml         |             Authing 主服务编排文件             |
-|      Authing-staticfiles-deployment.yaml       |              静态资源服务编排文件              |
-|         elasticsearch-deployment.yaml          |           搜索、数据统计服务编排文件           |
-|            logstash-deployment.yaml            |           日志收集、分析服务编排文件           |
-|            postgres-deployment.yaml            |               数据库服务编排文件               |
-|             redis-deployment.yaml              |                缓存服务编排文件                |
+**Note: Please contact the pre-sales staff for the above resources**
 
-**注：以上资源请联系售前人员获取**
+**5. Compose files**
+
+| name                                       | Description                                         |
+| ------------------------------------------ | --------------------------------------------------- |
+| namespace.yaml                             | Namespace orchestration file                        |
+| Approw-jdbc-logstash-river-deployment.yaml | Approw back-end data service orchestration file     |
+| Approw-server--deployment.yaml             | Approw main service orchestration file              |
+| Approw-staticfiles-deployment.yaml         | Static resource service orchestration file          |
+| elasticsearch-deployment.yaml              | Search, data statistics service layout file         |
+| logstash-deployment.yaml                   | Log collection, analysis service orchestration file |
+| postgres-deployment.yaml                   | Database Service Orchestration File                 |
+| redis-deployment.yaml                      | Cache service orchestration file                    |
+
+**Note: Please contact the pre-sales staff for the above resources**

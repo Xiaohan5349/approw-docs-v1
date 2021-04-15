@@ -1,8 +1,7 @@
-# 管理员行为的审计
+# Administrator Action Log
 
-普通用户行为审计主要体现为管理员的操作类型以及对操作的资源类型记录。
+Administrator behavior audit mainly consists of the administrator's operation type and the record of the resource type of the operation.
 
-进入 审计日志 -> 管理员操作 页面
+Enter audit log -> administrator operation page
 
-![](./images/audit-administor-1.png)
-![](./images/audit-administor-2.png)
+![](./images/adminlog.png)

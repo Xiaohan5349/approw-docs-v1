@@ -1,21 +1,21 @@
 ---
 meta:
   - name: description
-    content: 管理用户目录
+    content: User Directory Management
 ---
 
-# 管理用户目录
+# User Directory Management
 
 <LastUpdated/>
 
-你可以把 {{$localeConfig.brandName}} 用户目录理解为存储了你所有用户资料的目录，你可以在用户目录中搜索用户、查看用户资料；以及对用户目录配置进行管理，如禁止注册、配置白名单等；这个用户目录的 Schema 是可扩展的，你可以添加自定义的用户字段；同时你可以以多种标准协议（如 SAML、LDAP、OIDC、OAuth2.0）作为身份提供商（Identity Provider）对外提供身份认证能力。
+You can understand the Approw user directory as a directory that stores all your user information. You can search for users and check user information in the user directory. You can also manage the user directory configuration, such as registration disabled, configuring whitelists, etc. The Schema of this user directory is extensible, you can add user-defined fields, at the same time, you can use a variety of standard protocols (such as SAML, LDAP, OIDC, OAuth2.0) as an Identity Provider to provide external identity certification ability.
 
-> 如果你想了解如何具体管理单个用户的用户资料，请见[管理用户账号](../user/README.md)。
+> If you want to know how to manage the user information of a single user, please see [Manage User Accounts](../user/README.md).
 
-以下内容不分先后顺序，你可以选择自己感兴趣的内容进行阅读：
+The following content is in no particular order, you can choose the content you are interested to read:
 
-- [了解用户目录有哪些配置项](./settings.md)；
-- [了解如何添加自定义用户字段](./user-defined-field/)；
-- [了解如何搜索用户](./search.md)；
-- [了解如何使用 LDAP 用户目录](./ldap-user-directory.md)。
+- [Know what configuration items are available in the user directory.](./settings.md)；
+- [Know how to add user-defined fields](./user-defined-field/)；
+- [Know how to search for users](./search.md)；
+- [Learn how to use the LDAP user directory](./ldap-user-directory.md).
 

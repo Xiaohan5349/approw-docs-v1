@@ -1,24 +1,23 @@
 !!!include(common/init-js-auth-sdk.md)!!!
 
-首先调用发送短信验证码接口发送短信验证码，然后使用 `registerByPhoneCode` 方法：
-
+First call the Send SMS Verification Code interface to send the SMS verification code, and then use the `registerByPhoneCode` method:
 
 ```javascript
-authenticationClient.registerByPhoneCode("176xxxx6754", "1234");
+authenticationClient.registerByPhoneCode('176xxxx6754', '1234')
 ```
 
-或者：
+Or:
 
 ```javascript
 authenticationClient.registerByPhoneCode(
-  "176xxxx6754",
-  "1234",
-  "passw0rd",
+  '176xxxx6754',
+  '1234',
+  'passw0rd',
   {
-    nickname: "Nick",
+    nickname: 'Nick',
   },
   {
     generateToken: true,
   }
-);
+)
 ```

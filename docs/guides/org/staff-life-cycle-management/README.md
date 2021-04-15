@@ -1,89 +1,88 @@
-# 管理成员生命周期
+# Manage The Member Lifecycle
 
 <LastUpdated/>
 
-随着公司的发展，企业内部应用和人员数量会不断增加。不断的员工入职、离职，人员组织架构频繁调整，企业内部的应用账号体系错综复杂，管理员手动操作账号的工作量陡增。同时，缺乏统一的账号管理控制方案也会给企业安全生产带来隐患，经常出现员工离职但是应用账号未关停的安全风险案例。
+With the development of the company, the number of internal applications and personnel will continue to increase. Constantly staff onboarding and offboarding, frequent adjustments to the organizational structure of personnel, intricate and complex application account systems within the enterprise, and a sharp increase in the workload of administrators to manually operate accounts. At the same time, the lack of a unified account management control scheme will also bring hidden dangers to enterprise safety production. There are often security risk cases in which employees leave but the application accounts are not closed.
 
-用自动化的**账号生命周期管理（Lifecycle Management，简称 LCM）** 代替手动式账号管理，是将企业IT人员从灵活用工所涉及的繁琐复杂的身份信息管理工作中解放出来的关键，同时也可以通过及时关停人员账号和减少授权错误率来提升企业整体的业务安全系数。
+Replacing manual account management with automated **Lifecycle Management(LCM)** is the key to liberating enterprise IT personnel from the tedious and complex identity information management work involved in flexible employment. At the same time, it can also improve the overall business security of the enterprise by shutting down personnel accounts and reducing the authorization error rate.
 
-账号生命周期管理，有以下几个优势：
+Account life cycle management has the following advantages:
 
-- 提高生产力并降低成本；
-- 降低复杂度；
-- 更为安全合规。
+- Increase productivity and reduce costs
+- Reduce complexity
+- More secure and compliant
 
-你可以阅读了解更多[账号生命周期管理](/concepts/account-life-cycle-management.md)相关的内容。
+You can read more about [account lifecycle management](/concepts/account-life-cycle-management.md).
 
-## 员工入职
+## Employee onboarding
 
-你可以在控制台组织机构管理页面进行员工入职操作：
+You can perform employee onboarding operations on the organization management page of the console:
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-39-48.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-39-48.png" alt="drawing"/>
 
-### 创建账号
+### Create an account
 
-你可以使用手机号或者邮箱创建账号：
+You can use your mobile phone number or email to create an account:
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-41-35.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-41-35.png" alt="drawing"/>
 
-### 选择员工所在的部门
+### Select the department of the employee
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-42-12.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-42-12.png" alt="drawing"/>
 
-### 授权该员工能够访问的应用
+### Authorize the apps that the employee can access
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-42-52.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-42-52.png" alt="drawing"/>
 
-### 给该用户授权角色
+### Authorize roles for this user
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-43-47.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-43-47.png" alt="drawing"/>
 
-## 员工账号停用
+## Employee account deactivation
 
-账号停用之后，将会自动执行以下操作：
+After the account is disabled, the following operations will be performed automatically:
 
-- 取消应用授权关系；
-- 取消策略授权关系；
-- 该账号无法登录；
-- 依旧保留部门关系。
+- Cancel the application authorization relationship
+- Cancel the policy authorization relationship
+- The account cannot be logged in
+- The departmental relationship is still maintained
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-52-24.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-52-24.png" alt="drawing"/>
 
-## 员工离职
+## Employee resignation
 
-员工离职之后，将会自动执行以下操作：
+After the employee resigns, the following operations will be performed automatically:
 
-- 取消应用授权关系；
-- 取消策略授权关系；
-- 该账号无法登录；
-- 移出原有部门，移动至已离职部门；
+- Cancel the application authorization relationship
+- Cancel the policy authorization relationship
+- The account cannot be logged in
+- Move out of the original department and move to the departed department
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-50-28.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-50-28.png" alt="drawing"/>
 
+## Employee account archive
 
-## 员工账号归档
+After the employee account is archived, the following operations will be performed automatically:
 
-员工账号归档之后，将会自动执行以下操作：
+The data is readable, but cannot be modified or added.
 
-数据可读，但是不可修改和新增。
-- 账号数据保留；
-- 删除授权、部门、角色、分组关系；
-- 用户池目录不可见（需要单独查询已归档账号）；
-- 不能再次注册
-  - 提示：用户已归档，请联系管理员解除归档。
+- Account data retention
+- Delete authorization, department, role, group relationship
+- The user pool directory is not visible (you need to query the archived accounts separately)
+- Can't register again
+  - Tip: The user has been archived, please contact the administrator to unarchive
 
-<img src="~@imagesZhCn/guides/org/Xnip2021-02-27_14-51-22.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-51-22.png" alt="drawing"/>
 
-## 删除员工账号
+## Delete employee account
 
-会彻底删除所有用户相关数据。如：
+All user-related data will be completely deleted. Such as:
 
-- 用户数据
-- 应用授权
-- 策略授权
-- 部门关系
-- 分组关系
-- 角色关系
-- 从用户池中删除
-- 登录历史记录
-
+- User data
+- Application authorization
+- Policy authorization
+- Departmental Relations
+- Grouping relationship
+- Role relationship
+- Remove from user pool
+- Login history

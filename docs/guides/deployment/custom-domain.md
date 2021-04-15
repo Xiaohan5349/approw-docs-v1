@@ -1,66 +1,60 @@
-# 自定义域名配置方案
+# Customize Domain Name
 
 <LastUpdated/>
 
-## 概述
+## Overview
 
-目前 {{$localeConfig.brandName}} 使用的是 **域名托管模式**，使用的是 {{$localeConfig.brandName}} 的二级域名（如：`https://my-app.{{$themeConfig.officeSiteDomain}}`）。
+Approw currently using the **domain name hosted** mode, using Approw secondary domain (eg:https://my-app.approw.com).
+In the **domain name hosted mode**, the user can log in and access the application through Approw by two domain names, as for users who want to use a custom domain name, Approw offers a solution based on Nginx reverse proxy.
+This article will describe in detail how users configure a custom domain name, so as to realize Approw login and registration through a custom domain name.
 
-在 **域名托管模式** 下，用户只能通过 {{$localeConfig.brandName}} 的二级域名访问并登录应用，对于想使用自定义域名的用户，{{$localeConfig.brandName}} 提供了基于 Nginx 反向代理模式的自定义域名解决方案。
+## Preparation
 
-本文将详细描述用户如何配置自定义域名，从而实现通过自定义域名登录和注册 {{$localeConfig.brandName}}。
+1. The user needs to register the domain name, prepare HTTPS certificate and DNS resolution required for customization;
+2. Configure the registered domain name and HTTPS certificate in the Nginx reverse proxy service;
+3. Create an Approw application and configure the domain name of the Approw application in the Nginx reverse proxy service.
 
-## 准备工作
-
-1. 用户需要自行注册自定义所需的域名、HTTPS 证书和 DNS 解析；
-
-2. 将注册好的域名和 HTTPS 证书配置于 Nginx 反向代理服务中；
-
-3. 创建一个 {{$localeConfig.brandName}} 应用，将 {{$localeConfig.brandName}} 应用的域名配置于 Nginx 反向代理服务中。
-
-## 操作流程
+## Steps
 
 :::hint-success
-进行此环节之前，请确保你已经完成准备工作中的前两项。
+Before proceeding with this session, please make sure that you have completed the first two items in the preparatory work.
 :::
 
-**1. 登录 {{$localeConfig.brandName}} 控制台，创建一个新的应用，并指定应用域名**
+**1. Log in to the Approw console, create a new application, and specify the application domain name**
 
-<img src="./images/custom-domain-1.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain1.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/custom-domain-2.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain2.png" style="margin-top: 20px;" class="md-img-padding" />
 
-如上所示，我们创建了一个 {{$localeConfig.brandName}} 应用，并配置了应用域名为：**`https://custom-domain.{{$themeConfig.officeSiteDomain}}`**。
+As shown above, we have created a Approw application and configure the application for the domain name:**https://custom-domain.approw.com**.
+Next, we will reverse proxy the user's custom domain name **https://custom-domain.approw.com**.
+This application and domain name are just examples, you can create your own Approw application and domain name.
 
-接下来我们要将用户的自定义域名反向代理到 **`https://custom-domain.{{$themeConfig.officeSiteDomain}}`**。
+**2. Create a user to log in to the Approw application**
 
-此应用和域名仅仅作为示例，你可以创建属于自己的 {{$localeConfig.brandName}} 应用和域名。
+<!-- <img src="./images/domain3.png" style="margin-top: 20px;" class="md-img-padding" />
 
-**2. 创建一个用户，用于登录 {{$localeConfig.brandName}} 应用**
+<img src="./images/domain4.png" style="margin-top: 20px;" class="md-img-padding" /> -->
 
-<img src="./images/custom-domain-3.png" style="margin-top: 20px;" class="md-img-padding" />
-
-<img src="./images/custom-domain-4.png" style="margin-top: 20px;" class="md-img-padding" />
-
-**3. 将上述创建的 {{$localeConfig.brandName}} 应用域名配置于 Nginx 反向代理中**
+**3. Configure the Approw application domain name created above in the Nginx reverse proxy**
 
 ```nginx
 upstream custom_domain {
-    # 上述配置的应用域名
-    server custom-domain.authing.cn:443;
+    # Application domain name configured above
+    server custom-domain.approw.com:443;
     keepalive 64;
 }
 
 server {
     listen 443;
-    # 示例中的自定义域名
-    server_name custom-domain.littleimp.cn;
+    # Custom domain name in the example
+    server_name custom-domain.littleimp.com;
 
     ssl                         on;
-    # 自定义域名的 HTTPS 证书
+    # HTTPS certificate for custom domain name
     ssl_certificate             /etc/nginx/certificate/fullchain.cer;
-    # 自定义域名的 HTTPS 私钥
-    ssl_certificate_key         /etc/nginx/certificate/littleimp.cn.key;
+    # HTTPS private key for custom domain name
+    ssl_certificate_key         /etc/nginx/certificate/littleimp.com.key;
     ssl_session_cache           shared:SSL:1m;
     ssl_session_timeout         5m;
     ssl_ciphers                 ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
@@ -69,17 +63,17 @@ server {
     proxy_ssl_session_reuse     off;
 
     location / {
-        # 将应用域名重定向到自定义域名
-        proxy_redirect https://custom-domain.authing.cn https://custom-domain.littleimp.cn:8088;
-        # 上述配置的应用域名
-        proxy_set_header Host custom-domain.authing.cn;
+        # Redirect application domain name to custom domain name
+        proxy_redirect https://custom-domain.approw.com https://custom-domain.littleimp.com:8088;
+        # Application domain name configured above
+        proxy_set_header Host custom-domain.approw.com;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header User-Agent $http_user_agent;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $host;
         proxy_ssl_server_name on;
-        # proxy_pass 配置与 upstream 配置保持一直
+        # The proxy_pass configuration remains the same as the upstream configuration
         proxy_pass https://custom_domain;
         index index.html index.htm;
         client_max_body_size 256m;
@@ -92,14 +86,11 @@ server {
 }
 ```
 
-**4. 通过示例的自定义域名 `https://custom-domain.littleimp.cn:8088` 访问 {{$localeConfig.brandName}} 应用**
+<!-- **4. By custom domain example of `https://custom-domain.littleimp.com:8088` to access applications Approw**
+<img src="./images/domain5.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/custom-domain-5.png" style="margin-top: 20px;" class="md-img-padding" />
+**5. Enter the user and password created above to log in to the Approw application**
+<img src="./images/domain6.png" style="margin-top: 20px;" class="md-img-padding" />
 
-**5. 输入上述创建的用户和密码登录 {{$localeConfig.brandName}} 应用**
-
-<img src="./images/custom-domain-6.png" style="margin-top: 20px;" class="md-img-padding" />
-
-**6. 成功通过自定义域名登录 {{$localeConfig.brandName}} 应用，并访问个人中心**
-
-<img src="./images/custom-domain-7.png" style="margin-top: 20px;" class="md-img-padding" />
+**6. Successfully log in to the Approw application through the custom domain name and visit the personal center**
+<img src="./images/domain7.png" style="margin-top: 20px;" class="md-img-padding" /> -->

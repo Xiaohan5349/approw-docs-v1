@@ -1,38 +1,38 @@
-# 管理策略
+# PoliciesManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} 的访问控制与权限管理模型核心围绕着两个点来设计：**资源（Resource）**和**策略（Policy）**。策略定义了对某个（类）资源的某个（些）操作权限，将策略授权给用户（或角色），就能知道用户（或角色）是否具备对某个资源的某个操作具备操作权限。
+> The core of {{$localeConfig.brandName}} 's access and authorization management model is **Resource** and **Policy**. A policy defines an operation privilege for a certain resource. By assigning the policy to a user (or role), you can know whether the user (or role) has operational privilege of a resource.
 
-请使用以下方式使用该模块：
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
   userPoolId: "YOUR_USERPOOL_ID",
   secret: "YOUR_USERPOOL_SECRET",
 });
-managementClient.policies.list; // 获取策略列表
-managementClient.policies.create; // 创建策略
-managementClient.policies.listUsers; // 获取策略授权记录
+managementClient.policies.list; // get policy list
+managementClient.policies.create; // create a policy
+managementClient.policies.listUsers; // get policy authorization record
 ```
 
-## 添加策略
+## Create a policy
 
-PoliciesManagementClient().create(code，策略语句)
+PoliciesManagementClient().create(code，policy statement)
 
-> 添加策略
+> Create a policy
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 策略唯一标志
+- `code` \<string\> Unique id of the policy
 - `statements` \<PolicyStatement[]\>
-- `description` \<string\> 描述
+- `description` \<string\> Description
 
-#### 示例
+#### Example
 
 ```javascript
-import { PolicyEffect } from "authing-js-sdk";
+import { PolicyEffect } from "approw-js-sdk";
 
 const statements = [
   {
@@ -45,65 +45,65 @@ const statements = [
 const policy = await managementClient.policies.create(code, statements);
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<Policy>>`
 
-## 删除策略
+## Delete a policy
 
 PoliciesManagementClient().delete(code)
 
-> 删除策略，系统内置策略由 {{$localeConfig.brandName}} 官方维护，不能修改和删除。
+> Delete a policy. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 策略唯一标志
+- `code` \<string\> Unique id of the policy
 
-#### 示例
+#### Example
 
 ```javascript
-const { code, message } = await managementClient.policies.delete("CODE"); // 通过 code 是否为 200 判断操作是否成功
+const { code, message } = await managementClient.policies.delete("CODE"); // code 200 means success
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 批量删除策略
+## Bulk delete policies
 
 PoliciesManagementClient().deleteMany(codeList)
 
-> 批量删除策略，系统内置策略由 {{$localeConfig.brandName}} 官方维护，不能修改和删除。
+> Bulk delete policies. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
-#### 参数
+#### Parameter
 
-- `codeList` \<string\> 策略唯一标志列表
+- `codeList` \<string\> Unique id of the policy列表
 
-#### 示例
+#### Example
 
 ```javascript
-const { code, message } = await managementClient.policies.deleteMany(["CODE"]); // 通过 code 是否为 200 判断操作是否成功
+const { code, message } = await managementClient.policies.deleteMany(["CODE"]); // code 200 means success
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 修改策略
+## Update a policy 
 
 PoliciesManagementClient().update(code, updates)
 
-> 修改策略，系统内置策略由 {{$localeConfig.brandName}} 官方维护，不能修改和删除。
+> Update a policy. System built-in policies are maintained by {{$localeConfig.brandName}}  official. They can not be updated or deleted.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 策略唯一标志
+- `code` \<string\> Unique id of the policy
 - `updates` \<Object\>
-- `updates.description` \<string\> 描述
+- `updates.description` \<string\> Description
 - `updates.statements` \<PolicyStatement[]\>
-- `updates.newCode` \<string\> 新的唯一标志，如果传入，需要保证其在用户池内是唯一的。
+- `updates.newCode` \<string\> The new unique id. If it is passed in, it must be unique in the user pool.
 
-#### 示例
+#### Example
 
 ```javascript
 const policy = await managementClient.policies.update("CODE", {
@@ -111,108 +111,108 @@ const policy = await managementClient.policies.update("CODE", {
 });
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<Policy>>`
 
-## 获取策略详情
+## Get policy details
 
 PoliciesManagementClient().detail(code)
 
-> 获取策略详情
+> Get policy details
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 策略唯一标志
+- `code` \<string\> Unique id of the policy
 
 const policy = await managementClient.policies.detail('CODE');
 
-#### 示例
+#### Example
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<Policy>>`
 
-## 获取策略列表
+## Get policy list
 
 PoliciesManagementClient().list(options)
 
-> 获取策略列表
+> Get policy list
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.page` \<number\> 默认值为 : `1`。
-- `options.limit` \<number\> 默认值为 : `10`。
-- `options.excludeDefault` \<boolean\> 是否排除系统默认资源 默认值为 : `true`。
+- `options.page` \<number\> The default value is: `1`.
+- `options.limit` \<number\> The default value is: `10`.
+- `options.excludeDefault` \<boolean\> Whether to exclude system default resources. The default value is: `true`.
 
-#### 示例
+#### Example
 
 ```javascript
 const { list, totalCount } = await managementClient.policies.list({
-  excludeDefault: false, // 包含系统默认的策略
+  excludeDefault: false, // include the system default policy
 });
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<PaginatedPolicies>>`
 
-## 获取策略授权记录
+## Get policy assignment record
 
 PoliciesManagementClient().listAssignments(code, page, limit)
 
-> 获取策略授权记录
+> Get policy assignment record
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 策略唯一标志
-- `page` \<number\> 默认值为 : `1`。
-- `limit` \<number\> 默认值为 : `10`。
+- `code` \<string\> Unique id of the policy
+- `page` \<number\> The default value is: `1`.
+- `limit` \<number\> The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```javascript
 const { totalCount, list } = await managementClient.policies.listAssignments(
   "CODE"
 );
 
-// list 数据示例
+// list sample data
 
 [
   {
-    code: "PolicyCode", // 策略唯一标志
-    targetType: "USER", // 'USER' 表示用户, 'ROLE' 表示角色
-    targetIdentifier: "5f8812866795cc0026352fc5", // 用户 ID 或者角色 code
+    code: "PolicyCode", // Unique id of the policy
+    targetType: "USER", // 'USER' or 'ROLE'
+    targetIdentifier: "5f8812866795cc0026352fc5", // user ID or role code
   },
   {
-    code: "PolicyCode", // 策略唯一标志
-    targetType: "ROLE", // 'USER' 表示用户, 'ROLE' 表示角色
-    targetIdentifier: "ROLE_CODE", // 用户 ID 或者角色 code
+    code: "PolicyCode", // Unique id of the policy
+    targetType: "ROLE", // 'USER' or 'ROLE'
+    targetIdentifier: "ROLE_CODE", // user ID or role code
   },
 ];
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<PaginatedPolicyAssignments>`
 
-## 添加策略授权
+## Add a policy assignment
 
 PoliciesManagementClient().addAssignments(policies, targetType, targetIdentifiers)
 
-> 添加策略授权，可以将策略授权给用户和角色，授权给角色的策略会被该角色下的所有用户继承 。此接口可以进行批量操作。
+> Add a policy assignment. You can assign the policy to users and roles, and the policy assigned to the role will be inherited by all users in this role. This interface can perform batch operations.
 
-#### 参数
+#### Parameter
 
-- `policies` \<string[]\> 策略 code 列表
-- `targetType` \<PolicyAssignmentTargetType\> 可选值为 USER (用户) 和 ROLE (角色)
-- `targetIdentifiers` \<string[]\> 用户 id 列表和角色 code 列表
+- `policies` \<string[]\> Policy code list
+- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
-#### 示例
+#### Example
 
 ```javascript
-import { PolicyAssignmentTargetType } from "authing-js-sdk";
+import { PolicyAssignmentTargetType } from "approw-js-sdk";
 
 await managementClient.policies.addAssignments(
   ["code1", "code2"],
@@ -227,26 +227,26 @@ await managementClient.policies.addAssignments(
 );
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 撤销策略授权
+## Remove a policy assignment
 
 PoliciesManagementClient().removeAssignments(policies, targetType, targetIdentifiers)
 
-> 撤销策略授权，此接口可以进行批量操作。
+> Remove a policy assignment. This interface can perform batch operations.
 
-#### 参数
+#### Parameter
 
-- `policies` \<string[]\> 策略 code 列表
-- `targetType` \<PolicyAssignmentTargetType\> 可选值为 USER (用户) 和 ROLE (角色)
-- `targetIdentifiers` \<string[]\> 用户 id 列表和角色 code 列表
+- `policies` \<string[]\> Policy code list
+- `targetType` \<PolicyAssignmentTargetType\> Optional values are USER and ROLE
+- `targetIdentifiers` \<string[]\> User id list and role code list
 
-#### 示例
+#### Example
 
 ```javascript
-import { PolicyAssignmentTargetType } from "authing-js-sdk";
+import { PolicyAssignmentTargetType } from "approw-js-sdk";
 
 await managementClient.policies.removeAssignments(
   ["code1", "code2"],
@@ -261,6 +261,6 @@ await managementClient.policies.removeAssignments(
 );
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`

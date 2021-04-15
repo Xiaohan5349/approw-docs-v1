@@ -1,68 +1,53 @@
 
-# 扫码登录模块
+# QrCodeAuthenticationClient
 
 <LastUpdated/>
 
 
-> 此模块用于进行扫码登录，扫码登录分为两种小程序扫码登录（wxqrcode）和 APP 扫码登录（qrcode）。两种扫码登录方式 API 完全一致。
+> This client is used to implement QR code login. 
 
-使用小程序扫码登录：
+Use APP QR code scan to login:
 
 ```javascript
-import { AuthenticationClient } from "authing-js-sdk"
+import { AuthenticationClient } from "approw-js-sdk"
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
-authenticationClient.wxqrcode.startScanning() # 开始扫码登录
-```
-
-使用 APP 扫码登录
-
-```javascript
-import { AuthenticationClient } from "authing-js-sdk"
-const authenticationClient = new AuthenticationClient({
-   appId: "YOUR_APP_ID",
-})
-authenticationClient.qrcode.startScanning() # 开始扫码登录
+authenticationClient.qrcode.startScanning() # begin to login
 ```
 
 
-
-
-
-## 一键开始扫码
+## One click and begin scanning
 
 QrCodeAuthenticationClient().startScanning(domId, options)
 
-> 一键开始扫码
+> One click and begin scanning.
 
 
-#### 参数
+#### Parameter
 
-- `domId` \<string\> DOM 元素的 ID。 
+- `domId` \<string\> Id of the dom element.
 - `options` \<Object\>  
-- `options.interval` \<number\> 间隔时间，单位为毫秒，默认为 800 毫秒 
-- `options.onStart` \<Function\> 开始轮询的事件回调函数, 第一个参数为 setInterval 返回的计时器，可以用 clearInterval 取消此计时器 
-- `options.onResult` \<Function\> 获取到二维码最新状态事件回调函数，第一个参数为的类型为 QRCodeStatus。 
-- `options.onScanned` \<Function\> 用户首次扫码事件回调函数。此时用户还没有授权，回调的用户信息中通仅包含昵称和头像，用作展示目的。
-出于安全性考虑，默认情况下，userInfo 只会包含昵称（nickname）和头像（photo）两个字段，开发者也可以在后台配置使其返回完整用户信息， 
-- `options.onSuccess` \<Function\> 用户同意授权事件回调函数。该函数只会回调一次，之后轮询结束。第一个参数为 userInfo 用户信息，第二个参数为 ticket，用于换取用户的详情。
-详情见 https://docs.authing.co/scan-qrcode/app-qrcode/customize.html。
-ticket 可以用来换取完整的用户信息，相关接口见 https://docs.authing.co/scan-qrcode/app-qrcode/full-api-list.html。 
-- `options.onCancel` \<Function\> 用户取消授权事件回调函数。该事件只会回调一次，之后轮询结束。 
-- `options.onError` \<Function\> 获取二维码状态失败事件回调函数。常见原因为网络失败等，每次查询失败时都会回调。回调参数 data 示例如 {"code": 2241,"message": "二维码不存在" } 
-- `options.onExpired` \<Function\> 二维码失效时被回调，只回调一次，之后轮询结束。 
-- `options.onCodeShow` \<Function\> 二维码首次成功显示的事件。 
-- `options.onCodeLoaded` \<Function\> 二维码首次成功 Load 的事件。 
-- `options.onCodeLoadFailed` \<Function\> 二维码加载失败的事件。 
-- `options.onCodeDestroyed` \<Function\> 二维码被销毁的事件。 
-- `options.size` \<Object\> 二维码图片大小，默认为 240 * 240，单位为 px 。 
-- `options.size.height` \<number\> 高度 
-- `options.size.width` \<number\> 宽度 
-- `options.containerSize` \<Object\> DOM 容器大小，默认为 300 * 300，单位为 px 。 
-- `options.containerSize.height` \<number\> 高度 
-- `options.containerSize.width` \<number\> 宽度 
-- `options.tips` \<Object\> 自定义提示信息 
+- `options.interval` \<number\>  Interval time, the unit of it is ms. Default value is 800ms.
+- `options.onStart` \<Function\> The event callback function to start polling, the first parameter is the timer returned by setInterval, you can use clearInterval to cancel this timer.
+- `options.onResult` \<Function\> Get the latest status event callback function of the QR code. The type of the first parameter is QRCodeStatus.
+- `options.onScanned` \<Function\> The callback function of the user's first scan code event.At this time, the user has not been authorized, and the callback user information only contains the nickname and avatar for display purposes.For security reasons, by default, userInfo will only contain two fields, nickname and photo, but developers can also configure it in the background to return complete user information. 
+- `options.onSuccess` \<Function\> The user agrees to the authorization event callback function.This function will only call back once, after which the polling ends.The first parameter is userInfo (user information), and the second parameter is ticket, which is used in exchange for user details.See https://docs.approw.co/scan-qrcode/app-qrcode/customize.html for details.
+Ticket can be used to exchange for complete user information, see https://docs.approw.co/scan-qrcode/app-qrcode/full-api-list.html for related interfaces. 
+- `options.onCancel` \<Function\> User cancellation event callback function.This event will only be called back once, after which the polling ends.
+- `options.onError` \<Function\> The callback function for the failure to get the QR code status.The common cause is network failure, etc. It will call back every time the query fails.Examples of callback parameter data such as {"code": 2241,"message": "QR code does not exist"} 
+- `options.onExpired` \<Function\> When the QR code fails, it will be called back only once, after which the polling ends.
+- `options.onCodeShow` \<Function\> The event where the QR code is successfully displayed for the first time. 
+- `options.onCodeLoaded` \<Function\> The event where the QR code is successfully loaded for the first time.
+- `options.onCodeLoadFailed` \<Function\> The event that the QR code failed to load. 
+- `options.onCodeDestroyed` \<Function\> The event that the QR code is destroyed. 
+- `options.size` \<Object\> The size of QR code image. The default value is 240px * 240px.
+- `options.size.height` \<number\> Height 
+- `options.size.width` \<number\> Width 
+- `options.containerSize` \<Object\> The size of DOM element container. The default value is 300px * 300px. 
+- `options.containerSize.height` \<number\> Height 
+- `options.containerSize.width` \<number\> Width 
+- `options.tips` \<Object\> Customed tip information 
 - `options.tips.title` \<number\>  
 - `options.tips.scanned` \<number\>  
 - `options.tips.succeed` \<Object\>  
@@ -71,7 +56,7 @@ ticket 可以用来换取完整的用户信息，相关接口见 https://docs.au
 - `options.tips.retry` \<number\>  
 - `options.tips.failed` \<number\>  
 
-#### 示例
+#### Example
 
 ```javascript
 authenticationClient.wxqrcode.startScanning("qrcode", {
@@ -82,25 +67,25 @@ authenticationClient.wxqrcode.startScanning("qrcode", {
 });
 ```
 
-#### 返回值
+#### Return value
 
 -  `null` 
 
 
       
 
-## 生成二维码
+## Generate QR code
 
 QrCodeAuthenticationClient().geneCode()
 
-> 生成二维码
+> Generate QR code.
 
 
-#### 参数
+#### Parameter
 
 
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -108,103 +93,100 @@ const authenticationClient = new AuthenticationClient({
 })
 const { url, random } = await authenticationClient.wxqrcode.geneCode()
 
-# random 二维码唯一 ID
-# url 二维码链接
+# randomly generated QR code unique ID
+# url URL of QR code
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<QRCodeGenarateResult>` 
 
 
       
 
-## 检测扫码状态
+## Check QR code status
 
 QrCodeAuthenticationClient().checkStatus(random)
 
-> 检测扫码状态
+> Check QR code status.
 
 
-#### 参数
+#### Parameter
 
 - `random` \<string\>  
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
 const { random, status, ticket, userInfo } = await authenticationClient.wxqrcode.checkStatus('RANDOM')
-# status: 二维码状态: 0 - 未使用, 1 - 已扫码, 2 - 已授权, 3 - 取消授权, -1 - 已过期
-# ticket: 用于换取用户信息的一个随机字符串
-# userInfo: 用户信息
+# status: QR code status: 0 - used, 1 - scanned, 2 - authorized, 3 - authorization canceled, -1 - expired
+# ticket: a random number string used to exchange user info
+# userInfo: user information
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<QRCodeStatus>` 
 
 
       
 
-## 使用 ticket 交换用户信息
+## Use ticket to exchange for user's information
 
 QrCodeAuthenticationClient().exchangeUserInfo(ticket)
 
-> 使用 ticket 交换用户信息
+> Use ticket to exchange for user's information
 
 
-#### 参数
+#### Parameter
 
-- `ticket` \<string\> ticket 
+- `ticket` \<string\> Ticket 
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
 const user = await authenticationClient.wxqrcode.exchangeUserInfo('TICKET')
-# user: 完整的用户信息，其中 user.token 为用户的登录凭证。
+# user: user: complete user info. user.token is user login credential
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<Partial<User>>` 
 
 
       
 
-## 开始轮询二维码状态
+## Start polling QR code status
 
 QrCodeAuthenticationClient().startPolling(random, options)
 
-> 开始轮询二维码状态
+> Start polling QR code status
 
 
-#### 参数
+#### Paraneter
 
-- `random` \<string\> 二维码唯一 ID 
+- `random` \<string\> Unique ID of QR code 
 - `options` \<Object\>  
-- `options.interval` \<number\> 间隔时间，单位为毫秒，默认为 800 毫秒 
-- `options.onStart` \<Function\> 开始轮询的事件回调函数, 第一个参数为 setInterval 返回的计时器，可以用 clearInterval 取消此计时器 
-- `options.onResult` \<Function\> 获取到二维码最新状态事件回调函数，第一个参数为的类型为 QRCodeStatus。 
-- `options.onScanned` \<Function\> 用户首次扫码事件回调函数。此时用户还没有授权，回调的用户信息中通仅包含昵称和头像，用作展示目的。
-出于安全性考虑，默认情况下，userInfo 只会包含昵称（nickname）和头像（photo）两个字段，开发者也可以在后台配置使其返回完整用户信息， 
-- `options.onSuccess` \<Function\> 用户同意授权事件回调函数。该函数只会回调一次，之后轮询结束。第一个参数为 userInfo 用户信息，第二个参数为 ticket，用于换取用户的详情。
-详情见 https://docs.authing.co/scan-qrcode/app-qrcode/customize.html。
-ticket 可以用来换取完整的用户信息，相关接口见 https://docs.authing.co/scan-qrcode/app-qrcode/full-api-list.html。 
-- `options.onCancel` \<Function\> 用户取消授权事件回调函数。该事件只会回调一次，之后轮询结束。 
-- `options.onError` \<Function\> 获取二维码状态失败事件回调函数。常见原因为网络失败等，每次查询失败时都会回调。回调参数 data 示例如 {"code": 2241,"message": "二维码不存在" } 
-- `options.onExpired` \<Function\> 二维码失效时被回调，只回调一次，之后轮询结束。 
+- `options.interval` \<number\> Interval time, the unit of it is ms. Default value is 800ms.
+- `options.onStart` \<Function\> The event callback function to start polling, the first parameter is the timer returned by setInterval, you can use clearInterval to cancel this timer.
+- `options.onResult` \<Function\> Get the latest status event callback function of the QR code. The type of the first parameter is QRCodeStatus. 
+- `options.onScanned` \<Function\> The callback function of the user's first scan code event.At this time, the user has not been authorized, and the callback user information only contains the nickname and avatar for display purposes.For security reasons, by default, userInfo will only contain two fields, nickname and photo, but developers can also configure it in the background to return complete user information. 
+- `options.onSuccess` \<Function\> The user agrees to the authorization event callback function.This function will only call back once, after which the polling ends.The first parameter is userInfo (user information), and the second parameter is ticket, which is used in exchange for user details.See https://docs.approw.co/scan-qrcode/app-qrcode/customize.html for details.Ticket can be used to exchange for complete user information, see https://docs.approw.co/scan-qrcode/app-qrcode/full-api-list.html for related interfaces.
+- `options.onCancel` \<Function\> User cancellation event callback function.This event will only be called back once, after which the polling ends.
+- `options.onError` \<Function\> The callback function for the failure to get the QR code status.The common cause is network failure, etc. It will call back every time the query fails.Examples of callback parameter data such as {"code": 2241,"message": "QR code does not exist"}
+- `options.onExpired` \<Function\> When the QR code fails, it will be called back only once, after which the polling ends. 
 
-#### 示例
+#### Example
 
 
 
-#### 返回值
+#### Return value
 
 -  `null` 
 

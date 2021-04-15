@@ -1,30 +1,30 @@
 ---
 meta:
   - name: description
-    content: 管理分组
+    content: GroupsManagementClient
 ---
 
-# 管理分组
+# GroupsManagementClient
 
 <LastUpdated/>
 
 
-> 此模块用于管理 {{$localeConfig.brandName}} 分组，可以进行分组的增删改查、分组添加/删除用户、分组添加/删除策略 等操作。
+> This client is used to manage {{$localeConfig.brandName}} groups，It can create/query/update/delete groups, add/delete users to/from groups, add/delete group's policy and perform other operations.
 
-## 创建分组
+## Create a group
 
 GroupsManagementClient().create(groupInfo)
 
-> 创建分组
+> Create a Group.
 
-#### 参数
+#### Parameters
 
-- `groupInfo` \<CreateGroupParam\> 分组资料
-- `groupInfo.code` \<string\> 分组唯一标志符
-- `groupInfo.name` \<boolean\> 分组名称
-- `groupInfo.description` \<string\> 描述
+- `groupInfo` \<CreateGroupParam\> Group information
+- `groupInfo.code` \<string\> Group unique id
+- `groupInfo.name` \<boolean\> Group name
+- `groupInfo.description` \<string\> Description
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
@@ -33,38 +33,38 @@ String description = "desc1";
 Group group = managementClient.group().create(new CreateGroupParam(code, name, description)).execute();
 ```
 
-## 删除分组
+## Delete a group
 
 GroupsManagementClient().delete(code)
 
-> 删除分组
+> Delete a Group.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 分组唯一标志符
+- `code` \<string\> Group unique id
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
 CommonMessage message = managementClient.group().delete(code).execute();
 ```
 
-## 修改分组
+## Update a group
 
 GroupsManagementClient().update(groupInfo)
 
-> 修改分组
+> Update a group
 
-#### 参数
+#### Parameters
 
-- `groupInfo` \<CreateGroupParam\> 分组资料
-- `groupInfo.code` \<string\> 分组唯一标志符
-- `groupInfo.name` \<boolean\> 分组名称
-- `groupInfo.description` \<string\> 描述
-- `groupInfo.newCode` \<string\> 新的唯一标志符
+- `groupInfo` \<CreateGroupParam\> Group information
+- `groupInfo.code` \<string\> Group unique id
+- `groupInfo.name` \<boolean\> Group name
+- `groupInfo.description` \<string\> Description
+- `groupInfo.newCode` \<string\> New unique id
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
@@ -74,36 +74,36 @@ String newCode = "code2";
 Group group = managementClient.group().update(new UpdateGroupParam(code, name, description, newCode)).execute();
 ```
 
-## 获取分组详情
+## Get group details
 
 GroupsManagementClient().detail(code)
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 分组唯一标志符
+- `code` \<string\> Group unique id
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
 Group group = managementClient.group().detail(code).execute();
 ```
 
-## 获取分组列表
+## Get the group list
 
 GroupsManagementClient().list(listParam)
 
-> 获取分组列表
+> Get the group list.
 
-#### 参数
+#### Parameters
 
-- `listParam` \<GroupsParam\> 分页请求参数
-- `listParam.userId` \<string\> 用户 ID
-- `listParam.page` \<number\> 页码数 默认值为 : `1`
-- `listParam.limit` \<number\> 每页个数 默认值为 : `10`
-- `listParam.sortBy` \<SortByEnum\> 排序规则
+- `listParam` \<GroupsParam\> Pagination request parameters
+- `listParam.userId` \<string\> User ID
+- `listParam.page` \<number\> Page number. Default value: `1`
+- `listParam.limit` \<number\> Groups per page. Default value: `10`
+- `listParam.sortBy` \<SortByEnum\> Sorting rules
 
-#### 示例
+#### Example
 
 ```java
 String userId = "userId1";
@@ -113,17 +113,17 @@ SortByEnum sortEnum = SortByEnum.CREATEDAT_DESC;
 PaginatedGroups groups = managementClient.group().list(new GroupsParam(userId, page, limit, sortEnum)).execute();
 ```
 
-## 批量删除分组
+## Bulk delete groups
 
 GroupsManagementClient().deleteMany(codeList)
 
-> 批量删除分组
+> Bulk delete groups
 
-#### 参数
+#### Parameter
 
-- `codeList` \<string[]\> 分组唯一标志符列表
+- `codeList` \<string[]\> A list of unique id of the groups.
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> codeList = new ArrayList<>();
@@ -131,20 +131,20 @@ codeList.add("code1");
 CommonMessage message = managementClient.group().deleteMany(codeList).execute();
 ```
 
-## 获取分组用户列表
+## Get users list of the group
 
 GroupsManagementClient().listUsers(groupWithUsersParam)
 
-> 获取分组用户列表
+> Get users list of the group
 
 #### 参数
 
 - `groupWithUsersParam` \<GroupWithUsersParam\>
-- `groupWithUsersParam.code` \<string\> 分组唯一标志符
-- `groupWithUsersParam.page` \<number\> 页码数 默认值为 : `1`
-- `groupWithUsersParam.limit` \<number\> 每页个数 默认值为 : `10`
+- `groupWithUsersParam.code` \<string\> Group unique id
+- `groupWithUsersParam.page` \<number\>  Page number, default value:  `1`.
+- `groupWithUsersParam.limit` \<number\> Users per page, default value:  `10`.
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
@@ -153,19 +153,19 @@ int limit = 10;
 PaginatedUsers users = managementClient.group().listUsers(code, page, limit).execute();
 ```
 
-## 添加用户
+## Add users to a group
 
 GroupsManagementClient().addUsers(addUserToGroupParam)
 
-> 添加用户
+> Add users to a group.
 
-#### 参数
+#### Parameters
 
 - `addUserToGroupParam` \<AddUserToGroupParam\>
-- `addUserToGroupParam.code` \<string\> 分组唯一标志符
-- `addUserToGroupParam.userIds` \<string[]\> 用户 ID 列表
+- `addUserToGroupParam.code` \<string\> Group unique id
+- `addUserToGroupParam.userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";
@@ -174,19 +174,19 @@ userIds.add("userId1");
 CommonMessage message = managementClient.group().addUsers(new AddUserToGroupParam(userIds, code)).execute();
 ```
 
-## 移除用户
+## Delete users from a group
 
 GroupsManagementClient().removeUsers(removeUserFromGroupParam)
 
-> 移除用户
+> Delete users from a group.
 
-#### 参数
+#### Parameters
 
 - `removeUserFromGroupParam` \<RemoveUserFromGroupParam\>
-- `removeUserFromGroupParam.code` \<string\> 分组唯一标志符
-- `removeUserFromGroupParam.userIds` \<string[]\> 用户 ID 列表
+- `removeUserFromGroupParam.code` \<string\> Group unique id
+- `removeUserFromGroupParam.userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 String code = "code1";

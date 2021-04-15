@@ -4,14 +4,14 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: "Jira 企业 OIDC 单点登录指南",
-  bannerTitle: "Jira 企业 OIDC 单点登录指南",
+  title: "Instruction of Setup OIDC SSO with Jira Enterprise",
+  bannerTitle: "Instruction of Setup OIDC SSO with Jira Enterprise",
   steps:
     [
-      { title: "Jira 配置", subTitle: "" },
-      { title: "Authing OIDC 配置", subTitle: "" },
-      { title: "测试", subTitle: "" },
-      { title: "完成", subTitle: "" },
+      { title: "Jira Configuration", subTitle: "" },
+      { title: "Approw OIDC Configuration", subTitle: "" },
+      { title: "Testing", subTitle: "" },
+      { title: "Complete", subTitle: "" },
     ],
 }
 ---

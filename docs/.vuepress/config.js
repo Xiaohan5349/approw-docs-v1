@@ -25,7 +25,7 @@ module.exports = {
   locales: {
     // The key is the path for the locale to be nested under.
     // As a special case, the default locale can use '/' as its path.
-    '/': {
+    '/zh/': {
       lang: 'zh-CN', // this will be set as the lang attribute on <html>
       title: 'Approw 文档',
       description: 'Approw 文档',
@@ -34,7 +34,7 @@ module.exports = {
       brandName: sidebar.BRAND_NAME_ZH_CN,
       brandNameLowerCase: sidebar.BRAND_NAME_ZH_CN_LOWER_CASE,
     },
-    '/en/': {
+    '/': {
       lang: 'en-US',
       title: 'Approw Docs',
       description: 'Approw Docs',
@@ -68,7 +68,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     sidebarDepth: 0,
     locales: {
-      '/': {
+      '/zh/': {
         selectText: '中文 / EN',
         label: '简体中文',
         editLinkText: '在 GitHub 上编辑此页',
@@ -218,7 +218,7 @@ module.exports = {
           companyName: '© 北京蒸汽记忆科技有限公司',
         },
       },
-      '/en/': {
+      '/': {
         // text for the language dropdown
         selectText: '中文 / EN',
         // label for this locale in the language dropdown
@@ -237,12 +237,12 @@ module.exports = {
         searchInDoc: 'Search in Docs',
         oldVersion: 'Old Version',
         nav: [
-          { text: 'Concept', link: '/en/concepts/' },
-          { text: 'Guides', link: '/en/guides/' },
-          { text: 'Development Integration', link: '/en/reference/' },
+          { text: 'Concept', link: '/concepts/' },
+          { text: 'Guides', link: '/guides/' },
+          { text: 'Development Integration', link: '/reference/' },
           {
             text: 'Application integration',
-            link: '/en/integration/',
+            link: '/integration/',
           },
         ],
         sidebar: sidebar.enUsNavBar,
@@ -379,8 +379,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@imagesZhCn': path.resolve(__dirname, '../images'),
-        '@imagesEnUs': path.resolve(__dirname, '../en/images'),
+        '@imagesEnUs': path.resolve(__dirname, '../images'),
       },
     },
   },

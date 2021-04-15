@@ -3,23 +3,23 @@
 <LastUpdated/>
 
 ::: hint-info
-开发者在 Andorid 应用中，可以使用 [{{$localeConfig.brandName}} Java/Kotlin SDK](./sdk-for-java/README.md) 集成 {{$localeConfig.brandName}} 服务。
+Developers can use [{{$localeConfig.brandName}} Java/Kotlin SDK](./sdk-for-java/README.md) to integrate {{$localeConfig.brandName}}'s service.
 :::
 
-## 集成方法
+## Integration method
 
-1. 下载 jar 包并将 jar 包导入 lib
+1. Download the jar package and import the jar package into lib.
 
-Jar 包下载地址：
+Download jar package here:
 
-- [https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar](https://download.authing.cn/packages/jar/commons-codec-1.15-rep.jar)
-- [https://download.authing.cn/packages/jar/core.jar](https://download.authing.cn/packages/jar/core.jar)
+- [https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar](https://download.approw.com/packages/jar/commons-codec-1.15-rep.jar)
+- [https://download.approw.com/packages/jar/core.jar](https://download.approw.com/packages/jar/core.jar)
 
-将 Jar 包导入 lib，如下图所示：
+Import the Jar package into lib, as shown in the following image:
 
-![](https://cdn.authing.cn/blog/20201218134537.png)
+![](https://cdn.approw.com/blog/20201218134537.png)
 
-2. 配置 `build.gradle`
+2. Configure `build.gradle`
 
 ```
 implementation "com.google.code.gson:gson:2.8.6"
@@ -28,23 +28,23 @@ implementation files('libs/core.jar')
 implementation files('libs/commons-codec-1.15-rep.jar')
 ```
 
-3. 安装 {{$localeConfig.brandName}} Java/Kotlin SDK
+3. Install {{$localeConfig.brandName}} Java/Kotlin SDK
 
-详细的安装指引请见：[{{$localeConfig.brandName}} Java/Kotlin SDK](./sdk-for-java/README.md) 。
+For detailed installation instructions, please see:[{{$localeConfig.brandName}} Java/Kotlin SDK](./sdk-for-java/README.md) 。
 
-## 使用示例
+## Use cases
 
 ### Java
 
-- 使用用户池 ID 初始化 `AuthenticationClient`。
-- 调用 `AuthenticationClient` 的方法。
+- Use user pool id to initialize `AuthenticationClient`。
+- Call `AuthenticationClient` method.
 
 ```java
 AuthenticationClient client = new AuthenticationClient("YOUR_USERPOOL_ID");
 
-client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new cn.authing.core.http.Callback<cn.authing.core.types.User>() {
+client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue(new com.approw.core.http.Callback<com.approw.core.types.User>() {
     @Override
-    public void onSuccess(cn.authing.core.types.User user) {
+    public void onSuccess(com.approw.core.types.User user) {
 
     }
 
@@ -57,8 +57,8 @@ client.registerByEmail(new RegisterByEmailInput("xxx@qq.com", "123456")).enqueue
 
 ### Kotlin
 
-- 使用用户池 ID 初始化 `AuthenticationClient`。
-- 调用 `AuthenticationClient` 的方法。
+- Use user pool id to initialize `AuthenticationClient`。
+- Call `AuthenticationClient` method.
 
 ```kotlin
 val authenticationClient = AuthenticationClient("YOUR_USERPOOL_ID")
@@ -68,7 +68,7 @@ authenticationClient.registerByEmail(
         "xxx@.qq.com",
         "123456"
     )
-).enqueue(object : cn.authing.core.http.Callback<User> {
+).enqueue(object : com.approw.core.http.Callback<User> {
     override fun onFailure(error: ErrorInfo?) {
 
     }
@@ -79,18 +79,18 @@ authenticationClient.registerByEmail(
 })
 ```
 
-## 用户注册登录
+## User registration and login
 
-{{$localeConfig.brandName}} Java SDK 支持手机号验证码、邮箱、用户名等多种注册登录方式，以手机号验证码登录为例：
+{{$localeConfig.brandName}} Java SDK supports multiple registration and login methods such as mobile phone number verification code, email, username, etc. Take mobile phone number verification code login as an example:
 
-1. 发送验证码
+1. Send SMS code
 
 ```java
 String phone = "phone number";
 authenticationClient.sendSmsCode(phone).execute();
 ```
 
-2. 使用验证码登录
+2. Use the SMS code to login
 
 ```java
 String phone = "phone number";
@@ -98,39 +98,12 @@ String code = "1234";
 User user = authenticationClient.loginByPhoneCode(new LoginByPhoneCodeInput(phone, code)).execute();
 ```
 
-详细文档请见：[用户注册登录 API](./sdk-for-java/authentication/README.md) 。
+For detailed documentation, please see: [User Registration and Login API](./sdk-for-java/authentication/README.md) 。
 
-## 管理用户自定义数据
+## Manage user-defined data
 
-有关用户自定义数据的使用介绍请见：[用户自定义字段](/guides/user/user-defined-field/)，你可以在 {{$localeConfig.brandName}} Java/Kotlin SDK 中获取、添加、删除用户自定义数据，详情请见：[管理用户自定义数据](/guides/user/user-defined-field/)。
+For an introduction to the use of [user-defined data](/guides/user/user-defined-field/), please see: User-defined fields. You can get, add, and delete user-defined data in the {{$localeConfig.brandName}} Java/Kotlin SDK. For details, see: [Manage user-defined data](/guides/user/user-defined-field/)。
 
-## 集成微信登录
+## Other
 
-你可以使用 `AuthenticationClient` 的 `loginByWechat` 方法，所需四个参数均为微信返回的参数：
-
-| 字段名  | 是否必填 | 类型   | 说明                      |
-| ------- | -------- | ------ | ------------------------- |
-| code    | REQUIRED | string | 微信返回给 APP 的 code    |
-| country | OPTIONAL | string | 微信返回给 APP 的 country |
-| lang    | OPTIONAL | string | 微信返回给 APP 的 lang    |
-| state   | OPTIONAL | string | 微信返回给 APP 的 state   |
-
-```kotlin
-val authenticationClient = AuthenticationClient("YOUR_USERPOOL_ID")
-
-val code = "#returned code from wechat#";
-
-authenticationClient.loginByWechat(code).enqueue(object: cn.authing.core.http.Callback<User> {
-    override fun onFailure(error: ErrorInfo?) {
-
-    }
-
-    override fun onSuccess(result: User) {
-        val user = result
-    }
-})
-```
-
-## 其他
-
-其他详细介绍请见：[{{$localeConfig.brandName}} SDK for Java/Android](./sdk-for-java/README.md) 。
+For other details, please see: [{{$localeConfig.brandName}} SDK for Java/Android](./sdk-for-java/README.md) 。

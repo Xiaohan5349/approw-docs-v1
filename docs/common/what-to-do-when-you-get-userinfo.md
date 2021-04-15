@@ -1,17 +1,17 @@
-获取到用户信息之后，你可以得到用户的身份凭证（用户信息的 `token` 字段），你可以在客户端后续发送给后端服务器的请求中携带上此 `token`, 以 `axios` 为例：
+After obtaining the user information, you can get the user's identity credential (the `token` field of the user information), and you can carry this `token` in subsequent requests sent by the client to the back-end server, take `axios` as an example :
 
 ```js
-const axios = require("axios");
+const axios = require('axios')
 axios
   .get({
-    url: "https://yourdomain.com/api/v1/your/resources",
+    url: 'https://yourdomain.com/api/v1/your/resources',
     headers: {
-      Authorization: "Bearer YOUR_JWT_TOKN",
+      Authorization: 'Bearer YOUR_JWT_TOKN',
     },
   })
   .then((res) => {
     // custom codes
-  });
+  })
 ```
 
-在后端接口中需要检验此 `token` 的合法性，来验证用户的身份，验证方式详情请见[验证用户身份凭证（token）](/guides/faqs/how-to-validate-user-token.html)。识别用户身份之后，你可能还需要[对该用户进行权限管理](/guides/access-control/)，以判断用户是否对此 API 具备操作权限。
+The legitimacy of this `token` needs to be verified in the back-end interface to verify the user's identity. For details on the verification method, please see [Verify User Identity Credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [Permission Management for the User](/guides/access-control/) to determine whether the user has operating permissions for this API.

@@ -4,20 +4,20 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 SAML2 登录华为云控制台',
-  bannerTitle: '使用 SAML2 登录华为云控制台',
+  title: 'Using SAML2 to Log into Huawei Cloud Console',
+  bannerTitle: 'Using SAML2 to Log into Huawei Cloud Console',
   steps:
     [
       {
-        title: '配置 {{$localeConfig.brandName}} SAML2 IdP',
-        subTitle: '{{$localeConfig.brandName}} 应用开启 SAML2 Provider 并配置',
+        title: 'Setup {{$localeConfig.brandName}} SAML2 IdP Configuration',
+        subTitle: 'Enable and configure {{$localeConfig.brandName}} application SAML2 Provider',
       },
-      { title: '配置华为云', subTitle: '在华为云创建用户，并开启用户 SSO' },
+      { title: 'Setup Huawei Cloud Configuration', subTitle: 'Create User in Huawei Cloud and Enable User SSO' },
       {
-        title: '配置 {{$localeConfig.brandName}} 用户',
-        subTitle: '创建 {{$localeConfig.brandName}} 用户并关联华为云用户',
+        title: 'Setup {{$localeConfig.brandName}} User Configuration',
+        subTitle: 'Create {{$localeConfig.brandName}} Users and Link Them to Huawei Cloud User',
       },
-      { title: '配置完成', subTitle: '使用 {{$localeConfig.brandName}} IdP 登录华为云' },
+      { title: 'Configuration Complete', subTitle: 'Use {{$localeConfig.brandName}} IdP to Login Huawei Cloud' },
     ],
 }
 ---

@@ -1,10 +1,10 @@
-# 扩展能力综述
+# Overview of Expansion Capabilities
 
 <LastUpdated/>
 
-Authing 一直以来都致力于提升平台的开放性和可扩展性，以满足不同客户对身份认证、权限管理各种个性化的需求。Authing 的扩展性体系目前包含以下形式：
+Approw has always been committed to improving the openness and scalability of the platform to meet the various personalized needs of different customers for identity authentication and authority management. Approw‘s extensibility system includes the following forms:
 
-- [WebHook](/guides/webhook/README.md) 允许你对用户注册、登录、密码重置、邮箱验证、用户信息更新等行为进行监听，系统会在触发特定事件后往你配置的自定义回调地址发送事件，从而对其做一些自定义处理。
-- [Pipeline](/guides/pipeline/README.md) 是一组运行在云端的用户自定义 JavaScript 代码，可以让开发者在认证流程中执行自定义代码，实现添加自定义 id_token、非常灵活的访问控制等。
-- [自定义数据库](/guides/database-connection/overview.md)能够让 Authing 与你自定义的数据库进行交互，也可以实现不停机的用户数据上云迁移。
+- [WebHook](/guides/webhook/README.md) allows you to monitor user registration, login, password reset, email verification, user information update, etc. The system will send the event to the customized callback address you configured after triggering a specific event, so as to do some custom processing on it.
+- [Pipeline](/guides/pipeline/README.md) is a set of user-defined JavaScript code running in the cloud, which allows developers to execute customized code in the authentication process, such as adding custom id_token, flexible access control, etc.
+- [The custom database](/guides/database-connection/overview.md) allows Approw to interact with your customized database, and it can also realize non-stop user data migration to the cloud.
 

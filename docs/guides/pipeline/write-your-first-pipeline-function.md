@@ -1,69 +1,64 @@
 ---
 meta:
   - name: description
-    content: 创建你的第一个 Pipeline 函数
+    content: Create Your First Pipeline Function
 ---
 
-# 创建你的第一个 Pipeline 函数
+# Create Your First Pipeline Function
 
 <LastUpdated/>
 
-Pipeline 函数是 {{$localeConfig.brandName}} 认证流程中执行的自定义 JavaScript 代码。借助 Pipeline，开发者可以轻易自定义和扩展
-{{$localeConfig.brandName}} 的能力。
+The Pipeline function is a customized JavaScript code executed in the {{$localeConfig.brandName}} authentication process. With the help of Pipeline, developers can easily customize and extend the capabilities of {{$localeConfig.brandName}}.
 
-## 选择一个 Pipeline 模版
+## Select a Pipeline Template
 
-{{$localeConfig.brandName}} 提供了很多开箱即用的模版，帮助你快速上手。
+{{$localeConfig.brandName}} provides many templates that can be used directly to help you get started quickly.
 
-::: hint-success
-你也可以在这里查看 Pipeline 模版函数列表：[https://github.com/authing/pipeline](https://github.com/authing/pipeline)。同时欢迎你发挥才智，为我们贡献 Pipeline 模版函数。
-:::
+You can also view the list of Pipeline template functions here: [https://github.com/approw/pipeline](https://github.com/aapprow/pipeline). At the same time, you are welcome to contribute more Pipeline template functions to us.
 
-首先进入控制台的**扩展能力** - **自定义 Pipeline** 页面，你会看到一些提示：
+First, select the Console's**Extention Capabilities** - **Custom Pipeline** page and you will see some tips.
 
 ![](https://cdn.authing.cn/blog/20200927194309.png)
 
-选择某个触发场景，点击 「+」按钮，我们有 20 余种模版供选择：
+Select a trigger scene and click the 「+」 button. We have more than 20 templates to choose:
 
 ![](https://cdn.authing.cn/blog/20200927194410.png)
 
-这里，我们选择访问控制中的 "注册邮箱后缀白名单"。
+Select "Registered Email Suffix White List" in Access Control.
 
 ![](https://cdn.authing.cn/blog/20200927194723.png)
 
-## 创建一个 Pipeline 函数
+## Create a Pipeline Function
 
-这里我们设置的域名白名单是 "example.com"，你也可以改成自己的。
+The domain name whitelist we set here is "example.com", you can change it to your own domain name.
 
 ![](https://cdn.authing.cn/blog/20200927194840.png)
 
-点击左下角的“保存“按钮，我们会将此函数部署到云端，需要一定时间，请耐心等待。
+Click the "Save" button in the lower left corner, we will deploy this function to the cloud. It will take some time, please be patient.
 
-回到 Pipeline 函数列表页面，可以看到我们刚刚添加的那个函数。
+Back to the Pipeline function list page, you can see the function we just added.
 
 ![](https://cdn.authing.cn/blog/20200927194910.png)
 
 ::: hint-success
-如果你有多个 Pipeline 函数，可以拖拽进行排序。
+If you have multiple Pipeline functions, you can drag to sort them.
 :::
 
-## 验证白名单是否有效
+## Verify that the Whitelist is Valid
 
-首先使用非 `example.com` 后缀邮箱，看到返回了 "Access Denied." 提示，这是我们在自定义 Pipeline 函数中自己指定的提示信息。
+First, use the non-`example.com` suffix mailbox and see the "Access Denied." prompt returned, which is the prompt message we specified in the custom Pipeline function.
 
 <img src="https://cdn.authing.cn/blog/20200927195409.png" height=300 style="display:block;margin: 0 auto;">
 
-之后再使用后缀为 `example.com` 的邮箱注册，注册成功！
+Then use the email with the suffix of `example.com` to register. The registration is successful!
 
 <img src="https://cdn.authing.cn/blog/20200927195137.png" height=300 style="display:block;margin: 0 auto;">
 
-## 接下来你可能还需要
+## Next 
 
-你可以：
-
-- 详细阅读 [Pipeline 函数的开发文档](pipeline-function-api-doc.md)。
-- 了解可以在 pipe 函数中获取那些请求信息：[user 对象](user-object.md) 和 [context 对象](context-object.md)。
-- 了解如何[在 pipe 函数中使用环境变量](env.md)。
-- 了解在 pipe 函数中可以使用[哪些开箱即用的 Node Modules](available-node-modules.md)。你可以直接使用 [authing-js-sdk ](/reference/sdk-for-node/)！
-- 我们提供了很多丰富的 Pipeline 函数模板，[点击这里查看](https://github.com/authing/pipeline)。
-- 我们还提供了方便的[在线调试手段](./how-to-debug.md)，方便开发者在线调试。
+- Read the [development documentation of the Pipeline function](pipeline-function-api-doc.md).
+- Understand that the request information can be obtained in the pipe function：[user object](user-object.md) and [context object](context-object.md).
+- Learn how to [use environment variables in the pipe function](env.md).
+- Learn [which Node Modules out of the box ](available-node-modules.md) can be used in the pipe function. You can use [approw-js-sdk ](/reference/sdk-for-node/) directly！
+- We provide a lot of rich pipeline function templates, click [here](https://github.com/approw/pipeline).
+- We also provide convenient [online debugging methods ](./how-to-debug.md) for developers to debug online.

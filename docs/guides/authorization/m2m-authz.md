@@ -1,118 +1,114 @@
-# M2M 授权
+# M2M Authorization
 
 <LastUpdated/>
 
-M2M（Machine to Machine）授权是**无用户参与**的应用间授权。当你想要将自己的业务 API 部分地开放给其他人，例如你的外包商，外包商需要先进行 **M2M 授权**，然后才能访问你的业务 API。假如你的公司希望开发一些数据的大屏展示，并有几个外包商参与其中。你希望将某些非核心数据的 API 访问权限授权给外包商，让外包商完成这部分的非核心开发。此时需要 M2M 授权，因为这个过程中不需要用户参与，我们只需要确定来访者是哪个外包商，以及他有哪些接口的访问权限。
+M2M (Machine to Machine) authorization is an authorization between applications without user participation. When you want to partially open your business API to others, such as your outsourcer, the outsourcer needs to perform M2M authorization before you can access your business API. Suppose your company wants to develop a large-screen display of some data, and several outsourcers participate in it. You want to authorize access to certain non-core data APIs to outsourcers so that the outsourcers can complete this part of the non-core development. At this time, M2M authorization is required, because no user participation is required in this process, we only need to determine which outsourcer the visitor is and what interface access he has.
 
-以下是该场景的架构图，外包商先到 Authing 获取 Access Token，然后携带 Access Token 访问公司服务的 API 接口：
-![](~@imagesZhCn/guides/authorization/m2m-arch.png)
+The following is the architecture diagram of this scenario. The outsourcer first goes to Approw to obtain the Access Token, and then carries the Access Token to access the API interface of the company's services:
 
-## 权限管理与分配
+![](~@imagesEnUs/guides/authorization/m2m-arch.png)
 
-在 Authing 创建一个应用，叫做「大屏展示」。
+## Privilege management and assignment
 
-![](~@imagesZhCn/guides/authorization/create-app-screen-display.png)
+Create an application in Approw called "Big Screen Display".
 
-在「大屏展示」应用下定义一些资源，每个资源对应「大屏展示」应用中实际的资源。这里我们添加一些资源，包括用户增长（user-growth）、客户（customer）、公告（announce）、营收（revenue）。这些资源的名称就是 **API scope**。
+![](~@imagesEnUs/guides/authorization/create-app-screen-display.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-display-screen.png)
+Define some resources under the "big screen display" application, and each resource corresponds to the actual resource in the "big screen display" application. Here we add some resources, including user-growth, customer, announcement, and revenue. The name of these resources is API scope.
 
-![](~@imagesZhCn/guides/authorization/create-resource-display-screen-2.png)
+![](~@imagesEnUs/guides/authorization/create-resource-display-screen.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-display-screen-3.png)
+![](~@imagesEnUs/guides/authorization/create-resource-display-screen-2.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-display-screen-4.png)
+![](~@imagesEnUs/guides/authorization/create-resource-display-screen-3.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-display-screen-5.png)
+![](~@imagesEnUs/guides/authorization/create-resource-display-screen-4.png)
 
-定义完资源和操作之后，接下来为应用添加**编程访问账号**，**编程访问账号**就是当前应用 API 接口的**调用方**。**编程访问账号**有一对 **AK 和 SK**，用于交给外包商调用「大屏展示」应用接口。我们可以将具备不同权限的 AK、SK 交给不同的外包商，这样他们就有不同的权限，能够访问不同的 API。
+![](~@imagesEnUs/guides/authorization/create-resource-display-screen-5.png)
 
-![](~@imagesZhCn/guides/authorization/create-programmatic-account-display-screen.png)
+After defining the resources and operations, add a programmatic access account for the application. The programmatic access account is the caller of the API interface of the current application. The program access account has a pair of AK and SK, which are used by the outsourcer to call the "big screen display" application interface. We can hand over AK and SK with different privileges to different outsourcers, so that they have different privileges and can access different APIs.
 
-创建两个编程访问账号，填写 AccessToken 过期时间和备注信息，点击确定。
+![](~@imagesEnUs/guides/authorization/create-programmatic-account-display-screen.png)
 
-![](~@imagesZhCn/guides/authorization/create-ak-sk-1.png)
+Create two programming access accounts, fill in the AccessToken expiration time and remarks, and click OK.
 
-![](~@imagesZhCn/guides/authorization/create-ak-sk-2.png)
+![](~@imagesEnUs/guides/authorization/create-ak-sk-1.png)
 
-如果将编程访问账号删除，调用方将会失去获取用户授权的能力。
+![](~@imagesEnUs/guides/authorization/create-ak-sk-2.png)
 
-### AccessToken 过期时间
+If the program access account is deleted, the caller will lose the access.
 
-当你创建编程访问账号时，需要指定 AccessToken 过期时间。Authing 在颁发 AccessToken 时使用 RS256 签名算法进行签名，以确保 AccessToken 不会被篡改。
-> Token 签名是 JWT 中的一部分，更多内容请参考 [JWT 释义及使用](/concepts/jwt-token.md)。
+### Access Token expire time
 
-RS256 是一种非对称签名算法，Authing 持有私钥对 Token 进行签名，JWT 的消费者使用公钥来验证签名。RS256 签名算法，有以下好处：
+When you create a programmatic access account, you need to specify the AccessToken expiration time. Approw uses the RS256 signature algorithm when issuing the AccessToken to ensure that the AccessToken will not be tampered with.
 
-1. 任何人都可以使用应用公钥验证签名，签名方一定是 Authing。
-2. 无私钥泄露风险，如果你使用 HS256 但泄露了应用密钥，需要刷新密钥并重新部署所有 API。
+> Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/docs/concepts/jwt-token.md).
 
-关于签名问题更多内容请参考[验证 Token](/guides/faqs/how-to-validate-user-token.md)。
+RS256 is an asymmetric signature algorithm. Approw holds the private key to sign the Token, and consumers of JWT use the public key to verify the signature. The RS256 signature algorithm has the following advantages:
 
-我们刚刚创建了两个编程访问账号，将来需要交给外包商。
+1. Anyone can use the application public key to verify the signature, and the signer must be Approw.
+2. There is no risk of private key leakage. If you use HS256 but leak the application key, you need to refresh the key and redeploy all APIs.
+   For more details on signature issues, please refer to [Verify the Token](/docs/guides/faqs/how-to-validate-user-token.md).
+   We have just created two programming access accounts, which will need to be handed over to outsourcers in the future.
 
-![](~@imagesZhCn/guides/authorization/ak-sk-result.png)
+![](~@imagesEnUs/guides/authorization/ak-sk-result.png)
 
-下面我们需要赋予他们资源权限。在资源授权选项卡，点击添加。
+Next we need to give them resource privileges. On the Resource Authorization tab, click Add.
 
-![](~@imagesZhCn/guides/authorization/m2m-acl-1.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-1.png)
 
-被授权主体类型选择**编程访问账号**，然后选择甲外包公司的编程访问账号账号。
+In the authorized subject type, select programming access account, and then select the programming access account of the outsourcing company A.
 
-![](~@imagesZhCn/guides/authorization/m2m-acl-2.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-2.png)
 
-授权规则中，**资源类型**选择公告信息，**资源标识符**填写 `*` 代表授权**所有公告资源**，操作选择**特定操作**，然后选择 announce:read 操作。最后点击确定。这条规则的作用是：将**所有**公告信息资源的**读取**权限授权给甲外包公司。
+In the authorization rules, select announcement information as the resource type, fill \* in resource identifier to authorize all announcement resources, then choose specific operation and then select the announce:read operation. At last, click the confirm button. The function of this rule is to authorize the outsourcing company A to read access to all announcement information resources.
 
-![](~@imagesZhCn/guides/authorization/m2m-acl-3.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-3.png)
 
-接下来我们为乙外包商添加授权，首先选择乙外包商的编程访问账号。
+Next, we add privileges for outsourcing company B. First select the programming access account of outsourcing company B.
 
-![](~@imagesZhCn/guides/authorization/m2m-acl-4.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-4.png)
 
-接下来，我们要添加三个规则：
+Then, we need to add three rules:
 
-1. 将 2019 年的用户增长数据所有操作权限授权给乙外包商。点击右上方的添加授权规则可以添加多条规则。
+1. Authorize all operation privileges of user growth data in 2019 to outsourcer B. Click Add Authorization Rule at the top right to add multiple rules.
 
-   ![](~@imagesZhCn/guides/authorization/m2m-acl-5.png)
+   ![](~@imagesEnUs/guides/authorization/m2m-acl-5.png)
 
-2. 将所有营收记录的创建、读取、修改权限授权给乙外包商。
+2. 2. Authorize the creation, reading, and modification permissions of all revenue records to outsourcer B.
 
-   ![](~@imagesZhCn/guides/authorization/m2m-acl-6.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-6.png)
 
-3. 将所有客户记录的读取权限授权给乙外包商。
+3. Authorize the access to read all customer records to outsourcer B.
 
-   ![](~@imagesZhCn/guides/authorization/m2m-acl-7.png)
+![](~@imagesEnUs/guides/authorization/m2m-acl-7.png)
 
-到此管理员进行权限管理的操作就全部结束了，下面我们从**调用方**和**资源方**的角度进行 M2M 授权最佳实践。
+At this point, the administrator's access management operations are all over. Below we will conduct M2M authorization best practices from the perspective of the caller and the resource side.
 
-## 获取具备权限的 AccessToken
+## Get permissioned Access Token
 
-**OIDC 授权框架**提供了许多种授权模式。在本场景中，获取用户的增长信息属于 **M2M**（机器对机器）授权，没有用户的参与，调用方以自己的身份去访问资源服务器的 API 接口，这里需要使用 **OIDC ClientCredentials 模式**。
+The OIDC authorization framework provides many authorization modes. In this scenario, obtaining user growth information belongs to M2M (machine-to-machine) authorization. The caller uses his own identity to access the API interface of the resource server without user participation. The OIDC ClientCredentials mode is required here.
+Through the OIDC ClientCredentials authorization mode, the caller needs to provide Approw with his ClientCredentials (that is, the Key and Secret of the programmatic access account) and the required privilege scope (that is, the resource identifier) to directly obtain an AccessToken with the API access
 
-通过 OIDC ClientCredentials 授权模式，调用方需要向 Authing 提供他的 ClientCredentials（也就是**编程访问账号**的 Key 和 Secret）和需要请求的权限 scope（也就是**资源标识符**）来直接获得一个具有该 API 权限的 AccessToken。
+![](~@imagesEnUs/guides/authorization/m2m-flow.png)
 
-![](~@imagesZhCn/guides/authorization/m2m-flow.png)
+1. The caller sends the Key and Secret of the programmatic access account and the required permission object scope to Approw.
+2. Approw verifies the programmatic access account Key and Secret.
+3. Approw checks the scope permission items according to the permission rules configured by the administrator, and issues an AccessToken with the permission to access resources. The denied permission scope will not appear in the AccessToken.
+4. The caller carries the AccessToken to access the resource server.
+5. The resource server returns the protected resource.
+   In order for the caller to be able to access the protected API interface, it must first obtain an AccessToken with the privileges. To do this, the caller needs to send a POST request to the following address.
+   Request URL: `https://{APP_DOMAIN_NAME}.approw.com/oidc/token`
+   Parameters:
 
-1. 调用方发送**编程访问账号**的 Key、Secret 和需要请求的**权限项目 scope** 到 Authing。
-2. Authing 验证**编程访问账号** Key 和 Secret。
-3. Authing 根据管理员配置的权限规则校验 scope 权限项目，签发一个**具备访问资源权限**的 AccessToken，被拒绝的权限 scope **不会**出现在 AccessToken 里。
-4. 调用方携带 AccessToken 访问资源服务器。
-5. 资源服务器返回受保护资源。
+| Parameter name | description                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| grant_type     | Filled with client_credentials.                                                                      |
+| client_id      | Programmatic access account Key                                                                      |
+| client_secret  | Programmatic access account secret                                                                   |
+| scope          | Requested object scope. The form is resource `identifier:resource operation`. Use space to seperate. |
 
-调用方为了能够访问受保护的 API 接口，必须先**获取一个具备权限的 AccessToken**。为此，调用方需要向以下地址发送 POST 请求。
-
-请求地址：`https://{应用域名}.authing.cn/oidc/token`
-
-参数说明：
-
-| 参数名        | 描述  |
-| ------------- | ------------ |
-| grant_type    | 填写 client_credentials。        |
-| client_id     | 编程访问账号 Key。    |
-| client_secret | 编程访问账号 Secret。   |
-| scope         | 请求的权限项目，每个权限项目的格式为 `资源标识符:操作` 以空格分隔。 |
-
-响应结果：
+Respond:
 
 ```json
 {
@@ -124,106 +120,106 @@ RS256 是一种非对称签名算法，Authing 持有私钥对 Token 进行签�
 }
 ```
 
-示例代码：
+Sample code:
 
 ```js
-const axios = require('axios').default;
+const axios = require('axios').default
 const options = {
   method: 'POST',
-  url: 'https://{应用域名}.authing.cn/oidc/token',
+  url: 'https://{APP_DOMAIN_NAME}.approw.com/oidc/token',
   headers: { 'content-type': 'application/x-www-form-urlencoded' },
   data: {
     grant_type: 'client_credentials',
-    client_id: '{编程访问账号 Key}',
-    client_secret: '{编程访问账号 Secret}',
-    scope: '{权限项目，空格分隔}',
+    client_id: '{programmatic access account Key}',
+    client_secret: '{programmatic access account Secret}',
+    scope: '{privilege, seperate by space}',
   },
-};
+}
 
 axios
   .request(options)
   .then(function(response) {
-    console.log(response.data);
+    console.log(response.data)
   })
   .catch(function(error) {
-    console.error(error);
-  });
+    console.error(error)
+  })
 ```
 
-我们只将公告信息的读取权限授权给了 A 外包公司，如果 A 外包公司请求授权时，携带了其他 scope，例如：`announce:read announce:update revenue:read customer user-growth:read` 。Authing 会拒绝掉除了 `announce:read` 的所有权限。以下是 A 外包公司请求授权时的返回结果。被拒绝的权限在 `rejected_scope` 中。
+We only authorize outsourcing company A to read the announcement information. If outsourcing company A requests authorization with other scopes, for example: announce:read announce:update revenue:read customer user-growth:read. Approw will grant to give any privilege except announce:read. The following is the result returned when outsourcing company A requests authorization. The denied privileges are in rejected_scope.
 
-![](~@imagesZhCn/guides/authorization/client-credentials-result.png)
+![](~@imagesEnUs/guides/authorization/client-credentials-result.png)
 
-AccessToken 的信息中包含权限 scope：
+The AccessToken information only contains the scope which you have privilege:
 
-![](~@imagesZhCn/guides/authorization/client-credentials-token.png)
+![](~@imagesEnUs/guides/authorization/client-credentials-token.png)
 
-我们再来看 B 外包商的授权，如果 B 外包商想请求以下 scope：`user-growth:2020:read` `user-growth:2019:*` `user-growth:2019:read` `revenue:create` `revenue:*:read` `customer:read`
+Let’s take a look at the authorization of outsourcer B. If outsourcer B wants to request the following scope: user-growth:2020:read user-growth:2019:_ user-growth:2019:read revenue:create revenue:_:read customer:read
+Approw will return:
 
-Authing 的返回结果如下：
+Approw will return:
 
-![](~@imagesZhCn/guides/authorization/client-credentials-result-2.png)
+![](~@imagesEnUs/guides/authorization/client-credentials-result-2.png)
 
-需要注意的是，管理员只授权了 2019 年用户增长数据的所有权限给 B 外包公司，所以当请求 2020 年的用户增长数据的 scope 被拒绝。
+It should be noted that the administrator only authorized all permissions for the user growth data in 2019 to the outsourcing company B, so when it requests the scope of the user growth data in 2020, it was denied.
 
-### Scope 权限项目规范
+### Scope permission item specification
 
-Authing 的 scope 权限项目以**空格分隔**，每一项的格式是`资源标识符:资源操作`。
+Approw's scope permission items are separated by spaces, and the format of each item is resource identifier:resource operation.
 
-以下是 Authing 支持的所有 scope 格式：
+The following are all scope formats supported by Approw:
 
-`book:1:read` 含义为编号为 1 的书籍资源的读取权限
+`book:1:read` means the read permission of the book resource with number "1"
 
-`book:*:read` 含义为所有书籍资源的读取权限
+`book:*:read` means the read permission of all book resources
 
-`book:read` 含义为所有书籍资源的读取权限
+`book:read` means the read permission of all book resources
 
-`book:*:*` 含义为所有书籍资源的所有操作权限
+`book:*:*` means all operation permissions for all book resources
 
-`book:*` 含义为所有书籍资源的所有操作权限
+`book:*` means all operation permissions for all book resources
 
-`book` 含义为所有书籍资源的所有操作权限
+`book` means all operation permissions for all book resources
 
-`*:*:*` 含义为所有资源的所有操作权限
+`*:*:*` means all operation permissions for all resources
 
-`*:*` 含义为所有资源的所有操作权限
+`*:*` means all operation permissions for all resources
 
-`*` 含义为所有资源的所有操作权限
+`*` Means all operation permissions for all resources
 
-## 添加 API 鉴权拦截器
+## Add API authentication interceptor
 
-在 Authing 定义了 API 之后，你需要在你的实际业务 API 接口增加 API 鉴权拦截器，对于受保护的资源，只放行携带了合法的 AccessToken 且具备所需权限的来访者。
-代码示例如下：
+After Approw defines the API, you need to add an API authentication interceptor to your actual business API interface. For protected resources, only visitors who carry a valid AccessToken and have the required permissions are allowed. The code example is as follows:
 
 ```javascript
-var express = require('express');
-var app = express();
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
-var port = process.env.PORT || 8080;
+var express = require('express')
+var app = express()
+var jwt = require('express-jwt')
+var jwks = require('jwks-rsa')
+var port = process.env.PORT || 8080
 var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://{应用域名}.authing.cn/oidc/.well-known/jwks.json',
+    jwksUri: 'https://{APP_DOMAIN_NAME}.approw.com/oidc/.well-known/jwks.json',
   }),
-  audience: '{编程访问账号 ID}',
-  issuer: 'https://{应用域名}.authing.cn/oidc',
+  audience: '{programmatic access account ID}',
+  issuer: 'https://{APP_DOMAIN_NAME}.approw.com/oidc',
   algorithms: ['RS256'],
-});
-// 检验 AccessToken 合法性
-app.use(jwtCheck);
+})
+// validate AccessToken
+app.use(jwtCheck)
 
 app.post('/article', function(req, res) {
-  // 检验 AccessToken 是否具备所需要的权限项目
+  // verify if AccessToken has the specific privilege
   if (!req.user.scope.split(' ').incldues('write:article')) {
-    return res.status(401).json({ code: 401, message: 'Unauthorized' });
+    return res.status(401).json({ code: 401, message: 'Unauthorized' })
   }
-  res.send('Secured Resource');
-});
+  res.send('Secured Resource')
+})
 
-app.listen(port);
+app.listen(port)
 ```
 
-有关 Token 检验的其他内容请参考[验证 Token](/guides/faqs/how-to-validate-user-token.md)。
+For other content about Token validation, please refer to how to [validate user token](/docs/guides/faqs/how-to-validate-user-token.md).

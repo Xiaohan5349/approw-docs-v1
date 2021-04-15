@@ -1,72 +1,69 @@
 ---
 meta:
   - name: description
-    content: 实现单点登录（SSO）
+    content: Implement single sign-on
 ---
 
-# 实现单点登录（SSO）
+# Implement single sign-on
 
 <LastUpdated/>
 
-本文讲述如何使用 {{$localeConfig.brandName}} 实现应用账号打通和单点登录。
+This article describes how to use {{$localeConfig.brandName}} to implement application account integration and single sign-on.
 
-## 什么是单点登录
+## What is single sign-on
 
-我们通过一个例子来说明，假设有一所大学，内部有两个系统，一个是邮箱系统，一个是课表查询系统。现在想实现这样的效果：在邮箱系统中登录一遍，然后此时进入课表系统的网站，无需再次登录，课表网站系统直接跳转到个人课表页面，反之亦然。比较专业的定义如下：
+Single sign on(SSO) is a popular solution for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems.
 
-**单点登录**（Single Sign On），简称为 **SSO**，是目前比较流行的企业业务整合的解决方案之一。 SSO 的定义是在多个应用系统中，**用户只需要登录一次**就可以**访问所有**相互信任的应用系统。
+## Before the start
 
-## 开始之前
+### Prerequisite
 
-### 预备知识
+1. Basic HTML and CSS knowledge.
+2. Intermediate JavaScript skills.
 
-1. 基本的 HTML 和 CSS 知识。
-2. 中级 JavaScript 技能。
+### Tools
 
-### 所需工具
+1. Your favorite text editor.
+2. A web server that can be run locally (for example: `npm install http-server -g`).
 
-1. 你喜欢的文本编辑器。
-2. 可以在本地运行的 Web 服务器（比如：`npm install http-server -g`）。
-
-## 创建一个授权应用
+## Create an authorized application
 
 ::: hint-info
-若你是首次注册 {{$localeConfig.brandName}}，可略过此步骤，首次注册时已自动完成此步骤。
+If it is the first time to register for {{$localeConfig.brandName}}, you can skip this step. This step is automatically completed when you register for the first time.
 :::
 
-进入**控制台** &gt; **应用** &gt; **应用列表**，点击「创建应用」按钮。
+Go to **Console** &gt; **Applications** &gt; **Application List**, and click the "Create Application" button.
 
-![](https://cdn.authing.cn/blog/20200927174331.png)
+![](https://cdn.approw.com/blog/20200927174331.png)
 
 ::: img-description
-创建应用
+Create application
 :::
 
-在弹出的对话框中，只需填写**应用名称**、**认证地址**和**回调地址**，这三个参数即可，其他参数保留默认，然后点击「创建」。
+In the pop-up dialog box, you only need to fill in the **application name**, **authentication address** and **callback address**. Keep the other parameters as default, and then click "Create".
 
-**参数解释**
+**Parameter explanation**
 
-**应用名称**，请为你的应用起一个名字。
+**App name**, please give your app a name.
 
-**认证地址**，一个 authing.cn 的二级域名，用户将在此网址进行登录。
+**Authentication address**, a secondary domain name of approw.com, users will log in at this website.
 
-**回调 URL**，登录成功后，回调到开发者自己业务的地址。本教程为演示，填写的地址是 http://localhost:8080，实际场景下请填写自己的业务地址。
+**Callback URL**, after successful login, call back to the address of the developer's own business. This tutorial is a demonstration. The address is http://localhost:8080. Please fill in your business address in the actual scenario.
+Click the newly created application in the application list, and record the AppID and the second-level domain name for future use.
 
-在应用列表中点击刚创建好的应用，记录下 AppID，二级域名，供以后使用。
+## Quickly integrate single sign-on
 
-## 快速集成单点登录
+When the web application is started, how to determine that it is currently logged in? The key is that **when the web application starts, you need to ask {{$localeConfig.brandName}}: Is anyone currently logged in?**
 
-在 Web 应用启动时，如何判断当前已经为登录状态？关键在于，**Web 应用启动时，需要先询问一下 {{$localeConfig.brandName}}：当前有人登录了吗?**
+Suppose our business logic is very simple: if it is **not logged in**, it needs to display the **login button** and prompt the user to log in; if it is already **logged in**, it is necessary to **display the user's personal information and logout button**. Let's start coding and implementation.
 
-假设我们的业务逻辑很简单：如果为**未登录状态**，需要**显示登录按钮**，并提示用户登录；如果已经为**登录状态**，就要**显示用户的个人信息和登出按钮**。下面让我们开始编码实现。
+### Develop web applications <a id="add-empty-html"></a>
 
-### 开发 Web 应用程序 <a id="add-empty-html"></a>
+This tutorial is just for demonstration, so we did not choose an advanced framework, which allows us to focus on {{$localeConfig.brandName}} itself. We use the [{{$localeConfig.brandName}}SSO SDK](https://github.com/approw/ApprowSSO) to quickly integrate single sign-on capabilities for the application.
 
-本教程只是为了演示，因此我们没选择高级框架，这可以让我们专注于 {{$localeConfig.brandName}} 本身。我们使用 [AuthingSSO SDK](https://github.com/authing/AuthingSSO) 快速为应用集成单点登录能力。
+### Create a new HTML file
 
-### 新建一个 HTML 文件
-
-创建一个 HTML 文件，开始编码我们的第一个 Web 应用，首先引入 [AuthingSSO SDK](https://github.com/authing/AuthingSSO.git)，方便我们快速询问 {{$localeConfig.brandName}}: **当前有人登录了吗?**
+Create an HTML file, start coding our first web application, first introduce the [{{$localeConfig.brandName}}SSO SDK](https://github.com/approw/ApprowSSO.git), so that we can quickly ask {{$localeConfig.brandName}}: **Is anyone currently logged in?**
 
 ```html
 <!DOCTYPE html>
@@ -74,89 +71,93 @@ meta:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>第一个应用</title>
+    <title>The first app</title>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   </body>
 </html>
 ```
 
-### 初始化 AuthingSSO SDK
+### Initialize the {{$localeConfig.brandName}}SSO SDK
 
-按照以下方式进行初始化，填入前面记录的 OIDC 应用的 AppId 和认证地址，完成 SDK 的初始化。
+Perform the initialization in the following way, fill in the AppId and authentication address of the OIDC application recorded earlier, and complete the initialization of the SDK.
 
 ```html
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   <script>
-    let auth = new AuthingSSO({
-      // OIDC 应用 ID
+    let auth = new ApprowSSO({
+      // OIDC app ID
       appId: '5e7343597f905c025e99e660',
-      // OIDC 应用认证地址
-      appDomain: 'first-oidc-app.authing.cn'
-    });
+      // OIDC app address
+      appDomain: 'first-oidc-app.approw.com',
+    })
   </script>
 </body>
 ```
 
-### 放置用于实现业务逻辑的基本 HTML 控件
+### Set basic HTML controls to implement business logic
 
-当 Web 应用启动时，如果没有人登录，就显示登录按钮；如果已经是登录状态，就显示用户的个人信息。放置以下控件，以便用于完成我们的业务逻辑。
+When the web application starts, if no one is logged in, the login button is displayed; if it is already logged in, the user's personal information will be displayed.Set the following controls to complete our business logic.
 
 ```html
 <body>
-  <h1 id="h1-login" style="display: none;">请登录</h1>
-  <input type="button" value="登录" id="btn-login" style="display: none;" />
-  <h1 id="h1-user-info" style="display: none;">用户信息</h1>
-  <input type="button" value="登出" id="btn-logout" style="display: none;" />
+  <h1 id="h1-login" style="display: none;">please login</h1>
+  <input type="button" value="Log in" id="btn-login" style="display: none;" />
+  <h1 id="h1-user-info" style="display: none;">user information</h1>
+  <input type="button" value="Log out" id="btn-logout" style="display: none;" />
   <pre id="user-info"></pre>
-  <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
   <script>
-    let auth = new AuthingSSO({
-      // OIDC 应用 ID
+    let auth = new ApprowSSO({
+      // OIDC app ID
       appId: '5e7343597f905c025e99e660',
-      // OIDC 应用认证地址
-      appDomain: 'first-oidc-app.authing.cn'
-    });
+      // OIDC app address
+      appDomain: 'first-oidc-app.approw.com',
+    })
   </script>
 </body>
 ```
 
-### 查询登录状态
+### Check login status
 
-为了每次启动 Web 应用时，先向 {{$localeConfig.brandName}} 询问登录状态，以便执行登录状态或未登录状态的业务逻辑，加入以下代码：
+In order to check login status from {{$localeConfig.brandName}} before the web application is started, add the following code which can help execute the business logic of the logged-in or unlogged-in status:
 
 ```html
 <script>
-  let auth = new AuthingSSO({
+  let auth = new ApprowSSO({
     appId: '5cded9bf4efab36f02fa666a',
-    appDomain: 'first-oidc-app.authing.cn',
-  });
-  window.onload = async function () {
-    let res = await auth.trackSession();
+    appDomain: 'first-oidc-app.approw.com',
+  })
+  window.onload = async function() {
+    let res = await auth.trackSession()
     if (res.session !== null) {
-      document.getElementById('h1-user-info').style.display = 'block';
-      document.getElementById('user-info').innerHTML = JSON.stringify(res.userInfo, null, 4);
-      document.getElementById('btn-logout').style.display = 'inline';
+      document.getElementById('h1-user-info').style.display = 'block'
+      document.getElementById('user-info').innerHTML = JSON.stringify(
+        res.userInfo,
+        null,
+        4
+      )
+      document.getElementById('btn-logout').style.display = 'inline'
     } else {
-      document.getElementById('h1-login').style.display = 'block';
-      document.getElementById('btn-login').style.display = 'inline';
+      document.getElementById('h1-login').style.display = 'block'
+      document.getElementById('btn-login').style.display = 'inline'
     }
-  };
-  document.getElementById('btn-login').addEventListener('click', function () {
-    auth.login();
-  });
-  document.getElementById('btn-logout').addEventListener('click', function () {
+  }
+  document.getElementById('btn-login').addEventListener('click', function() {
+    auth.login()
+  })
+  document.getElementById('btn-logout').addEventListener('click', function() {
     auth.logout().then((res) => {
-      alert(JSON.stringify(res));
-      location.reload();
-    });
-  });
+      alert(JSON.stringify(res))
+      location.reload()
+    })
+  })
 </script>
 ```
 
-### 完整代码 <a id="full-code"></a>
+### Complete code <a id="full-code"></a>
 
 ```html
 <!DOCTYPE html>
@@ -164,92 +165,103 @@ meta:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>第一个应用</title>
+    <title>The first app</title>
   </head>
   <body>
-    <h1 id="h1-login" style="display: none;">请登录</h1>
-    <input type="button" value="登录" id="btn-login" style="display: none;" />
-    <h1 id="h1-user-info" style="display: none;">用户信息</h1>
-    <input type="button" value="登出" id="btn-logout" style="display: none;" />
+    <h1 id="h1-login" style="display: none;">please login</h1>
+    <input type="button" value="Log in" id="btn-login" style="display: none;" />
+    <h1 id="h1-user-info" style="display: none;">user information</h1>
+    <input
+      type="button"
+      value="Log out"
+      id="btn-logout"
+      style="display: none;"
+    />
     <pre id="user-info"></pre>
-    <script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
     <script>
-      let auth = new AuthingSSO({
+      let auth = new ApprowSSO({
         appId: '5cded9bf4efab36f02fa666a',
-        appDomain: 'first-oidc-app.authing.cn',
-      });
-      window.onload = async function () {
-        let res = await auth.trackSession();
+        appDomain: 'first-oidc-app.approw.com',
+      })
+      window.onload = async function() {
+        let res = await auth.trackSession()
         if (res.session !== null) {
-          document.getElementById('h1-user-info').style.display = 'block';
-          document.getElementById('user-info').innerHTML = JSON.stringify(res.userInfo, null, 4);
-          document.getElementById('btn-logout').style.display = 'inline';
+          document.getElementById('h1-user-info').style.display = 'block'
+          document.getElementById('user-info').innerHTML = JSON.stringify(
+            res.userInfo,
+            null,
+            4
+          )
+          document.getElementById('btn-logout').style.display = 'inline'
         } else {
-          document.getElementById('h1-login').style.display = 'block';
-          document.getElementById('btn-login').style.display = 'inline';
+          document.getElementById('h1-login').style.display = 'block'
+          document.getElementById('btn-login').style.display = 'inline'
         }
-      };
-      document.getElementById('btn-login').addEventListener('click', function () {
-        auth.login();
-      });
-      document.getElementById('btn-logout').addEventListener('click', function () {
-        auth.logout().then((res) => {
-          alert(JSON.stringify(res));
-          location.reload();
-        });
-      });
+      }
+      document
+        .getElementById('btn-login')
+        .addEventListener('click', function() {
+          auth.login()
+        })
+      document
+        .getElementById('btn-logout')
+        .addEventListener('click', function() {
+          auth.logout().then((res) => {
+            alert(JSON.stringify(res))
+            location.reload()
+          })
+        })
     </script>
   </body>
 </html>
-
 ```
 
-示例代码可从 [Github](https://github.com/authing/authing-sso-demo) 上找到，建议将 Github 上的代码下载运行。
+The sample code can be found on [Github](https://github.com/approw/approw-sso-demo). It is recommended to download and run the code on Github.
+Please [see here](/reference/sdk-for-sso.md) for the complete parameter list of {{$localeConfig.brandName}}SSO single sign-on SDK.
 
-AuthingSSO 单点登录 SDK 完整参数列表[请见此](/reference/sdk-for-sso.md)。
+### **Operation method** <a id="run-the-demo"></a>
 
-### **运行方法** <a id="run-the-demo"></a>
-
-在终端中运行以下命令
+Run the following command in the terminal
 
 ```bash
-$ git clone https://github.com/authing/authing-sso-demo
-$ cd authing-sso-demo
+$ git clone https://github.com/approw/approw-sso-demo
+$ cd approw-sso-demo
 $ npm install -g http-server
 $ http-server
 ```
 
-之后在浏览器访问 [http://localhost:8080](http://localhost:8080)。
+Then visit http://localhost:8080 in the browser.
 
 ::: hint-warning
-如果本地 8080 端口已被占用，应用可能会运行在 8081、8082 等后续端口。
+If the local port 8080 is already occupied, the application may run on other ports such as 8081 and 8082.
 :::
 
-### 运行效果 <a id="demo-result"></a>
+### Running result <a id="demo-result"></a>
 
-打开我们编写的 Web 应用，当前是未登录状态，页面提示用户登录，并显示登录按钮。我们点击「登录」。
+Open the web application written by us, the current is not logged in, the page prompts the user to log in, and displays the login button. We click "Login".
 
-![未登录](https://cdn.authing.cn/docs/20200405180101.png)
+![Not logged in](https://cdn.approw.com/docs/20200405180101.png)
 ::: img-description
-登录入口
+Log entry
 :::
 
-浏览器会跳转到 OIDC 应用的用户认证页面，输入用户名密码进行登录。
+The browser will redirect to the user authentication page of the OIDC application, and input the user name and password to log in.
 
-![](https://cdn.authing.cn/blog/20200927174427.png)
+![](https://cdn.approw.com/blog/20200927174427.png)
 
 ::: img-description
-进行登录
+Login in
 :::
 
-浏览器被重定向到我们之前设置的回调链接。本示例依然回调到 localhost:8080。
+The browser is redirected to the callback link we set up earlier. This example still calls back to localhost:8080.
 
-![已登录](https://cdn.authing.cn/docs/20200405180354.png)
+![Has Logged](https://cdn.approw.com/docs/20200405180354.png)
 ::: img-description
-用户信息
+User Info
 :::
 
-登录之后我们通过 AuthingSSO SDK 的 `trackSession` 函数获取用户信息，并显示在页面上。`trackSession` 返回数据格式如下：
+After logging in, we obtain user information by the `trackSession` function of the {{$localeConfig.brandName}}SSO SDK and display it on the page. The format of `trackSession` return data is as follows:
 
 ```json
 {
@@ -271,7 +283,7 @@ $ http-server
     "userInfo": {
         {
           "id": "5f702fcc913544c358cb2123",
-          "arn": "arn:cn:authing:59f86b4832eb28071bdd9214:user:5f702fcc913544c358cb2123",
+          "arn": "arn:com:approw:59f86b4832eb28071bdd9214:user:5f702fcc913544c358cb2123",
           "userPoolId": "59f86b4832eb28071bdd9214",
           "username": "xxx",
           "email": null,
@@ -328,55 +340,57 @@ $ http-server
 }
 ```
 
-你可以在这个页面多刷新几次，因为当前是已登录状态，浏览器会一直显示用户信息。接下来，我们点击「登出」按钮，进行单点登出。
+You can refresh this page some times, because you are currently logged in and the browser will always display user information. Next, we click the "Logout" button to single sign out.
 
-![](https://cdn.authing.cn/docs/20200405180656.png)
+![](https://cdn.approw.com/docs/20200405180656.png)
 ::: img-description
-登出按钮
+Logout button
 :::
 
-## 访问用户个人中心页面
+## Visit user's personal center page
 
-在 SSO 应用中，有独立的用户中心页面，用户可以修改自己的资料。
+In the SSO application, there is an independent user center page where users can modify their own information.
 
-你的终端用户可以访问以下链接，进入个人资料修改页面：
+Your end users can visit the following link to enter the profile modification page:
 
 ```
-https://<appDomain>.authing.cn/u
+https://<appDomain>.approw.com/u
 ```
 
-其中 `<appDomain>` 是你的 SSO 应用的二级域名。
+`<appDomain>` is the second-level domain name of your SSO application.
 
-如果用户未登录，会先要求用户登录再进入个人中心；对于已登录的用户则会直接进入个人中心。
+If the user is not logged in, the user will be required to log in before entering the personal center; for the logged-in user, it will directly enter the personal center.
 
-![](https://cdn.authing.cn/blog/20200927174731.png)
+![](https://cdn.approw.com/blog/20200927174731.png)
 
 ::: img-description
-个人中心
+Personal center
 :::
 
-## 检验 token 合法性
+## Verify the validity of the token
 
-成功登录之后，你获得的用户信息中包含一个 token 字段，值是一个 IdToken，这是用于的登录凭证，可以在后端用于判断用户身份。你可能需要了解如何验证 Token 的合法性，请[点此查看详情](../../basics/authenticate-first-user/how-to-validate-user-token.md)。
+After a successful login, the user information you get contains a token field,whose value is an IdToken, this is the credential used for login, which can be used in the backend to determine the user's identity. You may need to know how to verify the validity of the token, please click [here](../../basics/authenticate-first-user/how-to-validate-user-token.md) for details.
 
-### 什么是 id_token？
+### What is id_token?
 
-**id_token** 相当于终端用户的身份证，用于认证用户身份，在 OIDC 授权后签发。当你需要向你**自己的服务器**请求资源时，应该携带 **id_token**，同时你的服务器应该[检验此 token 的合法性](../../basics/authenticate-first-user/how-to-validate-user-token.md)，然后再返回相应资源。id_token、access_token 的区别请看[这里](/concepts/oidc-common-questions#idtoken-与-accesstoken-的区别)。
+**id_token** is equivalent to the terminal user's ID card, used to authenticate the user's identity, and is issued after OIDC authorization. When you need to request resources from your **own server**, you should carry **id_token**. At the same time, your server should [verify the validity of this token](../../basics/authenticate-first-user/how-to-validate-user-token.md), and then return the corresponding resources. Please see the difference between id_token and access_token [here](/concepts/oidc-common-questions.md#id-token-and-access-token).
 
-## 接下来
+## Then
 
-后续你可以在客户端后续发送给后端服务器的请求中携带上此 `id_token`, 以 `axios` 为例：
+You can carry this `id_token` in the request sent by the client to the back-end server. Take `axios` as an example:
 
 ```js
-const axios = require('axios');
-axios.get({
-  url: 'https://yourdomain.com/api/v1/your/resources',
-  headers: {
-    'Authorization': 'Bearer YOUR_JWT_TOKN'
-  }
-}).then((res) => {
- // custom codes
-})
+const axios = require('axios')
+axios
+  .get({
+    url: 'https://yourdomain.com/api/v1/your/resources',
+    headers: {
+      Authorization: 'Bearer YOUR_JWT_TOKN',
+    },
+  })
+  .then((res) => {
+    // custom codes
+  })
 ```
 
-在后端接口中需要检验此 `token` 的合法性，来验证用户的身份，验证方式详情请见[验证用户身份凭证（token）](/guides/faqs/how-to-validate-user-token)。识别用户身份之后，你可能还需要[对该用户进行权限管理](/guides/access-control/)，以判断用户是否对此 API 具备操作权限。
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.md). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.

@@ -1,82 +1,77 @@
-# 使用账号密码认证
+# Use Account & Password to Authenticate
 
 <LastUpdated/>
 
-在 {{$localeConfig.brandName}} 中，账号密码共分为以下三种形式：
+In {{$localeConfig.brandName}}, account passwords are divided into the following three forms:
 
-1. 邮箱 + 密码登录
-2. 用户名 + 密码登录
-3. 手机号 + 密码登录
+1. Email + password login
+2. Username + password login
+3. Phone number + password login
 
-当为用户提供账号密码形式的认证手段时，作为 IT 系统管理员或者开发者，你还需要实现以下功能：
+When providing users with account and password authentication methods, as an IT system administrator or developer, you also need to implement the following functions:
 
-1. 重置密码：可以通过邮箱验证码或者手机号验证码找回密码；
-2. 修改密码：可以通过现有密码重置密码。
+1. Password reset: the password can be retrieved by email verification code or SMS verification code;
+2. Modify the password: You can reset the password with the existing password.
 
-要使用 {{$localeConfig.brandName}} 实现这些功能， 我们提供了三种不同的接入方式：
+To use {{$localeConfig.brandName}} to achieve these functions, we provide three different integrate methods:
 
-1. [使用 {{$localeConfig.brandName}} 托管登录页](#使用托管登录页)，无需一行代码，你可以通过 {{$themeConfig.sampleAppDomain}} 体验。
-2. [使用 {{$localeConfig.brandName}} 提供的内嵌登录组件](#使用内嵌登录组件)，可以集成到你的 Web 和移动端项目中，你不需要自己实现登录表单 UI。
-3. [使用 API & SDK](#使用-api-sdk)，{{$localeConfig.brandName}} 提供 RESTFul 和 GraphQL 两种形式的 API 以及 10 余种语言或框架的 SDK，你可以基于此自定义 UI 和认证流程。
+1. [Use {{$localeConfig.brandName}} hosted login page](#use-hosted-login-page) with no coding work needed. You can experience through {{$themeConfig.sampleAppDomain}}.
+2. [Use embedded login component provided by {{$localeConfig.brandName}}](#use-embedded-login-component) This can be integrated within your Web or mobile project and you don't need to implement your own login form UI.
+3. [Use API & SDK](#use-api-sdk), {{$localeConfig.brandName}} provides two different forms of API: RESTFul and GraphQL and more than ten other language SDKs. You can customize your UI and anthentication workflow based on that.
 
-## 使用托管登录页
+## Use hosted login page
 
-### 注册
+### Registration
 
-用户注册成功之后，系统会发送欢迎邮件到用户的邮箱：
+After the user has successfully registered, {{$localeConfig.brandName}} will send a welcome email to the user's mailbox:
 
 ![](../../images/register-by-email.png)
 
-> 你也可以在控制台**设置** - **安全信息** - **用户池安全配置** 中关闭注册发送欢迎邮件的选项，还可以在控制台**设置** - **消息服务**中修改默认欢迎邮件的模版。
+> You can turn off the option of registering to send welcome email in the console settings > security information > user pool security configuration, and you can also modify the default welcome email template in the console settings > message service.
 
-用户注册成功之后，{{$localeConfig.brandName}} 会发送验证邮箱邮件到用户的邮箱：
+After the user has successfully registered, Approw will send a verification email to the user's mailbox:
 
 ![](../../images/verify-user-email.png)
 
-用户点击验证按钮即可验证邮箱。
+The user can verify the mailbox by clicking the verify button.
 
-### 登录
+### Login
 
 ![](../../images/login-page.png)
 
-默认情况下，未验证邮箱的账号可以进行登录，你也可以在应用详情中修改次配置：
+By default, accounts with unverified mailboxes can log in. You can also modify this configuration in the application details:
 
 ![](../../images/disable-unverified-email-login.png)
 
-用户登录成功之后，将回调到你配置的回调链接，你可以在此获取用户信息，详情请见：使用 {{$localeConfig.brandName}} 托管登录页完成认证 。
+After the user logs in successfully, it will call back to the callback link you configured. You can get user information here. For details, please see: Use {{$localeConfig.brandName}} hosted login page to authenticate.\
 
-### 重置密码
-
-你可以使用绑定的手机号或邮箱重置密码。
+### Modify password
 
 ![](../../images/forget-password.png)
 
-### 修改密码
-
-用户可以在个人中心修改自己的密码：
+Users can modify password in the personal center.
 
 ![](../../images/change-password.png)
 
-## 使用内嵌登录组件
+## Use embedded login component
 
-内嵌登录组件和在线托管登录页在样式和交互上基本一致，不同点在于在线托管登录页由 {{$localeConfig.brandName}} 完全托管运维，与你的应用之间完全独立，而内嵌登录组件则可以嵌入到你的应用中。
+The embedded login component and the online hosting login page are basically the same in style and interaction. The difference is that the online hosting login page is fully managed and maintained by {{$localeConfig.brandName}}, which is completely independent of your application. The embedded login component can be integrated in your application.
+For detailed usage, please see: [Use the embedded login component to authenticate](/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
-详细使用方法请见：[使用内嵌登录组件完成认证](/guides/basics/authenticate-first-user/use-embeded-login-component/) 。
+## Use API & SDK
 
-## 使用 API & SDK
+### Register
 
-### 注册
+<StackSelector snippet="register-by-email-password" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>
 
-<StackSelector snippet="register-by-email-password" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+### Login
 
-### 登录
+<StackSelector snippet="login-by-email-password" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>
 
-<StackSelector snippet="login-by-email-password" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+### Reset password
 
-### 重置密码
+<StackSelector snippet="reset-password" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>
 
-<StackSelector snippet="reset-password" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+### Modify password
 
-### 修改密码
-
-<StackSelector snippet="update-password" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+<StackSelector snippet="update-password" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>

@@ -1,13 +1,12 @@
-# 多因素认证（MFA）综述
+# About Multi-Factor Authentication
 
 <LastUpdated/>
 
-多因素认证（Multi Factor Authentication，简称 MFA）是一种非常简单的安全实践方法，它能够在用户名称和密码之外再额外增加一层保护。启用多因素认证后，用户进行操作时，除了需要提供用户名和密码外（第一次身份验证），还需要进行第二次身份验证，多因素身份认证结合起来将为你的帐号和资源提供更高的安全保护。你可以[在此了解更多 MFA 相关的概念](/concepts/mfa.md)。
+Multi-Factor Authentication (MFA) is a simple security authentication technique that can add an extra layer of protection in addition to the user name and password. After enabling MFA, when users perform operations, in addition to providing the user name and password (first authentication), they also need to perform a second authentication. MFA will provide more information for your account and resources with higher security protection. For more information about Multi-Factor Authentication, see [What is Multi-Factor Authentication (MFA)?](/docs/concepts/mfa.md).
 
-以下内容不分先后顺序，你可以选择自己感兴趣的内容进行阅读：
+The following content is in no particular order; you can choose the content you are interested in to read:
 
-- [实现基于时间戳算法的一次性密码（TOTP）的 MFA](./totp.md)；
-- [实现基于短信验证码的 MFA](./sms.md)；
-- [实现基于邮件验证码的 MFA](./email-code.md)；
-- [通过 SDK 接入 MFA](./mfa-sdk.md)。
-
+- [MFA: Time-Based One-time Password (TOTP) Authentication](./totp.md)；
+- [Configure SMS Authentication (MFA)](./sms.md)；
+- [Configure Email Authentication (MFA)](./email-code.md)；
+- [Configure MFA through SDK](./mfa-sdk.md).

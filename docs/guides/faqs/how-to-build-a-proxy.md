@@ -1,24 +1,23 @@
 ---
 meta:
   - name: description
-    content: 部署中转代理服务器
+    content: How To Build a Proxy Server
 ---
 
-# 如何部署中转代理服务器
+# How To Build a Proxy Server?
 
-## HTTP 代理
+## HTTP proxy
 
-下文以 [goproxy](https://github.com/snail007/goproxy/blob/master/README_ZH.md) 为例，简要介绍一下 https 代理的部署流程，详细的官方文档请见：[https://github.com/snail007/goproxy/blob/master/README_ZH.md](https://github.com/snail007/goproxy/blob/master/README_ZH.md) 。
+Here taking [goproxy](https://github.com/snail007/goproxy/blob/master/README_ZH.md) as an example, briefly introduce the deployment process of https proxy. For detailed official documents, please see:[https://github.com/snail007/goproxy/blob/master/README_ZH.md](https://github.com/snail007/goproxy/blob/master/README_ZH.md)
 
-以 root 用户身份运行：
+Run as a root user:
 
+```bash
+curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh    
 ```
-curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh | bash   
-```
 
-等待其运行完成，当输出以下提示的时候表示已安装成功：
-
-```
+Waiting for its running to complete, when the following prompt is displayed, it means the installation has been successful:
+```bash
 >>> installing ...
 >>> install done, thanks for using snail007/goproxy free_10.0
 >>> install path /usr/bin/proxy
@@ -27,20 +26,18 @@ curl -L https://mirrors.host900.com/snail007/goproxy/install_auto.sh | bash
 >>> How to using? Please visit : https://snail007.github.io/goproxy/manual/zh/
 ```
 
-运行（将 $PORT 替换为你想要使用的端口）：
-
-```
+Run (replace $PORT with the port you want to use):
+```bash
 proxy http -t tcp -p "0.0.0.0:$PORT"
 ```
 
-当出现以下提示的表示运行成功：
+When the following prompt appears, the operation is successful:
 
-```
+```bash
 2020/09/23 19:25:34 tcp http(s) proxy on [::]:xxxxxx
 ```
 
-请确保服务器的防火墙规则允许 {{$localeConfig.brandName}} 服务器访问。{{$localeConfig.brandName}} 服务器的对外 IP 为：
-
+Please make sure that the firewall rules of the server allow Approw server access. The external IP of the Approw server is:
 ```
 52.80.250.250
 140.179.19.50

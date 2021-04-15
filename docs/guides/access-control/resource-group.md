@@ -1,27 +1,35 @@
 ---
-{ meta: [{ name: 'description', content: '使用权限分组管理权限资源' }] }
+{
+  meta:
+    [
+      {
+        name: 'description',
+        content: 'Use privilege grouping to manage privilege resources',
+      },
+    ],
+}
 ---
 
-# 使用权限分组管理权限资源
+# Use privilege grouping to manage privilege resources
 
 <LastUpdated/>
 
-权限分组可以理解为权限的命名空间，不同权限分组中的角色和资源相互独立，即使同名也不会冲突。
+Privilege grouping can be understood as a namespace of privileges. The roles and resources in different privilege groups are independent of each other, and they will not conflict even if they have the same name.
 
-![](~@imagesZhCn/guides/access-control/Xnip2021-02-25_20-58-50.png)
+![](~@imagesEnUs/guides/access-control/Xnip2021-02-25_20-58-50.png)
 
-## 创建权限分组
+## Create privilege group
 
-在**权限管理**的权限分组菜单中点击添加按钮：
-![](~@imagesZhCn/guides/access-control/Xnip2021-02-25_21-22-41.png)
+Click the Add button in the privilege grouping menu of **Privilege Management** :
+![](~@imagesEnUs/guides/access-control/Xnip2021-02-25_21-22-41.png)
 
-在弹窗中填入分组名和分组标识符，标识符用于后期鉴权时作为唯一标识识别权限组。
+Fill in the group name and group id in the pop-up window. The id is used as a unique id to identify the authority group in the later authentication.
 
-![](~@imagesZhCn/guides/access-control/Xnip2021-02-25_21-24-56.png)
+![](~@imagesEnUs/guides/access-control/Xnip2021-02-25_21-24-56.png)
 
-在创建的权限分组中就可以使用前面介绍的 ABAC 或 RBAC 权限模型对权限资源独立管理了。
+In the created privilege group, you can use the ABAC or RBAC permission model to independently manage privilege resources.
 
-## 如何使用权限分组判断权限
+## How to use privilege groups to determine privileges
 
 ```javascript
 import { ManagementClient } from 'authing-js-sdk'
@@ -32,12 +40,12 @@ const managementClient = new ManagementClient({
 })
 const { totalCount, list } = await managementClient.acl.isAllowed(
   'USER_ID',
-  '资源',
-  '操作',
-  '权限分组标识符'
+  'Resource',
+  'Operating',
+  'Permission group identifier'
 )
 ```
 
-## 权限分组与应用的关系
+## The relationship between privilege groups and applications
 
-在每个应用创建时，{{$localeConfig.brandName}} 都会为你创建一个权限分组。自动创建的权限分组名为应用名，标识符为应用 ID，且不可修改。{{$localeConfig.brandName}} 也会为每个用户池创建一个默认权限分组，当你的权限资源比较简单，不需要在应用层面隔离管理时，可以直接使用默认权限分组。当你的某个应用比较复杂，存在冲突的角色或资源时，就可以通过自己手动创建权限分组来隔离管理权限资源。
+When each application is created, Approw will create a privilege group for you. The automatically created privilege group is named as application name, and the id is the application ID, which cannot be modified. Approw will also create a default privilege group for each user pool. When your privilege resources are relatively simple and do not need to be managed separately at the application level, you can just use the default privilege group. When one of your applications is more complicated or has conflicting roles or resources exist, you can manually create privilege groups by yourself to isolate and manage privilege resources.

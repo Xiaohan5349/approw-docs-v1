@@ -1,68 +1,72 @@
-# 什么是应用
+# What is Application
 
 <LastUpdated/>
 
-前面我们介绍了[用户池](./user-pool.md)是你在 {{$localeConfig.brandName}} 中租户隔离的最小单位，存储了你用户系统中所有的用户数据；而应用则对应的是你现实中创建的业务应用。
+Earlier we introduced that the user pool(./user-pool.md) is the smallest unit of tenant isolation in {{$localeConfig.brandName}}. This stores all user data in your user system, and the application corresponds to the business application you create in reality.
 
-一个用户池可能会有多个应用，比如一个学校所有的学生在一个用户池里，而学校会同时开发了选课应用、邮箱应用、师生服务中心等多个应用，这些应用会使用同一个用户系统。
+A user pool may have multiple applications. For example, all students at school are using a user pool. The school will develop multiple applications such as course selection application, email application, teacher-student service center, etc. These applications use the same user system.
 
-## 在哪可以看到我的所有应用
+## Where can I see all my apps
 
-你可以在[控制台](https://console.authing.cn)的**应用**页面查看自己的所有应用：
+You can view all your applications on the application page of the [console](https://console.approw.com)(opens new window):
 
 ![](./images/Xnip2021-02-26_10-46-59.png)
 
-## 应用之间共用一个用户目录
+## Share a user directory between applications
 
-你需要首先记住的是，一个用户池中的所有应用是共用一个用户目录的，这种设计在根本上解决了老旧系统普遍存在的用户系统割裂的问题。
+The first thing you need to remember is that all applications in a user pool share a user directory. This design fundamentally solves the problem of user system fragmentation that is common in old systems.
 
-## 在应用之间实现单点登录
+## Single Sign-on between applications
 
-你需要先在**应用**管理页面开启**应用间单点登录**，如下图所示：
+You need to enable Single Sign-On between applications on the application management page, as shown in the following figure:
 
 ![](./images/Xnip2021-02-26_10-48-40.png)
 
-开启这个开关之后，用户在应用 A 登录之后，用户访问应用 B 将会自动登录。更多详情请查看[实现单点登录（SSO）](/guides/authentication/sso/)指引和[单点登录 SDK](/reference/sdk-for-sso.md)。
+After turning on this switch, the user logs into application A, the user will automatically log in when accessing application B. For further details, please refer to the implementation of [Single Sign-On (SSO)](/guides/authentication/sso/) guidelines and [Single Sign-On SDK](/reference/sdk-for-sso.md).
 
-## 访问在线版的登录表单
 
-在 {{$localeConfig.brandName}} 中每个应用都有一个在线的登录注册页面供终端用户使用，你可以访问 `https://<YOUR_APP_DOMAIN>.authing.cn/` 或者 `https://<YOUR_APP_DOMAIN>.authing.cn/login` 访问：
+## Access the online version of the login form
+
+In {{$localeConfig.brandName}}, each application has an online login registration page for end users to use. You can visit:
+`https://<YOUR_APP_DOMAIN>.approw.cm/` or `https://<YOUR_APP_DOMAIN>. approw.cm/login` to access:
 
 ![](./images/Xnip2021-02-26_11-13-39.png)
 
-## 将组件版的应用登录框集成到你的应用系统中
+## To Integrate the component version of the application login box into your application system
 
-{{$localeConfig.brandName}} 内嵌登录组件是 {{$localeConfig.brandName}} 提供的轻量、现代化、高扩展性的前端登录组件，支持原生 JavaScript 以及 React、Vue、Angular 三大前端框架。此内嵌登录组件和 {{$localeConfig.brandName}} 托管的登录页功能基本保持一致，同时具备很强的自定义能力。该组件内置了重置密码、MFA、社会化登录、扫码登录等功能，这些功能都是高配置化的。
+{{$localeConfig.brandName}} provides an embedded login component is a lightweight, modern, and highly extensible front-end login component. This supports native JavaScript and the three front-end frameworks of React, Vue, and Angular. The embedded login component is basically the same as the login page hosted by {{$localeConfig.brandName}}, and has strong customization capabilities. The component has built-in functions such as password reset, MFA, social login, and scan code login, all of which are highly configurable.
 
-详情查看[使用内嵌登录组件完成认证](/guides/basics/authenticate-first-user/use-embeded-login-component/)。
+For details, [use the embedded login component to complete the authentication](/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
-## 访问在线版的个人中心
+## Visit the online version of the personal center
 
-在 {{$localeConfig.brandName}} 中每个应用都有一个在线的个人中心页面供终端用户使用，你可以访问 `https://<YOUR_APP_DOMAIN>.authing.cn/u` 访问：
+In {{$localeConfig.brandName}}, each application has an online personal center page for end users to use, you can visit:
+`https://<YOUR_APP_DOMAIN>. approw.cm/u` to visit:
 
 ![](./images/Xnip2021-02-26_11-09-29.png)
 
-## 控制用户是否能访问某个特定应用
+## Control whether users can access a specific application
 
-默认情况下，你用户池中的所有用户都可以登录你的应用，你也可以在**应用详情**的**应用访问控制**控制谁可以访问本应用。
+By default, all users in your user pool can log in to your application. You can also control who can access this application in the application access control of the application details.
 
-> 你可以授权给用户、角色、分组、组织机构访问该应用的权限。
+> You can authorize users, roles, groups, and organizations to access the application.
 
 ![](./images/Xnip2021-02-26_11-18-20.png)
 
-## 其他功能
+## Other functions
 
-在 {{$localeConfig.brandName}} 中每个应用都具备以下能力：
+Each application in {{$localeConfig.brandName}} has the following capabilities:
 
-- [成为一个 OIDC 身份源](/guides/federation/oidc.md)；
-- [成为一个 OAuth 身份源](/guides/federation/oauth.md)；
-- [成为一个 SAML 身份源](/guides/federation/saml.md)；
-- 通过配置登录注册方式、[配置社会化登录](/guides/connections)、自定义 CSS 等方式自定义登录样式；
-- 开启注册协议；
-- 注册信息补全，详情请了解[对认证流程进行扩展 - 注册时补全自定义字段数据](/guides/authentication/extensibility/user-defined-field.md)；
-- 开启多因素认证；
-- 管理、授权 API 资源，详情请了解[用户许可的应用间授权](/guides/authorization/user-consent-authz.md)；
-- 应用访问控制，控制哪些用户可以访问你的应用；
-- 子账号，添加子账号登录能力；
-- 登录状态管理，可以[查看该应用当前在线的用户](/guides/user/login-state.md)。
+- [Become an OIDC identity source](/guides/federation/oidc.md)；
+- [Become an OAuth identity source](/guides/federation/oauth.md)；
+- [Become a SAML identity source](/guides/federation/saml.md)；
+- Customize the login style by configuring login and registration methods, [configuring social login](/guides/connections), customizing CSS, etc.;
+- Open the registration agreement;
+- Complete registration information. For details, [please learn about extending the authentication process-complete custom field data when registering](/guides/authentication/extensibility/user-defined-field.md)；
+- Turn on multi-factor authentication;
+- Manage and authorize API resources. For details, [please understand the inter-application authorization granted by the user](/guides/authorization/user-consent-authz.md)；
+- Application access control, control which users can access your application;
+- Sub-account, add sub-account login capability;
+- Login status management, you can [view the current online users of the application](/guides/user/login-state.md).
+
 

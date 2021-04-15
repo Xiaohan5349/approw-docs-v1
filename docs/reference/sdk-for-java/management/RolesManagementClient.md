@@ -1,60 +1,60 @@
 ---
 meta:
   - name: description
-    content: 使用管理模块
+    content: RolesManagementClient
 ---
 
-# 管理角色
+# RolesManagementClient
 
 <LastUpdated/>
 
 
-> 此模块用于管理 {{$localeConfig.brandName}} 角色，可以进行角色的增删改查、角色添加/删除用户、角色添加/删除策略 等操作。
+> This client is used to manage {{$localeConfig.brandName}} roles. It can create, query, update and delete roles, add/delete users to/from roles, add/delete role's policy and perform other operations.
 
-## 创建角色
+## Create a role
 
 RolesManagementClient().create(code, description)
 
-> 创建角色
+> Create a role.
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `description` \<string\> 描述
+- `code` \<string\> Unique id of the role
+- `description` \<string\> Description
 
-#### 示例
+#### Example
 
 ```java
 Role role = managementClient.roles().create(new CreateRoleParam("code")).execute();
 ```
 
-## 删除角色
+## Delete a role
 
 RolesManagementClient().delete(code)
 
-> 删除角色
+> Delete a role.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role
 
-#### 示例
+#### Example
 
 ```java
 CommonMessage message = managementClient.roles().delete("code").execute();
 ```
 
-## 批量删除角色
+## Bulk delete roles
 
 RolesManagementClient().deleteMany(codeList)
 
-> 批量删除角色
+> Bulk delete roles.
 
-#### 参数
+#### Parameter
 
-- `codeList` \<string[]\> 角色唯一标志符列表
+- `codeList` \<string[]\> A list of unique ids for roles
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> list = new ArrayList<String>();
@@ -62,86 +62,86 @@ list.add("code");
 CommonMessage result = managementClient.roles().deleteMany(list).execute();
 ```
 
-## 修改角色
+## Update a role
 
 RolesManagementClient().update(code, input)
 
-> 修改角色
+> Update a role
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role
 - `input` \<Object\>
-- `input.description` \<string\> 描述信息
-- `input.newCode` \<string\> 新的唯一标志符
+- `input.description` \<string\> Description
+- `input.newCode` \<string\> New unique id
 
-#### 示例
+#### Example
 
 ```java
 Role role = rolesManagementClient.roles().update(new UpdateRoleParam("code").withDescription("desc")).execute();
 ```
 
-## 获取角色详情
+## Get role details
 
 RolesManagementClient().detail(code)
 
-> 获取角色详情
+> Get role details
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role
 
-#### 示例
+#### Example
 
 ```java
 Role role = managementClient.roles().detail("code").execute();
 ```
 
-## 获取角色列表
+## Get roles list
 
 RolesManagementClient().list(page, limit)
 
-> 获取角色列表
+> Get roles list
 
-#### 参数
+#### Parameters
 
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of roles per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```java
 PaginatedRoles roles = managementClient.roles().list().execute();
 ```
 
-## 获取角色用户列表
+## Get role's users list
 
 RolesManagementClient().listUsers(code)
 
-> 获取角色用户列表
+> Get role's users list
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role
 
-#### 示例
+#### Example
 
 ```java
 PaginatedUsers users = managementClient.roles().listUsers("code").execute();
 ```
 
-## 添加用户
+## Add users
 
 RolesManagementClient().addUsers(code, userIds)
 
-> 添加用户
+> Add users
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Unique id of the role
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> userIds = new ArrayList<>();
@@ -149,18 +149,18 @@ userIds.add("userId");
 CommonMessage message = managementClient.roles().addUsers("code", userIds).execute();
 ```
 
-## 移除用户
+## Remove a user
 
 RolesManagementClient().removeUsers(code, userIds)
 
-> 移除用户
+> Remove a user 
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Unique id of the role
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> userIds = new ArrayList<>();
@@ -168,36 +168,36 @@ userIds.add("userId");
 CommonMessage message = managementClient.roles().removeUsers("code", userIds).execute();
 ```
 
-## 获取角色策略列表
+## Get the role policy list
 
 RolesManagementClient().listPolicies(code, page, limit)
 
-> 获取角色策略列表
+> Get the role policy list
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 页码个数 默认值为 : `10`。
+- `code` \<string\> Unique id of the role
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of policy records shown per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```java
 PaginatedPolicyAssignments result = managementClient.roles().listPolicies("code").execute();
 ```
 
-## 授权策略
+## Add policies
 
 RolesManagementClient().addPolicies(code, policies)
 
-> 给角色授权策略策略
+> Add policies for roles.
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+- `code` \<string\> Unique id of the role
+- `policies` \<string[]\> Policy list
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> policies = new ArrayList<>();
@@ -205,18 +205,18 @@ policies.add("policy id");
 CommonMessage message = managementClient.roles().addPolicies("code", policies).execute();
 ```
 
-## 角色移除策略
+## Remove policies
 
 RolesManagementClient().removePolicies(code, policies)
 
-> 角色移除策略
+> Remove policies for roles.
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+- `code` \<string\> Unique id of the role
+- `policies` \<string[]\> Policy list
 
-#### 示例
+#### Example
 
 ```java
 ArrayList<String> policies = new ArrayList<>();

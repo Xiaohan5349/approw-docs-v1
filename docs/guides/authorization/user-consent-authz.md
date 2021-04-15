@@ -1,156 +1,155 @@
-# 用户许可的应用间授权
+# User-consent, Inter-application Authorization
 
 <LastUpdated/>
 
-假如你的公司是一家做社交通讯业务的公司，现在有另外一家公司想通过调用你的业务 API 开发一个聊天记录整理导出的工具，并且已经和你的公司签约合作。现在你想要安全地将用户信息授权给这家公司，你期望：
+Assume your company is responsible for social communication business, and now another company wants to develop a tool for organizing and exporting chat records by calling your business API, and also has signed a contract with your company. Now that you want to authorize user information to this company safely, what you expect as follows:
 
-1. API 的调用只开放给合作伙伴公司。
-2. 不同的合作伙伴拥有的访问权限不同，能够访问的业务 API 也不同。
-3. 合作伙伴公司从业务 API 获取自己公司的用户数据之前，**必须先征得用户的同意**。
-4. 如果将来终止合作，或者发生变化，希望能够收回某些数据的权限或者完全禁用。
+1. APIs are only open to partner companies.
+2. Different partners have different access rights, and the business APIs they can access are also different.
+3. The partner company must **obtain the user's consent** before obtaining its own company's user data from the business API.
+4. If the cooperation is finished in the future, or any changes occur, certain data permissions can be withdrawn or disabled completely.
 
-## 权限管理与分配
+## Privilege management and distribution
 
-首先在 Authing 创建两个用户。分别为 user1@123.com 和 user2@123.com。
+Firstly, create two users in Approw, which are user1@123.com and user2@123.com respectively
 
-![](~@imagesZhCn/guides/authorization/create-user-1.png)
+![](~@imagesEnUs/guides/authorization/create-user-1.png)
 
-在 Authing 创建一个应用，假设我们的社交软件叫做「蒸汽聊天」，那么应用名字就叫做「蒸汽聊天」。
-![](~@imagesZhCn/guides/authorization/create-app.png)
+Create an application in Approw. Suppose our social software is called "Steam Chat", then the application name is called "Steam Chat".
+![](~@imagesEnUs/guides/authorization/create-app.png)
 
-在应用详情，点击授权选项卡，切换到数据资源 tab，然后点击添加。
+In the application details, click the Authorization tab, switch to the Data Resources tab, and then click Add.
 
-> API 资源、数据资源、UI 资源在本质上没有区别，类型仅用于管理层面上的区分，创建良好的资源分类能够方便管理员快速聚焦不同的资源。
+> There are essentially no differences among API resources, data resources, and UI resources. The types are only used for distinction on the management level. Creating a good resource classification can improve administrators ' ability to quickly focus on different resources.
 
-![](~@imagesZhCn/guides/authorization/add-resource.png)
+![](~@imagesEnUs/guides/authorization/add-resource.png)
 
-我们创建一个聊天数据资源，定义增删改查几个操作，最后点击保存。
+We create a chat data resource, define several operations for CURD (create, update, read, update), and finally click Save.
 
-![](~@imagesZhCn/guides/authorization/add-resource-action.png)
+![](~@imagesEnUs/guides/authorization/add-resource-action.png)
 
-然后在**资源授权**中添加授权规则。
+Then add authorization rules in **resource authorization**.
 
-![](~@imagesZhCn/guides/authorization/create-acl-1.png)
+![](~@imagesEnUs/guides/authorization/create-acl-1.png)
 
-**被授权主体**选择 user1@123.com 和 user2@123.com，**资源类型**选择聊天数据，然后点击确定。
+The **authorized subject** selects user1@123.com and user2@123.com, and selects chat data in the **resource type**, and then click OK.
 
-![](~@imagesZhCn/guides/authorization/create-acl-2.png)
+![](~@imagesEnUs/guides/authorization/create-acl-2.png)
 
-然后我们创建一个**编程访问账号**，将来会交给调用方。
+Then we create a **programmable access account**, which will be handed over to the caller in the future.
 
-![](~@imagesZhCn/guides/authorization/create-programmatic-account-1.png)
+![](~@imagesEnUs/guides/authorization/create-programmatic-account-1.png)
 
-![](~@imagesZhCn/guides/authorization/create-programmatic-account-2.png)
+![](~@imagesEnUs/guides/authorization/create-programmatic-account-2.png)
 
-如果将编程访问账号删除，调用方将会失去获取用户授权的能力。
+If the programmable access account is deleted, the caller will lose the ability to obtain user authorization.
 
-### AccessToken 过期时间
+### AccessToken expiration time
 
-当你创建编程访问账号时，需要指定 AccessToken 过期时间。Authing 在颁发 AccessToken 时使用 RS256 签名算法进行签名，以确保 AccessToken 不会被篡改。
-> Token 签名是 JWT 中的一部分，更多内容请参考 [JWT 释义及使用](/concepts/jwt-token.md)。
+When you create a programmable access account, you need to specify the AccessToken expiration time. Approw uses the RS256 signature algorithm to sign when issuing the AccessToken to ensure that the AccessToken will not be tampered with.
 
-RS256 是一种非对称签名算法，Authing 持有私钥对 Token 进行签名，JWT 的消费者使用公钥来验证签名。RS256 签名算法，有以下好处：
+> Token signature is a part of JWT. For more information, please refer to [JWT Interpretation and Usage](/concepts/jwt-token.md).
 
-1. 任何人都可以使用应用公钥验证签名，签名方一定是 Authing。
-2. 无私钥泄露风险，如果你使用 HS256 但泄露了应用密钥，需要刷新密钥并重新部署所有 API。
-   关于签名问题更多内容请参考[验证 Token](/guides/faqs/how-to-validate-user-token.md)。
+RS256 is an asymmetric signature algorithm. Approw holds the private key to sign the Token, and consumers of JWT use the public key to verify the signature. RS256 signature algorithm has the following benefits:
 
-下面，我们为用户添加资源权限，在**资源授权**卡片，点击添加。
+1. Anyone can use the application public key to verify the signature, and the signing party must be Approw.
+2. There is no risk of private key leakage. If you use HS256 but leak the application key, you need to refresh the key and redeploy all APIs. For more details on signature issues, please refer to [Verification Token](/guides/faqs/how-to-validate-user-token.md).
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-1.png)
+Next, we add resource permissions for users. On the **resource authorization** card, click Add.
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-2.png)
+![](~@imagesEnUs/guides/authorization/user-consent-authz-1.png)
 
-然后我们为 user1@123.com、user2@123.com 用户添加所有消息数据的所有操作权限，最后点击确定。
-到此管理员进行权限管理的操作就全部结束了。
+![](~@imagesEnUs/guides/authorization/user-consent-authz-2.png)
 
-## 获取具备权限的 AccessToken
+Then we add all operation permissions for all message data for users user1@123.com and user2@123.com, and finally, click OK.
+At this point, the administrator's privileges management operations are all finished.
 
-调用方需要通过 **OIDC 授权码模式**从资源方获得资源授权。资源方的用户会参与到授权过程，经过用户的授权后，Authing 会签发具备权限 scope 且主体为资源持有者的 AccessToken。
-首先需要拼接**授权链接**：
+## Obtain an AccessToken with permission
+
+The caller needs to obtain resource authorization from the resource party through the **OIDC authorization code mode**. The user of the resource party will participate in the authorization process. After the user's authorization, Approw will issue an AccessToken with the authority scope and the subject is the resource holder. First, you need to splice the **authorization link**:
 
 ```http
-https://{应用域名}.authing.cn/oidc/auth?client_id={应用ID}&response_type=code&scope=openid email message&redirect_uri={调用方业务地址}&state={随机字符串}
+https://{Application domain}.authing.cn/oidc/auth?client_id={Application ID}&response_type=code&scope=openid email message&redirect_uri={Caller business address}&state={Random string}
 ```
 
-其中的 scope 参数中可以填写上面步骤中定义的**资源**以及**相应操作**，具体格式如下。
+The parameter of scope can be filled with the **resources** and the **corresponding operations** defined in the above steps. The specific format is as follows.
 
-### Scope 权限项目规范
+### Scope specification for permission term
 
-Authing 的 scope 权限项目以**空格分隔**，每一项的格式是`资源标识符:资源操作`。
+Approw's scope permission terms are **separated by spaces**, and the format of each item is `resource identifier: resource operation`.
 
-以下是 Authing 支持的所有 scope 格式：
+The following are all scope formats supported by Approw:
 
-`book:1:read` 含义为编号为 1 的书籍资源的读取权限
+`book:1:read` Read permission for book resource number 1
 
-`book:*:read` 含义为所有书籍资源的读取权限
+`book:*:read`Read permissions for all book resources
 
-`book:read` 含义为所有书籍资源的读取权限
+`book:read` Read permissions for all book resources
 
-`book:*:*` 含义为所有书籍资源的所有操作权限
+`book:*:*` All operation permissions for all book resources
 
-`book:*` 含义为所有书籍资源的所有操作权限
+`book:*` All operation permissions for all book resources
 
-`book` 含义为所有书籍资源的所有操作权限
+`book` All operation permissions for all book resources
 
-`*:*:*` 含义为所有资源的所有操作权限
+`*:*:*` All operation permissions for all resources
 
-`*:*` 含义为所有资源的所有操作权限
+`*:*` All operation permissions for all resources
 
-`*` 含义为所有资源的所有操作权限
+`*` All operation permissions for all resources
 
-例如上面定义了 `message` 资源和 `message` 资源的 `create` 操作，这里的 scope 中可以填写 `message:create` 内容。
+For example, the `message` resource and the `create` operation of the `message` resource are defined above, so `message:create` can be filled in the scope here.
 
-调用方应该引导用户点击此链接。用户点击后会跳转到认证页面。
+The caller should guide the user to click on this link. After the user clicks, it will jump to the authentication page.
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-3.png)
+![](~@imagesEnUs/guides/authorization/user-consent-authz-3.png)
 
-用户完成登录后，会跳转到调用方的业务地址。并在 URL 中携带**授权码 code** 参数。
+After the user logs in, he/she will jump to the business address of the caller, and carry the **authorization code** parameter in the URL.
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-4.png)
+![](~@imagesEnUs/guides/authorization/user-consent-authz-4.png)
 
-接下来需要使用授权码 code 和编程访问账号的 Key 和 Secret，换取用户的 AccessToken 和 IdToken。有关 OIDC 授权码模式的更多信息请查看[文档](/authentication/oidc/oidc-authorization.md#使用授权码模式-authorization-code-flow)。
+Next, use the authorization code and the Key and Secret of the programmable access account to exchange for the user's AccessToken and IdToken. For more information about the OIDC authorization code mode, please check the [documentation](/authentication/oidc/oidc-authorization.md#使用授权码模式-authorization-code-flow).
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-5.png)
+![](~@imagesEnUs/guides/authorization/user-consent-authz-5.png)
 
-可以看到用户的 AccessToken 中具备 message 权限 scope。token 的**受众**（aud）是**编程访问账号 Key**。AccessToken 的含义是：**调用方** aud 具备**资源所有者** sub 的 scope **权限**，**颁发者**是 iss。资源方可以根据 AccessToken 中的信息进行权限校验。
+You can see that the user's AccessToken has the message permission scope. The **audience** (aud) of token is the **programmable access account Key**. The meaning of AccessToken is that the **caller** aud has the scope **permission** of the **resource owner** sub, and the **issuer** is iss. The resource party can perform permission verification based on the information in the AccessToken.
 
-![](~@imagesZhCn/guides/authorization/user-consent-authz-6.png)
+![](~@imagesEnUs/guides/authorization/user-consent-authz-6.png)
 
-## 添加 API 鉴权拦截器
+## Add authentication interceptor
 
-在 Authing 定义了 API 之后，你需要在你的实际业务 API 接口增加 **API 鉴权拦截器**，对于受保护的资源，只放行携带了合法的 AccessToken 且具备所需权限的来访者。
-代码示例如下：
+After Approw defines the API, you need to add an **API authentication interceptor** to your actual business API interface. For protected resources, only visitors who carry a legal AccessToken and have the required permissions are allowed. The code example is as follows:
 
 ```javascript
-var express = require('express');
-var app = express();
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
-var port = process.env.PORT || 8080;
+var express = require('express')
+var app = express()
+var jwt = require('express-jwt')
+var jwks = require('jwks-rsa')
+var port = process.env.PORT || 8080
 var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://{应用域名}.authing.cn/oidc/.well-known/jwks.json',
+    jwksUri:
+      'https://{Application domain}.authing.cn/oidc/.well-known/jwks.json',
   }),
-  audience: '{编程访问账号 ID}',
-  issuer: 'https://{应用域名}.authing.cn/oidc',
+  audience: '{Programmatic access account ID}',
+  issuer: 'https://{Application domain}.authing.cn/oidc',
   algorithms: ['RS256'],
-});
-// 检验 AccessToken 合法性
-app.use(jwtCheck);
+})
+// Verify the legitimacy of AccessToken
+app.use(jwtCheck)
 
 app.post('/article', function(req, res) {
-  // 检验 AccessToken 是否具备所需要的权限项目
+  // Verify that AccessToken has the required permissions
   if (!req.user.scope.split(' ').incldues('write:article')) {
-    return res.status(401).json({ code: 401, message: 'Unauthorized' });
+    return res.status(401).json({ code: 401, message: 'Unauthorized' })
   }
-  res.send('Secured Resource');
-});
+  res.send('Secured Resource')
+})
 
-app.listen(port);
+app.listen(port)
 ```
 
-有关 Token 检验的其他内容请参考[验证 Token](/guides/faqs/how-to-validate-user-token.md)。
+For other content about Token verification, please refer to [Verification Token](/guides/faqs/how-to-validate-user-token.md).

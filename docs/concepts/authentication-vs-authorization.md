@@ -1,41 +1,42 @@
-# 认证与授权
+# Authentication vs Authorization 
 
 <LastUpdated/>
 
-在开发或者管理一个应用程序的时候，我们往往会看到两个名词——认证和授权，在英文中这两个词更为相近 —— authentication 和 authorization。尽管这两个属于经常出现在相同的上下文中，但是两者在概念上是非常不同的。
+When developing or managing an application, we often see two nouns-authentication and authorization. Oftentimes authentication and authorization appear in the same context.
+Although these two categories are often classified in the same context, they are actually  conceptually different.
 
-认证意味着确认你自己的身份，而授权意味着授予对系统的访问权限。简单来说，认证是验证你的身份的过程，而授权是验证你有权访问的过程。
+In simple terms, authentication is the process of verifying one’s identity, and authorization is the process of verifying that one has access.
 
-## 什么是认证
+## What is Authentication
 
-认证是关于验证你的凭据，如用户名/邮箱和密码，以验证访问者的身份。系统确定你是否就是你所说的使用凭据。在公共和专用网络中，系统通过登录密码验证用户身份。身份认证通常通过用户名和密码完成，有时与认证可以不仅仅通过密码的形式，也可以通过手机验证码或者生物特征等其他因素。
+Authentication is about verifying your credentials, such as username/email and password, to verify the identity of the visitor. The system determines whether you are using the credentials you are talking about. In public and private networks, the system authenticates users through login passwords. Identity authentication is usually done through a username and password. Sometimes the authentication can be done in the form of a password, and also through other factors such as a mobile phone verification code or biometrics.
 
-在某些应用系统中，为了追求更高的安全性，往往会要求多种认证因素叠加使用，这就是我们经常说的多因素认证。
+In order to pursue higher security, multiple authentication factors are often required to be used together. This is what we often call a multi-factor authentication.
 
-常见的认证方式
-- 用户名密码认证
-- 手机和短信验证码认证
-- 邮箱和邮件验证码认证
-- 人脸识别/指纹识别的生物因素认证
-- OTP 认证
-- Radius 网络认证
+Common authentication methods:
+
+- Username password authentication
+- Mobile phone and SMS verification code authentication
+- E-mail and mail verification code authentication
+- Biometric authentication of face recognition/fingerprint recognition
+- OTP certification
+- Radius network authentication
 
 
-## 什么是授权
+## What is Authorization
 
-授权发生在系统完成身份认证之后，最终会授予你访问资源（如信息，文件，数据库，资金，位置，几乎任何内容）的完全权限。简单来说，授权决定了你访问系统的能力以及达到的程度。
+Authorization occurs after the system completes the identity authentication, and will eventually grant you full access to resources (such as information, files, databases, funds, locations, and almost any content). 
+Authorization is the process of determining whether an authenticated user can access a specific resource. It verifies whether you have the right to grant access to information, databases, files and other resources. Authorization usually confirms your permissions after verification. A simple way to up it, it's like granting someone permission to do a task or anything.
 
-授权是确定经过身份验证的用户是否可以访问特定资源的过程。它验证你是否有权授予你访问信息，数据库，文件等资源的权限。授权通常在验证后确认你的权限。简单来说，就像给予某人官方许可做某事或任何事情。
+Visualize it as a process of verifying and confirming the mailbox and password in the organization. It is to determine which employee can access which floor. For example, suppose you are traveling and you are about to board a plane. You first will have to show your ticket and some proof of identification before registration. After that, you will receive a boarding pass that proves that the airport authority has verified your identity. But the flight attendant must also authorize you to board the flight that you need to take, when you enter the aircraft and its resources.
 
-例如，验证和确认组织中的邮箱和密码的过程称为认证，但确定哪个员工可以访问哪个楼层称为授权。假设你正在旅行而且即将登机。当你在登记前出示机票和一些身份证明时，你会收到一张登机牌，证明机场管理局已对你的身份进行了身份验证。但那不是它。乘务员必须授权你登上你应该乘坐的航班，让你可以进入飞机内部及其资源。
+## Authentication vs Authorization 
 
-## 认证与授权的对比
-
-| 认证                                                                                   | 授权                                                       |
-|----------------------------------------------------------------------------------------|------------------------------------------------------------|
-| 验证确认身份以授予对系统的访问权限。                                                   | 授权确定你是否有权访问资源。                               |
-| 这是验证用户凭据以获得用户访问权限的过程。                                             | 这是验证是否允许访问的过程。                               |
-| 它决定用户是否是他声称的用户。                                                         | 它确定用户可以访问和不访问的内容。                         |
-| 身份验证通常需要用户名和密码。                                                         | 授权所需的身份验证因素可能有所不同，具体取决于安全级别。   |
-| 身份验证是授权的第一步，因此始终是第一步。                                             | 授权在成功验证后完成。                                     |
-| 例如，特定大学的学生在访问大学官方网站的学生链接之前需要进行身份验证。这称为身份验证。 | 例如，授权确定成功验证后学生有权在大学网站上访问哪些信息。 |
+| Authentication                                                             | Authorization                                                      |
+|----------------------------------------------------------------------------------|------------------------------------------------------------|
+| Verify the identity to grant access to the system.                                                | Authorization determines whether you have permission to access resources.                           |
+| This is the process of verifying user credentials to gain user access.        | This is the process of verifying whether access is allowed.         |
+| It determines whether the user is who he claims to be.                         | It determines what the user can and does not access.             |
+| Authentication usually requires a username and password.                                  | The authentication factors required for authorization may vary, depending on the security level. |
+| Authentication is the first step in authorization, so it is always the first step.                              | Authorization is completed after successful verification.        |
+| For example, students from a specific university need to be authenticated before accessing the student link on the university’s official website. | For example, authorization determines what information the student has access to on the university website after successful authentication. |

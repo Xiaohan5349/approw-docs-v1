@@ -1,10 +1,11 @@
 !!!include(common/init-csharp-auth-sdk.md)!!!
 
-使用 `LoginByEmail` 方法：
+Use the `LoginByEmail` mothod：
 
 ```csharp
 var email = "test@example.com";
 var password = "123456";
+
 var user = await authenticationClient.LoginByEmail(email, password);
 Console.WriteLine(user.Email);
 ```

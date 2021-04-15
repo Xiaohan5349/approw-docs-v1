@@ -1,110 +1,109 @@
-# 选择合适的权限模型
+# Choose The Suitable Permission Model
 
 <LastUpdated/>
 
-目前被大家广泛采用的两种权限模型为：[基于角色的访问控制（RBAC）](#什么是基于角色的访问控制-rbac)和[基于属性的访问控制（ABAC）](#什么是基于属性的访问控制-abac)，二者各有优劣：RBAC 模型构建起来更加简单，缺点在于无法做到对资源细粒度地授权（都是授权某一类资源而不是授权某一个具体的资源）；ABAC 模型构建相对比较复杂，学习成本比较高，优点在于细粒度和根据上下文动态执行。
+There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and [Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
 
-## 什么是基于角色的访问控制（RBAC）
+## What is role-based access control (RBAC)
 
-基于角色的访问控制（Role-based access control，简称 RBAC），指的是通过用户的角色（Role）授权其相关权限，这实现了更灵活的访问控制，相比直接授予用户权限，要更加简单、高效、可扩展。
+Role-based access control (RBAC) refers to authorize related permissions through the user's role, which achieves more flexible access control. RBAC is simpler, more efficient and scalable than directly authorize user permissions.
 
-<img src="~@imagesZhCn/guides/rbac.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/rbac.png" alt="drawing"/>
 
+When using RBAC, by analyzing the actual situation of users, based on common responsibilities and needs, grant them different roles. You can grant users one or more roles, and each role has one or more permissions. This relationship between user-role and role-permission allows us to no longer need to manage a single user separately. The user inherits the required permissions from the granted role.
 
-当使用 RBAC 时，通过分析系统用户的实际情况，基于共同的职责和需求，授予他们不同角色。你可以授予给用户一个或多个角色，每个角色具有一个或多个权限，这种 用户-角色、角色-权限 间的关系，让我们可以不用再单独管理单个用户，用户从授予的角色里面继承所需的权限。
-
-以一个简单的场景（Gitlab 的权限系统）为例，用户系统中有 Admin、Maintainer、Operator 三种角色，这三种角色分别具备不同的权限，比如只有  Admin 具备创建代码仓库、删除代码仓库的权限，其他的角色都不具备。
+Take Gitlab's permission system as an example. There are three roles in the user system: Admin, Maintainer, and Operator. These three roles have different permissions. For example, only Admin has the permission to create and delete code repositories.
 
 ![](../basics/authenticate-first-user/images/rbac.png)
 
-我们授予某个用户「Admin」这个角色，他就具备了「创建代码仓库」和「删除代码仓库」这两个权限。
+We grant a user the role of "Admin", and he has the two permissions of "Create Code Repository" and "Delete Code Repository".
 
-不直接给用户授权策略，是为了之后的扩展性考虑。比如存在多个用户拥有相同的权限，在分配的时候就要分别为这几个用户指定相同的权限，修改时也要为这几个用户的权限进行一一修改。有了角色后，我们只需要为该角色制定好权限后，给不同的用户分配不同的角色，后续只需要修改角色的权限，就能自动修改角色内所有用户的权限。
+Not directly authorizing users is for future scalability considerations. For example, if there are multiple users with the same permission, and if you want to modify their permission, you must modify them one by one. With a role, we only need to assign different roles to different users after setting the permissions for the role, and then only need to modify the permissions of the role to automatically modify the permissions of all users in the role.
 
-## 什么是基于属性的访问控制（ABAC）
+## What is attribute-based access control (ABAC)
 
-基于属性的访问控制（Attribute-Based Access Control，简称 ABAC）是一种非常灵活的授权模型，不同于 RBAC，ABAC 则是通过各种属性来动态判断一个操作是否可以被允许。
+Attribute-Based Access Control (ABAC) is a very flexible permission model. Unlike RBAC, ABAC uses various attributes to dynamically determine whether an operation is allowed.
 
-### ABAC 的主要组成部分
+### The main component of ABAC
 
-在 ABAC 中，一个操作是否被允许是基于对象、资源、操作和环境信息共同动态计算决定的。
+In ABAC, whether an operation is allowed is determined based on the dynamic calculation of the object, resource, operation and environment information.
 
-- 对象：对象是当前请求访问资源的用户。用户的属性包括ID，个人资源，角色，部门和组织成员身份等；
-- 资源：资源是当前访问用户要访问的资产或对象（例如文件，数据，服务器，甚至API）。资源属性包含文件的创建日期，文件所有者，文件名和类型以及数据敏感性等等；
-- 操作：操作是用户试图对资源进行的操作。常见的操作包括“读取”，“写入”，“编辑”，“复制”和“删除”；
-- 环境：环境是每个访问请求的上下文。环境属性包含访问尝试的时间和位置，对象的设备，通信协议和加密强度等。
+- Object: The object is the user who is currently requesting access to the resource. User attributes include ID, personal resources, roles, department and organization memberships, etc.;
+- Resources: Resources are assets or objects (such as files, data, servers, and even APIs) that the current user wants to access. Resource attributes include file creation date, file owner, file name and type, data sensitivity, etc.;
+- Operation: The operation is the operation that the user tries to perform on the resource. Common operations include "read", "write", "edit", "copy" and "delete";
+- Environment: The environment is the context of each access request. Environmental attributes include the time and location of the access attempt, the object's device, communication protocol and encryption strength, etc.
 
-### ABAC 如何使用属性动态计算出决策结果
+### How ABAC uses attributes to dynamically calculate decision results
 
-在 ABAC 的决策语句的执行过程中，决策引擎会根据定义好的决策语句，结合对象、资源、操作、环境等因素动态计算出决策结果。、
+During the execution of ABAC's decision statement, the decision engine will dynamically calculate the decision result based on the defined decision statement, combined with attributes such as objects, resources, operations, and environment.
 
-每当发生访问请求时，ABAC 决策系统都会分析属性值是否与已建立的策略匹配。如果有匹配的策略，访问请求就会被通过。
+Whenever an access request occurs, the ABAC decision-making system will analyze whether the attribute value matches the established policy. If there is a matching policy, the access request will be allowed.
 
-例如，策略「当一个文档的所属部门跟用户的部门相同时，用户可以访问这个文档」会被以下属性匹配：
+For example, the policy "When a document belongs to the same department as the user's department, the user can access this document" will be matched by the following attributes:
 
-- 对象（用户）的部门 = 资源的所属部门；
-- 资源 = “文档”；
-- 操作 = “访问”；
+- The department of the object (user) = the department of the resource;
+- Resource = "document";
+- Operation = "Access";
 
-策略「早上九点前禁止 A 部门的人访问B系统；」会被以下属性匹配：
+The policy "Prohibit people in department A from accessing system B before nine o'clock in the morning;" will be matched by the following attributes:
 
-- 对象的部门 = A 部门；
-- 资源 = “B 系统”；
-- 操作 = “访问”；
-- 环境 = “时间是早上 9 点”。
+- Object's department = A department;
+- Resource = "B System";
+- Operation = "Access";
+- Environment = "The time is 9 AM".
 
-### ARAC 应用场景
+### ARAC application scenarios
 
-在 ABAC 权限模型下，你可以轻松地实现以下权限控制逻辑：
+Under the ABAC permission model, you can easily implement the following permission control logic:
 
-1. 授权编辑 A 具体某本书的编辑权限；
-2. 当一个文档的所属部门跟用户的部门相同时，用户可以访问这个文档；
-3. 当用户是一个文档的额拥有者并且文档的状态是草稿，用户可以编辑这个文档；
-4. 早上九点前禁止 A 部门的人访问B系统；
-5. 在除了上海以外的地方禁止以管理员身份访问A系统；
+1. Authorize to editor A the book editing permission;
+2. When the department of a document is the same as the department of the user, the user can access the document;
+3. When the user is the owner of a document and the status of the document is draft, the user can edit the document;
+4. Persons from Department A are prohibited from accessing System B before nine o'clock in the morning;
+5. It is forbidden to access system A as an administrator in places other than NewYork;
 
-上述的逻辑中有几个共同点：
+There are several common points in the above logic:
 
-- 具体到某一个而不是某一类资源；
-- 具体到某一个操作；
-- 能通过请求的上下文（如时间、地理位置、资源 Tag）动态执行策略；
+- Specific to a certain resource rather than a certain type of resource;
+- Specific to a certain operation;
+- The strategy can be dynamically executed through the requested context (such as time, geographic location, resource tag);
 
-如果浓缩到一句话，你可以**细粒度地授权在何种情况下对某个资源具备某个特定的权限。**
+Condensed to one sentence, **you can grant fine-grained authorization under what circumstances to have a specific permission for a certain resource.**
 
-## {{$localeConfig.brandName}} 的权限模型
+## Approw's permission model
 
-在 {{$localeConfig.brandName}} 中有几个概念：
-- 用户：你的终端用户；
-- 角色：角色是一个逻辑集合，你可以授权一个角色某些操作权限，然后将角色授予给用户，该用户将会继承这个角色中的所有权限；
-- 资源：你可以把你应用系统中的实体对象定义为资源，比如订单、商品、文档、书籍等等，每种资源都可以定义多个操作，比如文档有阅读、编辑、删除操作；
-- 授权：把某类（个）资源的某些（个）操作授权给角色或者用户。
+There are several concepts in Approw:
 
-在 {{$localeConfig.brandName}} 的权限系统中，我们通过用户、角色这两种对象实现了 RBAC 模型的角色权限继承，在此之上，我们还能围绕属性进行动态地、细粒度地授权，从而实现了 ABAC 权限模型。同时，我们为了满足大型系统中复杂组织架构的设计需求，将资源、角色、权限授权统一组合到一个[权限分组](./resource-group.md)中，方便开发者进行管理。
+- User: End user;
+- Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
+- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc... Each resource can define multiple operations, such as reading, editing, and deleting documents;
+- Authorization: Authorize certain operations of a certain type of resources to roles or users.
+
+In Approw's permission system, we have implemented the role permission inheritance of the RBAC model through the two objects of users and roles. Above this, we can also dynamically and fine-grained authorization around attributes, to achieve the ABAC permission model. At the same time, in order to meet the design requirements of complex organizational structures in large-scale systems, we combine resources, roles, and authorizations into a single [authorization group ](./resource-group.md)which is convenient for developers to manage.
 
 ![](../basics/authenticate-first-user/images/permission-group.png)
 
+## How do I choose permission model
 
-## 我该如何选择使用哪种权限模型
+The size of the organization is a crucial factor. Due to the difficulty of the initial design and implementation of ABAC, it may be too complicated for small businesses to consider.
 
-在这里，组织的规模是至关重要的因素。由于 ABAC 最初的设计和实施困难，对于小型企业而言，考虑起来可能太复杂了。
+For small and medium enterprises, RBAC is a simple alternative to ABAC. Each user has a unique role and has corresponding permissions and restrictions. When a user is transferred to a new role, its permissions will be changed to the permissions of the new position. This means that in a hierarchy of clearly defined roles, internal and external users can be easily managed.
 
-对于中小型企业，RBAC 是 ABAC 的简单替代方案。每个用户都有一个唯一的角色，并具有相应的权限和限制。当用户转移到新角色时，其权限将更改为新职位的权限。这意味着，在明确定义角色的层次结构中，可以轻松管理少量内部和外部用户。
+However, if new roles must be manually established, it is not efficient for large organizations. Once the attributes and rules are defined, ABAC's strategy is easier to apply for large number of users and stakeholders, and it also reduces security risks.
 
-但是，当必须手动建立新角色时，对于大型组织而言，效率不高。一旦定义了属性和规则，当用户和利益相关者众多时，ABAC 的策略就更容易应用，同时还降低了安全风险。
+Please choose ABAC if the following conditions are met:
 
-简而言之，如果满足以下条件，请选择 ABAC：
+- You are in a large organization with many users;
+- You need specific access control functions;
+- You have time to invest in long-distance models;
+- You need to ensure privacy and security compliance;
 
-- 你在一个拥有许多用户的大型组织中；
-- 你需要深入的特定访问控制功能；
-- 你有时间投资远距离的模型；
-- 你需要确保隐私和安全合规；
+However, please consider RBAC if the following conditions are met:
 
-但是，如果满足以下条件，请考虑 RBAC：
+- You are in a small or medium size enterprise;
+- Your access control strategy is extensive;
+- You have few external users, and your organizational role is clearly defined;
 
-- 你所在的是中小型企业；
-- 你的访问控制策略广泛；
-- 你的外部用户很少，并且你的组织角色得到了明确定义；
+## Next step
 
-## 接下来
-
-接下来，你可以了解如何[集成 RBAC 权限模型到你的应用系统](./rbac.md)或者[集成 ABAC 权限模型到你的应用系统](./abac.md)。
+Next, you can learn how to [integrate the RBAC permission model into your application system ](./rbac.md)or [integrate the ABAC permission model into your application system](./abac.md).

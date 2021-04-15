@@ -1,173 +1,191 @@
-# 原生 JavaScript 登录组件
+# Native JavaScript Login Component
 
 <LastUpdated/>
 
-Authing 登录组件（Guard）是一种可嵌入的登录表单，可根据你的需求进行配置，建议用于单页面应用程序。它使你可以轻松添加各种社会化登录方式，以便你的用户可以无缝登录，并且在不同平台拥有一致的登录体验。Guard 为开发者屏蔽了很多底层认证的实现细节，同时也包括繁琐的 UI 开发。
+The {{$localeConfig.brandName}} login component (Guard) is an embeddable login form that can be configured according to your needs and is recommended for single-page applications. It allows you to easily add various social login methods so that your users can log in seamlessly and have a consistent login experience on different platforms. Guard shields many implementation details of low-level authentication for developers, as well as cumbersome UI development.
 
-Guard 可以通过组件化的形式集成到你的原生 JavaScript 项目中，你可以借助此组件快速实现登录认证流程。
+Guard can be integrated into your Native JavaScript project. You can use this component to quickly implement the login authentication process.
 
-## 快速开始
+## Quick start
 
-### 安装
+### Installation
 
 ```bash
-$ yarn add @authing/native-js-ui-components
+$ yarn add @approw/native-js-ui-components
 
 # OR
 
-$ npm install @authing/native-js-ui-components --save
+$ npm install @approw/native-js-ui-components --save
 ```
 
-### 初始化
+### Initialization
 
-
-在原生 JavaScript 项目中初始化：
+Initialize in the native JavaScript project:
 
 ```javascript
-import { AuthingGuard } from "@authing/native-js-ui-components";
-// 引入 css 文件
-import "@authing/native-js-ui-components/lib/index.min.css";
+import { approwGuard } from '@approw/native-js-ui-components'
+// import css file
+import '@approw/native-js-ui-components/lib/index.min.css'
 
-const guard = new AuthingGuard("AUTHING_APP_ID");
+const guard = new approwGuard('APPROW_APP_ID')
 
-// 事件监听
-guard.on("load", (authClient) => console.log(authClient));
+// Event monitoring
+guard.on('load', (authClient) => console.log(authClient))
 ```
 
+<details><summary><b>How to initialize in an HTML file?</b></summary>
 
-<details><summary><b>了解如何在 HTML 文件中初始化？</b></summary>
-
-#### 使用 CDN 引入
+#### Import by CDN
 
 ```html
-<!-- JavaScript 代码 -->
-<script src="https://cdn.jsdelivr.net/npm/@authing/native-js-ui-components"></script>
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components"></script>
 
-<!-- CSS 文件 -->
-<link href="https://cdn.jsdelivr.net/npm/@authing/native-js-ui-components/lib/index.min.css" rel="stylesheet"></link>
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components/lib/index.min.css" rel="stylesheet"></link>
 ```
-#### 在 Script 代码块中初始化
+
+#### Initialize in Script code block
 
 ```html
 <script>
-var guard = new AuthingNativeJsUIComponents.AuthingGuard("AUTHING_APP_ID")
+  var guard = new approwNativeJsUIComponents.approwGuard('APPROW_APP_ID')
 
-// 事件监听
-guard.on("load", authClient => console.log(authClient))
+  // Event monitoring
+  guard.on('load', (authClient) => console.log(authClient))
 </script>
 ```
 
 </details>
 
-### 监听登录事件
+### Monitor login events
 
-你可以通过 `guard.on("login", callback)` 监听登录事件：
+You can monitor login events through `guard.on("login", callback)`:
 
 ```javascript
-guard.on("login", (user) => {
-  console.log(user);
-});
+guard.on('login', (user) => {
+  console.log(user)
+})
 ```
 
-<details><summary><b>了解获取用户信息之后该怎么做？</b></summary>
+<details><summary><b>What should we do after understanding user information?</b></summary>
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require('axios')
+axios
+  .get({
+    url: 'https://yourdomain.com/api/v1/your/resources',
+    headers: {
+      Authorization: 'Bearer YOUR_JWT_TOKN',
+    },
+  })
+  .then((res) => {
+    // custom codes
+  })
+```
+
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.
 
 </details>
 
-### 添加社会化登录
+### Add social login
 
-在初始化参数 `config` 中传入 `socialConnections` 列表指定需要显示的社会化登录（默认显示[该应用配置的所有社会化登录](/guides/app/config-login-methods.md#添加社会化登录)）。
+Pass in the `socialConnections` list in the initialization parameter `config` to specify the social logins that need to be displayed ([all social logins configured by the application](/guides/app/config-login-methods.md#social-registration) are displayed by default).
 
 ```html
 <script>
-var guard = new AuthingNativeJsUIComponents.AuthingGuard("AUTHING_APP_ID", {
-    socialConnections: ['github']
-})
+  var guard = new approwNativeJsUIComponents.approwGuard('APPROW_APP_ID', {
+    socialConnections: ['github'],
+  })
 </script>
 ```
 
-<details><summary><b>查看支持的社会化登录列表及接入流程</b></summary>
+<details><summary><b>View the list of supported social logins and access procedures</b></summary>
 
-{{$localeConfig.brandName}} 目前一共支持国内外将近 20 余种社会化登录，如微信、GitHub、Sign in with Apple、支付宝等，以下是完整的列表：
+{{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
-!!!include(common/social-connections-table.md)!!!
+| Social login                 | Scenario   | Manual                                                                           |
+| ---------------------------- | ---------- | -------------------------------------------------------------------------------- |
+| Github                       | PC website | <router-link to="/connections/github/" target="_blank">document</router-link>    |
+| Google                       | PC website | <router-link to="/connections/google/" target="_blank">document</router-link>    |
+| Sign in with Apple（Web）    | PC website | <router-link to="/connections/apple-web/" target="_blank">document</router-link> |
+| Sign in with Apple（mobile） | mobile APP | <router-link to="/connections/apple/" target="_blank">document</router-link>     |
 
 </details>
 
+### Implement single sign-on
 
-### 实现单点登录
-
-使用 Guard 进行单点登录只需要初始化的时候设置 `isSSO` 为 `true` 即可：
-
-```html
-<script>
-var guard = new AuthingNativeJsUIComponents.AuthingGuard("AUTHING_APP_ID", {
-    isSSO: true
-})
-</script>
-```
-
-## 实例方法
-
-Guard 实例提供了三个方法：
-| 方法名 | 方法参数 | 功能 |
-| :----- | :------------------------------------------------------------------------------------ | :------------------- |
-| on | <p>evtName: 事件名，详细请查看[事件列表](/reference/ui-components/#事件列表)</p><p>Handler: 对应事件的处理函数</p> | 监听某个事件 |
-| show | - | modal 模式中显示表单 |
-| hide | - | modal 模式中隐藏表单 |
-
-
-## 完整参数
-
-Authing 登录组件（Guard）提供了很多高级配置，如自定义 UI，使用特定登录方式等。详细请见[完整参数列表](./parameters.md)。
-
-## 事件列表
-
-
-| 事件名 | 事件说明 | 事件参数 | 事件参数说明 |
-| :------------------- | :------------------------------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| load | {{$localeConfig.brandName}} appId 验证通过，加载完成 | authClient | AuthenticationClient 对象，可直接操作 login， register，详情请查看 [authing-js-sdk](/reference/sdk-for-node/) |
-| load-error | {{$localeConfig.brandName}} appId 验证失败，加载失败 | error | 错误信息 |
-| login | 用户登录成功 | user, authClient | <p>user: 用户信息</p><p>authClient 同上</p> |
-| login-error | 用户登录失败 | error | 错误信息，包含字段缺失／非法或服务器错误等信息 |
-| register | 用户注册成功 | user, authClient | <p>user: 用户信息</p><p>authClient 同上</p> |
-| register-error | 用户注册失败 | error | 错误信息，包含字段缺失／非法或服务器错误等信息 |
-| pwd-email-send | 忘记密码邮件发送成功 | - | - |
-| pwd-email-send-error | 忘记密码邮件发送失败 | error | 错误信息 |
-| pwd-phone-send | 忘记密码手机验证码发送成功 | - | - |
-| pwd-phone-send-error | 忘记密码手机验证码发送失败 | error | 错误信息 |
-| pwd-reset | 重置密码成功 | - | - |
-| pwd-reset-error | 重置密码失败 | error | 错误信息 |
-| close | modal 模式中 guard 关闭事件 | - | - |
-| login-tab-change | 登录 tab 切换事件 | activeTab | 切换后的 tab |
-| register-tab-change | 注册 tab 切换事件 | activeTab | 切换后的 tab |
-| register-tab-change | 注册 tab 切换事件 | activeTab | 切换后的 tab |
-| register-info-completed | 注册补充成功事件 | user, udfs, authClient | <p>user: 用户信息</p><p>udfs: 补充的自定义字段信息</p><p>authClient 同上</p> |
-| register-info-completed-error | 注册补充失败事件 | error, udfs, authClient | <p>error: 错误信息</p><p>udfs: 补充的自定义字段信息</p><p>authClient 同上</p> |
-
-## 私有化部署
-
-**私有化部署**场景需要指定你私有化的 Authing 服务的 GraphQL 端点（**不带协议头和 Path**），如果你不清楚可以联系 Authing IDaaS 服务管理员。
+To use Guard for single sign-on, you need to set `isSSO` to `true` during initialization.
 
 ```html
 <script>
-var guard = new AuthingNativeJsUIComponents.AuthingGuard("AUTHING_APP_ID", {
-    apiHost: "https://core.you-authing-service.com"
-})
+  var guard = new approwNativeJsUIComponents.approwGuard('APPROW_APP_ID', {
+    isSSO: true,
+  })
 </script>
 ```
 
-## 在线体验
+## Instance method
+
+The Guard instance provides three methods:
+
+| Method name | Method parameters                                                                                                                                     | Function                       |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- |
+| on          | <p>evtName: Event name,Please check the [event list](/reference/ui-components/#event-list)</p><p>Handler: Corresponding event processing function</p> | Monitor an event               |
+| show        | -                                                                                                                                                     | Display the form in modal mode |
+| hide        | -                                                                                                                                                     | Hide the form in modal mode    |
+
+## Complete parameter
+
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. See the [complete parameter list](./parameters.md).
+
+## Event list
+
+| <p>Event name</p><p></p>                    | <p>Event Introduction</p><p></p>                                                       | <p>Event parameter</p><p></p>         | <p>Event parameter introduction</p><p></p>                                                                                             |
+| :------------------------------------------ | :------------------------------------------------------------------------------------- | :------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- |
+| <p>load</p><p></p><p></p>                   | <p>{{$localeConfig.brandName}} appId authenticate success，loading complete</p><p></p> | <p>authClient</p><p></p>              | <p>AuthenticationClient object，can directly operate login， register，details in [approw-js-sdk](/reference/sdk-for-node/)</p><p></p> |
+| <p>load-error</p><p></p>                    | <p>{{$localeConfig.brandName}} appId authenticate failed，loading failed</p><p></p>    | <p>error</p><p></p><p></p>            | <p>Error information</p><p></p>                                                                                                        |
+| <p>login</p><p></p>                         | <p>User login success</p><p></p>                                                       | <p>user, authClient</p><p></p>        | <p>user: user information authClient same as before</p><p></p><p></p>                                                                  |
+| <p>login-error</p><p></p>                   | <p>User login failed</p><p></p>                                                        | <p>error</p><p></p>                   | <p>Error information，including information such as missing/illegal fields or server errors</p><p></p>                                 |
+| <p>register</p><p></p>                      | <p>User login success</p><p></p>                                                       | <p>user, authClient</p><p></p>        | <p>user: user information authClient same as before</p><p></p>                                                                         |
+| <p>register-error</p><p></p>                | <p>User login failed</p><p></p>                                                        | <p>error</p><p></p>                   | <p>Error information，including information such as missing/illegal fields or server errors</p><p></p>                                 |
+| <p>pwd-email-send</p><p></p>                | <p>Forgot password email sending success</p><p></p>                                    | <p>-</p><p></p>                       | <p>-</p><p></p>                                                                                                                        |
+| <p>pwd-email-send-error</p><p></p>          | <p>Forgot password email sending failed</p><p></p>                                     | <p>error</p><p></p>                   | <p>Error information</p><p></p>                                                                                                        |
+| <p>pwd-phone-send</p><p></p>                | <p>Forgot password mobile verification code sending success</p><p></p>                 | <p>-</p><p></p>                       | <p>-</p><p></p>                                                                                                                        |
+| <p>pwd-phone-send-error</p><p></p>          | <p>Forgot password mobile verification code sending failed</p><p></p>                  | <p>error</p><p></p>                   | <p>Error information</p><p></p>                                                                                                        |
+| <p>pwd-reset</p><p></p>                     | <p>Reset password success</p><p></p>                                                   | <p>-</p><p></p>                       | <p>-</p><p></p>                                                                                                                        |
+| <p>pwd-reset-error</p><p></p>               | <p>Reset password failed</p><p></p>                                                    | <p>error</p><p></p>                   | <p>Error information</p><p></p>                                                                                                        |
+| <p>close</p><p></p>                         | <p>guard close event in modal mode</p><p></p>                                          | <p>-</p><p></p>                       | <p>-</p><p></p>                                                                                                                        |
+| <p>login-tab-change</p><p></p>              | <p>Login tab switching event</p><p></p>                                                | <p>activeTab</p><p></p>               | <p>Tab after switching</p><p></p>                                                                                                      |
+| <p>register-tab-change</p><p></p>           | <p>Register tab switching event</p><p></p>                                             | <p>activeTab</p><p></p>               | <p>Tab after switching</p><p></p>                                                                                                      |
+| <p>register-tab-change</p><p></p>           | <p>Register tab switching event</p><p></p>                                             | <p>activeTab</p><p></p>               | <p>Tab after switching</p><p></p>                                                                                                      |
+| <p>register-info-completed</p><p></p>       | <p>Register Supplemental Success Event</p><p></p><p></p>                               | <p>user, udfs, authClient</p><p></p>  | <p>user: user information udfs: Supplementary custom field information</p><p>authClient same as before</p><p></p>                      |
+| <p>register-info-completed-error</p><p></p> | <p>Register Supplemental Failure Event</p><p></p>                                      | <p>error, udfs, authClient</p><p></p> | <p>error: error information udfs: Supplementary custom field information </p><p>authClient same as before</p><p></p>                   |
+
+## Privatization deployment
+
+**The privatization deployment**scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service(**without protocol header and Path**). If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
+
+```html
+<script>
+  var guard = new approwNativeJsUIComponents.approwGuard('APPROW_APP_ID', {
+    apiHost: 'https://core.you-approw-service.com',
+  })
+</script>
+```
+
+## Online experience
 
 <br>
-<iframe src="https://codesandbox.io/embed/authing-native-js-guard-o2o1e?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/approw-native-js-guard-o2o1e?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="authing-native-js-guard"
+     title="approw-native-js-guard"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-## 获取帮助
+## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

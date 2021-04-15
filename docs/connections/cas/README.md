@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 CAS 身份源',
-  bannerTitle: '连接 CAS 身份源',
+  title: 'Integrate CAS IdP',
+  bannerTitle: 'Integrate CAS IdP',
   steps:
     [
       {
-        title: '在 CAS 身份服务商中创建一个 CAS Identity Provider',
+        title: 'Create an CAS IdP',
       },
-      { title: '在 {{$localeConfig.brandName}} 填入 CAS Identity Provider 配置' },
+      { title: 'Configure the CAS IdP in {{$localeConfig.brandName}}' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an application in {{$localeConfig.brandName}}'
       },
       {
-        title: '使用 CAS Identity Provider 登录'
+        title: 'Login via CAS IdP'
       }
     ],
 }

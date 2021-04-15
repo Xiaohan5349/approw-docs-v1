@@ -1,39 +1,38 @@
-# 禁用第三方 Cookie 对 Authing 的影响
+# The Impact of Disabling Third-party Cookies on Approw
 
-<LastUpdated/>
+This article describes the impact of the browser blocking third-party cookies, explains the reasons, and provides **solutions**.
 
-本文讲述浏览器阻止第三方 Cookie 时产生的影响，解释其原因以及给出**解决方案**。
+## The cause
 
-## 产生影响的原因
+Starting from version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on** featuresofApprow. In other similar updates, starting with Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
 
-从 13.1 版本开始，Safari 默认会**阻止第三方 Cookie**，会影响 Authing 的某些**单点登录功能**。其他类似的更新，从 Chrome 83 版本开始，**隐身模式**下默认禁用第三方 Cookie。其他浏览器也在慢慢进行此类更新以保护用户隐私。很多浏览器将禁用第三方 Cookie 作为了一个安全配置功能。
+If you use the login page hosted by Approw, you will not be affected by such problems. Users who self-host the login page and **use the trackSession function** will be affected. Because when requesting the Approw API, it is necessary to **carry Approw-related cookies across domains**.
 
-如果你使用 Authing 托管的登录页面的话不会受此类问题影响。自行托管登录页面以及**使用 trackSession 功能**的用户会受到影响。因为请求 Authing API 的时需要**跨域携带 Authing 相关的 Cookie**。
+When the browser sends a cross-domain request that need to carry a cookie, the browser will intercept the cookie, because the Approw domain name and user accessed domain name are not of the same origin.
 
-在浏览器发送需要携带 Cookie 的跨域请求时，浏览器会拦截 Cookie，因为用户访问的域名和 Authing 的域名不[同源](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)。
+The specific affected function are [trackSession](https://docs.authing.cn/reference/sdk-for-sso#authingsso-prototype-tracksession), Approw&#39;s self-developed single sign-on function.
 
-具体受到影响的功能是 [trackSession](/reference/sdk-for-sso#authingsso-prototype-tracksession)，Authing 自研的单点登录功能。
+## When will these effects happen?
 
-## 这些影响是什么时候发生的？
+Safari first introduced this feature in version 13.1, and an update will be released in March 2020. with
+This feature is enabled by default in the incognito mode of Chrome 83. Firefox will introduce this feature in the near future. Safari refers to this feature as [Intelligent Tracking Prevention](https://webkit.org/blog/7675/intelligent-tracking-prevention/)，Firefox refers to this feature as Enhanced Tracking Protection.
 
-Safari 在 13.1 版本中首先引入这个功能，在 2020 年 3 月发布更新。Chrome 83 版本的隐身模式下默认启用这个功能。Firefox 会在不久的将来引入这个功能。Safari 将这个特性称为[防止智能跟踪](https://webkit.org/blog/7675/intelligent-tracking-prevention/)，Firefox 将这个特性称为[跟踪增强保护](https://blog.mozilla.org/firefox/tracking-protection-study/#:~:text=Enhanced%20Tracking%20Protection%20is%20part,blocking%20requests%20to%20tracking%20domains.)。
+## Which Approw functions are mainly affected?
 
-## 主要影响那些 Authing 功能？
+### TrackSession
 
-### trackSession
+[trackSession](https://docs.authing.cn/v2/guides/basics/authenticate-first-user/use-hosted-login-page.html#%E4%BD%BF%E7%94%A8-tracksession) is a single sign-on function developed by Approw. The session information and user information of the current user can be obtained on any website by requesting the Session endpoint of Approw.
 
-[trackSession](/guides/basics/authenticate-first-user/use-hosted-login-page.md#使用-tracksession) 是 Authing 自研的单点登录功能。可以在任意网站通过请求 Authing 的 Session 端点拿到当前用户的会话 Session 信息和用户资料。
+When Ajax cross-domain request Approw API interface is used, for example/cas/session, Approw Cookie will be automatically carried. Browser will stop this cookie, because the request does not have the same origin as the current URL. Then the cookie cannot be passed to Approw, and Approw cannot retrieve the current user&#39;s session information and complete the response. The end result is that Approw will return a response that hasn&#39;t logged in yet.
 
-当用过 Ajax 跨域请求 Authing API 接口时，例如 `/cas/session`，会自动携带 Authing Cookie。浏览器会将这个 Cookie 阻止，因为请求地址与当前 URL 不[同源](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)。那么 Cookie 无法传到 Authing，Authing 便无法取出当前用户的会话信息，完成响应。最终的结果是 Authing 会返回尚未登录的响应。
+## How to solve it?
 
-## 如何解决？
+In addition to using trackSession, you have many other options, such as **maintaining the login state of the application** by yourself, instead of relying only on the central authentication server, and [using OIDC](https://docs.authing.cn/v2/guides/federation/oidc.html) to complete single sign-on.
 
-除了使用 trackSession，你还有很多其他选择，例如自行**维护应用的登录态**，而不仅仅依赖于中央认证服务器，以及[使用 OIDC](/guides/federation/oidc.md) 完成单点登录。
+If you want to use trackSession, you can change the application domain name into your custom domain name from the perspective of the browser. To configure a custom domain name, please check the [documentation](https://docs.authing.cn/guides/deployment/custom-domain). In this way, the original three-party cookie becomes a one-party cookie. Ajax requests sent to Approw domain name and application domain are same-origin, will not trigger the browser&#39;s mechanism to block third-party cookies.
 
-如果希望使用 trackSession，你可以在浏览器的角度上，将应用的域名变成你的自定义域名。配置自定义域名请查看[文档](/guides/deployment/custom-domain)。这样一来，原来的三方 Cookie 就变成了一方 Cookie。请求 Authing 的 Ajax 请求域名将与应用域名[同源](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)，不会触发浏览器阻止三方 Cookie 的机制。
+For example, your Approw application domain name is app1.approw.cn, and your application server domain name is myapp.mysite.com. You need to use login.mysite.com to proxy app1.approw.cn. In this way, the Approw service and your application service can be placed under the same domain.
 
-例如，你的 Authing 应用域名为 app1.authing.cn，你的应用服务器域名为 myapp.mysite.com。你需要使用 login.mysite.com 来代理 app1.authing.cn。这样就可以将 Authing 服务与你的应用服务放在同一个域下。
+As long as the main domain name is the same, different subdomains in the above example will not affect the [same-origin policy](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html) of cookies.
 
-只要主域名相同即可，上例中子域名不同不会影响 Cookie 的[同源策略](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)。
-
-当配置了自定义域名后，你需要修改 Authing 相关 SDK 的配置信息，将请求端点域名填写为你的自定义域名。如果你直接调用 Authing API，你也需要修改这些请求地址为你的自定义域名。
+After the custom domain name is configured, you need to modify the configuration information of the Approw related SDK, and fill in the request endpoint domain name as your custom domain name. If you call the Approw API directly, you also need to modify these request addresses to your custom domain name.

@@ -1,33 +1,33 @@
 ---
 meta:
   - name: description
-    content: 用户认证模块
+    content: AuthenticationClient
 ---
 
-# 用户认证模块
+# AuthenticationClient
 
 <LastUpdated/>
 
 
-> 此模块包含注册登录、重置手机号邮箱、修改账号信息等方法，是以你的终端用户（End User）的身份进行请求，适合在需要验证用户身份的情况下使用。
+> This client contains methods such as registeration and login, resetting the phone number and email, and modifying account information. These methods need to be requested by end users after they have been verified.
 
-## 使用邮箱注册
+## Register by email
 
 AuthenticationClient().register_by_email(email, password, profile, options)
 
-> 使用邮箱注册，此接口不要求用户对邮箱进行验证，用户注册之后 emailVerified 字段会为 false 。如果你希望邮箱未验证的用户不能进行登录，可以使用 pipeline 对此类请求进行拦截。
+> Use email registration, this interface does not require the user to verify the email, the `emailVerified` field will be `false` after the user registers. If you want users with unauthenticated email to be unable to log in, you can use the pipeline to intercept such requests.
 
-#### 参数
+#### Parameter
 
-- `email` \<string\> 邮箱
-- `password` \<string\> 密码
-- `profile` \<RegisterProfile\> 用户资料
+- `email` \<string\> Email
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile.
 - `options` \<Object\>
-- `options.forceLogin` \<boolean\> 是否走一遍完整的登录的，会触发登录前后的 pipeline 函数以及登录事件 webhook ，同时该用户的累计登录次数会加 1 。默认为 false 。
-- `options.generateToken` \<boolean\> 是否为该用户生成 token，不会触发登录后的完整流程，用户的累计登录次数不会加 1。默认为 false 。
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is `false`.
+- `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default is `false`.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 email = 'test@example.com'
@@ -40,23 +40,23 @@ user = authentication_client.register_by_email(
 )
 ```
 
-## 使用用户名注册
+## Register by username
 
 AuthenticationClient().register_by_username(username, password, profile, options)
 
-> 使用用户名注册
+> Register by username
 
-#### 参数
+#### Parameter
 
-- `username` \<string\> 用户名
-- `password` \<string\> 密码
-- `profile` \<RegisterProfile\> 用户资料
+- `username` \<string\> Username
+- `password` \<string\> Password
+- `profile` \<RegisterProfile\> User profile
 - `options` \<Object\>
-- `options.forceLogin` \<boolean\> 是否走一遍完整的登录的，会触发登录前后的 pipeline 函数以及登录事件 webhook ，同时该用户的累计登录次数会加 1 。默认为 false 。
-- `options.generateToken` \<boolean\> 是否为该用户生成 token，不会触发登录后的完整流程，用户的累计登录次数不会加 1。默认为 false 。
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default is `false`.
+- `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default is `false`.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 username = 'bob'
@@ -69,24 +69,24 @@ user = authentication_client.register_by_username(
 )
 ```
 
-## 使用手机号注册
+## Register by phone number
 
 AuthenticationClient().register_by_phone_code(phone, code, password, profile, options)
 
-> 使用手机号注册，你可以同时设置该账号的初始密码。发送短信的接口请见 sendSmsCode
+> Register with your mobile phone number, and you can set the initial password of the account. You can find the send SMS interface in sendSmsCode.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 手机号
-- `code` \<string\> 短信验证码
-- `password` \<string\> 初始密码
-- `profile` \<RegisterProfile\> 用户资料
+- `phone` \<string\> Phone number.
+- `code` \<string\> SMS verification code.
+- `password` \<string\> Initial password.
+- `profile` \<RegisterProfile\> User profile.
 - `options` \<Object\>
-- `options.forceLogin` \<boolean\> 是否走一遍完整的登录的，会触发登录前后的 pipeline 函数以及登录事件 webhook ，同时该用户的累计登录次数会加 1 。默认为 false 。
-- `options.generateToken` \<boolean\> 是否为该用户生成 token，不会触发登录后的完整流程，用户的累计登录次数不会加 1。默认为 false 。
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.forceLogin` \<boolean\> Whether to go through the complete login process. The pipeline function before and after login and the login event webhook will be triggered.The cumulative login times of the user will be increased by 1. The default value is `false`.
+- `options.generateToken` \<boolean\> Whether to generate a token for the user. It will not trigger the complete process after login. The user's cumulative login times will not increase by 1. The default value is `false`.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 phone = '176xxxx6754'
@@ -100,17 +100,17 @@ user = authentication_client.register_by_phone_code(
 )
 ```
 
-## 发送短信验证码
+## Send SMS code
 
 AuthenticationClient().send_sms_code(phone)
 
-> 发送短信验证码, 短信验证码的有效时间为 60 s。
+> Send SMS verification code, the validity time of SMS verification code is 60 s.
 
-#### 参数
+#### Parameter
 
 - `phone` \<string\>
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.send_sms_code(
@@ -118,24 +118,24 @@ authentication_client.send_sms_code(
 )
 ```
 
-## 使用邮箱登录
+## Login by email
 
 AuthenticationClient().login_by_email(email, password, options)
 
-> 使用邮箱登录，该接口默认不会限制未验证的邮箱进行登录，如果你希望邮箱未验证的用户不能进行登录，可以使用 pipeline 对此类请求进行拦截。
+> Users with unverified emails to not be able to log in, you can use the pipeline to intercept such requests.
 
-如果你的用户池配置了登录失败检测，当同一 IP 下登录多次失败的时候会要求用户输入图形验证码（code 为 2000)。
+If your user pool is configured with login failure detection, the user will be asked to enter a CAPTCHA code (code 2000) when the login fails multiple times under the same IP.
 
-#### 参数
+#### Parameter
 
-- `email` \<string\> 邮箱
-- `password` \<string\> 密码
+- `email` \<string\> Email
+- `password` \<string\> Password
 - `options` \<Object\>
-- `options.autoRegister` \<boolean\> 是否自动注册。如果检测到用户不存在，会根据登录账密自动创建一个账号。
-- `options.captchaCode` \<string\> 图形验证码
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
+- `options.captchaCode` \<string\> CAPTCHA code.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 email = 'test@example.com'
@@ -145,72 +145,72 @@ user = authentication_client.login_by_email(
 )
 ```
 
-## 使用用户名登录
+## Login by username
 
 AuthenticationClient().login_by_username(username, password, options)
 
-> 使用用户名登录。
+> Login by username.
 
-如果你的用户池配置了登录失败检测，当同一 IP 下登录多次失败的时候会要求用户输入图形验证码（code 为 2000)。
+If your user pool is configured with login failure detection, the user will be asked to enter a CAPTCHA verification code (code 2000) when the login fails multiple times under the same IP.
 
-#### 参数
+#### Parameter
 
-- `username` \<string\> 用户名
-- `password` \<string\> 密码
+- `username` \<string\> Username
+- `password` \<string\> Password
 - `options` \<Object\>
-- `options.autoRegister` \<boolean\> 是否自动注册。如果检测到用户不存在，会根据登录账密自动创建一个账号。
-- `options.captchaCode` \<string\> 图形验证码
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.autoRegister` \<boolean\> Whether to register automatically.If it detects that the user does not exist, an account will be automatically created based on the login account password.
+- `options.captchaCode` \<string\> CAPTCHA code.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 username = 'bob'
 user = authentication_client.register_by_username(
     username=username,
     password='passw0rd',
-    auto_register=True, # 如果用户不存在，是否自动注册。
+    auto_register=True, # whether to register if user doesn't exist
 )
 ```
 
-## 使用手机号验证码登录
+## Login by SMS code
 
 AuthenticationClient().login_by_phone_code(phone, code)
 
-> 使用手机号验证码登录。
+> Login by phone number and SMS code.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 手机号
-- `code` \<string\> 短信验证码
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `phone` \<string\> Phone number.
+- `code` \<string\> SMS verification code.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 phone = '176xxxx6754'
-# 手机号验证码登录，如果用户不存在会自动创建账号
+# log in by SMS code, if user doesn't exist, it will automatically register a new account
 user = authentication_client.login_by_phone_code(
     phone=phone,
     code='1234',
 )
 ```
 
-## 使用手机号密码登录
+## Login by phone number and password
 
 AuthenticationClient().login_by_phone_password(phone, password, options)
 
-> 使用手机号密码登录。
+> Login by phone number and password.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 手机号
-- `password` \<string\> 密码
+- `phone` \<string\> Phone number.
+- `password` \<string\> Password
 - `options` \<Object\>
-- `options.captchaCode` \<string\> 图形验证码
-- `options.clientIp` \<string\> 客户端真实 IP，如果你在服务器端调用此接口，请务必将此参数设置为终端用户的真实 IP。
+- `options.captchaCode` \<string\> CAPTCHA code.
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
-#### 示例
+#### Example
 
 ```python
 phone = '176xxxx6754'
@@ -220,39 +220,39 @@ user = authentication_client.login_by_phone_password(
 )
 ```
 
-## 检测 Token 登录状态
+## Check Token and login status
 
 AuthenticationClient().check_login_status(token)
 
-> 检测 Token 登录状态
+> Check Token and login status.
 
-#### 参数
+#### Parameter
 
-- `token` \<string\> 用户的登录凭证 token
+- `token` \<string\> The user's login credentials token.
 
-#### 示例
+#### Example
 
 ```python
-# 检查任意 token 的有效状态
+# check any token's status to see if it is valid
 data = authentication.check_login_status(token="TOKEN")
 
-# 之前调用过登录或者通过 access_token 初始化
-# 检查当前用户的登录状态
+# called registeration before or initialize through access_token
+# check the login status of the current user
 data = authentication.check_login_status()
 ```
 
-## 发送邮件
+## Send email
 
 AuthenticationClient().send_email(email, scene)
 
-> 发送邮件
+> Send email.
 
-#### 参数
+#### Parameter
 
-- `email` \<string\> 邮箱
-- `scene` \<EmailScene\> 发送场景，可选值为 RESET_PASSWORD（发送重置密码邮件，邮件中包含验证码）、VerifyEmail（发送验证邮箱的邮件）、ChangeEmail（发送修改邮箱邮件，邮件中包含验证码）
+- `email` \<string\> Email.
+- `scene` \<EmailScene\> Sending scene, optional values are RESET_PASSWORD (send a reset password email, the email contains the verification code), VerifyEmail (send the email to verify the mailbox), ChangeEmail (send the modified email, the email contains the verification code)
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.send_email(
@@ -261,19 +261,19 @@ authentication_client.send_email(
 )
 ```
 
-## 通过短信验证码重置密码
+## Reset password by SMS code
 
 AuthenticationClient().reset_password_by_phone_code(phone, code, newPassword)
 
-> 通过短信验证码重置密码，你需要先调用 sendSmsCode 接口发送重置密码邮件。
+> To reset the password via SMS verification code, you need to call the sendSmsCode interface to send the reset password email.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 手机号
-- `code` \<string\> 验证码
-- `newPassword` \<string\> 新的密码
+- `phone` \<string\> Phone number.
+- `code` \<string\> Verification code.
+- `newPassword` \<string\> New password.
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.reset_password_by_phone_code(
@@ -283,19 +283,19 @@ authentication_client.reset_password_by_phone_code(
 )
 ```
 
-## 通过邮件验证码重置密码
+## Reset password by email
 
 AuthenticationClient().reset_password_by_email_code(phone, code, newPassword)
 
-> 通过邮件验证码重置密码，你需要先调用 sendEmail 接口发送重置密码邮件。
+> To reset password by email, you need to call sendEmail API to send password reset email.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 手机号
-- `code` \<string\> 验证码
-- `newPassword` \<string\> 新的密码
+- `phone` \<string\> Phone number.
+- `code` \<string\> Verification code.
+- `newPassword` \<string\> New password.
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.reset_password_by_email_code(
@@ -305,43 +305,43 @@ authentication_client.reset_password_by_email_code(
 )
 ```
 
-## 修改用户资料
+## Update user profile
 
 AuthenticationClient().update_profile(updates)
 
-> 修改用户资料，此接口不能用于修改手机号、邮箱、密码，如果需要请调用 updatePhone、updateEmail、updatePassword 接口。
+> Update user information. This interface cannot be used to update the phone number, email address, and password. If necessary, please call the updatePhone, updateEmail, and updatePassword interfaces.
 
-#### 参数
+#### Parameter
 
-- `updates` \<UpdateUserInput\> 修改的用户资料
-- `updates.username` \<string\> 用户名
-- `updates.nickname` \<string\> 昵称
-- `updates.photo` \<string\> 头像
-- `updates.company` \<string\> 公司
-- `updates.browser` \<string\> 浏览器
-- `updates.device` \<string\> 设备
-- `updates.lastIP` \<string\> 最近登录的 IP
+- `updates` \<UpdateUserInput\> Modified user profile.
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avtar
+- `updates.company` \<string\> Company
+- `updates.browser` \<string\> Browser
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP.
 - `updates.name` \<string\> Name
 - `updates.givenName` \<string\> Given Name
 - `updates.familyName` \<string\> Family Name
 - `updates.middleName` \<string\> Middle Name
 - `updates.profile` \<string\> Profile Url
 - `updates.preferredUsername` \<string\> Preferred Name
-- `updates.website` \<string\> 个人网站
-- `updates.gender` \<string\> 性别, M（Man） 表示男性、F（Female） 表示女性、未知表示 U（Unknown）
-- `updates.birthdate` \<string\> 生日
-- `updates.zoneinfo` \<string\> 时区
-- `updates.locale` \<string\> 语言
-- `updates.address` \<string\> 地址
-- `updates.streetAddress` \<string\> 街道地址
+- `updates.website` \<string\> Personal website.
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown.
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Timezone
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
 - `updates.locality` \<string\>
-- `updates.region` \<string\> 地域
-- `updates.postalCode` \<string\> 邮编
-- `updates.city` \<string\> 城市
-- `updates.province` \<string\> 省份
-- `updates.country` \<string\> 国家
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
-#### 示例
+#### Example
 
 ```python
 user = authentication_client.update_profile({
@@ -349,58 +349,55 @@ user = authentication_client.update_profile({
 })
 ```
 
-## 更新用户密码
+## Update password
 
 AuthenticationClient().update_password(newPassword, oldPassword)
 
-> 更新用户密码
+> Update password.
 
-#### 参数
+#### Parameter
 
-- `newPassword` \<string\> 新密码
-- `oldPassword` \<string\> 旧密码，如果用户没有设置密码，可以不填。
+- `newPassword` \<string\> New password.
+- `oldPassword` \<string\> Old password, if the user has not set a password, it can be left blank.
 
-#### 示例
+#### Example
 
 ```python
-# 由手机号、社会化登录等其他方式注册的，首次没有设置密码，old_password 留空。
+# old_password is left empty for those accounts registered by phone or social registration
 authentication_client.update_password(
   new_password="passw0rd",
 )
 
-# 用户之前设置了密码
+# user had a password before
 authentication_client.update_password(
   new_password="passw0rd",
   old_password="123456!"
 )
 ```
 
-## 更新用户手机号
+## Update phone number
 
 AuthenticationClient().update_phone(phone, phoneCode, oldPhone, oldPhoneCode)
 
-> 更新用户手机号。和修改邮箱一样，默认情况下，如果用户当前已经绑定了手机号，需要同时验证原有手机号（目前账号绑定的手机号）和当前邮箱（将要绑定的手机号）。
-> 也就是说，用户 A 当前绑定的手机号为 15888888888，想修改为 15899999999，那么就需要同时验证这两个手机号。
-> 开发者也可以选择不开启 “验证原有手机号“ ，可以在 {{$localeConfig.brandName}} 控制台 的 设置目录下的安全信息模块进行关闭。
-> 用户首次绑定手机号请使用 bindPhone 接口。
+> Update the user's phone number. Same as update the email, by default, if the user has already bound a phone number, the original phone number (the phone number bound to the current account) and the current email (the phone number to be bound) need to be verified at the same time. In other words, the phone number currently bound to user A is 15888888888, and if you want to change it to 15899999999, you need to verify both phone numbers at the same time. Developers can also choose not to turn on "Verify original phone number", which can be turned off in the security information client under the settings directory of the {{$localeConfig.brandName}} console. To bind a phone number for the first time, please use bindPhone interface.
 
-#### 参数
+#### Parameter
 
-- `phone` \<string\> 新手机号
-- `phoneCode` \<string\> 新手机号的验证码
-- `oldPhone` \<string\> 旧手机号
-- `oldPhoneCode` \<string\> 旧手机号的验证码
+- `phone` \<string\> New phone number.
+- `phoneCode` \<string\> The verification code of the new phone number
+- `oldPhone` \<string\> Old phone number.
+- `oldPhoneCode` \<string\> The verification code of the old phone number
 
-#### 示例
+#### Example
 
 ```python
-# 关闭了“验证原有手机号“选项
+# verifyOldPhone function disabled
 authentication_client.update_email(
   phone="test1@example.com",
   phoneCode="1234",
 )
 
-# 开启了“验证原有手机号“选项
+# verifyOldPhone function enabled
 authentication_client.update_email(
   phone="test1@example.com",
   phoneCode="1234",
@@ -409,31 +406,29 @@ authentication_client.update_email(
 )
 ```
 
-## 更新用户邮箱
+## Update email
 
 AuthenticationClient().update_email(email, emailCode, oldEmail, oldEmailCode)
 
-> 如果用户已经绑定了邮箱，默认情况下，需要同时验证原有邮箱（目前账号绑定的邮箱）和当前邮箱（将要绑定的邮箱）。也就是说，用户 A 当前绑定的邮箱为 123456@qq.com，想修改为 1234567@qq.com，那么就需要同时验证这两个邮箱。
-> 开发者也可以选择不开启 “验证原有邮箱“ ，可以在 {{$localeConfig.brandName}} 控制台 的 设置目录下的安全信息模块进行关闭。
-> 用户首次绑定手机号请使用 bindEmail 接口。
+> If the user has already bound the email, by default, the original email (the email bound to the current account) and the current email (the email to be bound) need to be verified at the same time. If the currently email bound to user A is 123456@gmail.com, and user A wants to change it to 1234567@gmail.com, then both email need to be verified at the same time. Developers can also choose not to turn on "Verify original mailbox", which can be turned off in the security information client under the settings directory of the {{$localeConfig.brandName}} console. To bind an email for the first time, please use the bindEmail interface.
 
-#### 参数
+#### Parameter
 
-- `email` \<string\> 新邮箱
-- `emailCode` \<string\> 新邮箱的验证码
-- `oldEmail` \<string\> 旧邮箱
-- `oldEmailCode` \<string\> 旧邮箱的验证码
+- `email` \<string\> New email address.
+- `emailCode` \<string\> The verification code of the new phone email address.
+- `oldEmail` \<string\> Old email address.
+- `oldEmailCode` \<string\> The verification code of the old phone email address.
 
-#### 示例
+#### Example
 
 ```python
-# 关闭了“验证原有邮箱“选项
+# verifyOldEmail function disabled
 authentication_client.update_email(
   email="test1@example.com",
   emailCode="1234",
 )
 
-# 开启了“验证原有邮箱“选项
+# verifyOldEmail function enabled
 authentication_client.update_email(
   email="test1@example.com",
   emailCode="1234",
@@ -442,32 +437,32 @@ authentication_client.update_email(
 )
 ```
 
-## 刷新当前用户的 token
+## Refresh token
 
 AuthenticationClient().refresh_token()
 
-> 刷新当前用户的 token，调用此接口要求先登录。
+> Refresh the token of the current user.Login is required when calling this interface.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.refresh_token()
 ```
 
-## 绑定手机号
+## Bind phone number
 
 AuthenticationClient().bind_phone(phone, phoneCode)
 
-> 用户初次绑定手机号，如果需要修改手机号请使用 updatePhone 接口。
+> The user binds the phone number for the first time. If you need to update the phone number, please use the updatePhone interface.
 
-#### 参数
+#### Parameter
 
 - `phone` \<string\>
 - `phoneCode` \<string\>
 
-#### 示例
+#### Example
 
 ```python
 phone = '176xxxx6754'
@@ -477,96 +472,96 @@ user = authentication_client.bind_phone(
 )
 ```
 
-## 解绑手机号
+## Unbind phone number
 
 AuthenticationClient().unbind_phone()
 
-> 用户解绑手机号
+> User unbinds phone number.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```python
 user = authentication_client.unbind_phone()
 ```
 
-## 获取当前登录的用户信息
+## Get current user information
 
 AuthenticationClient().get_current_user()
 
-> 获取当前登录的用户信息
+> Get the information of the current user.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
-## 退出登录
+## Logout
 
 AuthenticationClient().logout()
 
-> 退出登录，清空 localStorage 里的 user 和 token
+> Logout, clear user information and token in localStorage.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.logout()
 ```
 
-## 获取当前用户的自定义数据列表
+## Get current user's user-defined data list
 
 AuthenticationClient().list_udv()
 
-> 获取当前用户的自定义数据列表
+> Get current user's user-defined data list.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```python
 udvs = authentication_client.list_udv()
 ```
 
-## 添加自定义数据
+## Add user-defined data
 
 AuthenticationClient().set_udv(key, value)
 
-> 添加自定义数据
+> Add user-defined data.
 
-#### 参数
+#### Parameter
 
-- `key` \<string\> 自定义字段的 key
-- `value` \<any\> 自定义数据的值，值的类型必须要和用户池定义的自定义字段类型一致。
+- `key` \<string\> The key of the user-defined data.
+- `value` \<any\> The value of user-defined data. The type of value must match the one defined in user pool.
 
-#### 示例
+#### Example
 
 ```python
-# 设置 int 类型数据
+# set int data
 authentication_client.set_udv(
   key="age",
   value=15
 )
 
-# 设置 boolen 类型数据
+# set boolen data
 authentication_client.set_udv(
   key="is_ok",
   value=True
 )
 ```
 
-## 删除自定义数据
+## Delete user-defined data
 
 AuthenticationClient().remove_udv(key)
 
-> 删除自定义数据
+> Delete user-defined data.
 
-#### 参数
+#### Parameter
 
-- `key` \<null\> 自定义字段的 key
+- `key` \<null\> The key of the user-defined field.
 
-#### 示例
+#### Example
 
 ```python
 authentication_client.remove_udv(

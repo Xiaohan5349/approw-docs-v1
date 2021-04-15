@@ -1,40 +1,40 @@
-### 安装
+### Install
 
-使用 `yarn` 或 `npm` 安装：
+Use `yarn` or `npm` to install:
 
 ```bash
-$ yarn add @authing/native-js-ui-components
+$ yarn add @approw/native-js-ui-components
 
 # OR
 
-$ npm install @authing/native-js-ui-components --save
+$ npm install @approw/native-js-ui-components --save
 ```
 
-使用 CDN 引入：
+Or use `CDN` to import:
 
 ```html
-// JavaScript 代码
-<script src="https://cdn.jsdelivr.net/npm/@authing/native-js-ui-components"></script>
+// JavaScript code
+<script src="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components"></script>
 
 ...
-// CSS 文件
-<link href="https://cdn.jsdelivr.net/npm/@authing/native-js-ui-components/lib/index.min.css" rel="stylesheet"></link>
+// CSS file
+<link href="https://cdn.jsdelivr.net/npm/@approw/native-js-ui-components/lib/index.min.css" rel="stylesheet"></link>
 ```
 
-### 初始化
+### Initialize
 
 ```html
 <script>
-  var guard = new AuthingNativeJsUIComponents.AuthingGuard("AUTHING_APP_ID");
+  var guard = new ApprowNativeJsUIComponents.ApprowGuard("APPROW_APP_ID");
 
-  // 事件监听
+  // event monitor
   guard.on("load", (authClient) => console.log(authClient));
 </script>
 ```
 
-### 监听成功登录事件
+### Monitor login success event
 
-监听成功登录事件非常简单，你只需要传入一个 `onLogin` 回调函数即可：
+It is simple. You only need to pass a callback `onLogin`.
 
 ```javascript
 guard.on("login", (user) => {
@@ -42,4 +42,4 @@ guard.on("login", (user) => {
 });
 ```
 
-用户信息中的 `token` 字段为该用户的身份凭证，后续访问你后端资源的时候应该带上，然后在后端验证此 `token` 的身份。
+The `token` field in user information is the identity credential. In the following steps, you need to carry it in requests when you want to access back-end resources. The back end will verify this `token`.

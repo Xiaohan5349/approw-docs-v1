@@ -13,7 +13,7 @@ meta:
 
 ## 创建分组
 
-GroupsManagementClient().create($code, $name, $description)
+GroupsManagementClient().create(code, name, description)
 
 > 创建分组
 
@@ -31,7 +31,7 @@ $group = $managementClient->groups()->create("code", "group name");
 
 ## 删除分组
 
-GroupsManagementClient().delete($code)
+GroupsManagementClient().delete(code)
 
 > 删除分组
 
@@ -47,7 +47,7 @@ $managementClient->groups()->delete("code");
 
 ## 修改分组
 
-GroupsManagementClient().update($code, $input)
+GroupsManagementClient().update(code, input)
 
 > 修改分组
 
@@ -67,7 +67,7 @@ $group = $managementClient->groups()->update("code", "group name");
 
 ## 获取分组详情
 
-GroupsManagementClient().detail($code)
+GroupsManagementClient().detail(code)
 
 > 获取分组详情
 
@@ -83,7 +83,7 @@ $group = $managementClient->groups()->detail("code");
 
 ## 获取分组列表
 
-GroupsManagementClient().list($page, $limit)
+GroupsManagementClient().list(page, limit)
 
 > 获取分组列表
 
@@ -100,7 +100,7 @@ $groups = $managementClient->groups()->paginate();
 
 ## 批量删除分组
 
-GroupsManagementClient().deleteMany($codeList)
+GroupsManagementClient().deleteMany(codeList)
 
 > 批量删除分组
 
@@ -116,7 +116,7 @@ $managementClient->groups()->deleteMany(["code"]);
 
 ## 获取分组用户列表
 
-GroupsManagementClient().listUsers($code, $page, $limit)
+GroupsManagementClient().listUsers(code, page, limit)
 
 > 获取分组用户列表
 
@@ -134,7 +134,7 @@ $users = $managementClient->groups()->listUsers("code");
 
 ## 添加用户
 
-GroupsManagementClient().addUsers($code, $userIds)
+GroupsManagementClient().addUsers(code, userIds)
 
 > 添加用户
 
@@ -151,7 +151,7 @@ $managementClient->groups()->addUsers("code", ["userId"]);
 
 ## 移除用户
 
-GroupsManagementClient().removeUsers($code, $userIds)
+GroupsManagementClient().removeUsers(code, userIds)
 
 > 移除用户
 
@@ -164,61 +164,4 @@ GroupsManagementClient().removeUsers($code, $userIds)
 
 ```php
 $managementClient->groups()->removeUsers("code", ["userId"]);
-```
-
-## 获取分组被授权的所有资源列表
-
-GroupsManagementClient.listAuthorizedResources(groupCode, namespace, opts = [])
-
-> 获取某个分组被授权的所有资源。
-
-#### 参数
-
-- `roleCode` \<string\> 角色 code；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)；
-- `resourceType` \<string\> 可选，资源类型，默认会返回所有有权限的资源，现有资源类型如下：
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据。
-
-#### 示例
-
-```php
-use Authing\Mgmt\GroupsManagementClient;
-use Authing\Mgmt\ManagementClient;
-
-$managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
-$managementClient->requestToken();
-
-$groupsManagementClient = new GroupsManagementClient($managementClient);
-
-$data = $groupsManagementClient->listAuthorizedResources('groupCode', "default");
-```
-
-#### 示例数据
-
-- `type` 为资源类型；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
-
-```json
-{
-  "totalCount": 12,
-  "list": [
-    {
-      "code": "menu_a",
-      "type": "MENU"
-    },
-    {
-      "code": "menu_b",
-      "type": "MENU"
-    },
-    {
-      "code": "books:1",
-      "type": "DATA",
-      "actions": ["books:delete", "books:update"]
-    }
-  ]
-}
 ```

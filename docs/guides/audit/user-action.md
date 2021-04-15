@@ -1,8 +1,8 @@
-# 用户行为的审计
+# User Action Log
 
-普通用户行为审计主要体现为用户的登入/登出以及其他操作类型记录。
+Common user behavior audit mainly consists of user's login/logout and other operation records.
 
-进入 审计日志 -> 用户行为 页面
+Enter the audit log -> user behavior page
 
 ![](./images/audit-user-1.png)
 ![](./images/audit-user-2.png)

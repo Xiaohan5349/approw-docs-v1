@@ -14,17 +14,17 @@
 
 域名填写：`core.authing.cn`。
 
-![](~@imagesZhCn/reference/sdk-for-wxapp/mpverify.jpg)
+![](~@imagesEnUs/reference/sdk-for-wxapp/mpverify.jpg)
 
 出于安全验证考虑，微信服务器需要和 {{$localeConfig.brandName}} 服务器做一次请求验证，开发者需要下载 txt 文件，并记录 **文件名** 和 **文本内容**。
 
 最后在 {{$localeConfig.brandName}} 控制台 **连接身份源** -> **社会化登录** 开启**微信网页授权登录**：
 
-<img src="~@imagesZhCn/reference/Xnip2021-02-27_14-03-15.png" alt="drawing"/>
+<img src="~@imagesEnUs/reference/Xnip2021-02-27_14-03-15.png" alt="drawing"/>
 
 填写弹出的表单：
 
-<img src="~@imagesZhCn/reference/Xnip2021-02-27_14-04-15.png" alt="drawing"/>
+<img src="~@imagesEnUs/reference/Xnip2021-02-27_14-04-15.png" alt="drawing"/>
 
 - AppID：微信开发者 ID
 - AppSecret：微信开发者密码
@@ -57,7 +57,7 @@ yarn add @authing/wxmp
 然后通过以下方式引入：
 
 ```javascript
-import AuthingWxmp from "@authing/wxmp";
+import AuthingWxmp from '@authing/wxmp'
 ```
 
 ## 发起微信授权
@@ -66,11 +66,11 @@ import AuthingWxmp from "@authing/wxmp";
 
 ```javascript
 const authingWx = new AuthingWxmp({
-  userPoolId: "YOUR_USERPOOLID",
-});
+  userPoolId: 'YOUR_USERPOOLID',
+})
 
 // 跳转到微信授权页面
-window.location = authingWx.getAuthorizationUrl();
+window.location = authingWx.getAuthorizationUrl()
 ```
 
 ## 获取用户信息
@@ -79,15 +79,17 @@ window.location = authingWx.getAuthorizationUrl();
 // 跳回业务回调链接之后获取用户信息
 // 若在回调页面 authingWx 未初始化，需要先初始化，具体初始化方式参考上文
 
-const { ok, userinfo, message } = authingWx.getUserInfo();
+const { ok, userinfo, message } = authingWx.getUserInfo()
 if (ok) {
   // do with userinfo
-  console.log(userinfo);
+  console.log(userinfo)
 } else if (message) {
   // message 中包含了错误提示
-  alert(message);
+  alert(message)
 }
 ```
+
+> 完整的 DEMO 可从 [examples](./examples/) 目录下获取。
 
 ## 完整 API 列表
 
@@ -107,8 +109,8 @@ if (ok) {
 
 ```javascript
 const authingWx = new AuthingWxmp({
-  userPoolId: "YOUR_USERPOOLID",
-});
+  userPoolId: 'YOUR_USERPOOLID',
+})
 ```
 
 ### checkWechatUA
@@ -119,7 +121,7 @@ const authingWx = new AuthingWxmp({
 
 ```javascript
 if (!authingWx.checkWechatUA()) {
-  alert("请在微信客户端中打开！");
+  alert('请在微信客户端中打开！')
 }
 ```
 
@@ -132,8 +134,8 @@ if (!authingWx.checkWechatUA()) {
 ```javascript
 // 点击登录按钮之后跳转到微信网页授权页面
 loginBtn.onclick = function() {
-  window.location = authingWx.getAuthorizationUrl();
-};
+  window.location = authingWx.getAuthorizationUrl()
+}
 ```
 
 ### getUserInfo
@@ -147,13 +149,13 @@ loginBtn.onclick = function() {
 示例：
 
 ```javascript
-const { ok, userinfo, message } = authingWx.getUserInfo();
+const { ok, userinfo, message } = authingWx.getUserInfo()
 if (ok) {
   // do with userinfo
-  console.log(userinfo);
+  console.log(userinfo)
 } else if (message) {
   // message 中包含了错误提示
-  alert(message);
+  alert(message)
 }
 ```
 
@@ -220,7 +222,7 @@ axios.get(SOME_SERVICE_URL, {
   headers: {
     Authorization: `Bearer ${userinfo.token}`,
   },
-});
+})
 ```
 
 当终端用户携带此 Toekn 访问开发者的接口时，**开发者需要判断这个 Token 是否合法且处于登录状态**，Authing 为此提供了几个方法：[验证用户 Token](/guides/faqs/how-to-validate-user-token.md)。Authing 返回的数据中包含了用户是否登录、登录情况下的用户 ID 等信息，之后开发者可以根据具体业务的需要对请求进行处理。

@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 OIDC 身份源',
-  bannerTitle: '连接 OIDC 身份源',
+  title: 'Integrate  OIDC IdP',
+  bannerTitle: 'Integrate  OIDC IdP',
   steps:
     [
       {
-        title: '在 OIDC 身份服务商中创建一个 OIDC Client',
+        title: 'Create an OIDC Client in IdP',
       },
-      { title: '在 {{$localeConfig.brandName}} 填入 OIDC Client 配置' },
+      { title: 'Configure the OIDC Client in {{$localeConfig.brandName}}' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an application in {{$localeConfig.brandName}}'
       },
       {
-        title: '开始开发接入'
+        title: 'Login via OIDC'
       }
     ],
 }

@@ -1,4 +1,4 @@
-Node.js 可以使用 [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) 来验证 IdToken：
+In JavaScript, you can use [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) to validate IdToken:
 
 ```javascript
 const jwt = require('jsonwebtoken')

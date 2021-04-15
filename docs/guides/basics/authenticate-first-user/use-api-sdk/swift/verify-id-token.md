@@ -1,4 +1,4 @@
-Swift 可以使用 [JSONWebToken](https://github.com/kylef/JSONWebToken.swift) 来验证 IdToken：
+In Swift, you can use [JSONWebToken](https://github.com/kylef/JSONWebToken.swift) to validate IdToken:
 
 ```swift
 import JWT

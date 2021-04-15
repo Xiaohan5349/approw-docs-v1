@@ -1,22 +1,20 @@
-# 账号生命周期管理
+# Account Lifecycle Management
 
 <LastUpdated/>
 
+With the development of the company, the number of internal applications and personnel will continue to increase. Constant enrollment and resignation of employees, frequent adjustments to the organizational structure of personnel and complex application account systems within the enterprise will cause a sharp increase in the workload of administrators who manually operate accounts. At the same time, the lack of a unified account management control scheme will also bring hidden dangers to safe production. For example, there are often security risk cases in which employees leave but the application accounts are still not deleted.
 
-随着公司的发展，企业内部应用和人员数量会不断增加。不断的员工入职、离职，人员组织架构频繁调整，企业内部的应用账号体系错综复杂，管理员手动操作账号的工作量陡增。同时，缺乏统一的账号管理控制方案也会给企业安全生产带来隐患，经常出现员工离职但是应用账号未关停的安全风险案例。
+Replacing manual account management with automatic account **Lifecycle Management (LCM)** is the key to liberating enterprise IT personnel from the tedious and complex identity information management work involved in flexible employment. At the same time, it can also improve the overall business safety factor of the enterprise by closing personnel accounts in time and reducing the authorization error rate.
 
-用自动化的 **账号生命周期管理（Lifecycle Management，简称 LCM）** 代替手动式账号管理，是将企业 IT 人员从灵活用工所涉及的繁琐复杂的身份信息管理工作中解放出来的关键，同时也可以通过及时关停人员账号和减少授权错误率来提升企业整体的业务安全系数。
+## Increase productivity and reduce costs
 
-## 提高生产力并降低成本
+- Automatic access from creation to deletion: there is no need to press a button and wait. Use the resources needed to get your employees to start and work quickly, and make time for the IT team to work on larger projects. 
+- Fast and safe pre-configuration: automatic access management not only saves you time, but also saves you money. Faster pre-configuration means you will reclaim software licenses and save costs. And, let us start with the money saved by not being hacked through a still-active account.
 
-无需按下按钮，无需等待。从创建到删除的自动化访问。利用所需的资源来使你的员工快速启动并运行，并为IT团队腾出时间来进行更大的项目。
-快速安全的预配置。自动化的访问管理不仅可以节省你的时间，还可以节省你的金钱。更快的预配置意味着你将收回软件许可证并节省成本。而且，甚至不要让我们开始通过不通过仍处于活动状态的帐户被黑客入侵而节省的资金开始。
+## Reduce complexity
 
-## 降低复杂度
+Use automatic processes to solve complexity: The enterprise deployed a hub-and-spoke model, which includes a centralized unified identity supply platform. The internal applications of the enterprise are the endpoints of the hub-and-spoke model, and each application endpoint is connected to the unified identity supply platform. For each identity created in the unified identity supply platform, a suffix is applied to each identity to ensure that the identities will not conflict with themselves.This feature eliminates manual processes related to changes in the company's internal personnel. For example, if the first and last name of a new employee is the same as the first and last name of the current employee, the workflow will identify and resolve the situation so that each user has a unique email address and username.
 
-采用自动化流程并解决复杂性。企业通过部署了一个中心辐射型模型，其中包括一个中心化的统一身份供给平台，企业内部应用作为辐射模型的端点，每一给应用端点与统一身份供给平台连接。
-在统一身份供给平台中创建的每个身份，并为每个身份应用后缀，以确保各个身份之间的身份不会相互冲突。此功能消除了与公司内部人员变更相关的手动流程。例如，如果新员工的名字和姓氏与当前员工的名字和姓氏相同，则工作流将识别并解决该情况，以便每个用户都有唯一的电子邮件地址和用户名。
+## Increase safety and standard
 
-## 更为安全合规
-
-从员工入职起，所有的账号分配和收回都有自动化流程保证，避免员工被手动分配到越权账号或者离职后账号没有被收回导致企业信息泄漏的安全风险。除此之外，在账号分配和收回等生命周期操作的流程中的每一个环节都有相应日志记录，保证企业生产流程的安全与合规。
+From the employee’s employment, all account assignments and withdrawals are guaranteed by an automatic process to prevent employees from being manually assigned to an over-authorized account, or the account is not retracted after employees leave the company, resulting in a security risk of enterprise information leakage. In addition, each link in the lifecycle operation process such as account allocation and withdrawal has corresponding log records to ensure the safety and compliance of the company's production process.

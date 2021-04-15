@@ -1,8 +1,8 @@
-使用[应用 ID（AppID）](/guides/faqs/get-app-id-and-secret.md) 初始化 [JavaScript/Node.js SDK](/reference/sdk-for-node/) 的 `AuthenticationClient`:
+Use the [AppID](/guides/faqs/get-app-id-and-secret.md) to initialize the `AuthenticationClient` of the [JavaScript/Node.js SDK](/reference/sdk-for-node/):
 
 ```javascript
-import { AuthenticationClient } from "authing-js-sdk";
+import { AuthenticationClient } from 'approw-js-sdk'
 const authenticationClient = new AuthenticationClient({
-  appId: "YOUR_APP_ID",
-});
+  appId: 'YOUR_APP_ID',
+})
 ```

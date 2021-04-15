@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 SAML 身份源',
-  bannerTitle: '连接 SAML 身份源',
+  title: 'Integrate SAML IdP',
+  bannerTitle: 'Integrate SAML IdP',
   steps:
     [
       {
-        title: '在 SAML 身份服务商中创建一个 SAML Identity Provider',
+        title: 'Create an SAML IdP',
       },
-      { title: '在 {{$localeConfig.brandName}} 填入 SAML Identity Provider 配置' },
+      { title: 'Configure the SAML IdP in Approw' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an application in {{$localeConfig.brandName}}'
       },
       {
-        title: '使用 SAML Identity Provider 登录'
+        title: 'Login via SAML IdP'
       }
     ],
 }

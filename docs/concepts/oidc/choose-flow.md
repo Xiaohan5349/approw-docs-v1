@@ -1,86 +1,86 @@
-# 选择 OIDC 授权模式
+# The Selection of OIDC Authorization Mode
 
-你需要根据你的场景和你开发的应用类型选择一种合适的认证授权模式。本文将协助你选择合适的 OIDC 授权模式。
+You need to choose an appropriate authorization mode according to your scenario and the type of application you are developing. This article will assist you in choosing the appropriate OIDC authorization mode.
 
-## 推荐的授权模式
+## Recommended authorization mode
 
-不同类型的应用，需要选择不同的授权模式。下面的表格中是我们推荐的模式：
+Different types of applications require different authorization modes. The following table is our recommended mode:
 
-| 应用类型    | 授权模式           |
-| ----------- | ------------------ |
-| 有后端场景  | 授权码模式         |
-| SPA，无后端 | 隐式模式           |
-| 服务器之间  | Client Credentials |
+| Application Type | Authorization Mode      |
+| ---------------- | ----------------------- |
+| With backend     | Authorization Code Mode |
+| SPA, no backend  | Implicit Mode           |
+| Between servers  | Client Credentials      |
 
-## 你的应用是否需要 Id Token？
+## Does your application need Id Token?
 
-| 授权模式                | Access Token | Id Token |
+| Authorization Mode      | Access Token | Id Token |
 | ----------------------- | ------------ | -------- |
-| 授权码模式              | ✅           | ✅       |
-| 隐式模式                | ✅           | ✅       |
-| 密码模式                | ✅           | ✅       |
-| Client Credentials 模式 | ✅           | ❌       |
+| Authorization Code Mode | ✅           | ✅       |
+| Implicit Mode           | ✅           | ✅       |
+| Password Mode           | ✅           | ✅       |
+| Client Credentials Mode | ✅           | ❌       |
 
-## 你的应用是什么类型？
+## What type of your application is?
 
-如何选择 OIDC 授权模式取决于你在开发哪种类型的应用。参考以下流程图来选择你需要的授权模式：
+How to choose the OIDC authorization model depends on which type of application you are developing. Refer to the following flowchart to select the authorization mode you need:
 
-![](~@imagesZhCn/concepts/oidc/choose-flow.png)
+![](~@imagesEnUs/concepts/oidc/choose-flow.png)
 
-## 你的应用代码是否能被公开访问
+## Is your application code can be publicly accessed?
 
-如果你的终端用户能够看到并修改你的应用代码，那么这个应用就是公开访问的。包括 SPA（单页应用）和移动端应用。这种场景下，应用无法安全地存储密钥。
+If your end users can see and modify your application code, then the application is publicly accessible. In this scenario, the application cannot store the key securely, including SPA (Single Page Application) and mobile applications.
 
-## 你的应用是 SPA 还是原生应用？
+## Is your application a spa or a native application??
 
-如果你的应用是一个单页应用，运行在新版本的浏览器中，并且浏览器支持 Web Crypto，你应该使用 PKCE + 授权码模式。如果你的应用运行在老旧版本的浏览器中，浏览器不支持 Web Crypto，你应该使用隐式模式。隐式模式仅适用于应用无法安全存储密钥的场景，如果其他模式不可用时你才应该考虑用隐式模式。
+If your application is a single-page application, running in a new version of the browser, and the browser supports Web Crypto, you should use the PKCE + Authorization Code Mode. If your application is running in an old version of the browser, the browser does not support Web Crypto, you should use the Implicit Mode. The Implicit Mode is only suitable for scenarios where the application cannot safely store the key. If other modes are not available, you should consider using the Implicit Mode.
 
-如果你的应用是原生应用，你应该使用 PKCE + 授权码模式。
+If your application is a native application, you should use PKCE + Authorization Code Mode.
 
-## 有没有终端用户在使用你的应用？
+## Are there end users using your app?
 
-如果你的应用运行在服务器端，没有直接给终端用户使用，只是在进行服务器之间的交互，你应该使用 Client Credentials 模式。
+If your application runs on the server-side and is not directly used by end-users, but only for interaction between servers, you should use Client Credentials Mode.
 
-## 应用和资源是否都被同一方持有？
+## Are applications and resources held by the same party?
 
-如果你的应用以及应用需要访问的资源都是由你掌握，而且你的应用可以安全地存储用户账密，代码逻辑足够安全。当其他授权模式都不合适时，你可以选择密码模式。
+If your application and the resources that the application needs to access are all controlled by you, and your application can safely store user accounts and passwords with enough safe code logic. When the other authorization modes are not suitable, you can choose the Password Mode.
 
-## 授权码模式
+## Authorization Code Mode
 
-授权码模式适合应用具备后端服务器的场景。授权码模式要求应用必须能够安全存储密钥，用于后续使用授权码换 Access Token。授权码模式需要通过浏览器与终端用户交互完成认证授权，然后通过浏览器重定向将授权码发送到后端服务，之后进行授权码换 Token 以及 Token 换用户信息。
+The Authorization Code Mode is suitable for scenarios where the application has a backend server. The Authorization Code Mode requires that the application must be able to store the key securely for subsequent use of the authorization code to exchange the Access Token. The Authorization Code Mode requires interaction between the browser and the terminal user to complete authentication and authorization, and then the authorization code is sent to the back-end service through browser redirection, and then the authorization code is exchanged for Token and Token is exchanged for user information.
 
-![](~@imagesZhCn/guides/federation/oidc/authorization-code-flow.png)
+![](~@imagesEnUs/guides/federation/oidc/authorization-code-flow.png)
 
-了解更多信息，请参考[使用授权码模式](/federation/oidc/authorization-code/)。
+For more information, please refer to [Using Authorization Code Mode](/federation/oidc/authorization-code/).
 
-## 隐式模式
+## Implicit Mode
 
-隐式模式**适合不能安全存储密钥的场景**（例如前端浏览器）。在**隐式模式**中，应用不需要使用 code 换 token，无需请求 `/token` 端点，AccessToken 和 IdToken 会直接从**认证端点**返回。
+The Implicit Mode is suitable for **scenarios where the key cannot be stored safely** (such as front-end browsers). In the **Implicit Mode**, the application does not need to use code to exchange tokens, and does not need to request the `/token` endpoint. AccessToken and IdToken will be returned directly from the **authentication endpoint**.
 
 :::hint-info
-因为隐式模式用于**不能安全存储密钥的场景**，所以隐式模式不支持获取 Refresh Token。
+Because the Implicit Mode is used in **scenarios where the key cannot be stored safely**, the Implicit Mode does not support obtaining Refresh Token.
 :::
 
-![](~@imagesZhCn/guides/federation/oidc/implicit-flow.png)
+![](~@imagesEnUs/guides/federation/oidc/implicit-flow.png)
 
-了解更多信息，请参考[使用隐式模式](/federation/oidc/implicit/)。
+For more information, please refer to [Using Implicit Mode](/federation/oidc/implicit).
 
-## 密码模式
+## Password Mode
 
-密码模式适用于你既掌握应用程序又掌握应用所需资源的场景。密码模式要求应用能够安全存储密钥，并且能够被信任地存储资源所有者的账密。一般常见于自家应用使用自家的资源。密码模式不需要重定向跳转，只需要携带用户账密访问 Token 端点。
+The Password Mode is suitable for scenarios where you master both the application and the resources required by the application. The Password Mode requires the application to be able to store keys securely and to be able to trustfully store the account secrets of the resource owner. It is generally common for your own apps to use your own resources. The Password Mode does not require redirection, but only needs to carry the user account and secret to access the Token endpoint.
 
-![](~@imagesZhCn/guides/federation/oidc/password-flow.png)
+![](~@imagesEnUs/guides/federation/oidc/password-flow.png)
 
-了解更多信息，请参考[使用密码模式](/federation/oidc/password/)。
+For more information, please refer to [Using Password Mode](/federation/oidc/password/).
 
-## Client Credentials 模式
+## Client Credentials Mode
 
-Client Credentials 模式用于进行服务器对服务器间的授权（M2M 授权），期间没有用户的参与。你需要创建编程访问账号，并将 AK、SK 密钥对交给你的资源调用方。
+The Client Credentials Mode is used for server-to-server authorization (M2M authorization), during which there is no user involvement. You need to create a programmatic access account and give the AK and SK key pair to your resource caller.
 
 ::: hint-info
-Client Credentials 模式不支持 Refresh Token。
+Client Credentials Mode does not support Refresh Token.
 :::
 
-![](~@imagesZhCn/guides/federation/oidc/client-credentials-flow.png)
+![](~@imagesEnUs/guides/federation/oidc/client-credentials-flow.png)
 
-了解更多信息，请参考[使用 Client Credentials 模式](/federation/oidc/client-credentials/)。
+For more information, please refer to [Use Client Credentials Mode](/federation/oidc/client-credentials/)

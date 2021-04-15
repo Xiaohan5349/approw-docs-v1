@@ -1,26 +1,26 @@
 ---
 meta:
   - name: description
-    content: 使用环境变量
+    content: Use Environment Variables in Pipeline
 ---
 
-# 在 Pipeline 中使用环境变量
+# Use Environment Variables in Pipeline
 
 ::: hint-success
-Pipeline 函数中的环境变量和操作系统里环境变量的概念一致，开发者可以通过全局变量 env 获取。环境变量对应用池内所有 Pipelien 函数全部可见。
+The environment variables in the Pipeline function are consistent with the concept of environment variables in the operating system, and developers can get them through the global variable env. Environment variables are visible to all Pipelien functions in the application pool.
 :::
 
-你可以在**设置** - **环境变量**页面配置环境变量：
+You can configure environment variables on the **Setting** - **Environment Variable**：
 
 ![](https://cdn.authing.cn/blog/20200927200619.png)
 
-环境变量为一组 Key-Value Pair 值，可以用于保存 WebHook 链接、密钥等数据。
+Environment variables are a set of Key-Value Pair values, which can be used to save data such as WebHook links and keys.
 
-输入 Key 和 Value 之后点击添加：
+After entering Key and Value, click Add:
 
 ![](https://cdn.authing.cn/blog/20200927200707.png)
 
-在此，我们设置了一个 Key 为 `LARK_WEBHOOK` 的环境变量，在 Pipeline 函数中可以通过 `env.LARK_WEBHOOK` 获取对应的 Value 值。如下面这个用户注册之后触发飞书群通知的例子：
+We set an environment variable whose Key is `LARK_WEBHOOK`, and the corresponding value can be obtained through `env.LARK_WEBHOOK` in the Pipeline function.
 
 ```js
 async function pipe(user, context, callback) {
@@ -28,14 +28,14 @@ async function pipe(user, context, callback) {
   await axios.post(webhook, {
     title: "New User Registered - From {{$localeConfig.brandName}} Rules Pipeline",
     text: `
-                用户信息：
+                User Profile：
                 ID: ${user.id}
-                昵称：${user.username}
-                注册方式：${user.registerSource}
-                邮箱：${user.email}
-                手机号：${user.phone}
+                Nickname：${user.username}
+                RegisterationSource：${user.registerSource}
+                Email Address：${user.email}
+                Phone Number：${user.phone}
                 UA: ${user.device}
-                用户池 ID: ${user.userPoolId}
+                Userpool ID: ${user.userPoolId}
           `,
   });
   return callback(null, user, context);

@@ -1,30 +1,31 @@
 ---
 meta:
   - name: description
-    content: 管理员创建账号
+    content: Administrator create accounts
 ---
 
-# 管理员创建账号
+# Administrator Create Accounts
 
 <LastUpdated/>
 
-管理员创建账号与用户自己注册账号的异同：
-- 管理员创建账号不受「禁止注册」配置限制；
-- 管理员创建账号不受「注册白名单」限制；
-- 管理员创建手机号账号不需要验证码，而用户自己注册需要；
-- 管理员创建的手机号账号 `phoneVerified` 字段为 `false`，用户自己注册的为 `true`；
-- 管理员创建账号和用户自己注册都不能创建重复的邮箱、手机号、username。
+The similarities and differences between the account created by the administrator and the account registered by the user as follows:
 
-管理员可以通过[控制台](#使用控制台创建用户)或者 [SDK](#使用-sdk-创建用户) 创建用户。
+- The account created by the administrator is not restricted by the "registration disabled" configuration.
+- The account created by the administrator is not restricted by the "registration whitelist".
+- Administrators do not need a verification code to create a phone account, but users need verify their phone number when registering an account by themselves.
+- The `phoneVerified` field of the mobile phone number account created by the administrator is `false`, but the account registered by the user is `true`.
+- Both the administrator's account creation and the user's self-registration cannot create duplicate mailboxes, phone numbers, and usernames.
 
-## 使用控制台创建用户
+Administrators can create users through the [console](#Create-accounts-using-the-console) or [SDK](#Create-accounts-using-the-SDK).
 
-你可以在控制台的 **用户管理** - **用户列表** 手动创建账号：
+## Create accounts using the console
 
-> 可以通过邮箱和手机号创建账号。
+You can manually create an account in the **user management** -> **user list** of the console:
+
+> You can create an account by email or phone number.
 
 ![](../images/create-user-from-dashboard.jpg)
 
-## 使用 SDK 创建用户
+## Create accounts using the SDK
 
-<StackSelector snippet="create-user" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+<StackSelector snippet="create-user" selectLabel="select your language" :order="['java', 'javascript', 'python', 'csharp']"/>

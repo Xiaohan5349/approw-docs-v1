@@ -4,13 +4,13 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: " 在 Odoo 中集成 Authing 完成单点登录",
-  bannerTitle: " 在 Odoo 中集成 Authing 完成单点登录",
+  title: "Integrate Odoo with Approw to Achieve SSO",
+  bannerTitle: " Integrate Odoo with Approw to Achieve SSO",
   steps:
     [
-      { title: "Odoo 简述", subTitle: "" },
-      { title: "Odoo 集成流程", subTitle: "" },
-      { title: "体验登录", subTitle: "" },
+      { title: "Introduction of Odoo", subTitle: "" },
+      { title: "Odoo Integration Instruction", subTitle: "" },
+      { title: "Login Experience", subTitle: "" },
     ],
 }
 ---

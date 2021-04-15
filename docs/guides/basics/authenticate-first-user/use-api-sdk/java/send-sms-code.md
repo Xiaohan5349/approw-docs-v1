@@ -1,4 +1,4 @@
-使用 `sendSmsCode` 方法发送验证码：
+Send SMS code using `sendSmsCode` method.
 
 ```java
 String phone = "phone number";

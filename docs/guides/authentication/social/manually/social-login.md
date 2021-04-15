@@ -1,33 +1,33 @@
 
-你需要在社会化登录的配置页面设置回调链接（Callback URL），用户完成登录之后将会跳转到该回调地址：
+You need to set a callback link (Callback URL) on the configuration page of social login, and the user will be redirected to the callback address after logging in:
 
 <img src="../../images/social-connection-redirect-url.png" height="600px">
 
-### 引导用户跳转到社会化登录授权页
+### Direct users to redirect to the social login authorization page
 
-此方式仅适用于 Web 端的社会化登录，如果你需要在移动 App 内发起社会化登录，请阅读相关社会化登录服务商的文档。
+This method is only applicable to social login on the Web page. If you need to initiate a social login in the mobile App, please read the documentation of the relevant social login service provider.
 
-此操作应该在浏览器完成。你可以在 Web 页面上放置一个可点击的按钮或 Logo 链接到上面的链接以便用户可以点击登录。
+This operation should be done in the browser. You can set a  button or Logo link on the Web page to the link above so that users can click to log in.
 
-你需要拼接下面以下格式的链接，其中 YOUR_APP_ID 为你的应用 ID（注意不是用户池 ID）：
+You need to stitch the following links in the following format, YOUR_APP_ID is your application ID (it is not the user pool ID):
 
-`https://core.authing.cn/connection/social/<IDENTIFIER>?app_id=<YOUR_APP_ID>`
+`https://core.approw.com/connection/social/<IDENTIFIER>?app_id=<YOUR_APP_ID>`
 
-### 处理 {{$localeConfig.brandName}} 回调请求
+### Process {$localeConfig.brandName}} callback request
 
-上一步用户同意授权之后，会先跳转到 {{$localeConfig.brandName}} 服务器，之后 {{$localeConfig.brandName}} 会携带用户信息跳转到开发者在 {{$localeConfig.brandName}} 控制台中配置的业务回调链接，并附带以下 Get 请求参数：
+After the user agrees to the authorization in the previous step, it will redirect to the {{$localeConfig.brandName}} server first, and then {{$localeConfig.brandName}} will redirect to the business callback link configured by the developer in the {{$localeConfig.brandName}} console with the user information, with the following Get request parameters:
 
-| 参数                   | 说明                                      | 劣势                                                | 是否推荐   |
+| Parameter                  | Description                                      | Disadvantages                                                | Recommend   |
 |------------------------|-------------------------------------------|-----------------------------------------------------|------------|
-| code                   | 错误或成功代码，200 为成功，非 200 为失败 |                                                     | 推荐使用   |
-| message                | 成功或错误信息                            |                                                     | 推荐使用   |
-| data                   | userInfo，若 code 为非 200 不返回此参数   | 无法嵌入到你的应用中                                | 推荐使用   |
+| code                   | 200: success other: failure |                                                     | Yes   |
+| message                | Success or error message                            |                                                     | Yes   |
+| data                   | userInfo, this parameter is not returned if code is not 200   | Cannot be embedded in your app                                | Yes   |
 
-部分浏览器和 Web Server 在 URL 过长的情况下有可能出现 404，如 ASP.NET，这个时候需要修改一下配置，[具体方式请见这个 StackOverflow 回答](https://stackoverflow.com/questions/28681366/in-asp-net-mvc-would-a-querystring-too-long-result-in-404-file-not-found-error/28681600)。
-以下是使用 JavaScript 从 URL 参数中获取用户数据的代码
+Some browsers and Web Servers may have a 404 when the URL is too long, such as ASP.NET. At this time, you need to modify the configuration. For details, [please refer to this StackOverflow answer](https://stackoverflow.com/questions/28681366/in-asp-net-mvc-would-a-querystring-too-long-result-in-404-file-not-found-error/28681600). 
+The following is the code to get user data from URL parameters using JavaScript.
 
 ```javascript
-// 获取 URL 参数
+// Get URL parameters
 function getQueryString(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
   var r = window.location.search.substr(1).match(reg);
@@ -37,18 +37,18 @@ function getQueryString(name) {
   return null;
 }
 
-// 将 Code 转为 Int 类型，方便判断
+// Convert Code to Int type to facilitate judgment
 const code = parseInt(getQueryString("code"));
 
 if (code !== 200) {
-  // 出错了
+  // error
   const errorMsg = getQueryString("message");
-  // 展示 errorMsg 给用户或执行其他业务 ...
+  // Show errorMsg to users or perform other business...
 } else {
   const userInfo = getQueryString("data");
 
-  // 将 token 存储到 localStorage
-  // 建议在之后的请求中附带 Token，并由后端验证 Token 合法性
+  // Store token to localStorage
+  // It is recommended to attach the Token to subsequent requests, and verify the validity of the Token by the backend
   localStorage.setItem("token", userInfo.token);
 }
 ```

@@ -1,76 +1,76 @@
-# 使用托管登录页完成认证
+# Use Approw Hosted Login Page to Authenticate
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} 托管登录页是最简单，最安全的集成方式。这是因为登录流程由 {{$localeConfig.brandName}} 维护，并由 {{$localeConfig.brandName}} 保持安全。对于大多数集成，建议使用 {{$localeConfig.brandName}} 托管的登录流程。你的业务系统将用户重定向到 {{$localeConfig.brandName}}，在此用户进行身份验证，然后重定向回在控制台配置的应用回调连接。此设计被认为是安全性最佳实践。在自定义配置方面，托管模式提供了中等程度的登录注册表单自定义配置，可通过控制台配置和 CSS 进行界面自定义。
+{{$localeConfig.brandName}} hosted login page is the easiest and safest way to integrate. Because the login flow is maintained by {{$localeConfig.brandName}} and kept secure by {{$localeConfig.brandName}}. For most integrations, it is recommended to use the login flow hosted by {{$localeConfig.brandName}}. Your business system redirects the user to {{$localeConfig.brandName}}, where the user is authenticated, and then redirected back to the application callback connection configured in the console. This design is considered as the best practice for security. In terms of custom configuration, the hosting mode provides a moderate level of custom configuration of the login and registration form, which can be customized through the console configuration and CSS.
 
-本文档将会介绍如何使用 {{$localeConfig.brandName}} 托管的登录页快速实现一个完整的用户认证流程。
+This document will introduce how to quickly implement a complete user authentication flow using {{$localeConfig.brandName}} hosted login page.
 
-## 创建一个用户池
+## Create a user pool
 
-[用户池](/concepts/user-pool.md)是你用户系统的隔离的最小单位，你可以把不同场景的用户划分在不同的用户池。每个用户池下都可以有用户和应用程序，不同用户池之间的权限、应用、组织是完全隔离的。
+[User pool](/concepts/user-pool.md) is the minimum unit of isolation of your user system. You can divide users in different scenarios into different user pools. There can be users and applications under each user pool. The privileges, applications, and organizations between different user pools are completely isolated.
 
-如果你还没有 {{$localeConfig.brandName}} 开发者账号，你需要先在[控制台](https://console.authing.cn)注册一个 {{$localeConfig.brandName}} 开发者账号。如果你还没有创建一个用户池，可以按照指引创建你的第一个用户池：
+If you don't have an {{$localeConfig.brandName}} developer account yet, you need to register an {{$localeConfig.brandName}} developer account in [Console](https://console.approw.com). Follow the instructions below to create your first user pool:
 
-<img src="~@imagesZhCn/guides/basics/Xnip2021-02-27_14-58-25.png" alt="drawing"/>
+<img src="./images/create-userpool.png" alt="drawing"/>
 
-创建成功之后，你将自动跳转到用户池详情页。
+After the creation is successful, you will automatically redirect to the user pool details page.
 
-## 创建一个应用
+## Create an application
 
-在控制台 - 应用页，你可以查看自己应用列表：
+In Console - Application, you can check your application list:
 
 ![](./images/app-list.png)
 
-选择其他某个应用，点击右侧的体验按钮，在弹出的新窗口中，你可以看到这个由 {{$localeConfig.brandName}} 托管的在线登录页，该登录页集成了登录、注册、忘记密码、社交登录、MFA 等功能：
+Select application and click the Login button on the right. In the popped-up window, you can see this online login page hosted by {{$localeConfig.brandName}}, which integrates features such as login, registration, forgot password, social login, and MFA:
 
 ![](./images/login-page-1.png)
 
-## 创建一个用户
+## Create a user
 
-切换到注册页，选择邮箱注册，输入邮箱和密码，点击注册按钮：
+Switch to the registration page, select "Register with Email", enter the email and password, then click the register button:
 
 ![](./images/register.png)
 
-注册成功之后，你可以在控制台的用户列表页看到该用户。
+After registering successfully, you can check the user on the user list page of the console.
 
-## 体验登录
+## Experience login flow
 
-回到登录页面，输入刚刚创建账号的邮箱和密码，点击登录，登录成功之后，你将跳转到一个回调指引页面（在这个页面你可以查看后续详细的指引流程以及最佳时间，建议完整阅读一遍），你可以看到在 URL 中包含了 `code` 查询参数，我们下一步会用此 `code` 换取 `token`。
+Go back to the login page, enter the email and password of the account you just created, click Login. After logging in successfully, you will be redirected to a callback guidance page (on this page you can view the follow-up detailed guidance process and the best time. It is recommended to read it completely.), you can see that the query parameter `code` is included in the URL, and we will exchange `token` with `code` in the next step.
 
 ![](./images/succes-callback.png)
 
-## 使用 code 换取 token
+## Exchange token with code
 
-在实际应用中，你需要将**回调地址**改为你的**实际业务地址**，该地址需要为一个**后端地址**。
+In actual applications, you need to change the **callback address** to your **actual business address**, which needs to be a **back-end address**.
 
-![](https://files.authing.co/authing-console/console-callback-address.png)
+![](https://files.approw.co/approw-console/console-callback-address.png)
 
-获取到 `code` 之后，你需要使用 `code` 换取用户信息，Node.js 示例代码如下：
+After obtaining the `code`, you need to use the `code` in exchange for user information. The Node.js sample code is as follows:
 
 ```javascript
-const axios = require("axios");
-const qs = require("querystring");
+const axios = require('axios')
+const qs = require('querystring')
 const code2tokenResponse = await axios.post(
-  // 修改为你的应用域名
-  "https:/sample-app.authing.cn/oidc/token",
+  // modify this to your application name
+  'https:/sample-app.approw.com/oidc/token',
   qs.stringify({
     code,
-    client_id: "APP_ID",
-    client_secret: "APP_SECRET",
-    grant_type: "authorization_code",
-    redirect_uri: "REDIRECT_URI",
+    client_id: 'APP_ID',
+    client_secret: 'APP_SECRET',
+    grant_type: 'authorization_code',
+    redirect_uri: 'REDIRECT_URI',
   }),
   {
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
   }
-);
-const { id_token, access_token } = code2tokenResponse.data;
+)
+const { id_token, access_token } = code2tokenResponse.data
 ```
 
-返回的数据中有 [id_token](/concepts/id-token.md) 和 [access_token](/concepts/access-token.md)，简单来说 `id_token` 相当于用户的身份凭证，`access_token` 是允许访问资源的钥匙，你可以[在此](/concepts/access-token-vs-id-token.md)详细了解他们之前的区别。
+There are [id_token](/concepts/id-token.md) and [access_token](/concepts/access-token.md) in returned data.Simply speaking, `id_token` is equivalent to the user's identity credential, and `access_token` is the key that allows access to resources. You can learn more about their differences [here](/concepts/access-token-vs-id-token.md).
 
 ```json
 {
@@ -82,7 +82,7 @@ const { id_token, access_token } = code2tokenResponse.data;
 }
 ```
 
-将 `id_token` [解码](https://jwt.yelexin.cn) 之后，得到的示例数据如下：
+After [decoding](https://jwt.yelexin.cn) `id_token`, the sample data is as follows:
 
 ```json
 {
@@ -108,94 +108,94 @@ const { id_token, access_token } = code2tokenResponse.data;
 }
 ```
 
-你可以使用上一步换到的 `access_token` 来获取用户的详细信息，示例代码如下：
+You can use the `access_token` acquired in the previous step to get the user's detailed information. The sample code is as follows:
 
 ```javascript
-const axios = require("axios");
+const axios = require('axios')
 const token2UserInfoResponse = await axios.get(
-  "https://sample-app.authing.cn/oidc/me?access_token=" + access_token
-);
-console.log(token2UserInfoResponse.data);
+  'https://sample-app.approw.com/oidc/me?access_token=' + access_token
+)
+console.log(token2UserInfoResponse.data)
 ```
 
-之后你需要将 `id_token` 传递返回给前端，前端应该保存 `id_token`，并在每次请求后端接口时携带，后端接口应当先验证前端传来的 `id_token` 合法性，再处理用户请求。如何验证 Token 合法性请[参考文档](/guides/faqs/how-to-validate-user-token.md)。
+After that, you need to pass the `id_token` back to the front end. The front end should save the id_token and carry it every time when it send requests the back end interface. The back end interface should validate the id_token sent from the front end before processing the user request. Please refer to the [document](/guides/faqs/how-to-validate-user-token.md) for how to validate the token.
 
 ::: hint-info
 
-### 无后端场景该如何处理？
+### How to deal with None-back-end Senario
 
-前面提到的 `code 换 token` 需要在后端完成，如果你属于无后端场景，可以使用以下两种模式：
+The process "exchange the token with code" mentioned before should be done in back end program. If you are in a none-back-end senario, you can use either method of the two below:
 
-#### 使用 OIDC implicit 模式
+#### Use OIDC implicit mode
 
-在**控制台** > **应用** 找到你的应用，在 **授权模式** 开启 **implicit 模式** 并勾选 **id_token token** 返回类型，然后让你的用户使用以下地址发起登录：
+In console > Application, find your application, enable "Implicit mode" in "Authorization mode" and check the return token type "id_token", and then ask the users to login through this address:
 
 ```
-GET https://sample-app.authing.cn/oidc/auth?client_id=AUTHING_APP_ID&redirect_uri={回调地址}&scope=openid%20profile&response_type=id_token%20token&state={随机字符串}&nonce={随机字符串}
+GET https://sample-app.Approw.com/oidc/auth?client_id=Approw_APP_ID&redirect_uri={callBackAddress}&scope=openid%20profile&response_type=id_token%20token&state={randomString}&nonce={randonString}
 ```
 
-Authing 以 URL hash 的形式直接返回 id_token 和 access_token 到回调地址，例如：
+Approw directly returns id_token and access_token to the callback address in the form of URL hash, for example:
 
 ```
 https://example.com/#id_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Y2QwMjZlZjNlZDlmOTRkODBmZTM2YWUiLCJub25jZSI6IjE4MzEyODkiLCJzaWQiOiI4YzgzN2I5My01OTNlLTQzZjctYWMzNC0yYjRmZDU3ZGFhMTciLCJhdF9oYXNoIjoiVFFtbFlEVTVPZGF1Zjl0U0VKdHY5USIsInNfaGFzaCI6Ind3SDNXclV2b0hiSUp5TWVZVHU4bHciLCJhdWQiOiI1ZDAxZTM4OTk4NWY4MWM2YzFkZDMxZGUiLCJleHAiOjE1NjA0MDkzNjgsImlhdCI6MTU2MDQwNTc2OCwiaXNzIjoiaHR0cHM6Ly9vYXV0aC5hdXRoaW5nLmNuL29hdXRoL29pZGMifQ.T9M0s6rk4Teq6VOOBRIElgHK9KyM3q0ZJj2aS0VD_Fw&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OE9XcVJNVXJEUXpMMXpHVzVtUWoiLCJzdWIiOiI1Y2QwMjZlZjNlZDlmOTRkODBmZTM2YWUiLCJpc3MiOiJodHRwczovL29hdXRoLmF1dGhpbmcuY24vb2F1dGgvb2lkYyIsImlhdCI6MTU2MDQwNTc2OCwiZXhwIjoxNTYwNDA5MzY4LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIiwiYXVkIjoiNWQwMWUzODk5ODVmODFjNmMxZGQzMWRlIn0.mR0MZDwlZWGRMsAZjQ27sDFFqYoDgZ6WHTK4C7JbML4&expires_in=3600&token_type=Bearer&state=jazz&session_state=26ec053be9f47d68dc430f84b97efb1095469fe10169a9e00ef4092718714b8b
 ```
 
-你可以从 `url hash` 中取出 `id_token`，然后可以通过解码 `id_token` 获取用户信息，详情请见[验证用户身份凭证（token）](/guides/faqs/how-to-validate-user-token.md)。
+You can extract `id_token` from `url hash`, and then you can get user information by decoding `id_token`. For details, please refer to [validate user token](/guides/faqs/how-to-validate-user-token.md).
 
-#### 使用 trackSession
+#### Use trackSession
 
-Authing 提供另外一种简单的前端获取用户信息的方式，无需处理回调或进行其他配置。
+Approw provides another simple method for front-end to obtain user information without processing callbacks or other configurations.
 
-1. 安装[单点登录 SDK](/reference/sdk-for-sso.md)，完成初始化，调用 `trackSession` 函数获取用户登录状态。
+1. Install the [single sign-on SDK](/reference/sdk-for-sso.md), complete the initialization, and call the trackSession function to obtain the user's login status.
 
-使用 NPM 安装
+Use NPM to install:
 
 ```
-$ npm install @authing/sso --save
+$ npm install @approw/sso --save
 ```
 
-使用 CDN
+useCDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/Approw.umd.min.js"></script>
 ```
 
-2. 初始化 SDK
+2. Initialize SDK
 
 ```javascript
-const authing = new AuthingSSO({
-  appId: "AUTHING_APP_ID",
-  appDomain: "sample-app",
-});
+const approw = new Approw({
+  appId: 'APPROW_APP_ID',
+  appDomain: 'sample-app',
+})
 ```
 
-3. 调用 `trackSession` 函数获取用户登录状态
+3. Call trackSession to get user login status
 
 ```javascript
-const res = await authing.trackSession();
+const res = await approw.trackSession()
 if (res.session) {
-  // 已登录
+  // logged in
 } else {
-  // 未登录
+  // not login yet
 }
 ```
 
-详细使用方式请查看[文档](/reference/sdk-for-sso.md)。
+Please check the [document](/reference/sdk-for-sso.md) for detailed usage.
 
 :::
 
-## 访问个人中心
+## Visit personal center
 
-在 {{$localeConfig.brandName}} 中创建的每个应用都有一个内置的给终端用户的个人中心页，<span v-pre>地址为 `{{YOUR_APP_DOMAIN}}/u`</span>，如 `https://sample-app.authing.cn/u`，你可以通过浏览器直接访问该地址：
+Every application created in {{$localeConfig.brandName}} has a built-in personal center page for end users, <span v-pre>the address is {{YOUR_APP_DOMAIN}}/u</span>, such as https://sample-app.Approw.com/u.You can directly access the address through the browser:
 
 ![](./images/personal-central.png)
 
-在此终端用户可以查看和修改自己的个人信息、修改密码、绑定邮箱手机号、绑定 MFA 等。
+Here end users can view and modify their personal information, modify passwords, bind email and mobile phone numbers, bind MFA, etc.
 
-## 使用登录组件
+## Use login component
 
-上述流程中，我们使用的是 {{$localeConfig.brandName}} 运维的托管登录页面。同时我们还提供支持各种主流 Web 框架的[登录组件](/reference/ui-components/)，相比在线的登录页，登录组件更加灵活、自定义能力更强，你可以将其集成到的自己的页面中，详细流程请见[使用内嵌登录组件完成认证](/guides/basics/authenticate-first-user/use-embeded-login-component/)。
+In the above process, we use the online login page of {{$localeConfig.brandName}} operation and maintenance. At the same time, we also provide login components that support various mainstream web frameworks. Compared with online login pages, the [login components](/reference/ui-components/) are more flexible and more customizable. You can integrate them into your own pages. For the detailed process, see [use the embedded login component to authenticate](/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
-## 使用 API & SDK
+## Use API & SDK
 
-至此你已经了解了如何借助 {{$localeConfig.brandName}} 的托管登录页快速实现核心的登录注册流程，如果你想有更强的自定义需要，也可以使用 {{$localeConfig.brandName}} 提供的 [API & SDK](/reference/) ，详细流程请见 [使用 API & SDK 完成认证](/guides/basics/authenticate-first-user/use-api-sdk/)。
+So far you have learned how to quickly implement the core login and registration process with the help of {{$localeConfig.brandName}} hosted login page. If you want to have stronger customization needs, you can also use the [API & SDK](/reference/) provided by {{$localeConfig.brandName}}. For the detailed process, please see [use API & SDK to authenticate](/guides/basics/authenticate-first-user/use-api-sdk/).

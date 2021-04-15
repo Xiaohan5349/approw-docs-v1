@@ -1,8 +1,7 @@
-该脚本会在管理员使用控制台或者 API 获取用户列表时执行，这个接口需要的数据中需要包含用户总数、当前页用户列表。此脚本只在完全使用自定义数据库模式中需要。
+This script will be called when amdin uses console or API to get a user list. This interface will require the number of total users and the list of users in the current page. This script is only required in CUSTOM_USER_STORE mode.
+### Function Definition
 
-### 函数定义
-
-`listUsers` 函数定义如下：
+Here is the definition of the `listUsers` function:
 
 ```javascript
 async function listUsers(page, limit, context) {
@@ -13,7 +12,7 @@ async function listUsers(page, limit, context) {
   // The second argument `limit` is page size.
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
@@ -31,31 +30,31 @@ async function listUsers(page, limit, context) {
 }
 ```
 
-| 参数    | 类型   | nullable | 说明                |
+| Parameter    | Type   | Nullable | Explanation                |
 | :------ | :----- | :------- | :------------------ |
-| page    | number | false    | 页码数，从 1 开始。 |
-| limit   | number | false    | 每页数目。          |
-| context | object | true     | 请求上下文 context  |
+| page    | number | false    | Page number. It will start at 1. |
+| limit   | number | false    | The number of users per page.          |
+| context | object | true     | Requiring context  |
 
 
-其中 context 中包含包含以下信息：
+The context also includes the following information:
 
-| 属性名           | 类型   | 说明                                                                                                        |
+| Property Name           | Type   | Explanation                                                                                                        |
 | :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+| userPoolId       | string | The ID of the user pool.                                                                                                   |
+| userPoolName     | string | The Name of the user pool.                                                                                                |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                          |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                               |
+| appName          | string | The name of the current application.                                                                                       |
+| appMetadata      | object | Configurations of the current application.                                                                                        |
+| application      | string | The ID of the user pool.                                                                                                   |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-### 返回数据约定
+### The Rule of the Script's Return Value
 
-#### 获取用户列表成功
+#### Get user list successfully
 
-你需要按照以下格式组装用户数据：返回的数据需要是一个对象，key `totalCount` 表示用户总数，key `list` 表示当前页的用户列表，如：
+When the user list is received successfully, you need to build up user information with following formats: the returned result should be an object, the key `totalCount` represents the total number of users in this list and the key `list` represents the pages of the list. For example, 
 
 ```javascript
 async function listUsers(id, updates, context) {
@@ -72,9 +71,9 @@ async function listUsers(id, updates, context) {
 }
 ```
 
-#### 其他异常错误
+#### Other abnormal errors
 
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
+When the user meets other errors, you can catch the error and return a friendly notice such as
 
 ```javascript
 async function listUsers(id, updates, context) {
@@ -86,17 +85,17 @@ async function listUsers(id, updates, context) {
 }
 ```
 
-### 最佳实践
+### Best Practice
 
-#### 提供友好的错误提示
+#### Provide friendly error annoncements
 
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
 ![](https://cdn.authing.cn/img/20210111163154.png)
 
-#### 函数结束时断开数据库连接
+#### Disable the database connection when exit the function
 
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
 ```javascript
 try {
@@ -107,13 +106,13 @@ try {
 }
 ```
 
-### 示例函数
+### Example Functions
 
-以 `postgres` 数据库为例，有以下几点说明：
+Assume we are using `postgres` as our database:
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 将用户信息组装成 Authing 指定的格式。
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- Build up the user information with the formats that Approw acquires.
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function listUsers(page, limit, context) {

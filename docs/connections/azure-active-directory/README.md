@@ -4,21 +4,21 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 Azure Active Directory 身份源',
-  bannerTitle: '连接 Azure Active Directory 身份源',
+  title: 'Integrate Azure Active Directory IdP',
+  bannerTitle: 'Integrate Azure Active Directory IdP',
   steps:
     [
       {
-        title: '在 Azure Active Directory 中创建一个应用',
+        title: 'Register an Application in Azure Active Directory',
       },
       {
-        title: '在 {{$localeConfig.brandName}} 中填入 Azure AD 应用的配置',
+        title: 'Setup the Configuration of the Azure AD Application in {{$localeConfig.brandName}}',
       },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an Application in {{$localeConfig.brandName}}'
       },
       {
-        title: '使用 Azure Active Directory 用户目录登录'
+        title: 'Use Azure AD to Login'
       },
     ],
 }

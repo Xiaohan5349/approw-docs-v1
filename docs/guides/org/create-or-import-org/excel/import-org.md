@@ -1,10 +1,10 @@
 在控制台组织机构管理页面，点击右上角的 **导入组织机构** - **从 Excel 导入** 按钮：
 
-![](~@imagesZhCn/guides/org/import-from-excel.jpg)
+![](~@imagesEnUs/guides/org/import-from-excel.jpg)
 
 点击下载 Excel 模版，Excel 模版结构如下：
 
-![](~@imagesZhCn/guides/org/excel-template.jpg)
+![](~@imagesEnUs/guides/org/excel-template.jpg)
 
 字段的释义如下：
 

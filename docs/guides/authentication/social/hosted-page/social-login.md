@@ -1,7 +1,7 @@
-你可以在应用详情的注册登录配置的社会化登录项配置该应用开启的社会化登录：
+You can configure the social login enabled by the application in the social login item of the registration login configuration of the application details:
 
 ![](../../images/config-social-connections.png)
 
-点击保存，登录页将只会显示已开启的社会化登录：
+Click Save, the login page will only display the social logins that have been turned on:
 
 ![](../../images/configured-social-connections.png)

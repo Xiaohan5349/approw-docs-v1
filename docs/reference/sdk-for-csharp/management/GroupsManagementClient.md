@@ -1,166 +1,166 @@
 ---
 meta:
   - name: description
-    content: 管理分组
+    content: GroupsManagementClient
 ---
 
-# 管理分组
+# GroupsManagementClient
 
 <LastUpdated/>
 
 
-> 此模块用于管理 {{$localeConfig.brandName}} 分组，可以进行分组的增删改查、分组添加/删除用户、分组添加/删除策略 等操作。
+> This client is used to manage {{$localeConfig.brandName}} groups，It can create/query/update/delete groups, add/delete users to/from groups, add/delete group's policy and perform other operations.
 
-## 创建分组
+## Create a group
 
 GroupsManagementClient().create(code, name, description)
 
-> 创建分组
+> Create a Group
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 分组唯一标志符
-- `name` \<string\> 分组名称
-- `description` \<string\> 描述
+- `code` \<string\> Group unique id
+- `name` \<string\> Group name
+- `description` \<string\> Description
 
-#### 示例
+#### Example
 
 ```csharp
 var list = await managementClient.Groups.Create(code, "name");
 ```
 
-## 删除分组
+## Delete a group
 
 GroupsManagementClient().delete(code)
 
-> 删除分组
+> Delete a group
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 分组唯一标志符
+- `code` \<string\> Group unique id
 
-#### 示例
+#### Example
 
 ```csharp
 var message = await managementClient.Groups.Delete(code);
 ```
 
-## 修改分组
+## Update a group
 
 GroupsManagementClient().update(code, input)
 
-> 修改分组
+> Update a group.
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 分组唯一标志符
+- `code` \<string\> The unique id of the group
 - `input` \<Object\>
-- `input.name` \<string\> 新的名称
-- `input.description` \<string\> 新的描述信息
-- `input.newCode` \<string\> 新的唯一标志符
+- `input.name` \<string\> New name
+- `input.description` \<string\> New description information
+- `input.newCode` \<string\> New unique id
 
-#### 示例
+#### Example
 
 ```csharp
 var group = await client.Groups.Update(code, description: "asd");
 ```
 
-## 获取分组详情
+## Get group details
 
 GroupsManagementClient().detail(code)
 
-> 获取分组详情
+> Get group details
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 分组唯一标志符
+- `code` \<string\> Group unique id
 
-#### 示例
+#### Example
 
 ```csharp
 var policy = await managementClient.Groups.Update(code, description: "asd");
 ```
 
-## 获取分组列表
+## Get the group list
 
 GroupsManagementClient().list(page, limit)
 
-> 获取分组列表
+> Get the group list
 
-#### 参数
+#### Parameters
 
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+- `page` \<number\> Page number. Default value:  `1`。
+- `limit` \<number\> Groups per page. Default value: `10`。
 
-#### 示例
+#### Example
 
 ```csharp
 var list = await managementClient.Groups.List();
 ```
 
-## 批量删除分组
+## Bulk delete groups
 
 GroupsManagementClient().deleteMany(codeList)
 
-> 批量删除分组
+> Bulk delete groups
 
-#### 参数
+#### Parameter
 
-- `codeList` \<string[]\> 分组唯一标志符列表
+- `codeList` \<string[]\> a list of unique id of the groups
 
-#### 示例
+#### Example
 
 ```csharp
 var message = await managementClient.Groups.DeleteMany(new string[] { code });
 ```
 
-## 获取分组用户列表
+## Get users list of the group
 
 GroupsManagementClient().listUsers(code, page, limit)
 
-> 获取分组用户列表
+> Get users list of the group
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 分组唯一标志符
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+- `code` \<string\> Group unique id
+- `page` \<number\> Page number, default value:  `1`。
+- `limit` \<number\> Users per page, default value:  `10`。
 
-#### 示例
+#### Example
 
 ```csharp
 var users = managementClient.Groups.ListUsers(code);
 ```
 
-## 添加用户
+## Add users to a group
 
 GroupsManagementClient().addUsers(code, userIds)
 
-> 添加用户
+> Add users to a group
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 分组唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Group unique id
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```csharp
 await managementClient.Groups.AddUsers(code, new string[] { userId1, userId2 });
 ```
 
-## 移除用户
+## Delete users from a group
 
 GroupsManagementClient().removeUsers(code, userIds)
 
-> 移除用户
+> Delete users from a group
 
-#### 参数
+#### Parameters
 
-- `code` \<string\> 分组唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Group unique id
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```csharp
 await managementClient.Groups.RemoveUsers(code, new string[] { userId1, userId2 });

@@ -1,87 +1,86 @@
 ---
 meta:
-  - name: description
-    content: 管理组织机构
+    - name: description
+      content: OrgManagementClient
 ---
 
-# 管理组织机构
+# OrgManagementClient
 
 <LastUpdated/>
 
+> An {{$localeConfig.brandName}} user pool can create multiple organizations. This client is used to manage the {{$localeConfig.brandName}} organization. It can create/query/update/delete organizations, create/update/delete nodes, and import organizations.
 
-> 一个 {{$localeConfig.brandName}} 用户池可以创建多个组织机构。此模块用于管理 {{$localeConfig.brandName}} 组织机构，可以进行组织机构的增删改查、添加删除移动节点、导入组织机构等操作。
-
-## 创建组织机构
+## Create an organization
 
 OrgManagementClient().create(createOrgParam)
 
-> 创建组织机构，会创建一个只有一个节点的组织机构。
-> 如果你想将一个完整的组织树导入进来，请使用 importByJson 方法。
+> Create an organization with only one node.
+> If you want to import a complete organization tree, please use the importByJson method.
 
-#### 参数
+#### Parameters
 
-- `createOrgParam` \<CreateOrgParam\>
-- `createOrgParam.name` \<string\> 组织机构名称，该名称会作为该组织机构根节点的名称
-- `createOrgParam.code` \<string\> 根节点唯一标志，必须为合法的英文字符
-- `createOrgParam.description` \<string\> 根节点描述
+-   `createOrgParam` \<CreateOrgParam\>
+-   `createOrgParam.name` \<string\> The name of the organization, which also will be the name of the root node of the organization
+-   `createOrgParam.code` \<string\> The unique id of the root node, which must be English characters.
+-   `createOrgParam.description` \<string\> Root node description
 
-#### 示例
+#### Example
 
 ```java
 Org org = managementClient.org().create(new CreateOrgParam("name1", "org1", "desc1")).execute();
 ```
 
-## 删除组织机构
+## Delete an Organization
 
 OrgManagementClient().deleteById(id)
 
-> 删除组织机构树
+> Delete the organization tree
 
-#### 参数
+#### Parameter
 
-- `id` \<string\> 组织机构 ID
+-   `id` \<string\> Organization ID
 
-#### 示例
+#### Example
 
 ```java
 CommonMessage message = managementClient.org().deleteById("id").execute();
 ```
 
-## 获取用户池组织机构列表
+## Get user pool organizations list
 
 OrgManagementClient().list(orgsParam)
 
-> 获取用户池组织机构列表
+> Get user pool organizations list.
 
-#### 参数
+#### Parameters
 
-- `orgsParam` \<OrgsParam\>
-- `orgsParam.page` \<number\> 默认值为 : `1`
-- `orgsParam.limit` \<number\> 默认值为 : `10`
-- `orgsParam.sortBy` \<SortByEnum\> 排序规则。
+-   `orgsParam` \<OrgsParam\>
+-   `orgsParam.page` \<number\> Default value: `1`.
+-   `orgsParam.limit` \<number\> Default value is: `10`.
+-   `orgsParam.sortBy` \<SortByEnum\> Sorting rules.
 
-#### 示例
+#### Example
 
 ```java
 PaginatedOrgs orgs = managementClient.org().list(new OrgsParam(1, 10, SortByEnum.CREATEDAT_DESC)).execute();
 ```
 
-## 添加节点
+## Add a node
 
 OrgManagementClient().addNode(addNodeParam)
 
-> 在组织机构中添加一个节点
+> Add a node in the organization
 
-#### 参数
+#### Parameters
 
-- `addNodeParam` \<AddNodeV2Param\>
-- `addNodeParam.orgId` \<string\> 组织机构 ID
-- `addNodeParam.parentNodeId` \<string\> 父节点 ID
-- `addNodeParam.name` \<string\> 节点名称
-- `addNodeParam.code` \<string\> 节点唯一标志
-- `addNodeParam.description` \<string\> 节点描述信息
+-   `addNodeParam` \<AddNodeV2Param\>
+-   `addNodeParam.orgId` \<string\> Organization ID
+-   `addNodeParam.parentNodeId` \<string\> Parent node ID
+-   `addNodeParam.name` \<string\> Node name
+-   `addNodeParam.code` \<string\> The unique identifier of the node
+-   `addNodeParam.description` \<string\> Node description information
 
-#### 示例
+#### Example
 
 ```java
 AddNodeV2Param param = new AddNodeV2Param("orgId", "orgName")
@@ -89,20 +88,20 @@ AddNodeV2Param param = new AddNodeV2Param("orgId", "orgName")
 Node node = managementClient.org().addNode(param).execute();
 ```
 
-## 修改节点
+## Update a node
 
 OrgManagementClient().updateNode(updateNodeParam)
 
-> 修改节点数据
+> Update nodes
 
-#### 参数
+#### Parameters
 
-- `updateNodeParam` \<UpdateNodeParam\>
-- `updateNodeParam.id` \<string\> 节点唯一标志
-- `updateNodeParam.name` \<string\> 节点名称
-- `updateNodeParam.description` \<string\> 节点描述信息
+-   `updateNodeParam` \<UpdateNodeParam\>
+-   `updateNodeParam.id` \<string\> The unique id of the node
+-   `updateNodeParam.name` \<string\> Node name
+-   `updateNodeParam.description` \<string\> Node description
 
-#### 示例
+#### Example
 
 ```java
 UpdateNodeParam param = new UpdateNodeParam(0, "");
@@ -112,159 +111,159 @@ param.setDescription("description");
 Node node = managementClient.org().updateNode(param).execute();
 ```
 
-## 获取组织机构详情
+## Get Organization details
 
 OrgManagementClient().findById(id)
 
-> 通过组织机构 ID 获取组织机构详情
+> Get Organization details by organization id.
 
-#### 参数
+#### Parameter
 
-- `id` \<string\> 组织机构 ID
+-   `id` \<string\> Organization ID
 
-#### 示例
+#### Example
 
 ```java
 Org org = managementClient.org().findById("id").execute();
 ```
 
-## 删除节点
+## Delete a node
 
 OrgManagementClient().deleteNode(deleteNodeParam)
 
-> 删除组织机构树中的某一个节点
+> Delete a node in the organization tree.
 
-#### 参数
+#### Parameters
 
-- `deleteNodeParam` \<DeleteNodeParam\>
-- `deleteNodeParam.orgId` \<string\> 组织机构 ID
-- `deleteNodeParam.nodeId` \<string\> 节点 ID
+-   `deleteNodeParam` \<DeleteNodeParam\>
+-   `deleteNodeParam.orgId` \<string\> Organization ID
+-   `deleteNodeParam.nodeId` \<string\> Node ID
 
-#### 示例
+#### Example
 
 ```java
 CommonMessage commonMessage = managementClient.org().deleteNode(new DeleteNodeParam("orgId", "nodeId")).execute();
 ```
 
-## 移动节点
+## Move a node
 
 OrgManagementClient().moveNode(orgId, nodeId, targetParentId)
 
-> 移动组织机构节点，移动某节点时需要指定该节点新的父节点。注意不能将一个节点移动到自己的子节点下面。
+> When moving a node, you need to specify the node's new parent node. You cannot move a node under its child nodes.
 
-#### 参数
+#### Parameters
 
-- `orgId` \<string\> 组织机构 ID
-- `nodeId` \<string\> 需要移动的节点 ID
-- `targetParentId` \<string\> 目标父节点 ID
+-   `orgId` \<string\> Organization ID
+-   `nodeId` \<string\> The ID of the node that needs to be moved
+-   `targetParentId` \<string\> Target parent node ID
 
-#### 示例
+#### Example
 
 ```java
 Org org = managementClient.org().moveNode("orgId", "nodeId", "targetParentId").execute();
 ```
 
-## 判断是否为根节点
+## Check whether it is the root node
 
 OrgManagementClient().isRootNode(nodeId, orgId)
 
-> 判断一个节点是不是组织树的根节点
+> Check whether a node is the root node of the organization tree.
 
-#### 参数
+#### Parameters
 
-- `nodeId` \<string\> 组织机构 ID
-- `orgId` \<string\> 组织机构 ID
+-   `nodeId` \<string\> Node ID
+-   `orgId` \<string\> Organization ID
 
-#### 示例
+#### Example
 
 ```java
 Boolean flag = managementClient.org().isRootNode("nodeId", "orgId").execute();
 ```
 
-## 获取子节点列表
+## Get child nodes list
 
 OrgManagementClient().listChildren(orgId, nodeId)
 
-> 查询一个节点的子节点列表
+> Get child nodes list of a node.
 
-#### 参数
+#### Parameters
 
-- `orgId` \<string\> 组织机构 ID
-- `nodeId` \<string\> 组织机构 ID
+-   `orgId` \<string\> Organization ID
+-   `nodeId` \<string\> Node ID
 
-#### 示例
+#### Example
 
 ```java
 List<Node> nodes = managementClient.org().listChildren("orgId", "nodeId").execute();
 ```
 
-## 模糊搜索组织节点
+## Fuzzy search organization node
 
 OrgManagementClient().searchNodes(searchNodesParam)
 
-> 通过节点名称模糊搜索组织节点
+> Fuzzy search organization node by node name.
 
-#### 参数
+#### Parameter
 
-- `searchNodesParam.keyword` \<string\> 组织机构名称关键字
+-   `searchNodesParam.keyword` \<string\> Organization name keyword
 
-#### 示例
+#### Example
 
 ```java
 List<Node> list = orgManagementClient.searchNodes(new SearchNodesParam("test")).execute();
 ```
 
-## 获取根节点
+## Get the root node
 
 OrgManagementClient().rootNode(rootNodeParam)
 
-> 获取一个组织的根节点
+> Get the root node of the organization.
 
-#### 参数
+#### Parameter
 
-- `rootNodeParam` \<RootNodeParam\>
-- `rootNodeParam.orgId` \<string\> 组织机构 ID
+-   `rootNodeParam` \<RootNodeParam\>
+-   `rootNodeParam.orgId` \<string\> Organization ID
 
-#### 示例
+#### Example
 
 ```java
 Node node = managementClient.org().rootNode(new RootNodeParam(0, "orgId")).execute();
 ```
 
-## 通过 JSON 导入
+## Import by JSON
 
 OrgManagementClient().importByJson(json)
 
-> 通过一个 JSON 树结构导入组织机构
+> Import organization through a JSON tree.
 
-#### 参数
+#### Parameter
 
-- `json` \<Object\> JSON 格式的树结构，详细格式请见示例代码。
+-   `json` \<Object\> A tree structure in JSON format. Detailed format is in the sample code.
 
-#### 示例
+#### Example
 
 ```java
 
 json examples:
 
 {
-  name: '北京非凡科技有限公司',
+  name: 'Beijing Feifan Technology',
   code: 'feifan',
   children: [
      {
          code: 'operation',
-         name: '运营',
-         description: '商业化部门'
+         name: 'operate',
+         description: 'commercial department'
      },
      {
         code: 'dev',
-        name: '研发',
-        description: '研发部门',
+        name: 'develop',
+        description: 'research department',
         children: [
           {
             code: 'backend',
-            name: '后端',
-            description: '后端研发部门'
+            name: 'backend',
+            description: 'backend research department'
           }
         ]
      }
@@ -289,402 +288,402 @@ String jsonStr = gson.toJson(map);
 Node nodes = managementClient.org().importByJson(jsonStr).execute();
 ```
 
-## 添加成员
+## Add members
 
 OrgManagementClient().addMembers(nodeId, userIds)
 
-> 节点添加成员
+> Add a member to the node.
 
-#### 参数
+#### Parameters
 
-- `nodeId` \<string\> 节点 ID
-- `userIds` \<string[]\> 用户 ID 列表
+-   `nodeId` \<string\> Node ID
+-   `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 Node node = managementClient.org().addMembers("nodeId", Arrays.asList("userId")).execute();
 ```
 
-## 获取节点成员
+## Get node members
 
 OrgManagementClient().listMembers(nodeByIdWithMembersParam)
 
-> 获取节点成员，可以获取直接添加到该节点中的用户，也可以获取到该节点子节点的用户。
+> Get the node members. You can get the users directly added to the node, and you can get the users of the child nodes.
 
-#### 参数
+#### Parameters
 
-- `nodeByIdWithMembersParam` \<NodeByIdWithMembersParam\>
-- `nodeByIdWithMembersParam.page` \<number\> 默认值为 : `1`
-- `nodeByIdWithMembersParam.limit` \<number\> 默认值为 : `10`
-- `nodeByIdWithMembersParam.sortBy` \<SortByEnum\> 排序规则
-- `nodeByIdWithMembersParam.includeChildrenNodes` \<boolean\> 是否获取所有子节点的成员 默认值为 : `false`
-- `nodeByIdWithMembersParam.id` \<string\> 节点 ID
+-   `nodeByIdWithMembersParam` \<NodeByIdWithMembersParam\>
+-   `nodeByIdWithMembersParam.page` \<number\> Default value: `1`
+-   `nodeByIdWithMembersParam.limit` \<number\> Default value: `10`
+-   `nodeByIdWithMembersParam.sortBy` \<SortByEnum\> sorting rules
+-   `nodeByIdWithMembersParam.includeChildrenNodes` \<boolean\> Whether to get the members of all child nodes. Default value: `false`
+-   `nodeByIdWithMembersParam.id` \<string\> Node ID
 
-#### 示例
+#### Example
 
 ```java
 Node node = managementClient.org().listMembers(new NodeByIdWithMembersParam("id")).execute();
 ```
 
-## 删除成员
+## Delete members
 
 OrgManagementClient().removeMembers(nodeId, userIds)
 
-> 删除节点成员
+> Delete members of node.
 
-#### 参数
+#### Parameters
 
-- `nodeId` \<string\> 节点 ID
-- `userIds` \<string[]\> 用户 ID 列表
+-   `nodeId` \<string\> Node ID
+-   `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```java
 Node node = managementClient.org().removeMembers("nodeId", Arrays.asList("userId")).execute();
 ```
 
-## 导出所有组织机构数据
+## Export all organization data
 
 OrgManagementClient().exportAll()
 
-> 导出所有组织机构，返回的数据结构为一个递归的数结构。
+> Export all organizations, and return data in a recursive structure.
 
-#### 示例
+#### Example
 
 ```java
 List<Node> nodes = this.orgManagementClient.exportAll().execute();
 ```
 
-#### 示例数据
+#### Sample data
 
 ```json
 [
-  {
-    "id": "601f59578308478a692a71ea",
-    "createdAt": "2021-02-07T03:07:03.822Z",
-    "updatedAt": "2021-02-07T03:07:03.822Z",
-    "userPoolId": "59f86b4832eb28071bdd9214",
-    "orgId": "601f59573abea48cceb188c6",
-    "name": "科技公司",
-    "nameI18n": null,
-    "description": null,
-    "descriptionI18n": null,
-    "order": null,
-    "code": null,
-    "children": [
-      {
-        "id": "601f5966800e61428d4190fb",
-        "createdAt": "2021-02-07T03:07:18.835Z",
-        "updatedAt": "2021-02-07T03:07:18.835Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "产品",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [],
-        "depth": 1,
-        "root": false,
-        "members": [
-          {
-            "thirdPartyIdentity": {
-              "provider": null,
-              "refreshToken": null,
-              "accessToken": null,
-              "scope": null,
-              "expiresIn": null,
-              "updatedAt": null
-            },
-            "id": "5a597f35085a2000144a10ed",
-            "createdAt": "2021-02-02T02:36:32.172Z",
-            "updatedAt": "2021-02-05T11:30:14.050Z",
-            "userPoolId": "59f86b4832eb28071bdd9214",
-            "isRoot": true,
-            "status": "Activated",
-            "oauth": null,
-            "email": "root@authing.cn",
-            "phone": null,
-            "username": "root",
-            "unionid": null,
-            "openid": null,
-            "nickname": null,
-            "company": null,
-            "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-            "browser": null,
-            "device": null,
-            "token": "",
-            "tokenExpiredAt": "2021-02-19T11:30:13.927Z",
-            "loginsCount": 4,
-            "lastIp": "::1",
-            "name": null,
-            "givenName": null,
-            "familyName": null,
-            "middleName": null,
-            "profile": null,
-            "preferredUsername": null,
-            "website": null,
-            "gender": "U",
-            "birthdate": null,
-            "zoneinfo": null,
-            "locale": null,
-            "address": null,
-            "formatted": null,
-            "streetAddress": null,
-            "locality": null,
-            "region": null,
-            "postalCode": null,
-            "city": null,
-            "province": null,
-            "country": null,
-            "registerSource": ["offcial:import"],
-            "emailVerified": false,
-            "phoneVerified": false,
-            "lastLogin": "2021-02-05T11:30:14.019Z",
-            "blocked": false,
-            "isDeleted": false,
-            "sendSmsCount": 0,
-            "sendSmsLimitCount": 1000,
-            "signedUp": "2021-02-02T02:36:32.172Z",
-            "externalId": null,
-            "mainDepartmentId": null,
-            "mainDepartmentCode": null,
-            "lastMfaTime": null,
-            "passwordSecurityLevel": null
-          }
-        ]
-      },
-      {
-        "id": "601f59622a1dea5ae5ada750",
-        "createdAt": "2021-02-07T03:07:14.163Z",
-        "updatedAt": "2021-02-07T03:07:14.163Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "研发",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [
-          {
-            "id": "601f597e62eaeda4e17e3352",
-            "createdAt": "2021-02-07T03:07:42.475Z",
-            "updatedAt": "2021-02-07T03:07:42.475Z",
-            "userPoolId": "59f86b4832eb28071bdd9214",
-            "orgId": "601f59573abea48cceb188c6",
-            "name": "后端",
-            "nameI18n": null,
-            "description": null,
-            "descriptionI18n": null,
-            "order": null,
-            "code": null,
-            "children": [],
-            "depth": 2,
-            "root": false,
-            "members": []
-          }
-        ],
-        "depth": 1,
-        "root": false,
-        "members": []
-      },
-      {
-        "id": "601f596e89427f0549daf48f",
-        "createdAt": "2021-02-07T03:07:26.919Z",
-        "updatedAt": "2021-02-07T03:07:26.919Z",
-        "userPoolId": "59f86b4832eb28071bdd9214",
-        "orgId": "601f59573abea48cceb188c6",
-        "name": "商业化",
-        "nameI18n": null,
-        "description": null,
-        "descriptionI18n": null,
-        "order": null,
-        "code": null,
-        "children": [],
-        "depth": 1,
-        "root": false,
-        "members": []
-      }
-    ],
-    "depth": 0,
-    "root": true,
-    "members": []
-  }
+	{
+		"id": "601f59578308478a692a71ea",
+		"createdAt": "2021-02-07T03:07:03.822Z",
+		"updatedAt": "2021-02-07T03:07:03.822Z",
+		"userPoolId": "59f86b4832eb28071bdd9214",
+		"orgId": "601f59573abea48cceb188c6",
+		"name": "technology company",
+		"nameI18n": null,
+		"description": null,
+		"descriptionI18n": null,
+		"order": null,
+		"code": null,
+		"children": [
+			{
+				"id": "601f5966800e61428d4190fb",
+				"createdAt": "2021-02-07T03:07:18.835Z",
+				"updatedAt": "2021-02-07T03:07:18.835Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "product",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [],
+				"depth": 1,
+				"root": false,
+				"members": [
+					{
+						"thirdPartyIdentity": {
+							"provider": null,
+							"refreshToken": null,
+							"accessToken": null,
+							"scope": null,
+							"expiresIn": null,
+							"updatedAt": null
+						},
+						"id": "5a597f35085a2000144a10ed",
+						"createdAt": "2021-02-02T02:36:32.172Z",
+						"updatedAt": "2021-02-05T11:30:14.050Z",
+						"userPoolId": "59f86b4832eb28071bdd9214",
+						"isRoot": true,
+						"status": "Activated",
+						"oauth": null,
+						"email": "root@approw.com",
+						"phone": null,
+						"username": "root",
+						"unionid": null,
+						"openid": null,
+						"nickname": null,
+						"company": null,
+						"photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+						"browser": null,
+						"device": null,
+						"token": "",
+						"tokenExpiredAt": "2021-02-19T11:30:13.927Z",
+						"loginsCount": 4,
+						"lastIp": "::1",
+						"name": null,
+						"givenName": null,
+						"familyName": null,
+						"middleName": null,
+						"profile": null,
+						"preferredUsername": null,
+						"website": null,
+						"gender": "U",
+						"birthdate": null,
+						"zoneinfo": null,
+						"locale": null,
+						"address": null,
+						"formatted": null,
+						"streetAddress": null,
+						"locality": null,
+						"region": null,
+						"postalCode": null,
+						"city": null,
+						"province": null,
+						"country": null,
+						"registerSource": ["offcial:import"],
+						"emailVerified": false,
+						"phoneVerified": false,
+						"lastLogin": "2021-02-05T11:30:14.019Z",
+						"blocked": false,
+						"isDeleted": false,
+						"sendSmsCount": 0,
+						"sendSmsLimitCount": 1000,
+						"signedUp": "2021-02-02T02:36:32.172Z",
+						"externalId": null,
+						"mainDepartmentId": null,
+						"mainDepartmentCode": null,
+						"lastMfaTime": null,
+						"passwordSecurityLevel": null
+					}
+				]
+			},
+			{
+				"id": "601f59622a1dea5ae5ada750",
+				"createdAt": "2021-02-07T03:07:14.163Z",
+				"updatedAt": "2021-02-07T03:07:14.163Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "R&D",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [
+					{
+						"id": "601f597e62eaeda4e17e3352",
+						"createdAt": "2021-02-07T03:07:42.475Z",
+						"updatedAt": "2021-02-07T03:07:42.475Z",
+						"userPoolId": "59f86b4832eb28071bdd9214",
+						"orgId": "601f59573abea48cceb188c6",
+						"name": "Back-end",
+						"nameI18n": null,
+						"description": null,
+						"descriptionI18n": null,
+						"order": null,
+						"code": null,
+						"children": [],
+						"depth": 2,
+						"root": false,
+						"members": []
+					}
+				],
+				"depth": 1,
+				"root": false,
+				"members": []
+			},
+			{
+				"id": "601f596e89427f0549daf48f",
+				"createdAt": "2021-02-07T03:07:26.919Z",
+				"updatedAt": "2021-02-07T03:07:26.919Z",
+				"userPoolId": "59f86b4832eb28071bdd9214",
+				"orgId": "601f59573abea48cceb188c6",
+				"name": "commercial",
+				"nameI18n": null,
+				"description": null,
+				"descriptionI18n": null,
+				"order": null,
+				"code": null,
+				"children": [],
+				"depth": 1,
+				"root": false,
+				"members": []
+			}
+		],
+		"depth": 0,
+		"root": true,
+		"members": []
+	}
 ]
 ```
 
-## 导入某个组织机构数据
+## Import an organization's data
 
 OrgManagementClient().exportByOrgId()
 
-#### 参数
+#### Parameter
 
-- `orgId`: 组织机构 ID
+-   `orgId`: Organization ID
 
-#### 示例
+#### Example
 
 ```java
 String orgId = "60210d36262e1086cd2d1209";
 Node node = this.orgManagementClient.exportByOrgId(orgId).execute();
 ```
 
-#### 示例数据
+#### Sample data
 
 ```json
 {
-  "id": "601f59578308478a692a71ea",
-  "createdAt": "2021-02-07T03:07:03.822Z",
-  "updatedAt": "2021-02-07T03:07:03.822Z",
-  "userPoolId": "59f86b4832eb28071bdd9214",
-  "orgId": "601f59573abea48cceb188c6",
-  "name": "科技公司",
-  "nameI18n": null,
-  "description": null,
-  "descriptionI18n": null,
-  "order": null,
-  "code": null,
-  "children": [
-    {
-      "id": "601f5966800e61428d4190fb",
-      "createdAt": "2021-02-07T03:07:18.835Z",
-      "updatedAt": "2021-02-07T03:07:18.835Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "产品",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [],
-      "depth": 1,
-      "root": false,
-      "members": [
-        {
-          "thirdPartyIdentity": {
-            "provider": null,
-            "refreshToken": null,
-            "accessToken": null,
-            "scope": null,
-            "expiresIn": null,
-            "updatedAt": null
-          },
-          "id": "5a597f35085a2000144a10ed",
-          "createdAt": "2021-02-02T02:36:32.172Z",
-          "updatedAt": "2021-02-05T11:30:14.050Z",
-          "userPoolId": "59f86b4832eb28071bdd9214",
-          "isRoot": true,
-          "status": "Activated",
-          "oauth": null,
-          "email": "root@authing.cn",
-          "phone": null,
-          "username": "root",
-          "unionid": null,
-          "openid": null,
-          "nickname": null,
-          "company": null,
-          "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-          "browser": null,
-          "device": null,
-          "token": "",
-          "tokenExpiredAt": "2021-02-19T11:30:13.927Z",
-          "loginsCount": 4,
-          "lastIp": "::1",
-          "name": null,
-          "givenName": null,
-          "familyName": null,
-          "middleName": null,
-          "profile": null,
-          "preferredUsername": null,
-          "website": null,
-          "gender": "U",
-          "birthdate": null,
-          "zoneinfo": null,
-          "locale": null,
-          "address": null,
-          "formatted": null,
-          "streetAddress": null,
-          "locality": null,
-          "region": null,
-          "postalCode": null,
-          "city": null,
-          "province": null,
-          "country": null,
-          "registerSource": ["offcial:import"],
-          "emailVerified": false,
-          "phoneVerified": false,
-          "lastLogin": "2021-02-05T11:30:14.019Z",
-          "blocked": false,
-          "isDeleted": false,
-          "sendSmsCount": 0,
-          "sendSmsLimitCount": 1000,
-          "signedUp": "2021-02-02T02:36:32.172Z",
-          "externalId": null,
-          "mainDepartmentId": null,
-          "mainDepartmentCode": null,
-          "lastMfaTime": null,
-          "passwordSecurityLevel": null
-        }
-      ]
-    },
-    {
-      "id": "601f59622a1dea5ae5ada750",
-      "createdAt": "2021-02-07T03:07:14.163Z",
-      "updatedAt": "2021-02-07T03:07:14.163Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "研发",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [
-        {
-          "id": "601f597e62eaeda4e17e3352",
-          "createdAt": "2021-02-07T03:07:42.475Z",
-          "updatedAt": "2021-02-07T03:07:42.475Z",
-          "userPoolId": "59f86b4832eb28071bdd9214",
-          "orgId": "601f59573abea48cceb188c6",
-          "name": "后端",
-          "nameI18n": null,
-          "description": null,
-          "descriptionI18n": null,
-          "order": null,
-          "code": null,
-          "children": [],
-          "depth": 2,
-          "root": false,
-          "members": []
-        }
-      ],
-      "depth": 1,
-      "root": false,
-      "members": []
-    },
-    {
-      "id": "601f596e89427f0549daf48f",
-      "createdAt": "2021-02-07T03:07:26.919Z",
-      "updatedAt": "2021-02-07T03:07:26.919Z",
-      "userPoolId": "59f86b4832eb28071bdd9214",
-      "orgId": "601f59573abea48cceb188c6",
-      "name": "商业化",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null,
-      "children": [],
-      "depth": 1,
-      "root": false,
-      "members": []
-    }
-  ],
-  "depth": 0,
-  "root": true,
-  "members": []
+	"id": "601f59578308478a692a71ea",
+	"createdAt": "2021-02-07T03:07:03.822Z",
+	"updatedAt": "2021-02-07T03:07:03.822Z",
+	"userPoolId": "59f86b4832eb28071bdd9214",
+	"orgId": "601f59573abea48cceb188c6",
+	"name": "technology company",
+	"nameI18n": null,
+	"description": null,
+	"descriptionI18n": null,
+	"order": null,
+	"code": null,
+	"children": [
+		{
+			"id": "601f5966800e61428d4190fb",
+			"createdAt": "2021-02-07T03:07:18.835Z",
+			"updatedAt": "2021-02-07T03:07:18.835Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "product",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [],
+			"depth": 1,
+			"root": false,
+			"members": [
+				{
+					"thirdPartyIdentity": {
+						"provider": null,
+						"refreshToken": null,
+						"accessToken": null,
+						"scope": null,
+						"expiresIn": null,
+						"updatedAt": null
+					},
+					"id": "5a597f35085a2000144a10ed",
+					"createdAt": "2021-02-02T02:36:32.172Z",
+					"updatedAt": "2021-02-05T11:30:14.050Z",
+					"userPoolId": "59f86b4832eb28071bdd9214",
+					"isRoot": true,
+					"status": "Activated",
+					"oauth": null,
+					"email": "root@approw.com",
+					"phone": null,
+					"username": "root",
+					"unionid": null,
+					"openid": null,
+					"nickname": null,
+					"company": null,
+					"photo": "https://files.approw.co/approw-console/default-user-avatar.png",
+					"browser": null,
+					"device": null,
+					"token": "",
+					"tokenExpiredAt": "2021-02-19T11:30:13.927Z",
+					"loginsCount": 4,
+					"lastIp": "::1",
+					"name": null,
+					"givenName": null,
+					"familyName": null,
+					"middleName": null,
+					"profile": null,
+					"preferredUsername": null,
+					"website": null,
+					"gender": "U",
+					"birthdate": null,
+					"zoneinfo": null,
+					"locale": null,
+					"address": null,
+					"formatted": null,
+					"streetAddress": null,
+					"locality": null,
+					"region": null,
+					"postalCode": null,
+					"city": null,
+					"province": null,
+					"country": null,
+					"registerSource": ["offcial:import"],
+					"emailVerified": false,
+					"phoneVerified": false,
+					"lastLogin": "2021-02-05T11:30:14.019Z",
+					"blocked": false,
+					"isDeleted": false,
+					"sendSmsCount": 0,
+					"sendSmsLimitCount": 1000,
+					"signedUp": "2021-02-02T02:36:32.172Z",
+					"externalId": null,
+					"mainDepartmentId": null,
+					"mainDepartmentCode": null,
+					"lastMfaTime": null,
+					"passwordSecurityLevel": null
+				}
+			]
+		},
+		{
+			"id": "601f59622a1dea5ae5ada750",
+			"createdAt": "2021-02-07T03:07:14.163Z",
+			"updatedAt": "2021-02-07T03:07:14.163Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "research",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [
+				{
+					"id": "601f597e62eaeda4e17e3352",
+					"createdAt": "2021-02-07T03:07:42.475Z",
+					"updatedAt": "2021-02-07T03:07:42.475Z",
+					"userPoolId": "59f86b4832eb28071bdd9214",
+					"orgId": "601f59573abea48cceb188c6",
+					"name": "backend",
+					"nameI18n": null,
+					"description": null,
+					"descriptionI18n": null,
+					"order": null,
+					"code": null,
+					"children": [],
+					"depth": 2,
+					"root": false,
+					"members": []
+				}
+			],
+			"depth": 1,
+			"root": false,
+			"members": []
+		},
+		{
+			"id": "601f596e89427f0549daf48f",
+			"createdAt": "2021-02-07T03:07:26.919Z",
+			"updatedAt": "2021-02-07T03:07:26.919Z",
+			"userPoolId": "59f86b4832eb28071bdd9214",
+			"orgId": "601f59573abea48cceb188c6",
+			"name": "commercial",
+			"nameI18n": null,
+			"description": null,
+			"descriptionI18n": null,
+			"order": null,
+			"code": null,
+			"children": [],
+			"depth": 1,
+			"root": false,
+			"members": []
+		}
+	],
+	"depth": 0,
+	"root": true,
+	"members": []
 }
 ```

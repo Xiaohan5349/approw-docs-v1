@@ -1,36 +1,32 @@
-# 使用社会化登录认证
+# Use social login authentication
 
 <LastUpdated/>
 
-社会化登录，是指用户使用社交平台的身份认证信息在第三方应用或网址进行认证登录的流程，比如大家经常使用个人微信、QQ、微博等社交账号登录滴滴、网易云音乐等。社会化登录不仅有助于简化用户在第三方平台的登录体验，同时也为用户在第三方平台创建新账号提供了一种更为简单便捷的方式。不论是对于普通用户来说，还是企业来说，社会化登录都有着无可比拟的优势。
+Social login refers to the process in which users use social platform identity authentication information to authenticate and log in to third-party applications or URLs. For example, people often use personal Facebook, Twitter and other social accounts to log in to Google and Spotify. Social login not only helps simplify the user's login experience on third-party platforms, but also provides a simpler and more convenient way for users to create new accounts on third-party platforms. Both for normal users and enterprises, social login has unparalleled advantages.
 
-## 社会化登录列表
+## Social login list
 
-{{$localeConfig.brandName}} 目前一共支持国内外将近 20 余种社会化登录，如微信、GitHub、Sign in with Apple、支付宝等，以下是完整的列表：
+{{$localeConfig.brandName}} currently supports 4 social logins around the world, such as GitHub, Apple, etc. The following is a complete list:
 
 !!!include(common/social-connections-table.md)!!!
 
-## 自定义社会化登录
+## Custom social login
 
-{{$localeConfig.brandName}} 提供接入**自定义 OAuth2.0 身份提供商**的能力，如果你需要连接非 {{$localeConfig.brandName}} 内置的社会化登录身份源，可以<router-link to="/connections/custom-social-provider/" target="_blank">阅读此指引</router-link>。
+{{$localeConfig.brandName}} provides the ability to integrate a **custom OAuth2.0 identity provider**. If you need to connect to a social login identity source that is not built in {{$localeConfig.brandName}}, you can <router-link to="/connections/custom-social-provider/" target="_blank">read this guide</router-link>.
 
-## 微信解决方案
+## Choose the appropriate development integration method
 
-{{$localeConfig.brandName}} 针对微信生态有一套完整的解决方案，你可以查看[产品介绍](https://authing.cn/solutions/wechat)以及阅读[打通微信账号体系指引](/guides/wechat-ecosystem/)。
+{{$localeConfig.brandName}} social login supports four integration methods: **JavaScript SDK**, **embedded login components**, **hosted login pages** and **manually calling the social login interface**. Each different integration method has its own advantages and disadvantages. You can use your own business needs to choose the right way.
 
-## 选择合适的开发接入方式
+The following is a comparison of the advantages and disadvantages of various methods:
 
-{{$localeConfig.brandName}} 社会化登录支持四种接入方式：**使用 JavaScript SDK**、**使用嵌入登录组件**、 **使用托管登录页** 和 **手动调用社会化登录接口**，每种不同的接入方式各有优劣点，你可以根据自己的业务需求来选择合适的方式。
+| Integration method                                                 | Advantages                                                                                                                                                                        | Disadvantages                                                                                         | Recommend                                               |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| JavaScript SDK <img width=200 style="display:inline;float:right"/> | Easy to integrate, only a few lines of code are required. The highest degree of customization is possible.                                                                        |                                                                                                       | <img width=120 style="display:inline;float:right"/> Yes |
+| embedded login components                                          | Easy to integrate, only a few lines of code are required. You can integrate this component into your application. Relatively high degree of customization.                        |                                                                                                       | Yes                                                     |
+| hosted login pages                                                 | Operation and maintenance are simple, and {{$localeConfig.brandName}} is responsible for operation and maintenance. Each application has an independent second-level domain name. | Cannot be embedded in your app                                                                        | Yes                                                     |
+| manually calling the social login interface                        |                                                                                                                                                                                   | You need to manually parse the user information from the URL. Relatively complicated and troublesome. | No                                                      |
 
-以下是各种方式的优劣对比：
+The following is the details of integration method for each method:
 
-| 接入方式                                                                | 优势                                                                              | 劣势                                                | 是否推荐                                               |
-| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------ |
-| 使用 JavaScript SDK <img width=200 style="display:inline;float:right"/> | 接入简单，只需要几行代码。可自定义程度最高。                                      |                                                     | <img width=120 style="display:inline;float:right"/> 是 |
-| 使用嵌入登录组件                                                        | 接入简单，只需要几行代码。可以将该组件集成到你的应用。自定义程度相对较高          |                                                     | 是                                                     |
-| 使用托管登录页                                                          | 运维简单，由 {{$localeConfig.brandName}} 负责运维。每个应用有一个独立的二级域名。 | 无法嵌入到你的应用中                                | 是                                                     |
-| 手动调用社会化登录接口                                                  |                                                                                   | 需要手动从 URL 解析用户信息。接入相对较为复杂麻烦。 | 不推荐                                                 |
-
-以下是每种方式详细的接入方法：
-
-<StackSelector snippet="social-login" selectLabel="选择接入方式" :order="['sdk', 'embeded-component', 'hosted-page', 'manually']"/>
+<StackSelector snippet="social-login" selectLabel="Choose integration method" :order="['sdk', 'embeded-component', 'hosted-page', 'manually']"/>

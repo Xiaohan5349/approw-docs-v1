@@ -1,17 +1,16 @@
 ---
 meta:
   - name: description
-    content: 使用管理模块
+    content: Use ManagementClient
 ---
 
-# 使用管理模块
+# Use ManagementClient
 
 <LastUpdated/>
 
+`ManagementClient` can be used to manage users, roles, policies, and user defined fields. Any operation you can do in the {{$localeConfig.brandName}} console can be done with this SDK.
 
-`ManagementClient` 可以用于管理用户、角色、策略、分组、组织机构、用户池配置，理论上任何你在 [{{$localeConfig.brandName}} 控制台](https://console.authing.cn/console/userpool) 中能做的操作，都能用此 SDK 完成。
-
-以下是完整的模块列表：
+The following is the list of clients:：
 
 ::: page-ref /reference/sdk-for-node/management/UsersManagementClient.md
 :::

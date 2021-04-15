@@ -1,67 +1,67 @@
-# 在单页应用（SPA）中集成 {{$localeConfig.brandName}}
+# Integrate {{$localeConfig.brandName}} with Single Page Application
 
 <LastUpdated/>
 
-单页应用（Single Page Application，简称 SPA）指的是一种 Web 应用或者网站的模型，它通过动态重写当前页面来与用户交互，而非传统的从服务器重新加载整个新页面。这种方法避免了页面之间切换打断用户体验，使应用程序更像一个桌面应用程序。在单页应用中，所有必要的代码（HTML、JavaScript 和 CSS）都通过单个页面的加载而检索，或者根据需要（通常是为响应用户操作）动态加载适当的资源并添加到页面。与单页应用的交互通常涉及到与后端服务器的动态通信。
+Single Page Application (SPA) refers to a Web application or website model that interacts with users by dynamically rewriting the current page, rather than traditionally reloading the entire new page from the server. This method avoids switching between pages to interrupt the user experience, making the application more like a desktop application. In a single-page application, all necessary codes (HTML, JavaScript, and CSS) are retrieved through the loading of a single page, or appropriate resources are dynamically loaded and added to the page as needed (usually in response to user actions). Interaction with single-page applications usually involves dynamic communication with back-end servers.
 
-在 SPA 应用中接入 {{$localeConfig.brandName}} 最简单的方式是使用 {{$localeConfig.brandName}} 提供的[内嵌登录组件](/reference/ui-components/)和 [Javascript SDK](/reference/sdk-for-node/) 来进行登录和认证。本文以 React 项目为例。
+The easiest way to access {{$localeConfig.brandName}} in SPA applications is to use [the embedded login component](/reference/ui-components/) and [Javascript SDK](/reference/sdk-for-node/) provided by {{$localeConfig.brandName}} for login and authentication. This article takes the React project as an example.
 
-## 获取应用 ID
+## Get APP ID
 
-登录 {{$localeConfig.brandName}} 后，{{$localeConfig.brandName}} 会为你创建一个默认用户池和应用，你也可以自己创建应用，在应用详情中，可以获取应用 ID，点击复制按钮复制即可：
+After logging in to {{$localeConfig.brandName}}, {{$localeConfig.brandName}} will create a default user pool and application for you. You can also create your own application. In the application details, you can get the application ID and click the copy button:
 
 ![](./images/app-id-and-secret.png)
 
-## 集成 {{$localeConfig.brandName}} 到你的 SPA 应用
+## Integrate {{$localeConfig.brandName}} in your SPA
 
-### 安装 {{$localeConfig.brandName}} 登录组件
+### Install {{$localeConfig.brandName}} login component
 
 ```bash
-yarn add @authing/react-ui-components
+yarn add @approw/react-ui-components
 
  # OR
 
-npm i @authing/react-ui-components --save
+npm i @approw/react-ui-components --save
 ```
 
-`@authing/react-ui-components` 中有 {{$localeConfig.brandName}} 提供的一些 React 组件和获取 [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient) 的 API，其中就包括 [AuthingGuard](/reference/ui-components/) 登录组件。
+`@approw/react-ui-components` has some React components provided by {{$localeConfig.brandName}} and APIs for obtaining [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient), including the [ApprowGuard](/reference/ui-components/) login component.
 
-### 配置 AuthingGuard
+### Configure ApprowGuard
 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AuthingGuard } from '@authing/react-ui-components'
-// 引入 css 文件
-import '@authing/react-ui-components/lib/index.min.css'
+import { ApprowGuard } from '@approw/react-ui-components'
+// import css file
+import '@approw/react-ui-components/lib/index.min.css'
 
 const App = () => {
-  const appId = 'AUTHING_APP_ID'
+  const appId = 'APPROW_APP_ID'
 
-  // 登录成功
+  // successfully login
   const onLogin = (userInfo) => {
     console.log(userInfo)
-    // 这里可以重定向到其他页面了
+    // redirect to other page here
     // ...
   }
 
-  return <AuthingGuard appId={appId} onLogin={onLogin} />
+  return <ApprowGuard appId={appId} onLogin={onLogin} />
 }
 
 ReactDOM.render(<App />, root)
 ```
 
-通过传入 `appId`，`AuthingGuard` 就可以展示登录框进行登录了。
+By passing in the `appId` and `ApprowGuard`, it can display the login box.
 
-### 退出登录
+### Logout
 
-现在你已经可以登录了，同时需要一个方法使用户登出，可以通过 [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient) 实现。
+Now you can log in, and you need to implement a method for users to log out, which can be achieved through [AuthenticationClient](/sdk/sdk-for-node/authentication/AuthenticationClient).
 
 ```js
 // src/index.js
 
-import { initAuthClient } from '@authing/react-ui-components'
-// 在项目入口文件中初始化 AuthenticationClient
+import { initAuthClient } from '@approw/react-ui-components'
+// initialize AuthenticationClient in project entry
 initAuthClient({
   appId: 'YOUR_APP_ID',
 })
@@ -69,24 +69,24 @@ initAuthClient({
 
 ```js
 import React from 'react'
-import { getAuthClient } from '@authing/react-ui-components'
+import { getAuthClient } from '@approw/react-ui-components'
 
 const LogoutButton = () => {
-  return <button onClick={() => getAuthClient().logout()}>退出</button>
+  return <button onClick={() => getAuthClient().logout()}>logout</button>
 }
 
 export default LogoutButton
 ```
 
-### 获取用户信息
+### Get user information
 
-用户登录后，你可能还需要获取当前登录用户的用户信息。
+After the user logs in, you may also need to obtain the user information of the currently logged-in user.
 
 ```js
 // src/index.js
 
-import { initAuthClient } from '@authing/react-ui-components'
-// 在项目入口文件中初始化 AuthenticationClient
+import { initAuthClient } from '@approw/react-ui-components'
+// initialize AuthenticationClient in project entry
 initAuthClient({
   appId: 'YOUR_APP_ID',
 })
@@ -94,7 +94,7 @@ initAuthClient({
 
 ```js
 import React, { useState, useEffect } from 'react'
-import { getAuthClient } from '@authing/react-ui-components'
+import { getAuthClient } from '@approw/react-ui-components'
 
 const UserInfo = () => {
   const [user, setUser] = useState()
@@ -123,11 +123,11 @@ const UserInfo = () => {
       <div>Loading...</div>
     )
   ) : (
-    <h3>暂未登录</h3>
+    <h3>not logged in yet</h3>
   )
 }
 
 export default UserInfo
 ```
 
-`getCurrentUser` 能获取当前登录用户的信息，若未登录会返回 `null`
+`getCurrentUser` can get the information of the currently logged in user. If not logged in, it will return `null`.

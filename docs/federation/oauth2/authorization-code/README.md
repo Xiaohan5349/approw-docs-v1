@@ -4,14 +4,26 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 OAuth2.0 授权码模式',
-  bannerTitle: '使用 OAuth2.0 授权码模式',
+  title: 'Use OAuth2.0 Authorization Code Mode',
+  bannerTitle: 'Use OAuth2.0 Authorization Code Mode',
   steps:
     [
-      { title: '拼接登录授权链接', subTitle: '拼接登录授权链接并引导用户点击' },
-      { title: '跳转到 {{$localeConfig.brandName}} 进行认证', subTitle: '引导用户点击登录链接，跳转到 {{$localeConfig.brandName}} 进行认证' },
-      { title: '处理回调', subTitle: '在后端使用授权码 code 换取 AccessToken' },
-      { title: '完成认证', subTitle: '服务端认证用户身份，执行后续流程' },
+      {
+        title: 'Splicing The Login Authorization Link',
+        subTitle: 'Splicing the login authorization link and guide the user to click',
+      },
+      {
+        title: 'Redirect To {{$localeConfig.brandName}} For Authentication',
+        subTitle: 'Guide the user to click the login link and redirect to {{$localeConfig.brandName}} for authentication',
+      },
+      {
+        title: 'Handle Callback',
+        subTitle: 'Use the authorization code in the backend to exchange the AccessToken',
+      },
+      {
+        title: 'Complete Authentication',
+        subTitle: "The server authenticates the user's identity and executes the subsequent process",
+      },
     ],
 }
 ---

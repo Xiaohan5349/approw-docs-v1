@@ -1,4 +1,4 @@
-使用 `sendSmsCode` 方法进行手机号验证码登录：
+Use `loginByPhoneCode` method to login.
 
 ```swift
 self.client?.loginByPhoneCode(phone: textPhone.text!, code: textPhonecode.text!, completion:{ status in

@@ -4,15 +4,15 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 OIDC Client Credentials 模式',
-  bannerTitle: '使用 OIDC Client Credentials 模式',
+  title: 'Using OIDC Client Credentials Mode',
+  bannerTitle: 'Using OIDC Client Credentials Mode',
   steps:
     [
-      { title: '创建应用', subTitle: '本例创建一个「大屏展示应用」' },
-      { title: '创建资源', subTitle: '在 {{$localeConfig.brandName}} 定义资源' },
-      { title: '创建编程访问账号', subTitle: '创建编程访问账号，获得 AK、SK 密钥，交给调用方' },
-      { title: '将资源授权给编程访问账号', subTitle: '将资源授权给编程访问账号' },
-      { title: '获取具备权限的 AccessToken', subTitle: '将编程访问账号的 AK、SK 以及权限 scope 发送到 {{$localeConfig.brandName}} 进行认证授权' },
+      { title: 'Create Application', subTitle: 'This example creates a「Big Screen Display Application」' },
+      { title: 'Create Resource', subTitle: 'Define resources in {{$localeConfig.brandName}}' },
+      { title: 'Create Programmatic Access Account', subTitle: 'Create a programmatic access account, obtain AK and SK keys, and hand them to the caller' },
+      { title: 'Authorize Resources To Programmatic Access Account', subTitle: 'Authorize resources to programmatic access accounts' },
+      { title: 'Obtain an AccessToken That Has Persmissions', subTitle: 'Send the AK, SK and permission scope of the programming access account to {{$localeConfig.brandName}} for authentication and authorization' },
     ],
 }
 ---

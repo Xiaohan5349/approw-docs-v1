@@ -1,36 +1,36 @@
-### 安装
+### Install
 
-使用 `yarn` 或 `npm` 安装：
+Use `yarn` or `npm` to install:
 
 ```bash
-$ yarn add @authing/ng-ui-components
+$ yarn add @approw/ng-ui-components
 
 # OR
 
-$ npm install @authing/ng-ui-components --save
+$ npm install @approw/ng-ui-components --save
 ```
 
-使用 CDN 引入：
+Or use `CDN` to import:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/ng-ui-components"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/ng-ui-components"></script>
 
 <div ng-app="">
-  <authing-guard [appId]="AUTHING_APP_ID"></authing-guard>
+  <approw-guard [appId]="APPROW_APP_ID"></approw-guard>
 </div>
 ```
 
-### 初始化
+### Initialize
 
 ```javascript
 // app.module.ts
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
-import { AuthingGuardModule } from '@authing/ng-ui-components'
+import { ApprowGuardModule } from '@approw/ng-ui-components'
 import { AppComponent } from './app.component'
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AuthingGuardModule],
+  imports: [BrowserModule, ApprowGuardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
@@ -49,32 +49,32 @@ import {
 })
 export class AppComponent {
   title = 'demo'
-  appId = 'AUTHING_APP_ID'
+  appId = 'APPROW_APP_ID'
   onLoad([e]: [AuthenticationClient]) {
     console.log('ffffff', e)
   }
 }
 
 // app.component.html
-<authing-guard [appId]="appId" (onLoad)="onLoad($event)"></authing-guard>
+<approw-guard [appId]="appId" (onLoad)="onLoad($event)"></approw-guard>
 ```
 
-### 监听成功登录事件
+### Monitor login success event
 
-监听成功登录事件非常简单，你只需要传入一个 `onLogin` 回调函数即可：
+It is simple. You only need to pass a callback `onLogin`.
 
 ```html
-<authing-guard [appId]="appId" (onLogin)="onLoad($event)"></authing-guard>
+<approw-guard [appId]="appId" (onLogin)="onLoad($event)"></approw-guard>
 ```
 
 ```javascript
 export class AppComponent {
   title = "demo";
-  appId = "AUTHING_APP_ID";
+  appId = "APPROW_APP_ID";
   onLogin([user]) {
     console.log("userInfo: ", user);
   }
 }
 ```
 
-用户信息中的 `token` 字段为该用户的身份凭证，后续访问你后端资源的时候应该带上，然后在后端验证此 `token` 的身份。
+The `token` field in user information is the identity credential. In the following steps, you need to carry it in requests when you want to access back-end resources. The back end will verify this `token`.

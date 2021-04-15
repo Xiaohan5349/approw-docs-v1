@@ -1,53 +1,52 @@
-# 集成 ABAC 权限模型到你的应用系统
+# Integrate ABAC permission model into your application system
 
 <LastUpdated/>
 
-[前面](./README.md#什么是基于属性的访问控制-abac)我们介绍了什么是基于属性的访问控制（ABAC），接下来这篇文章介绍如何基于 {{$localeConfig.brandName}} 快速将 ABAC 权限模型集成到你的系统中。在[上一讲](./rbac.md)中我们介绍了如何将 RBAC 权限模型的集成方法，相信你也意识到了，RBAC 权限模型是静态的，也就是没有环境、对象属性等动态属性参与，所以很难实现类似于以下场景的访问控制：
+Earlier we introduced what is attribute-based access control (ABAC), and then this document introduces how to quickly integrate the ABAC permission model into your system based on Approw. In the last section, we introduced how to integrate the RBAC permission model. I believe you have realized that the RBAC permission model is static, which means there is no dynamic attributes such as environment and object properties involved. So it is difficult to achieve scenarios of the following Access control:
 
-- 当一个文档的所属部门跟用户的部门相同时，用户可以访问这个文档；
-- 当用户是一个文档的拥有者并且文档的状态是草稿，用户可以编辑这个文档；
-- 早上九点前禁止 A 部门的人访问B系统；
-- 在除了上海以外的地方禁止以管理员身份访问A系统；
+- When the department of a document is the same as the department of the user, the user can access the document;
+- When the user is the owner of a document and the status of the document is draft, the user can edit the document;
+- Persons from Department A are prohibited from accessing System B before nine o'clock in the morning;
+- It is forbidden to access system A as an administrator in places other than NewYork;
 
-## ABAC 的主要组成部分
+## The Main Component of ABAC
 
-在 ABAC 中，一个操作是否被允许是基于对象、资源、操作和环境信息共同动态计算决定的。
+In ABAC, whether an operation is allowed is determined based on the dynamic calculation of the object, resource, operation and environment information.
 
-- 对象：对象是当前请求访问资源的用户。用户的属性包括ID，个人资源，角色，部门和组织成员身份等；
-- 资源：资源是当前访问用户要访问的资产或对象（例如文件，数据，服务器，甚至API）。资源属性包含文件的创建日期，文件所有者，文件名和类型以及数据敏感性等等；
-- 操作：操作是用户试图对资源进行的操作。常见的操作包括“读取”，“写入”，“编辑”，“复制”和“删除”；
-- 环境：环境是每个访问请求的上下文。环境属性包含访问尝试的时间和位置，对象的设备，通信协议和加密强度等。
+- Object: The object is the user who is currently requesting access to the resource. User attributes include ID, personal resources, roles, department and organization memberships, etc.;
+- Resources: Resources are assets or objects (such as files, data, servers, and even APIs) that the current user wants to access. Resource attributes include file creation date, file owner, file name and type, data sensitivity, etc.;
+- Operation: The operation is the operation that the user tries to perform on the resource. Common operations include "read", "write", "edit", "copy" and "delete";
+- Environment: The environment is the context of each access request. Environmental attributes include the time and location of the access attempt, the object's device, communication protocol and encryption strength, etc.
 
-## ABAC 如何使用属性动态计算出决策结果
+## How ABAC make decision
 
-在 ABAC 的决策语句的执行过程中，决策引擎会根据定义好的决策语句，结合对象、资源、操作、环境等因素动态计算出决策结果。、
+During the execution of ABAC's decision statement, the decision engine will dynamically calculate the decision result based on the defined decision statement, combined with attributes such as objects, resources, operations, and environment.
 
-每当发生访问请求时，ABAC 决策系统都会分析属性值是否与已建立的策略匹配。如果有匹配的策略，访问请求就会被通过。
+Whenever an access request occurs, the ABAC decision-making system will analyze whether the attribute value matches the established policy. If there is a matching policy, the access request will be allowed.
 
-例如，策略「当一个文档的所属部门跟用户的部门相同时，用户可以访问这个文档」会被以下属性匹配：
+For example, the policy "When a document belongs to the same department as the user's department, the user can access this document" will be matched by the following attributes:
 
-- 对象（用户）的部门 = 资源的所属部门；
-- 资源 = “文档”；
-- 操作 = “访问”；
+- The department of the object (user) = the department of the resource;
+- Resource = "document";
+- Operation = "Access";
 
-策略「早上九点前禁止 A 部门的人访问B系统；」会被以下属性匹配：
+The policy "Prohibit people in department A from accessing system B before nine o'clock in the morning;" will be matched by the following attributes:
 
-- 对象的部门 = A 部门；
-- 资源 = “B 系统”；
-- 操作 = “访问”；
-- 环境 = “时间是早上 9 点”。
+- Object's department = A department;
+- Resource = "B System";
+- Operation = "Access";
+- Environment = "The time is 9 AM".
 
-## 在 {{$localeConfig.brandName}} 中授权资源的时候指定限制条件
+## Specify restrictions when authorizing resources in Approw
 
-我们在授权资源的时候，可以指定限制条件。例如在下面的例子中，我们添加了一个限制条件：要求当前请求的用户经过了 MFA 认证。
+When we authorize resources, we can specify restrictions. For example, in the following example, we have added a restriction: the current requesting user is required to pass MFA authentication.
 
-![](~@imagesZhCn/guides/access-control/Xnip2021-02-25_14-18-01.png)
+![](~@imagesEnUs/guides/access-control/Xnip2021-02-25_14-18-01.png)
 
-除了 MFA 认证这个属性外，你还可以在 {{$localeConfig.brandName}} 的策略引擎上下文中获取以下属性：
+In addition to the MFA authentication attribute, you can also obtain the following attributes in the context of Approw's policy engine:
 
-- 用户对象属性，如性别、组织机构、分组、角色、邮箱是否验证、手机号是否验证、自定义数据、是否经过了 MFA 认证、用户上次 MFA 认证时间等；
-- 环境属性：客户端 IP、客户端 UA、客户端浏览器、请求来源国家、请求来源省份、请求来源城市等；
-- 资源属性：资源创建时间、资源拥有者、资源标签等；
+- User object attributes: such as gender, organization, group, role, whether the email is verified, whether the phone number is verified, user defined data, whether the user has passed MFA authentication, the user's last MFA authentication time, etc.
+- Environmental attributes: client IP, client UA, client browser, request source country, request source state/province, request source city, etc.;
+- Resource attributes: resource creation time, resource owner, resource tag, etc.;
 
-你可以根据这些属性组成灵活的策略授权语句。
-
+You can compose flexible policy authorization statements based on these attributes.

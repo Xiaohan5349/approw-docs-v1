@@ -1,4 +1,4 @@
-Python 可以使用 [PyJWT](https://pyjwt.readthedocs.io/en/stable/) 来验证 IdToken：
+In Python, you can use [PyJWT](https://pyjwt.readthedocs.io/stable/) to validate IdToken:
 
 ```python
 import jwt

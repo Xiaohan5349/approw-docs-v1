@@ -1,93 +1,93 @@
-# 什么是用户池
+# What is User Pool
 
 <LastUpdated/>
 
-当你开始要构建一个激动人心的应用程序的时候，往往第一件事情是搭建一个用户系统，而搭建用户系统又总是牵扯到复杂的认证流程和安全问题，使用 {{$localeConfig.brandName}} 可以解除你这些烦恼。
+When you start to build an application, oftentimes the first thing is to build a user system. Building a user system always involves complicated authentication procedures and security issues. Using {{$localeConfig.brandName}} can relieve you of these worries.
 
-在使用 {{$localeConfig.brandName}} 的第一步是创建一个用户池。用户池是你用户系统的隔离的最小单位，你可以把不同场景的用户划分在不同的用户池。每个用户池下拥有自己的用户和应用程序，不同用户池之间的权限、应用、组织是完全隔离的。
+The first step in using {{$localeConfig.brandName}} is to create a user pool. A user pool is the smallest unit of isolation of your user system. You can divide users in different scenarios into different user pools. Each user pool has its own users and applications, permissions, applications, and organizations. Between different user pools are completely isolated.
 
-<!-- （建议此处加一个用户池和多应用的架构图） -->
+<!-- （建议这里加一个用户池和多应用的架构图） -->
 
-<img src="~@imagesZhCn/concepts/userpool.png" alt="drawing"/>
+<img src="~@imagesEnUs/concepts/userpool.png" alt="drawing"/>
 
-你可以在 {{$localeConfig.brandName}} 的用户池中创建用户，通过目录集成导入用户，或通过应用程序集成导入用户。用户池下的应用程序是与公共应用程序（例如 Office 365）或专有应用程序（例如你自己的应用程序）的连接。通过这样的连接，你的用户可以通过一个身份在不同的应用之间快速高效的完成认证和授权。
+You can create users in {{$localeConfig.brandName}}'s user pool, import users through directory integration, or import users through application integration. Applications under the user pool are connections to public applications (such as Office 365) or proprietary applications (such as your own applications). Through this connection, your users can quickly and efficiently complete authentication and authorization between different applications through an identity.
 
-## 用户池的 URL 地址
+## URL address of the user pool
 
-在创建 {{$localeConfig.brandName}} 的用户池的时候，会为每个用户池分配了一个 URL。典型的组织 URL 是租户名称（子域），然后是域名（如 `you-tenant-domain.authing.cn`）。你可以通过使用自己的域名替换 {{$localeConfig.brandName}} 域名来自定义 {{$localeConfig.brandName}} 用户池的 URL，[详情请查看此文档](/guides/deployment/custom-domain.md)。
+When creating an {{$localeConfig.brandName}} user pool, a URL is assigned to each user pool. The typical organization URL is the tenant name (subdomain), followed by the domain name (such as 'you-tenant-domain.{{$localeConfig.brandName}}.cn'). You can customize the URL of the {{$localeConfig.brandName}} user pool by replacing the {{$localeConfig.brandName}} domain name with your own domain name. Please check this document for details. [Learn more](/guides/deployment/custom-domain.md)。
 
-## 管理员控制台
+## Admin console
 
-管理员控制台（或管理控制台）是你用来管理 {{$localeConfig.brandName}} 用户池的地方。作为管理员你需要通过 [https://console.authing.cn](https://console.authing.cn) 这个域名登录管理员控制台，在管理员控制台，你可以创建新的用户池或者在不同的用户池之间切换。
+The administrator console (or management console) is where you manage the {{$localeConfig.brandName}} user pool. As an administrator, you need to log in to the administrator console through the domain name:
+[https://console.{{$localeConfig.brandName}}.cn] (opens new window).
+In the administrator console, you can create a new user pool or switch between different user pools.
 
-在管理控制台中进入某个用户池可以管理用户池内的用户数据和应用连接信息。
+Enter a user pool in the management console to manage user data and application connection information in the user pool.
 
-## 跨用户池
+## Cross user pool
 
-用户池是用户或者应用资源的硬性分界，因此无法在用户池之间共享用户和应用数据。你可以使用[联邦认证](/guides/federation/)的方式，以允许用户跨用户池登录，但是用户仍然分别存在于每个组织中。
+The user pool is a hard boundary between users or application resources, so user and application data cannot be shared between user pools. You can use [federated authentication](/guides/federation/) to allow users to log in across user pools, but the users still exist separately in each organization.
 
-## 多个用户池
+## Multiple user pools
 
-在大多数情况下，你的公司或项目只有一个用户池。单个用户池为整个用户群提供了一个标准资源管理入口，为应用程序提供了一个集成点，并且具有较低的复杂性。
-但是，在更复杂的情况下，你可能需要多个用户池。例如，你的公司是一个大型组织，员工数大于一万人，有很多的上游和下游供应商，你需要将员工和供应商在某个 ERP 应用中配合完成某项业务流程。这时候可以建立两个用户池，内部员工属于一个用户池，外部供应商属于另一个用户池。通过连接外部身份源的方式，允许供应商访问内部的 ERP 应用，实现公司内外部组织的分割管理和协同工作。
-多个用户池允许内部和外部用户的完全隔离，并且内部或外部组织的应用程序和更改不会相互影响。但是，多个用户池在要管理的环境数量方面增加了复杂性。我们推荐尽可能减少用户池的数量降低系统复杂度。
+In most cases, your company or project has only one user pool. A single user pool provides a standard resource management entry for the entire user group, provides an integration point for applications, and has low complexity. However, in more complex situations, you may need multiple user pools. For example, your company is a large organization with more than 10,000 employees, and there are many upstream and downstream suppliers. You need to coordinate employees and suppliers to complete a certain business process in an ERP application. At this time, two user pools can be established, the internal employees belong to one user pool, and external suppliers belong to another user pool. By connecting to the external identity sources, suppliers are allowed to access internal ERP applications. This achieves segmented management and collaborative work between the company's internal and external organizations. Multiple user pools allow complete isolation of internal and external users, and applications and changes of internal or external organizations will not affect each other. However, multiple user pools add complexity in terms of the number of environments to be managed. We recommend reducing the number of user pools as much as possible to reduce system complexity.
 
-## 费用收取
+## Fee collection
 
-在 {{$localeConfig.brandName}} 中我们是以用户池为维度进行服务管理的，每个用户池可以有独立的服务计划。分为「开发者版」「高级版」和「企业版」，其中「开发者版」适合面向外部客户的 CIAM 场景，有更大的月活使用量和更便宜的价格，「企业版」适合企业内部的复杂场景，有丰富的用户目录同步和应用连接方案。你可以根据使用场景进行自由选择，也可以对接商务顾问（电话 176-0250-2507 ）进行咨询。
+In {{$localeConfig.brandName}}, we use the user pool as the dimension for service management, and each user pool can have an independent service plan. It is divided into 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. The "Developer Edition" is suitable for CIAM scenarios for external customers. It has a larger monthly usage and provides a low price. The "Enterprise Edition" is suitable for complex scenarios within the enterprise. There are rich user directory synchronization and application connection solutions. You can choose freely according to the usage scenario, or you can contact a business consultant (telephone 176-0250-2507) for consultation.
 
-### 不同版本功能对比
+### Function comparison of different versions
 
-以下是「开发者版」「高级版」和「企业版」功能与服务的详细对比，详情请见 [https://authing.cn/pricing](https://authing.cn/pricing)。
+The following is a detailed comparison of the functions and services of the 「Developer 」Edition, 「Developer Pro」Edition and 「Enterprise」 Edition. For more details, please refer to
+https://{{$localeConfig.brandName}}.cm/pricing (opens new window).
 
-#### 认证方式
+#### Authentication Solutions
 
-| 认证方式     | 开发者版               | 高级版                 | 企业版   |
-| ------------ | ---------------------- | ---------------------- | -------- |
-| 外部用户身份 | 多达 50,000 个活跃用户 | 多达 50,000 个活跃用户 | 根据需要 |
-| 社交账号连接 | 无限个                 | 无限个                 | 无限个   |
-| 内部人员身份 | 无                     | 多达 50,000 名员工     | 根据需要 |
-| 企业身份连接 | 无                     | 2 个                   | 无限     |
+| Authentication Solutions | Developer     | Developer Pro       | Enterprise |
+| ------------------------ | ------------- | ------------------- | ---------- |
+| Customer Identity        | Up to 50K MAU | Up to 50K MAU       | Contact Us |
+| Social Connections       | Unlimited     | Unlimited           | Unlimited  |
+| Employee Identity        | /             | Up to 50K employees | Contact Us |
+| Enterprise Connections   | /             | 2 connections       | Unlimited  |
 
-#### 用户管理
+#### User Management
 
-| 用户管理       | 开发者版  | 高级版     | 企业版     |
-| -------------- | --------- | ---------- | ---------- |
-| 审计日志存储   | ⻓达 3 天 | ⻓达 10 天 | ⻓达 30 天 |
-| 用户管理       | 包含      | 包含       | 包含       |
-| ⻆色、权限管理 | 包含      | 包含       | 包含       |
-| 协作管理员     | 无        | 包含       | 包含       |
+| User Management            | Developer    | Developer Pro | Enterprise    |
+| -------------------------- | ------------ | ------------- | ------------- |
+| Log Retention              | Up to 3 Days | Up to 10 Days | Up to 30 Days |
+| User Management Dashboard  | Included     | Included      | Included      |
+| Role and Access Management | Included     | Included      | Included      |
+| Delegated Admin            | /            | Included      | Included      |
 
-#### 安全
+#### Security
 
-| 安全               | 开发者版                         | 高级版                             | 企业版                              |
-| ------------------ | -------------------------------- | ---------------------------------- | ----------------------------------- |
-| 短信验证码         | 包含 300 条/月，增购 0.079 元/条 | 包含 1,500 条/月，增购 0.079 元/条 | 包含 12,000 条/月，增购 0.079 元/条 |
-| 多因素认证基础功能 | 无                               | 包含                               | 包含                                |
+| Security                    | Developer                                                 | Developer Pro                                                   | Enterprise                                                        |
+| --------------------------- | --------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------- |
+| SMS One-time Passwords      | Free 300 SMS Messages / month, Add-On 0.079 RMB / message | Includedd 1500 SMS Messages / month, Add-On 0.079 RMB / message | Includedd 12,000 SMS Messages / month, Add-On 0.079 RMB / message |
+| Multi-factor Authentication | /                                                         | Included                                                        | Included                                                          |
 
-#### 企业个性化
+#### Enterprise Customization
 
-| 企业个性化                 | 开发者版 | 高级版                     | 企业版        |
-| -------------------------- | -------- | -------------------------- | ------------- |
-| 登录框组件、域名和邮件定制 | 包含     | 包含                       | 包含          |
-| 可自定义的邮件模版         | 包含     | 包含                       | 包含          |
-| 私有云部署服务             | 无       | 可加购（38,199 人民币/年） | 已包括        |
-| 企业系统集成               | 无       | 包含                       | 包含          |
-| 定制开发工程师             | 无       | 799 RMB/人时               | 高级版的 8 折 |
-| 单点登录应用面板           | 无       | 无                         | 包含          |
+| Enterprise Customization                                  | Developer | Developer Pro            | Enterprise            |
+| --------------------------------------------------------- | --------- | ------------------------ | --------------------- |
+| Customizable sign-in widgets, domains and email templates | Included  | Included                 | Included              |
+| Email Customizations                                      | Included  | Included                 | Includedd             |
+| Private Cloud Service (annual contract required)          | /         | Add-on 38,199 RMB / Year | Included              |
+| Workforce Single Sign-On Integration                      | /         | Included                 | Included              |
+| Custom Development Support Engineer                       | /         | 799 RMB / Person & Hour  | 20% off Developer Pro |
+| Single Sign On Launchpad                                  | /         | /                        | Included              |
 
-#### 企业支持服务
+#### Enterprise Support
 
-| 企业支持服务       | 开发者版            | 高级版             | 企业版              |
-| ------------------ | ------------------- | ------------------ | ------------------- |
-| 客服时间           | 工作时间            | 工作时间           | 全年 24 小时        |
-| 响应时间           | 24 小时内可紧急响应 | 1 小时内可紧急响应 | 30 分钟内可紧急响应 |
-| 微信客服           | 包含                | 包含               | 包含                |
-| 服务级别           |                     | 99.90%             | 99.99%              |
-| 应用对接支持、培训 | 无                  | 699 RMB/人时       | 高级版的 8 折       |
-| 电话/会议客服      | 无                  | 无                 | 包含                |
-| 专属客户经理       | 无                  | 无                 | 包含                |
+| Enterprise Support          | Developer            | Developer Pro           | Enterprise             |
+| --------------------------- | -------------------- | ----------------------- | ---------------------- |
+| Customer Support            | Working days         | Working days            | 24\*7                  |
+| Support Availability        | Response in 24 Hours | Response in 1 Hour      | Response in 30 Minutes |
+| SLA                         |                      | 99.90%                  | 99.99%                 |
+| Training / Support Engineer | /                    | 699 RMB / Person & Hour | 20% off Developer Pro  |
+| Phone / Meeting Support     | /                    | /                       | Includedd              |
+| Customer Support Manager    | /                    | /                       | Includedd              |
 
-## 接下来
+## Next
 
-了解了用户池的概念之后，接下来你可以了解一下[应用](./application.md)的概念。
+After understanding the concept of user pool, you can continue to learn the concept of [Application](./application.md).
