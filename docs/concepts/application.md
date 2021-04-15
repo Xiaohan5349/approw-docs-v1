@@ -61,7 +61,7 @@ Each application in {{$localeConfig.brandName}} has the following capabilities:
 - [Become an OAuth identity source](/guides/federation/oauth.md)；
 - [Become a SAML identity source](/guides/federation/saml.md)；
 - Customize the login style by configuring login and registration methods, [configuring social login](/guides/connections), customizing CSS, etc.;
-- Open the registration agreement;
+- Open the Terms and Conditions;
 - Complete registration information. For details, [please learn about extending the authentication process-complete custom field data when registering](/guides/authentication/extensibility/user-defined-field.md)；
 - Turn on multi-factor authentication;
 - Manage and authorize API resources. For details, [please understand the inter-application authorization granted by the user](/guides/authorization/user-consent-authz.md)；

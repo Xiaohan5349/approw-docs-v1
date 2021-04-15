@@ -39,40 +39,40 @@ Beside basic login method, Approw support:
 
 Please refer to [Configuring OIDC Identity Source](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-05_13-23-10.png)
+![](./images/login-method-1.png)
 
 ### Configuring SAML Identity Source Login
 
 Please refer to [Configuring SAML Identity Source Login](/connections/saml/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-01-20.png)
+![](./images/login-method-2.png)
 
 ### Configuring OAuth2.0 Identity Source Login
 
 Please refer to [Configuring OAuth2.0 Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-05-05.png)
+![](./images/login-method-3.png)
 
 ### Configuring CAS Identity Source Login
 
 Please refer to [Configuring CAS Identity Source Login](/connections/cas/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-05-54.png)
+![](./images/login-method-4.png)
 
 ### Configuring Azure AD Identity Source Login
 
 Please refer to [Configuring Azure AD Identity Source Login](/connections/azure-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-07-47.png)
+![](./images/login-method-5.png)
 
 ### Configuring LDAP Identity Source Login
 
 Please refer to [Configuring LDAP Identity Source Login](/connections/ldap/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-10-03.png)
+![](./images/login-method-6.png)
 
 ### Configuring Windows AD Identity Source Login
 
 Please refer to [Configuring Windows AD Identity Source Login](/connections/windows-active-directory/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/Xnip2021-03-03_21-09-06.png)
+![](./images/login-method-7.png)
