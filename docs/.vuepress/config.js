@@ -380,7 +380,7 @@ module.exports = {
     resolve: {
       alias: {
         '@imagesZhCn': path.resolve(__dirname, '../images'),
-        '@imagesEnUs': path.resolve(__dirname, '../en-US/images'),
+        '@imagesEnUs': path.resolve(__dirname, '../en/images'),
       },
     },
   },
