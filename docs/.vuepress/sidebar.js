@@ -1105,17 +1105,17 @@ const translatedZhCnNavBar = {
                 },
               ],
             },
-            {
-              title:
-                'Use the mini program to scan the code to log in to the website',
-              path: '/guides/authentication/qrcode/use-wechat-miniprogram/',
-            },
+            //{
+            //  title:
+            //    'Use the mini program to scan the code to log in to the website',
+            //  path: '/guides/authentication/qrcode/use-wechat-miniprogram/',
+            //},
           ],
         },
-        {
-          title: 'Certify in Mini Program',
-          path: '/guides/authentication/wechat-mini-program/',
-        },
+        //{
+        //  title: 'Certify in Mini Program',
+        //  path: '/guides/authentication/wechat-mini-program/',
+        //},
         {
           title: 'Implement single sign-on (SSO)',
           path: '/guides/authentication/sso/',
