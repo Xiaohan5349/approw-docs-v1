@@ -17,7 +17,7 @@ If the above documents cannot be accessed, please change the domain name to `lea
 Clone the project:
 
 ```
-git clone https://github.com/Approw/oidc-demo/
+git clone https://github.com/Approw/approw-docs-v1/blob/master/docs/oidc-demo
 ```
 
 Then run:
