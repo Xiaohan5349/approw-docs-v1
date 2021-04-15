@@ -1105,17 +1105,17 @@ const translatedZhCnNavBar = {
                 },
               ],
             },
-            {
-              title:
-                'Use the mini program to scan the code to log in to the website',
-              path: '/guides/authentication/qrcode/use-wechat-miniprogram/',
-            },
+            // {
+            //   title:
+            //     'Use the mini program to scan the code to log in to the website',
+            //   path: '/guides/authentication/qrcode/use-wechat-miniprogram/',
+            // },
           ],
         },
-        {
-          title: 'Certify in Mini Program',
-          path: '/guides/authentication/wechat-mini-program/',
-        },
+        // {
+        //   title: 'Certify in Mini Program',
+        //   path: '/guides/authentication/wechat-mini-program/',
+        // },
         {
           title: 'Implement single sign-on (SSO)',
           path: '/guides/authentication/sso/',
@@ -1613,10 +1613,10 @@ const translatedZhCnNavBar = {
         // title:'How to identify the source of the user',
         // path:'/guides/faqs/how-to-identify-the-source-users'
         // },
-        {
-          title: `Join table ${BRAND_NAME_EN_US} in the local user and your business data`,
-          path: '/guides/faqs/how-to-join-authing-user-with-your-business-data',
-        },
+        // {
+        //   title: `Join table ${BRAND_NAME_EN_US} in the local user and your business data`,
+        //   path: '/guides/faqs/how-to-join-authing-user-with-your-business-data',
+        // },
         {
           title: `Impact of disabling third-party cookies on Authing`,
           path: '/guides/faqs/block-third-party-cookie-impact',
@@ -1671,7 +1671,7 @@ const translatedZhCnNavBar = {
             '/reference/sdk-for-node/authentication/QrCodeAuthenticationClient',
             '/reference/sdk-for-node/authentication/MfaAuthenticationClient',
             '/reference/sdk-for-node/authentication/SocialAuthenticationClient',
-            '/reference/sdk-for-node/authentication/EnterpriseAuthenticationClient',
+            // '/reference/sdk-for-node/authentication/EnterpriseAuthenticationClient',
           ],
         },
         {
@@ -1687,7 +1687,7 @@ const translatedZhCnNavBar = {
             '/reference/sdk-for-node/management/UdfManagementClient',
             '/reference/sdk-for-node/management/WhitelistManagementClient',
             '/reference/sdk-for-node/management/UserpoolManagementClient',
-            '/reference/sdk-for-node/management/ApplicationManagementClient',
+            // '/reference/sdk-for-node/management/ApplicationManagementClient',
           ],
         },
       ],
@@ -1783,7 +1783,7 @@ const translatedZhCnNavBar = {
             '/reference/sdk-for-php/management/UdfManagementClient',
             '/reference/sdk-for-php/management/WhitelistManagementClient',
             '/reference/sdk-for-php/management/UserpoolManagementClient',
-            '/reference/sdk-for-php/management/ApplicationManagementClient',
+            // '/reference/sdk-for-php/management/ApplicationManagementClient',
           ],
         },
       ],
@@ -1808,14 +1808,14 @@ const translatedZhCnNavBar = {
       title: 'React Native',
       path: '/reference/sdk-for-react-native',
     },
-    {
-      title: 'WeChat Mini Program',
-      path: '/reference/sdk-for-wxapp',
-    },
-    {
-      title: 'WeChat webpage authorization',
-      path: '/reference/sdk-for-wxmp',
-    },
+    // {
+    //   title: 'WeChat Mini Program',
+    //   path: '/reference/sdk-for-wxapp',
+    // },
+    // {
+    //   title: 'WeChat webpage authorization',
+    //   path: '/reference/sdk-for-wxmp',
+    // },
     {
       title: 'Framework Integration',
       path: '/reference/frameworks',
