@@ -16,7 +16,7 @@ For details, please refer to this article: [What is JWT](https://www.jianshu.com
 
 ## Verification Flow
 
-![](~@imagesEnUs/concepts/jwt-flow.png)
+![](~@imagesEnUs/concepts/jwt-flow-en.png)
 
 ### User Authentication Process
 
