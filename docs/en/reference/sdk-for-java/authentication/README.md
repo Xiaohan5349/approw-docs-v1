@@ -302,33 +302,33 @@ AuthenticationClient().updateProfile(updates)
 
 #### Parameters
 
-- `updates` <UpdateUserInput> Modified user information
-- `updates.username` <string> Username
-- `updates.nickname` <string> Nickname
-- `updates.photo` <string> Avatar
-- `updates.company` <string> Company
-- `updates.browser` <string> Browser
-- `updates.device` <string> Device
-- `updates.lastIP` <string> Last logged in IP
-- `updates.name` <string> Name
-- `updates.givenName` <string> Given Name
-- `updates.familyName` <string> Family Name
-- `updates.middleName` <string> Middle Name
-- `updates.profile` <string> Profile Url
-- `updates.preferredUsername` <string> Preferred Name
-- `updates.website` <string> Personal website
-- `updates.gender` <string> Gender, M means male, F means female, U means unknown.
-- `updates.birthdate` <string> Birthday
-- `updates.zoneinfo` <string> Time zone
-- `updates.locale` <string> Language
-- `updates.address` <string> Address
-- `updates.streetAddress` <string> Street address
-- `updates.locality` <string>
-- `updates.region` <string> Region
-- `updates.postalCode` <string> Zip code
-- `updates.city` <string> City
-- `updates.province` <string> Province
-- `updates.country` <string> Country
+- `updates` \<UpdateUserInput\> Modified user information
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Company
+- `updates.browser` \<string\> Browser
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP
+- `updates.name` \<string\> Name
+- `updates.givenName` \<string\> Given Name
+- `updates.familyName` \<string\> Family Name
+- `updates.middleName` \<string\> Middle Name
+- `updates.profile` \<string\> Profile Url
+- `updates.preferredUsername` \<string\> Preferred Name
+- `updates.website` \<string\> Personal website
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown.
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Time zone
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
+- `updates.locality` \<string\>
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zip code
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
 
 #### Example
@@ -526,12 +526,12 @@ AuthenticationClient().loginByLdap(loginByLdapParam)
 
 #### Parameters
 
-- `username` <string> Username
-- `password` <string> Password
-- `options` <LoginByLdapParamOptions>
-- `options.autoRegister` <boolean> Whether to register automatically. If it detects that the user does not exist, an account will be automatically created based on the login account and password.
-- `options.captchaCode` <string> CAPTCHA verification code
-- `options.clientIp` <string> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
+- `username` \<string\> Username
+- `password` \<string\> Password
+- `options` \<LoginByLdapParamOptions\>
+- `options.autoRegister` \<boolean\> Whether to register automatically. If it detects that the user does not exist, an account will be automatically created based on the login account and password.
+- `options.captchaCode` \<string\> CAPTCHA verification code
+- `options.clientIp` \<string\> The real IP of the client. If you call this interface on the server side, be sure to set this parameter to the real IP of the end user.
 
 #### Example
 
@@ -565,7 +565,7 @@ User user = authenticationClient.loginByAd(username, password).execute();
 
 AuthenticationClient().checkPasswordStrength(password)
 
-> Check the password strength,[ click here for details.](/en/guides/security/config-password.md)。
+> Check the password strength, [click here for details](/en/guides/security/config-password.md).
 
 #### Parameter
 
