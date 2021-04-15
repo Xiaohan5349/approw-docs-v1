@@ -1,26 +1,26 @@
-# CIAM 与 EIAM
+# CIAM and EIAM
 
 <LastUpdated/>
 
 
-## 先说什么是 IAM、EIAM 和 CIAM
+## What are IAM, EIAM and CIAM?
 
-IAM：Identity and Access Managetment，身份和访问管理，或者简称身份管理。
+IAM: Identity and Access Management, or identity management for short.
 
-其实回顾过去二十年，当我们讨论 IAM 时，其实大多数人想到的都是针对企业内部员工、合作伙伴、临时人员等提供统一身份认证和权限管理能力的内部产品（Enterprise Identity & Access Management 或 EIAM）。然而，这是缺乏想象力的，不能因为 EIAM 传统而简单，就只谈论、只研发 EIAM。
+In fact, looking back over the past two decades, when we discuss IAM, most people actually think of internal products that provide unified identity authentication and authorization management capabilities for internal employees, partners, and temporary personnel (Enterprise Identity & Access Management, EIAM). However, you cannot only discuss and develop EIAM only due to the tradition and simplicity of EIAM, which is a lack of imagination.
 
-随着软件的边界拓展到我们生活的方方面面，统一管理身份的需求也不断拓展边界，以企业为核心，由内而外，企业也开始容纳外部的海量顾客身份，由此诞生了针对互联网用户的顾客身份管理（Customer Identity & Access Management 或 CIAM）。举个例子，京东企业内部的工程师、快递员的身份管理均属于 EIAM，而电商平台中的卖家、买家的身份管理属于 CIAM。
+As the boundary of software expands to all aspects of our lives, the need for unified management of identities has also continued to expand the boundaries. Take the enterprise as the core, the enterprise also began to accommodate a large number of external customer identities, which bring Customer Identity & Access Management (CIAM) to customers, especially for Internet users. For example, the identity management of engineers and couriers in JD belongs to EIAM, while the identity management of sellers and buyers in e-commerce platforms belongs to CIAM.
 
-## 今天的 IDaaS 究竟是什么？
+## What is IDaaS today?
 
-2015 年开始，开始有 Accenture、AWS 等国外服务商率先将 CIAM 作为一个独立的、必须的产品来看待。完全不同于以内部效率为核心的 EIAM 产品，CIAM 的目标是协助企业完成全局的信息化转型，在所有对外服务中统一用户的身份，在以体验为核心的用户争夺战中，为终端用户提供完整的身份自助服务、为不同平台用户提供统一而流畅的使用、注册体验，以此来提高用户的留存、黏性，进一步创造价值，在行业竞争中取得先机。
+Since 2015, service providers such as Accenture and AWS have taken the lead in treating CIAM as an independent and necessary product. Completely different from EIAM products that take efficiency as the core, CIAM’s goal is to assist companies in completing the overall information transformation, unifying user identities in all external services. In the battle for users with experience as the core, CIAM provides end users with a complete identity self-service, provide a unified and smooth use and registration experience for users on different platforms, in this way, it can improve the retention and stickiness of users, further create value, and get ahead in the industry competition.
 
-> “顾客身份管理的独特要求，特别是对规模、性能、可用性以及对跨平台无缝使用的要求，使得 CIAM 必须成为一个独立的市场，完全区别于员工身份管理的 EIAM。—— Forrester”
+> "The unique requirements of customer identity management, especially the requirements for scale, performance, availability, and seamless use of cross-platforms, make CIAM an independent market, completely different from EIAM for employee identity management. -Forrester"
 
 
-所以，今天的 IDaaS 是什么？它不仅仅是只将二十年前的 EIAM 上云，而是应该将 EIAM & CIAM 都上云，以完善的 IDaaS 帮助中国企业迈向全局的数字化转型。
+So, what is IDaaS today? It is not just to upload EIAM that appeared 20 years ago to the cloud, but to upload both EIAM & CIAM to the cloud to help enterprises move towards the overall digital transformation with a complete IDaaS.
 
-## 中国企业为什么开始用 EIAM & CIAM IDaaS？
+## Why did companies start to use EIAM & CIAM IDaaS?
 
-今天领先的 IDaaS 服务商，都在致力于为企业提供上手即用、安全可拓展的用户管理和认证服务。使用 IDaaS，企业的 IT 研发、运维人员都可以快速管理任何应用、人员或设备的连接。无论是顾客、成员或是合作伙伴，无论是在云上、本地或是在移动设备上，IDaaS 服务商都可以帮助政企的 IT 服务变得更加安全，提高外部的核心业务的上线速度，也提高内部人员的生产力并保持合规性。
+Today's leading IDaaS service providers are committed to providing enterprises with ready-to-use, secure and scalable user management and authentication services. With the help of IDaaS, the employees of enterprise from IT R&D, operation and maintenance can quickly manage the connection of any application, personnel or device. Whether it is a customer, member or partner, whether it is on the cloud, local or on a mobile device, IDaaS service providers can help the IT services of government or enterprise become more secure, increase the launch speed of external core business and the productivity of internal personnel without losing compliance.
 

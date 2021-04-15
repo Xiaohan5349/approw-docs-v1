@@ -1,21 +1,17 @@
 !!!include(common/init-js-auth-sdk.md)!!!
 
-使用手机号验证码重置密码：
+Use the mobile phone number verification code to reset the password:
 
 ```javascript
-authenticationClient.resetPasswordByPhoneCode(
-  "176xxxx6754",
-  "1234",
-  "passw0rd"
-);
+authenticationClient.resetPasswordByPhoneCode('176xxxx6754', '1234', 'passw0rd')
 ```
 
-使用邮箱验证码重置密码：
+Use email verification code to reset password:
 
 ```javascript
 authenticationClient.resetPasswordByEmailCode(
-  "test@example.com",
-  "1234",
-  "passw0rd"
-);
+  'test@example.com',
+  '1234',
+  'passw0rd'
+)
 ```

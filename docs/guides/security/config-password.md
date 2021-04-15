@@ -1,7 +1,7 @@
-# 配置密码强度
+# Configure password strength
 
-## 配置用户池密码强度方式
+## Configure user pool password strength
 
-你可以在 扩展能力 -> 自定义密码加密 页面中可配置密码强度，开启强度后系统会要求所有用户注册时、修改密码时，密码必须满足一定的复杂度。
+You can configure the password strength on the Extended Capabilities -> Custom Password Encryption page. After the strength option is enabled, the system will require all users to register and modify their passwords. The password must meet a certain level of complexity.
 
-![](./images/config-password.png)
+![](./images/password.png)

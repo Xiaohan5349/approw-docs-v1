@@ -1,9 +1,8 @@
-# 框架集成
+# Framework Integration
 
 <LastUpdated/>
 
-你可以阅读以下 Web 框架的快速接入指引流程：
+You can read the following web framework's quick start guide flow:
 
 - [Spring Security](/frameworks/spring-security/)
 - [Express](/frameworks/express/)
-

@@ -1,26 +1,26 @@
-# APP 扫码登录完整接口列表
+# APP Full Interface List For APP QR Code Login
 
-{{$localeConfig.brandName}} 提供基于 REST 的扫码登录接口，开发者可以直接调用。
+{{$localeConfig.brandName}} provides a REST-based QR code login interface, which developers can call directly.
 
-## 生成二维码
+## Generate QR code
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/gene" description="该接口会返回二维码 ID （random） 和二维码链接。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/gene" description="The interface will return the QR code ID (random) and the QR code link.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="customeData" type="string" description="自定义数据字段，会写入二维码的原始数据中。" />
-<ApiMethodParam name="scene" type="string" required description="场景值。为常量值，填 APP_AUTH。" />
+<ApiMethodParam name="customeData" type="string" description="The custom data field will be written into the original data of the QR code.  " />
+<ApiMethodParam name="scene" type="string" required description="Scene value. A constant, fill in APP_AUTH." />
 </template>
 <template slot="response">
 <ApiMethodResponse>
 <template slot="description">
 
-字段释义：
+Field definition:
 
-- random: 二维码唯一标志，查询二维码状态、用户确认授权接口会用到。
-- url: 二维码图片地址。
-- expiresIn: 二维码有效时间。
+-- random: The only sign of the QR code, which will be used to query the status of the QR code and the user confirmation authorization interface.
+- url: QR code image address.
+- expiresIn: The valid time of the QR code.
 
 </template>
 
@@ -30,7 +30,7 @@
   "data": {
     "random": "SzZrszCJNCFfVBDUCKLDtAYNBR96SK",
     "expiresIn": 120,
-    "url": "https://files.authing.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png"
+    "url": "https://files.approw.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png"
   }
 }
 ```
@@ -39,11 +39,11 @@
 </template>
 </ApiMethodSpec>
 
-生成的二维码示例：
+Example of generated QR code:
 
-![](https://files.authing.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png)
+![](https://files.approw.co/user-contentsqrcode/5fae2648201cfd526f0ec354/SzZrszCJNCFfVBDUCKLDtAYNBR96SK.png)
 
-使用[在线二维码解码工具](https://cli.im/deqr) 查看二维码数据如下：
+Use the [online QR code decoding tool](https://cli.im/deqr) to view the QR code data as follows:
 
 ```json
 {
@@ -56,11 +56,11 @@
 }
 ```
 
-## 查询二维码状态
+## Query the status of the QR code
 
-<ApiMethodSpec method="get" host="https://core.authing.cn" path="/api/v2/qrcode/check">
+<ApiMethodSpec method="get" host="https://core.approw.com" path="/api/v2/qrcode/check">
 <template slot="queryParams">
-<ApiMethodParam name="random" type="string" required description="二维码 ID。" />
+<ApiMethodParam name="random" type="string" required description="QR code ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -68,7 +68,7 @@
 ```json
 {
   "code": 200,
-  "message": "查询二维码状态成功！",
+  "message": "Query the QR code status successfully！",
   "data": {
     "random": "SzZrszCJNCFfVBDUCKLDtAYNBR96SK",
     "userInfo": {},
@@ -83,24 +83,24 @@
 </template>
 </ApiMethodSpec>
 
-请求结果字段说明：
+Request result field description:
 
 - status
-  - 0: 未扫码。
-  - 1: 已经扫码但用户还没有点击同意授权或者取消授权，此时会返回用户的头像和昵称，但不包含其他机密信息，可用于前端头像展示。
-  - 2: 用户同意授权
-  - 3: 用户取消授权
-  - -1: 过期
+  - 0: The code is not scanned.
+  - 1: The QR code has been scanned but the user has not clicked to agree to authorize or cancel authorization. At this time, the user's avatar and nickname will be returned, but it does not contain other confidential information, which can be used for front-end avatar display.
+  - 2: User agrees to authorization
+  - 3: User cancels authorization
+  - -1: Expired
 - userInfo:
-  - 默认情况下，在用户扫码之后，会包含昵称（nickname）和头像（photo）两个字段
-  - 开发者也可以配置返回完整用户信息（包括登录凭证 token）
-- ticket：用于换取完整用户资料。**此字段只有在用户同意授权之后才会出现。**详情见下文。
+  - By default, after the user scans the code, it will contain two fields: nickname and photo
+  - Developers can also configure to return complete user information (including login credentials token)
+- ticket: used in getting complete user information. **This field will only appear after the user agrees to the authorization. **See below for details.
 
-## 使用 ticket 换取用户信息
+## To get user information by ticket
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/userinfo">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/userinfo">
 <template slot="bodyParams">
-<ApiMethodParam name="ticket" type="string" required description="查询二维码状态接口返回的 ticket" />
+<ApiMethodParam name="ticket" type="string" required description="Query the ticket returned by the QR code status interface" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -108,7 +108,7 @@
 ```json
 {
   "code": 200,
-  "message": "换取用户信息成功",
+  "message": "get user information success",
   "data": {
     "id": "5e05bbf2d51b3761d5c71070",
     "email": "983132@qq.com",
@@ -117,7 +117,7 @@
     "username": "983132@qq.com",
     "nickname": "",
     "company": "",
-    "photo": "https://usercontents.authing.co/authing-avatar.png",
+    "photo": "https://usercontents.approw.co/approw-avatar.png",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiOTgzMTMyQHFxLmNvbSIsImlxxxxxxxxx",
     "phone": "",
     "tokenExpiredAt": "2020-01-11T08:08:18.000Z",
@@ -135,22 +135,22 @@
 </ApiMethodSpec>
 
 ::: hint-info
-注意：默认情况下，此接口**只允许在服务器端调用**，即需要使用用户池密钥初始化之后。
+Attention: By default, **this interface is only allowed to be called on the server side**,which needs to be initialized with the user pool key.
 
-ticket 默认有效时间为 300 s。
+The default validity time of the ticket is 300 s.
 
-开发者可在 [{{$localeConfig.brandName}} 控制台](https://console.authing.cn/console/userpool) **基础配置** -&gt; **基础设置** -&gt; **App 扫码登录 Web 自定义配置** 处修改。**详情见[自定义配置项页](./customize-settings.md)。**
+Developers can modify in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) **basic configuration** -&gt; **basic settings** -&gt; **app QR code scanning** login Web custom configuration. **See the [custom configuration item](./customize-settings.md) page for details**.
 :::
 
-## APP 端标记已扫码
+## Mark the code scanned on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/scanned" description="APP 端标记已扫码，标记扫码之后 Web 端将可以获取到当前用户的昵称和头像。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/scanned" description="APP has scanned code.After scannimng, the web client can get the nickname and avatar of the user.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="用户登录凭证。" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="random" type="string" required description="二维码 ID。" />
+<ApiMethodParam name="random" type="string" required description="QR code ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -158,9 +158,9 @@ ticket 默认有效时间为 300 s。
 ```js
 {
     code: 200,
-    message: "二维码扫描确认成功",
+    message: "QR code scanning confirmed successfully",
     data: {
-        random: "", // 原样返回
+        random: "", // Return as it was before
         status: 0,
         description: "xxxx",
     }
@@ -172,22 +172,22 @@ ticket 默认有效时间为 300 s。
 </ApiMethodSpec>
 
 ::: hint-info
-APP 端需要满足两个条件：
+The APP needs to meet two conditions:
 
-1. 用户必须处于登录态
-2. 用户的用户池 ID 和二维码用户池 ID 匹配。
+1. User must be logged in
+2. The user's user pool ID matches the QR code user pool ID.
 
 :::
 
-## APP 端同意授权
+## Agrees to authorization on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/confirm" description="APP 端同意授权，调用此接口前需要先调用 scanned 接口。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/confirm" description="The APP agrees to the authorization, and the scanned interface needs to be called before calling this interface.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="用户登录凭证。" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="random" type="string" required description="二维码 ID" />
+<ApiMethodParam name="random" type="string" required description="QR code ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -195,9 +195,9 @@ APP 端需要满足两个条件：
 ```js
 {
     code: 200,
-    message: "授权登录成功",
+    message: "Authorized login succeeded",
     data: {
-        random: "", // 原样返回
+        random: "", // Return as it was before
         status: 1,
         description: "xxxx",
     }
@@ -209,21 +209,21 @@ APP 端需要满足两个条件：
 </ApiMethodSpec>
 
 ::: hint-info
-APP 端需要满足两个条件：
+The APP needs to meet two conditions:
 
-1. 用户必须处于登录态
-2. 用户的用户池 ID 和二维码用户池 ID 匹配。
+1. User must be logged in
+2. The user's user pool ID matches the QR code user pool ID.
    :::
 
-## APP 端取消授权
+## Cancel authorization on APP
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/api/v2/qrcode/cancel" description="APP 端取消授权，调用此接口前需要先调用 scanned 接口。">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/api/v2/qrcode/cancel" description="To cancel authorization on the APP, you need to call the scanned interface before calling this interface.">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="用户池 ID" />
-<ApiMethodParam name="Authorization" type="string" required description="用户登录凭证。" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User pool ID" />
+<ApiMethodParam name="Authorization" type="string" required description="User login credentials" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="random" type="string" required description="二维码 ID" />
+<ApiMethodParam name="random" type="string" required description="QR code ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -231,9 +231,9 @@ APP 端需要满足两个条件：
 ```js
 {
     code: 200,
-    message: "取消授权成功",
+    message: "Cancel authorization successfully",
     data: {
-        random: "", // 原样返回
+        random: "", // Return as it was before
         status: -1,
         description: "xxxx",
     }
@@ -245,9 +245,9 @@ APP 端需要满足两个条件：
 </ApiMethodSpec>
 
 ::: hint-info
-APP 端需要满足两个条件：
+The APP needs to meet two conditions:
 
-1. 用户必须处于登录态
-2. 用户的用户池 ID 和二维码用户池 ID 匹配。
+1. User must be logged in
+2. The user's user pool ID matches the QR code user pool ID.
 
 :::

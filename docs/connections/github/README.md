@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '接入 GitHub 社会化登录',
-  bannerTitle: '接入 GitHub 社会化登录',
+  title: 'Integrate GitHub for Social Authentication',
+  bannerTitle: 'Integrate GitHub for Social Authentication',
   steps:
     [
       {
-        title: '在 GitHub 开发者平台创建一个 OAuth 应用',
+        title: 'Create an OAuth Application on GitHub Developer Platform',
       },
-      { title: '在 {{$localeConfig.brandName}} 填入 GitHub OAuth 应用配置' },
+      { title: 'Setup Configurations of Github OAuth Application in {{$localeConfig.brandName}}' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create an Application in {{$localeConfig.brandName}}'
       },
       {
-        title: '开始开发接入'
+        title: 'Start Deploying Integration'
       }
     ],
 }

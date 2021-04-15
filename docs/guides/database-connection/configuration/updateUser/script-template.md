@@ -1,8 +1,8 @@
-该脚本会在管理员修改用户资料或者用户自己修改用户资料时执行。此脚本只在完全使用自定义数据库模式中需要。
+This script will be called when the admin updates user information or users want to update their information by themselves.This script is only required in CUSTOM_USER_STORE mode.
 
-### 函数定义
+### Function Definition
 
-`updateUser` 函数定义如下：
+Here is the definition of the `updateUser` function:
 
 ```javascript
 async function updateUser(id, updates, context) {
@@ -22,12 +22,12 @@ async function updateUser(id, updates, context) {
   // * and many other fields
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
   // 1. A user was successfully created
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return null
   // 2. This user already exists in your database
   //    throw new Error("user allready exists")
@@ -35,125 +35,125 @@ async function updateUser(id, updates, context) {
   //     throw new Error("my error message")
 
   const msg =
-    "Please implement the Find User script for this database connection ";
-  throw new Error(msg);
+    'Please implement the Find User script for this database connection '
+  throw new Error(msg)
 }
 ```
 
-| 参数                  | 类型            | nullable | 说明                                                                                              |
-| :-------------------- | :-------------- | :------- | :------------------------------------------------------------------------------------------------ |
-| id                    | string / number | false    | 用户 ID                                                                                           |
-| updates               | object          | false    | 需要修改的用户字段                                                                                |
-| updates.email         | string          | ture     | 邮箱，该参数可能为空。                                                                            |
-| updates.phone         | string          | true     | 手机号，该参数可能为空。                                                                          |
-| updates.username      | string          | true     | 用户名，该参数可能为空。                                                                          |
-| updates.password      | string          | true     | 明文密码。该参数可能为空，强烈推荐使用 `bcrypt` 加密用户密码，详情见下文。                        |
-| updates.nickname      | string          | true     | 用户昵称，该参数可能为空。                                                                        |
-| updates.photo         | string          | true     | 用户头像，该参数可能为空。                                                                        |
-| updates.token         | string          | true     | 用户 token，该参数可能为空。                                                                      |
-| updates.emailVerified | bool            | true     | 邮箱是否验证，该参数可能为空。                                                                    |
-| updates.phoneVerified | bool            | true     | 手机号是否验证，该参数可能为空。                                                                  |
-| updates.loginsCount   | number          | true     | 用户登录次数，该参数可能为空。                                                                    |
-| updates.xxxx          | any             | true     | 其他更多的用户字段，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md) |
-| context               | object          | true     | 请求上下文 context                                                                                |
+| Parameter             | Type            | Nullable | Explanation                                                                                                                                           |
+| :-------------------- | :-------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | string / number | false    | User's ID.                                                                                                                                            |
+| updates               | object          | false    | Fields that need updating.                                                                                                                            |
+| updates.email         | string          | ture     | User's email. This parameter can be empty.                                                                                                            |
+| updates.phone         | string          | true     | User's telephone number. This parameter can be empty.                                                                                                 |
+| updates.username      | string          | true     | User's username. This parameter can be empty.                                                                                                         |
+| updates.password      | string          | true     | User's password in cleartext. It is recommended to use bcrypt to encrypt the password.                                                                |
+| updates.nickname      | string          | true     | User's nickname. This parameter can be empty.                                                                                                         |
+| updates.photo         | string          | true     | User's photo. This parameter can be empty.                                                                                                            |
+| updates.token         | string          | true     | User's token. This parameter can be empty.                                                                                                            |
+| updates.emailVerified | bool            | true     | If the user's email is verified. This parameter can be empty.                                                                                         |
+| updates.phoneVerified | bool            | true     | If the user's telephone number is verified. This parameter can be empty.                                                                              |
+| updates.loginsCount   | number          | true     | User's login counts. This parameter can be empty.                                                                                                     |
+| updates.xxxx          | any             | true     | Other user's fields. The format of user information can be found in the document [detailed fields of the user profile](/guides/user/user-profile.md). |
+| context               | object          | true     | Requiring context.                                                                                                                                    |
 
-其中 context 中包含包含以下信息：
+The context also includes the following information:
 
-| 属性名           | 类型   | 说明                                                                                                        |
-| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+| Property Name    | Type   | Explanation                                                                                                                                                                                                                   |
+| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPoolId       | string | The ID of the user pool.                                                                                                                                                                                                      |
+| userPoolName     | string | The Name of the user pool.                                                                                                                                                                                                    |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                                                                                                                              |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                                                                                              |
+| appName          | string | The name of the current application.                                                                                                                                                                                          |
+| appMetadata      | object | Configurations of the current application.                                                                                                                                                                                    |
+| application      | string | The ID of the user pool.                                                                                                                                                                                                      |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-### 返回数据约定
+### The Rule of the Script's Return Value
 
-#### 修改成功
+#### User's profile is updated successfully
 
-当修改用户资料成功时，你需要将该用户的最新用户信息返回给 Authing，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md) 。示例：
+When the user's profile is updated successfully, you need to return the latest user information to Approw, the format of user information can be found in the document of [detailed fields of the user profile](/guides/user/user-profile.md). For example:
 
 ```javascript
 async function updateUser(id, updates, context) {
   // Implement your logic here
   return {
     id: 1, // must not empty
-    email: "test@example.com",
+    email: 'test@example.com',
     emailVerified: true,
-    nickname: "Nick",
-    photo: "",
-  };
+    nickname: 'Nick',
+    photo: '',
+  }
 }
 ```
 
-#### 用户不存在
+#### The user does not exist
 
-当用户不存在时，你需要直接抛出错误（错误信息可自由定义），例如：
+When the user does not exist, you need to throw an error. You can design different error messages. For example:
 
 ```javascript
 async function updateUser(id, updates, context) {
   // Implement your logic here
-  throw new Error("User not exists!");
+  throw new Error('User not exists!')
 }
 ```
 
-#### 其他异常错误
+#### Other abnormal errors
 
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
+When the user meets other errors, you can catch the error and return a friendly notice such as
 
 ```javascript
 async function updateUser(id, updates, context) {
   try {
     // Implement your logic here
   } catch (error) {
-    throw new Error("Something went wrong ...");
+    throw new Error('Something went wrong ...')
   }
 }
 ```
 
-## 最佳实践
+## Best Practice
 
-### 提供友好的错误提示
+### Provide friendly error annoncements
 
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
-![](https://cdn.authing.cn/img/20210111163154.png)
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
 
-#### 函数结束时断开数据库连接
+#### Disable the database connection when exit the function
 
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
 ```javascript
 try {
-  const result = await client.updates("YOUR updates");
+  const result = await client.updates('YOUR updates')
 } finally {
   // NOTE: always call `client.end()` here to close the connection to the database
-  client.end();
+  client.end()
 }
 ```
 
-### 示例函数
+### Example Functions
 
-以 `postgres` 数据库为例，有以下几点说明：
+Assume we are using `postgres` as our database:
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 根据 `updates` 中传过来的查询条件动态创建 `update` `SQL` 语句（`updates.id`, `updates.email`, `updates.username`, `updates.phone` 都可能为空，但不会同时为空）。
-- 如果 `insertResult.rowCount` 为 0，表明该用户不存在，抛出异常，错误信息为：`User not exists!` .
-- 最后返回指定格式的用户信息，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md)。
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- According to the query conditions in the `updates` to generate `update` `SQL` command(`updates.id`, `updates.email`, `updates.username` and `updates.phone`, these four parameters won't be empty at the same time).
+- If `insertResult.rowCount` is 0 which means the user does not exist, then throw error with error message `User not exists!`.
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function updateUser(id, updates, context) {
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
-  const { Client } = require("pg");
+  const { Client } = require('pg')
 
   const client = new Client({
     connectionString: env.DB_CONNECTION_URI,
-  });
+  })
 
   // Or you can:
   // const client = new Client({
@@ -164,92 +164,92 @@ async function updateUser(id, updates, context) {
   //   database: env.DB_DATABASE,
   // });
 
-  await client.connect();
+  await client.connect()
 
-  // Authing user attribute to database column
+  // Approw user attribute to database column
   const userColumnMap = {
-    id: "id",
-    email: "email",
-    name: "name",
-    username: "username",
-    phone: "phone",
-    nickname: "nickname",
-    gender: "gender",
-    address: "address",
-    company: "company",
-    birthdate: "birthdate",
-    website: "website",
-    token: "token",
-    password: "password",
-    photo: "photo",
-    emailVerified: "email_verified",
-    phoneVerified: "phone_verified",
-    loginsCount: "logins_count",
-    lastIp: "last_ip",
-  };
+    id: 'id',
+    email: 'email',
+    name: 'name',
+    username: 'username',
+    phone: 'phone',
+    nickname: 'nickname',
+    gender: 'gender',
+    address: 'address',
+    company: 'company',
+    birthdate: 'birthdate',
+    website: 'website',
+    token: 'token',
+    password: 'password',
+    photo: 'photo',
+    emailVerified: 'email_verified',
+    phoneVerified: 'phone_verified',
+    loginsCount: 'logins_count',
+    lastIp: 'last_ip',
+  }
 
   // Make sure to delete cols not exists in your table,
   // or sql might fail.
   for (const key in updates) {
     if (userColumnMap[key] === undefined) {
-      delete updates[key];
+      delete updates[key]
     }
   }
 
   // If nothing interested, just return
   if (Object.keys(updates).length === 0) {
-    return null;
+    return null
   }
 
   function generateQuery(id, cols) {
-    const _ = require("lodash");
+    const _ = require('lodash')
     // Setup static beginning of query
-    var query = ["UPDATE users"];
-    query.push("SET");
+    var query = ['UPDATE users']
+    query.push('SET')
 
     // Create another array storing each set command
     // and assigning a number value for parameterized query
-    var set = [];
+    var set = []
     Object.keys(cols)
       .filter((col) => !!userColumnMap[col])
       .forEach(function(key, i) {
-        set.push(userColumnMap[key] + " = ($" + (i + 1) + ")");
-      });
-    query.push(set.join(", "));
+        set.push(userColumnMap[key] + ' = ($' + (i + 1) + ')')
+      })
+    query.push(set.join(', '))
 
     // Add the WHERE statement to look up by id
-    query.push("WHERE id = " + id);
+    query.push('WHERE id = ' + id)
 
     // Return all fields
-    query.push("RETURNING *");
+    query.push('RETURNING *')
 
     // Return a complete query string
-    return query.join(" ");
+    return query.join(' ')
   }
 
   // Use bcrypt to encrypt password
   // more info here: https://github.com/kelektiv/node.bcrypt.js
-  const bcrypt = require("bcrypt");
+  const bcrypt = require('bcrypt')
 
   try {
-    const query = generateQuery(id, updates);
+    const query = generateQuery(id, updates)
     const insertResult = await client.query(
       query,
       Object.keys(updates)
         .filter((col) => !!userColumnMap[col])
         .map((key) => {
-          const val = updates[key];
-          if (key === "password") {
+          const val = updates[key]
+          if (key === 'password') {
             // If key is password, use bcrypt to encrypt it
-            return bcrypt.hashSync(val, bcrypt.genSaltSync(10));
+            return bcrypt.hashSync(val, bcrypt.genSaltSync(10))
           }
-          return val;
+          return val
         })
-    );
+    )
     if (insertResult.rowCount === 0) {
-      throw new Error("User not exists!");
+      throw new Error('User not exists!')
     }
-    const user = insertResult.rows[0];
+    const user = insertResult.rows[0]
     return {
       id: user.id,
       email: user.email,
@@ -268,12 +268,12 @@ async function updateUser(id, updates, context) {
       company: user.company,
       birthdate: user.birthdate,
       website: user.website,
-    };
+    }
   } catch (error) {
-    throw new Error(`Execute query failed: ${error.message}`);
+    throw new Error(`Execute query failed: ${error.message}`)
   } finally {
     // NOTE: always call `client.end()` here to close the connection to the database
-    client.end();
+    client.end()
   }
 }
 ```

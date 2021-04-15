@@ -1,8 +1,8 @@
-使用 `login_by_phone_code` 方法进行手机号验证码登录：
+Use `loginByPhoneCode` method to login.
 
 ```python
 phone = '176xxxx6754'
-# 手机号验证码登录，如果用户不存在会自动创建账号
+# login with SMS verification code, if account doesn't exist, it will create a new account automatically
 user = authentication_client.login_by_phone_code(
     phone=phone,
     code='1234',

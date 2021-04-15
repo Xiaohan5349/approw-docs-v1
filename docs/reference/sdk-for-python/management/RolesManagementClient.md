@@ -1,62 +1,62 @@
 ---
 meta:
   - name: description
-    content: 管理角色
+    content: RolesManagementClient
 ---
 
-# 管理角色
+# RolesManagementClient
 
 <LastUpdated/>
 
 
-> 此模块用于管理 {{$localeConfig.brandName}} 角色，可以进行角色的增删改查、角色添加/删除用户、角色添加/删除策略 等操作。
+> This client is used to manage {{$localeConfig.brandName}} roles. It can create, query, update and delete roles, add/delete users to/from roles, add/delete role's policy and perform other operations.
 
-## 创建角色
+## Create a role
 
 RolesManagementClient().create(code, description)
 
-> 创建角色
+> Create a role.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `description` \<string\> 描述
+- `code` \<string\> Unique id of the role.
+- `description` \<string\> Description.
 
-#### 示例
+#### Example
 
 ```python
 code = 'code'
 role = management_client.roles.create(code=code)
 ```
 
-## 删除角色
+## Delete a role
 
 RolesManagementClient().delete(code)
 
-> 删除角色
+> Delete a role.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.delete(code='code')
-code = data['code'] # 200 表示成功
+code = data['code'] # 200 means success
 ```
 
-## 批量删除角色
+## Bulk delete roles
 
 RolesManagementClient().delete_many(codeList)
 
-> 批量删除角色
+> Bulk delete roles.
 
-#### 参数
+#### Parameter
 
-- `codeList` \<string[]\> 角色唯一标志符列表
+- `codeList` \<string[]\> A list of unique ids for roles.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.delete_many([
@@ -67,61 +67,61 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 修改角色
+## Update a role
 
 RolesManagementClient().update(code, input)
 
-> 修改角色
+> Update a role.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role.
 - `input` \<Object\>
-- `input.description` \<string\> 描述信息
-- `input.newCode` \<string\> 新的唯一标志符
+- `input.description` \<string\> description information.
+- `input.newCode` \<string\> New unique id.
 
-#### 示例
+#### Example
 
 ```python
 
-# 修改基本信息
+# modify the description
 code = 'code'
-desc = '描述'
+desc = 'description'
 role = management_client.roles.update(code=code, description=desc)
 
-# 修改新 code
+# modify code
 role = management_client.roles.update(code='old', newCode="new")
 ```
 
-## 获取角色详情
+## Get role details
 
 RolesManagementClient().detail(code)
 
-> 获取角色详情
+> Get role details.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role.
 
-#### 示例
+#### Example
 
 ```python
 code = 'code'
 management_client.roles.create(code=code)
 ```
 
-## 获取角色列表
+## Get roles list
 
 RolesManagementClient().list(page, limit)
 
-> 获取角色列表
+> Get roles list.
 
-#### 参数
+#### Parameter
 
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of roles per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.list()
@@ -129,17 +129,17 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 获取角色用户列表
+## Get role's users list
 
 RolesManagementClient().list_users(code)
 
-> 获取角色用户列表
+> Get role's users list.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
+- `code` \<string\> Unique id of the role.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.list_users('ROLE')
@@ -147,18 +147,18 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 添加用户
+## Add users
 
 RolesManagementClient().add_users(code, userIds)
 
-> 添加用户
+> Add users
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Unique id of the role.
+- `userIds` \<string[]\> User ID list.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.add_users('ROLE', [
@@ -169,18 +169,18 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 移除用户
+##  Remove a user
 
 RolesManagementClient().remove_users(code, userIds)
 
-> 移除用户
+>  Remove a user.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+- `code` \<string\> Unique id of the role.
+- `userIds` \<string[]\> User ID list.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.remove_users('ROLE', [
@@ -191,19 +191,19 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 获取角色策略列表
+## Get the role policy list
 
 RolesManagementClient().list_policies(code, page, limit)
 
-> 获取角色策略列表
+> Get the role policy list.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 页码个数 默认值为 : `10`。
+- `code` \<string\> Unique id of the role.
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of policy records shown per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.list_policies('ROLE')
@@ -211,18 +211,18 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 授权策略
+## Add policies
 
 RolesManagementClient().add_policies(code, policies)
 
-> 给角色授权策略策略
+> Add policies for roles.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+- `code` \<string\> Unique id of the role.
+- `policies` \<string[]\> Policy list.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.add_policies('ROLE', [
@@ -233,18 +233,18 @@ totalCount = data['totalCount']
 _list = data['list']
 ```
 
-## 角色移除策略
+## Remove policies
 
 RolesManagementClient().remove_policies(code, policies)
 
-> 角色移除策略
+> Remove policies for roles.
 
-#### 参数
+#### Parameter
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+- `code` \<string\> Unique id of the role.
+- `policies` \<string[]\> Policy list.
 
-#### 示例
+#### Example
 
 ```python
 data = management_client.roles.remove_policies('ROLE', [

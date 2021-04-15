@@ -1,12 +1,12 @@
 !!!include(common/init-js-auth-sdk.md)!!!
 
-使用 `loginByEmail` 方法：
+Use the `loginByEmail` method:
 
 ```javascript
-authenticationClient.loginByEmail("test@example.com", "passw0rd");
+authenticationClient.loginByEmail('test@example.com', 'passw0rd')
 ```
 
-或者：
+Or:
 
 ```javascript
 authenticationClient.loginByEmail(

@@ -1,6 +1,6 @@
 !!!include(common/init-csharp-mngmt-sdk.md)!!!
 
-使用 [UsersManagementClient](/reference/sdk-for-csharp/management/UsersManagementClient.md) 的 `create` 方法创建用户：
+Use `create`function in [UsersManagementClient](/docs/reference/sdk-for-csharp/management/UsersManagementClient.md) to create a new user:
 
 ```csharp
 var email = "test@example.com";

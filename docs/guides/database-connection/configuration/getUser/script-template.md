@@ -1,9 +1,14 @@
-该脚本会在以下场景执行：用户尝试注册时，如果你配置的数据库脚本查找到了用户记录，会拒绝注册请求；OIDC 协议换取用户信息时；通过控制台或者 API 查看用户信息等。此脚本在惰性迁移用户和完全使用自定义数据库模式中都需要。
+The script will be used in these user cases:
 
+- When a user tries to register, if your database script finds this user's information, it will reject the registration requirement.
+- When OIDC protocol needs to exchange user information.
+- When someone uses console or API to check user information.
 
-### 函数定义
+This script is required in both LAZY_MIGRATION and CUSTOM_USER_STORE mode.
 
-`getUser` 函数定义如下：
+### Function Definition
+
+Here is the definition of the `getUser` function:
 
 ```javascript
 async function getUser(query, context) {
@@ -14,7 +19,7 @@ async function getUser(query, context) {
   // query.phone
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -23,7 +28,7 @@ async function getUser(query, context) {
   //
   // There are three ways this script can finish:
   // 1. A user was successfully found. The profile should be in the following
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return profile
   // 2. A user was not found
   //     return null
@@ -31,60 +36,59 @@ async function getUser(query, context) {
   //     throw new Error("my error message")
 
   const msg =
-    'Please implement the Find User script for this database connection ';
-  throw new Error(msg);
+    'Please implement the Find User script for this database connection '
+  throw new Error(msg)
 }
 ```
 
-| 参数           | 类型   | nullable | 说明                                                       |
-| :------------- | :----- | :------- | :--------------------------------------------------------- |
-| query          | object | false    | 查询条件                                                   |
-| query.id       | string | ture     | 用户 ID，该参数可能为空。                                  |
-| query.email    | string | ture     | 邮箱，该参数可能为空。                                     |
-| query.phone    | string | true     | 手机号，该参数可能为空。                                   |
-| query.username | string | true     | 用户名，该参数可能为空。                                   |
-| context        | object | true     | 请求上下文 context                                         |
+| Parameter      | Type   | Nullable | Explanation                                           |
+| :------------- | :----- | :------- | :---------------------------------------------------- |
+| query          | object | false    | Query condition                                       |
+| query.id       | string | ture     | User's ID. This parameter can be empty.               |
+| query.email    | string | ture     | User's email. This parameter can be empty.            |
+| query.phone    | string | true     | User's telephone number. This parameter can be empty. |
+| query.username | string | true     | User's username. This parameter can be empty.         |
+| context        | object | true     | Requiring context                                     |
 
-其中 context 中包含包含以下信息：
+The context also includes the following information:
 
-| 属性名           | 类型   | 说明                                                                                                        |
-| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+| Property Name    | Type   | Explanation                                                                                                                                                                                                                   |
+| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPoolId       | string | The ID of the user pool.                                                                                                                                                                                                      |
+| userPoolName     | string | The Name of the user pool.                                                                                                                                                                                                    |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                                                                                                                              |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                                                                                              |
+| appName          | string | The name of the current application.                                                                                                                                                                                          |
+| appMetadata      | object | Configurations of the current application.                                                                                                                                                                                    |
+| application      | string | The ID of the user pool.                                                                                                                                                                                                      |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-### 返回数据约定
+### The Rule of the Script's Return Value
 
-#### 用户存在
+#### The user already exists
 
-当用户存时，你需要返回该用户的用户信息给 Authing，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md) 。示例：
+When the user already exists, you need to return user information to Approw, the format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md). For example:
 
 ```javascript
 async function getUser(query, context) {
   // Implement your logic here
   return {
     id: 1, // must not empty
-    email: "test@example.com",
+    email: 'test@example.com',
     emailVerified: true,
-    nickname: "Nick",
-    photo: ""
+    nickname: 'Nick',
+    photo: '',
   }
 }
 ```
 
-#### 用户不存在
+#### The user does not exist
 
-当用户不存在时，你需要返回 `null`，请不要抛出错误。
+When the user does not exist, you need to return `null`. Please do not throw an error.
 
+#### Other abnormal errors
 
-#### 其他异常错误
-
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
+When user meets other errors, you can catch the error and return a friendly notice such as:
 
 ```javascript
 async function getUser(query, context) {
@@ -96,36 +100,36 @@ async function getUser(query, context) {
 }
 ```
 
-## 最佳实践
+## Best Practice
 
-### 提供友好的错误提示
+### Provide Friendly Error Annoncements
 
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
-![](https://cdn.authing.cn/img/20210111163154.png)
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
 
-### 函数结束时断开数据库连接
+### Disable the Database Connection When Exit the Function
 
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
 ```javascript
 try {
-  const result = await client.query("YOUR QUERY");
+  const result = await client.query('YOUR QUERY')
 } finally {
   // NOTE: always call `client.end()` here to close the connection to the database
-  client.end();
+  client.end()
 }
 ```
 
-### 示例函数
+### Example Functions
 
-以 `postgres` 数据库为例，有以下几点说明：
+Assume we are using `postgres` as our database:
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 根据 `query` 中传过来的查询条件动态创建查询语句（`query.id`, `query.email`, `query.username`, `query.phone` 都可能为空，但不会同时为空）。
-- 如果用户不存在，返回 `null`。
-- 最后返回指定格式的用户信息，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md)。
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- According to the query conditions in the `query` to generate query command(`query.id`, `query.email`, `query.username` and `query.phone`, these four parameters won't be empty at the same time).
+- If user does not exist, return `null`.
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function getUser(query, context) {
@@ -135,18 +139,18 @@ async function getUser(query, context) {
   // query.username
   // query.phone
 
-  const { id, email, username, phone } = query;
+  const { id, email, username, phone } = query
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
-  const { Client } = require('pg');
+  const { Client } = require('pg')
 
   const client = new Client({
     connectionString: env.DB_CONNECTION_URI,
-  });
+  })
 
   // Or you can:
   // const client = new Client({
@@ -157,41 +161,41 @@ async function getUser(query, context) {
   //   database: env.DB_DATABASE,
   // });
 
-  await client.connect();
+  await client.connect()
 
-  // 构建查询参数
-  const queries = [];
-  const parameters = [];
-  let index = 1;
+  // build up query conditions
+  const queries = []
+  const parameters = []
+  let index = 1
   if (id) {
-    queries.push(`id = $${index}`);
-    parameters.push(id);
-    index += 1;
+    queries.push(`id = $${index}`)
+    parameters.push(id)
+    index += 1
   }
   if (email) {
-    queries.push(`email = $${index}`);
-    parameters.push(email);
-    index += 1;
+    queries.push(`email = $${index}`)
+    parameters.push(email)
+    index += 1
   }
   if (phone) {
-    queries.push(`phone = $${index}`);
-    parameters.push(phone);
-    index += 1;
+    queries.push(`phone = $${index}`)
+    parameters.push(phone)
+    index += 1
   }
   if (username) {
-    queries.push(`username = $${index}`);
-    parameters.push(username);
-    index += 1;
+    queries.push(`username = $${index}`)
+    parameters.push(username)
+    index += 1
   }
 
-  const QUERY = `SELECT * FROM users WHERE ${queries.join(' OR ')}`;
+  const QUERY = `SELECT * FROM users WHERE ${queries.join(' OR ')}`
 
   try {
-    const result = await client.query(QUERY, parameters);
+    const result = await client.query(QUERY, parameters)
     if (result.rows.length === 0) {
-      return null;
+      return null
     }
-    const user = result.rows[0];
+    const user = result.rows[0]
     return {
       id: user.id,
       email: user.email,
@@ -210,12 +214,12 @@ async function getUser(query, context) {
       company: user.company,
       birthdate: user.birthdate,
       website: user.website,
-    };
+    }
   } catch (error) {
-    throw new Error(`Execute query failed: ${error.message}`);
+    throw new Error(`Execute query failed: ${error.message}`)
   } finally {
     // NOTE: always call `client.end()` here to close the connection to the database
-    client.end();
+    client.end()
   }
 }
 ```

@@ -1,137 +1,135 @@
 ---
 meta:
-  - name: description
-    content: 配置自定义密码函数
+    - name: description
+      content: Configure user-defined password function
 ---
 
-# 配置自定义密码函数
+# Configure User-defined Password Function
 
 <LastUpdated/>
 
-如果你想自定义密码加密函数，请在此上传函数片段（目前仅支持 Node.js），函数模版请[点击这里下载](https://core.authing.cn/faas/template/download)（Authing 不会存储用户的密码原文）。
+If you want to customize the password encryption function, please upload the function fragment here（currently only supports Node.js）, please click [here](https://core.authing.cn/faas/template/download) to download the function template（Approw does not save the original password of the user）.
 
-此功能适用于以下场景：
+This function is suitable for the following scenarios:
 
-1. 你将所有用户迁移进了 Authing，但不想让用户修改密码；
-2. 你不信任 {{$localeConfig.brandName}} 的密码加密算法，想使用自己的密码加密算法；
+1. You migrated all users into Approw, but you don’t want users to change their passwords.
+2. You do not trust Approw's password encryption algorithm, and want to use your own password encryption algorithm.
 
-本文档介绍了如何配置密码加密函数。
+This document introduces how to configure the password encryption function.
 
-## 配置步骤
+## Configuration steps
 
-进入用户池，依次点击**扩展能力** -&gt; **自定义密码加密** ，如下图所示：
+In the user pool, click ** Expansion Capabilities** -&gt; **Custom Password Encryption** , as shown in the image below:
 
 ![](https://cdn.authing.cn/blog/20200927202818.png)
 
 ::: img-description
-自定义密码加密方法
+User-defined password encryption method
 :::
 
-### 下载模版
+### Download template
 
-点击页面中的「下载模版」下载 Node.js 代码模版，模版代码如下所示：
+Click「Download template」on the page to download the Node.js code template. As shown below:
 
 ```js
-var getRawBody = require('raw-body')
+var getRawBody = require("raw-body");
 
-const encryptPassword = password => {
-  // 在此编写加密密码的函数
+const encryptPassword = (password) => {
+	// Write the function to encrypt the password here
 
-  return password
-}
+	return password;
+};
 
 /**
  *
- * @param {String} password 明文密码
- * @param {String} encryptedPassword 密文密码
+ * @param {String} password password
+ * @param {String} encryptedPassword encrypted password
  */
 const comparePassword = (password, encryptedPassword) => {
-  // 在此编写校验密码的函数
+	// Write the function to verify the password here
 
-  return password === encryptedPassword
-}
+	return password === encryptedPassword;
+};
 
 module.exports.encrypt = function(request, response, context) {
-  // get request body
-  getRawBody(request, function(err, body) {
-    const queries = request.queries
-    const password = queries.password
+	// get request body
+	getRawBody(request, function(err, body) {
+		const queries = request.queries;
+		const password = queries.password;
 
-    if (!password) {
-      response.setStatusCode(500)
-      response.setHeader('content-type', 'application/json')
-      response.send(
-        JSON.stringify(
-          {
-            message: 'Please provide password via url query',
-          },
-          null,
-          4
-        )
-      )
-    }
+		if (!password) {
+			response.setStatusCode(500);
+			response.setHeader("content-type", "application/json");
+			response.send(
+				JSON.stringify(
+					{
+						message: "Please provide password via url query",
+					},
+					null,
+					4
+				)
+			);
+		}
 
-    const respBody = {
-      password: encryptPassword(password), // 在此加密密码
-    }
+		const respBody = {
+			password: encryptPassword(password), // Encrypt password here
+		};
 
-    response.setStatusCode(200)
-    response.setHeader('content-type', 'application/json')
-    response.send(JSON.stringify(respBody, null, 4))
-  })
-}
+		response.setStatusCode(200);
+		response.setHeader("content-type", "application/json");
+		response.send(JSON.stringify(respBody, null, 4));
+	});
+};
 
 module.exports.validate = function(request, response, context) {
-  // get request body
-  getRawBody(request, function(err, body) {
-    const queries = request.queries
-    const password = queries.password
-    const encryptedPassword = queries.encryptedPassword
+	// Get request body
+	getRawBody(request, function(err, body) {
+		const queries = request.queries;
+		const password = queries.password;
+		const encryptedPassword = queries.encryptedPassword;
 
-    if (!password) {
-      response.setStatusCode(500)
-      response.setHeader('content-type', 'application/json')
-      response.send(
-        JSON.stringify(
-          {
-            message: 'Please provide password via url query',
-          },
-          null,
-          4
-        )
-      )
-    }
+		if (!password) {
+			response.setStatusCode(500);
+			response.setHeader("content-type", "application/json");
+			response.send(
+				JSON.stringify(
+					{
+						message: "Please provide password via url query",
+					},
+					null,
+					4
+				)
+			);
+		}
 
-    const respBody = {
-      isValid: comparePassword(password, encryptedPassword), // 在此校验密码
-    }
+		const respBody = {
+			isValid: comparePassword(password, encryptedPassword), // Verify password here
+		};
 
-    response.setStatusCode(200)
-    response.setHeader('content-type', 'application/json')
-    response.send(JSON.stringify(respBody, null, 4))
-  })
-}
-
+		response.setStatusCode(200);
+		response.setHeader("content-type", "application/json");
+		response.send(JSON.stringify(respBody, null, 4));
+	});
+};
 ```
 
-### 编写代码
+### Coding
 
-你需要在 `encryptPassword` 函数中编写相应的密码加密方法，以及在 `comparePassword` 函数中编写相应的验证密码加密方法。
+You need to write the corresponding password encryption method in the `encryptPassword` function and write the corresponding verification password encryption method in the `comparePassword` function.
 
-若开发者需要引入第三方 NPM 包，请直接使用 NPM 直接安装。
+If the developer needs to import a third-party NPM package, please use NPM to install it directly.
 
 ::: hint-info
-NPM 是 Node.js 生态的包管理工具。
+NPM is a package management tool for the Node.js ecosystem.
 :::
 
-以下是引入 `bcrypt` 包的一个代码示例：
+The following is a code example of the introduction of the `bcrypt` package:
 
 ```haskell
 $ npm install bcrypt
 ```
 
-安装完成后在文件夹内会多出一个 node_modules 文件夹，之后编写代码：
-
+After the installation is complete, there will be an additional node_modules folder in the folder, and then write the code:
 
 ```js
 var getRawBody = require("raw-body");
@@ -157,26 +155,26 @@ const vlidatePassword = (plainText, encrypted) => {
 
 ```
 
-### 上传函数至服务器
+### Upload function to server
 
 ::: hint-info
-{{$localeConfig.brandName}} 支持的代码包只能为 .js 格式或 .zip 格式。
+The code package supported by {{$localeConfig.brandName}} can only be in .js format or .zip format.
 :::
 
-若你没有引入任何包，可直接上传 .js 格式的模版文件；若你引入了包请连带 node_modules 一起打包为 .zip 格式并在 {{$localeConfig.brandName}} 控制台中上传。
+If you have not imported any package, you can directly upload the template file in .js format. If you have imported the package, please package it with node_modules in .zip format and upload it in the {{$localeConfig.brandName}} console.
 
 ![](https://cdn.authing.cn/blog/image%20%28510%29.png)
 
-### 测试密码加密函数
+### Test password encryption function
 
-上传成功后开发者可测试密码加密效果，如下所示，在输入框中输入原密码后点击「加密测试」即可看到加密后的密码（若未上传任何加密函数将显示 {{$localeConfig.brandName}} 默认的密码加密结果）。
+After the upload is successful, the developer can test the password encryption effect. As shown below, enter the original password in the input box and click「Encryption test」to see the encrypted password result（if no encryption function is uploaded, the {{$localeConfig.brandName}} default password encryption will be displayed）.
 
 ![](https://cdn.authing.cn/blog/image%20%28529%29.png)
 
-## 注意事项
+## Attention
 
 ::: hint-info
-密码加密函数上传后即生效，会影响原用户，建议此功能在完全新的用户池中使用。
+The password encryption function takes effect after uploading and will affect the original user. It is recommended that this function be used in a completely new user pool.
 
-若你需要在旧用户池中修改密码加密函数，请联系我们：+86 17602502507。
+If you need to modify the password encryption function in the old user pool, please contact us: +86 17602502507。
 :::

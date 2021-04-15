@@ -1,7 +1,5 @@
-# 修改用户池基础信息
-
-用户池基础设置包括：用户池名称、用户池地址、用户池描述。
-
-用户可以在 设置 -> 基础设置 修改用户池信息。
+# Configure User Pool Basic Information
+Basic user pool settings include user pool name, user pool address, and user pool description.
+Users can modify the user pool information in Settings -> Basic Settings.
 
 ![](./images/basic-config.png)

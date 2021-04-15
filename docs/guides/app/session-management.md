@@ -1,7 +1,7 @@
-# 管理用户登录状态
+# Manage User Login Status
 
 <LastUpdated/>
 
-你可以在**应用详情**的**登录状态管理**查看该应用当前在线的所有用户，以及其最后一次的登录时间，点击**强制下线**即可让该用户退出登录该应用。
+In the **Login status** tab of the **Application Details Page**, you can check all the users online for this application, as well as the last login time. Click **Force logout** can make the user log out of this application.
 
 ![](../user/images/Xnip2021-02-26_11-36-22.png)

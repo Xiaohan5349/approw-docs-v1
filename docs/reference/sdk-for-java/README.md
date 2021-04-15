@@ -6,30 +6,31 @@ meta:
 
 # {{$localeConfig.brandName}} - Java / Kotlin
 
-{{$localeConfig.brandName}} Java SDK 由两部分组成：`ManagementClient` 和 `AuthenticationClient`。`ManagementClient` 中进行的所有操作均以管理员的身份进行，包含管理用户、管理角色、管理权限策略、管理用户池配置等模块。`AuthenticationClient` 中的所有操作以当前终端用户的身份进行，包含登录、注册、修改用户资料、退出登录等方法。
+{{$localeConfig.brandName}} Java SDK is comprised of two parts：`ManagementClient` and `AuthenticationClient`. All operations in `ManagementClient` are performed as an administrator, including managing users, managing roles, managing authority policies, and managing user pool configuration. All operations in `AuthenticationClient` are performed as the current terminal user, including login, registration, modification of user information, and logout.
 
-你应该将初始化过后的 `ManagementClient` 实例设置为一个全局变量（只初始化一次），而 `AuthenticationClient` 应该每次请求初始化一个。
+You should set the initialized `ManagementClient` instance to a global variable (initialize only once), and the `AuthenticationClient` should be initialized for each request.
 
-## 安装
+## Installation
 
-### gradle 项目
+### gradle project
 
-在 build.gradle 内的 dependencies 中添加：
+Add to dependencies in build.gradle:
 
 ```
-implementation "cn.authing:java-core:<LATEST_VERSION>"
+implementation "com.approw:java-core:<LATEST_VERSION>"
 ```
 
-> 你可以在 [https://search.maven.org/artifact/cn.authing/java-core](https://search.maven.org/artifact/cn.authing/java-core) 查看最新的版本。
+> You can check the latest version at [https://search.maven.org/artifact/com.approw/java-core](https://search.maven.org/artifact/com.approw/java-core) .
 
-### maven 项目
-在 pom.xml 内的 dependencies 中添加：
+### maven project
 
-> 如果你需要在 `spring` 中使用此 SDK，由于 `spring` 依赖的 `OkHttp` 版本过低，所以你需要手动指定一下 `OkHttp` 的版本。
+Add to dependencies in pom.xml:
+
+> If you need to use this SDK in `spring`, since the `spring` relies on old version of `OkHttp`, you need to manually specify the version of `OkHttp`.
 
 ```
 <dependency>
-    <groupId>cn.authing</groupId>
+    <groupId>com.approw</groupId>
     <artifactId>java-core</artifactId>
     <version><LATEST_VERSION></version>
 </dependency>
@@ -38,34 +39,34 @@ implementation "cn.authing:java-core:<LATEST_VERSION>"
 </properties>
 ```
 
-## 使用管理模块
+## Use ManagementClient
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID） 和 `secret`（用户池密钥）:
+Initializing `ManagementClient` requires `userPoolId` and `secret`:
 
-> 你可以在此[了解如何获取 UserPoolId 和 Secret](/guides/faqs/get-userpool-id-and-secret.md) .
+> You can learn how to get [ UserPoolId and Secret here](/guides/faqs/get-userpool-id-and-secret.md) .
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-      ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+      ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 
-      // 获取管理员权限
+      // get admin privileges
       managementClient.requestToken().execute();
     }
 }
 ```
 
-现在 `managementClient` 实例就可以使用了。例如可以获取用户池中的用户列表：
+Now the `ManagementClient` instance is ready to use. For example, you can get the list of users in the user pool.
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-        ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-        // 获取管理员权限
+        ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+        // get admin privileges
         managementClient.requestToken().execute();
 
         PaginatedUsers users = managementClient.users().list().execute();
@@ -73,33 +74,32 @@ public class ManagementClientTest {
 }
 ```
 
+## Use AuthenticationClient
 
-## 使用认证模块
+Initializing `ManagementClient` requires `userPoolId` and `appId`:
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID）和 `appId`（应用 ID）：
-
-> 你可以在此[了解如何获取 UserPoolId](/guides/faqs/get-userpool-id-and-secret.md), 在控制台的**应用**中查看自己的应用列表。
+> You can learn how to get[UserPoolId here](/guides/faqs/get-userpool-id-and-secret.md), and view your own **application** list in the console.
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
     }
 }
 ```
 
-接下来可以进行注册登录等操作：
+Next, you can perform operations such as registration and login:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
 
         String email = "test@example.com";
         String password = "123456";
@@ -108,15 +108,15 @@ public class AuthenticationClientTest {
 }
 ```
 
-完成登录之后，`update_profile` 等要求用户登录的方法就可用了：
+After login, `update_profile` and the other methods that require users to log in are available:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
 
         String email = "test@example.com";
         String password = "123456";
@@ -127,45 +127,45 @@ public class AuthenticationClientTest {
 }
 ```
 
-你也可以在初始化后设置 `AccessToken` 参数, 不需要每次都调用 `LoginByXXX` 方法:
+You can also set the `AccessToken` parameter after initialization, so that it is unnecessary to call the `LoginByXXX` method:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        authenticationClient.setAppId("AUTHING_APP_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        authenticationClient.setAppId("APPROW_APP_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
     }
 }
 ```
 
-再次执行 `UpdateProfile` 方法，发现也成功了:
+Executing the `UpdateProfile` method can also succeed:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
         User user = authenticationClient.updateProfile(new UpdateUserInput().withNickname("nickname")).execute();
     }
 }
 ```
 
-## 错误处理
+## Error handling
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
-import cn.authing.core.graphql.GraphQLException;
+import com.approw.core.auth.AuthenticationClient;
+import com.approw.core.graphql.GraphQLException;
 import java.io.IOException;
 
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
         authenticationClient.setAccessToken("ACCESS_TOKEN");
 
         try {
@@ -177,78 +177,79 @@ public class AuthenticationClientTest {
 }
 ```
 
-## 私有化部署
+## Privatization deployment
 
-**私有化部署**场景需要指定你私有化的 Authing 服务的 GraphQL 端点（**不带协议头和 Path**）以及密码加密公钥，如果你不清楚可以联系 Authing IDaaS 服务管理员。
-### 使用管理模块
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized Approw service (**without protocol header and Path**) and the password encryption public key. If you are not sure, you can contact the Approw IDaaS service administrator.
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID） 和 `secret`（用户池密钥）:
+### Use ManagementClient
+
+Initializing `ManagementClient` requires `userPoolId` and `secret`:
 
 ```java
-import cn.authing.core.mgmt.ManagementClient;
+import com.approw.core.mgmt.ManagementClient;
 
 public class ManagementClientTest {
     public static void main(String[] args){
-      ManagementClient managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-      // 配置自定义域名
-      managementClient.setHost("https://core.you-authing-service.com");
-      // 配置自定义公钥
+      ManagementClient managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+      // config customized domain name
+      managementClient.setHost("https://core.you-approw-service.com");
+      // config customized public key
       managementClient.setPublicKey("public key");
-      // 获取管理员权限
+      // get admin privileges
       managementClient.requestToken().execute();
     }
 }
 ```
 
-### 使用认证模块
+### Use AuthenticationClient
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID）：
+Initializing `ManagementClient` requires `userPoolId` and `appId`:
 
 ```java
-import cn.authing.core.auth.AuthenticationClient;
+import com.approw.core.auth.AuthenticationClient;
 
 public class AuthenticationClientTest {
     public static void main(String[] args){
-        AuthenticationClient authenticationClient = new AuthenticationClient("AUTHING_USERPOOL_ID");
-        // 配置自定义域名
-        authenticationClient.setHost("https://core.you-authing-service.com");
-        // 配置自定义公钥
+        AuthenticationClient authenticationClient = new AuthenticationClient("APPROW_USERPOOL_ID");
+        // config customized domain name
+        authenticationClient.setHost("https://core.you-approw-service.com");
+        // config customized public key
         authenticationClient.setPublicKey("public key");
     }
 }
 ```
 
-## 接口索引
+## Interface index
 
-可用的 Authentication 方法
+Available Authentication methods
 
-- 获取当前用户的用户资料: `getCurrentUser`
-- 使用邮箱注册: `registerByEmail`
-- 使用用户名注册: `registerByUsername`
-- 使用手机号验证码注册: `registerByPhoneCode`
-- 使用邮箱登录: `loginByEmail`
-- 使用用户名登录: `loginByUsername`
-- 使用手机号验证码登录 `loginByPhoneCode`
-- 使用手机号密码登录: `loginByPhonePassword`
-- 发送邮件: `sendEmail`
-- 发送短信验证码: `sendSmsCode`
-- 检查 token 的有效状态: `checkLoginStatus`
-- 使用手机号验证码重置密码: `resetPasswordByPhoneCode`
-- 使用邮件验证码重置密码: `resetPasswordByEmailCode`
-- 更新用户资料: `updateProfile`
-- 更新密码: `updatePassword`
-- 更新手机号: `updatePhone`
-- 更新邮箱: `updateEmail`
-- 刷新 token: `refreshToken`
-- 绑定手机号: `bindPhone`
-- 解绑手机号: `unbindPhone`
+- Get the user profile of the current user: `getCurrentUser`
+- Register with email: `registerByEmail`
+- Register with username: `registerByUsername`
+- Register with SMS verification code: `registerByPhoneCode`
+- Login with email: `loginByEmail`
+- Login with username: `loginByUsername`
+- Login with SMS verification code: `loginByPhoneCode`
+- Login with phone number password: `loginByPhonePassword`
+- Send mail: `sendEmail`
+- Send SMS verification code: `sendSmsCode`
+- Check the valid status of the token: `checkLoginStatus`
+- Use the SMS verification code to reset the password: `resetPasswordByPhoneCode`
+- Use email verification code to reset password: `resetPasswordByEmailCode`
+- Update user profile: `updateProfile`
+- Update password: `updatePassword`
+- Update phone number: `updatePhone`
+- Update email: `updateEmail`
+- Refresh token:`refreshToken`
+- Bind mobile phone number: `bindPhone`
+- Unbind phone number: `unbindPhone`
 
-详情请见：
+Learn more:：
 
 ::: page-ref /reference/sdk-for-java/authentication/
 :::
 
-管理模块包含以下子模块：
+ManagementClient contains the following sub-clients:
 
 ::: page-ref /reference/sdk-for-java/management/UsersManagementClient.md
 :::
@@ -280,6 +281,6 @@ public class AuthenticationClientTest {
 ::: page-ref /reference/sdk-for-java/management/ApplicationManagementClient.md
 :::
 
-## 获取帮助
+## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

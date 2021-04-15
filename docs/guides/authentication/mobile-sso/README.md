@@ -1,37 +1,37 @@
 ---
 meta:
   - name: description
-    content: 移动应用 SSO
+    content: Mobile Application SSO
 ---
 
-# 在移动端实现单点登录
+# Implement Single Sign-on on Mobile
 
 <LastUpdated/>
 
-移动应用单点登录（Single Sign On，单点登录） 和传统 [Web 端 SSO](../sso/README.md) 类似，指的是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。
+Mobile application single sign-on (SSO) is similar to traditional [Web application SSO](../sso/README.md), which means that in multiple application systems, users only need to log in once to access all trusted application systems.
 
-Authing 目前共支持两种形式的移动端单点登录方式：
+Approw currently supports two forms of mobile SSO:
 
-1. 自动检测同一设备上关联应用的登录态
-2. 唤起关联 App 以交换用户信息
+1. Automatically detect the login status of associated apps on the same device.
+2. Invoke associated apps to exchange user information.
 
-## 自动检测方式
+## Automatic detection method
 
-自动检测方式，和美团系 App 类似，可以实现同一设备上所有相互信任系统只要有其中一个处于登录状态，就能检测出相关用户，提示用户是否使用该账号登录，从而实现单点登录。
+The automatic detection method is similar to the Meituan App. As long as one of the mutual trust systems on the same device is logged in, it can detect the relevant user and prompt the user whether to log in with this account, thereby achieving single sign-on.
 
-如下图所示：
+As shown below:
 
-<img src="https://cdn.authing.cn/blog/image%20%28595%29.png" height=500 style="display:block;margin: 0 auto;">
+<img src="https://cdn.approw.com/blog/image%20%28595%29.png" height=500 style="display:block;margin: 0 auto;">
 
-你可以查看这个视频的演示：
+You can view the demo of this video：
 
 <video controls>
-  <source src="./Authing-App-SSO-Demo.mp4" type="video/mp4">
+  <source src="./Approw-App-SSO-Demo.mp4" type="video/mp4">
 </video>
 
-具体接入方式请见：[移动端自动检测登录](./track-session.md)。
+[Learn more](./track-session.md)
 
-## 唤起  App 方式
+## The way of invoking App
 
-唤起 App 方式，指的是在应用 A 唤起应用 B，用户在应用 B 内同意授权登录，之后跳转会应用 A，应用 A 通过某种方式获取用户信息。此模式正在开发中。
+The method of awakening the App refers to awakening application B in application A, the user agrees to log in in application B, and then redirect to application A, and the application A obtains user information in some way. This model is under development.
 

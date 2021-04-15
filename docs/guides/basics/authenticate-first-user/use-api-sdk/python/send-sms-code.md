@@ -1,4 +1,4 @@
-使用 `send_sms_code` 方法发送验证码：
+Send SMS code using `sendSmsCode` method.
 
 ```python
 authentication_client.send_sms_code(

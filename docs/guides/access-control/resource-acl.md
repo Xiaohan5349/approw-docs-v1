@@ -1,80 +1,78 @@
-# 管理资源权限
+# Manage Resource Privileges
 
 <LastUpdated/>
 
+As an administrator, you can**manage and assign resource privileges on the console**. Before practicing privilege management and authorization, you need to understand several concepts.
 
-作为管理员，你可以在控制台**管理和分配资源的权限**。在实践权限管理和授权之前，需要先了解几个概念。
+1. **Application**：As an administrator, you can create an **application**. The application is a definition of the application project you are developing in Approw. For example, when you are actually developing a "web note" application, you should create a "web note" in Approw application.
+2. **Resources**：You can define some resources in Approw. For example, the resources in the "Web Notes" application may include notebooks, note content, authors, and so on.
+3. **User**：You can also directly assign privileges to users. You can also divide your users into different groups, roles, and organizations, so that you can manage them when assigning privileges.
+4. **Role**：A role is a group of users, and the users in the role will automatically inherit the authorized privileges of the role.
 
-1. **应用**：作为管理员，你能够创建**应用**，应用就是你正在开发的应用项目在 Authing 的一个定义，例如正在实际开发一个「网络笔记」应用，你就应该在 Authing 创建一个名为「网络笔记」的应用。
-2. **资源**：之后你可以在 Authing 中**定义一些资源**，例如「网络笔记」应用中的资源可能有笔记本、笔记内容、作者等等。
-3. **用户**：你也可以直接将权限指派到用户，你也可以将你的用户**划分**成不同的分组、角色、组织机构部门，这样在以后分配权限的时候方便管理。
-4. **角色**：角色是一组用户的集合，角色中的用户会自动继承该角色被授权的权限。
+Next, we create applications, create resources, create users, and then define the authorization relationship between resources and users.
 
-下面我们创建应用、创建资源、创建用户，然后定义资源与用户的授权关系。
+## Create application
 
-## 创建应用
+Please see the [Create application](/app/create.md)。
 
-请查看创建应用[文档](/app/create.md)。
+## Add Resources
 
-## 创建资源
+In the resource card under the application, click the Add button on the right.
 
-在应用下的资源卡片，点击右边的添加按钮。
+![](~@imagesEnUs/guides/authorization/create-resource-1.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-1.png)
+Then fill in a **resource name**, it is recommended to fill in a semantic resource name to facilitate subsequent management. Resource operations can be defined in the operation type, where read and write operations are defined. Finally, click Save, and a resource is created.
 
-然后填写一个**资源名称**，建议填写语义化的资源名称，便于后续管理。在操作类型中可以定义资源操作，这里定义了读取和写入操作。最后点击保存，一个资源就创建好了。
+![](~@imagesEnUs/guides/authorization/create-resource-2.png)
 
-![](~@imagesZhCn/guides/authorization/create-resource-2.png)
+## Create a user
 
-## 创建用户
+In the user list, click New to create a user.
 
-在用户列表，点击新建，创建一个用户。
+![](~@imagesEnUs/guides/authorization/create-user-1.png)
 
-![](~@imagesZhCn/guides/authorization/create-user-1.png)
+![](~@imagesEnUs/guides/authorization/create-user-2.png)
 
-![](~@imagesZhCn/guides/authorization/create-user-2.png)
+## Create a role
 
-## 创建角色
+In - **Application**Authorization**Role Management**card, click the add button on the right:
 
-在应用详情 - **授权**菜单的**角色管理**卡片中，点击右边的添加按钮：
+![](~@imagesEnUs/guides/authorization/add-role-1.png)
 
-![](~@imagesZhCn/guides/authorization/add-role-1.png)
+After creating the role, you can add users to this role:
 
-创建完角色之后，你可以往这个角色中添加用户：
+> You can search users by username, email or nickname.
 
-> 你可以通过用户名、邮箱、昵称搜索用户。
+![](~@imagesEnUs/guides/authorization/add-role-2.png)
 
-![](~@imagesZhCn/guides/authorization/add-role-2.png)
+## Privilege management
 
-## 管理权限
+Now that you have**resources** and **users**, next you have to define 「**who**」can do what「**operations**」on which「**resources**」In the application’s resource authorization card, click the Add button on the right.
 
-现在你有了**资源**和**人**，接下来你要定义「**谁**」能够对什么「**资源**」做什么「**操作**」。
-在应用的资源授权卡片中，点击右侧的添加按钮。
+![](~@imagesEnUs/guides/authorization/acl-1.png)
 
-![](~@imagesZhCn/guides/authorization/acl-1.png)
+The **authorized principal** can select **users**. Here we select the user we just created, and select the book resource we just created in the resource type.
 
-**被授权主体**可以选择**用户**，这里我们选择刚刚创建的用户，在下方的**资源类型**中选择我们刚刚创建的图书资源。
+![](~@imagesEnUs/guides/authorization/acl-2.png)
 
-![](~@imagesZhCn/guides/authorization/acl-2.png)
+> Also, the authorized principal can also choose a role, so that all users in the role will automatically inherit the authorized privileges of the role.
 
-> 同时被授权主体也可以选择**角色**，这样角色中的所有用户都会自动继承该角色被授权的权限。
+Then fill in the **resource id** `*`, which means that all book resources are authorized. Select **Specific Operation**in Operation, and then select the read book list operation in the **Resource Operation** we just defined, and finally clicks OK.
 
-然后**资源标识符**填写 `*`，代表授权所有图书资源，操作选择**特定操作**，选择我们刚刚定义的**资源操作**中的读取图书列表操作，最后点击确定。
+If you fill in a **specific id**, such as 42, it means that the book resource number 42 is authorized to the principal. The principal only has the privilege of the book:42 resource, and can only authorize the relevant privilege of the book:42 resource during authorization.
 
-如果填写一个**具体的标识符**，例如 42，则表示将编号为 42 的图书资源授权给主体。主体只具备 book:42 这个资源的权限，授权时最多只能授权出 book:42 资源的相关权限。
+![](~@imagesEnUs/guides/authorization/acl-3.png)
 
-![](~@imagesZhCn/guides/authorization/acl-3.png)
+We can also add restrictions to authorization rules. For example, the rules are only valid for Windows users. If the authorization is initiated from a Linux machine, Approw will determine that the user has no permission and cannot complete the authorization of the book resource.
 
-我们还可以为授权规则添加限制条件，例如该规则只针对 Windows 用户有效。如果从 Linux 机器上发起授权，Authing 会认为用户无权限，无法完成图书资源的授权。
+![](~@imagesEnUs/guides/authorization/acl-4.png)
 
-![](~@imagesZhCn/guides/authorization/acl-4.png)
+If you want to authorize multiple resources to users, you can continue to add authorization rules.
 
-如果希望将多个资源授权给用户，可以继续添加授权规则。
+![](~@imagesEnUs/guides/authorization/acl-5.png)
 
-![](~@imagesZhCn/guides/authorization/acl-5.png)
+## Programmatic access account
 
-## 编程访问账号
+The programmatic access account is a pair of AccessKey and SecretKey in the application, which is used to hand over to third-party vendors. You can use the programmatic access account in combination with the OIDC authorization code to obtain the user's AccessToken and IdToken, or use the programmatic access account to perform OIDC ClientCredentials mode as the caller itself to request authorization.
 
-编程访问账号是应用下的一对 AccessKey、SecretKey，用于交给外包商等第三方厂商。可以使用编程访问账号结合 OIDC 授权码 code 获取用户的 AccessToken 与 IdToken，或者使用编程访问账号进行 OIDC ClientCredentials 模式代表调用方本身请求授权。
-
-![](~@imagesZhCn/guides/authorization/programmatic-account-1.png)
+![](~@imagesEnUs/guides/authorization/programmatic-account-1.png)

@@ -4,14 +4,14 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 CAS 1.0 认证',
-  bannerTitle: '使用 CAS 1.0 认证',
+  title: 'Use CAS 1.0 to Authenticate',
+  bannerTitle: 'Use CAS 1.0 to Authenticate',
   steps:
     [
-      { title: '拼接认证链接', subTitle: '拼接认证链接并引导用户点击' },
-      { title: '跳转到 {{$localeConfig.brandName}} 进行认证', subTitle: '引导用户点击登录链接，跳转到 {{$localeConfig.brandName}} 进行认证' },
-      { title: '处理回调', subTitle: '在后端验证 Ticket 合法性' },
-      { title: '完成认证', subTitle: '服务端认证用户身份，执行后续流程' },
+      { title: 'Build Authentication URL', subTitle: 'Build Authentication URL and Guide Users to Visit' },
+      { title: 'Redirect User to {{$localeConfig.brandName}} to Authenticate', subTitle: 'Guide User to Visit Login URL and Redirect User to {{$localeConfig.brandName}} to Authenticate' },
+      { title: 'Processing the Callback', subTitle: 'Validate the Legality of the Ticket in the Backend' },
+      { title: 'Validation Complete', subTitle: 'The Server Authenticates User Identity and Executes Following Flow' },
     ],
 }
 ---

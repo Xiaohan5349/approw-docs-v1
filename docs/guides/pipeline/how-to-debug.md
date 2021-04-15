@@ -1,83 +1,74 @@
 ---
 meta:
   - name: description
-    content: 如何调试
+    content: How to Debug
 ---
 
-# 如何调试
+# How To Debug
 
-<LastUpdated/>
+This article describes how to use the Approw console to debug Pipeline functions.
 
-本文讲述如何使用 {{$localeConfig.brandName}} 控制台调试 Pipeline 函数。
-
-在上一步，我们已经[创建了第一个 Pipeline 函数](./write-your-first-pipeline-function.md)，同时回顾一下该函数代码为：
+In the previous step, we have [created the first Pipeline function](https://docs.authing.cn/v2/guides/pipeline/write-your-first-pipeline-function.html), and at the same time review the function code as:
 
 ```js
 async function pipe(context, callback) {
-  const email = context.data.userInfo.email;
-  // 非邮箱注册方式
+  const email = context.data.userInfo.email
   if (!email) {
-    return callback(null, context);
+    return callback(null, context)
   }
-  if (!email.endsWith("example.com")) {
-    return callback(new Error("Access denied."));
+  if (!email.endsWith('example.com')) {
+    return callback(new Error('Access denied.'))
   }
-  return callback(null, context);
+  return callback(null, context)
 }
 ```
 
-该 Pipeline 函数的作用是只允许域名后缀为`example.com`的邮箱注册。
+The function of the Pipeline function is to only allow the [example.com](http://example.com/)registration of mailboxes with thedomain name suffix.
 
-点击 Pipeline 函数的 debug 按钮：
+Click the debug button of the Pipeline function:
 
-![](https://cdn.authing.cn/blog/20200927200911.png)
+![](./images/howtodebug-1.png)
 
-点击此按钮打开调试窗口：{{$localeConfig.brandName}} 会**根据你的用户池**生产相对应的测试数据。
+Click this button to open the debugging window: Approw will produce corresponding test data **based on your user pool**.
 
-![](https://cdn.authing.cn/blog/20200927200924.png)
+![](RackMultipart20210320-4-2kprvl_html_21f8b1f1639ba0b7.png)
 
-**注意到测试数据中 `data.userInfo.email` 为 `xxxxxx@example.com`。**
+**Notes that the data.userInfo.emailis\*\*** xxxxxx@example.com \***\*.**
 
-点击 “调试“ 按钮：下方输出了调试结果，我们得到了最新的 context 对象，说明此邮箱通过了该 Pipeline 函数。
+Click the &quot;Debug&quot; button: the debug result is output below, and we get the latest context object, indicating that this mailbox has passed the Pipeline function.
 
-![](https://cdn.authing.cn/blog/image%20%2892%29.png)
+![](RackMultipart20210320-4-2kprvl_html_86bc29a55b39c300.png)
 
-我们再将 email 后缀改为 qq.com，输出结果区域我们得到了相应的错误提示。
+We then changed the email suffix to qq.com, and we got the corresponding error message in the output area.
 
-![](https://cdn.authing.cn/blog/image%20%28237%29.png)
+![](RackMultipart20210320-4-2kprvl_html_ae4c445ff33422af.png)
 
-## 查看 log 日志
+## **View logs**
 
-::: hint-warning
-需要使用 {{$localeConfig.brandName}} Pipeline 全局内置函数 `log` 才能查看到运行日志，不是 `console.log` !
-:::
+Need to use global Approw Pipeline built-in functionlogto view the running log, notconsole.log!
 
-使用函数编辑器内修改代码，在函数最前面加入一行 : 注意是 log 而非 console.log 。
+Use the function editor to modify the code and add a line at the beginning of the function: Note that it is log instead of console.log.
 
-```js
-log(context);
+```javascript
+log(context)
 ```
 
-![](https://cdn.authing.cn/blog/image%20%2884%29.png)
+![](RackMultipart20210320-4-2kprvl_html_3d491181cdf494b1.png)
 
-再次点击“调试“，就能看到输出的日志了。
+Click &quot;Debug&quot; again to see the output log.
 
-![](https://cdn.authing.cn/blog/image%20%2832%29.png)
+![](RackMultipart20210320-4-2kprvl_html_d852a53d53dc23.png)
 
-::: hint-info
-如果没有日志输出，请重试几次！
-:::
+If there is no log output, please try again!
 
-## 捕捉语法错误
+## **Catch syntax errors**
 
-如果你的函数有语法错误， {{$localeConfig.brandName}} Pipeline 也能捕捉到，这里我们修改一下代码，在 pipe 函数最前面加上了一行 xxxxxxx：
+If your function has a syntax error, Approw Pipeline can also catch it. Here we modify the code and add a line of xxxxxxx at the beginning of the pipe function:
 
-![](https://cdn.authing.cn/blog/image%20%28607%29.png)
+![](RackMultipart20210320-4-2kprvl_html_946314e6519ba3eb.png)
 
-再次点击调试，可以看到相应的错误提示：`message: “xxxxxxx is not defined”`。
+Click again debugging, you can see the corresponding error message:message: &quot;xxxxxxx is not defined&quot;.
 
-![](https://cdn.authing.cn/blog/image%20%28216%29.png)
+![](RackMultipart20210320-4-2kprvl_html_3d2fc08dfc663ce0.png)
 
-::: hint-info
-我们推荐先用调试器调试代码通过之后再将此函数发不到线上。
-:::
+We recommend using a debugger to debug the code first, and then post the function online.

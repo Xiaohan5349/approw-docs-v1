@@ -1,73 +1,73 @@
-# 私有化部署方案
+# Private Deployment Plan
 
 ::: description
-Authing 已经为国内外多家知名企业提供身份认证和用户目录管理方案，可以提供公共云、私有化和混合云的多种云环境部署方案。其中私有化部署方案可以部署在客户的内网服务器，数据加密存储，独享云资源，更安全稳定，速度更快。
+Approw has been providing many famous companies with authentication and user management solutions, as well as public cloud/private cloud/mixed cloud. Private deployment plan can deploy the platform inside the client's intranet server, where all data stores are encrypted with the individual occupation of cloud resources. It's faster, safer and more stable.
 :::
 
-### 私有化部署优势
+### Advantages Of Private Deployment
 
-#### 数据私密安全
+#### Safe and confidential data
 
-数据私有化隔离；容灾备份机制；算法、密钥双重保险，数据安全可靠；独享云资源，速度更快，性能更优。
+Data privatization isolation; disaster recovery backup mechanism; double insurance of algorithm and key, data safety and reliability; exclusive cloud resources, faster speed and better performance.
 
-#### 企业自主掌控
+#### Enterprise self control
 
-企业可完全自主掌控，轻松实现成员管理、认证配置、身份源管理；用户信息和密钥信息本地存储。
+Enterprises can fully control themselves, easily realize member management, authentication configuration, and identity source management; user information and key information are stored locally.
 
-#### 高可用性能架构
+#### High-availability architecture
 
-支持高可用架构，支持横向扩容，可以基于您的业务场景自主伸缩容量。
+Supports high-availability architecture, supports horizontal expansion, and can autonomously scale capacity based on your business scenarios.
 
-#### 可定制
+#### Modification
 
-您可以为你的 IDaaS 服务配置独立的二级域名、企业 Logo、品牌色等，彰显品牌特色。
+You can configure independent second-level domain names, corporate logos, brand colors, etc. for your IDaaS services to demonstrate brand characteristics.
 
-### 私有化部署服务内容
+### Service details
 
-1. 了解企业业务场景，定制专属解决方案。
-2. 技术专家全程负责，提供完整的部署方案，完成高质量交付。
-3. 高效运营团队使用支持，售后服务及时响应。
+1. Understand the business scenarios of the enterprise and customize exclusive solutions.
+2. Technical experts are responsible for the whole process, provide a complete deployment plan, and complete high-quality delivery.
+3. Efficient operation team use support, after-sales service responds in time.
 
-### 支持平台
+### Supported platform
 
-#### 裸机或 VM 虚拟机
+#### Bare machine or VM
 
-在简单（非高可用）场景中可以使用裸机或 VM 虚拟机的形式部署。
+In simple (non-highly available) scenarios can be deployed in the bare machine or VM.
 
-- 所需环境：Windows 或 Linux 操作系统，Node.js 版本在 12 及以上。
-- 推荐操作系统：CentOS 7.2 及以上 Ubuntu 18.04 及以上。
+- Required environment: Windows or Linux operating system, Node.js version 12 and above.
+- Recommended operating system: CentOS 7.2 and above Ubuntu 18.04 and above.
 
 <img src="./images/private-deployment-1.png" width="300"/>
 
 #### Docker Compose
 
-如果您的业务场景有一定规模使用人数在 20 人 - 2000 人，IDaaS 平台需要多个组件来支撑您的业务场景，可以使用 Docker Compose 来简化您的部署流程。
+If your business scenario has a certain scale of 20-2000 people, the IDaaS platform requires multiple components to support your business scenario. You can use Docker Compose to simplify your deployment process.
 
-- 所需环境：Linux 操作系统，Docker 17.04 。
-- 推荐操作系统：CentOS 7.2 及以上 Ubuntu 18.04 及以上。
+- Required environment: Linux operating system, Docker 17.04.
+- Recommended operating system: CentOS 7.2 and above Ubuntu 18.04 and above.
 
 <img src="./images/private-deployment-2.png" width="400"/>
 
 #### Kubernetes
 
-如果您的业务场景承载的用户量比较高，规模在 2000 人及以上，在私有化部署的时候需要考虑性能和可靠性，我们建议您采用 Kubernetes 云原生的模式运维您的 IDaaS 平台。
+If your business scenario carries a relatively high number of users, with amount of 2,000 or more, you need to consider performance and reliability when deploying privatization. We recommend that you use the Kubernetes cloud-native model to operate and maintain your IDaaS platform.
 
-- 所需环境：Kubernetes 1.16 及以上。
-- 推荐操作系统：CentOS 7.2 及以上 Ubuntu 18.04 及以上。
+- Required environment: Kubernetes 1.16 and above.
+- Recommended operating system: CentOS 7.2 and above Ubuntu 18.04 and above.
 
-<img src="./images/private-deployment-3.png" width="600"/>
+<img src="./images/kubernetes.001.png" width="600"/>
 
-### 资源规划
+### Resource planning
 
-| 支持人数         | 场景             | 服务器             | 数据库        | 缓存 Redis   | ElasticSearch             |
-| ---------------- | ---------------- | ------------------ | ------------- | ------------ | ------------------------- |
-| 20 人及以下      | 小团队和 POC     | 4 核 8G 内存 \* 1  | -             | -            | -                         |
-| 20 人 - 2000 人  | 中小企业场景     | 4 核 16G 内存 \* 1 | 2 核 8G \* 1  | 1 核 2G \* 1 | 4 核 8G \* 1 + 500G 存储  |
-| 2000 人-20000 人 | 规模企业场景     | 4 核 16G 内存 \* 1 | 4 核 16G \* 1 | 1 核 4G \* 1 | 4 核 8G \* 1 + 500G 存储  |
-| 20000 人以上     | 规模以上企业场景 | 4 核 16G 内存 \* 3 | 8 核 32G \* 1 | 2 核 8G \* 1 | 8 核 16G \* 1 + 500G 存储 |
+| Supported user number | Scenario               | Server                 | DB              | Cache Redis    | Elastic Search                 |
+| --------------------- | ---------------------- | ---------------------- | --------------- | -------------- | ------------------------------ |
+| <=20                  | Small team and POC     | 4 core 8G memory \* 1  | -               | -              | -                              |
+| 20 - 2000             | SMEs                   | 4 core 16G memory \* 1 | 2 co re 8G \* 1 | 1 core 2G \* 1 | 4 core 8G \* 1 + 500G storage  |
+| 2000 -20000           | Large-scale enterprise | 4 core 16G memory \* 1 | 4 core 16G \* 1 | 1 core 4G \* 1 | 4 core 8G \* 1 + 500G storage  |
+| >20000                | Large company          | 4 core 16G memory \* 3 | 8 core 32G \* 1 | 2 core 8G \* 1 | 8 core 16G \* 1 + 500G storage |
 
-### 注意事项
+### Notice
 
-1. 服务器间能通过内网互相访问。
-2. 提供泛域名（如果是少量的话也可以是单域名）及相应证书。
-3. 提供内网域名解析服务器，需要同时解析内外网域名，建议集群部署。
+1. Servers can access each other through the intranet.
+2. Provide a pan-domain name (or a single domain name if it is a small number) and corresponding certificates.
+3. Provide an internal network domain name resolution server, which needs to resolve internal and external network domain names at the same time. Cluster deployment is recommended.

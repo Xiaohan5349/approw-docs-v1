@@ -1,126 +1,114 @@
 ---
 meta:
   - name: description
-    content: Authing - PHP
+    content: Approw - PHP
 ---
 
-# Authing - PHP
+# Approw - PHP
 
-Authing PHP SDK 由两部分组成：`ManagementClient` 和 `AuthenticationClient`。`ManagementClient` 中进行的所有操作均以管理员的身份进行，包含管理用户、管理角色、管理权限策略、管理用户池配置等模块。`AuthenticationClient` 中的所有操作以当前终端用户的身份进行，包含登录、注册、修改用户资料、退出登录等方法。
+The {{$localeConfig.brandName}} Python SDK is comprised of two parts: `ManagementClient` and `AuthenticationClient`. All operations in `ManagementClient` are performed as an administrator, including managing users, managing roles, managing authority policies, and managing user pool configuration. All operations in `AuthenticationClient` are performed as the current terminal user, including login, registration, modification of user information, and logout.
 
-你应该将初始化过后的 `ManagementClient` 实例设置为一个全局变量（只初始化一次），而 `AuthenticationClient` 应该每次请求初始化一个。
+You should set the initialized `ManagementClient` instance to a global variable (initialize only once), and the `AuthenticationClient` should be initialized for each request.
 
-## 安装
+## Installation
 
-我们推荐使用 `composer` 进行安装， 它可以与一些模块打包工具很好地配合使用。
+We recommend using `composer` for installation, it can work well with some module packaging tools.
 
 ```shell
 # latest stable
-$ composer require authing-sdk/php
+$ composer require approw-sdk/php
 ```
 
-## 使用管理模块
+## Use ManagementClient
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID） 和 `secret`（用户池密钥）:
+Initialization of ManagementClient requires `userPoolId` and `secret`:
 
-> 你可以在此[了解如何获取 UserPoolId 和 Secret](/guides/faqs/get-userpool-id-and-secret.md) .
+> You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```php
-use Authing\Mgmt\ManagementClient;
+use Approw\Mgmt\ManagementClient;
 
-$management = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-// 获取管理员权限
+$management = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+// Get admin rights
 $management->requestToken();
 ```
 
-现在 `managementClient` 实例就可以使用了。例如可以获取用户池中的用户列表：
+Now the `managementClient` instance is ready to be used. For example, you can get the list of users in the user pool:
 
 ```php
-use Authing\Mgmt\ManagementClient;
+use Approw\Mgmt\ManagementClient;
 
-$management = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
-// 获取管理员权限
+$management = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
+// Get admin rights
 $management->requestToken();
 $users = $management->users()->paginate();
 ```
 
-## 使用认证模块
+## Use AuthenticationClient
 
-初始化 `AuthenticationClient` 需要 `appId`（应用 ID）：
+Initialization of `AuthenticationClient` requires `userPoolId`:
 
-> 你可以在此[了解如何获取 AppId](/guides/faqs/get-app-id-and-secret.md) .
+> You can learn [how to get UserPoolId](/guides/faqs/get-userpool-id-and-secret.md) .
 
 ```php
-use Authing\Auth\AuthenticationClient;
+use Approw\Auth\AuthenticationClient;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 ```
 
-接下来可以进行注册登录等操作：
+Then, you can perform operations such as registration and login:
 
 ```php
-use Authing\Auth\AuthenticationClient;
-use Authing\Types\LoginByEmailInput;
+use Approw\Auth\AuthenticationClient;
+use Approw\Types\LoginByEmailInput;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 $user = $authentication->loginByEmail(new LoginByEmailInput("test@example.com", "123456"));
 ```
 
-完成登录之后，`update_profile` 等要求用户登录的方法就可用了：
+After login,`update_profile` and the other methods that require users to log in are available:
 
 ```php
-use Authing\Auth\AuthenticationClient;
-use Authing\Types\LoginByEmailInput;
-use Authing\Types\UpdateUserInput;
+use Approw\Auth\AuthenticationClient;
+use Approw\Types\LoginByEmailInput;
+use Approw\Types\UpdateUserInput;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 $authentication->loginByEmail(new LoginByEmailInput("test@example.com", "123456"));
 
 $user = $authentication->updateProfile((new UpdateUserInput())->withNickname("nickname"));
 ```
 
-你也可以在初始化后设置 `AccessToken` 参数, 不需要每次都调用 `LoginByXXX` 方法:
+You can also set the `AccessToken` parameter after initialization, so that it is unnecessary to call the the `LoginByXXX` method every time:
 
 ```php
-use Authing\Auth\AuthenticationClient;
+use Approw\Auth\AuthenticationClient;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 $authentication->setAccessToken("ACCESS_TOKEN");
 ```
 
-再次执行 `UpdateProfile` 方法，发现也成功了:
+Executing the `UpdateProfile` method can also succeed:
 
 ```php
-use Authing\Auth\AuthenticationClient;
-use Authing\Types\UpdateUserInput;
+use Approw\Auth\AuthenticationClient;
+use Approw\Types\UpdateUserInput;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 $authentication->setAccessToken("ACCESS_TOKEN");
 
 $user = $authentication->updateProfile((new UpdateUserInput())->withNickname("nickname"));
 ```
 
-## 错误处理
+## Error handling
 
-统一使用 try catch 处理：
+Use try catch to process:
 
 ```php
-use Authing\Auth\AuthenticationClient;
-use Authing\Types\UpdateUserInput;
+use Approw\Auth\AuthenticationClient;
+use Approw\Types\UpdateUserInput;
 
-$authentication = new AuthenticationClient(function ($ops) {
-    $ops->appId = "---";
-});
+$authentication = new AuthenticationClient("APPROW_USERPOOL_ID");
 $authentication->setAccessToken("ACCESS_TOKEN");
 
 try {
@@ -130,41 +118,41 @@ try {
 }
 ```
 
-## 私有化部署
+## Privatization deployment
 
-**私有化部署**场景需要指定你私有化的 Authing 服务的 GraphQL 端点（**不带协议头和 Path**），如果你不清楚可以联系 Authing IDaaS 服务管理员。
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service (**without protocol header and Path**). If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
-## 接口索引
+## Interface index
 
-可用的 Authentication 方法
+Available Authentication methods
 
-- 获取当前用户的用户资料: `getCurrentUser`
-- 使用邮箱注册: `registerByEmail`
-- 使用用户名注册: `registerByUsername`
-- 使用手机号验证码注册: `registerByPhoneCode`
-- 使用邮箱登录: `loginByEmail`
-- 使用用户名登录: `loginByUsername`
-- 使用手机号验证码登录 `loginByPhoneCode`
-- 使用手机号密码登录: `loginByPhonePassword`
-- 发送邮件: `sendEmail`
-- 发送短信验证码: `sendSmsCode`
-- 检查 token 的有效状态: `checkLoginStatus`
-- 使用手机号验证码重置密码: `resetPasswordByPhoneCode`
-- 使用邮件验证码重置密码: `resetPasswordByEmailCode`
-- 更新用户资料: `updateProfile`
-- 更新密码: `updatePassword`
-- 更新手机号: `updatePhone`
-- 更新邮箱: `updateEmail`
-- 刷新 token: `refreshToken`
-- 绑定手机号: `bindPhone`
-- 解绑手机号: `unbindPhone`
+- Get the user profile of the current user: `getCurrentUser`
+- Register with email: `registerByEmail`
+- Register with username: `registerByUsername`
+- Register with mobile phone number verification code: `registerByPhoneCode`
+- Login with email: `loginByEmail`
+- Login with username: `loginByUsername`
+- Login with SMS code: `loginByPhoneCode`
+- Login with mobile phone number password: `loginByPhonePassword`
+- Send mail: `sendEmail`
+- Send SMS verification code: `sendSmsCode`
+- Check the valid status of the token: `checkLoginStatus`
+- Use the phone number verification code to reset the password: `resetPasswordByPhoneCode`
+- Use email verification code to reset password: `resetPasswordByEmailCode`
+- Update user profile: `updateProfile`
+- Update password: `updatePassword`
+- Update phone number: `updatePhone`
+- Update email: `updateEmail`
+- Refresh token: `refreshToken`
+- Bind mobile phone number: `bindPhone`
+- Unbind phone number: `unbindPhone`
 
-详情请见：
+Learn more:
 
 ::: page-ref /reference/sdk-for-php/authentication/
 :::
 
-管理模块包含以下子模块：
+ManagementClient contains the following sub-modules:
 
 ::: page-ref /reference/sdk-for-php/management/UsersManagementClient.md
 :::
@@ -181,6 +169,6 @@ try {
 ::: page-ref /reference/sdk-for-php/management/UdfManagementClient.md
 :::
 
-## 获取帮助
+## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

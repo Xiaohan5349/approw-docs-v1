@@ -1,21 +1,21 @@
 !!!include(common/init-js-mngmt-sdk.md)!!!
 
-使用 [UsersManagementClient](/reference/sdk-for-node/management/UsersManagementClient.md) 的 `create` 方法创建用户：
+Use `create` function in [UsersManagementClient](/docs/reference/sdk-for-java/management/UsersManagementClient.md) to create a new user:
 
 ```javascript
 const user = await managementClient.users.create({
-   username: 'bob',
-   password: 'passw0rd'
+  username: 'bob',
+  password: 'passw0rd',
 })
 ```
 
-或者：
+Or:
 
 ```javascript
 const user = await managementClient.users.create({
    nickname: 'Nick',
-   phone: '176xxxx6754', // 由于是管理员操作，所以检验手机号验证码, 如果你需要检验，请使用  AuthenticationClient
-   loginsCount: 2 // 原有用户系统记录的用户登录次数
-   signedUp: '2020-10-15T17:55:37+08:00' // 原有用户系统记录的用户注册时间
+   phone: '176xxxx6754', // This phone number will be required to be verified because this account is created by the admin. You can use AuthenticationClient to verify it.
+   loginsCount: 2 // The login counts of this user in the old user system.
+   signedUp: '2020-10-15T17:55:37+08:00' // The registeration time of this user in the old user system.
 })
 ```

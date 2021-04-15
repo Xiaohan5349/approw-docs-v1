@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}}  通过 SDK 为开发者提供了一种快速在小程序中获取用户信息并完成登录的方法。通过 {{$localeConfig.brandName}}  的 SDK 可以方便地获取微信提供的用户身份标识，快速建立以手机号码为基础的账号体系。
+{{$localeConfig.brandName}} 通过 SDK 为开发者提供了一种快速在小程序中获取用户信息并完成登录的方法。通过 {{$localeConfig.brandName}} 的 SDK 可以方便地获取微信提供的用户身份标识，快速建立以手机号码为基础的账号体系。
 
 - 应用场景：小程序；
 - 概述：在微信小程序内使用，弹出微信授权框，用户授权之后可以获取当前用户的信息；
@@ -14,7 +14,7 @@
 
 请前往 [微信公众平台](https://mp.weixin.qq.com/wxopen/waregister?action=step1&token=&lang=zh_CN)指引创建一个微信小程序，你需要记录下该应用的 **App ID** 和 **App Secret**，后面需要用到。**如果你需要获取用户手机号，需要通过微信认证。** 并将 `core.authing.cn` 加入微信的 `request` 合法域名。
 
-<img src="~@imagesZhCn/reference/config-request-valid-domain.png" height="400px" style="display:block;margin: 0 auto;">
+<img src="~@imagesEnUs/reference/config-request-valid-domain.png" height="400px" style="display:block;margin: 0 auto;">
 
 ## 第二步：在 {{$localeConfig.brandName}} 控制台配置微信小程序应用
 
@@ -36,7 +36,7 @@
 ```
 npm install authing-wxapp-sdk
 ```
-    
+
 或者使用 yarn:
 
 ```
@@ -45,11 +45,11 @@ yarn add authing-wxapp-sdk
 
 点击开发者工具中的菜单栏：工具 --> 构建 npm:
 
-<img src="~@imagesZhCn/reference/wxmp-npm.png" height="400px">
+<img src="~@imagesEnUs/reference/wxmp-npm.png" height="400px">
 
 勾选 使用 npm 模块 选项：
 
-![](~@imagesZhCn/reference/wxmp-npm2.png)
+![](~@imagesEnUs/reference/wxmp-npm2.png)
 
 ### 初始化 SDK
 
@@ -58,13 +58,12 @@ yarn add authing-wxapp-sdk
 > 你可以在控制台的 **应用** 中查看自己的应用列表。
 
 ```js
-const { AuthenticationClient } = require("authing-wxapp-sdk")
+const { AuthenticationClient } = require('authing-wxapp-sdk')
 
 const authing = new AuthenticationClient({
-  appId: "YOUR_APP_ID",
-});
+  appId: 'YOUR_APP_ID',
+})
 ```
-
 
 ### 调用登录方法
 
@@ -73,25 +72,21 @@ const authing = new AuthenticationClient({
 ```javascript
 const { code } = await wx.login()
 // 无需用户授权
-const user = await authing.loginByCode(code); // 成功登录，将 token 写入微信 Storage
+const user = await authing.loginByCode(code) // 成功登录，将 token 写入微信 Storage
 
 // 登录之后可以进行此操作
-await authing.updateProfile(
-  nickname: 'Bob'
-)
+await authing.updateProfile((nickname: 'Bob'))
 ```
 
 在用户完成登录之后，SDK 会将用户的 token 写入到微信的 Storage 中，后续请求会自动携带 token 访问。
 
-![](~@imagesZhCn/reference/20201112165637.png)
+![](~@imagesEnUs/reference/20201112165637.png)
 
 后续用户再次打开小程序，如果小程序的 Storage 中保存有用户的 token，访问 authing 的请求将会自动带上该 token。
 
 ```javascript
 // 该请求可以成功，因为该用户出于登录状态。
-await authing.updateProfile(
-  nickname: 'Mick'
-)
+await authing.updateProfile((nickname: 'Mick'))
 ```
 
 详细请查看文档：[小程序 SDK](/reference/sdk-for-wxapp.md)。

@@ -1,55 +1,55 @@
 ---
 meta:
   - name: description
-    content: 用户目录配置项
+    content: User directory Setting
 ---
 
-# 用户目录配置项
+# User Directory Setting
 
 <LastUpdated/>
 
-本文介绍用户目录相关的一些配置项，如禁止注册、频繁注册限制、登录失败次数限制、注册白名单等。
+This article introduces some settings related to the user directory, such as registration disabled, restriction on frequent registration, restriction on the number of failed login attempts, registration whitelist, and so on.
 
-## 禁止注册
+## Registration disabled
 
-你可以在控制台的 **设置** - **安全信息** 中开启**禁止注册**开关：
+You can turn on the **registration disabled** in the console: **setting** -> security information:
 
 ![](./images/disable-registration-settings.jpg)
 
-开启「禁止注册」之后，普通用户将无法通过登录表单或者 API 注册，只有管理员可以手动创建账号。
+After turning on "registration disabled", common users will not be able to register through the login form or API, and only the administrator can manually create an account.
 
-## 频繁注册限制
+## Restriction on frequent registration
 
-你可以在控制台的 **设置** - **安全信息** 中开启**频繁注册限制**开关，限制**同一个 IP** 在多少秒内不能超过多少次注册：
+You can turn on the **restriction on frequent registration** in the console: **setting** -> **security information**, and limit the number of registrations for the **same IP** within a defined number of seconds.
 
 ![](./images/registration-frequency-check-settings.jpg)
 
-## 登录失败次数限制
+## Restriction on the number of failed login attempts
 
-你可以在控制台的 **设置** - **安全信息** 中开启**登录失败次数限制**开关，限制**同一账号**在多少秒内不能超过多少次失败登录：
+You can turn on the **restriction on the number of failed login attempts** in the console: **setting** -> **security information**, and limit the number of failed registrations for the **same account** within a defined number of seconds.
 
 ![](./images/login-fail-frequency-check-settings.jpg)
 
-若在规定时间内超过次数后，该用户再次登录需要输入图形验证码：
+If the number of failed login times is exceeded within the specified time, the user needs to enter the CAPTCHA code to log in again:
 
 ![](./images/enter-captcha.jpg)
 
-## 配置注册白名单
+## Configure the registration whitelist
 
-你可以在在控制台的 **用户管理** - **注册白名单** 中开启邮箱、手机号、用户名白名单，开启之后只有在白名单内的手机号、邮箱、用户名才能注册（管理员手动创建账号不受限制）。
+You can open the white list of email, mobile phone number, and user name in the console: **user management** -> **registration whitelist**. After opening, only the mobile phone number, email address, and user name in the whitelist can be registered (It will not affect administrators manually create accounts).
 
 ![](./images/whitelist.jpg)
 
-## 禁止邮箱未验证的用户登录
+## Prohibit login for users with unverified email
 
-默认情况下，未验证邮箱的账号可以进行登录，你也可以在**应用详情**中修改次配置：
+By default, accounts with unverified email can log in, and you can also modify the configuration in the **application details**:
 
 ![](./images/disable-unverified-email-login.png)
 
-## 注册时发送欢迎邮件
+## Send welcome emails when registering
 
-关闭之后将不会发送欢迎邮件。
+When you close **send welcome emails when registering** on the console, there will be no welcome emails.
 
-> 你可以自定义欢迎邮件模版。
+> You can define the welcome email template on your own.
 
 ![](./images/send-welcome-email-settings.jpg)

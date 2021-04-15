@@ -1,14 +1,15 @@
-# 什么是 Refresh Token
+# What is Refresh Token
 
 <LastUpdated/>
 
-AccessToken 和 IdToken 是 [JSON Web Token](https://tools.ietf.org/html/rfc7519)，**有效时间**通常较短。通常用户在获取资源的时候需要携带 AccessToken，当 AccessToken 过期后，用户需要获取一个新的 AccessToken。
+Access Token and ID Token are [JSON Web Token](https://tools.ietf.org/html/rfc7519), they have a Short **Lifetime**. Access Token are required when user requesting resources. After Access Token expired, users need to obtain a new Access Token.
 
-**Refresh Token** 用于获取新的 AccessToken。这样可以缩短 AccessToken 的过期时间保证安全，同时又不会因为频繁过期重新要求用户登录。
 
-用户在初次认证时，Refresh Token 会和 AccessToken、IdToken 一起返回。你的应用必须安全地存储 Refresh Token，它的**重要性**和密码是一样的，因为 Refresh Token 能够一直让用户保持登录。
+**Refresh Token** are used to obtain new Access Token. It can shorten the lifetime of Access Token to improve security and user don't need to login frequently.
 
-以下是 Token 端点返回的 Refresh Token：
+During users first authentication, Approw return Refresh Token along with Access Token and ID Token. Due to the Refresh Token keeps user login, **it is as important as user password**. Your Application must securely stored Refresh Token.
+
+Refresh Token Example:
 
 ```json
 {
@@ -21,5 +22,5 @@ AccessToken 和 IdToken 是 [JSON Web Token](https://tools.ietf.org/html/rfc7519
 }
 ```
 
-应用携带 Refresh Token 向 Token 端点发起请求时，Authing 每次都会返回**相同的 Refresh Token** 和**新的 AccessToken、IdToken**，直到 Refresh Token 过期。
+When application request contain a Refresh Token. Approw will return the **SAME** Refresh Token and **NEW** Access Token along with **NEW** ID Token until the Refresh Token expired.
 

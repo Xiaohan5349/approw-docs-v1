@@ -1,39 +1,39 @@
 ---
 meta:
   - name: description
-    content: 管理应用
+    content: ApplicationManagementClient
 ---
 
-# 管理应用
+# ApplicationManagementClient
 
 <LastUpdated/>
 
 
-> 一个 {{$localeConfig.brandName}} 用户池可以创建多个应用。此模块用于管理 {{$localeConfig.brandName}} 应用，可以进行应用列表获取以及应用详情查看等操作。
+> A {{$localeConfig.brandName}} user pool can create multiple applications. This client is used to manage {{$localeConfig.brandName}} applications. It can obtain application lists, view application details and perform other operations.
 
-## 获取应用列表
+## Get application list
 
 ApplicationManagementClient().listApplications()
 
-> 获取用户池应用列表
+> Get the application list of user pool.
 
-#### 示例
+#### Sample
 
 ```java
 List<Application> result = applicationManagementClient.listApplications().execute();
 ```
 
-## 获取应用详情
+## Get application details
 
 ApplicationManagementClient().detail(appId)
 
-> 获取用户池应用列表
+> Get application details
 
-#### 参数
+#### Parameter:
 
-- `appId` \<string\> 应用 ID
+- `appId` \<string\> Application ID
 
-#### 示例
+#### Sample
 
 ```java
 Application application = applicationManagementClient.detail(appId).execute();

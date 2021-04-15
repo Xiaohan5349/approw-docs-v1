@@ -1,5 +1,4 @@
-使用[用户池 ID（`userPoolId`）和用户池密钥（`secret`）](/guides/faqs/get-userpool-id-and-secret.md)初始化 [Python SDK](/reference/sdk-for-python/) 的 `ManagementClient`:
-
+Use [userPoolId and secret](/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Python SDK](/reference/sdk-for-python/):
 
 ```python
 from authing.v2.management import ManagementClient, ManagementClientOptions

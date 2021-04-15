@@ -1,5 +1,5 @@
-# 配置注册频率限制
+# Configure Registration Frequency Limit
 
-你可以在控制台的 设置 - 安全信息 中开启频繁注册限制开关，限制同一个 IP 在多少秒内不能超过多少次注册：
+You can enable the frequent registration limit in the settings of the console-security information to limit the number of registrations for the same IP within seconds:
 
-![](./images/config-register-limit.jpg)
+![](./images/registration.png)

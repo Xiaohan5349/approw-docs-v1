@@ -1,115 +1,115 @@
 ---
 meta:
   - name: description
-    content: 单点登录（SSO）
+    content: Single Sign-On
 ---
 
-# 单点登录（SSO）
+# Single Sign-On
 
 <LastUpdated/>
 
-**单点登录**（Single Sign On），简称为 **SSO**，是目前比较流行的企业业务整合的解决方案之一。 SSO 的定义是在多个应用系统中，**用户只需要登录一次**就可以**访问所有**相互信任的应用系统。你可以阅读[此篇指引](/guides/authentication/sso/)了解如何快速在你的应用中实现单点登录。
+**Single sign-on (SSO)** is one of the popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. You can read [this guide](/guides/authentication/sso/) to learn how to quickly implement single sign-on in your application.
 
-## 安装 <a id="install"></a>
+## Installation <a id="install"></a>
 
-### 通过 NPM 安装 <a id="npm-install"></a>
+### Install via NPM <a id="npm-install"></a>
 
 ```bash
-$ npm install @authing/sso --save
+$ npm install @approw/sso --save
 ```
 
-接着可以通过以下方式使用
+Then it can be used in the following way
 
 ```js
-import AuthingSSO from "@authing/sso";
+import ApprowSSO from '@approw/sso'
 ```
 
-### 通过 CDN 安装 <a id="cdn-install"></a>
+### Install via CDN <a id="cdn-install"></a>
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@authing/sso/dist/AuthingSSO.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@approw/sso/dist/ApprowSSO.umd.min.js"></script>
 <script>
-  console.log(AuthingSSO);
+  console.log(ApprowSSO)
 </script>
 ```
 
-## 快速开始 <a id="getting-started"></a>
+## Quick Start <a id="getting-started"></a>
 
-在开始之前，你需要先[创建一个应用](/guides/app/create-app.md)。
+Before starting, you need to [create an application](/guides/app/create-app.md)。
 
-### 初始化
+### Initialization
 
-初始化 AuthingSSO SDK 需要传入[应用 ID](/guides/faqs/get-app-id-and-secret) 和应用域名，应用域名格式为 `example-app.authing.cn`，**不带协议头和 Path** 。详细参数请见[初始化构造函数](#初始化构造函数)。
+To initialize the {{$localeConfig.brandName}} SSO SDK, you need to pass in the [application ID](/faqs/get-app-id-and-secret.md) and application domain name. The format of the application domain name is `example-app.approw.com` **without the protocol header and Path**. See [initialize constructor](#initialize-constructor) for detailed parameters.
 
 ```js
-import AuthingSSO from "@authing/sso";
+import ApprowSSO from '@approw/sso'
 
-let auth = new AuthingSSO({
-  appId: "APP_ID",
-  appDomain: "example-app.authing.cn",
-});
+let auth = new ApprowSSO({
+  appId: 'APP_ID',
+  appDomain: 'example-app.approw.com',
+})
 ```
 
 ::: hint-info
-**私有化部署**场景需要指定你私有化的 Authing 服务的 GraphQL 端点，如果你不清楚可以联系 Authing IDaaS 服务管理员。
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service. If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
 ```js
-let auth = new AuthingSSO({
-  appId: "APP_ID",
-  appDomain: "example-app.you-authing-service.cn",
+let auth = new ApprowSSO({
+  appId: 'APP_ID',
+  appDomain: 'example-app.you-approw-service.com',
   host: {
-    oauth: "https://core.you-authing-service.com/graphql",
+    oauth: 'https://core.you-approw-service.com/graphql',
   },
-});
+})
 ```
 
 :::
 
-### 发起登录
+### Login
 
-#### 跳转登录
+#### Redirect login
 
-发起单点登录，会跳转到登录页面，采用[授权码模式](/guides/federation/oidc.html#%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F)，需要相关应用开启授权码模式。
-
-```js
-auth.login();
-```
-
-#### 窗口登录
-
-发起单点登录，会弹出一个窗口，里面是登录页面，采用授权码模式，需要相关应用开启授权码模式
+Initiating single sign-on, it will redirect to the login page. The relevant application needs to open the authorization code mode if use [authorization code mode](/guides/federation/oidc.html#authorization-code-mode).
 
 ```js
-auth.windowLogin();
+auth.login()
 ```
 
-业务域名回调地址需要托管一个 html 文件，用于将得到的 `code` `access_token` `id_token` 等参数，通过 `postMessage` 的方式发送给父窗口，然后将本窗口关闭。
+#### Window login
 
-例如，回调地址填写的是 [https://example.com/handle.html](https://example.com/handle.html)，这个 html 内部需要编写一段发送 `postMessage` 的代码，负责从 `url` 中取出相关参数并传递给父窗口。
-
-Github 参考代码：[https://github.com/Authing/oidc-window](https://github.com/Authing/oidc-window)。
-
-### 跳转注册页
-
-有时你可能希望让用户跳转到注册页面，使用示例如下：
+Initiate single sign-on, a window will pop up,and the login page in it. The relevant application needs to open the authorization code mode if use authorization code mode.
 
 ```js
-// 调用此函数可以直接跳转到注册页面
-auth.register();
+auth.windowLogin()
 ```
 
-### 查询登录状态 <a id="check-login-status"></a>
+The business domain name callback address needs to host an html file, which is used to send the obtained `code` `access_token` `id_token` and other parameters to the parent window by `postMessage`, and then close the window.
 
-当用户登录完成跳转回你的业务地址后，你可以使用此方法查询到该用户在此应用的登录状态。如果用户处于登录状态，可以获取到该用户的用户信息，你可以在此了解[用户信息的所有字段释义](/guides/user/user-profile.md)。
+For example, the callback address is [https://example.com/handle.html](https://example.com/handle.html. This html needs a piece of code to send `postMessage`, which is responsible for taking out relevant parameters from the `url` and passing them to the parent window.
+
+Github reference code: [https://github.com/Approw/oidc-window](https://github.com/Approw/oidc-window)。
+
+### Redirect to registration page
+
+Sometimes you may want to allow users to redirect to the registration page, an example of use is as follows:
+
+```js
+// Call this function to redirect directly to the registration page
+auth.register()
+```
+
+### Check login status <a id="check-login-status"></a>
+
+After the user logs in and returns to your business address, you can use this method to query the user's login status in this application. If the user is logged in, the user information of the user can be obtained, and you can understand the definitions of [all fields of user information](/guides/user/user-profile.md).
 
 ::: hint-danger
-从 13.1 版本开始，Safari 默认会**阻止第三方 Cookie**，会影响 Authing 的某些**单点登录功能**。其他类似的更新，从 Chrome 83 版本开始，**隐身模式**下默认禁用第三方 Cookie。其他浏览器也在慢慢进行此类更新以保护用户隐私，很多浏览器将禁用第三方 Cookie 作为了一个安全配置功能。
+After version 13.1, Safari will **block third-party cookies** by default, which will affect certain **single sign-on features** of {{$localeConfig.brandName}}. In other similar updates, after Chrome 83, third-party cookies are disabled by default in **incognito mode**. Other browsers are also slowly making such updates to protect user privacy. Many browsers will disable third-party cookies as a security configuration feature.
 
-这可能会对此方法产生影响，详情请见 [禁用第三方 Cookie 对 Authing 的影响](/guides/faqs/block-third-party-cookie-impact.md#tracksession)，你可以在此[查看解决方案](/guides/faqs/block-third-party-cookie-impact.md#如何解决)。
+This may have an impact on this method. For details, see the [impact of disabling third-party cookies on {{$localeConfig.brandName}}](/guides/faqs/block-third-party-cookie-impact.md#tracksession)，You can [view the solution](/guides/faqs/block-third-party-cookie-impact.md#how-to-solve-it).
 :::
 
 ```js
-let res = await auth.trackSession();
+let res = await auth.trackSession()
 /**
  * {
  *    session: { appId: 'xxx', type: 'oidc/oauth', userId: 'yyy'},
@@ -125,13 +125,13 @@ let res = await auth.trackSession();
  *      "username": "USERNAME",
  *   },
  *   urlParams: {
- *      code: 'xxx', // 这些参数是从 url 中获取到的，需要开发者自己存储以备使用
+ *      code: 'xxx', // These parameters are obtained from the url and need to be stored by the developer for use
  *      id_token: 'ID_TOKEN',
  *      access_token: 'ACCESS_TOKEN'
  *   }
  * }
  *
- * 如果 session 不存在，返回：
+ * if session not exist，return：
  *
  * {
  *   session: null
@@ -141,15 +141,15 @@ let res = await auth.trackSession();
 
 !!!include(common/what-to-do-when-you-get-userinfo.md)!!!
 
-### 退出登录 <a id="logout"></a>
+### Sign out <a id="logout"></a>
 
-**该方法为异步函数，请确保使用 `await` 等待结果返回再进行下一步操作。**
+**This method is an asynchronous function, please make sure to use `await` to wait for the return before proceeding to the next step.**
 
 ```js
-let res = await auth.logout();
+let res = await auth.logout()
 /**
  * {
- *    message: "单点登出成功",
+ *    message: "Single Sign out success",
  *    code: 200
  * }
  * */
@@ -157,145 +157,145 @@ let res = await auth.logout();
 
 ## API
 
-### 初始化构造函数
+### Initialize constructor
 
-构造函数，接受一个对象作为参数。对象中的参数列表如下：
+The constructor accepts an object as a parameter. The list of parameters in the object is as follows:
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">参数名</th>
-      <th style="text-align:left; width:60px">是否必填</th>
-      <th style="text-align:left">描述</th>
-      <th style="text-align:left">默认值</th>
+      <th style="text-align:left">Parameter name</th>
+      <th style="text-align:left; width:60px">Required</th>
+      <th style="text-align:left">Descrption</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align:left">appId</td>
-      <td style="text-align:left">是</td>
-      <td style="text-align:left">应用 ID</td>
+      <td style="text-align:left">yes</td>
+      <td style="text-align:left">application ID</td>
       <td style="text-align:left">-</td>
     </tr>
     <tr>
       <td style="text-align:left">appDomain</td>
-      <td style="text-align:left">是</td>
-      <td style="text-align:left">应用域名，例如 <code>app1.authing.cn</code>
+      <td style="text-align:left">yes</td>
+      <td style="text-align:left">Application domain name，E.g. <code>app1.approw.com</code>
       </td>
       <td style="text-align:left">-</td>
     </tr>
     <tr>
       <td style="text-align:left">appType</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">应用类型，可选值为 <code>oidc</code>，<code>oauth</code>。
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Application type, optional values are oidc, oauth.<code>oidc</code>, <code>oauth</code>.
       </td>
       <td style="text-align:left"><code>oidc</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">scope</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">授权域</td>
-      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-参数对应的用户信息">查看支持的 scope 列表</router-link>。</a>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Authorized domain</td>
+      <td style="text-align:left">'openid profile email phone',<router-link to="/concepts/oidc-common-questions.html#scope-parameter_related_user_information"> View the list of supported scopes</router-link>.</a>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">state</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">自定义字符串，回调地址也会受到此参数，内容相同，可用于传递自定义信息。</td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Custom string, callback address will receive this parameter, the content is the same, can be used to pass custom information.</td>
       <td
-      style="text-align:left">随机字符串</td>
+      style="text-align:left">Random string</td>
     </tr>
     <tr>
       <td style="text-align:left">host</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">一个对象，用于指定 GraphQL 地址。 <b>私有化部署场景需要指定你私有化的 Authing 服务的 GraphQL 端点，如果你不清楚可以联系 Authing IDaaS 服务管理员。</b></td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">An object that specifies the GraphQL address. <b>The privatization deployment scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service. If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.</b></td>
       <td style="text-align:left">
-        使用 Authing 公有云的 GraphQL 端点
+        GraphQL endpoint using {{$localeConfig.brandName}} public cloud
       </td>
     </tr>
     <tr>
       <td style="text-align:left">host.oauth</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">GraphQL &#x901A;&#x4FE1;&#x5730;&#x5740;</td>
-      <td style="text-align:left">https://core.authing.cn/graphql</td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">GraphQL contact address;</td>
+      <td style="text-align:left">https://core.approw.com/graphql</td>
     </tr>
     <tr>
       <td style="text-align:left">responseType</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">应用授权流程，可选值为 <code>code</code>&#xFF0C;<code>implicit</code>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Application authorization process, optional value is code <code>code</code>, <code>implicit</code>
       </td>
       <td style="text-align:left"><code>code</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">redirectUrl</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">应用回调地址</td>
-      <td style="text-align:left">在 Authing 控制台<router-link to="/guides/app/create-app">创建应用时填写的业务域名</router-link>。</td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Application callback address</td>
+      <td style="text-align:left"><router-link to="/guides/app/create-app">The business domain name filled in when creating the application</router-link> in the Approw console. </td>
     </tr>
     <tr>
       <td style="text-align:left">nonce</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">随机数</td>
-      <td style="text-align:left">随机数	</td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Random number</td>
+      <td style="text-align:left">Random number </td>
     </tr>
     <tr>
       <td style="text-align:left">timestamp</td>
-      <td style="text-align:left">否</td>
-      <td style="text-align:left">时间戳	</td>
-      <td style="text-align:left">当前时间戳</td>
+      <td style="text-align:left">no</td>
+      <td style="text-align:left">Timestamp	</td>
+      <td style="text-align:left">Current timestamp</td>
     </tr>
   </tbody>
 </table>
 
-示例：
+Example:
 
 ```js
-let auth = new AuthingSSO({
-  appId: "APP_ID",
-  appDomain: "example-app.authing.cn",
-});
+let auth = new ApprowSSO({
+  appId: 'APP_ID',
+  appDomain: 'example-app.approw.com',
+})
 ```
 
 ### login
 
-请求应用的授权地址，进行登录。
+Request the authorized address of the application to log in.
 
-参数列表：
+Parameter list:
 
-| 参数名 | 是否必填 | 描述                              | 默认                 |
-| ------ | -------- | --------------------------------- | -------------------- |
-| lang   | 否       | 语言，可选值为 `zh-CN` 和 `en-US` | 由浏览器语言环境决定 |
+| Parameter name | Required | Descrption                                        | Default                      |
+| -------------- | -------- | ------------------------------------------------- | ---------------------------- |
+| lang           | no       | Language, optional values are `zh-CN` and `en-US` | Depend on the browser locale |
 
-示例：
+Example:
 
 ```js
-auth.login();
+auth.login()
 ```
 
 ### register
 
-调用此函数可以直接跳转到注册页面。
+Call this function to redirect directly to the registration page.
 
-参数列表：
+Parameter list:
 
-| 参数名 | 是否必填 | 描述                              | 默认                 |
-| ------ | -------- | --------------------------------- | -------------------- |
-| lang   | 否       | 语言，可选值为 `zh-CN` 和 `en-US` | 由浏览器语言环境决定 |
+| Parameter name | Required | Descrption                                        | Default                      |
+| -------------- | -------- | ------------------------------------------------- | ---------------------------- |
+| lang           | no       | Language, optional values are `zh-CN` and `en-US` | Depend on the browser locale |
 
-示例：
+Example:
 
 ```js
-auth.register();
+auth.register()
 ```
 
 ### trackSession
 
-示例：
+Example:
 
 ```js
-let res = await auth.trackSession();
+let res = await auth.trackSession()
 /**
  * {
  *    session: { appId: 'xxx', type: 'oidc/oauth', userId: 'yyy'},
@@ -311,13 +311,13 @@ let res = await auth.trackSession();
  *      "username": "USERNAME",
  *   },
  *   urlParams: {
- *      code: 'xxx', // 这些参数是从 url 中获取到的，需要开发者自己存储以备使用
+ *      code: 'xxx', // hese parameters are obtained from the url and need to be stored by the developer for use
  *      id_token: 'ID_TOKEN',
  *      access_token: 'ACCESS_TOKEN'
  *   }
  * }
  *
- * 如果 session 不存在，返回：
+ * if session not exist，return：
  *
  * {
  *   session: null
@@ -327,20 +327,20 @@ let res = await auth.trackSession();
 
 ### logout
 
-**该方法为异步函数，请确保使用 `await` 等待结果返回再进行下一步操作。**
+**This method is an asynchronous function, please make sure to use await to wait for the return before proceeding to the next step.**
 
-示例：
+Example:
 
 ```js
-let res = await auth.logout();
+let res = await auth.logout()
 /**
  * {
- *    message: "单点登出成功",
+ *    message: "Single Sign out success",
  *    code: 200
  * }
  * */
 ```
 
-## 获取帮助 <a id="get-help"></a>
+## Get help <a id="get-help"></a>
 
-1. Join us on Gitter: [\#authing-chat](https://gitter.im/authing-chat/community)
+1. Join us on Gitter: [\#approw-chat](https://gitter.im/approw-chat/community)

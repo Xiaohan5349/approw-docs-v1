@@ -1,4 +1,4 @@
-使用 `SendSmsCode` 方法发送验证码：
+Send SMS code using `sendSmsCode` method.
 
 ```csharp
 var phone = "phone number";

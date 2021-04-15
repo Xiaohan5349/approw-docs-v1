@@ -1,118 +1,118 @@
-# 集成 RBAC 权限模型到你的应用系统
+# Integrate RBAC Permission Model into Your Application System
 
 <LastUpdated/>
 
-[前面](./README.md#什么是基于角色的访问控制-rbac)我们介绍了什么是基于角色的访问控制（RBAC），接下来这篇文章介绍如何基于 {{$localeConfig.brandName}} 快速将 RBAC 权限模型集成到你的系统中。
+[Previously](./README.md#什么是基于角色的访问控制-rbac) we introduced what role-based access control (RBAC) is, and then this document describes how to quickly integrate the RBAC permission model into your system based on Approw.
 
-首先了解一下 Authing 中的几个核心概念：
+First, we need to understand a few core concepts in Approw:
 
-- 用户：你的终端用户；
-- 角色：角色是一个逻辑集合，你可以授权一个角色某些操作权限，然后将角色授予给用户，该用户将会继承这个角色中的所有权限；
-- 资源：你可以把你应用系统中的实体对象定义为资源，比如订单、商品、文档、书籍等等，每种资源都可以定义多个操作，比如文档有阅读、编辑、删除操作；
-- 授权：把某类（个）资源的某些（个）操作授权给角色或者用户。
+- User: End user;
+- Role: A role is a logical collection. You can authorize certain operation permissions of a role, and then grant the role to a user, and the user will inherit all the permissions in the role;
+- Resources: You can define the entity objects in your application system as resources, such as orders, commodities, documents, books, etc.. Each resource can define multiple operations, such as reading, editing, and deleting documents.
+- Authorization: Authorize certain operations of a certain type of resources to roles or users.
 
-通过用户、角色、资源、授权的组合，就可以轻松直观地实现灵活、细粒度的权限模型。
+With the combination of users, roles, resources, and authorizations, we can get a flexible and fine-grained permission model.
 
-## 创建角色
+## Create roles
 
-你可以使用 Authing 控制台创建角色：在**权限管理** - **角色管理**中，点击**添加角色**按钮：
+You can use the Approw console to create roles: In **Privilege Management** - **Role Management** Click **Add Role **:
 
-- 角色 code: 该角色的唯一标志符，只允许包含英文字母、数字、下划线 \_、横线 -，这里我们填 `admin`。
-- 角色描述：该角色的描述信息，这里我们填`管理员`。
+- Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore \_ and hyphen -. Here we fill in `admin`.
+- Role description: the description of the role, here we fill in the`administrator`.
 
-创建好三个角色：
+Add three roles:
 
-![](~@imagesZhCn/guides/access-control/5186f15e-b02a-4b7b-b886-a3f26f5f07c8.png)
+![](~@imagesEnUs/guides/access-control/5186f15e-b02a-4b7b-b886-a3f26f5f07c8.png)
 
-你也可以使用 API & SDK 创建角色，详情请见[角色 Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md)。
+You can also use API & SDK to create roles. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
-## 授权用户角色
+## Grant user a role
 
-在角色详情页面，你可以将此角色授权给用户。你可以通过用户名、手机号、邮箱、昵称搜索用户：
+On the role details page, you can grant this role to users. You can search for users by username, phone number, email or nickname:
 
-![](~@imagesZhCn/guides/access-control/Xnip2021-03-01_15-51-01.png)
+![](~@imagesEnUs/guides/access-control/Xnip2021-03-01_15-51-01.png)
 
-选择用户之后点击确认，你可以查看被授权此角色的用户列表。
+After selecting the user, click OK, and you can view the list of users granted for this role.
 
-你也可以使用 API & SDK 给用户授予角色，详情请见[角色 Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md)。
+You can also use API & SDK to grant roles to users. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
-## 在后端通过用户角色控制权限
+## Control privileges through user roles on the backend
 
-当用户成功认证、获取到 Token 之后，你可以解析到当前用户的 ID，接下来你可以使用我们提供的 API & SDK 在后端获取该用户被授予的角色，这里以 Node.js 为例：
+After the user is successfully authenticated and the Token is obtained, you can get the current user ID, and then you can use the API & SDK provided by us to get the role granted to the user on the backend. Take Node.js as an example:
 
-> 这里以 Node SDK 为例，我们同时还支持 Python、Java、C#、PHP 等语言的 SDK，详情[请点击此](/reference/)。
+> Take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click[Here](/reference/).
 
-首先获取用户的被授予的所有角色列表：
+First, we need to get a list of all the roles that the user has been granted:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from 'authing-js-sdk'
 
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
-});
-const { totalCount, list } = await managementClient.users.listRoles("USER_ID");
+  userPoolId: 'YOUR_USERPOOL_ID',
+  secret: 'YOUR_USERPOOL_SECRET',
+})
+const { totalCount, list } = await managementClient.users.listRoles('USER_ID')
 ```
 
-得到用户的所有角色之后，我们可以判断该用户是否具备 `devops` 这个角色：
+After getting all the roles of the user, we can know whether the user has the `devops` role.
 
 ```javascript
-if (!list.map((role) => role.code).includes("devops")) {
-  throw new Error("无权限操作！");
+if (!list.map((role) => role.code).includes('devops')) {
+  throw new Error('No permission operation!')
 }
 ```
 
-## 创建资源
+## Create resources
 
-上一步我们通过用户是否具备某个角色来控制权限，这种权限控制还是比较粗粒度的，因为只判断了用户是否具备某个角色，而没有判断其是否具备某个特定的权限。Authing 在基于角色的访问控制模型（RBAC）的基础上，还能够围绕资源进行更细粒度的授权。
+In the previous step, we do privilege management based on whether the user has a certain role. This privilege management is relatively coarse-grained, because it only judges whether the user has a certain role, but does not judge whether it has a specific permission. Based on the role-based access control model (RBAC), Approw can also perform more fine-grained authorization in resources.
 
-你可以把系统的一些对象抽象为资源，在这些资源上可以定义了一些操作。比如在本文的场景中，Repository、Tag、PR、Release Notes 都是资源，且这些资源都有对应的操作：
+You can abstract some objects of the system as resources, and some operations can be defined on these resources. For example, in the scenario of this document, Repository, Tag, PR, Release Notes are all resources, and these resources have corresponding operations:
 
-- Repository：创建、删除等。
-- PR：开启、评论、合并等。
-- Tag：创建、删除等。
-- Release Notes：创建、阅读、编辑、删除等。
+- Repository: create, delete, etc.
+- PR: Open, comment, merge, etc.
+- Tag: create, delete, etc.
+- Release Notes: Create, read, edit, delete, etc.
 
-我们在 Authing 中创建这些资源：
+We create these resources in Approw:
 
-![](~@imagesZhCn/guides/access-control/e23be4b2-0072-4989-bdf9-e0cc7c882397.png)
+![](~@imagesEnUs/guides/access-control/e23be4b2-0072-4989-bdf9-e0cc7c882397.png)
 
-## 授权角色操作资源的权限
+## Authorized role to operate resource
 
-而且 Authing 还同时支持给用户、角色授权，如果用户在某个角色中，他也将继承这个角色被授权的权限。所以 Authing 既能够实现标准的 RBAC 权限模型，也能在这基础上进行更细粒度、更动态的权限控制。
+Approw also supports authorization to users and roles at the same time. If the user is in a role, he will also inherit the authorized permissions of this role. Therefore, Approw can not only implement the standard RBAC permission model, but also perform more fine-grained and more dynamic permission control.
 
-比如下面这个例子中，我们给 admin 这个角色授权了 repository 资源的 Create 和 Delete 权限：
+In the following example, we authorize the Create and Delete permissions of the repository resource to the admin role:
 
-![](~@imagesZhCn/guides/access-control/0f443c28-85b5-4127-9177-0cdae41eb3c2.png)
+![](~@imagesEnUs/guides/access-control/0f443c28-85b5-4127-9177-0cdae41eb3c2.png)
 
-## 在后端判断用户是否具备权限
+## Determine whether the user has permission on the backend
 
-在上一步我们通过资源授权，做到了授权给某个用户（角色）对某个特定资源的特定操作权限，我们在后端进行接口鉴权的时候，就可以做更细粒度的判断了：
+In the previous step, through resource authorization, we authorized a user (role) to have specific operation permissions on a specific resource. When we perform interface authentication on the backend, we can make more fine-grained judgments:
 
-> 这里以 Node SDK 为例，我们同时还支持 Python、Java、C#、PHP 等语言的 SDK，详情[请点击此](/reference/)。
+> Here we take Node SDK as an example. We also support SDKs in Python, Java, C#, PHP, etc. For details, please click [here](/reference/).
 
-调用 `managementClient.acl.isAllowed` 方法，三个参数分别为：
+Call the `managementClient.acl.isAllowed` the three parameters are:
 
-- userId: 用户 ID，用户可以被直接授权特定资源的操作，也可以继承角色被授权的权限。
-- resource: 资源标志符，如 `repository:123` 表示 ID 为 123 的代码仓库，`repository:*` 表示代码仓库这一类资源。
-- action: 特定操作，如 `repository:Delete` 表示删除代码仓库这个操作。
+- userId: User ID, the user can be directly authorized to operate on a specific resource, or can inherit the authorized permissions of the role.
+- resource: Resource id. For example, `repository:123` represents a code repository with ID 123, and `repository:*` represents a type of resource such as a code repository.
+- action: A specific operation, such as `repository:Delete` means deleting the code warehouse.
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from 'authing-js-sdk'
 
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
-});
+  userPoolId: 'YOUR_USERPOOL_ID',
+  secret: 'YOUR_USERPOOL_SECRET',
+})
 const { totalCount, list } = await managementClient.acl.isAllowed(
-  "USER_ID",
-  "repository:123",
-  "repository:Delete"
-);
+  'USER_ID',
+  'repository:123',
+  'repository:Delete'
+)
 ```
 
-Authing 策略引擎会根据你配置的权限策略，动态执行策略，最后返回 true 或者 false，你只需要根据返回值就能判断用户是否具备操作权限。
+The Approw policy engine will dynamically execute the policy according to the permission policy you configured, and return true or false. You only need to determine whether the user has the operation privilege based on the return value.
 
-## 接下来
+## Next
 
-你可以了解如何[基于 ABAC 权限模型对用户进行授权](./abac.md)。
+You can learn how to [Authorize users based on the ABAC permission model](./abac.md).

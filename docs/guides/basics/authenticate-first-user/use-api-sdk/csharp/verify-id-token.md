@@ -1,4 +1,4 @@
-C# 可以使用 [System.IdentityModel.Tokens.Jwt](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/) 来验证 IdToken：
+In C#, you can use [System.IdentityModel.Tokens.Jwt](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/) to validate IdToken:
 
 ```cs
 using System;

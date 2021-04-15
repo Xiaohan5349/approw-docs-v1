@@ -1,10 +1,10 @@
-# 验证用户身份凭证（token）
+# Validate User Token
 
 <LastUpdated/>
 
-当你的用户成功登录后，Authing 会为该用户签发一个 [OIDC IdToken](/concepts/id-token.md) 作为身份凭证。验证方式请查看[验证 Token 文档](/guides/faqs/how-to-validate-user-token.md)。
+When a user successfully logs in, Approw will issue an [OIDC IdToken](/concepts/id-token.md) for the user as an identity credential.Please refer to the [Validate Token document](/guides/faqs/how-to-validate-user-token.md) for the validation method.
 
-一个示例解码过后的示例 `OIDC IdToken` 如下：
+An example of decoded `OIDC IdToken` is as follows:
 
 ```javascript
 {
@@ -17,7 +17,7 @@
   middle_name: null,
   name: null,
   nickname: null,
-  picture: 'https://files.authing.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
+  picture: 'https://files.approw.co/user-contents/photos/9a9dc4d7-e756-45b1-81d8-095a28e476c6.jpg',
   preferred_username: 'test1',
   profile: null,
   updated_at: '2020-09-30T07:12:19.401Z',
@@ -32,8 +32,8 @@
   aud: '5f17a529f64fb009b794a2ff',
   exp: 1601453558,
   iat: 1601449959,
-  iss: 'https://oidc1.authing.cn/oidc'
+  iss: 'https://oidc1.approw.com/oidc'
 }
 ```
 
-其中 `sub` 为该 Id Token 的唯一标识，一般为用户 ID。
+`sub` is the unique identifier of the Id Token, generally used as user ID.

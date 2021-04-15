@@ -4,18 +4,18 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 SAML2 登录 AWS Kibana',
-  bannerTitle: '使用 SAML2 登录 AWS Kibana',
+  title: 'Login AWS Kibana with SAML2',
+  bannerTitle: 'Login AWS Kibana with SAML2',
   steps:
     [
-      { title: '配置 AWS ES', subTitle: '修改 AWS ElasticSeach 身份验证方式' },
+      { title: 'Configure AWS ES', subTitle: 'Modify the AWS ES' },
       {
-        title: '配置 {{$localeConfig.brandName}} SAML2 IdP',
-        subTitle: '{{$localeConfig.brandName}} 应用开启 SAML2 Provider 并配置',
+        title: 'Configure {{$localeConfig.brandName}} SAML2 IDP',
+        subTitle: 'Enable and configure SAML2 Provider for {{$localeConfig.brandName}} applications',
       },
-      { title: '上传元数据文档到 AWS ES', subTitle: '修改元数据文档内容，然后上传到 AWS ES' },
-      { title: '在 {{$localeConfig.brandName}} 添加用户', subTitle: '以 SAML 主用户名在 {{$localeConfig.brandName}} 创建用户' },
-      { title: '配置完成', subTitle: '使用 {{$localeConfig.brandName}} IdP 登录 AWS Kibana' },
+      { title: 'Upload Metadata Document to AWS ES', subTitle: 'Modify the metedata doc and upload it to AWS ES' },
+      { title: 'Add the user in {{$localeConfig.brandName}}', subTitle: 'Create a user in {{$localeConfig.brandName}} with SAML master username' },
+      { title: 'Login AWS Kibana with Approw IDP', subTitle: 'Use {{$localeConfig.brandName}} IdP to log in to AWS Kibana' },
     ],
 }
 ---

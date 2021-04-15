@@ -1,4 +1,4 @@
-# 配置数据库连接和编写脚本
+# Setup Database Connection and Compile Scripts
 
 <LastUpdated/>
 
@@ -6,47 +6,49 @@
 只有**企业版**用户能够使用连接自定义数据库功能，详情请见 [https://authing.cn/pricing](https://authing.cn/pricing)。如果你想试用，请联系 176-0250-2507 或 xuziqiang@authing.cn。
 ::: -->
 
-你可以自定义数据库认证用户，为此你需要配置数据库连接、编写数据库操作脚本、配置环境变量（可选）。
+You can authenticate users with your customized database. For that, you need to setup database connection, prepare database operation script and setup environment variable (optional).
 
-> 请确保你的数据库有 Authing 用户资料必须的一些字段，如 `id`, `email`, `photo`, `nickname`, `username`, `phone` 等，详情请见[Authing 用户 Profile 详细字段及其释义](/guides/user/user-profile.md) 了解 Authing 用户资料 Schema。
+> Please make sure that your database has following fields like `id`, `email`, `photo`,`nickname`, `username`, `phone` which are required by Approw identity profile. You can learn more about schemas of Approw user profile in the document of [Approw user profile fields and explanations](/guides/user/user-profile.md).
 
-Authing 支持直接连接以下几种主流的数据库以及自定义 Web Service：
+Approw now support direct connection with these common databases and self-designed Web Service:
 
 - MySQL
 - PostgresQL
 - MongoDB
-- Web Services: 你可以将数据库封装成一个服务，不直接对外暴露数据库连接，如你可以把认证操作封装成一个 API: `https://mydomain.com/auth`。
+- Web Services: You can package up your database as a service and prevent exploring database connection from public. For example, you can package up the authentication operation into an API: `https://mydomain.com/auth`.
 
 ::: hint-info
-如果你在脚本中访问的服务配置有防火墙，请确保其对以下 IP 地址开放：140.179.19.50, 52.80.250.250 . 你还可以通过以下 API 动态获取 Authing 服务器对外 IP 地址：[https://core.authing.cn/api/v2/system/public-ips](https://core.authing.cn/api/v2/system/public-ips)。
+If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API:[https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips)。
 :::
 
-## 开启自定义数据库连接
+## Enable Customized Database Connection
 
 ::: hint-warning
-开启自定义数据库后会立即生效，在你还没有编写自定义脚本之前，用户尝试登录会提示类似 `Please implement the Login script for this database connection` 的错误，这是从默认的脚本提示的错误，请前往修改脚本，或暂时关闭自定义数据库连接。
+The configuration will be active immediately once you enable the customized database. Before you write customized script, the error `Please implement the Login script for this database connection` will show up when users try to login. This error will appear when using the default script. You need to modify the script or temporarily disable the customized database connection.
 :::
 
-登录 [Authing 控制台](https://console.authing.cn/console/userpool)，在 **连接身份源** - **自定义数据库** 页面，点击右上角的**开启**按钮：
+You need to login to the [Approw Console](https://console.approw.com/console/userpool) and then go to **Connect IdP** - **Customized Database** to **enable** this service on the top right corner
 
-![](https://cdn.authing.cn/img/20210111180702.png)
+<!-- ![](https://cdn.authing.cn/img/20210111180702.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/1.png)
 
-## 选择场景
+## Choose User Scenarios
 
-自定义数据库有两种不同模式，你可以根据自己的业务需求选择合适的模式：
+There are two different modes for customized databases and you can choose suitable mode according to diffferent user scenarios:
 
-- **惰性迁移用户**：这种迁移用户的模式称为**惰性迁移（lazy migration）**，简单来说原理如下：最开始所有的原始用户数据在你的数据库，当用户第一次尝试在 Authing 登录时，Authing 会通过你配置的自定义数据库脚本在你的数据库查找并验证用户，如果成功，会将该用户迁移到 Authing 中；该用户第二次登录时，将使用 Authing 的数据库对其进行验证；当所有的用户都至少登录一次时，意味着迁移上云任务完成。详情请见：[使用自定义数据库实现用户惰性迁移](https://docs.authing.co/connections/custom-db/lazy-migrations.html)。
-- **完全使用自定义数据库**：这种模式下用户数据始终保存在你的数据库中，Authing 永远不会保存你的用户数据。为了让系统正常工作，你需要实现完整的用户增删改查脚本。
+- **Migrate user information to Approw with lazy migration**: In **lazy migration** mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the customized database with customized script and will migrate this user to Approw if authenticate succeed. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](/guides/database-connection/lazy-migration.md).
+- **Only use customized databases to store user information**: You can use your own database to store user information. In this mode, Approw won't store any user information. However you need to compile scripts for user management to make the system work normally.
 
-## 配置数据库连接信息
+## Setup Database Connection Configuration
 
-接下来填写数据库连接信息，你可以选择 **Connection URI** 和 **Programmatic** 两种方式：
+Now you need to setup database connection configuration, you can use **Connection URL** or **Programmatic**.
 
-### Connection URI 形式
+### Connection URL
 
-![](https://cdn.authing.cn/blog/20201130162731.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130162731.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/2.png)
 
-Connection URI 一般是 `protocol://username:password@host:port/database` 这种形式的 URI，如 `postgres://postgres:postgres@localhost:5432/database-name`，你可以在脚本中通过全局变量 `env.DB_CONNECTION_URI` 引用，如下所示：
+The Connection URL usually is the URL with following format: `protocol://username:password@host:port/database` such as: `postgres://postgres:postgres@localhost:5432/database-name`. You can import these URLs in script by using global vriable `env.DB_CONNECTION_URI` as the code shows below:
 
 ```javascript
 const { Client } = require('pg')
@@ -57,11 +59,12 @@ const client = new Client({
 await client.connect()
 ```
 
-### Programmatic 形式
+### Programmatic
 
-![](https://cdn.authing.cn/blog/20201130162823.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130162823.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/3.png)
 
-这种模式分别指定数据库 Host、端口、用户名、密码、database 名称，可以分别在脚本中通过全局变量 `env.DB_HOST`、`env.DB_PORT`、`env.DB_USERNAME`、`env.DB_PASSWORD`、`env.DB_DATABASE` 引用，如下所示：
+In this mode, you need to declare the Host, port, username, password, and database name of your customized database. You can import these parameters with the following global variables: `env.DB_HOST`, `env.DB_PORT`, `env.DB_USERNAME`, `env.DB_PASSWORD` and `env.DB_DATABASE` as the code shows below:
 
 ```javascript
 const { Client } = require('pg')
@@ -75,48 +78,50 @@ const client = new Client({
 await client.connect()
 ```
 
-## 编写数据库操作脚本
+## Compile Database Operation Script
 
-我们目前提供了 **MySQL**、**PostgresQL**、**MongoDB**、**自定义服务** 四种方式的模版，你可以根据需要编写对应的脚本。
+Approw now provide four different kinds of templates for **MySQL**, **PostgresQL**, **MongoDB** and **Customized Service**. You can choose different templates according to your user cases.
 
-选择 **迁移用户数据到 Authing（LAZY_MIGRATION）** 模式时，你一共需要编写两个函数：
+When using **LAZY_MIGRATION** mode, you need to compile two functions:
 
-- 登录：该脚本会在用户尝试登录的时候执行，如果该用户未同步到 Authing 数据库，会根据你填写的此脚本检验用户账号密码。
-- 查找用户：该脚本会在用户尝试注册的时候执行，如果该脚本返回了用户身份信息，会提示用户**用户已存在**而注册失败。
+- Login: This script will be called when users try to login. If the user has not been migrated to Approw database, his/her account password will be validated by this script.
+- Search user: This script will be called when users try to register. If user's profile is returned by this script, he/she will be noticed "**user already exists**" and the registration failed.
 
-选择 **完全使用自己的数据库（CUSTOM_USER_STORE）** 模式时，你一共需要编写以下几个函数：
+When using **CUSTOM_USER_STORE** mode, you need to compile following functions:
 
-- 登录：该脚本会在用户尝试登录的时候执行，如果该用户未同步到 Authing 数据库，会根据你填写的此脚本检验用户账号密码。
-- 精确查找用户：该脚本会在用户尝试注册的时候执行，如果该脚本返回了用户身份信息，会提示用户**用户已存在**而注册失败。
-- 模糊搜索用户：该脚本会在管理员使用控制台或者 API 模糊搜索用户的时候调用。
-- 创建用户：该脚本会在用户注册或者使用 API 和控制台创建用户时执行，你需要将用户信息保存到自己的数据库中。
-- 修改用户资料：该脚本会在管理员修改用户资料或者用户自己修改用户资料时执行。
-- 删除用户：该脚本会在管理员使用控制台或者 API 删除用户账号时执行。
-- 获取用户列表：该脚本会在管理员使用控制台或者 API 获取用户列表时执行，这个接口需要的数据中需要包含用户总数、当前页用户列表。
-- 验证密码：该脚本会在用户尝试重置密码，验证其原始密码时执行。
+- Login: This script will be called when users try to login. If the user has not been migrated to Approw database, his/her account password will be validated by this script.
+- Precise search: This script will be called when users try to register. If user's profile is returned by this script, he/she will be noticed "**user already exists**" and the registration failed.
+- Fuzzy search: This script will be called when admin use console or API to search user vaguely.
+- Create: This script will be called when the user registers an account or someone uses console or API to create an user account. You need to store user information in your own database.。
+- Modify: This script will be called when the admin modifies user information or users want to modify their information by themselves.
+- Delete: This script will be called when the admin uses console or API to delete user account.
+- Get user list; This script will be called when the amdin uses console or API to get user list. This interface will require the number of total users and the list of users in the current page.
+- Password validation: This script will be called when users try to reset the password and validate the original password.
 
-<StackSelector snippet="script-template" selectLabel="选择脚本名称" :order="['login', 'getUser', 'searchUser', 'createUser', 'updateUser', 'deleteUser', 'listUsers', 'validatePassword']"/>
+<StackSelector snippet="script-template" selectLabel="Select one script" :order="['login', 'getUser', 'searchUser', 'createUser', 'updateUser', 'deleteUser', 'listUsers', 'validatePassword']"/>
 
-## 测试数据库脚本
+## Test Database Scripts
 
-我们给开发者提供了一个供快速测试测试的在线数据库，你可以使用此数据库进行快速测试，[点击此](https://db-connections.authing.cn)访问。
+We provide an online database for developers to test their scripts quickly. You can access this database from [here](https://db-connections.approw.com).
 
 :::hint-success
-该数据库对所有用户免费开放，数据库连接信息为 postgres://postgres:postgres_root_local@47.74.20.164:31000/custom-db-connection，你可以创建测试用户，或者使用列表中的示例用户。
+This database is open-source for all user freely, the connection information of this database is postgres://postgres:postgres_root_local@47.74.20.164:31000/custom-db-connection. You can create your own users or use template users in the list.
 :::
 
-配置好 Connection URI 之后点击保存，在点击最下方的 **调试** 按钮。
+After setup configuration URI, click **Save** and then **Test** button at the bottom.
 
-![](https://cdn.authing.cn/blog/20201130173258.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130173258.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/4.png)
 
-<img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" />
+<!-- <img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" /> -->
+<!-- <img src="~@imagesEnUs/guides/database-connection/configuration/5.png" height="400px" /> -->
+In the jump out window, you need to fill in a user in the user list of the template userpool.
 
-在弹出的表单中填写示例用户池用户列表中的某个用户：
+<!-- ![](https://cdn.authing.cn/blog/20201130173505.png) -->
 
-![](https://cdn.authing.cn/blog/20201130173505.png)
+<!-- <img src="https://cdn.authing.cn/blog/20201130174003.png" height="400px" /> -->
+<img src="~@imagesEnUs/guides/database-connection/configuration/6.png" height="400px" />
 
-<img src="https://cdn.authing.cn/blog/20201130174003.png" height="400px" />
+After click the **Test** button, you will see a notification about successful result.
 
-点击**测试**按钮，你应该可以看到相关成功提示。
-
-![](https://cdn.authing.cn/blog/20201130173939.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130173939.png) -->

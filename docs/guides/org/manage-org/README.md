@@ -1,37 +1,37 @@
-# 管理组织机构
+# Management Organization
 
 <LastUpdated/>
 
-组织机构的管理包含添加子节点、修改节点、删除子节点、移动子节点、获取子节点列表、添加成员、删除成员、获取成员列表等操作，Authing 支持控制台和 API & SDK 两种操作方式。
+Management Organization includes operations such as adding sub-nodes, modifying nodes, deleting sub-nodes, moving sub-nodes, obtaining sub-node lists, adding members, deleting members, and obtaining member lists. {{$localeConfig.brandName}} supports two operation types: console and API & SDK.
 
-## 添加子节点
+## Add child nodes
 
 <StackSelector snippet="add-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 修改节点
+## Modify nodes
 
 <StackSelector snippet="update-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 删除子节点
+## Delete child nodes
 
 <StackSelector snippet="delete-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 移动子节点
+## Move child nodes
 
 <StackSelector snippet="move-node" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 获取子节点列表
+## Get the list of child nodes
 
 <StackSelector snippet="list-children" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 添加成员
+## Add member
 
 <StackSelector snippet="add-member" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 删除成员
+## Delete member
 
 <StackSelector snippet="remove-member" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>
 
-## 获取成员列表
+## Obtain the list of members
 
 <StackSelector snippet="list-members" selectLabel="选择方式" :order="['dashboard', 'java', 'javascript']"/>

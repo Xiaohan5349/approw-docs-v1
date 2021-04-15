@@ -1,11 +1,10 @@
-使用[应用 ID（AppID）](/guides/faqs/get-app-id-and-secret.md) 初始化 [C# SDK](/reference/sdk-for-csharp/) 的 `AuthenticationClient`:
-
+Use the [AppID](/guides/faqs/get-app-id-and-secret.md) to initialize the `AuthenticationClient` of the [C# SDK](/reference/sdk-for-csharp/):
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
 var authenticationClient = new AuthenticationClient(opt =>
             {
-                opt.AppId = "AUTHING_APP_ID";
+                opt.AppId = "APPROW_APP_ID";
             });
 ```

@@ -1,68 +1,67 @@
 ---
 meta:
   - name: description
-    content: 管理用户
+    content: Users Management
 ---
 
-# 管理用户
+# UsersManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} 管理模块。
+> {{$localeConfig.brandName}} User ManagementClient
 
-此模块可以进行用户目录增删改查、搜索用户、刷新用户 token、管理用户分组、管理用户角色、管理用户策略授权等操作。
+This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
-## 创建用户
+## Create a user
 
 UsersManagementClient().create(userInfo)
 
-> 此接口将以管理员身份创建用户，不需要进行手机号验证码检验等安全检测。
+> An administrator can use this interface to create a user and the this process does not need to perform security checks such as SMS code verification and other verifications.
 
-#### 参数
+#### Parameters
 
-- `userInfo` \<CreateUserInput\> 用户资料
-- `userInfo.email` \<string\> 邮箱，用户池内唯一
-- `userInfo.emailVerified` \<boolean\> 邮箱是否已验证
-- `userInfo.phone` \<string\> 手机号
-- `userInfo.phoneVerified` \<boolean\> 手机号是否验证
-- `userInfo.unionid` \<string\> 以社会化登录的用户该字段为用户在第三方社会化登录服务商中的唯一 ID
-- `userInfo.openid` \<string\> 微信登录返回的 openid
-- `userInfo.password` \<string\> 密码
-- `userInfo.registerSource` \<string\> 注册来源，可以多选
-- `userInfo.username` \<string\> 用户名
-- `userInfo.nickname` \<string\> 昵称
-- `userInfo.photo` \<string\> 头像
-- `userInfo.company` \<string\> 公司
-- `userInfo.browser` \<string\> 浏览器
-- `userInfo.loginsCount` \<number\> 登录次数，当你从原有用户系统迁移到 {{$localeConfig.brandName}} 时可以设置该字段。
-- `userInfo.lastLogin` \<string\> 上次登录时间, 符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `userInfo.lastIP` \<string\> 用户最近一次登录（或其他活动）的 IP
-- `userInfo.signedUp` \<string\> 注册时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `userInfo.blocked` \<boolean\> 账号是否被禁用
-- `userInfo.isDeleted` \<boolean\> 标记账号是否被删除
-- `userInfo.device` \<string\> 设备
-- `userInfo.lastIP` \<string\> 最近登录的 IP
+- `userInfo` \<CreateUserInput\> User information
+- `userInfo.email` \<string\> Email, unique in the user pool
+- `userInfo.emailVerified` \<boolean\> Is the email verified?
+- `userInfo.phone` \<string\> Phone number
+- `userInfo.phoneVerified` \<boolean\> Whether the phone number is verified
+- `userInfo.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provide
+- `userInfo.password` \<string\> Password
+- `userInfo.registerSource` \<string\> Registration source, you can choose multiple
+- `userInfo.username` \<string\> Username
+- `userInfo.nickname` \<string\> Nickname
+- `userInfo.photo` \<string\> Avatar
+- `userInfo.company` \<string\> Company
+- `userInfo.browser` \<string\> Browser
+- `userInfo.loginsCount` \<number\> The number of logins. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `userInfo.lastLogin` \<string\> Last login time, a time string conforming to the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.lastIP` \<string\> The last login (or other activity) IP of the user
+- `userInfo.signedUp` \<string\> Registration time, a time string in ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.blocked` \<boolean\> Whether the account is disabled
+- `userInfo.isDeleted` \<boolean\> Mark whether the account is deleted
+- `userInfo.device` \<string\> Device
+- `userInfo.lastIP` \<string\>  Last logged in IP
 - `userInfo.name` \<string\> Name
 - `userInfo.givenName` \<string\> Given Name
 - `userInfo.familyName` \<string\> Family Name
 - `userInfo.middleName` \<string\> Middle Name
 - `userInfo.profile` \<string\> Profile Url
 - `userInfo.preferredUsername` \<string\> Preferred Name
-- `userInfo.website` \<string\> 个人网站
-- `userInfo.gender` \<string\> 性别, M（Man） 表示男性、F（Female） 表示女性、未知表示 U（Unknown）
-- `userInfo.birthdate` \<string\> 生日
-- `userInfo.zoneinfo` \<string\> 时区
-- `userInfo.locale` \<string\> 语言
-- `userInfo.address` \<string\> 地址
-- `userInfo.streetAddress` \<string\> 街道地址
+- `userInfo.website` \<string\> Personal website
+- `userInfo.gender` \<string\> Gender, M means male, F means female, U means unknown.
+- `userInfo.birthdate` \<string\> Birthday
+- `userInfo.zoneinfo` \<string\> Time zone
+- `userInfo.locale` \<string\> Kanguage
+- `userInfo.address` \<string\> Address
+- `userInfo.streetAddress` \<string\> Street address
 - `userInfo.locality` \<string\>
-- `userInfo.region` \<string\> 地域
-- `userInfo.postalCode` \<string\> 邮编
-- `userInfo.city` \<string\> 城市
-- `userInfo.province` \<string\> 省份
-- `userInfo.country` \<string\> 国家
+- `userInfo.region` \<string\> Region
+- `userInfo.postalCode` \<string\> Zipcode
+- `userInfo.city` \<string\> City
+- `userInfo.province` \<string\> Province
+- `userInfo.country` \<string\> Country
 
-#### 示例
+#### Example
 
 ```php
 $email = "test@example.com";
@@ -70,478 +69,286 @@ $password = '123456';
 $user = $managementClient->users()->create((new CreateUserInput())->withEmail($email)->withPassword($password));
 ```
 
-## 修改用户资料
+## Update user information
 
 UsersManagementClient \*().update(id, updates)
 
-> 修改用户资料
+> Update user information
 
-#### 参数
+#### Parameters
 
-- `id` \<string\> 用户 ID
-- `updates` \<UpdateUserInput\> 修改的用户资料
-- `updates.email` \<string\> 邮箱
-- `updates.emailVerified` \<boolean\> 邮箱是否已验证
-- `updates.phone` \<string\> 手机号
-- `updates.phoneVerified` \<boolean\> 手机号是否验证
-- `updates.unionid` \<string\> 以社会化登录的用户该字段为用户在第三方社会化登录服务商中的唯一 ID
-- `updates.openid` \<string\> 微信登录返回的 openid
-- `updates.password` \<string\> 密码
-- `updates.registerSource` \<string\> 注册来源，可以多选
-- `updates.tokenExpiredAt` \<string\> token 过期时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")。
-  将该字段设置为小于当前时间可以让用户的 token 失效。
-- `updates.username` \<string\> 用户名
-- `updates.nickname` \<string\> 昵称
-- `updates.photo` \<string\> 头像
-- `updates.company` \<string\> 公司
-- `updates.browser` \<string\> 浏览器
-- `updates.loginsCount` \<number\> 登录次数，当你从原有用户系统迁移到 {{$localeConfig.brandName}} 时可以设置该字段。
-- `updates.lastLogin` \<string\> 上次登录时间, 符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `updates.lastIP` \<string\> 用户最近一次登录（或其他活动）的 IP
-- `updates.signedUp` \<string\> 注册时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `updates.blocked` \<boolean\> 账号是否被禁用
-- `updates.device` \<string\> 设备
-- `updates.lastIP` \<string\> 最近登录的 IP
+- `id` \<string\> User ID
+- `updates` \<UpdateUserInput\> Modified user information
+- `updates.email` \<string\> Email
+- `updates.emailVerified` \<boolean\> Whether the email is verified
+- `updates.phone` \<string\> Phone number
+- `updates.phoneVerified` \<boolean\> Whether the phone number is verified
+- `updates.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider
+- `updates.password` \<string\> Password
+- `updates.registerSource` \<string\> Registration source, you can select multiple
+- `updates.tokenExpiredAt` \<string\> The token expiration time, a time string in the ISO8601 format. (Such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00"). Set the field to be earlier than the current time can make the user's token invalid.
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Company
+- `updates.browser` \<string\> Browser
+- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
+- `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.blocked` \<boolean\> Whether the account is disabled
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP
 - `updates.name` \<string\> Name
 - `updates.givenName` \<string\> Given Name
 - `updates.familyName` \<string\> Family Name
 - `updates.middleName` \<string\> Middle Name
 - `updates.profile` \<string\> Profile Url
 - `updates.preferredUsername` \<string\> Preferred Name
-- `updates.website` \<string\> 个人网站
-- `updates.gender` \<string\> 性别, M（Man） 表示男性、F（Female） 表示女性、未知表示 U（Unknown）
-- `updates.birthdate` \<string\> 生日
-- `updates.zoneinfo` \<string\> 时区
-- `updates.locale` \<string\> 语言
-- `updates.address` \<string\> 地址
-- `updates.streetAddress` \<string\> 街道地址
+- `updates.website` \<string\> Personal website
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Timezone
+- `updates.locale` \<string\> Langeage
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
 - `updates.locality` \<string\>
-- `updates.region` \<string\> 地域
-- `updates.postalCode` \<string\> 邮编
-- `updates.city` \<string\> 城市
-- `updates.province` \<string\> 省份
-- `updates.country` \<string\> 国家
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
-#### 示例
+#### Example
 
-## 获取用户详情
+## Get user details
 
 UsersManagementClient().detail(userId)
 
-> 通过用户 ID 获取用户详情，如果你想通过 token 获取用户详情，请使用 AuthenticationClient SDK 。
+> Get user details by user ID. If you want to get user details by token, please use AuthenticationClient SDK.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```php
 $user = $managementClient->users()->detail("userId");
 ```
 
-## 获取自定义数据
-
-UsersManagementClient().listUdv(userId)
-
-> 获取用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)。
-
-#### 参数
-
-- `userId` \<string\> 用户 ID
-
-#### 示例
-
-```php
-$data = $userManagementClient->listUdv("userId");
-```
-
-
-## 批量获取自定义数据
-
-UsersManagementClient().getUdfValueBatch(userIds)
-
-> 批量获取多个用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)。
-
-#### 参数
-
-- `userIds` \<string\> 用户 ID 列表
-
-#### 示例
-
-```php
-$data = $userManagementClient->getUdfValueBatch(["userId1", "userId2"]);
-```
-
-
-
-## 删除用户
+## Delete a user
 
 UsersManagementClient().delete(userId)
 
-> 删除用户
+> Delete a user
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> user ID
 
-#### 示例
+#### Example
 
 ```php
 $message = $managementClient->users()->delete("userId");
 ```
 
-## 批量删除用户
+## Batch delete users
 
 UsersManagementClient().deleteMany(userIds)
 
-> 批量删除用户
+> Batch delete users
 
-#### 参数
+#### Parameter
 
-- `userIds` \<string[]\> 用户 ID 列表
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```php
 $message = $managementClient->users()->deleteMany(["userId"]);
 ```
 
-## 批量获取用户
+## Batch get users
 
 UsersManagementClient().batch(userIds)
 
-> 通过 ID 批量获取用户详情
+> Batch get user details by ID
 
-#### 参数
+#### Parameter
 
-- `userIds` \<string[]\> 用户 ID 列表
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```php
 $users = $managementClient->users()->batch(["userId"]);
 ```
 
-## 获取用户列表
+## Get user list
 
 UsersManagementClient().list(page, limit)
 
-> 获取用户池用户列表
+> Get the user list in the user pool.
 
-#### 参数
+#### Parameter
 
-- `page` \<number\> 页码数, 从 1 开始 默认值为 : `1`。
-- `limit` \<number\> 每页包含的用户数 默认值为 : `10`。
+- `page` \<number\> Page number, starting from 1. The default value is: `1`.
+- `limit` \<number\> The number of users per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```php
 $users = $managementClient->users()->paginate();
 ```
 
-## 查找用户
+## Find a user
 
 UsersManagementClient().find(options)
 
-> 通过用户名、邮箱、手机号查找用户
+> Find a user by username, email, and phone number.
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.username` \<string\> 用户名，区分大小写。
-- `options.email` \<string\> 邮箱，邮箱不区分大小写。
-- `options.phone` \<string\> 手机号
+- `options.username` \<string\> User name, case sensitive.
+- `options.email` \<string\> The email address, which is not case sensitive.
+- `options.phone` \<string\> Phone number
 
-#### 示例
+#### Example
 
-## 搜索用户
+## Search users
 
 UsersManagementClient().search(query, options, page, limit)
 
-> 根据关键字搜索用户
+> Search users based on keywords.
 
-#### 参数
+#### Parameter
 
-- `query` \<null\> 搜索内容
-- `options` \<string[]\> 选项
-- `options.fields` \<string[]\> 搜索用户字段，如果不指定，默认会从 `username`、`nickname`、`email`、`phone`、`company`、`name`、`givenName`、`familyName`、`middleName`、`profile`、`preferredUsername` 这些字段进行模糊搜索。
-  如果你需要精确查找，请使用 find 方法。
-- `page` \<number\> 默认值为 : `1`。
-- `limit` \<number\> 默认值为 : `10`。
+- `query` \<null\> Search content
+- `options` \<string[]\> Search options
+- `options.fields` \<string[]\> Search user fields. If not specified, the default will be fuzzy search from `username`, `nickname`, `email`, `phone`, `company`, `name`, `givenName`, `familyName`, `middleName`, `profile` and `preferredUsername` fields. If you need a precise search, please use the `find` method.
+- `page` \<number\> The default value is: `1`.
+- `limit` \<number\> The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```php
 $users = $managementClient->users()->search("query");
 ```
 
-## 刷新用户 token
+## Refresh user token
 
-UsersManagementClient().refreshToken(id)
+UsersManagementClient().refresh_token(id)
 
-> 刷新用户 token
+> Refresh user token
 
-#### 参数
+#### Parameter
 
-- `id` \<string\> 用户 ID
+- `id` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```php
 $message = $managementClient->users()->refreshToken("userId");
 ```
 
-## 获取用户分组列表
+## Get user group list
 
-UsersManagementClient().listGroups(userId)
+UsersManagementClient().list_groups(userId)
 
-> 获取用户的分组列表
+> Get user group list
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```php
 $list = $managementClient->users()->listGroups("userId");
 ```
 
-## 加入分组
+##  Join a group
 
-UsersManagementClient().addGroup(userId, group)
+UsersManagementClient().add_group(userId, group)
 
-> 将用户加入分组
+> Add a user to a group.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `group` \<string\> 分组 code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
-#### 示例
+#### Example
 
 ```php
 $managementClient->users()->addGroup("userId", "group code");
 ```
 
-## 退出分组
+## Quit a group
 
-UsersManagementClient().removeGroup(userId, group)
+UsersManagementClient().remove_group(userId, group)
 
-> 退出分组
+> Remove the user from a group.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `group` \<string\> 分组 code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
-#### 示例
+#### Example
 
 ```php
 $managementClient->users()->removeGroup("userId", "group code");
 ```
 
-## 获取用户角色列表
+## Get user role list
 
-UsersManagementClient().listRoles(userId)
+UsersManagementClient().list_roles(userId)
 
-> 获取用户的角色列表
+> Get user role list.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```php
 $roles = $managementClient->users()->listRoles("userId");
 ```
 
-## 添加角色
+## Add roles
 
-UsersManagementClient().addRoles(userId, roles)
+UsersManagementClient().add_roles(userId, roles)
 
-> 将用户加入角色
+> Add roles to the user.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `roles` \<string\> 角色 code 列表
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
-#### 示例
+#### Example
 
 ```php
 $managementClient->users()->addRoles("userId", ["role code"]);
 ```
 
-## 移除角色
+## Remove roles
 
-UsersManagementClient().removeRoles(userId, roles)
+UsersManagementClient().remove_roles(userId, roles)
 
-> 将用户从角色中移除
+> Remove roles from the user.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `roles` \<string\> 角色 code 列表
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
-#### 示例
+#### Example
 
 ```php
 $message = $managementClient->users()->removeRoles("userId", ["role code"]);
-```
-
-## 获取用户所在组织机构
-
-UsersManagementClient().listOrgs(userId)
-
-> 获取用户所在组织机构，以及他在该组织机构内的的节点路径。
-
-#### 参数
-
-- `userId` \<string\> 用户 ID
-
-#### 示例
-
-```php
-$data = $userManagementClient->listOrgs("userId");
-```
-
-#### 示例数据
-
-```json
-[
-  [
-    {
-      "type": "org",
-      "id": "604f396a98219415a099dce9",
-      "createdAt": "2021-03-15T10:39:38.146Z",
-      "updatedAt": "2021-03-15T10:39:38.215Z",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "rootNodeId": "604f396aeb491afde5083f02",
-      "logo": null
-    },
-    {
-      "type": "node",
-      "id": "604f396aeb491afde5083f02",
-      "createdAt": "2021-03-15T10:39:38.179Z",
-      "updatedAt": "2021-03-15T10:39:38.179Z",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "orgId": "604f396a98219415a099dce9",
-      "name": "test",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null
-    }
-  ]
-]
-```
-
-## 获取用户被授权的所有资源列表
-
-UsersManagementClient.listAuthorizedResources(userId, namespace, opts = [])
-
-> 获取一个用户被授权的所有资源，用户被授权的所有资源里面包括从角色、分组、组织机构继承的资源。
-
-#### 参数
-
-- `userId` \<string\> 用户 ID；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)；
-- `resourceType` \<string\> 可选，资源类型，默认会返回所有有权限的资源，现有资源类型如下：
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据。
-
-#### 示例
-
-```php
-use Authing\Mgmt\RolesManagementClient;
-use Authing\Mgmt\UsersManagementClient;
-
-$managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
-$managementClient->requestToken();
-
-$userManagementClient = new UsersManagementClient($managementClient);
-
-$data = $userManagementClient->listAuthorizedResources('userId', "default");
-```
-
-#### 示例数据
-
-- `type` 为资源类型；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
-
-```json
-{
-  "totalCount": 12,
-  "list": [
-    {
-      "code": "menu_a",
-      "type": "MENU"
-    },
-    {
-      "code": "menu_b",
-      "type": "MENU"
-    },
-    {
-      "code": "books:1",
-      "type": "DATA",
-      "actions": ["books:delete", "books:update"]
-    }
-  ]
-}
-```
-
-
-
-
-UsersManagementClient.listAuthorizedResources($userId, $namespace)
-
-> 获取一个用户被授权的所有资源，用户被授权的所有资源里面包括从角色、分组、组织机构继承的资源。
-
-#### 参数
-
-- `userId` \<string\> 用户 ID；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)。
-
-#### 示例
-
-```php
-$data = $userManagementClient->listAuthorizedResources("userId", "default");
-```
-
-#### 示例数据
-
-- `type` 为资源类型，一共有以下几种资源类型
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
-
-```json
-{
-  "totalCount": 12,
-  "list": [
-    {
-      "code": "menu_a",
-      "type": "MENU"
-    },
-    {
-      "code": "menu_b",
-      "type": "MENU"
-    },
-    {
-      "code": "books:1",
-      "type": "DATA",
-      "actions": ["books:delete", "books:update"]
-    }
-  ]
-}
 ```

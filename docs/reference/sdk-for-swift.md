@@ -9,9 +9,9 @@ meta:
 <LastUpdated/>
 
 
-This is a pure Swift library for [Authing](https://authing.cn).
+This is a pure Swift library for [Approw](https://approw.com).
 
-> Gihutb Source Code: [https://github.com/Authing/SwiftyAuthing](https://github.com/Authing/SwiftyAuthing)
+> Gihutb Source Code: [https://github.com/Approw/SwiftyApprow](https://github.com/Approw/SwiftyApprow)
 
 <img src="../images/reference/Swift0.png" height="500px"></img>
 
@@ -26,7 +26,7 @@ This is a pure Swift library for [Authing](https://authing.cn).
 ### Swift Package Manager
 
 1. Xcode - Project - Swift Packages
-2. Add + https://github.com/Authing/SwiftyAuthing.git
+2. Add + https://github.com/Approw/SwiftyApprow.git
 3. Select the latest version
 
 ![image](../images/reference/Swift1.png)
@@ -41,35 +41,35 @@ This is a pure Swift library for [Authing](https://authing.cn).
 
 1. Clone repository
 
-2. Change **UserPoolId, Secret, and Host** in SwiftyAuthingExample - ViewController.swift
+2. Change **UserPoolId, Secret, and Host** in SwiftyApprowExample - ViewController.swift
 
-3. Run **SwiftyAuthingExample** with iOS simulator or device.
+3. Run **SwiftyApprowExample** with iOS simulator or device.
 
-4. Test and check data with web console [https://console.authing.cn](https://console.authing.cn)
+4. Test and check data with web console: [https://console.approw.com](https://console.approw.com).
 
 ## How to use
 
 ```swift
-import SwiftyAuthing
+import SwiftyApprow
 
 /// Config Information, change your UserPoolId
-/// Find in https://console.authing.cn Setting - Basic Information & Application.
+/// Find in https://console.approw.com Setting - Basic Information & Application.
 let userPoolId = "userPoolId"
 let appId = "appId"
 
 var client: AuthenticationClient?
 var userid = ""
 
-//使用 userPoolId 和 appId 同时初始化
+// use userPoolId and appId to initialize at the same time
 self.client = AuthenticationClient(userPoolId: userPoolId, appId: appId)
 
-// 如在此类中调用用户 User 相关方法，需要在此设置此用户保存的有效的用户 AccessToken。
-// 如需变动用户 AccessToken，只需再次赋值即可。
+// IF you want to call User related methods, you need to set this user's valid AccessToken.
+// If you want to modify user's AccessToken, you nned to assign the value again.
 //self.client?.accessToken = "accessToken"
 
 
 /// Register by Email and Password.
-/// 使用邮箱注册
+/// 
 ///
 func registerByEmail() {
     //Normal
@@ -96,7 +96,7 @@ func registerByEmail() {
 }
 
 /// Register by Username and Password.
-/// 使用用户名注册
+/// 
 ///
 func registerByUsername() {
     //Normal
@@ -123,7 +123,7 @@ func registerByUsername() {
 }
 
 /// Register by Phone Number and SMS Code.
-/// 使用手机号注册
+/// 
 ///
 func registerByPhoneCode() {
 
@@ -162,7 +162,7 @@ func registerByPhoneCode() {
 }
 
 /// Check Password Strength.
-/// 检查密码强度
+/// 
 ///
 func checkPasswordStrength() {
     //Normal
@@ -197,7 +197,7 @@ func checkPasswordStrength() {
 }
 
 /// Send SMS Code to Phone Number.
-/// 发送短信验证码
+/// 
 ///
 func sendSmsCode() {
     //Normal
@@ -213,7 +213,7 @@ func sendSmsCode() {
 
 
 /// Login by Email and Password.
-/// 使用邮箱登录
+///
 ///
 func loginByEmail() {
     //Normal
@@ -248,7 +248,7 @@ func loginByEmail() {
 
 
 /// Login with Username and Password.
-/// 使用用户名登录
+/// 
 func loginByUsername() {
     //Normal
 //        self.client?.loginByUsername(username: textUsername.text!, password: textPassword.text!, completion:{ status in
@@ -281,7 +281,7 @@ func loginByUsername() {
 }
 
 /// Login by Phone Number and SMS Code.
-/// 使用手机号验证码登录
+/// 
 ///
 func loginByPhoneCode() {
     //Normal
@@ -316,7 +316,7 @@ func loginByPhoneCode() {
 
 
 /// Login by Phone Number and Password.
-/// 使用手机号密码登录
+/// 
 ///
 func loginByPhonePassword() {
     //Normal
@@ -351,7 +351,7 @@ func loginByPhonePassword() {
 
 
 /// Check Login Status.
-/// 检测 Token 登录状态
+///
 ///
 func checkLoginStatus() {
     // Change your accessToken here
@@ -390,7 +390,7 @@ func checkLoginStatus() {
 
 
 /// Send Email.
-/// 发送邮件
+/// 
 ///
 func sendEmail() {
     //Normal
@@ -424,7 +424,7 @@ func sendEmail() {
 }
 
 /// Reset Password by Phone Code.
-/// 通过短信验证码重置密码
+/// 
 ///
 func resetPasswordByPhoneCode() {
     //Normal
@@ -458,7 +458,7 @@ func resetPasswordByPhoneCode() {
 }
 
 /// Reset Password by Email Code.
-/// 通过邮件验证码重置密码
+/// 
 ///
 func resetPasswordByEmailCode() {
     //Normal
@@ -493,7 +493,7 @@ func resetPasswordByEmailCode() {
 
 
 /// Update Profile.
-/// 修改用户资料
+/// 
 ///
 func updateProfile() {
     //Normal
@@ -528,7 +528,7 @@ func updateProfile() {
 
 
 /// Update Password.
-/// 更新用户密码
+/// 
 ///
 func updatePassword() {
     //Normal
@@ -563,7 +563,7 @@ func updatePassword() {
 
 
 /// Update Phone.
-/// 更新用户手机号
+/// 
 ///
 func updatePhone() {
     //Normal
@@ -598,7 +598,7 @@ func updatePhone() {
 
 
 /// Update Email.
-/// 更新用户邮箱
+/// 
 ///
 func updateEmail() {
     //Normal
@@ -633,7 +633,7 @@ func updateEmail() {
 
 
 ///Refresh Token.
-/// 刷新当前用户的 token
+///
 ///
 func refreshToken() {
     //Normal
@@ -668,7 +668,7 @@ func refreshToken() {
 
 
 /// Get Current User.
-/// 获取当前登录的用户信息
+/// 
 ///
 func getCurrentUser() {
     //Normal
@@ -703,7 +703,7 @@ func getCurrentUser() {
 
 
 /// Logout Current User.
-/// 退出登录
+/// 
 ///
 func logout() {
     //Normal
@@ -736,8 +736,8 @@ func logout() {
     })
 }
 
-/// bindPhone.
-/// 绑定手机号
+/// Bind phone number.
+/// 
 ///
 func bindPhone() {
     //Normal
@@ -771,8 +771,8 @@ func bindPhone() {
 }
 
 
-/// unbindEmail.
-/// 解绑邮箱
+/// Unbind email.
+/// 
 ///
 func unbindEmail() {
     //Normal
@@ -806,8 +806,8 @@ func unbindEmail() {
 }
 
 
-/// bindPhone.
-/// 绑定手机号
+/// Unbind phone number.
+/// 
 ///
 func unbindPhone() {
     //Normal
@@ -840,8 +840,8 @@ func unbindPhone() {
     })
 }
 
-/// List Udv.
-/// 获取当前用户的自定义数据列表
+/// List Udv (user defined vbalue) of current user.
+/// 
 ///
 func listUdv() {
     //Normal
@@ -876,7 +876,7 @@ func listUdv() {
 
 
 /// Set Udv.
-/// 添加自定义数据
+/// Set Udv (user defined vbalue) of the current user.
 ///
 func setUdv() {
     //Normal
@@ -910,7 +910,7 @@ func setUdv() {
 }
 
 /// Remove Udv.
-/// 删除自定义数据
+/// Remove Udv (user defined vbalue) of current user.
 ///
 func removeUdv() {
     //Normal
@@ -945,7 +945,7 @@ func removeUdv() {
 
 
 /// listOrg.
-/// 获取用户所在组织机构
+/// List the organization of current user.
 func listOrg() {
     //Normal
 //        self.client?.listOrg(completion: { status in
@@ -959,7 +959,7 @@ func listOrg() {
 }
 
 /// loginByLdap.
-/// 使用 LDAP 用户名登录
+/// Use LDAP username to login.
 func loginByLdap() {
     //Normal
 //        self.client?.loginByLdap(username: textUsername.text!, password: textPassword.text!, completion: { status in
@@ -972,50 +972,8 @@ func loginByLdap() {
     })
 }
 
-
-/// Login by WeChat Code.
-/// 通过微信认证码登录
-///
-func loginByWeChatCode() {
-    //通过微信SDK返回的认证码登录
-    let code = "code"
-    //Normal
-//        self.client?.loginByWeChatCode(code: code, completion: { status in
-//            print(status)
-//        })
-
-    //With result
-    self.client?.loginByWeChatCodeWithResult(code: code, completion: { result in
-        print(result)
-    })
-}
-
-
-/// User Id Verify.
-/// 实名认证 - 使用姓名，身份证号码，人脸图像，需要登录后调用
-///
-func userIdVerify() {
-    //*需要登录后调用
-
-    //via faceImageURL
-    self.client?.userIdVerify(name: "张三", idCard: "123456", faceImageURL: URL(string: "http://xxx.jpg")!, completion: { result in
-        print(result)
-    })
-
-    //via faceImageBase64, 如使用 UIImage 可以使用 getBase64FromImage 转换
-//        self.client?.userIdVerify(name: "张三", idCard: "123456", faceImageBase64: "data:image/jpeg;base64,/9j/4QFmRXhpZgA", completion: { result in
-//            print(result)
-//        })
-
-//        success msg
-//        {
-//            "code": 200,
-//            "message": "实名认证成功"
-//        }
-}
-
 /// Get Base64 from UIImage
-/// UIImage 转 Base64
+/// 
 ///
 func getBase64FromImage(_ name: String) -> String{
     let imageOrigin = UIImage(named: name)
@@ -1029,21 +987,5 @@ func getBase64FromImage(_ name: String) -> String{
     return ""
 }
 
-/// User Id Verify Status.
-/// 查询实名认证状态，需要登录后调用
-///
-func userIdVerifyStatus() {
-    //*需要登录后调用
-    self.client?.userIdVerifyStatus(completion: { result in
-        print(result)
-    })
-
-//        success msg
-//        {
-//            "code": 200,
-//            "data": true,
-//            "message": "查询实名认证状态成功"
-//        }
-}
 
 ```

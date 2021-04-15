@@ -1,119 +1,111 @@
-# 登录组件（Guard）配置参数列表
+# Login Component (Guard) Configuration Parameter List
 
 <LastUpdated/>
 
-Authing 登录组件（Guard）提供了很多高级配置，如自定义 UI，使用特定登录方式等。所有配置如下：
+The {{$localeConfig.brandName}} login component (Guard) provides many advanced configurations, such as customizing the UI and using specific login methods. All configurations are as follows:
 
-| 参数名 | 参数说明 | 类型 | 是否必传 | 默认值 |
-| :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- | :------------- | :------------------------------------------------- |
-| target | 指定 Guard 表单的挂载点，接受 [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) 能接受的所有参数或者 dom 元素，若未传入，Guard 会自动生成一个 div 标签放入 body 的最后面 | String | HTMLElement | 否 | - |
-| mode | Guard 展示模式 | [GuardMode](#guardmode) | 否 | GuardMode.Normal |
-| title | **产品名称** | String | 否 | {{$localeConfig.brandName}} |
-| logo | **产品 logo** | String | 否 | [{{$localeConfig.brandName}} logo] |
-| contentCss | **自定义 CSS 样式**，如果指定了，会在 DOM 的 head 中插入一个 <style type="text/css"></style> 节点。如 body {background:#6699 !important;}。 | String | 否 | - |
-| loginMethods | **需要使用的普通登录(包括 LDAP)方式列表** | [LoginMethods](#loginmethods)[] | 否 | [*LoginMethods.PhoneCode, LoginMethods.Password*] |
-| registerMethods | **需要使用的注册方式** | [RegisterMethods](#registermethods)[] | 否 | [*RegisterMethods.Email*, *RegisterMethods.Phone*] |
-| defaultRegisterMethod | **默认展示的注册方式** | [RegisterMethods](#registermethods) | 否 | \_RegisterMethods.Email\* |
-| defaultScenes | **打开组件时展示的界面** | [GuardScenes](#guardscenes) | 否 | \_GuardScenes.Login\* |
-| socialConnections | **需要使用的社会化登录列表** | [SocialConnections](#socialconnections)[] | 否 | [] |
-| enterpriseConnections | **需要使用的企业身份源列表(不包括 LDAP)**，列表项值为配置的企业身份源唯一标识符，注意：企业身份源需要传入对应 appId 才能使用 | Array | 否 | [] |
-| defaultLoginMethod | **默认显示的登录方式**。可选值为 options.loginMethods 中的某一项 | <p>String</p><p></p> | 否 | _LoginMethods.Password_ |
-| autoRegister | **是否将注册和登录合并**，合并后如果用户不存在将自动注册 | Boolean | 否 | false |
-| disableRegister | **是否禁止注册**，禁止的话会隐藏「注册」入口 | Boolean | 否 | false |
-| disableResetPwd | **是否禁止重置密码**，禁止的话会隐藏「忘记密码」入口 | | | |
-| clickCloseable | **Modal 模式时是否隐藏登录框右上角的关闭按钮**，如果隐藏，用户将不能通过点击按钮关闭登录框 | Boolean | 否 | true |
-| escCloseable | **Modal 模式时是否可以通过键盘 ESC 键关闭登录框** | Boolean | 否 | true |
-| isSSO | 是否是单点登录 | Boolean | 否 | false |
-| appDomain | SSO 模式时的 app 域名 | String | SSO 模式时必传 | - |
-| qrCodeScanOptions | 扫码登录配置，详情请查看 [QrCodeAuthenticationClient().startScanning(domId, options)](https://docs.authing.cn/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.html#一键开始扫码) 的 options 参数 | Objcect | 否 | null |
-| apiHost | 私有部署时的 API 请求地址 | String | 私有部署时必传 | [{{$localeConfig.brandName}} 官方 api 地址] |
+| <p>Parameter Name</p><p></p>        | <p>Parameter Description</p><p></p>                                                                                                                                                                                                                                                            | <p>Type</p><p></p>                                                                                                        | <p>Required</p><p></p>                  | <p>Default</p><p></p>                                            |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| <p>target</p><p></p><p></p>         | <p>Specify the mount point of the Guard form, accept all the parameters or dom elements that querySelector (opens new window) can accept, if not passed in, Guard will automatically generate a div tag and put it at the end of the body.</p><p></p>                                          | <p>String</p><p></p><p></p>                                                                                               | <p>HTMLElement</p><p></p>               | <p>No</p><p></p><p></p>                                          |
+| <p>mode</p><p></p>                  | <p>Guard display mode</p><p></p>                                                                                                                                                                                                                                                               | <p>[GuardMode](https://docs.approw.com/v2/reference/ui-components/parameters.html#guardmode)</p><p></p>                   | <p>No</p><p></p><p></p>                 | <p>GuardMode.Normal</p><p></p>                                   |
+| <p>title</p><p></p>                 | <p>**Product name**</p><p></p>                                                                                                                                                                                                                                                                 | <p>String</p><p></p>                                                                                                      | <p>No</p><p></p>                        | <p>{{$localeConfig.brandName}}</p><p></p>                        |
+| <p>logo</p><p></p>                  | <p>**Product logo**</p><p></p>                                                                                                                                                                                                                                                                 | <p>String</p><p></p>                                                                                                      | <p>No</p><p></p>                        | <p>[{{$localeConfig.brandName}} logo]</p><p></p>                 |
+| <p>contentCss</p><p></p>            | <p>**Custom CSS style,**If specified, a node will be inserted into the head of the DOM.such as body {background:#6699 !important;}.</p><p></p>                                                                                                                                                 | <p>String</p><p></p>                                                                                                      | <p>No</p><p></p>                        | <p>-</p><p></p>                                                  |
+| <p>loginMethods</p><p></p>          | <p>List of common login methods(**include LDAP**) that need to be used.</p><p></p><p></p>                                                                                                                                                                                                      | <p>[LoginMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#loginmethods)[]</p><p></p>           | <p>No</p><p></p>                        | <p>[*LoginMethods.PhoneCode, LoginMethods.Password*]</p><p></p>  |
+| <p>registerMethods</p><p></p>       | <p>**Registration method that need to be used.**</p><p></p><p></p>                                                                                                                                                                                                                             | <p>[RegisterMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#registermethods)[]</p><p></p>     | <p>No</p><p></p>                        | <p>[*RegisterMethods.Email*,*RegisterMethods.Phone*]</p><p></p>  |
+| <p>defaultRegisterMethod</p><p></p> | <p>**Registration method displayed by default**</p><p></p>                                                                                                                                                                                                                                     | <p>[RegisterMethods](https://docs.approw.com/v2/reference/ui-components/parameters.html#registermethods)</p><p></p>       | <p>No</p><p></p>                        | <p>\_RegisterMethods.Email\*</p><p></p>                          |
+| <p>defaultScenes</p><p></p>         | <p>**The interface displayed when the component is opened.**</p><p></p>                                                                                                                                                                                                                        | <p>[GuardScenes](https://docs.approw.com/v2/reference/ui-components/parameters.html#guardscenes)</p><p></p>               | <p>No</p><p></p>                        | <p>\_GuardScenes.Login\*</p><p></p>                              |
+| <p>socialConnections</p><p></p>     | <p>**Social login list that need to be used.**</p><p></p>                                                                                                                                                                                                                                      | <p>[SocialConnections](https://docs.approw.com/v2/reference/ui-components/parameters.html#socialconnections)[]</p><p></p> | <p>No</p><p></p>                        | <p>[]</p><p></p>                                                 |
+| <p>enterpriseConnections</p><p></p> | <p>List of corporate identity sources(**exclude LDAP**) that need to be used,The list item value is the unique identifier of the configured corporate identity source, attention:The corporate identity source needs to be passed in the corresponding appId before it can be used.</p><p></p> | <p>Array</p><p></p><p></p>                                                                                                | <p>No</p><p></p>                        | <p>[]</p><p></p>                                                 |
+| <p>defaultLoginMethod</p><p></p>    | <p>**Default login method**.Optional value is one of options.loginMethods.</p><p></p>                                                                                                                                                                                                          | <p>String</p><p></p>                                                                                                      | <p>No</p><p></p>                        | <p>_LoginMethods.Password_</p><p></p>                            |
+| <p>autoRegister</p><p></p>          | <p>**Whether to merge registration and login**, after the merge, if the user does not exist, it will be automatically registered.</p><p></p>                                                                                                                                                   | <p>Boolean</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>false</p><p></p>                                              |
+| <p>disableRegister</p><p></p>       | <p>**Whether to merge registration and login**,If prohibited, the "register" will be hidden.</p><p></p>                                                                                                                                                                                        | <p>Boolean</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>false</p><p></p>                                              |
+| <p>disableResetPwd</p><p></p>       | <p>**Whether to prohibit password reset,** If prohibited, the "forgot password" will be hidden.</p><p></p>                                                                                                                                                                                     | <p></p><p></p>                                                                                                            | <p></p><p></p>                          | <p></p><p></p>                                                   |
+| <p>clickCloseable</p><p></p>        | <p>**Whether to hide the close button in the upper right corner of the login box in Modal mode**, if it is hidden, the user will not be able to close the login box by clicking the button.</p><p></p>                                                                                         | <p>Boolean</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>true</p><p></p>                                               |
+| <p>escCloseable</p><p></p>          | <p>**Whether it is possible to close the login box through the keyboard ESC key in Modal mode.**</p><p></p>                                                                                                                                                                                    | <p>Boolean</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>true</p><p></p>                                               |
+| <p>isSSO</p><p></p>                 | <p>whether it is single sign on</p><p></p>                                                                                                                                                                                                                                                     | <p>Boolean</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>false</p><p></p>                                              |
+| <p>appDomain</p><p></p>             | <p>App domain name in SSO mode</p><p></p>                                                                                                                                                                                                                                                      | <p>String</p><p></p>                                                                                                      | <p>Yes in SSO mode</p><p></p>           | <p>-</p><p></p>                                                  |
+| <p>qrCodeScanOptions</p><p></p>     | <p>QR code login configuration，details:options parameter in [QrCodeAuthenticationClient().startScanning(domId, options)(opens new window)](https://docs.approw.com/v2/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.html#一键开始扫码)</p><p></p>                          | <p>Objcect</p><p></p>                                                                                                     | <p>No</p><p></p>                        | <p>null</p><p></p>                                               |
+| <p>apiHost</p><p></p>               | <p>API request address for private deployment</p><p></p><p></p>                                                                                                                                                                                                                                | <p>String</p><p></p>                                                                                                      | <p>Yes in private deployment</p><p></p> | <p>[{{$localeConfig.brandName}} official api address]</p><p></p> |
 
-以下为高级配置中可能用到的所有枚举值的说明：
+The following is a description of all enumeration values that may be used in the advanced configuration:
 
 ## GuardMode
 
-Guard 目前有两种展示方式 `modal | normal`，`normal` 方式会将表单插入指定的 dom 节点，适合将登录作为单独页面的场景，`modal` 模式会以模态框形式展示表单，适合在已有页面中弹出进行登录。默认展示方式为 `normal`，可通过传入 `mode` 参数配置展示方式：
+Guard currently has two display methods: `modal | normal`. The `normal` method inserts the form into the specified dom node, which is suitable for scenarios where login is used as a separate page. The `modal` mode displays the form in the form of a modal box, which is suitable for popping up in an existing page. log in. The default display mode is `normal`, and the display mode can be configured by passing in the `mode` parameter:
 
 ```javascript
-import { AuthingGuard, GuardMode } from "@authing/native-js-ui-components";
-// 引入 css 文件
-import "@authing/native-js-ui-components/lib/index.min.css";
+import { ApprowGuard, GuardMode } from '@approw/native-js-ui-components'
+// import css files
+import '@approw/native-js-ui-components/lib/index.min.css'
 
-const guard = new AuthingGuard("AUTHING_APP_ID", {
+const guard = new ApprowGuard('APPROW_APP_ID', {
   mode: GuardMode.Modal,
-});
+})
 
-// modal 模式需要调用 show 方法才会展示表单
-guard.show();
+// modal mode need to call the “show” method to display the form
+guard.show()
 ```
 
 ::: hint-warning
-**注意**：native js 版本的 `modal` 模式需要在初始化后手动调用 `guard.show()` 才会展示 Guard。
+**Attention**：The native js version of `modal` mode needs to manually call `guard.show()` after initialization to show Guard.
 :::
 
-通过传入 `appDomain`, `isSSO` 就可开启 SSO 登录模式，Guard 会在 `load` 事件之后检测是否已有用户登录此应用，若有会直接触发 `login` 事件，方便你进行下一步操作。
+SSO login mode can be enabled by passing in `appDomain` and `isSSO`. Guard will detect whether there is a user logged in to this application after the `load` event. If so, the `login` event will be triggered directly to make your next operation easy.
 
-| key    | value    | 说明       |
-| :----- | :------- | :--------- |
-| Modal  | 'modal'  | 模态框模式 |
-| Normal | 'normal' | 正常模式   |
+| key    | value    | Description    |
+| :----- | :------- | :------------- |
+| Modal  | 'modal'  | Modal box mode |
+| Normal | 'normal' | Normal mode    |
 
 ## LoginMethods
 
-Guard 支持的普通登录方式
+Common login methods supported by Guard
 
-| key       | value                       | 说明                                                                                     |
-| :-------- | :-------------------------- | :--------------------------------------------------------------------------------------- |
-| LDAP      | 'ldap'                      | LDAP 身份目录登录(需要[配置 LDAP 服务](/connections/ldap/))                              |
-| AppQr     | 'app-qrcode'                | APP 扫码登录(需要接入 [APP 扫码登录](/guides/authentication/qrcode/use-self-build-app/)) |
-| Password  | 'password'                  | 账号密码登录(包括手机号 + 密码、邮箱 + 密码、用户名 + 密码。)                            |
-| PhoneCode | 'phone-code'                | 手机验证码登录                                                                           |
-| WxMinQr   | 'wechat-miniprogram-qrcode' | 微信小程序扫码登录                                                                       |
-| AD        | 'ad'                        | AD 用户目录登录                                                                          |
+| key       | value        | Description                                                                                                |
+| :-------- | :----------- | :--------------------------------------------------------------------------------------------------------- |
+| LDAP      | 'ldap'       | LDAP identity directory login(Need to [configure LDAP service](/connections/ldap/))                        |
+| AppQr     | 'app-qrcode' | APP QR code login(Need to import [APP QR code login](/guides/authentication/qrcode/use-self-build-app/))   |
+| Password  | 'password'   | Account password login (including mobile phone number + password, email + password, user name + password.) |
+| PhoneCode | 'phone-code' | SMS code login                                                                                             |
+| AD        | 'ad'         | AD user directory login                                                                                    |
 
 ## RegisterMethods
 
-Guard 支持的注册方式
+Registration methods supported by Guard
 
-| key   | value   | 说明           |
-| :---- | :------ | :------------- |
-| Email | 'email' | 邮箱注册       |
-| Phone | 'phone' | 手机验证码注册 |
+| key   | value   | Description           |
+| :---- | :------ | :-------------------- |
+| Email | 'email' | Email registration    |
+| Phone | 'phone' | SMS code registration |
 
 ## GuardScenes
 
-Guard 可展示的界面
+Guard displayable interface
 
-| key      | value      | 说明     |
-| :------- | :--------- | :------- |
-| Login    | 'login'    | 登录界面 |
-| Register | 'register' | 注册界面 |
+| key      | value      | Description            |
+| :------- | :--------- | :--------------------- |
+| Login    | 'login'    | Login interface        |
+| Register | 'register' | Registration interface |
 
 ## ResetPwdMethods
 
-Guard 支持的重置密码方式
+Password reset methods supported by Guard
 
-| key   | value   | 说明               |
-| :---- | :------ | :----------------- |
-| Email | 'email' | 邮件验证码重置     |
-| Phone | 'phone' | 手机短信验证码重置 |
+| key   | value   | Description                      |
+| :---- | :------ | :------------------------------- |
+| Email | 'email' | Reset by email verification code |
+| Phone | 'phone' | Reset by SMS code                |
 
 ## SocialConnections
 
-Guard 支持的社会化登录方式
+Guard support Social Login
 
-| key       | value                                       | 说明                           |
-| :-------- | :------------------------------------------ | :----------------------------- |
-| Qq        | 'qq'                                        | QQ 登录                        |
-| Weibo     | 'weibo'                                     | 新浪微博登录                   |
-| Github    | 'github'                                    | GitHub 登录                    |
-| Google    | 'google'                                    | Google 账号登录                |
-| WxPc      | 'wechat:pc'                                 | 微信 PC 端登录                 |
-| Dingtalk  | 'dingtalk'                                  | 钉钉登录                       |
-| WxWCorpQr | 'wechatwork:corp:qrconnect'                 | 企业微信二维码登录             |
-| WxWSPQr   | 'wechatwork:service-provider:qrconnect'     | 企业微信第三方应用扫码授权登录 |
-| WxWSPAuth | 'wechatwork:service-provider:authorization' | 企业微信第三方应用网页授权登录 |
+| key    | value    | Description  |
+| :----- | :------- | :----------- |
+| Github | 'github' | GitHub login |
+| Google | 'google' | Google login |
 
-## 获取帮助
+## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)

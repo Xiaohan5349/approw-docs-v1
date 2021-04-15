@@ -1,53 +1,53 @@
-# 自定义数据库概览
+# Overview of Integrating Customized Databases
 
 <!-- ::: hint-warning
 只有**企业版**用户能够使用连接自定义数据库功能，详情请见 [https://authing.cn/pricing](https://authing.cn/pricing)。如果你想试用，请联系 176-0250-2507 或 xuziqiang@authing.cn。
 ::: -->
 
-使用自定义数据库可以满足以下场景的需求：
+Using customized databases can satisfy these use cases:
 
-- **使用自己的数据库保存用户数据**：完全使用自己的数据库保存用户数据，这种模式下，{{$localeConfig.brandName}} 将不会存储你的任何用户信息。
-- **惰性迁移用户到 {{$localeConfig.brandName}}**：这种迁移用户的模式称为**惰性迁移（lazy migration）**，简单来说原理如下：最开始所有的原始用户数据在你的数据库，当用户第一次尝试在 Authing 登录时，Authing 会通过你配置的自定义数据库脚本在你的数据库查找并验证用户，如果成功，会将该用户迁移到 Authing 中；该用户第二次登录时，将使用 Authing 的数据库对其进行验证；当所有的用户都至少登录一次时，意味着迁移上云任务完成。详情请见：[使用自定义数据库实现用户惰性迁移](./lazy-migration.md)。
+- **Use your own databases to store user information**: You can use your own database to store user information. In this mode, {{$localeConfig.brandName}} won't store any user information.
+- **Migrate user information to {{$localeConfig.brandName}} with lazy migration**: In **lazy migration** mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the database with customized script and will migrate this user to Approw if authenticate succeeds. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw for one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](./lazy-migration.md).
 
-你可以通过以下方式配置自定义数据库：前往 [Authing 控制台](https://console.authing.cn/console/userpool) 的 **连接身份源** - **自定义数据库** 页面开启自定义数据库连接，详情请见[配置自定义数据库](./configuration/README.md)：
+You can setup customized databases with these methods: Go to the [Approw Console](https://console.approw.com/console/userpool) then find **Connect IdP** - **Customized Database** to setup customized database connection. More details can be found in document about [how to setup customized database](./configuration/README.md).
 
-![](~@imagesZhCn/guides/database-connection/Xnip2021-02-24_16-58-19.png)
+![](~@imagesEnUs/guides/database-connection/Xnip2021-02-24_16-58-19.png)
 
 ## How it Works
 
-如下图所示，你可以在 Authing 的认证流中自定义数据库从 Legacy Database 中获取用户的身份信息。取决于你所使用的场景，流程原理也会稍有不同。
+As the figure shows below, you can setup customized database and get users' identity information through Legacy Database in the Approw authentication flow. The flow will be a little bit different according to different user cases.
 
-<img src="~@imagesZhCn/guides/Lark20210305-144321.png" alt="drawing" height=600 style="display:block;margin: 0 auto;"/>
+<img src="~@imagesEnUs/guides/Lark20210305-144321.png" alt="drawing" height=600 style="display:block;margin: 0 auto;"/>
 
-自定义数据库有两种不同模式，你可以根据自己的业务需求选择合适的模式：
+There are two ways to setup customized database to fit different user cases:
 
-- **惰性迁移用户**：这种迁移用户的模式称为**惰性迁移（lazy migration）**，简单来说原理如下：最开始所有的原始用户数据在你的数据库，当用户第一次尝试在 Authing 登录时，Authing 会通过你配置的自定义数据库脚本在你的数据库查找并验证用户，如果成功，会将该用户迁移到 Authing 中；该用户第二次登录时，将使用 Authing 的数据库对其进行验证；当所有的用户都至少登录一次时，意味着迁移上云任务完成。详情请见：[使用自定义数据库实现用户惰性迁移](./lazy-migration.md)。
-- **完全使用自定义数据库**：这种模式下用户数据始终保存在你的数据库中，Authing 永远不会保存你的用户数据。为了让系统正常工作，你需要实现完整的用户增删改查脚本。
+- **Migrate user information to Approw with lazy migration**: In **lazy migration** In lazy migration mode, all user information will be stored in your database at the beginning. When a user try to login through Approw, the Approw will search and authenticate the user in the database with customized script and will migrate this user to Approw if authenticate succeeds. When this user login Approw at the second time, he/she will be authenticated with Approw's database. After all users in your database at least login to Approw for one time, the migration is completed. More details can be found in document of [achieving lazy migration with customized database](./lazy-migration.md).
+- **Only use customized databases to store user information**: You can use your own database to store user information. In this mode, Approw won't store any user information. However you need to deploy scripts for user management to make the system work normally.
 
-## 运行环境
+## Operating Environment
 
-目前 Authing 的自定义数据库脚本运行环境为 `node 12` 环境的完全隔离沙盒实例。
+The current operating environment for Approw customized database script is an isolated sandbox instance based on `node 12` environment.
 
-### npm 模块
+### The npm Module
 
-包含各种数据库连接 Client、axios、bcrypt、lodash 等：
+The npm module has several ways to connect databases like Client, axios, bcrypt and lodash, etc.
 
-- [bcrypt](https://github.com/kelektiv/node.bcrypt.js): 可用于加密和校验密码，这也是我们推荐的密码加密方式，使用起来也非常简单。示例：
+- [bcrypt](https://github.com/kelektiv/node.bcrypt.js): The bcrypt can be used to encrypt and validate passwords, which is also our recommanded way to encrypt passwords and is convenient to use:
 
 ```javascript
-const isPasswordValid = await bcrypt.compare(password, user.password);
+const isPasswordValid = await bcrypt.compare(password, user.password)
 if (!isPasswordValid) {
-  throw new Error('密码错误');
+  throw new Error('The password is wrong.')
 }
 ```
 
-- [axios](https://github.com/axios/axios): Node.JS 最流行的网络请求库。
-- [lodash](https://lodash.com/) v4。
-- [pg](https://node-postgres.com/): Node PostgresQL Driver。
-- [mongodb](https://mongodb.github.io/node-mongodb-native/): Node Mongodb Driver。
-- [mysql2](https://github.com/sidorares/node-mysql2): Node MySQL Driver。
-- [mssql](https://github.com/tediousjs/node-mssql): Node Sql Server Driver。
+- [axios](https://github.com/axios/axios): The axios is the most common network request library in Node.JS.
+- [lodash](https://lodash.com/) v4.
+- [pg](https://node-postgres.com/): The Node PostgresQL Driver.
+- [mongodb](https://mongodb.github.io/node-mongodb-native/): The Node Mongodb Driver.
+- [mysql2](https://github.com/sidorares/node-mysql2): The Node MySQL Driver.
+- [mssql](https://github.com/tediousjs/node-mssql): The Node Sql Server Driver.
 
-## 添加 IP 白名单
+## Add Approw IP Address to Your Whitelist
 
-如果你在脚本中访问的服务配置有防火墙，请确保其对以下 IP 地址开放：140.179.19.50, 52.80.250.250 . 你还可以通过以下 API 动态获取 Authing 服务器对外 IP 地址：[https://core.authing.cn/api/v2/system/public-ips](https://core.authing.cn/api/v2/system/public-ips)。
+If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API: [https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips).

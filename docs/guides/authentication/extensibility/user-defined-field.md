@@ -1,36 +1,34 @@
-# 添加用户自定义字段
+# Add user defined fields
 
 <LastUpdated/>
 
-用户自定义字段是除了[基础用户字段](/guides/user/user-profile.md)之外，可以给用户对象添加的额外字段。开发者可以通过设置自定义字段，存储**少量**业务相关的数据。
+User defined fields are fields that can be added to user objects in addition to the [basic user fields](/docs/guides/user/user-profile.md). Developers can store a small amount of business-related data by setting user defined fields.
+You can define the following types of user defined fields:
 
-可以定义以下几种类型的自定义字段：
+- String
+- Number
+- Date
+- Boolean
+- Object
 
-- 字符串；
-- 数值；
-- 日期；
-- 布尔值；
-- Object 对象；
+You can configure user defined fields on the **Configuration** - **Extend Fields** page:
 
-你可以在**设置** - **扩展字段** 页面配置自定义用户字段：
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-43-23.png)
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-43-23.png)
+After configuring the user defined fields, you can open the registration information completion page of the application to allow users to complete the information in these user defined fields.
 
+In the **Application Details** - **Login and Registration Configuration** page, click **Enable registration information completion ** switch, and then select the user defined field just added:
 
-配置自定义字段之后，你可以开启应用的注册信息补全页面，让用户补全这些自定义字段的信息。
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-41-20.png)
 
-在 **应用详情** - **登录注册配置** 页， 勾上 **开启注册信息补全** 开关，然后选择刚刚添加的自定义字段：
+The input type can choose text, password, number, date, color, Email and picture, which will determine the final display style of the page.
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-41-20.png)
+Click Save, and then go to the login page of the app.
 
-输入类型可以选择文本、密码、数字、日期、颜色、Email 和图片，这会决定页面最终的展示样式。
+After the user clicks registration, it will be redirected to the following registration information completion page:
 
-点击保存，之后访问应用的登录页面。
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-46-26.png)
 
-用户点击注册之后将跳转到下面这个注册信息补全页面：
+After the user successfully registers, you can see the user defined field value that the user just entered on the user details page:
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-46-26.png)
-
-用户成功注册之后，你可以在用户详情页面看到用户刚刚输入的自定义字段值：
-
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-48-29.png)
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-48-29.png)

@@ -1,91 +1,91 @@
 ---
 meta:
   - name: description
-    content: 管理用户账号
+    content: Manage User Accounts
 ---
 
-# 管理用户账号
+# Manage User Accounts
 
-管理用户账号包括忘记密码、验证邮箱、修改绑定手机号邮箱、多因素认证，以及禁用用户账号、绑定社会化登录、账号合并等完整流程。如果你使用 {{$localeConfig.brandName}} 的话，恭喜你，这些功能 {{$localeConfig.brandName}} 全部内置了，你只需要花极少的时候就能快速完成。
+Managing user accounts includes completed procedures such as forgetting passwords, verifying email addresses, modifying the bound phone number and email address, multi-factor authentication, disabling user accounts, binding social login, and account merging. If you use Approw, congratulations, these are all built-in functions in Approw, and you only need to spend a very short time to setup these functions.
 
-## 使用托管登录页和个人中心
+## Use online login page and personal center
 
-{{$localeConfig.brandName}} 为开发者提供了一个内置的一应俱全、美观、高度配置化的登录表单，你可以[在此体验](https://sample-sso.authing.cn/) （以下我们简称此登录表单为 `Guard`），地址为 `https://<YOUR_DOMAIN>.authing.cn/`：
+Approw provides developers with a built-in, comprehensive, beautiful, and highly configurable login form. You can feel it by [clicking here](https://sample-sso.approw.com/) (we will call this login form as `Guard` in the following paragraphs), the address is `https://< YOUR_DOMAIN>.approw.com/`:
 
 <img src="https://cdn.authing.cn/blog/20201019174920.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
-可以进行登录注册、忘记密码、重置邮箱、发送短信验证码、扫码登录等功能。
+You can setup functions such as login and register, forgotten password, reset your email, send SMS verification code, scan code to log in.
 
-以及一个用户个人中心，你可以[在此体验](https://sample-sso.authing.cn/u)，地址为 `https://<YOUR_DOMAIN>.authing.cn/u`：
-
-![](https://cdn.authing.cn/blog/20201019175127.png)
-
-借助托管登录页和个人中心，用户可以完成自助的个人资料管理。
-
-### 修改账号资料
-
-{{$localeConfig.brandName}} 提供了一个内置的用户个人中心页（地址为 `https://<YOUR_DOMAIN>.authing.cn/u`），可以完成用户基本信息的修改：
+There will be a user personal center, you can try it by clicking [here](https://sample-sso.approw.com/u), the address is `https://<YOUR_DOMAIN>.approw.com/u`:
 
 ![](https://cdn.authing.cn/blog/20201019175127.png)
 
-### 修改密码
+With the help of the hosted login page and personal center, users can complete personal information management by themselves.
 
-当用户记得当前密码时，可以通过检验当前密码修改密码:
+### Modify account information
+
+Approw provides a built-in user personal center page (address: `https://<YOUR_DOMAIN>.approw.cn/u`), which can modify the basic user information:
+
+![](https://cdn.authing.cn/blog/20201019175127.png)
+
+### Modify passwords
+
+When users remember the current password, he/she can modify the password by verifying the current password:
 
 ![](https://cdn.authing.cn/blog/20201019181257.png)
 
-### 忘记密码
+### Forgotten passwords
 
-当用户忘记当前密码时，可以通过以下流程重置密码:
+When the user forgets the current password, the password can be reset through the following process:
 
-点击忘记密码
+Click forgotten password
 
 <img src="https://cdn.authing.cn/blog/20201019181634.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
-可以选择使用邮箱或者手机号进行验证：
+You can choose to use your email or phone number for verification:
 
 <img src="https://cdn.authing.cn/blog/20201019193540.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
 
 <img src="https://cdn.authing.cn/blog/20201019193845.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
 
-### 绑定邮箱
+### Bind email
 
-终端用户可以在个人中心的**账号绑定** Tab 中绑定和解绑邮箱:
-
-![](https://cdn.authing.cn/blog/20201019200112.png)
-
-### 绑定手机号
-
-终端用户可以在个人中心的**账号绑定** Tab 中绑定和解绑手机号:
+End users can bind and unbind mailboxes in the **account binding** tab of the personal center:
 
 ![](https://cdn.authing.cn/blog/20201019200112.png)
 
-### 绑定 MFA
+### Bind phone number
 
-终端用户可以在个人中心的**MFA 绑定** Tab 中绑定 MFA:
+End users can bind and unbind their phone numbers in the **account binding** tab of the personal center:
+
+![](https://cdn.authing.cn/blog/20201019200112.png)
+
+### Bind MFA
+
+End users can bind MFA in the **MFA binding** tab of the personal center:
 
 ![](https://cdn.authing.cn/blog/20201019200549.png)
 
-## 使用控制台
+## Use console
 
-管理员可以借助控制台可视化地管理用户账号。
+Administrators can use the console to manage user accounts visually.
 
-### 编辑用户资料
+### Edit user profile
 
 ![](./images/Xnip2021-02-26_11-53-07.png)
 
-### 禁用账号
+### Deactivate account
 
-管理员可以在用户详情页禁用账号，被禁用的账号将无法再次登录:
+The administrator can deactivate the account on the user details page, and the deactivated account will not be able to log in again:
 
 ![](https://cdn.authing.cn/blog/20201019200707.png)
 
-### 查看原始用户信息
+### View original user's information
 
 ![](./images/Xnip2021-02-26_11-53-56.png)
 
-## 使用 SDK/API
+## Use SDK/API
 
-{{$localeConfig.brandName}} 提供了 Authentication SDK/API 和 Management SDK/API，你可以使用 Authentication API 和完成用户自助的个人账号信息管理，使用 Management SDK/API 以管理员的身份管理用户资料，以管理员身份进行的操作不需要进行手机号验证码、邮箱验证码、MFA 等验证手段。
+Approw provides Authentication SDK/API and Management SDK/API. You can use Authentication API and completed user self-service personal account information management and use Management SDK/API to manage user information as an administrator. Operations performed by an administrator are no need to perform verification methods such as phone number verification code, email verification code, and MFA.
 
 !!!include(common/sdk-list.md)!!!

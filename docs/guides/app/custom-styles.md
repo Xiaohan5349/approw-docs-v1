@@ -1,43 +1,43 @@
-# 自定义登录框样式
+# Customize Login UI
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} 的登录框提供了非常方便的自定义样式配置，你可以在 **应用详情**->**注册登录配置** 中进行配置：
-![Custom Style](./images/Xnip2021-03-04_15-01-53.png)
+{{$localeConfig.brandName}} provides several customization options. You will find it in **Applications** -> click your application -> **Register and Login**
+![Custom Style](./images/custom-login-ui-1.png)
 
-## 可配置项
+## Configurable Item
 
-### 隐藏三方身份提供商登录
+### Hide Thrid party Identity Provider
 
-开启之后将不会显示所有第三方身份提供商按钮
+Third party Identity Provider Login button will not show up in Login UI.
 
-### 隐藏社会化登录按钮
+### Hide Social Registration/Login
 
-开启之后将不会显示所有社会化登录应用按钮。
+Social Registration/Login button will not show up in Login UI.
 
-### 将注册和登录合并
+### Combine Registration and Login
 
-开启之后，如果用户输入一个不存在的账号，会自动为其创建一个账号并登录，还会有相关的提示信息。
-![Auto Register](./images/Xnip2021-03-04_15-06-48.png)
+Once user enter username that does not exist in User Pool. Approw will create an account and login. User will receive account information from Approw.
+![Auto Register](./images/custom-login-ui-2.png)
 
-### 隐藏忘记密码按钮
+### Hide Forgot Password 
 
-开启之后，「忘记密码」按钮将会被隐藏。
+Forgot Password button will not show up in Login UI
 
-### 自定义 CSS
+### Customize Login UI
 
-通过自定义 CSS 对登录框进行一些高级自定义样式定制。如修改背景颜色：
+{{$localeConfig.brandName}} allow developer to modify Login UI by changing CSS file. Eg: change background color.
 
 ```css
-.authing-guard-layout {
+.approw-guard-layout {
   background: gray;
 }
 ```
 
-![Custom CSS](./images/Xnip2021-03-04_15-14-42.png)
+![Custom CSS](./images/custom-login-ui-3.png)
 
 ::: hint-warning
-注意：具体的 CSS 类名可以在 {{$localeConfig.brandName}} 的登录界面通过 Chrome 控制台查看，需要自定义样式的 dom 标签都提供了固定的类名，若带有 hash 的类名不能使用，因为会经常变化。
+Note: You can check CSS class by Chrome Developer Tool. We have labeled out dom which can be customized. 
 :::
 
-![Custom CSS](./images/Xnip2021-03-04_15-40-29.png)
+<!--![Custom CSS](./images/Xnip2021-03-04_15-40-29.png)-->

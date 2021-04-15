@@ -1,51 +1,49 @@
-# 扫码登录的原理
+# Principle of QR Code Login
 
 <LastUpdated/>
 
+In summary, QR code login is essentially a process of **requesting login party** requests the **logged-in party** to write the **login credentials** to a **specific medium**. Here, the requesting login party is the web side, and the logged-in party is the APP side. The login credential can be user information or a credential in exchange for user information, and the specific medium is a QR code.
 
-用一句话概括：扫码登录本质上是**请求登录方**请求**已登录方**将**登录凭证**写入**特定媒介**的过程。这里的请求登录方为 Web 端，已登录方为 APP 端，登录凭证可以是用户信息，也可以是换取用户信息的凭证，而特定媒介是某一张二维码。
+The specific QR code login process is as follows:
 
-具体的扫码登录流程如下：
+<img src="~@imagesEnUs/concepts/Lark20210302-193542.png" alt="drawing"/>
 
-<img src="~@imagesZhCn/concepts/Lark20210302-193542.png" alt="drawing"/>
+1. Open the login page, display a QR code, and poll the status of the QR code at the same time \(web\)
+2. After opening the APP and scanning the QR code, the APP displays the confirmation and cancel buttons \(app\)
+3. The login page displays the scanned user profile picture and other information \(web\)
+4. The user clicks to confirm login on the APP \(app\)
+5. The login page knows that the user has confirmed the login from the status of polling the QR code, and obtains the login credentials \(web\)
+6. The page is successfully logged in and enters the main application page \(web\)
 
-1. 打开登录页面，展示一个二维码，同时轮询二维码状态\(web\)
-2. 打开APP扫描该二维码后，APP显示确认、取消按钮\(app\)
-3. 登录页面展示被扫描的用户头像等信息\(web\)
-4. 用户在APP上点击确认登录\(app\)
-5. 登录页面从轮询二维码状态得知用户已确认登录，并获取到登录凭证\(web\)
-6. 页面登录成功，并进入主应用程序页面\(web\)
+In the whole process, a specific QR code acts as a bridge between the requesting login party and the logged-in party. The QR code essentially converts a piece of text information into a picture that can be decoded and recognized through a certain agreed encoding method, and its essence is a piece of text information. Therefore, we can write the QR code ID, creation time, expiration time and other information into the QR code, and the APP terminal can recognize the QR code by decoding the QR code information (this is the basic function of the terminal media).
 
-  
-整个过程中，一张特定二维码起到了连接请求登录方和已登录方桥梁的作用。而二维码本质上就是通过某种约定的编码方式将一段文本信息转换为一个能够被解码识别的图片，其本质就是一段文本信息。所以，我们可以将二维码 ID、创建时间、过期时间等信息写入二维码，APP 终端通过解码二维码信息（这是终端媒介具备的基础功能），就能够识别出此二维码。  
-在 Web 端，一般会有一个请求生成二维码的接口，此接口会返回二维码 ID 和二维码连接，ID 用于查询二维码最新状态，链接用于展示。  
-这样，Web 端和 APP 端就建立起了一个共识：二维码 ID。APP 端通过授权修改二维码状态，Web 端能通过轮询监听到二维码状态变化，并获取到登录凭证，从而完成登录。  
-再来详细分解一下，二维码一共具有哪些状态：
+On the Web side, there is generally an interface for requesting QR code generation. This interface will return the QR code ID and the QR code link. The ID is used to query the latest status of the QR code and the link is used for display.
 
-* 未扫描
-* 已扫描，等待用户确认
-* 已扫描，用户同意授权
-* 已扫描，用户取消授权
-* 已过期
+In this way, the Web and APP have established a consensus: QR code ID. The APP side can modify the QR code status through authorization, and the Web side can monitor the status change of the QR code through polling, and obtain the login credentials to complete the login.
 
-  
-APP 可以修改二维码状态，一共会用到三个接口：
+Let's break it down in detail, the statuses of the QR code can be listed as follow:
 
-* 确认已扫描
-* 同意授权
-* 取消授权
+- Not scanned
+- Scanned, waiting for user confirmation
+- Scanned, user agrees to the authorization
+- Scanned, user cancels the authorization
+- Expired
 
-  
-一旦  Web 端监听到二维码状态变成了**同意授权**，登录就完成了。  
- APP 端请求这些接口时，需要带上登录凭证（这是显然的），后端接口能够从此判断同意授权的用户，从而将二维码 ID 和用户 ID 绑定起来。
+The APP can modify the status of the QR code, which will use three interfaces:
 
-更多内容，可见：
+- Confirm that it has been scanned
+- Agree to authorization
+- Cancel authorization
+
+Once the web terminal monitors that the QR code status has changed to **agree to authorization**, the login is complete.
+
+When the APP side requests these interfaces, it needs to bring login credentials, and the back-end interface can determine the authorized users from this, to bind the QR code ID and the user ID.
+
+For more information, please check the following links:
+
 <ul>
-    <li>[**扫码登录实战系列 1: 原理及流程设计**](https://zhuanlan.zhihu.com/p/100026915)</li>
-    <li>[**扫码登录实战系列 2: 后端接口实现**](https://zhuanlan.zhihu.com/p/100027688)</li>
-    <li>[**扫码登录实战系列 3: 前端 SDK 封装**](https://zhuanlan.zhihu.com/p/100027862)</li>
-    <li>[**扫码登录实战系列 4: 总结**](https://zhuanlan.zhihu.com/p/100028054)</li>
+    <li>[**Scan code login actual combat series 1: Principle and process design**](https://zhuanlan.zhihu.com/p/100026915)</li>
+    <li>[**Scan code login combat series 2: Back-end interface implementation**](https://zhuanlan.zhihu.com/p/100027688)</li>
+    <li>[**Scan code login actual combat series 3: Front-end SDK package**](https://zhuanlan.zhihu.com/p/100027862)</li>
+    <li>[**Scan code login actual combat series 4: Summary**](https://zhuanlan.zhihu.com/p/100028054)</li>
 </ul>
-
-
-

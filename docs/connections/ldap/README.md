@@ -4,19 +4,19 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '连接 LDAP 身份源',
-  bannerTitle: '连接 LDAP 身份源',
+  title: 'Integrate LDAP IdP',
+  bannerTitle: 'Integrate LDAP IdP',
   steps:
     [
-      { title: '在 {{$localeConfig.brandName}} 填入 LDAP Server 配置' },
+      { title: 'Setup LDAP Server Configuration in {{$localeConfig.brandName}}' },
       {
-        title: '在 {{$localeConfig.brandName}} 创建一个应用'
+        title: 'Create the Application in {{$localeConfig.brandName}}'
       },
       {
-        title: '使用 LDAP 用户目录登录'
+        title: 'Use LDAP to Login'
       },
       {
-        title: '从 LDAP 用户目录导入组织机构'
+        title: 'Import Organization Structure from LDAP Directory'
       },
     ],
 }

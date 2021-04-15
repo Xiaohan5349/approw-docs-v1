@@ -1,125 +1,111 @@
-
-# 管理用户自定义字段
+# UdfManagementClient
 
 <LastUpdated/>
 
+Udf is short for User Defined Field. {{$localeConfig.brandName}} data entities (such as users, roles, groups, organizations, etc.) can add user defined fields which {{$localeConfig.brandName}} does not built-in. For example, if you need to create a school-related application, you can add a user defined field: `school` field.
 
-Udf 是 User Defined Field（用户自定义字段） 的简称。{{$localeConfig.brandName}} 的数据实体（如用户、角色、分组、组织机构等）可以添加自定义字段，你可以配置 {{$localeConfig.brandName}} 默认不自带的字段，比如你需要创建以一个学校相关的应用，就可以添加一个自定义 `school` 字段。
+You can ask the user to supplement the information in this field after the user registration is completed, click [here](/guides/authentication/extensibility/user-defined-field.md) to check the details.
 
-同时你可以在用户注册完成之后要求用户补充此字段的信息，[点此查看详情](/guides/authentication/extensibility/user-defined-field.md)。
+Please follow the instructions below to use this client:
 
-
-请使用以下方式使用该模块：
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from 'approw-js-sdk'
 const managementClient = new ManagementClient({
-   userPoolId: "YOUR_USERPOOL_ID",
-   secret: "YOUR_USERPOOL_SECRET",
+  userPoolId: 'YOUR_USERPOOL_ID',
+  secret: 'YOUR_USERPOOL_SECRET',
 })
-managementClient.udf.list // 获取自定义字段元数据列表
-managementClient.udf.set // 设置自定义字段
-managementClient.udf.remove // 删除自定义字段
+managementClient.udf.list // get user defined field metadata list
+managementClient.udf.set // set user defined data
+managementClient.udf.remove // delete user defined data
 ```
 
-
-## 设置自定义字段元数据
+## Set user defined field metadata
 
 UdfManagementClient().set(targetType, key, dataType, label)
 
-> 设置自定义字段元数据，如果该字段不存在会自动创建。
+> Set user defined field metadata. If the field does not exist, it will be created automatically.
 
+#### Parameter
 
-#### 参数
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `key` \<string\> field key
+- `dataType` \<UdfDataType\> Data type. Approw currently supports five data types: STRING, NUMBER, DATETIME, BOOLEAN and OBJECT.
+- `label` \<string\> Field Label, which commonly is a Human Readable string.
 
-- `targetType` \<UdfTargetType\> 自定义字段目标类型， USER 表示用户、ROLE 表示角色。 
-- `key` \<string\> 字段 key 
-- `dataType` \<UdfDataType\> 数据类型，目前共支持五种数据类型。STRING 为字符串、NUMBER 为数字、DATETIME 为日期、BOOLEAN 为 boolean 值、OBJECT 为对象。 
-- `label` \<string\> 字段 Label，一般是一个 Human Readable 字符串。 
-
-#### 示例
+#### Example
 
 ```javascript
-import { ManagementClient, UdfTargetType, UdfDataType  } from "authing-js-sdk"
+import { ManagementClient, UdfTargetType, UdfDataType } from 'approw-js-sdk'
 const udf = await managementClient.udf.set(
-   UdfTargetType.User,
-   'school',
-   UdfDataType.String,
-   '学校'
-);
+  UdfTargetType.User,
+  'school',
+  UdfDataType.String,
+  'school'
+)
 ```
+
 ```javascript
-// 如果 age 这个自定义字段不存在，第一次会创建
+// if user defined field "age" does not exist, it will create it automatically
 
-import { ManagementClient, UdfTargetType, UdfDataType  } from "authing-js-sdk"
+import { ManagementClient, UdfTargetType, UdfDataType } from 'approw-js-sdk'
 const udf = await managementClient.udf.set(
-   UdfTargetType.User,
-   'age',
-   UdfDataType.Number,
-   '年龄'
-);
+  UdfTargetType.User,
+  'age',
+  UdfDataType.Number,
+  'age'
+)
 
-// 如果 age 字段之前创建过，会修改该字段的配置
+// if field "age" is created before, it will update its configuration
 
 const udf = await managementClient.udf.set(
-   UdfTargetType.User,
-   'age',
-   UdfDataType.Number,
-   '新的描述信息'
-);
+  UdfTargetType.User,
+  'age',
+  UdfDataType.Number,
+  'new description'
+)
 ```
 
-#### 返回值
+#### Return value
 
--  `Promise<UserDefinedField[]>` 
+- `Promise<UserDefinedField[]>`
 
-
-      
-
-## 删除自定义字段
+## Delete a user defined field
 
 UdfManagementClient().remove(targetType, key)
 
-> 删除自定义字段
+> Delete a user defined field.
 
+#### Parameter
 
-#### 参数
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
+- `key` \<string\> Field key
 
-- `targetType` \<UdfTargetType\> 自定义字段目标类型， USER 表示用户、ROLE 表示角色。 
-- `key` \<string\> 字段 key 
-
-#### 示例
+#### Example
 
 ```javascript
-await managementClient.udf.remove(UdfTargetType.User, 'school');
+await managementClient.udf.remove(UdfTargetType.User, 'school')
 ```
 
-#### 返回值
+#### Return value
 
--  `Promise<UserDefinedField[]>` 
+- `Promise<UserDefinedField[]>`
 
-
-      
-
-## 获取自定义字段定义
+## Get the user defined field
 
 UdfManagementClient().list(targetType)
 
-> 查询用户池定义的自定义字段
+> Get the user defined field defined by the user pool.
 
+#### Parameter
 
-#### 参数
+- `targetType` \<UdfTargetType\> User defined field target type. Use `USER` to represent user and `ROLE` to represent role.
 
-- `targetType` \<UdfTargetType\> 自定义字段目标类型， USER 表示用户、ROLE 表示角色。 
-
-#### 示例
+#### Example
 
 ```javascript
-const list = await managementClient.udf.list(UdfTargetType.User);
+const list = await managementClient.udf.list(UdfTargetType.User)
 ```
 
-#### 返回值
+#### Return value
 
--  `Promise<UserDefinedField[]>` 
-
-
-      
+- `Promise<UserDefinedField[]>`

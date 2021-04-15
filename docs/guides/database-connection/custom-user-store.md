@@ -1,24 +1,24 @@
-# 完全使用自定义数据库保存用户数据
+# Use a custom database to save user data
 
 <LastUpdated/>
 
 
 <!-- ::: hint-warning
-只有**企业版**用户能够使用连接自定义数据库功能，详情请见 [https://authing.cn/pricing](https://authing.cn/pricing)。如果你想试用，请联系 176-0250-2507 或 xuziqiang@authing.cn。
+Only **Enterprise Edition** users can use the custom database connection function. For details, please see [https://approw.cn/pricing](https://approw.com/pricing). If you want to try it out, please contact 176-0250-2507 or xuziqiang@approw.com
 ::: -->
 
-## 迁移流程
+## Migration process
 
-使用这种模式时，用户数据始终保存在你的数据库中，Authing 永远不会保存你的用户数据。为了让系统正常工作，你需要实现完整的用户增删改查脚本。
+When using this mode, user data is always stored in your database, and Approw will never save your user data. In order for the system to work properly, you need to implement scripts for user add, delete, modify, and check.
 
-## 配置脚本
+## Script configuration 
 
-你需要在[Authing 控制台](https://console.authing.cn/console/userpool)，**连接身份源** - **自定义数据库** 页面编写**登录**、**查找用户**、**创建用户**、**更新用户资料**、**删除用户**、**获取用户列表**、**验证密码** 脚本，详情请见：
+You need to write scripts on [Approw console](https://console.approw.com/console/userpool)，**database connection** - **customize database** for **Login**, **Search user**, **Create user**, **Update user**, **elete user**, **Get user list**, **Validata password**：
 
-- [编写登录脚本](./configuration/#编写数据库操作脚本)。
-- [编写查找用户脚本](./configuration/#编写数据库操作脚本)。
-- [编写创建用户脚本](./configuration/#编写数据库操作脚本)。
-- [编写更新用户资料脚本](./configuration/#编写数据库操作脚本)。
-- [编写删除用户脚本](./configuration/#编写数据库操作脚本)。
-- [编写获取用户列表脚本](./configuration/#编写数据库操作脚本)。
-- [编写验证密码脚本](./configuration/#编写数据库操作脚本)。
+- [Login](./configuration/#编写数据库操作脚本)
+- [Search user](./configuration/#编写数据库操作脚本)
+- [Create user](./configuration/#编写数据库操作脚本)
+- [Update user](./configuration/#编写数据库操作脚本)
+- [Delete user](./configuration/#编写数据库操作脚本)
+- [Get user list](./configuration/#编写数据库操作脚本)
+- [Validata password](./configuration/#编写数据库操作脚本)

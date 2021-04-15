@@ -1,66 +1,66 @@
-# 基于邮件验证码的 MFA
+# Configure Email Authentication (MFA)
 
-## 概述
+## Overview
 
-多因素身份验证（MFA）是一种安全系统，是为了验证一项操作合法性而进行的二次身份验证。例如银行的 U 盾，异地登录要求手机邮件验证。本文介绍的是基于邮件验证码的多因素认证方式。
+MFA is a security system as a secondary identity verification for verifying the legitimacy of an operation. For example, remote login requires email verification. This article introduces the multi-factor authentication method based on email verification code.
 
-## 准备工作
+## Prerequisite
 
-1. <a :href="`${$themeConfig.consoleDomain}`">注册一个 {{$localeConfig.brandName}} 账号</a>
-2. [完成用户池和应用的创建](/guides/basics/authenticate-first-user/use-hosted-login-page)
+1. [Register a new {{$localeConfig.brandName}} account](https://console.approw.com)
+2. [Complete the creation of the user pool and application](/docs/guides/basics/authenticate-first-user/use-hosted-login-page.md)
 
-## 开启邮件 MFA
+## Enable Email-based MFA
 
-**1.进入用户池详情，选择需要开启邮件 MFA 的应用**
+**1.Enter the selected user pool and select the application that needs to enable Email MFA**
 
 <img src="./images/4-1.png" style="margin-top: 20px;" class="md-img-padding" />
 
 ::: img-description
-选择用户池
+Select User Pool
 :::
 
 <img src="./images/4-2.png" style="margin-top: 20px;" class="md-img-padding" />
 
 ::: img-description
-选择应用
+Select Application
 :::
 
-**2.进入应用详情，选择`多因素认证`，并开启`电子邮件验证码`选项**
+**2.Click MFA, then enable Email Verification**
 
 <img src="./images/5-1.png" style="margin-top: 20px;" class="md-img-padding" />
 
-**3.进入用户管理，创建一个用于邮件 MFA 登录的用户**
+**3.Enter Users and create a user for email-based MFA login.**
 
 <img src="./images/4-4.png" style="margin-top: 20px;" class="md-img-padding" />
 
 <img src="./images/5-2.png" style="margin-top: 20px;" class="md-img-padding" />
 
-## 使用邮件 MFA 登录
+## Use Email-based MFA Login
 
-**1.点击应用的体验登录按钮，使用上述创建的用户登录**
+**1. Click Login, login with the user created above.**
 
 <img src="./images/4-6.png" style="margin-top: 20px;" class="md-img-padding" />
 
 ::: img-description
-点击体验登录
+Click Login
 :::
 
 <img src="./images/5-3.png" style="margin-top: 20px;" class="md-img-padding" />
 
 ::: img-description
-使用邮箱、密码登录
+Login with email and password
 :::
 
-**2.点击发送验证码，并输入正确的验证码即可完成基于短信的 MFA 验证流程**
+**2. Click Send, and enter the verification code to complete the Email-based MFA verification process.**
 
 <img src="./images/5-4.png" style="margin-top: 20px;" class="md-img-padding" />
 
 ::: img-description
-二次认证成功
+Second authentication succeeded
 :::
 
-## 关闭邮件 MFA
+## Disable Email-based MFA
 
-**1.进入应用详情，关闭`短信验证码`选项即可**
+**1. Enter the Application Details and disable the Email verification option.**
 
 <img src="./images/5-5.png" style="margin-top: 20px;" class="md-img-padding" />

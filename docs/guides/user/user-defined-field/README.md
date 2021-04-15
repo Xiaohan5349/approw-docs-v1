@@ -1,46 +1,45 @@
-# 管理用户的自定义数据
+# Manage User-defined fields
 
 <LastUpdated/>
 
+User-defined fields are additional fields that can be added to user objects in addition to the [basic user fields](/guides/user/user-profile.md). Developers can store **a small amount of** business-related data by setting custom fields.
 
-用户自定义字段是除了[基础用户字段](/guides/user/user-profile.md)之外，可以给用户对象添加的额外字段。开发者可以通过设置自定义字段，存储**少量**业务相关的数据。
+## Configure user-defined fields
 
-## 配置自定义用户字段
+You can define the following types of custom fields:
 
-可以定义以下几种类型的自定义字段：
+- String;
+- Number;
+- Date;
+- Boolean value;
+- Object;
 
-- 字符串；
-- 数值；
-- 日期；
-- 布尔值；
-- Object 对象；
+You can configure user-defined fields on the **Settings** -> **Extended Fields** page:
 
-你可以在**设置** - **扩展字段** 页面配置自定义用户字段：
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-43-23.png)
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-43-23.png)
+## Open registration information completion
 
-## 开启注册信息补全
+After configuring the custom fields, you can open the registration information completion page of the application to allow users to complete the information in these custom fields.
 
-配置自定义字段之后，你可以开启应用的注册信息补全页面，让用户补全这些自定义字段的信息。
+On the **application details** -> **login registration configuration** page, tick **enable registration information completion**, and then select the custom field just added:
 
-在 **应用详情** - **登录注册配置** 页， 勾上 **开启注册信息补全** 开关，然后选择刚刚添加的自定义字段：
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-41-20.png)
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-41-20.png)
+The type of input can be chosen as text, password, number, date, color, Email and picture, which will determine the final display style of the page.
 
-输入类型可以选择文本、密码、数字、日期、颜色、Email 和图片，这会决定页面最终的展示样式。
+Click Save, and then visit the login page of the app.
 
-点击保存，之后访问应用的登录页面。
+After the user clicks to register, it will be redirected to the following registration information completion page:
 
-用户点击注册之后将跳转到下面这个注册信息补全页面：
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-46-26.png)
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-46-26.png)
+After the user successfully registered, you can see the custom value that the user just entered on the user details page:
 
-用户成功注册之后，你可以在用户详情页面看到用户刚刚输入的自定义字段值：
+![](~@imagesEnUs/guides/authentication/Xnip2021-02-24_15-48-29.png)
 
-![](~@imagesZhCn/guides/authentication/Xnip2021-02-24_15-48-29.png)
-
-## 使用 API & SDK 管理用户自定义数据
+## Use API & SDK to manage user-defined data
 
 !!!include(common/sdk-list.md)!!!
 
-<StackSelector snippet="udf" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp', 'swift']"/>
+<StackSelector snippet="udf" selectLabel="select your coding language:" :order="['java', 'javascript', 'python', 'csharp', 'swift']"/>

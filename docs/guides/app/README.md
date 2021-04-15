@@ -1,17 +1,15 @@
-# 应用综述
+# Applications in Approw
 
 <LastUpdated/>
 
-在 {{$localeConfig.brandName}} 中，[用户池](/concepts/user-pool.md)是租户隔离的最小单位，存储了你用户系统中所有的用户数据；而应用则对应的是你现实中创建的业务应用。一个用户池可能会有多个应用，比如一个学校所有的学生在一个用户池里，而学校会同时开发了选课应用、邮箱应用、师生服务中心等多个应用，这些应用会使用同一个用户系统。你可以在此了解更多[应用相关的介绍](/concepts/application.md)。
+In Approw, [User Pool](/concepts/user-pool.md) is the minimum unit to separate renter. It's stored user information in your system. One User Pool may have multiple [applications](/concepts/application.md). Eg: Students in a User Pool, need to access course reservation application, email application and student service center etc. Those applications may share one User Pool.
 
-如果你还没有创建过应用，可以了解[如何创建第一个应用](./create-app.md)。
+If you have not created application in Approw, please refer to [How to create Application](./create-app.md).
 
-以下内容不分先后顺序，你可以选择自己感兴趣的内容进行阅读：
-
-- [配置登录注册方式](./config-login-methods.md)，可以为你的应用添加社会化登录、第三方身份源登录。
-- [添加注册协议](./agreements.md)，可以让用户在注册前先阅读并同意注册协议，你可以自定义协议内容和链接。
-- [自定义登录框样式](./custom-styles.md)，{{$localeConfig.brandName}} 托管登录页支持通过自定义 CSS 的方式高度自定义页面样式。
-- [成为联邦认证身份源](./identity-provider.md)，{{$localeConfig.brandName}} 可以通过简单的配置快速成为 OIDC、OAuth2.0、SAML 身份提供商。
-- [开启多因素认证](./mfa.md)，为你的应用开启 MFA 多因素认证，支持短信验证码、邮箱验证码、OTP、人脸识别、指纹等多种方式。
-- [实现应用间单点登录](./sso.md)，当你有多个应用的时候，你可以快速实现用户池应用间的单点登录，用户切换应用的时候不需要再次登录，给用户更好的使用体验。
-- [管理用户登录状态](./session-management.md)，你可以查看该应用当前在线的用户列表，在必要的情况下也可以强制下线用户。
+- [Configuring Login Method](./config-login-methods.md): Add Social Meida or Third Party Identity source in SSO.
+- [Terms and Conditions](./agreements.md): Before registration, user must agree with your registration terms. You can customize the terms and link.
+- [Customize Login UI](./custom-styles.md): {{$localeConfig.brandName}} allows customization Login UI by changing CSS files.
+- [Federated Identity Source](./identity-provider.md): {{$localeConfig.brandName}} supports OIDC, OAuth2.0 and SAML. With some configuration. Approw can become an Identity Provider (IdP).
+- [Enable Multi-factor Authentication](./mfa.md): {{$localeConfig.brandName}} support MFA. eg: Text verification code, Email verification code, OTP, Face ID, Fingerprint, etc.
+- [Implement Single Sign-on between Applications](./sso.md): User only need login one time to access different applications.
+- [Mange User Login Status](./session-management.md): Approw admin have access to the current logged in user list. In certain scenario, admin can force a particular user to log off.

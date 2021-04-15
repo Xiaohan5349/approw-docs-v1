@@ -1,49 +1,47 @@
-# 认证综述
+# Authentication
 
 <LastUpdated/>
 
-
-不管你在开发什么类型的应用 —— 内部员工 IT 系统、toC 账号体系或者是给其他开发者暴露的 API，用户认证都是其中至关重要的一环，{{$localeConfig.brandName}} 都将为你提供合适的认证方式支持。
-
+No matter what type of application you are developing - internal employee IT system, toC account system or API exposed to other developers, user authentication is a vital part of it, and {{$localeConfig.brandName}}w will provide you with the most suitable authentication method.
 
 ::: hint-warning
- 注意：部分浏览器已经开始默认禁用第三方 Cookie，这会影响到 {{$localeConfig.brandName}} 在某些场景下的部分功能。详细说明请见：[FAQ：浏览器禁用第三方 Cookie 将如何影响 {{$localeConfig.brandName}} 功能？](/guides/faqs/block-third-party-cookie-impact.md) 
+Some browsers have begun to disable third-party cookies by default, which will affect some functions of {{$localeConfig.brandName}} in certain scenarios. For details, please see: [FAQ: How will the browser's disabling of third-party cookies affect the {{$localeConfig.brandName}} function?](/guides/faqs/block-third-party-cookie-impact.md)
 :::
 
-登录体验是软件开发者需要考虑的最重要的用户体验之一，为用户提供一个无缝、便捷而又安全的认证体验不是一件很容易的事。一般而言，登录逻辑同时关联着注册、重置密码、关联账号等逻辑。更重要的是，在登录过程中以强健和自适应身份验证的形式增强安全性通常对于许多实现至关重要。
+The login experience is one of the most important user experiences that software developers need to consider. It is not easy to provide users with a seamless, convenient and secure authentication experience. Generally speaking, the login logic is also associated with the logic of registration, password reset, and account association. More importantly, enhancing security in the form of robust and adaptive authentication during the login process is often critical to many implementations.
 
-{{$localeConfig.brandName}} 提供了非常多的认证方式给开发者选择、组合，密码策略、登录频繁检测、自定义认证流程等都可以通过管理控制台轻松完成（这些操作基本上也可以通过 Management API 来完成）。
+{{$localeConfig.brandName}} provides a lot of authentication methods for developers to choose and combine. Password policies, frequent login checks, custom authentication procedures, etc. can all be done easily through the management console (basically, these operations can also be done through the Management API)
 
-## OIDC / OAuth2.0 / SAML / AD / LDAP / 社会化登录
+## OIDC / OAuth2.0 / SAML / AD / LDAP / social login
 
-{{$localeConfig.brandName}} 支持通过 OIDC、OAuth2.0、SAML、LDAP 等标准协议访问你的应用和用户数据，你可以放心地将 {{$localeConfig.brandName}} 作为你的 Identity Provider（身份提供商）。如果你使用 {{$localeConfig.brandName}} 作为 Identity Provider，你可以连接其他第三方 Service Provider，诸如登录阿里云、AWS、Azure、Jira 等。
+{{$localeConfig.brandName}} supports access to your application and user data through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, etc. You can safely use {{$localeConfig.brandName}} as your Identity Provider. If you use {{$localeConfig.brandName}} as the Identity Provider, you can connect to other third-party Service Providers, such as logging in to AWS, Azure, Jira, etc.
 
-{{$localeConfig.brandName}} 也可以作为 Service Provider，通过 OIDC、OAuth2.0、SAML、LDAP、AD 等标准协议去连接第三方 Identity Provider。比如你可以通过 Azure AD、本地的 Windows AD 登录你的应用。
-{{$localeConfig.brandName}} 还可以使用第三方社会化登录，自动拉取社会化登录用户的用户资料到你的用户目录。
+{{$localeConfig.brandName}} can also be used as a Service Provider to connect to a third-party Identity Provider through standard protocols such as OIDC, OAuth2.0, SAML, LDAP, and AD. For example, you can log in to your application through Azure AD or local Windows AD. {{$localeConfig.brandName}} can also use a third-party social login to automatically pull the user information of the social login user to your user directory.
 
-你可以分别了解 [OIDC、OAuth2.0](/concepts/oidc/oidc-overview.md)、[SAML](/concepts/saml/saml-overview.md)、[LDAP](/concepts/ldap.md)、AD 的实现原理。
+You can understand the implementation principles of [OIDC & OAuth2.0](/concepts/oidc/oidc-overview.md), [SAML](/concepts/saml/saml-overview.md), [LDAP](/concepts/ldap.md), and AD here.
 
-## 托管登录页认证
+## Hosted login page authentication
 
-{{$localeConfig.brandName}} 中每个应用都拥有一个独立的二级域名，以及配备了在线的登录页，访问 `https://YOUR_DOMAIN.authing.cn/login`
-即可访问此登录页面。你不需要编写一行代码来维护该登录页，你可以通过控制台的应用配置做一些定制化配置。
+Each application in {{$localeConfig.brandName}} has an independent second-level domain name and is equipped with an online login page, which can be accessed by visiting `https://YOUR_DOMAIN.Approw.com/login`. You don't need to write one line of code to maintain the login page, you can do some customized configuration through the application configuration of the console.
 
-## 嵌入登录表单认证
+## Embedded login form authentication
 
-{{$localeConfig.brandName}} 内嵌登录组件是 {{$localeConfig.brandName}} 提供的轻量、现代化、高扩展性的前端登录组件，支持原生 JavaScript 以及 React、Vue、Angular 三大前端框架。此内嵌登录组件和 {{$localeConfig.brandName}} 托管的登录页功能基本保持一致，同时具备很强的自定义能力。该组件内置了重置密码、MFA、社会化登录、扫码登录等功能，这些功能都是高配置化的。
+The {{$localeConfig.brandName}} embedded login component is a lightweight, modern, and highly extensible front-end login component provided by {{$localeConfig.brandName}}. It supports native JavaScript and the three front-end frameworks of React, Vue, and Angular. This built-in login component is basically the same as the login page hosted by {{$localeConfig.brandName}}, and has strong customization capabilities. The component has built-in functions such as password reset, MFA, social login, and scan code login, all of which are highly configurable.
 
-详情查看[使用内嵌登录组件完成认证](/guides/basics/authenticate-first-user/use-embeded-login-component/)。
+For more details, please see [use embedded login component](/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
 ## Auth SDK
 
-{{$localeConfig.brandName}} 为前端开发者提供了轻量级、开发者友好的 Auth SDK（支持 JavaScript/Node、Java、Python、PHP、C# 等语言），能够让你更灵活、快捷、安全地实现你的认证逻辑。该 Auth SDK 支持 {{$localeConfig.brandName}} 所有的认证相关功能，包含基础认证、重置密码、绑定账号等所有功能。你可以通过此 SDK 得到用户的 `id_token`，作为该用户的身份凭证，传递给下游应用。
+{{$localeConfig.brandName}} provides front-end developers with a lightweight, developer-friendly Auth SDK (supports JavaScript/Node, Java, Python, PHP, C# and other languages), which allows you to implement your authentication logic more flexibly, quickly, and safely. The Auth SDK supports all authentication-related functions of {{$localeConfig.brandName}}, including basic authentication, password reset, and account binding. You can get the user's `id_token` through this SDK, as the user's identity credential, and pass it to downstream applications.
+
+Approw also supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Swift, Go, Ruby, etc. You can choose the SDK you are familiar with:
 
 !!!include(common/sdk-list.md)!!!
 
 ## Authentication API
 
-前面提到的托管登录页、嵌入登录组件、Auth SDK 底层能力都是 Authentication API 提供支持的。{{$localeConfig.brandName}} Authentication API 支持两种调用方式：RESTful 和 GraphQL（端点为 https://core.authing.cn/graphql/v2），你也可以直接调用 Authentication API 实现认证逻辑。
+The hosted login page mentioned before, embedded login component, and the underlying capabilities of the Auth SDK are all supported by the Authentication API. {{$localeConfig.brandName}} Authentication API supports two calling methods: RESTful and GraphQL (endpoint is https://core.approw.com/graphql/v2), you can also directly call Authentication API to implement authentication logic.
 
-## 单点登录
+## Single Sign On
 
-单点登录（Single Sign On），简称为 SSO，是比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。我们提供了专门的 [SSO SDK](/reference/sdk-for-sso.md) 开发者可以基于此快速实现应用间的单点登录。
+Single Sign On (SSO) is one of the more popular solutions for enterprise business integration. The definition of SSO is that in multiple application systems, users only need to log in once to access all mutually trusted application systems. We provide a dedicated [SSO SDK](/reference/sdk-for-sso.md) for developers to quickly implement single sign-on between applications.

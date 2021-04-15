@@ -1,7 +1,11 @@
-为了连接你的用户和外部身份提供商，需要在 {{$localeConfig.brandName}} 创建一个应用。进入[**控制台**](https://console.authing.cn) > **应用**，点击「创建应用」。
+To connect the user and IdP, you need to create an application. In [**Console**](https://console.approw.com) -> **Applications** -> click **Create**.
 
-![](~@imagesZhCn/integration/ali-cloud/1-4.jpg)
+![](~@imagesEnUs/integration/ali-cloud/1-4.jpg)
 
-填写一个应用名称、认证地址和回调链接，然后点击「创建」。
+<!-- ![](../../images/integration/ali-cloud/1-4.jpg) -->
 
-![](~@imagesZhCn/integration/ali-cloud/1-5.jpg)
+Fill Application Name, Verification URL and Callback URL. Than **Create**.
+
+![](~@imagesEnUs/integration/ali-cloud/1-5.jpg)
+
+<!-- ![](../../images/integration/ali-cloud/1-5.jpg) -->

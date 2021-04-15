@@ -1,25 +1,25 @@
 ---
 meta:
   - name: description
-    content: 搜索用户
+    content: Search for users
 ---
 
-# 搜索用户
+# Search for users
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} 支持通过邮箱、用户名、手机号、昵称等字段对用户进行模糊搜索，且同时支持[控制台](#使用控制台搜索)和 [SDK](#使用-sdk-搜索) 两种模式：
+Approw supports using fields such as mailbox, user name, mobile phone number, nickname, etc to do the fuzzy search to users in both [console](./search.md) and [SDK](./search.md) modes:
 
-## 使用控制台搜索
+## Search for users using console
 
-你可以在 **用户管理** - **用户列表** 页面通过关键词搜索用户：
+You can search for users by keywords on the **user management** -> **user list**:
 
 ![](https://cdn.authing.cn/blog/20201019174154.png)
 
-支持搜索的字段有邮箱、用户名、手机号、昵称等。
+The fields that support search include email, username, mobile phone number, nickname, etc.
 
-## 使用 SDK 搜索
+## Search for users using SDK
 
 !!!include(common/sdk-list.md)!!!
 
-你可以使用各语言的**用户管理模块（UsersManagementClient）**的**搜索用户**方法。
+You can use the **User Search** method of **UsersManagementClient** in each different language.

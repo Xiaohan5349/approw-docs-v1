@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} 通过 SDK 为开发者提供了一种快速在微信网页中获取用户信息并完成登录的方法。如果用户在微信客户端中访问第三方网页、公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑。
+{{$localeConfig.brandName}}  通过 SDK 为开发者提供了一种快速在微信网页中获取用户信息并完成登录的方法。如果用户在微信客户端中访问第三方网页、公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑。
 
 - 应用场景：微信网页、公众号；
 - 概述：在微信 APP 内的网页内弹出微信授权框，用户授权之后可以获取当前用户的信息；
@@ -34,8 +34,6 @@
 
 ## 第三步：开始开发接入
 
-### 使用 SDK 接入
-
 首先使用 CDN 引入 `authing-wxmp-sdk`：
 
 ```html
@@ -44,17 +42,17 @@
 
 > `authing-wxmp-sdk` 的详细文档请见：[微信网页授权登录 SDK](/reference/sdk-for-wxmp.md)。
 
-#### 初始化 SDK
+### 初始化 SDK
 
 使用用户池 ID 初始化 SDK：
 
 ```javascript
 const authingWx = new AuthingWxmp({
-  userPoolId: 'YOUR_USERPOOLID',
+  userPoolId: "YOUR_USERPOOLID"
 })
 ```
 
-#### 发起微信授权
+### 发起微信授权
 
 调用 `getAuthorizationUrl` 方法获取微信授权登录链接，修改 `window.location` 跳转到微信登录授权页面：
 
@@ -63,7 +61,7 @@ const authingWx = new AuthingWxmp({
 window.location = authingWx.getAuthorizationUrl()
 ```
 
-#### 获取用户信息
+### 获取用户信息
 
 跳回业务回调链接之后通过 `getUserInfo` 方法获取用户信息：
 
@@ -72,59 +70,14 @@ window.location = authingWx.getAuthorizationUrl()
 
 const { ok, userinfo, message } = authingWx.getUserInfo()
 if (ok) {
-  // do with userinfo
-  console.log(userinfo)
+    // do with userinfo
+    console.log(userinfo)
 } else if (message) {
-  // message 中包含了错误提示
-  alert(message)
+    // message 中包含了错误提示
+    alert(message)
 }
 ```
 
-#### 接下来
+## 接下来
 
 !!!include(common/what-to-do-when-you-get-userinfo.md)!!!
-
-### 使用内嵌登录组件接入
-
-以 `React` 为例。
-
-#### 安装 `@authing/react-ui-components`
-
-```bash
-
-$ yarn add @authing/react-ui-components
-
-# OR
-
-$ npm install @authing/react-ui-components --save
-
-
-```
-
-#### 初始化
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { AuthingGuard } from '@authing/react-ui-components'
-// 引入 css 文件
-import '@authing/react-ui-components/lib/index.min.css'
-
-const App = () => {
-  const appId = 'AUTHING_APP_ID'
-  const onLogin = (userInfo) => {
-    console.log(userInfo)
-  }
-  return <AuthingGuard appId={appId} onLogin={onLogin} />
-}
-
-ReactDOM.render(<App />, root)
-```
-
-#### 使用
-
-初始化完成后在微信中打开页面会见到如下按钮，点击即可进行授权，授权完成后会跳转到应用回调链接，且可使用 [AuthenticationClient](/reference/sdk-for-node/authentication/AuthenticationClient) 获取用户信息。
-
-<img src="~@imagesZhCn/guides/wechat-ecosystem/wechat-webpage-authorization/1.jpeg" style="width: 400px;display: block;margin: 0 auto" class="md-img-padding" />
-
-</IntegrationDetailCard>

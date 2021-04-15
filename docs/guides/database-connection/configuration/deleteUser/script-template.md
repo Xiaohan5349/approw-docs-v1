@@ -1,8 +1,8 @@
-该脚本会在管理员使用控制台或者 API 删除用户账号时执行。此脚本只在完全使用自定义数据库模式中需要。
+This script will be called when admin uses console or API to delete user account. This script is only required in CUSTOM_USER_STORE mode.
 
-### 函数定义
+### Function Definition
 
-`deleteUser` 函数定义如下：
+Here is the definition of the `deleteUser` function:
 
 ```javascript
 async function deleteUser(id, context) {
@@ -12,7 +12,7 @@ async function deleteUser(id, context) {
   // The first argument `id` is the user'id in your database
 
   // The last argument `context` contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
@@ -29,30 +29,30 @@ async function deleteUser(id, context) {
 }
 ```
 
-| 参数                  | 类型            | nullable | 说明                                                                                 |
+| Parameter               | Type          | Nullable | Explanation                                                                             |
 | :-------------------- | :-------------- | :------- | :----------------------------------------------------------------------------------- |
-| id                    | string / number | false    | 用户 ID                                                                              |
-| context               | object          | true     | 请求上下文 context                                                                   |
+| id                    | string / number | false    | User's ID.                                                                              |
+| context               | object          | true     | Requiring context                                                                   |
 
 
-其中 context 中包含包含以下信息：
+The context also includes the following information:
 
-| 属性名           | 类型   | 说明                                                                                                        |
+| Property Name           | Type   | Explanation                                                                                                        |
 | :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+| userPoolId       | string | The ID of the user pool.                                                                                                   |
+| userPoolName     | string | The Name of the user pool.                                                                                                |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                          |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                               |
+| appName          | string | The name of the current application.                                                                                       |
+| appMetadata      | object | Configurations of the current application.                                                                                        |
+| application      | string | The ID of the user pool.                                                                                                   |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-### 返回数据约定
+### The Rule of the Script's Return Value
 
-#### 删除成功
+#### User's profile is deleted successfully
 
-当修改用户资料成功时，你需要返回 `true`:
+When the user's profile is deleted successfully, you need to return `true` in script.
 
 ```javascript
 async function deleteUser(id, updates, context) {
@@ -61,9 +61,9 @@ async function deleteUser(id, updates, context) {
 }
 ```
 
-#### 用户不存在
+#### The user does not exist
 
-当用户不存在时，你需要直接抛出错误（错误信息可自由定义），例如：
+When the user does not exist, you need to throw an error. You can design different error messages. For example:
 
 ```javascript
 async function deleteUser(id, updates, context) {
@@ -72,9 +72,9 @@ async function deleteUser(id, updates, context) {
 }
 ```
 
-#### 其他异常错误
+#### Other abnormal errors
 
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
+When the user meets other errors, you can catch the error and return a friendly notice such as
 
 ```javascript
 async function deleteUser(id, updates, context) {
@@ -86,17 +86,17 @@ async function deleteUser(id, updates, context) {
 }
 ```
 
-### 最佳实践
+### Best Practice
 
-#### 提供友好的错误提示
+#### Provide friendly error annoncements
 
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
-![](https://cdn.authing.cn/img/20210111163154.png)
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
 
-#### 函数结束时断开数据库连接
+#### Disable the database connection when exit the function
 
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
 ```javascript
 try {
@@ -107,14 +107,14 @@ try {
 }
 ```
 
-## 示例函数
+### Example Functions
 
-以 `postgres` 数据库为例，有以下几点说明：
+Assume we are using `postgres` as our database:
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 执行 `SQL` 语句 `DELETE FROM users WHERE id = $1`，如果 `result.effected` 为 0，表明该用户不存在，抛出异常，错误信息为：`User not exists!` .
-- 如果删除成功，返回 `true` .
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- Excute `SQL` command `DELETE FROM users WHERE id = $1`, if `result.effected`is 0 which means the user does not exist, then throw an error with error message `User not exists!`.
+- If the deletion succeeds, then the script will return `true`.
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function deleteUser(id, context) {

@@ -1,4 +1,4 @@
-Java 可以使用 [java-jwt](https://github.com/auth0/java-jwt) 来验证 IdToken：
+In Java, you can use [java-jwt](https://github.com/auth0/java-jwt) to validate IdToken:
 
 ```java
 String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJpc3MiOiJhdXRoMCJ9.AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEp-zWfOkEE";

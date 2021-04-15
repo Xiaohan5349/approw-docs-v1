@@ -1,46 +1,44 @@
-# 使用短信验证码认证
+# Use SMS Verification Code to Authenticate
 
 <LastUpdated/>
 
-开发者可以借助 {{$localeConfig.brandName}} 提供的标准登录组件以及 API & SDK 快速实现基于手机号的用户体系。你还可以在控制台的用户管理 - 注册白名单中配置手机号白名单，这样只有在白名单中的手机号才能注册登录。
+Developers can use the standard login components and API & SDK provided by Approw to quickly implement a mobile phone number-based user system. You can also configure the white list of mobile phone numbers in Console > user management > registration white list, so that only mobile phone numbers in the white list can be registered and logged in.
+The verification code SMS will use Approw's unified SMS template by default. If you want to customize the SMS template, you can configure the custom SMS template in console > settings > Message Service.
 
-验证码短信默认会使用 {{$localeConfig.brandName}} 的统一短信模版，如果你想自定义短信模版，可以在控制台的设置 - 消息服务中配置自定义短信模版（目前支持的短信服务商有创蓝、阿里云、腾讯云）。
+## Use hosted login page
 
-## 使用托管登录页
+### Login
 
-### 登录
-
-> 手机号密码登录方式，用户不存在会自动创建账号。
+> Mobile phone number password login mode, it will automatically create an account if user does not exist.
 
 ![](../../images/login-by-phone-code.png)
 
-默认情况下，应用的默认登录方式为密码登录，你可以在应用配置中修改：
+The default login method of the application is username and password login. You can modify in the application configuration:
 
 ![](../../images/change-default-login-method.png)
 
-### 注册
+### Registration
 
 ![](../../images/register-by-phone-code.png)
 
-默认情况下，应用的默认登注册方式为密码登录，你可以在应用配置中修改：
+The default registration method of the application is password login. You can modify in the application configuration:
 
 ![](../../images/change-default-register-method.png)
 
-## 使用内嵌登录组件
+## Use embedded login component
 
-内嵌登录组件和在线托管登录页在样式和交互上基本一致，不同点在于在线托管登录页由 {{$localeConfig.brandName}} 完全托管运维，与你的应用之间完全独立，而内嵌登录组件则可以嵌入到你的应用中。
-详细使用方法请见：[使用内嵌登录组件完成认证](/guides/basics/authenticate-first-user/use-embeded-login-component/)。
+The embedded login component and the online hosting login page are basically the same in style and interaction. The difference is that the online hosting login page is fully managed by Authing, which is completely independent from your application, while the embedded login component can be embedded in your application. For detailed usage, please see: [Use the embedded login component to authenticate](/guides/basics/authenticate-first-user/use-embeded-login-component/).
 
-## 使用 API & SDK
+## Use API & SDK
 
-### 发送短信验证码
+### Send SMS verification code
 
-<StackSelector snippet="send-sms-code" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+<StackSelector snippet="send-sms-code" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>
 
-### 登录
+### Login
 
-<StackSelector snippet="login-by-phone-code" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+<StackSelector snippet="login-by-phone-code" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>
 
-### 注册
+### Registration
 
-<StackSelector snippet="register-by-phone-code" selectLabel="选择语言" :order="['java', 'javascript', 'python', 'csharp']"/>
+<StackSelector snippet="register-by-phone-code" selectLabel="choose language" :order="['java', 'javascript', 'python', 'csharp']"/>

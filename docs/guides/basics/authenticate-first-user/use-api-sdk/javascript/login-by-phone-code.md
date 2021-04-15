@@ -1,4 +1,4 @@
-使用 `loginByPhoneCode` 方法发送验证码：
+Use `loginByPhoneCode` method to login.
 
 ```javascript
 authenticationClient.loginByPhoneCode("176xxxx6754", "1234");

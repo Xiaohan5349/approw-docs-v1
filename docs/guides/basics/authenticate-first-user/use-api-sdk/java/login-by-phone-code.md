@@ -1,4 +1,4 @@
-使用 `loginByPhoneCode` 方法进行手机号验证码登录：
+Use `loginByPhoneCode` method to login.
 
 ```java
 String phone = "phone number";

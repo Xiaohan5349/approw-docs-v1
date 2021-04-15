@@ -4,16 +4,16 @@
   noToc: true,
   noFeedback: true,
   fullWidthPage: true,
-  title: '使用 SAML2 登录腾讯云控制台',
-  bannerTitle: '使用 SAML2 登录腾讯云控制台',
+  title: 'Using SAML2 to log into Tencent Cloud Console',
+  bannerTitle: 'Using SAML2 to log into Tencent Cloud Console',
   steps:
     [
       {
-        title: '配置 {{$localeConfig.brandName}} SAML2 IdP',
-        subTitle: '{{$localeConfig.brandName}} 应用开启 SAML2 Provider 并配置',
+        title: 'Setup {{$localeConfig.brandName}} SAML2 IdP Configuration',
+        subTitle: 'Open and configure {{$localeConfig.brandName}} application SAML2 Provider',
       },
-      { title: '配置腾讯云', subTitle: '在腾讯云创建身份提供商和角色' },
-      { title: '配置完成', subTitle: '使用 {{$localeConfig.brandName}} IdP 登录腾讯云' },
+      { title: 'Setup Tencent Cloud Configuration', subTitle: 'Create Identity Provider and Role on Tencent Cloud' },
+      { title: 'Configuration Complete', subTitle: 'Log into Tencent Cloud using {{$localeConfig.brandName}}IdP' },
     ],
 }
 ---

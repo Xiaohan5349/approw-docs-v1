@@ -1,324 +1,323 @@
-# 管理角色
+
+# RolesManagementClient
 
 <LastUpdated/>
 
-> 此模块用于管理 {{$localeConfig.brandName}} 角色，可以进行角色的增删改查、角色添加/删除用户、角色添加/删除策略 等操作。
 
-请使用以下方式使用该模块，而不要直接初始化该模块：
+> This client is used to manage {{$localeConfig.brandName}} roles. It can create, query, update and delete roles, add/delete users to/from roles, add/delete role's policy and perform other operations.
 
+
+
+Please follow the instructions below to use this client. Do not initialize this client directly:
 ```javascript
-import { ManagementClient } from 'authing-js-sdk'
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
-  userPoolId: 'YOUR_USERPOOL_ID',
-  secret: 'YOUR_USERPOOL_SECRET',
+   userPoolId: "YOUR_USERPOOL_ID",
+   secret: "YOUR_USERPOOL_SECRET",
 })
-managementClient.roles.list // 获取角色列表
-managementClient.roles.create // 创建角色
-managementClient.roles.listUsers // 获取角色用户列表
+managementClient.roles.list // get role list
+managementClient.roles.create // create role
+managementClient.roles.listUsers // get user list of the role
 ```
 
-## 创建角色
+
+
+
+## Create a role
 
 RolesManagementClient().create(code, description)
 
-> 创建角色
+> Create a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `description` \<string\> 描述
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role
+- `description` \<string\> Description
+
+#### Example
 
 ```javascript
 managementClient.roles.create('rolea', 'RoleA')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Role>>`
+-  `Promise<DeepPartial<Role>>` 
 
-## 删除角色
+
+      
+
+## Delete a role
 
 RolesManagementClient().delete(code)
 
-> 删除角色
+> Delete a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role 
+
+#### Example
 
 ```javascript
 managementClient.roles.delete('rolea')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 批量删除角色
+
+      
+
+## Bulk delete roles
 
 RolesManagementClient().deleteMany(codeList)
 
-> 批量删除角色
+> Bulk delete roles
 
-#### 参数
 
-- `codeList` \<string[]\> 角色唯一标志符列表
+#### Parameter
 
-#### 示例
+- `codeList` \<string[]\> A list of unique ids for roles.
+
+#### Example
 
 ```javascript
 managementClient.roles.delete(['rolea'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 修改角色
+
+      
+
+## Update a role
 
 RolesManagementClient().update(code, input)
 
-> 修改角色
+> Update a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `input` \<Object\>
-- `input.description` \<string\> 描述信息
-- `input.newCode` \<string\> 新的唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role 
+- `input` \<Object\>  
+- `input.description` \<string\> Description 
+- `input.newCode` \<string\> New unique id
+
+#### Example
 
 ```javascript
-managementClient.roles.update('rolea', { newCode: 'newcode' })
+managementClient.roles.update('rolea', {newCode: 'newcode'})
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Role>>`
+-  `Promise<DeepPartial<Role>>` 
 
-## 获取角色详情
+
+      
+
+## Get role details
 
 RolesManagementClient().detail(code)
 
-> 获取角色详情
+> Get role details
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role
+
+#### Example
 
 ```javascript
 managementClient.roles.detail('manager')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Role>>` 角色详情
+-  `Promise<DeepPartial<Role>>` role details
 
-## 获取角色列表
+
+      
+
+## Get roles list
 
 RolesManagementClient().list(page, limit)
 
-> 获取角色列表
+> Get roles list
 
-#### 参数
 
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+#### Parameter
 
-#### 示例
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of roles per page. The default value is: `10`.
+
+#### Example
 
 ```javascript
 managementClient.roles.list(2, 10)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<PaginatedRoles>>`
+-  `Promise<DeepPartial<PaginatedRoles>>` 
 
-## 获取角色用户列表
+
+      
+
+## Get role's users list
 
 RolesManagementClient().listUsers(code)
 
-> 获取角色用户列表
+> Get role's users list
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role
+
+#### Example
 
 ```javascript
 managementClient.roles.listUsers(code)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<PaginatedUsers>>`
+-  `Promise<DeepPartial<PaginatedUsers>>` 
 
-## 添加用户
+
+      
+
+## Add users
 
 RolesManagementClient().addUsers(code, userIds)
 
-> 添加用户
+> Add users to a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role
+- `userIds` \<string[]\> User ID list
+
+#### Example
 
 ```javascript
 managementClient.roles.addUsers(code, ['USERID1', 'USERID2'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 移除用户
+
+      
+
+## Remove a user
 
 RolesManagementClient().removeUsers(code, userIds)
 
-> 移除用户
+> Remove a user from a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role
+- `userIds` \<string[]\> User ID list
+
+#### Example
 
 ```javascript
 managementClient.roles.removeUsers(code, ['USERID1', 'USERID2'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 获取角色被授权的所有资源列表
 
-RolesManagementClient.listAuthorizedResources(roleCode, namespace, {
-resourceType: ResourceType.MENU,
-})
+      
 
-> 获取一个角色被授权的所有资源。
-
-#### 参数
-
-- `roleCode` \<string\> 角色 code；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)；
-- `resourceType` \<string\> 可选，资源类型，默认会返回所有有权限的资源，现有资源类型如下：
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据。
-
-#### 示例
-
-```javascript
-import { ResourceType } from 'authing-js-sdk'
-
-managementClient.roles.listAuthorizedResources('ROLE_CODE', 'code', {
-  resourceType: ResourceType.MENU,
-})
-```
-
-#### 示例数据
-
-- `type` 为资源类型；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
-
-```json
-{
-  "totalCount": 12,
-  "list": [
-    {
-      "code": "menu_a",
-      "type": "MENU"
-    },
-    {
-      "code": "menu_b",
-      "type": "MENU"
-    },
-    {
-      "code": "books:1",
-      "type": "DATA",
-      "actions": ["books:delete", "books:update"]
-    }
-  ]
-}
-```
-
-## 获取角色策略列表
+## Get the role policy list
 
 RolesManagementClient().listPolicies(code, page, limit)
 
-> 获取角色策略列表
+> Get the role policy list
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 页码个数 默认值为 : `10`。
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role 
+- `page` \<number\> Page number. The default value is: `1`.
+- `limit` \<number\> Number of policy records shown per page. The default value is: `10`.
+
+#### Example
 
 ```javascript
 managementClient.roles.listPolicies('codea', 1, 10)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<PaginatedPolicyAssignments>`
+-  `Promise<PaginatedPolicyAssignments>` 
 
-## 授权策略
+
+      
+
+## Add policies
 
 RolesManagementClient().addPolicies(code, policies)
 
-> 给角色授权策略策略
+> Add policies to roles.
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role 
+- `policies` \<string[]\> Policy list
+
+#### Example
 
 ```javascript
 managementClient.roles.addPolicies('rolea', ['PolicyA', 'PolicyB'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 角色移除策略
+
+      
+
+## Remove policies
 
 RolesManagementClient().removePolicies(code, policies)
 
-> 角色移除策略
+> Remove policies from a role
 
-#### 参数
 
-- `code` \<string\> 角色唯一标志符
-- `policies` \<string[]\> 策略列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Unique id of the role 
+- `policies` \<string[]\> Policy list
+
+#### Example
 
 ```javascript
 managementClient.roles.removePolicies('rolea', ['PolicyA', 'PolicyB'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
+
+
+      

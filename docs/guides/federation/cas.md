@@ -1,49 +1,60 @@
-# 成为 CAS 身份源
+# Configure Approw as a CAS IdP
 
 <LastUpdated/>
 
-本文介绍如何让 Authing 成为 CAS 身份源，其他系统可以通过 CAS 协议接入 Authing 作为身份提供商。
+This article introduces how to configure Approw as a CAS IdP. By this way, Approw can be integrated by other system as a IdP with CAS protocol.
 
-目前 Authing 实现了 CAS 1.0 的 `/login`，`/validate`，`/logout` 端点。
+Approw now has achieved three CAS 1.0 endpoints: `/login`, `/validate` and `/logout`.
 
-你可以在[这里](https://apereo.github.io/cas/6.3.x/protocol/CAS-Protocol-Specification.html)深入理解 CAS 协议。
+You can learn more details about CAS protocol at [here](https://apereo.github.io/cas/6.3.x/protocol/CAS-Protocol-Specification.html).
 
-## 创建应用
+## Create an Application
 
-为了让你的应用具备身份认证能力，你需要在 Authing 创建一个应用，名称建议填写你的实际应用项目的名称，进入**控制台** > **应用** > **应用列表**，点击创建应用：
+You need to create an application in Approw and enable it to authenticate. Go to **Console** > **Application** > **Application List** and then click "Create a new application". You can use your project name as the name of the application.
 
-![](~@imagesZhCn/guides/federation/oidc/1-1.png)
+<!-- ![](~@imagesEnUs/guides/federation/oidc/1-1.png) -->
 
-填写你的**应用名称**，例如：网络笔记项目，为你的项目指定一个**认证地址**，将来你的用户会在这个地址完成认证。**回调链接**填写你的项目**后端路由**，Authing 会将 Ticket 发送到这个地址。最后点击创建。
+![](../../images/guides/federation/oidc/1-1.png)
 
-![](~@imagesZhCn/guides/federation/oidc/1-2.png)
+After that you need to set up your **Application Name**, such as "Network Note Project". Then you will create an **Authentication URL** which will be used for the auhtencation of your users. The **Callback URL** is the **Backend Routing** of your project. Approw will send Tickets to this address. After you finished all configuration, click "Create".
 
-找到你的应用，进入「启用身份提供商」选项卡。
+<!-- ![](~@imagesEnUs/guides/federation/oidc/1-2.png) -->
 
-![](~@imagesZhCn/guides/federation/oauth/1-1.png)
+![](../../images/guides/federation/oidc/1-2.png)
 
-在下方的「CAS 身份提供商」卡片中，打开启用 CAS IdP 开关，然后点击保存。
+Find your application, and go to the "Enable Identity Provider" tag.
 
-![](~@imagesZhCn/guides/federation/cas/1-1.png)
+<!-- ![](~@imagesEnUs/guides/federation/oauth/1-1.png) -->
 
-## Web flow
+![](../../images/guides/federation/oauth/1-1.png)
 
-在 Web flow 中，整体有以下流程：
+In the "CAS Identity Provider" tag, enable the CAS IdP and save the settings.。
 
-1. 用户首次访问 App1。
-2. 用户与 App1 未建立会话，被重定向到认证页面。
-3. 用户未认证，用户在 CAS Server 完成身份认证。
-4. 用户被重定向到 App1 的回调地址，携带 Ticket。
-5. App1 到 CAS Server 查验 Ticket 合法性。
-6. App1 与用户建立会话，返回受保护资源。
-7. 用户访问应用 App2。
-8. 用户与 App2 未建立会话，被重定向到认证页面。
-9. CAS Server 发现用户已认证，用户被重定向到 App2 的回调地址，携带 Ticket。
-10. App2 到 CAS Server 查验 Ticket 合法性。
-11. App2 与用户建立会话，返回受保护资源。
+<!-- ![](~@imagesEnUs/guides/federation/cas/1-1.png) -->
 
-流程图如下：
+![](../../images/guides/federation/cas/1-1.png)
 
-![](~@imagesZhCn/guides/federation/cas/cas-flow.png)
+## The Web Flow
 
-[查看接入文档](/v2/federation/cas/cas10)。
+Here is the web flow:
+
+1. The user accesses App1 for the first time.
+2. Because the conversation between user and App1 has not been established, the user will be redirect to authentication URL.
+3. Because the user has not been authenticated yet. He/she will complete the authentcation at CAS Server.
+4. The user will be redirected to the callback URL of App1 with the Ticket.
+5. App1 then will validate the Ticket with CAS Server.
+6. App1 establishes the conversation with the user and returns the protected resources.
+7. Then the user tries to access App2 for the first time.
+8. Because the conversation between user and App2 has not been established, the user will be redirect to authentication URL.
+9. The CAS Server finds the user has been authenticated, so it will redirect user to the callback URL of App2 with the Ticket.
+10. App2 then will validate the Ticket with CAS Server.
+11. App2 establishes the conversation with the user and returns the protected resources.
+
+Here is the flow chart:
+
+![](~@imagesEnUs/guides/federation/cas/cas-flow.png)
+
+Here is the integration [document](/federation/cas/cas10) with more details.
+
+<!-- approw-docs-v1/docs/federation/cas/cas10/ -->
+<!--/v2/federation/cas/cas10-->

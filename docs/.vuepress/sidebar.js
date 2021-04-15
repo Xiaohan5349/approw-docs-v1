@@ -1941,7 +1941,7 @@ const addPrefixToLink = (navbar, prefix) => {
     return
   }
   return navbar.map((item) => {
-    if (typeof item === "string") {
+    if (typeof item === 'string') {
       return `${prefix}${item}`
     }
     return {
@@ -1950,7 +1950,7 @@ const addPrefixToLink = (navbar, prefix) => {
       children:
         item.children &&
         item.children.map((link) => {
-          if (typeof link === "string") {
+          if (typeof link === 'string') {
             // console.log(link);
             return `${prefix}${link}`
           }
@@ -1983,7 +1983,6 @@ const addPrefixToLink = (navbar, prefix) => {
   // }))
 }
 
-
 /**
  * 给所有路径加上 /en
  */
@@ -1999,7 +1998,7 @@ const getEnUsNavBar = (sidebars) => {
 
 module.exports = {
   zhCnNavBar,
-  enUsNavBar: getEnUsNavBar(translatedZhCnNavBar),
+  enUsNavBar: translatedZhCnNavBar,
   BRAND_NAME_ZH_CN,
   BRAND_NAME_EN_US,
 }

@@ -1,14 +1,14 @@
-# 多因素认证模块
+# MfaAuthenticationClient
 
 <LastUpdated/>
 
 
-> 此模块用于进行绑定 MFA 认证器、解绑 MFA 认证器、用户二次认证。
+> This client is used to bind the MFA authenticator, unbind the MFA authenticator, and second authentication of the user.
 
-请求绑定 MFA 认证器：
+Request to bind MFA authenticator:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
 })
@@ -17,10 +17,10 @@ await authenticationClient.mfa.assosicateMfaAuthenticator({
 })
 ```
 
-验证 MFA 二次口令：
+Verify the MFA secondary password:
 
 ```javascript
-import { AuthenticationClient } from 'authing-js-sdk'
+import { AuthenticationClient } from 'approw-js-sdk'
 const authenticationClient = new AuthenticationClient({
   appId: 'YOUR_APP_ID',
 })
@@ -30,15 +30,15 @@ await authenticationClient.mfa.verifyTotpMfa({
 })
 ```
 
-## 获取 MFA 认证器
+## Get MFA authenticator
 
 MfaAuthenticationClient().getMfaAuthenticators()
 
-> 获取 MFA 认证器
+> Get MFA authenticator
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -49,19 +49,19 @@ const authenticators = await authenticationClient.mfa.getMfaAuthenticators({
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<IMfaAuthenticators>`
 
-## 请求 MFA 二维码和密钥信息
+## Request the QR code and credential information of MFA authenticator
 
 MfaAuthenticationClient().assosicateMfaAuthenticator()
 
-> 请求 MFA 二维码和密钥信息
+> Request the QR code and credential information of MFA authenticator
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -72,19 +72,19 @@ const authenticators = await authenticationClient.mfa.assosicateMfaAuthenticator
 )
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<IMfaAssociation>`
 
-## 解绑 MFA
+## Unbind MFA authenticator
 
 MfaAuthenticationClient().deleteMfaAuthenticator()
 
-> 解绑 MFA
+> Unbind MFA authenticator
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -93,19 +93,19 @@ const authenticationClient = new AuthenticationClient({
 const authenticators = await authenticationClient.mfa.deleteMfaAuthenticator()
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<IMfaDeleteAssociation>`
 
-## 确认绑定 MFA
+## Confirm authenticator binding
 
 MfaAuthenticationClient().confirmAssosicateMfaAuthenticator()
 
-> 确认绑定 MFA
+> Confirm authenticator binding
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -116,19 +116,19 @@ const authenticators = await authenticationClient.mfa.confirmAssosicateMfaAuthen
 )
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<IMfaConfirmAssociation>`
 
-## 检验二次验证 MFA 口令
+## Verify MFA one-time-password 
 
 MfaAuthenticationClient().verifyTotpMfa()
 
-> 检验二次验证 MFA 口令
+> Verify MFA one-time-password 
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -140,24 +140,24 @@ const authenticators = await authenticationClient.mfa.verifyTotpMfa({
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-## 检验二次验证 MFA 短信验证码
+## Verify the SMS one-time-password
 
 MfaAuthenticationClient().verifyAppSmsMfa()
 
-> 检验二次验证 MFA 短信验证码
+> Verify the SMS one-time-password
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.phone` \<string\> 用户手机号。
-- `options.code` \<string\> 手机验证码。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `options.phone` \<string\> User phone number
+- `options.code` \<string\> SMS code
+- `options.mfaToken` \<string\> MfaToken returned from login interface.
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -170,24 +170,24 @@ const authenticators = await authenticationClient.mfa.verifySmsMfa({
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-## 检验二次验证 MFA 邮箱验证码
+## Verify the email one-time-password
 
 MfaAuthenticationClient().verifyAppEmailMfa()
 
-> 检验二次验证 MFA 邮箱验证码
+> Verify the email one-time-password.
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.email` \<string\> 用户邮箱。
-- `options.code` \<string\> 手机验证码。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `options.email` \<string\> User email
+- `options.code` \<string\> OTP code
+- `options.mfaToken` \<string\> MfaToken returned from login interface
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -195,29 +195,29 @@ const authenticationClient = new AuthenticationClient({
 })
 const authenticators = await authenticationClient.mfa.verifyAppEmailMfa({
   mfaToken: 'xxxxxx',
-  email: 'example@authing.cn',
+  email: 'example@approw.com',
   code: 'xxxx',
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-## 检测手机号或邮箱是否已被绑定
+## Check the phone number or email binding status
 
 MfaAuthenticationClient().phoneOrEmailBindable()
 
-> 当需要手机或邮箱 MFA 登录，而用户未绑定手机或邮箱时，可先让用户输入手机号或邮箱，用此接口先检测手机或邮箱是否可绑定，再进行 MFA 验证
+> When the mobile phone or email MFA login is required, and the user has not bound the mobile phone or email address, the user can first enter the mobile phone number or email address. Use this interface to first check whether the mobile phone or email address can be bound, and then perform MFA verification.
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `[options.email]` \<string\> 要检测的邮箱。
-- `[options.phone]` \<string\> 要检测的手机号。
-- `options.mfaToken` \<string\> 登录接口返回的 mfaToken。
+- `[options.email]` \<string\> Email to be checked
+- `[options.phone]` \<string\> Phone number to be checked
+- `options.mfaToken` \<string\> MfaToken returned from login interface.
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -225,23 +225,23 @@ const authenticationClient = new AuthenticationClient({
 })
 const authenticators = await authenticationClient.mfa.phoneOrEmailBindable({
   mfaToken: 'xxxxxx',
-  email: 'example@authing.cn',
+  email: 'example@approw.com',
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<boolean>`
 
-## 检验二次验证 MFA 恢复代码
+## Check MFA recovery code
 
 MfaAuthenticationClient().verifyTotpRecoveryCode()
 
-> 检验二次验证 MFA 恢复代码
+> Check MFA recovery code.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -253,6 +253,6 @@ const authenticators = await authenticationClient.mfa.verifyTotpRecoveryCode({
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`

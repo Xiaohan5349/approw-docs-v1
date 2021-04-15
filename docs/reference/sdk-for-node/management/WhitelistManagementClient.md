@@ -1,151 +1,150 @@
 
-# 管理注册白名单
+# WhitelistManagementClient
 
 <LastUpdated/>
 
 
-> 为你的用户池配置一个注册白名单，类似于邀请注册规则，开启后，只有白名单里的用户才能进行注册。 {{$localeConfig.brandName}} 目前支持的白名单方式有手机号、邮箱、用户名。
+> Add a registration whitelist for your user pool, which is similar to the invitation registration rule. After you add it, only users in the whitelist can register. {{$localeConfig.brandName}} currently supports you to set phone number, email, and username in whitelist.
 
 
-
-请使用以下方式使用该模块：
+Please follow the instructions below to use this client：
 ```javascript
-import { ManagementClient } from "authing-js-sdk"
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
    userPoolId: "YOUR_USERPOOL_ID",
    secret: "YOUR_USERPOOL_SECRET",
 })
-managementClient.whitelist.list // 获取注册白名单记录
-managementClient.whitelist.add // 添加白名单记录
-managementClient.whitelist.remove // 移除白名单记录
+managementClient.whitelist.list // get register whitelist record
+managementClient.whitelist.add // add register whitelist record
+managementClient.whitelist.remove // delete register whitelist record
 ```
 
 
 
 
-## 获取白名单记录
+##  Get whitelists
 
 WhitelistManagementClient().list(type)
 
-> 获取白名单记录
+> Get the whitelist records
 
 
-#### 参数
+#### Parameter
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、Email 为邮箱、Phone 为手机号。 
+- `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
 
-#### 示例
+#### Example
 
 ```javascript
-import { WhitelistType } from "authing-js-sdk"
+import { WhitelistType } from "approw-js-sdk"
 const list = await managementClient.whitelist.list(WhitelistType.Email);
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<WhiteList[]>` 
 
 
       
 
-## 添加白名单
+## Add whitelists
 
 WhitelistManagementClient().add(type, list)
 
-> 添加白名单
+> Add whitelists
 
 
-#### 参数
+#### Parameter
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、Email 为邮箱、Phone 为手机号。 
-- `list` \<string[]\> 白名单列表，请注意邮箱不区分大小写。 
+- `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
+- `list` \<string[]\> Whitelist list. (email is not case sensitive)
 
-#### 示例
+#### Example
 
 ```javascript
 await managementClient.whitelist.add(WhitelistType.Email, 'a@example.com');
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<WhiteList[]>` 
 
 
       
 
-## 移除白名单
+## Remove whitelists
 
 WhitelistManagementClient().remove(type, list)
 
-> 移除白名单
+> Remove whitelists
 
 
-#### 参数
+#### Parameter
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、Email 为邮箱、Phone 为手机号。 
-- `list` \<string[]\> 白名单列表，请注意邮箱不区分大小写。 
+- `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
+- `list` \<string[]\> Whitelist list. (Email is not case sensitive.)
 
-#### 示例
+#### Example
 
 ```javascript
 await managementClient.whitelist.remove(WhitelistType.Email, 'a@example.com');
 ```
 
-#### 返回值
+#### Return value
 
 -  `Promise<WhiteList[]>` 
 
 
       
 
-## 开启白名单
+## Enable whitelists
 
 WhitelistManagementClient().enable(type)
 
-> 开启白名单
+> Enable whitelists.
 
 
-#### 参数
+#### Parameter
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、Email 为邮箱、Phone 为手机号。 
+- `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
 
-#### 示例
+#### Example
 
 ```javascript
-// 添加白名单
+// add a whitelist
 
-import { WhitelistType } from "authing-js-sdk"
+import { WhitelistType } from "approw-js-sdk"
 await managementClient.whitelist.enable(WhitelistType.Email);
 await managementClient.whitelist.add(WhitelistType.Email, [‘a@wxample.com’]);
 
-// 使用不在白名单内的账号注册，不提示无法注册。
+// try to register an account not in whitelist
 
-await authing.registerByEmail(email, 'b@example.com');
+await approw.registerByEmail(email, 'b@example.com');
 ```
 
-#### 返回值
+#### Return value
 
 
 
 
       
 
-## 关闭白名单
+## Disable whitelists
 
 WhitelistManagementClient().disable(type)
 
-> 关闭白名单
+> Disable whitelists
 
 
-#### 参数
+#### Parameter
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、Email 为邮箱、Phone 为手机号。 
+- `type` \<WhitelistType\> Whitelist type. Use `USERNAME` to represent username, `Email` for email address, `Phone` for phone number.
 
-#### 示例
+#### Example
 
 
 
-#### 返回值
+#### Return value
 
 
 

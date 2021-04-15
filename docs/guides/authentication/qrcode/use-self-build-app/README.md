@@ -1,21 +1,21 @@
-# 使用自建 App 扫码登录网站
+# Use The Self-built App To Implement QR Code Scanning Login
 
 <LastUpdated/>
 
-随着移动互联网的普及，手机已经成为人们生活中的必需品，通过手机扫描二维码完成认证的方式变得越来越常见。越来越多的移动应用集成了扫描二维码登录 PC 端网站应用的功能，这对于用户来说是一种既方便又安全的体验。借助 {{$localeConfig.brandName}} 提供的扫描登录能力，可以帮助快速、安全地实现此功能。
+With the popularization of mobile Internet, mobile phones have become a necessity in people's lives, and it is becoming more and more common to use mobile phones to scan QR codes to complete authentication. More and more mobile applications integrate the function of scanning the QR code to log in to the PC-side website application, which is a convenient and safe experience for users. With the scanning and login capabilities provided by {{$localeConfig.brandName}}, this function can be implemented quickly and securely.
 
-要实现使用自建移动应用扫码登录网站应用，大致可以分为以下几步：
+To implement the use of self-built mobile applications to scan QR codes to log in to website applications, it can be roughly divided into the following steps:
 
-1. 在 Web 端生成二维码并开始轮询最新扫码状态；
-2. 在移动 APP 中用户扫码，同意授权用户信息；
-3. Web 端接收到扫码用户的用户信息，登录成功；
+1, Generate a QR code on the Web and start polling the latest scanning status;
+2, In the mobile APP, the user scans the code and agrees to authorize user information;
+3, The web terminal receives the user information of the code scanning user, and the login is successful;
 
-## Web 端生成二维码并轮询扫码状态
+## Generate a QR code on the web and poll the scanning status
 
-在 Web 端，我们推荐使用 {{$localeConfig.brandName}} 提供的 [JavaScript SDK](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md)，其提供了一键生成二维码、轮询最新状态、获取用户信息之后进行回调的接口，开发者只需要指定 `onSuccess` 回调函数即可：
+On the web side, we recommend using the [JavaScript SDK](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md) provided by {{$localeConfig.brandName}}, which provides a one-click interface for generating a QR code, polling for the latest status, and obtaining user information for callbacks. Developers only need to specify the `onSuccess` callback function:
 
 ```js
-import { AuthenticationClient } from "authing-js-sdk"
+import { AuthenticationClient } from "approw-js-sdk"
 const authenticationClient = new AuthenticationClient({
    appId: "YOUR_APP_ID",
 })
@@ -28,18 +28,17 @@ authenticationClient.qrcode.startScanning("qrcode", {
 });
 ```
 
-运行后将自动生成用于 APP 扫码登录的二维码：
+After running, it will automatically generate a QR code for APP scanning login:
 
-<img src="https://cdn.authing.cn/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
 
-扫码成功之后，{{$localeConfig.brandName}} 将会回调开发者传入的 `onSuccess` 函数，回调的参数中包含 `userInfo` 和 `ticket`，`ticket` 可以用来[换取用户信息](./full-api-list.md#使用-ticket-换取用户信息)。
+After the code is scanned successfully, {{$localeConfig.brandName}} will call back the `onSuccess` function passed in by the developer. The callback parameters include `userInfo` and `ticket`, and the `ticket` can be used to [get user information](./full-api-list.md#To-get-user-information-by-ticket).
 
-如果你想自定义 UI 或者想要有更强的自定义化能力，可以查看[完整的 API 列表](./full-api-list.md) 或者[使用其他的 SDK 方法](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md)。
+If you want to customize the UI or want more customization capabilities, you can view the [complete API list](./full-api-list.md) or [use other SDK methods](/reference/sdk-for-node/authentication/QrCodeAuthenticationClient.md).
 
+## Mobile APP scans QR code to authorize user information
 
-## 移动 APP 扫码授权用户信息
-
-Web 端生成的二维码中包含的原始信息为一串字符串，转换为 JSON 后如下：
+The original information contained in the QR code generated on the web is a string of strings, which is converted to JSON as follows:
 
 ```json
 {
@@ -52,33 +51,31 @@ Web 端生成的二维码中包含的原始信息为一串字符串，转换为 
 }
 ```
 
-字段含义如下：
+The meanings of the fields are as follows:
+- scene: scene value, APP_AUTH means APP QR code scan login.
+- random: QR code ID, the mobile terminal will confirm the code scanning, agree to authorize, and cancel the authorization based on this ID (note that the "confirm code scanning" here means that the mobile terminal marks that the QR code has been scanned, but the user has not accept or cancel the operation. For the detailed status of the QR code, please see the complete interface list page)
+- userPoolId: User pool ID.
+- createdAt: the time when the QR code was created.
+- expireAt: the expiration time of the QR code.
+- customData: User-defined fields. To learn how to add custom data, please see the complete interface list page.
 
-- scene：场景值，APP_AUTH 表示 APP 扫码登录。
-- random：二维码 ID，移动端之后根据此 ID 完成确认扫码、同意授权、取消授权（注意，这里的“确认扫码”意思是移动端标记此二维码已经被扫描，但是用户还没有采取同意或取消操作。有关二维码的详细状态，请见完整接口列表页）
-- userPoolId：用户池 ID。
-- createdAt：二维码创建时间。
-- expireAt：二维码过期时间。
-- customData：用户自定义字段。了解如何添加自定义数据，请见完整接口列表页。
+> For how to scan and parse the QR code in IOS, you can view [this article](https://github.com/darkjoin/Learning/wiki/use AVFoundation to get QR code).
 
-> 有关如何在 IOS 中扫描并解析二维码的内容，可以查看[这篇文章](https://github.com/darkjoin/Learning/wiki/使用AVFoundation读取二维码)。
+To implement APP scanning and logging in to the Web, the APP user is required to be in the login state (it is of course possible), and the end user's token is required when calling the relevant interface. A total of three interfaces are required for the mobile terminal:
+- Confirm code scanning
+- Agree to authorize
+- Cancel authorization
 
-要实现 APP 扫描登录 Web 端，首先要求 APP 端用户处于登录状态（这是理所当然的），调用相关接口的时候要带上终端用户的 token。移动端一共需要用到三个接口：
+> To learn more about these three interfaces, please see the complete interface list page.
 
-- 确认扫码
-- 同意授权
-- 取消授权
+Let's take Objective-C as an example to implement consent to authorize login:
 
-> 要了解这个三个接口的详情，请见完整接口列表页。
-
-下面以 Objective-C 为例，实现同意授权登录：
-
-- api 地址为：[http://core.authing.cn/api/v2/qrcode/confirm](http://core.authing.cn/api/v2/qrcode/confirm)
-- 第 9 行在请求头带上了用户登录凭证。
+- The api address is: [http://core.approw.com/api/v2/qrcode/confirm](http://core.approw.com/api/v2/qrcode/confirm)
+- Line 9 puts the user login credentials on the request header.
 
 ```objectivec
 - (void) ConfirmAuthorization:(NSString *) random{
-    NSURL * api =[NSURL URLWithString:@"http://core.authing.cn/api/v2/qrcode/confirm"];
+    NSURL * api =[NSURL URLWithString:@"http://core.approw.com/api/v2/qrcode/confirm"];
     NSDictionary *bodyDict = @{
         @"random": random,
     };
@@ -119,12 +116,12 @@ Web 端生成的二维码中包含的原始信息为一串字符串，转换为 
 }
 ```
 
-移动端确认授权之后，Web 将会看到相关提示。
+After the mobile terminal confirms the authorization, you will see the relevant prompt on the web.
 
-<img src="https://cdn.authing.cn/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="https://cdn.approw.com/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
 
 
-这个时候，整个登录流程也就完成了，开发者可以使用 ticket 去换取用户信息了。
+At this time, the entire login process is complete, and developers can use the ticket to get user information.
 
 ```javascript
 const authenticationClient = new AuthenticationClient({
@@ -133,6 +130,21 @@ const authenticationClient = new AuthenticationClient({
 const user = await authenticationClient.qrcode.exchangeUserInfo('TICKET')
 ```
 
-## 接下来
+## Then
 
-!!!include(common/what-to-do-when-you-get-userinfo.md)!!!
+After obtaining the user information, you can get the user's identity credential (the token field of the user information). You can carry this token in the subsequent request sent by the client to the back-end server. Take axios as an example:
+
+```js
+const axios = require("axios");
+axios
+  .get({
+    url: "https://yourdomain.com/api/v1/your/resources",
+    headers: {
+      Authorization: "Bearer YOUR_JWT_TOKN",
+    },
+  })
+  .then((res) => {
+    // custom codes
+  });
+```
+The validity of this `token` needs to be verified in the back-end interface to verify the user's identity. For details of the verification method, please refer to [verifying user identity credentials (token)](/guides/faqs/how-to-validate-user-token.html). After identifying the user, you may also need to [perform permission management on the user](/guides/access-control/) to determine whether the user has operating permissions for this API.

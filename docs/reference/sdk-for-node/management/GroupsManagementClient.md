@@ -1,260 +1,251 @@
-# 管理分组
+
+# GroupsManagementClient
 
 <LastUpdated/>
 
-> 此模块用于管理 {{$localeConfig.brandName}} 分组，可以进行分组的增删改查、分组添加/删除用户、分组添加/删除策略 等操作。
 
-请使用以下方式使用该模块，而不要直接初始化该模块：
 
+> This client is used to manage {{$localeConfig.brandName}} groups. It can create/query/update/delete groups, add/delete users to/from groups, add/delete group's policy and perform other operations.
+
+
+
+Please follow the instructions below to use this client. Do not initialize directly:
 ```javascript
-import { ManagementClient } from 'authing-js-sdk'
+import { ManagementClient } from "approw-js-sdk"
 const managementClient = new ManagementClient({
-  userPoolId: 'YOUR_USERPOOL_ID',
-  secret: 'YOUR_USERPOOL_SECRET',
+   userPoolId: "YOUR_USERPOOL_ID",
+   secret: "YOUR_USERPOOL_SECRET",
 })
-managementClient.groups.list // 获取分组列表
-managementClient.groups.create // 创建分组
-managementClient.groups.listUsers // 获取分组用户列表
+managementClient.groups.list // get group list
+managementClient.groups.create // create a group
+managementClient.groups.listUsers // get group user list
 ```
 
-## 创建分组
+
+
+
+## Create a group
 
 GroupsManagementClient().create(code, name, description)
 
-> 创建分组
+> Create a group.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
-- `name` \<string\> 分组名称
-- `description` \<string\> 描述
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+- `name` \<string\> Group name 
+- `description` \<string\> Description 
+
+#### Example
 
 ```javascript
-managementClient.groups.create('group', '分组 xxx')
+managementClient.groups.create('group', 'Group xxx')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Group>>`
+-  `Promise<DeepPartial<Group>>` 
 
-## 删除分组
+
+      
+
+## Delete a group
 
 GroupsManagementClient().delete(code)
 
-> 删除分组
+> Delete a group.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+
+#### Example
 
 ```javascript
 managementClient.groups.delete('rolea')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 修改分组
+
+      
+
+## Update a group
 
 GroupsManagementClient().update(code, input)
 
-> 修改分组
+> Update a group.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
-- `input` \<Object\>
-- `input.name` \<string\> 新的名称
-- `input.description` \<string\> 新的描述信息
-- `input.newCode` \<string\> 新的唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+- `input` \<Object\>  
+- `input.name` \<string\> New group name
+- `input.description` \<string\> New description
+- `input.newCode` \<string\> New unique id
+
+#### Example
 
 ```javascript
-managementClient.groups.update('group', { newCode: 'newcode' })
+managementClient.groups.update('group', {newCode: 'newcode'})
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Group>>`
+-  `Promise<DeepPartial<Group>>` 
 
-## 获取分组详情
+
+      
+
+## Get group details
 
 GroupsManagementClient().detail(code)
 
-> 获取分组详情
+> Get group details.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+
+#### Example
 
 ```javascript
 managementClient.groups.detail('manager')
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<Group>>` 分组详情
+-  `Promise<DeepPartial<Group>>` Detailed formation of group.
 
-## 获取分组列表
+
+      
+
+## Get group list
 
 GroupsManagementClient().list(page, limit)
 
-> 获取分组列表
+> Get group list.
 
-#### 参数
 
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+#### Parameter
 
-#### 示例
+- `page` \<number\> Page number, default value: `1`.
+- `limit` \<number\> Users per page, default value: `10`.
+
+#### Example
 
 ```javascript
 managementClient.groups.list(1, 10)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<PaginatedGroups>>`
+-  `Promise<DeepPartial<PaginatedGroups>>` 
 
-## 批量删除分组
+
+      
+
+## Bulk delete groups
 
 GroupsManagementClient().deleteMany(codeList)
 
-> 批量删除分组
+> Bulk delete groups.
 
-#### 参数
 
-- `codeList` \<string[]\> 分组唯一标志符列表
+#### Parameter
 
-#### 示例
+- `codeList` \<string[]\> A list of unique id of the groups.
+
+#### Example
 
 ```javascript
 managementClient.groups.deleteMany(['groupa', 'groupb'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 获取分组用户列表
+
+      
+
+## Get users list of the group
 
 GroupsManagementClient().listUsers(code, page, limit)
 
-> 获取分组用户列表
+> Get users list of the group
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
-- `page` \<number\> 页码数 默认值为 : `1`。
-- `limit` \<number\> 每页个数 默认值为 : `10`。
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+- `page` \<number\> Page number, default value: `1`.
+- `limit` \<number\> Users per page, default value: `10`.
+
+#### Example
 
 ```javascript
 managementClient.groups.listUsers(code)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<DeepPartial<PaginatedUsers>>`
+-  `Promise<DeepPartial<PaginatedUsers>>` 
 
-## 添加用户
+
+      
+
+## Add users to a group
 
 GroupsManagementClient().addUsers(code, userIds)
 
-> 添加用户
+> Add users to a group.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+- `userIds` \<string[]\> User ID list
+
+#### Example
 
 ```javascript
 managementClient.groups.addUsers(code, ['USERID1', 'USERID2'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 移除用户
+
+      
+
+## Remove users from a group
 
 GroupsManagementClient().removeUsers(code, userIds)
 
-> 移除用户
+> Remove users from a group.
 
-#### 参数
 
-- `code` \<string\> 分组唯一标志符
-- `userIds` \<string[]\> 用户 ID 列表
+#### Parameter
 
-#### 示例
+- `code` \<string\> Group unique id
+- `userIds` \<string[]\> User ID list
+
+#### Example
 
 ```javascript
 managementClient.groups.removeUsers(code, ['USERID1', 'USERID2'])
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<CommonMessage>`
+-  `Promise<CommonMessage>` 
 
-## 获取分组被授权的所有资源列表
 
-GroupsManagementClient.listAuthorizedResources(groupCode, namespace, {
-resourceType: ResourceType.MENU,
-})
-
-> 获取一个分组被授权的所有资源。
-
-#### 参数
-
-- `groupCode` \<string\> 分组 code；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)；
-- `resourceType` \<string\> 可选，资源类型，默认会返回所有有权限的资源，现有资源类型如下：
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据。
-
-#### 示例
-
-```javascript
-managementClient.groups.listAuthorizedResources('GROUP_CODE', 'code')
-```
-
-#### 示例数据
-
-- `type` 为资源类型；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
-
-```json
-{
-  "totalCount": 12,
-  "list": [
-    {
-      "code": "menu_a",
-      "type": "MENU"
-    },
-    {
-      "code": "menu_b",
-      "type": "MENU"
-    },
-    {
-      "code": "books:1",
-      "type": "DATA",
-      "actions": ["books:delete", "books:update"]
-    }
-  ]
-}
-```

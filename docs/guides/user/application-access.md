@@ -1,9 +1,9 @@
-# 控制用户能访问哪些应用
+# Control Which Apps Users can Access
 
 <LastUpdated/>
 
-你可以在**用户详情**的**应用**菜单查看该用户当前能够访问的所有应用：
+You can check all the applications that the user can currently access in the **application** menu of the **user details**:
 
 ![](./images/Xnip2021-02-26_11-33-50.png)
 
-可以通过是否允许访问开关控制该用户是否能够访问某个应用。
+You can control whether the user can access an application by enabling or disabling the access button.

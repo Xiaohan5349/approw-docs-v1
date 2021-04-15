@@ -1,139 +1,92 @@
 ---
 meta:
   - name: description
-    content: context 对象
+    content: Context Object
 ---
 
-# context 对象
+# Context Object
 
 <LastUpdated/>
 
 
-context 对象中保存了当前认证流程的上下文，包括认证手段、身份提供方，以及请求 IP, 地址等。
+The context object saves the context of the current authentication process, including authentication methods, identity providers, and request IPs, addresses, etc.
 
 
-## 属性
+## Attributes
 
-| 属性名           | 类型   | 说明                                                                                                        |
+| Attribute name           | Type   | Description                                                                                                        |
 | :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| protocol         | string | 认证协议。具体说明见下文。                                                                                  |
-| connection       | string | 身份提供方。具体说明见下文。                                                                                |  |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置                                                                                                  |
-| appId       | string | 当前用户的 ID                                                                                                   |
-| appName     | string | 当前应用的 名称                                                                                                 |
-| appMetadata | object | 当前应用的配置信息                                                                                                  |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 <br> `query`: query string 对象，你可以通过 `request.query.xxx` 获取对应 query 参数 |
+| protocol         | string | Authentication protocol. See below for specific instructions.                                                                                  |
+| connection       | string | Identity provider. See below for specific instructions.                                                                                |  |
+| userPoolId       | string | User pool ID                                                                                                  |
+| userPoolName     | string | User pool name                                                                                                 |
+| userPoolMetadata | object | User pool configuration                                                                                                |
+| appId       | string | ID of the current user                                                                                                |
+| appName     | string | The name of the current application                                                                                                 |
+| appMetadata | object | Configuration information of the current application                                                                                                 |
+| request          | object | Details of the current request, including: <br> `ip`: Client IP <br> `geo`: The geographical location of the client resolved by IP <br> `body`: request body <br> `query`: query string object, you can get the corresponding query parameters through `request.query.xxx` |
 
-## protocol
+## Protocol
 
-认证协议。
+Authentication protocol.
 
-| 可能值   | 说明                                                                                                          |
+| Possible value   | Description                                                                                                          |
 | :------- | :------------------------------------------------------------------------------------------------------------ |
-| password | 基于账号密码的认证方式                                                                                        |
-| sms      | 基于短信验证码的认证方式                                                                                      |
-| social   | 社会化登录认证默认，当使用 {{$localeConfig.brandName}} 集成的社会化登录手段登录时为此值。                                         |
-| ldap     | 使用 LDAP 进行认证。有关如何接入 LDAP 请见 [配置 LDAP 服务](../../authentication/ldap/ldap.md)。              |
-| saml     | 使用 SAML 进行认证。有关如何接入 SAML 请见 [接入 SAML](../../authentication/use-saml/)。                      |
-| oidc     | 使用 OIDC 协议认证。有关如何接入 OIDC 请见[使用 OIDC 授权](../../authentication/oidc/oidc-authorization.md)。 |
+| password | Authentication method based on account password.                                                                                        |
+| sms      | Authentication method based on SMS verification code.                                                                                      |
+| social   | The social login authentication default value when logging in with the {{$localeConfig.brandName}} integrated social login method.                                         |
+| ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../authentication/ldap/ldap.md).              |
+| saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../authentication/use-saml/).                    |
+| oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../authentication/oidc/oidc-authorization.md). |
 
-## connection
+## Connection
 
-身份提供方。
-
-
-身份提供方。
+Identity provider.
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">可能值</th>
-      <th style="text-align:left">说明</th>
+      <th style="text-align:left">Possible value</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align:left">ldap	</td>
-      <td style="text-align:left">使用 lDAP 协议进行登录。 一个 {{$localeConfig.brandName}} LDAP 服务对应一个 {{$localeConfig.brandName}} 用户目录或第三方用户目录，详情请见
+      <td style="text-align:left">Use LDAP protocol to log in. An {{$localeConfig.brandName}} LDAP service corresponds to an {{$localeConfig.brandName}} user directory or a third-party user directory. For details, refer to
         <a
-        href="../../authentication/ldap/ldap">配置 LDAP 服务</a> 和 <a href="../../authentication/ldap/ldap-idp"> 使用 {{$localeConfig.brandName}} 的 LDAP 用户目录</a>。</td>
+        href="../../authentication/ldap/ldap">Configuring LDAP Service</a> and <a href="../../authentication/ldap/ldap-idp"> Using {{$localeConfig.brandName}} LDAP User Directory</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">saml</td>
-      <td style="text-align:left">使用 SAML 协议进行登录。有关如何接入 SAML 请见 <a href="../../authentication/use-saml/">接入 SAML</a>。</td>
+      <td style="text-align:left">Log in using the SAML protocol. For how to access SAML, refer to <a href="../../authentication/use-saml/">Accessing SAML</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">oidc</td>
-      <td style="text-align:left">使用 OIDC 协议认证。有关如何接入 OIDC 请见 <a href="../../authentication/oidc/oidc-authorization">使用 OIDC 授权</a>。</td>
+      <td style="text-align:left">Use OIDC protocol authentication. For information on how to access OIDC, please refer to <a href="../../authentication/oidc/oidc-authorization">Using OIDC Authorization</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">github</td>
-      <td style="text-align:left">使用 GitHub 登录。详情见
+      <td style="text-align:left">Log in with GitHub. For details, refer to
         <a
-        href="../../social-login/web/github">接入 GitHub 登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p>wechat</p>
-      </td>
-      <td style="text-align:left">微信 PC 扫码登录。详情见
-        <a
-        href="../../social-login/web/wechat-pc">接入微信 PC 扫码登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">wechat:miniprogram</td>
-      <td style="text-align:left">使用微信小程序登录。详情见
-        <a
-        href="../../social-login/miniprogram/miniprogram/">接入微信小程序登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">wechatwork</td>
-      <td style="text-align:left">使用企业微信登录。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">qq</td>
-      <td style="text-align:left">使用 QQ 网页版登录。详情见
-        <a
-        href="../../social-login/web/qq">接入 QQ 登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">weibo</td>
-      <td style="text-align:left">使用微博网页版登录。详情见
-        <a
-        href="../../social-login/web/weibo">接入微博登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">dingtalk</td>
-      <td style="text-align:left">使用钉钉网页版登录。详情见
-        <a
-        href="../../social-login/web/dingtalk">接入钉钉登录</a>。</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">alipay</td>
-      <td style="text-align:left">使用支付宝 APP 登录。详情见
-        <a
-        href="../../social-login/mobile/alipay">接入移动 APP 支付宝登录
-      </a>。</td>
+        href="../../social-login/web/github">Access GitHub Login</a>.</td>
     </tr>
   </tbody>
 </table>
-## data 对象
+## data object
 
-### 注册前、注册后
+### Before and after registration
 
-注册前、注册后 Pipeline 中 data 对象部分请求字段如下：详情请见 [{{$localeConfig.brandName}} GraphQL 调试器](https://authing.cn/graphiql/) **用户鉴权** - **注册**接口。
+Before and after registration, the requested fields of the data object in the Pipeline are as follows: For details, refer to [{{$localeConfig.brandName}} GraphQL Debugger](https://approw.com/graphiql/) **User Authentication** - **Registration**Interface.
 
 ::: hint-warning
-email, phone, unionid 等字段不一定同时存在，使用前请先判断其是否存在！如
+Email, phone, unionid and other fields may not exist at the same time, please check whether they exist before using them. For example:
 
 ```js
 const email = context.request.body.email;
 if (email) {
-  // 表示是用邮箱注册
-  // 可以进行邮箱注册白名单的逻辑
+  // Which means user registered the account with an email.
+  // The logic that can be used for registering whitelist with emails.
 
   if (!email.endsWith("example.com")) {
     return callback(new Error("Access Denied!"));
@@ -143,43 +96,43 @@ if (email) {
 
 :::
 
-| 字段名     | 类型    | 是否一定存在 | 说明                                       |
+| Field Name     | Type    | Exist | Description                                       |
 | :--------- | :------ | ------------ | :----------------------------------------- |
-| username   | string  | 否           | 用户名，使用用户名注册的时候不为空。       |
-| email      | string  | 否           | 邮箱，使用用户名注册的时候不为空。         |
-| phone      | string  | 否           | 手机号，使用手机号注册的时候不为空。       |
-| forceLogin | boolean | 否           | 注册时候是否自动进行登录流程，默认为 false |
-| profile    | object  | 是           | 用户注册所填的数据用户信息                 |
+| username   | string  | No           | User name. It is not empty when registering with the user name.       |
+| email      | string  | No           | Email address. It is not empty when registering with the user name.         |
+| phone      | string  | No           | Mobile phone number. It is not empty when using the mobile phone number to register.      |
+| forceLogin | boolean | No           | Whether to automatically perform the login process when registering, the default is false. |
+| profile    | object  | Yes           | User information filled in for user registration.                |
 
-### 认证前、认证后
+### Before and after authentication
 
-认证前、认证后 Pipeline 中 data 对象部分请求字段如下：
+The request fields of the data object in the pipeline before and after authentication are as follows:
 
 ::: hint-warning
-这些字段不一定全部存在，使用前请先判断是否存在！
+These fields may not all exist, please check whether they exist before using them.
 :::
 
-| 字段名   | 类型   | 是否一定存在 | 说明                                 |
+| Field Name   | Type   | Exist | Description                                 |
 | :------- | :----- | ------------ | :----------------------------------- |
-| username | string | 否           | 用户名，使用用户名登录的时候不为空。 |
-| email    | string | 否           | 邮箱，使用邮箱登录的时候不为空。     |
-| phone    | string | 否           | 手机号，使用手机号登录的时候不为空。 |
+| username | string | No           | User name, which is not empty when logging in using user name. |
+| email    | string | No           | Email, which is not empty when logging in using email.     |
+| phone    | string | No           | Mobile phone number, which is not empty when logging in using mobile phone number. |
 
-## userPool 对象
+## userPool object
 
-| 字段名 | 类型   | 说明       |
+| Field Name | Type   | Description       |
 | :----- | :----- | :--------- |
-| id     | string | 用户池 ID  |
-| name   | string | 用户池名称 |
+| id     | string | User pool ID  |
+| name   | string | User pool name |
 
-## geo 属性
+## geo Attribute
 
-示例数据：
+Sample data:
 
 ```json
 {
-  "province": "北京市",
-  "city": "北京市",
+  "province": "Beijing",
+  "city": "Beijing",
   "adcode": "110000",
   "rectangle": "116.0119343,39.66127144;116.7829835,40.2164962"
 }

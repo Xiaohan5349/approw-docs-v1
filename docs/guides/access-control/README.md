@@ -1,11 +1,11 @@
-# 权限管理综述
+# Privilege Management Overview
 
 <LastUpdated/>
 
-在[上一部分](../authentication/README.md)我们介绍了认证，认证指的是识别请求者身份的过程（比如使用密码、微信、手机号验证码等手段），在成功识别了用户的身份之后，我们接下来要做的就是**管理、分配权限。**
+In the [previous part](../authentication/README.md) we have introduced authentication. Authentication refers to the process of authenticating the user's identity (such as using passwords, SMS codes, etc.). After successfully authenticating the user's identity, the next thing we need to do is **privilege management**.
 
-权限管理一般指根据系统设置的安全规则或者安全策略，用户可以访问而且只能访问自己被授权的资源，不多不少。
+Privilege management generally means that users only can access their authorized resources according to the security rules or security policies set by the system.
 
-目前被大家广泛采用的两种权限模型为：[基于角色的访问控制（RBAC）](./choose-the-right-access-control-model.md#什么是基于角色的访问控制-rbac)和[基于属性的访问控制（ABAC）](./choose-the-right-access-control-model.md#什么是基于属性的访问控制-abac)，二者各有优劣：RBAC 模型构建起来更加简单，缺点在于无法做到对资源细粒度地授权（都是授权某一类资源而不是授权某一个具体的资源）；ABAC 模型构建相对比较复杂，学习成本比较高，优点在于细粒度和根据上下文动态执行。
+There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](./choose-the-right-access-control-model.md#什么是基于角色的访问控制-rbac) and [Attribute-based access control (ABAC)](./choose-the-right-access-control-model.md#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
 
-接下来，你可以了解如何[为你的应用系统选择一种合适的权限模型。](./choose-the-right-access-control-model.md)
+Next, you can learn how to[ choose a suitable permission model for your application system](./choose-the-right-access-control-model.md).

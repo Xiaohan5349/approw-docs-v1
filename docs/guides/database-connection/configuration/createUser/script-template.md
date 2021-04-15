@@ -1,8 +1,8 @@
-该脚本会在用户注册或者使用 API 和控制台创建用户时执行，你需要将用户信息保存到自己的数据库中。此脚本只在完全使用自定义数据库模式中需要。
+This script will be called when the user registers an account or someone uses console or API to create a user account. You need to save user information into your own database. This script is only required in CUSTOM_USER_STORE mode.
 
-### 函数定义
+### Function Definition
 
-`createUser` 函数定义如下：
+Here is the definition of the `createUser` function:
 
 ```javascript
 async function createUser(userinfo, context) {
@@ -22,12 +22,12 @@ async function createUser(userinfo, context) {
   // * photo: the user's photo
 
   // The Second argument context contains information about the authentication context.
-  // see http://core.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://core.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   //
   // There are three ways this script can finish:
   // 1. A user was successfully created
-  // format: https://docs.authing.co/user/profile.html .
+  // format: https://docs.approw.com/user/profile.html .
   //    return null
   // 2. This user already exists in your database
   //    throw new Error("user allready exists")
@@ -35,147 +35,147 @@ async function createUser(userinfo, context) {
   //     throw new Error("my error message")
 
   const msg =
-    "Please implement the Find User script for this database connection ";
-  throw new Error(msg);
+    'Please implement the Find User script for this database connection '
+  throw new Error(msg)
 }
 ```
 
-| 参数              | 类型   | nullable | 说明                                                                       |
-| :---------------- | :----- | :------- | :------------------------------------------------------------------------- |
-| userinfo          | object | false    | 查询条件                                                                   |
-| userinfo.email    | string | ture     | 邮箱，该参数可能为空。                                                     |
-| userinfo.phone    | string | true     | 手机号，该参数可能为空。                                                   |
-| userinfo.username | string | true     | 用户名，该参数可能为空。                                                   |
-| userinfo.password | string | true     | 明文密码。该参数可能为空，强烈推荐使用 `bcrypt` 加密用户密码，详情见下文。 |
-| userinfo.nickname | string | true     | 用户昵称，该参数可能为空。                                                 |
-| userinfo.photo    | string | true     | 用户头像，该参数可能为空。                                                 |
-| context           | object | true     | 请求上下文 context                                                         |
+| Parameter         | Type   | Nullable | Explanation                                                                              |
+| :---------------- | :----- | :------- | :--------------------------------------------------------------------------------------- |
+| userinfo          | object | false    | Query condition                                                                          |
+| userinfo.email    | string | ture     | User's email. This parameter can be empty.                                               |
+| userinfo.phone    | string | true     | User's telephone number. This parameter can be empty.                                    |
+| userinfo.username | string | true     | User's username. This parameter can be empty.                                            |
+| userinfo.password | string | true     | User's password in cleartext. It is recommended to use `bcrypt` to encrypt the password. |
+| userinfo.nickname | string | true     | User's nickname. This parameter can be empty.                                            |
+| userinfo.photo    | string | true     | User's photo. This parameter can be empty.                                               |
+| context           | object | true     | Requiring context.                                                                       |
 
-其中 context 中包含包含以下信息：
+The context also includes the following information:
 
-| 属性名           | 类型   | 说明                                                                                                        |
-| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+| Property Name    | Type   | Explanation                                                                                                                                                                                                                   |
+| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPoolId       | string | The ID of the user pool.                                                                                                                                                                                                      |
+| userPoolName     | string | The Name of the user pool.                                                                                                                                                                                                    |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                                                                                                                              |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                                                                                              |
+| appName          | string | The name of the current application.                                                                                                                                                                                          |
+| appMetadata      | object | Configurations of the current application.                                                                                                                                                                                    |
+| application      | string | The ID of the user pool.                                                                                                                                                                                                      |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-### 返回数据约定
+### The Rule of the Script's Return Value
 
-#### 创建成功
+#### User is created successfully
 
-当创建用户成功时，你需要返回该用户的用户信息给 Authing，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md) 。示例：
+When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/guides/user/user-profile.md). For example:
 
 ```javascript
-async function createUser(userinfo, context) {
+async function getUser(userinfo, context) {
   // Implement your logic here
   return {
     id: 1, // must not empty
-    email: "test@example.com",
+    email: 'test@example.com',
     emailVerified: true,
-    nickname: "Nick",
-    photo: "",
-  };
-}
-```
-
-#### 用户已存在
-
-当用户已存在时，你需要直接抛出错误（错误信息可自由定义），例如：
-
-```javascript
-async function createUser(query, password, context) {
-  // Implement your logic here
-  throw new Error("User allready exists!");
-}
-```
-
-#### 其他异常错误
-
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
-
-```javascript
-async function createUser(userinfo, context) {
-  try {
-    // Implement your logic here
-  } catch (error) {
-    throw new Error("Something went wrong ...");
+    nickname: 'Nick',
+    photo: '',
   }
 }
 ```
 
-### 最佳实践
+#### The user already exists
 
-#### 提供友好的错误提示
-
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
-
-![](https://cdn.authing.cn/img/20210111163154.png)
-
-#### 函数结束时断开数据库连接
-
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+When the user already exists, you need to throw an error. You can design different error messages. For example:
 
 ```javascript
-try {
-  const result = await client.userinfo("YOUR userinfo");
-} finally {
-  // NOTE: always call `client.end()` here to close the connection to the database
-  client.end();
+async function login(query, password, context) {
+  // Implement your logic here
+  throw new Error('User allready exists!')
 }
 ```
 
-### 示例函数
+#### Other abnormal errors
 
-以 `postgres` 数据库为例，有以下几点说明：
+When the user meets other errors, you can catch the error and return a friendly notice such as
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 根据 `userinfo` 中传过来的查询条件动态创建查询语句（`userinfo.id`, `userinfo.email`, `userinfo.username`, `userinfo.phone` 都可能为空，但不会同时为空）。
-- 先查询用户是否存在，如果用户存在，抛出异常，错误信息为：`User allready exists!` .
-- 最后返回指定格式的用户信息，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md)。
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+```javascript
+async function getUser(userinfo, context) {
+  try {
+    // Implement your logic here
+  } catch (error) {
+    throw new Error('Something went wrong ...')
+  }
+}
+```
+
+### Best Practice
+
+#### Provide friendly error annoncements
+
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
+
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
+
+#### Disable the database connection when exit the function
+
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
+
+```javascript
+try {
+  const result = await client.userinfo('YOUR userinfo')
+} finally {
+  // NOTE: always call `client.end()` here to close the connection to the database
+  client.end()
+}
+```
+
+### Example Functions
+
+Assume we are using `postgres` as our database:
+
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- According to the query conditions in the `userinfo` to generate query command(`userinfo.id`, `userinfo.email`, `userinfo.username` and `userinfo.phone`, these four parameters won't be empty at the same time).
+- Check if the user exists. If the user already exists, return `User allready exists!`.
+- Finally return users' information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function createUser(userinfo, context) {
   // get exist user from database
   const queryUser = async (client, query) => {
-    const { email, phone, username } = query;
-    // 构建查询参数
-    const queries = [];
-    const parameters = [];
-    let index = 1;
+    const { email, phone, username } = query
+    // build query conditions
+    const queries = []
+    const parameters = []
+    let index = 1
     if (email) {
-      queries.push(`email = $${index}`);
-      parameters.push(email);
-      index += 1;
+      queries.push(`email = $${index}`)
+      parameters.push(email)
+      index += 1
     }
     if (phone) {
-      queries.push(`phone = $${index}`);
-      parameters.push(phone);
-      index += 1;
+      queries.push(`phone = $${index}`)
+      parameters.push(phone)
+      index += 1
     }
     if (username) {
-      queries.push(`username = $${index}`);
-      parameters.push(username);
-      index += 1;
+      queries.push(`username = $${index}`)
+      parameters.push(username)
+      index += 1
     }
 
-    const QUERY = `SELECT * FROM users WHERE ${queries.join(" OR ")} LIMIT 1`;
-    const result = await client.query(QUERY, parameters);
-    return result;
-  };
+    const QUERY = `SELECT * FROM users WHERE ${queries.join(' OR ')} LIMIT 1`
+    const result = await client.query(QUERY, parameters)
+    return result
+  }
 
   // This example uses the "pg" library
   // more info here: https://github.com/brianc/node-postgres
-  const { Client } = require("pg");
+  const { Client } = require('pg')
 
   const client = new Client({
     connectionString: env.DB_CONNECTION_URI,
-  });
+  })
 
   // Or you can:
   // const client = new Client({
@@ -186,29 +186,29 @@ async function createUser(userinfo, context) {
   //   database: env.DB_DATABASE,
   // });
 
-  await client.connect();
+  await client.connect()
 
   try {
     const findResult = await queryUser(client, {
       email: userinfo.email,
       phone: userinfo.phone,
       username: userinfo.username,
-    });
+    })
     if (findResult.rows.length > 0) {
-      throw new Error("User allready exists!");
+      throw new Error('User allready exists!')
     }
 
     // Use bcrypt to encrypt password
     // more info here: https://github.com/kelektiv/node.bcrypt.js
-    const bcrypt = require("bcrypt");
-    let hashedPassword = null;
+    const bcrypt = require('bcrypt')
+    let hashedPassword = null
 
     // Phone Code Login may not have a password
     if (userinfo.password) {
       hashedPassword = await bcrypt.hash(
         userinfo.password,
         await bcrypt.genSalt(10)
-      );
+      )
     }
     const insertResult = await client.query(
       `INSERT INTO users(email, username, phone, password, nickname, photo) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
@@ -220,8 +220,8 @@ async function createUser(userinfo, context) {
         userinfo.nickname,
         userinfo.photo,
       ]
-    );
-    const user = insertResult.rows[0];
+    )
+    const user = insertResult.rows[0]
     return {
       id: user.id,
       email: user.email,
@@ -240,12 +240,12 @@ async function createUser(userinfo, context) {
       company: user.company,
       birthdate: user.birthdate,
       website: user.website,
-    };
+    }
   } catch (error) {
-    throw new Error(`Execute query failed: ${error.message}`);
+    throw new Error(`Execute query failed: ${error.message}`)
   } finally {
     // NOTE: always call `client.end()` here to close the connection to the database
-    client.end();
+    client.end()
   }
 }
 ```

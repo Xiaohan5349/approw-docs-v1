@@ -1,95 +1,95 @@
 ---
 meta:
   - name: description
-    content: 管理注册白名单
+    content: WhitelistManagementClient
 ---
 
-# 管理注册白名单
+# WhitelistManagementClient
 
 <LastUpdated/>
 
 
-> 为你的用户池配置一个注册白名单，类似于邀请注册规则，开启后，只有白名单里的用户才能进行注册。 {{$localeConfig.brandName}} 目前支持的白名单方式有手机号、邮箱、用户名。
+> Add a registration whitelist for your user pool, which is similar to the invitation registration rule. After you add it, only users in the whitelist can register. {{$localeConfig.brandName}} currently supports you to set phone number, email, and username in whitelist.
 
-## 获取白名单记录
+## Get whitelists
 
 WhitelistManagementClient().list(type)
 
-> 获取白名单记录
+> Get whitelists
 
-#### 参数
+#### Parameter:
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、EMAIL 为邮箱、PHONE 为手机号
+- `type` \<WhitelistType\> Whitelist type.
 
-#### 示例
+#### Example:
 
 ```java
 List<WhiteList> whiteLists = managementClient.whitelist().list(WhitelistType.USERNAME).execute();
 ```
 
-## 添加白名单
+## Add whitelists
 
 WhitelistManagementClient().add(addWhitelistParam)
 
-> 添加白名单
+> Add whitelists
 
-#### 参数
+#### Parameters:
 
 - `addWhitelistParam` \<AddWhitelistParam\>
-- `addWhitelistParam.type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、EMAIL 为邮箱、PHONE 为手机号
-- `addWhitelistParam.list` \<string[]\> 白名单列表，请注意邮箱不区分大小写
+- `addWhitelistParam.type` \<WhitelistType\> Whitelist type
+- `addWhitelistParam.list` \<string[]\> Whitelist list. (email is not case sensitive)
 
-#### 示例
+#### Example:
 
 ```java
 List<WhiteList> whiteLists = managementClient.whitelist().add(new AddWhitelistParam(WhitelistType.USERNAME, Arrays.asList("test1"))).execute();
 ```
 
-## 移除白名单
+## Remove whitelists
 
 WhitelistManagementClient().remove(removeWhitelistParam)
 
-> 移除白名单
+> Remove whitelists
 
-#### 参数
+#### Parameters:
 
 - `removeWhitelistParam` \<RemoveWhitelistParam\>
-- `removeWhitelistParam.type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、EMAIL 为邮箱、PHONE 为手机号
-- `removeWhitelistParam.list` \<string[]\> 白名单列表，请注意邮箱不区分大小写。
+- `removeWhitelistParam.type` \<WhitelistType\> Whitelist type
+- `removeWhitelistParam.list` \<string[]\> Whitelist list. (email is not case sensitive)
 
-#### 示例
+#### Example:
 
 ```java
 List<WhiteList> whiteLists = managementClient.whitelist().remove(new RemoveWhitelistParam(WhitelistType.USERNAME, Arrays.asList("test"))).execute();
 ```
 
-## 开启白名单
+## Enable whitelists
 
 WhitelistManagementClient().enable(type)
 
-> 开启白名单
+> Enable whitelists
 
-#### 参数
+#### Parameter:
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、EMAIL 为邮箱、PHONE 为手机号
+- `type` \<WhitelistType\> Whitelist type
 
-#### 示例
+#### Example:
 
 ```java
 UserPool userPool = managementClient.whitelist().enable(WhitelistType.USERNAME).execute();
 ```
 
-## 关闭白名单
+## Disable whitelists
 
 WhitelistManagementClient().disable(type)
 
-> 关闭白名单
+> Disable whitelists
 
-#### 参数
+#### Parameter:
 
-- `type` \<WhitelistType\> 白名单类型，USERNAME 为用户名、EMAIL 为邮箱、PHONE 为手机号
+- `type` \<WhitelistType\> Whitelist type
 
-#### 示例
+#### Example:
 
 ```java
 UserPool userPool = managementClient.whitelist().disable(WhitelistType.USERNAME).execute();

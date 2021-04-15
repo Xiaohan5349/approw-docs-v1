@@ -1,14 +1,15 @@
-该脚本会在管理员使用控制台或者 API 模糊搜索用户的时候调用。
-### 函数定义
+This script will be called when the admin is using console or API to search the user vaguely.
 
-`searchUser` 函数定义如下：
+### Function Definition
+
+Here is the definition of the `searchUser` function:
 
 ```javascript
 async function searchUser(keyword, context) {
   // The first argument keyword is the keywork used to Search Users
 
   // The Second argument context contains information about the authentication context.
-  // see http://docs.authing.cn/connections/custom-db/config-custom-db-connection.html for more information.
+  // see http://docs.approw.com/connections/custom-db/config-custom-db-connection.html for more information.
 
   // This script should retrieve a user profile from your existing database,
   // without authenticating the user.
@@ -25,57 +26,56 @@ async function searchUser(keyword, context) {
   //    throw new Error("my error message")
 
   const msg =
-    'Please implement the Search User script for this database connection ';
-  throw new Error(msg);
+    'Please implement the Search User script for this database connection '
+  throw new Error(msg)
 }
-
 ```
 
-| 参数    | 类型   | nullable | 说明           |
-| :------ | :----- | :------- | :------------- |
-| keyword | string | false    | 模糊搜索关键词 |
+| Parameter | Type   | Nullable | Explanation                     |
+| :-------- | :----- | :------- | :------------------------------ |
+| keyword   | string | false    | The keyword of the fuzzy search |
+| context   | object | true     | Requiring context               |
 
+The context also includes the following information:
 
-其中 context 中包含包含以下信息：
+| Property Name    | Type   | Explanation                                                                                                                                                                                                                   |
+| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPoolId       | string | The ID of the user pool.                                                                                                                                                                                                      |
+| userPoolName     | string | The Name of the user pool.                                                                                                                                                                                                    |
+| userPoolMetadata | object | Configurations of the user pool.                                                                                                                                                                                              |
+| appId            | string | The ID of the current user, **you can use appId to distinguish the source application of the user requirement**.                                                                                                              |
+| appName          | string | The name of the current application.                                                                                                                                                                                          |
+| appMetadata      | object | Configurations of the current application.                                                                                                                                                                                    |
+| application      | string | The ID of the user pool.                                                                                                                                                                                                      |
+| request          | object | The detailed information of current requirement, including: <br> `ip`: The IP of the client. <br> `geo`: The geographic location of the client which is parsed from the IP address. <br> `body`: The body of the requirement. |
 
-| 属性名           | 类型   | 说明                                                                                                        |
-| :--------------- | :----- | :---------------------------------------------------------------------------------------------------------- |
-| userPoolId       | string | 用户池 ID                                                                                                   |
-| userPoolName     | string | 用户池 名称                                                                                                 |
-| userPoolMetadata | object | 用户池配置信息                                                                                              |
-| appId            | string | 当前用户的 ID，**你可以通过 appId 区分用户请求的应用来源。**                                                |
-| appName          | string | 当前应用的 名称                                                                                             |
-| appMetadata      | object | 当前应用的配置信息                                                                                          |
-| application      | string | 用户池 ID                                                                                                   |
-| request          | object | 当前请求的详细信息，包括: <br> `ip`: 客户端 IP <br> `geo`: 通过 IP 解析的客户端地理位置 <br> `body`: 请求体 |
+### The Rule of the Script's Return Value
 
-### 返回数据约定
+#### Get user lists successfully
 
-#### 成功获取用户列表
-
-当用户存时，你需要返回该用户的用户信息给 Authing，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md) 。示例：
+When the user exists, you need to return the user list to Approw, the format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md). For example:
 
 ```javascript
 async function searchUser(query, context) {
   // Implement your logic here
   return {
-   totalCount: 10,
-   list: [
-       {
+    totalCount: 10,
+    list: [
+      {
         id: 1, // must not empty
-        email: "test@example.com",
+        email: 'test@example.com',
         emailVerified: true,
-        nickname: "Nick",
-        photo: ""
-       }
-    ]
+        nickname: 'Nick',
+        photo: '',
+      },
+    ],
   }
 }
 ```
 
-#### 其他异常错误
+#### Other abnormal errors
 
-当遇到其他异常错误时，你可以捕捉错误之后返回更友好的错误提示，例如：
+When user meets other errors, you can catch the error and return friendly a notice such as:
 
 ```javascript
 async function searchUser(keyword, context) {
@@ -87,49 +87,49 @@ async function searchUser(keyword, context) {
 }
 ```
 
-### 最佳实践
+### Best Practice
 
-#### 提供友好的错误提示
+#### Provide friendly error annoncements
 
-当遇到未知错误时，我们推荐使用抛出一个标准的 `Error` 对象，Authing 会捕捉此错误并最终返回给终端用户。例如：`throw new Error("My nice error message")`，你可以在自定义数据库的 **日志历史** 中看到该错误日志。
+When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
-![](https://cdn.authing.cn/img/20210111163154.png)
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
 
-#### 函数结束时断开数据库连接
+#### Disable the database connection when exit the function
 
-请切记脚本执行完成时关闭到数据库的连接，比如调用 client.end(). 例如可以在 try/finallly 中执行确保其始终会被执行:
+Remeber to close the database connection after the whole script is run. You can use client.end() in the try/finally to make sure this command will be executed.
 
 ```javascript
 try {
-  const result = await client.query("YOUR QUERY");
+  const result = await client.query('YOUR QUERY')
 } finally {
   // NOTE: always call `client.end()` here to close the connection to the database
-  client.end();
+  client.end()
 }
 ```
 
-### 示例函数
+### Example Functions
 
-以 `mongodb` 数据库为例，有以下几点说明：
+Assume we are using `mongodb` as our database:
 
-- 你可以通过 `env.DB_CONNECTION_URI` 获取数据库连接字符串用于创建数据库连接。
-- 根据 `keyword` 中传过来的模糊搜索关键词搜索用户。
-- 如果用户不存在，返回 `null`。
-- 最后返回指定格式的用户信息，用户信息的详细格式请见：[用户 Profile 详细字段](/guides/user/user-profile.md)。
-- 在 `try/finally` 中调用 `client.end()` 断开数据库连接。
+- You can use `env.DB_CONNECTION_URI` to get database connection string to create database connection.
+- According to the keyword of fuzzy search in the `keyword` to search user.
+- If user does not exist, return `null`.
+- Finally return user information in valid format. The format of user information can be found in document of [detailed fields of user profile](/guides/user/user-profile.md).
+- Call `try/finally` in `client.end()` to disable database connection.
 
 ```javascript
 async function searchUser(keyword, context) {
   // This example uses the "mongodb" v3.6 library
   // more info here: http://mongodb.github.io/node-mongodb-native/contents.html
 
-  const MongoClient = require('mongodb').MongoClient;
+  const MongoClient = require('mongodb').MongoClient
   const client = await MongoClient.connect(env.DB_CONNECTION_URI, {
     useNewUrlParser: true,
-  });
+  })
 
   if (!client) {
-    throw new Error('连接数据库失败');
+    throw new Error('Connection to database failed')
   }
 
   const queries = [
@@ -148,17 +148,17 @@ async function searchUser(keyword, context) {
         $regex: `.*${keyword}.*`,
       },
     },
-  ];
+  ]
 
   try {
-    const db = client.db();
-    const collection = db.collection('Users');
+    const db = client.db()
+    const collection = db.collection('Users')
     let list = await collection
       .find({
         $or: queries,
       })
-      .toArray();
-    list = list.map(user => {
+      .toArray()
+    list = list.map((user) => {
       return {
         id: user._id.toString(),
         blocked: user.blocked,
@@ -172,16 +172,16 @@ async function searchUser(keyword, context) {
         firstName: user.firstName,
         lastName: user.lastName,
         password: user.password,
-      };
-    });
+      }
+    })
     return {
       list,
       totalCount: list.length,
-    };
+    }
   } catch (error) {
-    throw new Error(`Execute query failed: ${error.message}`);
+    throw new Error(`Execute query failed: ${error.message}`)
   } finally {
-    client.close();
+    client.close()
   }
 }
 ```

@@ -1,77 +1,77 @@
-# 管理用户
+# UsersManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} 用户管理模块。
+> {{$localeConfig.brandName}} Users ManagementClient
 
-此模块可以进行用户目录增删改查、搜索用户、刷新用户 token、管理用户分组、管理用户角色、管理用户策略授权等操作。
+This client can create, query, update and delete users, refresh user token, manage user's group, user's role, user's policy and perform other operations.
 
-请使用以下方式使用该模块：
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from 'authing-js-sdk'
+import { ManagementClient } from 'approw-js-sdk'
 const managementClient = new ManagementClient({
   userPoolId: 'YOUR_USERPOOL_ID',
   secret: 'YOUR_USERPOOL_SECRET',
 })
 
-managementClient.users.list // 获取用户列表
-managementClient.users.create // 创建用户
-managementClient.users.listRoles // 获取用户角色列表
-managementClient.users.search // 搜索用户
+managementClient.users.list // create user list
+managementClient.users.create // create a user
+managementClient.users.listRoles // get user's roles in list form
+managementClient.users.search // search for a user
 ```
 
-## 创建用户
+## Create a user
 
 UsersManagementClient().create(userInfo)
 
-> 此接口将以管理员身份创建用户，不需要进行手机号验证码检验等安全检测。
+> This interface uses administrator role to crate users, so it is unnecessary to perform security verification with mobile phone number anymore.
 
-#### 参数
+#### Parameter
 
-- `userInfo` \<CreateUserInput\> 用户资料
-- `userInfo.email` \<string\> 邮箱，用户池内唯一
-- `userInfo.emailVerified` \<boolean\> 邮箱是否已验证
-- `userInfo.phone` \<string\> 手机号
-- `userInfo.phoneVerified` \<boolean\> 手机号是否验证
-- `userInfo.unionid` \<string\> 以社会化登录的用户该字段为用户在第三方社会化登录服务商中的唯一 ID
-- `userInfo.openid` \<string\> 微信登录返回的 openid
-- `userInfo.password` \<string\> 密码
-- `userInfo.registerSource` \<string\> 注册来源，可以多选
-- `userInfo.username` \<string\> 用户名
-- `userInfo.nickname` \<string\> 昵称
-- `userInfo.photo` \<string\> 头像
-- `userInfo.company` \<string\> 公司
-- `userInfo.browser` \<string\> 浏览器
-- `userInfo.loginsCount` \<number\> 登录次数，当你从原有用户系统迁移到 {{$localeConfig.brandName}} 时可以设置该字段。
-- `userInfo.lastLogin` \<string\> 上次登录时间, 符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `userInfo.lastIP` \<string\> 用户最近一次登录（或其他活动）的 IP
-- `userInfo.signedUp` \<string\> 注册时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `userInfo.blocked` \<boolean\> 账号是否被禁用
-- `userInfo.isDeleted` \<boolean\> 标记账号是否被删除
-- `userInfo.device` \<string\> 设备
-- `userInfo.lastIP` \<string\> 最近登录的 IP
+- `userInfo` \<CreateUserInput\> User information
+- `userInfo.email` \<string\> Email, unique in the user pool.
+- `userInfo.emailVerified` \<boolean\> whether the email is verified.
+- `userInfo.phone` \<string\> Phone number
+- `userInfo.phoneVerified` \<boolean\> Whether the phone number is verified
+- `userInfo.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider.
+- `userInfo.openid` \<string\> The openid returned by WeChat login
+- `userInfo.password` \<string\> Password
+- `userInfo.registerSource` \<string\> Registration source, you can choose multiple
+- `userInfo.username` \<string\> Username
+- `userInfo.nickname` \<string\> Nickname
+- `userInfo.photo` \<string\> Avatar
+- `userInfo.company` \<string\> Company
+- `userInfo.browser` \<string\> Browser
+- `userInfo.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `userInfo.lastLogin` \<string\> Last login time, a time string conforming to the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.lastIP` \<string\> The last login (or other activity) IP of the user.
+- `userInfo.signedUp` \<string\> Registration time, a time string in ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `userInfo.blocked` \<boolean\> Whether the account is disabled
+- `userInfo.isDeleted` \<boolean\> Mark whether the account is deleted
+- `userInfo.device` \<string\> Device
+- `userInfo.lastIP` \<string\> Last logged in IP
 - `userInfo.name` \<string\> Name
 - `userInfo.givenName` \<string\> Given Name
 - `userInfo.familyName` \<string\> Family Name
 - `userInfo.middleName` \<string\> Middle Name
 - `userInfo.profile` \<string\> Profile Url
 - `userInfo.preferredUsername` \<string\> Preferred Name
-- `userInfo.website` \<string\> 个人网站
-- `userInfo.gender` \<string\> 性别, F 表示男性、W 表示女性、未知表示 U
-- `userInfo.birthdate` \<string\> 生日
-- `userInfo.zoneinfo` \<string\> 时区
-- `userInfo.locale` \<string\> 语言
-- `userInfo.address` \<string\> 地址
-- `userInfo.streetAddress` \<string\> 街道地址
+- `userInfo.website` \<string\> Personal website
+- `userInfo.gender` \<string\> Gender, M means male, F means female, U means unknown
+- `userInfo.birthdate` \<string\> Birthday
+- `userInfo.zoneinfo` \<string\> Timezone
+- `userInfo.locale` \<string\> Language
+- `userInfo.address` \<string\> Address
+- `userInfo.streetAddress` \<string\> Street address
 - `userInfo.locality` \<string\>
-- `userInfo.region` \<string\> 地域
-- `userInfo.postalCode` \<string\> 邮编
-- `userInfo.city` \<string\> 城市
-- `userInfo.province` \<string\> 省份
-- `userInfo.country` \<string\> 国家
+- `userInfo.region` \<string\> Region
+- `userInfo.postalCode` \<string\> Zipcode
+- `userInfo.city` \<string\> City
+- `userInfo.province` \<string\> Province
+- `userInfo.country` \<string\> Country
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.create({
@@ -83,126 +83,68 @@ const user = await managementClient.users.create({
 ```javascript
 const user = await managementClient.users.create({
    nickname: 'Nick',
-   phone: '176xxxx6754', // 由于是管理员操作，所以检验手机号验证码, 如果你需要检验，请使用  AuthenticationClient
-   loginsCount: 2 // 原有用户系统记录的用户登录次数
-   signedUp: '2020-10-15T17:55:37+08:00' // 原有用户系统记录的用户注册时间
+   phone: '176xxxx6754', // since this is an admin operation, SMS code verification is required. If you need it, please use AuthenticationClient
+   loginsCount: 2 // user login counter in original user system
+   signedUp: '2020-10-15T17:55:37+08:00' // user register time logged by original system
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-#### 示例数据
-
-```json
-{
-  "id": "604a12a261a85949c8ad0259",
-  "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-  "userPoolId": "604a12a22d45ab775db56160",
-  "status": "Activated",
-  "username": "test",
-  "email": null,
-  "emailVerified": false,
-  "phone": null,
-  "phoneVerified": false,
-  "unionid": null,
-  "openid": null,
-  "nickname": null,
-  "registerSource": ["unknown"],
-  "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-  "password": null,
-  "oauth": null,
-  "token": null,
-  "tokenExpiredAt": null,
-  "loginsCount": 0,
-  "lastLogin": null,
-  "lastIP": null,
-  "signedUp": "2021-03-11T20:52:50+08:00",
-  "blocked": false,
-  "isDeleted": false,
-  "device": null,
-  "browser": null,
-  "company": null,
-  "name": null,
-  "givenName": null,
-  "familyName": null,
-  "middleName": null,
-  "profile": null,
-  "preferredUsername": null,
-  "website": null,
-  "gender": "U",
-  "birthdate": null,
-  "zoneinfo": null,
-  "locale": null,
-  "address": null,
-  "formatted": null,
-  "streetAddress": null,
-  "locality": null,
-  "region": null,
-  "postalCode": null,
-  "city": null,
-  "province": null,
-  "country": null,
-  "createdAt": "2021-03-11T20:52:50+08:00",
-  "updatedAt": "2021-03-11T20:52:50+08:00",
-  "externalId": null
-}
-```
-
-## 修改用户资料
+## Update user information
 
 UsersManagementClient \*().update(id, updates)
 
-> 修改用户资料
+> Update user information
 
-#### 参数
+#### Parameter
 
-- `id` \<string\> 用户 ID
-- `updates` \<UpdateUserInput\> 修改的用户资料
-- `updates.email` \<string\> 邮箱
-- `updates.emailVerified` \<boolean\> 邮箱是否已验证
-- `updates.phone` \<string\> 手机号
-- `updates.phoneVerified` \<boolean\> 手机号是否验证
-- `updates.unionid` \<string\> 以社会化登录的用户该字段为用户在第三方社会化登录服务商中的唯一 ID
-- `updates.openid` \<string\> 微信登录返回的 openid
-- `updates.password` \<string\> 密码
-- `updates.registerSource` \<string\> 注册来源，可以多选
-- `updates.tokenExpiredAt` \<string\> token 过期时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")。
-  将该字段设置为小于当前时间可以让用户的 token 失效。
-- `updates.username` \<string\> 用户名
-- `updates.nickname` \<string\> 昵称
-- `updates.photo` \<string\> 头像
-- `updates.company` \<string\> 公司
-- `updates.browser` \<string\> 浏览器
-- `updates.loginsCount` \<number\> 登录次数，当你从原有用户系统迁移到 {{$localeConfig.brandName}} 时可以设置该字段。
-- `updates.lastLogin` \<string\> 上次登录时间, 符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `updates.lastIP` \<string\> 用户最近一次登录（或其他活动）的 IP
-- `updates.signedUp` \<string\> 注册时间，符合 ISO8601 格式的时间字符串。(如 "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
-- `updates.blocked` \<boolean\> 账号是否被禁用
-- `updates.device` \<string\> 设备
-- `updates.lastIP` \<string\> 最近登录的 IP
+- `id` \<string\> User ID
+- `updates` \<UpdateUserInput\> Modified user information
+- `updates.email` \<string\> Email
+- `updates.emailVerified` \<boolean\> Whether the email is verified
+- `updates.phone` \<string\> Phone number
+- `updates.phoneVerified` \<boolean\> Whether the phone number is verified
+- `updates.unionid` \<string\> For the social login user, this field is the unique ID of the user in the third-party social login identity provider
+- `updates.openid` \<string\> The openid returned by WeChat login
+- `updates.password` \<string\> Password
+- `updates.registerSource` \<string\> Registration source, you can select multiple
+- `updates.tokenExpiredAt` \<string\> The token expiration time, a time string in the ISO8601 format. (Such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00"). Set the field to be earlier than the current time can make the user's token invalid.
+- `updates.username` \<string\> Username
+- `updates.nickname` \<string\> Nickname
+- `updates.photo` \<string\> Avatar
+- `updates.company` \<string\> Comapny
+- `updates.browser` \<string\> Browser
+- `updates.loginsCount` \<number\> The number of login times. This field can be set when you migrate from the original user system to {{$localeConfig.brandName}}.
+- `updates.lastLogin` \<string\> Last login time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.lastIP` \<string\> The IP of the user's last login (or other activity)
+- `updates.signedUp` \<string\> Registration time, a time string in the ISO8601 format. (E.g. "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00")
+- `updates.blocked` \<boolean\> Whether the account is disabled
+- `updates.device` \<string\> Device
+- `updates.lastIP` \<string\> Last logged in IP
 - `updates.name` \<string\> Name
 - `updates.givenName` \<string\> Given Name
 - `updates.familyName` \<string\> Family Name
 - `updates.middleName` \<string\> Middle Name
 - `updates.profile` \<string\> Profile Url
 - `updates.preferredUsername` \<string\> Preferred Name
-- `updates.website` \<string\> 个人网站
-- `updates.gender` \<string\> 性别, F 表示男性、W 表示女性、未知表示 U
-- `updates.birthdate` \<string\> 生日
-- `updates.zoneinfo` \<string\> 时区
-- `updates.locale` \<string\> 语言
-- `updates.address` \<string\> 地址
-- `updates.streetAddress` \<string\> 街道地址
+- `updates.website` \<string\> Personal website
+- `updates.gender` \<string\> Gender, M means male, F means female, U means unknown
+- `updates.birthdate` \<string\> Birthday
+- `updates.zoneinfo` \<string\> Timezone
+- `updates.locale` \<string\> Language
+- `updates.address` \<string\> Address
+- `updates.streetAddress` \<string\> Street address
 - `updates.locality` \<string\>
-- `updates.region` \<string\> 地域
-- `updates.postalCode` \<string\> 邮编
-- `updates.city` \<string\> 城市
-- `updates.province` \<string\> 省份
-- `updates.country` \<string\> 国家
+- `updates.region` \<string\> Region
+- `updates.postalCode` \<string\> Zipcode
+- `updates.city` \<string\> City
+- `updates.province` \<string\> Province
+- `updates.country` \<string\> Country
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.update('USERID', {
@@ -213,186 +155,71 @@ const user = await managementClient.users.update('USERID', {
 ```javascript
 const user = await managementClient.users.update('USERID', {
   nickname: 'Nick',
-  phone: '176xxxx6754', // 由于是管理员操作，所以检验手机号验证码, 如果你需要检验，请使用  AuthenticationClient
+  phone: '176xxxx6754', // since this is an admin operation, SMS code verification is required. If you need it, please use AuthenticationClient
   tokenExpiredAt: '2020-10-15T17:55:37+08:00',
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-#### 示例数据
-
-```json
-{
-  "id": "604a12a261a85949c8ad0259",
-  "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-  "userPoolId": "604a12a22d45ab775db56160",
-  "status": "Activated",
-  "username": "test",
-  "email": null,
-  "emailVerified": false,
-  "phone": null,
-  "phoneVerified": false,
-  "unionid": null,
-  "openid": null,
-  "nickname": null,
-  "registerSource": ["unknown"],
-  "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-  "password": null,
-  "oauth": null,
-  "token": null,
-  "tokenExpiredAt": null,
-  "loginsCount": 0,
-  "lastLogin": null,
-  "lastIP": null,
-  "signedUp": "2021-03-11T20:52:50+08:00",
-  "blocked": false,
-  "isDeleted": false,
-  "device": null,
-  "browser": null,
-  "company": null,
-  "name": null,
-  "givenName": null,
-  "familyName": null,
-  "middleName": null,
-  "profile": null,
-  "preferredUsername": null,
-  "website": null,
-  "gender": "U",
-  "birthdate": null,
-  "zoneinfo": null,
-  "locale": null,
-  "address": null,
-  "formatted": null,
-  "streetAddress": null,
-  "locality": null,
-  "region": null,
-  "postalCode": null,
-  "city": null,
-  "province": null,
-  "country": null,
-  "createdAt": "2021-03-11T20:52:50+08:00",
-  "updatedAt": "2021-03-11T20:52:50+08:00",
-  "externalId": null
-}
-```
-
-## 获取用户详情
+## Get user details
 
 UsersManagementClient().detail(userId)
 
-> 通过用户 ID 获取用户详情，如果你想通过 token 获取用户详情，请使用 AuthenticationClient SDK 。
+> Get user details by user ID. If you want to get user details by token, please use AuthenticationClient SDK.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.detail('USERID')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<User>`
 
-#### 示例数据
-
-```json
-{
-  "id": "604a12a261a85949c8ad0259",
-  "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-  "userPoolId": "604a12a22d45ab775db56160",
-  "status": "Activated",
-  "username": "test",
-  "email": null,
-  "emailVerified": false,
-  "phone": null,
-  "phoneVerified": false,
-  "identities": [],
-  "unionid": null,
-  "openid": null,
-  "nickname": null,
-  "registerSource": ["unknown"],
-  "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-  "password": null,
-  "oauth": null,
-  "token": null,
-  "tokenExpiredAt": null,
-  "loginsCount": 0,
-  "lastLogin": null,
-  "lastIP": null,
-  "signedUp": "2021-03-11T20:52:50+08:00",
-  "blocked": false,
-  "isDeleted": false,
-  "device": null,
-  "browser": null,
-  "company": null,
-  "name": null,
-  "givenName": null,
-  "familyName": null,
-  "middleName": null,
-  "profile": null,
-  "preferredUsername": null,
-  "website": null,
-  "gender": "U",
-  "birthdate": null,
-  "zoneinfo": null,
-  "locale": null,
-  "address": null,
-  "formatted": null,
-  "streetAddress": null,
-  "locality": null,
-  "region": null,
-  "postalCode": null,
-  "city": null,
-  "province": null,
-  "country": null,
-  "createdAt": "2021-03-11T20:52:50+08:00",
-  "updatedAt": "2021-03-11T20:52:50+08:00",
-  "externalId": null
-}
-```
-
-## 获取自定义数据
+## Get user defined data
 
 UsersManagementClient().getUdfValue(userId)
 
-> 获取用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)。
+> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const data = await managementClient.users.getUdfValue('USER_ID')
 ```
 
-#### 示例数据
+#### Sample data
 
 ```json
 {
-  "school": "华中科技大学",
+  "school": "Huazhong Institute of Technology",
   "age": 20
 }
 ```
 
-## 批量获取自定义数据
+## Get user defined data in bulk
 
 UsersManagementClient().getUdfValueBatch(userIds)
 
-> 批量获取多个用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)。
+> Before you get user defined data, you need to [set user defined field](/guides/users/user-defined-field/) in the user pool.
 
-#### 参数
+#### Parameter
 
-- `userIds` \<string\> 用户 ID 列表
+- `userIds` \<string\> User ID list
 
-#### 示例
+#### Example
 
 ```javascript
 const data = await managementClient.users.getUdfValueBatch([
@@ -401,303 +228,183 @@ const data = await managementClient.users.getUdfValueBatch([
 ])
 ```
 
-#### 示例数据
+#### Sanple data
 
 ```json
 {
   "USER_ID1": {
-    "school": "华中科技大学",
+    "school": "Huazhong Institute of Technology",
     "age": 20
   },
   "USER_ID2": {
-    "school": "北京大学",
+    "school": "Peking University",
     "age": 21
   }
 }
 ```
 
-## 设置自定义数据
+## Set user defined data
 
 UsersManagementClient().setUdfValue(userId, data)
 
-> 设置用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)，且传入值的类型必须和定义的类型匹配。如果设置失败，会抛出异常，你需要对异常进行捕捉。
+> Set user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `data` \<KeyValuePair>\ 自定义字段数据，类型为一个对象。
+- `userId` \<string\> User ID
+- `data` \<KeyValuePair>\ User defined field data. It is an object.
 
-#### 示例
+#### Example
 
 ```javascript
 await managementClient.users.setUdfValue(userId, {
-  school: '华中科技大学',
+  school: 'Huazhong Institute of Technology',
   age: 20,
 })
 ```
 
-## 批量设置自定义数据
+## Batch set user defined data
 
 UsersManagementClient().setUdfValueBatch(input)
 
-> 批量设置多个用户的自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)，且传入值的类型必须和定义的类型匹配。如果设置失败，会抛出异常，你需要对异常进行捕捉。
+> Set multiple users defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
-#### 参数
+#### Parameter
 
-- `input` \<string\> 输入数据，结构请见示例。
+- `input` \<string\> input data. See structure in example.
 
-#### 示例
+#### Example
 
 ```javascript
 await managementClient.users.setUdfValueBatch([
   {
     userId: 'USER_ID1',
     data: {
-      school: '华中科技大学',
+      school: 'Huazhong Institute of Technology',
     },
   },
   {
     userId: 'USER_ID2',
     data: {
-      school: '清华大学',
+      school: 'Tsinghua University',
       age: 100,
     },
   },
 ])
 ```
 
-## 删除自定义数据
+## Remove user defined data
 
 UsersManagementClient().removeUdfValue(userId, key)
 
-> 删除自定义数据。你需要先在用户池[定义用户自定义数据元信息](/guides/users/user-defined-field/)，且传入值的类型必须和定义的类型匹配。
+> Delete user defined data. Before that, you need to [set user defined field](/guides/users/user-defined-field/) first in the user pool. The data type must be consistent. If failed, it will throw an exception. You need to capture it.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `key` \<string\> 自定义字段的 key 。
+- `userId` \<string\> User ID
+- `key` \<string\> The key of the user defined data.
 
-#### 示例
+#### Example
 
 ```javascript
 await authenticationClient.removeUdfValue('USER_ID', 'school')
 ```
 
-## 删除用户
+## Delete a user
 
 UsersManagementClient().delete(userId)
 
-> 删除用户
+> Delete a user
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.delete('USERID')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 批量删除用户
+## Batch delete users
 
 UsersManagementClient().deleteMany(userIds)
 
-> 批量删除用户
+> Batch delete users
 
-#### 参数
+#### Parameter
 
-- `userIds` \<string[]\> 用户 ID 列表
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.deleteMany(['USERID'])
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 批量获取用户
+## Batch get users
 
 UsersManagementClient().batch(userIds)
 
-> 通过 ID 批量获取用户详情
+> Batch get user details by ID
 
-#### 参数
+#### Parameter
 
-- `userIds` \<string[]\> 用户 ID 列表
+- `userIds` \<string[]\> User ID list
 
-#### 示例
+#### Example
 
 ```javascript
 const users = await managementClient.users.batch(['USERID'])
 ```
 
-#### 示例数据
-
-```json
-{
-  "id": "604a12a261a85949c8ad0259",
-  "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-  "userPoolId": "604a12a22d45ab775db56160",
-  "status": "Activated",
-  "username": "test",
-  "email": null,
-  "emailVerified": false,
-  "phone": null,
-  "phoneVerified": false,
-  "identities": [],
-  "unionid": null,
-  "openid": null,
-  "nickname": null,
-  "registerSource": ["unknown"],
-  "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-  "password": null,
-  "oauth": null,
-  "token": null,
-  "tokenExpiredAt": null,
-  "loginsCount": 0,
-  "lastLogin": null,
-  "lastIP": null,
-  "signedUp": "2021-03-11T20:52:50+08:00",
-  "blocked": false,
-  "isDeleted": false,
-  "device": null,
-  "browser": null,
-  "company": null,
-  "name": null,
-  "givenName": null,
-  "familyName": null,
-  "middleName": null,
-  "profile": null,
-  "preferredUsername": null,
-  "website": null,
-  "gender": "U",
-  "birthdate": null,
-  "zoneinfo": null,
-  "locale": null,
-  "address": null,
-  "formatted": null,
-  "streetAddress": null,
-  "locality": null,
-  "region": null,
-  "postalCode": null,
-  "city": null,
-  "province": null,
-  "country": null,
-  "createdAt": "2021-03-11T20:52:50+08:00",
-  "updatedAt": "2021-03-11T20:52:50+08:00",
-  "externalId": null
-}
-```
-
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 获取用户列表
+## Get user list
 
 UsersManagementClient().list(page, limit)
 
-> 获取用户池用户列表
+> Get the user list in the user pool
 
-#### 参数
+#### Parameter
 
-- `page` \<number\> 页码数, 从 1 开始 默认值为 : `1`。
-- `limit` \<number\> 每页包含的用户数 默认值为 : `10`。
+- `page` \<number\> Page number, starting from 1. The default value is: `1`.
+- `limit` \<number\> The number of users per page. The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```javascript
 const user = await managementClient.users.list()
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<PaginatedUsers>`
+- `null`
 
-#### 示例数据
-
-```json
-{
-  "totalCount": 1,
-  "list": [
-    {
-      "id": "604a12a261a85949c8ad0259",
-      "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "status": "Activated",
-      "username": "test",
-      "email": null,
-      "emailVerified": false,
-      "phone": null,
-      "phoneVerified": false,
-      "unionid": null,
-      "openid": null,
-      "nickname": null,
-      "registerSource": ["unknown"],
-      "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-      "password": null,
-      "oauth": null,
-      "token": null,
-      "tokenExpiredAt": null,
-      "loginsCount": 0,
-      "lastLogin": null,
-      "lastIP": null,
-      "signedUp": "2021-03-11T20:52:50+08:00",
-      "blocked": false,
-      "isDeleted": false,
-      "device": null,
-      "browser": null,
-      "company": null,
-      "name": null,
-      "givenName": null,
-      "familyName": null,
-      "middleName": null,
-      "profile": null,
-      "preferredUsername": null,
-      "website": null,
-      "gender": "U",
-      "birthdate": null,
-      "zoneinfo": null,
-      "locale": null,
-      "address": null,
-      "formatted": null,
-      "streetAddress": null,
-      "locality": null,
-      "region": null,
-      "postalCode": null,
-      "city": null,
-      "province": null,
-      "country": null,
-      "createdAt": "2021-03-11T20:52:50+08:00",
-      "updatedAt": "2021-03-11T20:52:50+08:00",
-      "externalId": null
-    }
-  ]
-}
-```
-
-## 检查用户是否存在
+## Check if the user exists
 
 UsersManagementClient().exists(options)
 
-> 检查用户是否存在，目前可检测的字段有用户名、邮箱、手机号。
+> Check whether the user exists. Currently it can check username, email, and phone number.
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.username` \<string\> 用户名，区分大小写。
-- `options.email` \<string\> 邮箱，邮箱不区分大小写。
-- `options.phone` \<string\> 手机号
+- `options.username` \<string\> User name, case sensitive.
+- `options.email` \<string\> The email address, not case sensitive.
+- `options.phone` \<string\> Phone number
 
-#### 示例
+#### Example
 
 ```javascript
 const exists = await managementClient.users.exists({
@@ -705,286 +412,109 @@ const exists = await managementClient.users.exists({
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<boolean>`
 
-## 查找用户
+## Find a user
 
 UsersManagementClient().find(options)
 
-> 通过用户名、邮箱、手机号查找用户
+> Find a user by username, email, and phone number.
 
-#### 参数
+#### Parameter
 
 - `options` \<Object\>
-- `options.username` \<string\> 用户名，区分大小写。
-- `options.email` \<string\> 邮箱，邮箱不区分大小写。
-- `options.phone` \<string\> 手机号
+- `options.username` \<string\> User name, case sensitive.
+- `options.email` \<string\> The email address, not case sensitive.
+- `options.phone` \<string\> Phone number
 
-#### 示例
+#### Example
 
-```javascript
-const users = await managementClient.users.find({
-  username: 'test',
-})
-```
+#### Return value
 
-#### 示例数据
-
-```json
-{
-  "totalCount": 1,
-  "list": [
-    {
-      "id": "604a12a261a85949c8ad0259",
-      "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "status": "Activated",
-      "username": "test",
-      "email": null,
-      "emailVerified": false,
-      "phone": null,
-      "phoneVerified": false,
-      "unionid": null,
-      "openid": null,
-      "nickname": null,
-      "registerSource": ["unknown"],
-      "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-      "password": null,
-      "oauth": null,
-      "token": null,
-      "tokenExpiredAt": null,
-      "loginsCount": 0,
-      "lastLogin": null,
-      "lastIP": null,
-      "signedUp": "2021-03-11T20:52:50+08:00",
-      "blocked": false,
-      "isDeleted": false,
-      "device": null,
-      "browser": null,
-      "company": null,
-      "name": null,
-      "givenName": null,
-      "familyName": null,
-      "middleName": null,
-      "profile": null,
-      "preferredUsername": null,
-      "website": null,
-      "gender": "U",
-      "birthdate": null,
-      "zoneinfo": null,
-      "locale": null,
-      "address": null,
-      "formatted": null,
-      "streetAddress": null,
-      "locality": null,
-      "region": null,
-      "postalCode": null,
-      "city": null,
-      "province": null,
-      "country": null,
-      "createdAt": "2021-03-11T20:52:50+08:00",
-      "updatedAt": "2021-03-11T20:52:50+08:00",
-      "externalId": null
-    }
-  ]
-}
-```
-
-## 搜索用户
+## Search users
 
 UsersManagementClient().search(query, options, page, limit)
 
-> 根据关键字搜索用户
+> Search users based on keywords.
 
-#### 参数
+#### Parameter
 
-- `query` \<string\> 搜索内容
-- `options` \<string[]\> 选项
-- `options.fields` \<string[]\> 搜索用户字段，如果不指定，默认会从 `username`、`nickname`、`email`、`phone`、`company`、`name`、`givenName`、`familyName`、`middleName`、`profile`、`preferredUsername` 这些字段进行模糊搜索。
-  如果你需要精确查找，请使用 find 方法。
-- `page` \<number\> 默认值为 : `1`。
-- `limit` \<number\> 默认值为 : `10`。
+- `query` \<null\> Search content
+- `options` \<string[]\> Options
+- `options.fields` \<string[]\> Search user fields. If not specified, the default will be fuzzy search from `username`, `nickname`, `email`, `phone`, `company`, `name`, `givenName`, `familyName`, `middleName`, `profile` and `preferredUsername` fields. If you need a precise search, please use the find method.
+- `page` \<number\> The default value is:`1`.
+- `limit` \<number\> The default value is: `10`.
 
-#### 示例
+#### Example
 
 ```javascript
 const { totalCount, list } = await managementClient.users.search('Bob')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<PaginatedUsers>`
 
-#### 示例数据
-
-```json
-{
-  "totalCount": 1,
-  "list": [
-    {
-      "id": "604a12a261a85949c8ad0259",
-      "arn": "arn:cn:authing:604a12a22d45ab775db56160:user:604a12a261a85949c8ad0259",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "status": "Activated",
-      "username": "test",
-      "email": null,
-      "emailVerified": false,
-      "phone": null,
-      "phoneVerified": false,
-      "unionid": null,
-      "openid": null,
-      "nickname": null,
-      "registerSource": ["unknown"],
-      "photo": "https://files.authing.co/authing-console/default-user-avatar.png",
-      "password": null,
-      "oauth": null,
-      "token": null,
-      "tokenExpiredAt": null,
-      "loginsCount": 0,
-      "lastLogin": null,
-      "lastIP": null,
-      "signedUp": "2021-03-11T20:52:50+08:00",
-      "blocked": false,
-      "isDeleted": false,
-      "device": null,
-      "browser": null,
-      "company": null,
-      "name": null,
-      "givenName": null,
-      "familyName": null,
-      "middleName": null,
-      "profile": null,
-      "preferredUsername": null,
-      "website": null,
-      "gender": "U",
-      "birthdate": null,
-      "zoneinfo": null,
-      "locale": null,
-      "address": null,
-      "formatted": null,
-      "streetAddress": null,
-      "locality": null,
-      "region": null,
-      "postalCode": null,
-      "city": null,
-      "province": null,
-      "country": null,
-      "createdAt": "2021-03-11T20:52:50+08:00",
-      "updatedAt": "2021-03-11T20:52:50+08:00",
-      "externalId": null
-    }
-  ]
-}
-```
-
-## 刷新用户 token
+## Refresh user token
 
 UsersManagementClient().refreshToken(id)
 
-> 刷新用户 token
+> Refresh user token
 
-#### 参数
+#### Parameter
 
-- `id` \<string\> 用户 ID
+- `id` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const { token } = await managementClient.users.refreshToken('USERID')
 
-// 检测 token 的最新状态，能够获取到该用户对应的 token
+// check the latest status of the token. It can get user's token
 
 const data = await managementClient.checkLoginStatus(token, {
   fetchUserDetail: true,
 })
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<RefreshToken>`
 
-## 检测密码是否合法
-
-ManagementClient().isPasswordValid(password)
-
-> 检测密码是否合法
-
-#### 参数
-
-- `isPasswordValid` \<string\> 要检测的密码
-
-#### 示例
-
-```javascript
-// 检测 token 的最新状态，能够获取到该用户对应的 token
-
-const data = await managementClient.isPasswordValid(password)
-```
-
-#### 返回值
-
--
-
-```js
-
-Promise<{
-  valid: boolean
-  message: string
-}>
-
-```
-
-## 获取用户分组列表
+## Get user group list
 
 UsersManagementClient().listGroups(userId)
 
-> 获取用户的分组列表
+> Get user group list
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const { list, totalCount } = await managementClient.users.listGroups('USERID')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<PaginatedGroups>>`
 
-#### 示例数据
-
-```json
-{
-  "totalCount": 1,
-  "list": [
-    {
-      "code": "test_group",
-      "name": "testGroup",
-      "description": null,
-      "createdAt": "2021-03-15T18:56:56+08:00",
-      "updatedAt": "2021-03-15T18:56:56+08:00"
-    }
-  ]
-}
-```
-
-## 加入分组
+## Join a group
 
 UsersManagementClient().addGroup(userId, group)
 
-> 将用户加入分组
+> Add a user to a group
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `group` \<string\> 分组 code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
-#### 示例
+#### Example
 
 ```javascript
 const { code, message } = await managementClient.users.addGroup(
@@ -993,22 +523,22 @@ const { code, message } = await managementClient.users.addGroup(
 )
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 退出分组
+## Quit a group
 
 UsersManagementClient().removeGroup(userId, group)
 
-> 退出分组
+> Remove the user from a group.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `group` \<string\> 分组 code
+- `userId` \<string\> User ID
+- `group` \<string\> Group code
 
-#### 示例
+#### Example
 
 ```javascript
 const { code, message } = await managementClient.users.removeGroup(
@@ -1017,74 +547,42 @@ const { code, message } = await managementClient.users.removeGroup(
 )
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 获取用户角色列表
+## Get user role list
 
 UsersManagementClient().listRoles(userId)
 
-> 获取用户的角色列表
+> Get a user's role list
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const { list, totalCount } = await managementClient.users.listRoles('USERID')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<DeepPartial<PaginatedRoles>>`
 
-#### 示例数据
-
-```js
-
-{
-  totalCount: 20,
-  list: [
-    {
-      /** 权限组 code */
-      namespace: 'default',
-      /** 唯一标志 code */
-      code: 'example_code',
-      /** 资源描述符 arn */
-      arn: 'arn:xxxxxxx:xxxxxxx',
-      /** 角色描述 */
-      description?: '角色 1',
-      /** 是否为系统内建，系统内建的角色不能删除 */
-      isSystem?: false,
-      /** 创建时间 */
-      createdAt?: '2020-10-20T13:48:11.288Z',
-      /** 修改时间 */
-      updatedAt?: '2020-10-20T13:48:11.288Z',
-      /** 被授予此角色的用户列表 */
-      users: PaginatedUsers,
-      /** 父角色 */
-      parent?: null,
-    }
-  ]
-};
-
-```
-
-## 添加角色
+## Add roles
 
 UsersManagementClient().addRoles(userId, roles)
 
-> 将用户加入角色
+> Add roles to the user
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `roles` \<string\> 角色 code 列表
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
-#### 示例
+#### Example
 
 ```javascript
 const { code, message } = await managementClient.users.addRoles('USERID', [
@@ -1092,22 +590,22 @@ const { code, message } = await managementClient.users.addRoles('USERID', [
 ])
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 移除角色
+## Remove roles
 
 UsersManagementClient().removeRoles(userId, roles)
 
-> 将用户从角色中移除
+> Remove roles from the user.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
-- `roles` \<string\> 角色 code 列表
+- `userId` \<string\> User ID
+- `roles` \<string\> Role code list
 
-#### 示例
+#### Example
 
 ```javascript
 const { code, message } = await managementClient.users.removeRoles('USERID', [
@@ -1115,88 +613,56 @@ const { code, message } = await managementClient.users.removeRoles('USERID', [
 ])
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<CommonMessage>`
 
-## 获取用户所在组织机构
+## Get the user's organization
 
 UsersManagementClient().listOrg(userId)
 
-> 获取用户所在组织机构，以及他在该组织机构内的的节点路径。
+> Get the user's organization and node path in the organization.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID
+- `userId` \<string\> User ID
 
-#### 示例
+#### Example
 
 ```javascript
 const data = await managementClient.users.listOrgs('USERID')
 ```
 
-#### 返回值
+#### Return value
 
 - `Promise<UserOrgList>`
 
-#### 示例数据
-
-```json
-[
-  [
-    {
-      "type": "org",
-      "id": "604f396a98219415a099dce9",
-      "createdAt": "2021-03-15T10:39:38.146Z",
-      "updatedAt": "2021-03-15T10:39:38.215Z",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "rootNodeId": "604f396aeb491afde5083f02",
-      "logo": null
-    },
-    {
-      "type": "node",
-      "id": "604f396aeb491afde5083f02",
-      "createdAt": "2021-03-15T10:39:38.179Z",
-      "updatedAt": "2021-03-15T10:39:38.179Z",
-      "userPoolId": "604a12a22d45ab775db56160",
-      "orgId": "604f396a98219415a099dce9",
-      "name": "test",
-      "nameI18n": null,
-      "description": null,
-      "descriptionI18n": null,
-      "order": null,
-      "code": null
-    }
-  ]
-]
-```
-
-## 获取用户被授权的所有资源列表
+## Get the list of authorized resources of the user
 
 UsersManagementClient.listAuthorizedResources(userId, namespace)
 
-> 获取一个用户被授权的所有资源，用户被授权的所有资源里面包括从角色、分组、组织机构继承的资源。
+> Get all the resources authorized to this user. All the resources authorized to the user include resources inherited from roles, groups, and organizations.
 
-#### 参数
+#### Parameter
 
-- `userId` \<string\> 用户 ID；
-- `namespace` \<string\> 权限分组的 code，详情请见[使用权限分组管理权限资源](/guides/access-control/resource-group.md)。
+- `userId` \<string\> User ID.
+- `namespace` \<string\> The code of the permission group. For more details, please refer to [resource group](/guides/access-control/resource-group.md).
 
-#### 示例
+#### Example
 
 ```javascript
 managementClient.users.listAuthorizedResources('USERID', 'code')
 ```
 
-#### 示例数据
+#### Sample data
 
-- `type` 为资源类型，一共有以下几种资源类型
-  - `DATA`: 数据类型；
-  - `API`: API 类型数据；
-  - `MENU`: 菜单类型数据；
-  - `BUTTON`: 按钮类型数据；
-- `code`: 资源描述符，如果是 `DATA` 类型资源，格式为 `resourceType:resourceId`，如 `books:*` 表示所有书籍，`books:1` 表示 ID 为 1 的书籍。
-- `actions`: 用户被授权对该资源的操作。
+- `type`: Type is the type of resource, there are several different values that can be used:
+  - `DATA`: data type;
+  - `API`: API interface type;
+  - `MENU`: menu type;
+  - `BUTTON`: button type.
+- `code`: Resource descriptor, if the resource is `DATA` type, the format should be: `resourceType: resourceId`, for example, `books:*` means all books, `books:1` means the book that has an id of 1.
+- `actions`: Actions that user is authorized to operate on the resource.
 
 ```json
 {

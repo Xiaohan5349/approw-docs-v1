@@ -1,10 +1,10 @@
-使用[用户池 ID（`userPoolId`）和用户池密钥（`secret`）](/guides/faqs/get-userpool-id-and-secret.md)初始化 [Node.js SDK](/reference/sdk-for-node/) 的 `ManagementClient`:
+Use [user pool ID (`userPoolId`) and user pool key (`secret`)](/guides/faqs/get-userpool-id-and-secret.md) to initialize the `ManagementClient` of [Node.js SDK](/reference/sdk-for-node/):
 
 ```js
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from 'authing-js-sdk'
 
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
-});
+  userPoolId: 'YOUR_USERPOOL_ID',
+  secret: 'YOUR_USERPOOL_SECRET',
+})
 ```

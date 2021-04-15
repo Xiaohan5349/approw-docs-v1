@@ -1,90 +1,89 @@
-# 成为 OAuth 2.0 身份源
+# Become OAuth 2.0 Identity Source
 
 <LastUpdated/>
 
-本文介绍如何让 Authing 成为 OAuth2.0 身份源，其他系统可以通过 OAuth2.0 协议接入 Authing 作为身份提供商。
+This article introduces how to make Approw an OAuth2.0 identity resource, other systems can connect to Approw as identity providers through OAuth2.0 protocol.
 
-OAuth2.0 协议有以下几种授权模式，分别是**授权码模式**、**隐式模式**、**密码模式**。成为 OAuth2.0 身份源后，其他应用可以使用相应模式的流程完成用户的认证与授权。
+OAuth2.0 protocol has the following authorization modes, which are: **authorization code mode**，**implicit mode**，**password mode**. After becoming an OAuth2.0 identity source, Other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
-你可以在[这里](/concepts/oidc/oidc-overview.md)深入理解 OAuth 2.0 协议。
+You can understand the OAuth2.0 protocol in depth [here](/docs/concepts/oidc/oidc-overview.md).
 
-## 创建应用
+## Create an Application
 
-为了让你的应用具备身份认证能力，你需要在 Authing 创建一个应用，名称建议填写你的实际应用项目的名称，进入**控制台** > **应用** > **应用列表**，点击创建应用：
+In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
-![](~@imagesZhCn/guides/federation/oidc/1-1.png)
+![](~@imagesEnUs/guides/federation/oidc/1-1.png)
 
-填写你的**应用名称**，例如：网络笔记项目，为你的项目指定一个**认证地址**，将来你的用户会在这个地址完成认证。**回调链接**填写你的项目**后端路由**，Authing 会将用户信息（确切地说是一个授权码 code）发送到这个地址。最后点击创建。
+Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
-![](~@imagesZhCn/guides/federation/oidc/1-2.png)
+![](~@imagesEnUs/guides/federation/oidc/1-2.png)
 
-找到你的应用，进入「启用身份提供商」选项卡。
+Find your application, enter “Enable identity provider” tag.
 
-![](~@imagesZhCn/guides/federation/oauth/1-1.png)
+![](~@imagesEnUs/guides/federation/oauth/1-1.png)
 
-在下方的「OAuth2.0 身份提供商」卡片中，打开启用 OAuth2.0 Provider 开关，然后点击保存。
+In the "OAuth2.0 Identity Provider" card below, turn on the Enable OAuth2.0 Provider, and then click Save.
 
-![](~@imagesZhCn/guides/federation/oauth/1-2.png)
+![](~@imagesEnUs/guides/federation/oauth/1-2.png)
 
-## 授权码模式
+## Authorization Code Mode
 
-如果你的应用项目有**后端服务**，能够安全存储密钥，建议使用**授权码模式**。
+If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended.
 
-首先在**控制台** > **应用**，找到你的应用，进入应用详情，进入「启用身份提供商」选项卡，在下方的「OAuth2.0 身份提供商」卡片中，授权模式勾选 `authorization_code`，然后点击保存。
+In **Console** > **Applications**, find your application in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `authorization_code` in the authorization mode, and then click Save.
 
-![](~@imagesZhCn/guides/federation/oauth/1-3.png)
+![](~@imagesEnUs/guides/federation/oauth/1-3.png)
 
-整体上，有以下流程。
+There are the following processes.
 
-1. 在你的应用中，让用户访问登录链接，浏览器跳转到 Authing，用户在 Authing 完成**认证**。
-2. 浏览器接收到一个从 Authing 服务器发来的**授权码**。
-3. 浏览器通过重定向将**授权码**发送到你的应用**后端**。
-4. 你的应用服务将**授权码**发送到 Authing 获取 **AccessToken**，如果需要，还会返回 refresh token。
-5. 你的应用后端现在知道了用户的身份，后续可以保存用户信息，重定向到前端其他页面，使用 AccessToken 调用资源方的其他 API 等等。
+1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
+2. The browser receives an **authorization code** from Approw service.
+3. The browser sends the **authorization code** to your application **back-end** using redirection.
+4. Your application service sends the **authorization code** to Approw to obtain **Access Token**, refresh token also will be returned if necessary.
+5. Now your application back-end knows the user’s identity and can save user information later, redirect to other front-end pages, use Access Tokan to call other resources’ API, etc.
 
-流程图如下：
+Below is the workflow:
 
-![](~@imagesZhCn/guides/federation/oauth/authorization-code-flow.png)
+![](~@imagesEnUs/guides/federation/oauth/authorization-code-flow.png)
 
-[查看接入文档](/federation/oauth2/authorization-code)。
+[Check the document](/docs/federation/oauth2/authorization-code).
 
-## 隐式模式
+## Implicit Mode
 
-如果你的应用是一个 **SPA 前端应用**，不具备后端服务，建议使用**隐式模式**来完成用户的认证和授权。隐式模式**适合不能安全存储密钥的场景**（例如前端浏览器）。在**隐式模式**中，应用不需要使用 code 换 token，无需请求 `/token` 端点，AccessToken 会直接从**认证端点**返回。
+If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode** applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken will be returned directly from the **authentication endpoint**.
 
-首先在**控制台** > **应用**，找到你的应用，进入应用详情，进入「启用身份提供商」选项卡，在下方的「OAuth2.0 身份提供商」卡片中，授权模式勾选 `implicit`，然后点击保存。
+In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `implicit` in the authorization mode, and then click Save.
+![](~@imagesEnUs/guides/federation/oauth/1-4.png)
 
-![](~@imagesZhCn/guides/federation/oauth/1-4.png)
+There are the following processes.
 
-整体上，有以下流程。
+1. In your application, let the user visit the login link, the browser redirects to Approw, the user completes **authentication** in Approw.
+2. Approw redirects the browser to your application callback address. AccessToken is sent as **URL hash**.
+3. Your application retrieves token from URL.
+4. Your application can save AccessToken for further use. Such as carrying AccessToken to access the resource service, carrying AccessToken to request the service.
 
-1. 在你的应用中，让用户访问登录链接，浏览器跳转到 Authing，用户在 Authing 完成**认证**。
-2. Authing 将浏览器重定向到你的应用回调地址，AccessToken 作为 **URL hash** 传递。
-3. 你的应用从 URL 中取出 token。
-4. 你的应用可以将 AccessToken 保存，以便后续使用，例如使用 AccessToken 获取用户信息，携带 AccessToken 访问资源服务器。
+Below is the workflow:
 
-流程图如下：
+![](~@imagesEnUs/guides/federation/oauth/implicit-flow.png)
 
-![](~@imagesZhCn/guides/federation/oauth/implicit-flow.png)
+[Check the document](/docs/federation/oauth2/implicit).
 
-[查看接入文档](/federation/oauth2/implicit/)。
+## Password Mode
 
-## 密码模式
+It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
-不推荐使用此模式，尽量使用其他模式。只有其他模式都无法解决问题时才会考虑使用**密码模式**。如果使用密码模式，请确保你的应用代码逻辑非常安全，不会被黑客攻击，否则将会**直接泄露用户的账密**。一般用于改造集成非常古老的应用，否则**绝对不要**把它作为你的第一选择。
+In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `password` in the authorization mode, and then click Save.
 
-首先在**控制台** > **应用**，找到你的应用，进入应用详情，进入「启用身份提供商」选项卡，在下方的「OAuth2.0 身份提供商」卡片中，授权模式勾选 `password`，然后点击保存。
+![](~@imagesEnUs/guides/federation/oauth/1-5.png)
 
-![](~@imagesZhCn/guides/federation/oauth/1-5.png)
+There are the following processes.
 
-整体上，有以下流程。
+1. Your application asks the user to enter credential information.
+2. Your application sends user credential to Approw.
+3. If the credential is correct, Approw returns token.
 
-1. 你的应用让用户输入账密信息。
-2. 你的应用将用户账密发送到 Authing。
-3. 如果账密正确，Authing 返回 token。
+Below is the workflow:
 
-流程图如下：
+![](~@imagesEnUs/guides/federation/oauth/password-flow.png)
 
-![](~@imagesZhCn/guides/federation/oauth/password-flow.png)
-
-[查看接入文档](/federation/oauth2/password)。
+[Check the document](/docs/federation/oauth2/password).

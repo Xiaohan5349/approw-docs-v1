@@ -1,48 +1,42 @@
 ---
 meta:
   - name: description
-    content: 应用场景
+    content: Usages
 ---
 
-# 应用场景
+# Usages
 
 <LastUpdated/>
 
 
 ::: hint-success
-Pipeline 能够让开发者在认证过程中执行自定义代码，实现 Webhook 通知、扩展用户字段、访问控制等能力。如果你有好的 Idea 和应用场景，欢迎为我们[补充模版](https://github.com/authing/pipeline/blob/master/CONTRIBUTING.md)。
+Pipeline allows developers to execute custom code during the authentication process, realize Webhook notification, expand user fields, access control and other capabilities. If you have a good idea and scenarios of use, you are welcome to [add a template](https://github.com/authing/pipeline/blob/master/CONTRIBUTING.md). 
 :::
 
-## Webhook 通知
+## Extended user field
 
-* [飞书群通知](https://github.com/Authing/pipeline/blob/master/src/templates/lark-notify.js)
-* [Slack 群通知](https://github.com/Authing/pipeline/blob/master/src/templates/slack-notify.js)
-* [钉钉群通知](https://github.com/Authing/pipeline/blob/master/src/templates/dingtalk-notify.js)
+* [Add user-defined fields](https://github.com/Authing/pipeline/blob/master/src/templates/persist-metadata.js)
+* [Modify the default avatar](https://github.com/Authing/pipeline/blob/master/src/templates/change-default-avatar.js)
+* [Write the latest location to its MetaData each time when the user logs in](https://github.com/Authing/pipeline/blob/master/src/templates/add-location-to-metadata.js)
+* [Use ui-avatars API to dynamically generate avatars](https://github.com/Authing/pipeline/blob/master/src/templates/change-avatar-to-ui-avatars.js)
+* [Supplement user geographic location information field](https://github.com/Authing/pipeline/blob/master/src.src/templates/fill-user-address-field.js)
+* [User-defined Token](https://github.com/Authing/pipeline/blob/master/src/templates/add-token-field.js)
+* [Get user repo list through GitHub API](https://github.com/Authing/pipeline/blob/master/src/templates/get-repos-from-github-api.js)
 
-## 扩展用户字段
+## Access control
 
-* [添加用户自定义字段](https://github.com/Authing/pipeline/blob/master/src/templates/persist-metadata.js)
-* [修改默认头像](https://github.com/Authing/pipeline/blob/master/src/templates/change-default-avatar.js)
-* [每次用户登录时将最新位置写入其 MetaData](https://github.com/Authing/pipeline/blob/master/src/templates/add-location-to-metadata.js)
-* [使用 ui-avatars API 动态生成头像](https://github.com/Authing/pipeline/blob/master/src/templates/change-avatar-to-ui-avatars.js)
-* [补充用户地理位置信息字段](https://github.com/Authing/pipeline/blob/master/src.src/templates/fill-user-address-field.js)
-* [自定义用户 Token](https://github.com/Authing/pipeline/blob/master/src/templates/add-token-field.js)
-* [通过 GitHub API 获取用户 repo 列表](https://github.com/Authing/pipeline/blob/master/src/templates/get-repos-from-github-api.js)
+* [Registered Email Suffix White List](https://github.com/Authing/pipeline/blob/master/src/templates/email-domain-whitelist.js)
+* [Load the whitelist dynamically via API](https://github.com/Authing/pipeline/blob/master/src/templates/load-whitelist-on-cloud.js)
+* [Login after mandatory email verification](https://github.com/Authing/pipeline/blob/master/src/templates/force-email-verified.js)
+* [Log in after mandatory mobile phone number verification](https://github.com/Authing/pipeline/blob/master/src/templates/force-phone-verifyed.js)
+* [Register IP segment whitelist](https://github.com/Authing/pipeline/blob/master/src/templates/ip-range-whitelist.js)
+* [Block users based on IP risk score](https://github.com/Authing/pipeline/blob/master/src/templates/ip-risk-analysis.js)
+* [Registered mobile phone number whitelist](https://github.com/Authing/pipeline/blob/master/src/templates/phone-whitelist.js)
+* [Prohibit specific registration/login](https://github.com/Authing/pipeline/blob/master/src/templates/block-specific-connection.js)
+* [Registration/login is prohibited from 3-6 am for system maintenance every Sunday morning](https://github.com/Authing/pipeline/blob/master/src/templates/block-on-weekend.js)
+* [Add user to user group](https://github.com/Authing/pipeline/blob/master/src/templates/add-user-to-group.js)
 
-## 访问控制
+## OIDC certification process
 
-* [注册邮箱后缀白名单](https://github.com/Authing/pipeline/blob/master/src/templates/email-domain-whitelist.js)
-* [通过 API 动态加载白名单](https://github.com/Authing/pipeline/blob/master/src/templates/load-whitelist-on-cloud.js)
-* [强制邮箱验证之后才能登录](https://github.com/Authing/pipeline/blob/master/src/templates/force-email-verified.js)
-* [强制手机号验证之后才能登录](https://github.com/Authing/pipeline/blob/master/src/templates/force-phone-verifyed.js)
-* [注册 IP 段白名单](https://github.com/Authing/pipeline/blob/master/src/templates/ip-range-whitelist.js)
-* [根据 IP 风险评分屏蔽用户](https://github.com/Authing/pipeline/blob/master/src/templates/ip-risk-analysis.js)
-* [注册手机号白名单](https://github.com/Authing/pipeline/blob/master/src/templates/phone-whitelist.js)
-* [禁止特定方式注册/登录](https://github.com/Authing/pipeline/blob/master/src/templates/block-specific-connection.js)
-* [每周日凌晨 3-6 点系统维护禁止注册/登录](https://github.com/Authing/pipeline/blob/master/src/templates/block-on-weekend.js)
-* [添加用户至用户组](https://github.com/Authing/pipeline/blob/master/src/templates/add-user-to-group.js)
-
-## OIDC 认证流程
-
-* [添加自定义 idToken](https://github.com/Authing/pipeline/blob/master/src/templates/add-custom-idtoken.js)
+* [Add user-defined idToken](https://github.com/Authing/pipeline/blob/master/src/templates/add-custom-idtoken.js)
 

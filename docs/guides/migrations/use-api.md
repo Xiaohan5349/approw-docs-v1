@@ -1,142 +1,141 @@
-# 使用 SDK 导入用户
+# Import Users Using SDK
 
 <LastUpdated/>
 
-{{$localeConfig.brandName}} 同时支持了 Java、JavaScript/Node.js、Python、PHP、C#、Go、Ruby 等多种语言的 SDK：
+{{$localeConfig.brandName}} supports SDKs in multiple languages such as Java, JavaScript/Node.js, Python, PHP, C#, Go, Ruby, etc.
 
-- [Java/Kotlin](/reference/sdk-for-java/)
-- [JavaScript/Node.js](/reference/sdk-for-node/)
-- [Python](/reference/sdk-for-python/)
-- [PHP](/reference/sdk-for-php/)
-- [C#](/reference/sdk-for-csharp/)
-- [Go](/reference/sdk-for-go.md)
-- [Ruby](/reference/sdk-for-ruby.md)
+-   [Java/Kotlin](/reference/sdk-for-java/)
+-   [JavaScript/Node.js](/reference/sdk-for-node/)
+-   [Python](/reference/sdk-for-python/)
+-   [PHP](/reference/sdk-for-php/)
+-   [C#](/reference/sdk-for-csharp/)
+-   [Go](/reference/sdk-for-go.md)
+-   [Ruby](/reference/sdk-for-ruby.md)
 
-本文以 Node.js 为例，介绍如何编写脚本导入用户，你可以选择自己熟悉的语言。
+This article uses Node.js as an example of how to write a script to import users. You can choose a language you are familiar with.
 
-## 第一步：使用自定义密码函数（可选）
+## Step 1: Use a custom password function (optional)
 
-如果你的用户数据表中密码字段是明文，可以跳过此步骤；如果是密文，需要进入**基础配置** -&gt; **密码管理** -&gt; **自定义密码加密方法**开启选项并编写用于加密和验证密码的函数。详情请见：[编写自定义密码加密函数](./custom-password-script/README.md)。
+If the password field in your user data table is in plain text, you can skip this step. If it is in cipher text, you need to go to the **basic configuration** -&gt; **password management** -&gt; **user-defined password encryption method** to enable the option and write functions for encrypting and verifying passwords. For details: [Writing custom password encryption functions](./custom-password-script/README.md).
 
-## 第二步：导出你的用户数据
+## Step 2: Export your user data
 
-请将你的用户数据导出为 JSON 格式，内容为一个数组，每个元素是一个对象，其中一个元素对应一条用户的信息，例如：
+Please export your user data to JSON format, the content is an array. Each element is an object. One of the elements corresponds to a piece of information about the user. For eaxmple:
 
 ```json
 [
-  {
-    "uid": "1",
-    "nickname": "zhang",
-    "account_id": "zhang",
-    "mail": "test1@123.com",
-    "password": "$2b$12$nCa3WDbsc3tvM57ifzjwrOAGGuNK7EPV0R17WKcW6f13NZvX97yLe",
-    "phone": "13100000001",
-    "emailVerified": true,
-    "loginsCount": 4
-  },
-  {
-    "uid": "2",
-    "nickname": "wang",
-    "account_id": "wang",
-    "mail": "test2@123.com",
-    "password": "$2b$12$HGloOlfz1HzD0v/r5m1r7OCMcx6X85eC5.At3Ckxe.Jn/u/Za/yy2",
-    "phone": "13100000002",
-    "emailVerified": false,
-    "loginsCount": 12
-  },
-  {
-    "uid": "3",
-    "nickname": "zhao",
-    "account_id": "zhao",
-    "mail": "test3@123.com",
-    "password": "$2b$12$ia1oUZZFbEUpLvuqUsKideQq9lVkf2kq9vFaTvp7dlfeCx8UlTmDu",
-    "phone": "13100000003",
-    "emailVerified": true,
-    "loginsCount": 0
-  }
+	{
+		"uid": "1",
+		"nickname": "zhang",
+		"account_id": "zhang",
+		"mail": "test1@123.com",
+		"password": "$2b$12$nCa3WDbsc3tvM57ifzjwrOAGGuNK7EPV0R17WKcW6f13NZvX97yLe",
+		"phone": "13100000001",
+		"emailVerified": true,
+		"loginsCount": 4
+	},
+	{
+		"uid": "2",
+		"nickname": "wang",
+		"account_id": "wang",
+		"mail": "test2@123.com",
+		"password": "$2b$12$HGloOlfz1HzD0v/r5m1r7OCMcx6X85eC5.At3Ckxe.Jn/u/Za/yy2",
+		"phone": "13100000002",
+		"emailVerified": false,
+		"loginsCount": 12
+	},
+	{
+		"uid": "3",
+		"nickname": "zhao",
+		"account_id": "zhao",
+		"mail": "test3@123.com",
+		"password": "$2b$12$ia1oUZZFbEUpLvuqUsKideQq9lVkf2kq9vFaTvp7dlfeCx8UlTmDu",
+		"phone": "13100000003",
+		"emailVerified": true,
+		"loginsCount": 0
+	}
 ]
 ```
 
-## 第三步：确认用户字段映射关系
+## Step 3: Confirm the user field mapping relationship
 
-在正式开始导入之前，你需要先确认你的用户结构与 {{$localeConfig.brandName}} 用户字段之间的映射关系，你可以在[这里](/guides/user/user-profile.md)获取 {{$localeConfig.brandName}} 用户所有字段及其释义。
+Before starting the import, you need to confirm the mapping between your user structure and the {{$localeConfig.brandName}} user field. You can get all the fields and their definitions of the Approw user [here](/guides/user/user-profile.md).
 
-## 第四步：导入用户数据到 Authing
+## Step 4: Import user data to Approw
 
-如果你没有 NodeJS 环境，需要先[安装 NodeJS](http://nodejs.cn/download/)。
+If you don't have a NodeJS environment, you need to [install NodeJS](http://nodejs.cn/download/).
 
-创建一个 index.js 文件。
+Create an index.js file.
 
-将以下 js 脚本粘贴到 index.js：
+Paste the following js script into index.js:
 
 ```js
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const { ManagementClient } = require('authing-js-sdk');
-const userPoolId = 'xxxxxxxxxxxxxxxxxxx';
-const secret = 'xxxxxxxxxxxxxxxxxxx';
+const { ManagementClient } = require("authing-js-sdk");
+const userPoolId = "xxxxxxxxxxxxxxxxxxx";
+const secret = "xxxxxxxxxxxxxxxxxxx";
 
-// 如果文件较大建议分批次读入
-// 请将用户信息与本文件保存在同一个目录，文件内容为用户数据的数组 JSON，一个元素为一个用户的信息对象
-let users = fs.readFileSync(path.resolve('users.json'), { encoding: 'utf8' });
+// If the file is large, it is recommended to read in batches
+// Please save the user information in the same directory as this file. The content of the file is an array of user data JSON, and one element is a user's information object
+let users = fs.readFileSync(path.resolve("users.json"), { encoding: "utf8" });
 users = JSON.parse(users);
 async function main() {
-  const managementClient = new ManagementClient({
-    userPoolId,
-    secret,
-  });
+	const managementClient = new ManagementClient({
+		userPoolId,
+		secret,
+	});
 
-  for (let i = 0; i < users.length; i++) {
-    let yourUser = users[i];
-    try {
-      // 在此完成字段对齐
-      await managementClient.users.create(
-        {
-          nickname: yourUser.nickname,
-          password: yourUser.password,
-          email: yourUser.mail,
-          emailVerified: yourUser.emailVerified,
-          phone: yourUser.phone,
-          loginsCount: yourUser.loginsCount,
-          // 存储原始数据，以备使用
-          oauth: JSON.stringify(yourUser),
-        },
-        {
-          /**
-           * 开启这个开关，password 字段会直接写入 Authing 数据库，Authing 不会再次加密此字段
-           * 如果你的密码不是明文存储，你应该保持开启，并编写密码函数计算
-           */
-          keepPassword: true,
-        },
-      );
-    } catch (err) {
-      console.log(err);
-      // 将导入失败的用户写入文件
-      fs.writeFileSync(
-        path.resolve('users_failed.json'),
-        JSON.stringify(yourUser) + '\n',
-        {
-          flag: 'a',
-        },
-      );
-    }
-  }
+	for (let i = 0; i < users.length; i++) {
+		let yourUser = users[i];
+		try {
+			// Complete field alignment here
+			await managementClient.users.create(
+				{
+					nickname: yourUser.nickname,
+					password: yourUser.password,
+					email: yourUser.mail,
+					emailVerified: yourUser.emailVerified,
+					phone: yourUser.phone,
+					loginsCount: yourUser.loginsCount,
+					// Store raw data for future use
+					oauth: JSON.stringify(yourUser),
+				},
+				{
+					/**
+					 * Turn on this switch, the password field will be directly written into the Authing database, and Authing will not encrypt this field again
+					 * If your password is not stored in plaintext, you should keep it turned on and write a password function calculation
+					 */
+					keepPassword: true,
+				}
+			);
+		} catch (err) {
+			console.log(err);
+			// Write users who failed to import into file
+			fs.writeFileSync(
+				path.resolve("users_failed.json"),
+				JSON.stringify(yourUser) + "\n",
+				{
+					flag: "a",
+				}
+			);
+		}
+	}
 }
 
 main();
 ```
 
-复制完成后请**对字段进行对齐**，再执行
+Please **align the fields** after copying, and then execute
 
 ```bash
 $ npm install authing-js-sdk
 $ node index.js
 ```
 
-代码可在 Github 查看：[users-migration](https://github.com/Authing/users-migration)
+The code can be viewed on Github: [users-migration](https://github.com/Authing/users-migration)
 
-## 获取帮助
+## Help
 
-遇到问题？[联系我们](https://gitter.im/authing-chat/community)，Feel free to talk.
-
+If you have any questions, please [contact us](https://gitter.im/authing-chat/community)，Feel free to talk.

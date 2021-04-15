@@ -1,11 +1,11 @@
-# 如何获取应用 ID (AppID) 和应用密钥（AppSecret）
+# How To Get AppID and AppSecret?
 
 <LastUpdated/>
 
-在控制台的**应用**列表页面，你可以查看到自己的所有应用，如图所示可以获取到应用 ID（AppId）：
+On the **application** list page of the console, you can view all your applications, as shown in the figure, you can get the application ID (AppId):
 
-<img src="~@imagesZhCn/guides/faqs/Xnip2021-03-01_14-14-28.png" alt="drawing"/>
+<img src="./images/appid.png" alt="drawing"/>
 
-在应用详情页面，可以获取到该应用的密钥（AppSecret）：
+On the application details page, you can get the application secret (AppSecret):
 
-<img src="~@imagesZhCn/guides/faqs/Xnip2021-03-01_14-18-31.png" alt="drawing"/>
+<img src="./images/appsecret.png" alt="drawing"/>

@@ -1,60 +1,60 @@
-# 联邦认证
+# Federation Authentication
 
 <LastUpdated/>
 
-## 什么是联邦认证
+## What is Federation Authentication?
 
-在互联网早期，你的各类账号信息分散在不同的站点和应用，这存在以下问题：
+In the early days of the Internet, your different type of account information was separated in different sites and applications, which has the following problems:
 
-1. 每次访问一个新的站点都要注册一个新的用户名和密码账号。
-2. 这个账户就仅仅被存储在这个站点。
-3. 你无法在不同的站点下保持登录，用户的信息在不同的站点间也无法互通。
+1. You need to register a new account with username and password every time you visit a new site.
+2. This account is only stored on this site.
+3. You cannot keep logging in under different sites. User’s information cannot be communicated between different sites.
 
-联邦认证通过**标准协议**将不同的身份提供商**联合起来**对用户进行认证。**联邦**是一种身份提供商之间的**信任关系**，建立联邦关系的身份提供商之间可以通过**标准协议**互相拉取用户信息。
+Federation authentication **unites** different identity providers through **standard protocols** to authenticate users. **Federation** is a **trust relationship** between identity providers, identity providers that have established federation relationships can trigger user information from each other through **standard protocols**.
 
-![](~@imagesZhCn/concepts/federation/1-1.png)
+![](~@imagesEnUs/concepts/federation/1-1.png)
 
-## 为什么需要联邦认证
+## Why We Need Federation Authentication?
 
-联邦认证是一种**分布式**的身份认证，当用户在**身份提供商**登录时，用户可以选择到当前身份提供商**信任**的联邦身份提供商登录。用户可以通过联邦认证登录一个新的系统，而不必每次在新的系统中注册账号。例如现在许多网站有自己的**账密注册**登录方式，也有微信扫码直接登录的方式，其中的微信就是这个网站的**身份联邦**，用户**不必填写**信息注册账号，**直接使用微信**就可以登录。
+Federation authentication is a **distributed** identity authentication, when the user login into the **identity provider**, the user can select to log in to federal identity providers **trusted** by the current identity provider. Users can log in to a new system through federation authentication without having to register an account in the new system every time.
 
-使用联邦认证有以下好处：
+Using federation authentication has the following benefits:
 
-1. 用户不必每次都要创建一个全新的账号。
-2. 接入联邦认证后用户可以在不同的组织和站点中畅游。
+1. Users don’t need to create a new account every time.
+2. Users can freely access different organizations and sites after accessing federation authentication.
 
-## 联邦认证原理
+## The Federation Authentication Principle
 
-以下是联邦认证的过程，用户被重定向到身份联邦进行认证，用户先在身份联邦认证，身份联邦认证向 Authing 发送身份断言，等价于用户在 Authing 完成认证，Authing 再向业务系统发送身份断言，业务系统完成登录。
+The following is the process of federation authentication, the user is redirected to the identity federation for authentication, the user authenticates in the identity federation first, and the identity federation authentication sends an assertion to Approw, which is equivalent to the user completing the authentication in Approw, Approw then sends the assertion to the business system, and the business system completes the login.
 
-![](~@imagesZhCn/concepts/federation/1-2.png)
+![](~@imagesEnUs/concepts/federation/1-2.png)
 
-## Authing 的联邦认证能力
+## Approw’s Federation Authentication Abilities
 
-Authing 支持多种标准协议进行联邦认证，你可以[使用此应用快速体验](https://federation-poc.authing.cn/)。
+Approw supports multiple standard protocols for federation authentication. You can use [this application](https://federation-poc.approw.com/) to quickly experience.
 
-![](~@imagesZhCn/concepts/federation/1-3.png)
+![](~@imagesEnUs/concepts/federation/1-3.png)
 
 ## OAuth2
 
-Authing 支持丰富的社会化登录和自定义 OAuth2 身份联邦。
+Approw supports rich social login and custom OAuth2 identity federation.
 
-![](~@imagesZhCn/concepts/federation/1-4.png)
+![](~@imagesEnUs/concepts/federation/1-4.png)
 
 ## OpenID Connect
 
-Authing 支持使用 OIDC 协议进行联邦认证。
+Approw supports federation authentication using OIDC protocol.
 
-![](~@imagesZhCn/concepts/federation/1-5.png)
+![](~@imagesEnUs/concepts/federation/1-5.png)
 
 ## SAML2
 
-Authing 支持使用 SAML2 协议进行联邦认证。
+Approw supports federation authentication using SAML2 protocol.
 
-![](~@imagesZhCn/concepts/federation/1-6.png)
+![](~@imagesEnUs/concepts/federation/1-6.png)
 
 ## CAS
 
-Authing 支持使用 CAS 协议进行联邦认证。
+Approw supports federation authentication using CAS protocol.
 
-![](~@imagesZhCn/concepts/federation/1-7.png)
+![](~@imagesEnUs/concepts/federation/1-7.png)

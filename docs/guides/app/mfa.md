@@ -1,22 +1,21 @@
-# 开启多因素认证
+# Enable Multi-Factor Authentication
 
 <LastUpdated/>
 
-多因素认证（Multi Factor Authentication，简称 MFA）是一种非常简单的安全实践方法，它能够在用户名称和密码之外再额外增加一层保护。启用多因素认证后，用户进行操作时，除了需要提供用户名和密码外（第一次身份验证），还需要进行第二次身份验证，多因素身份认证结合起来将为你的帐号和资源提供更高的安全保护。你可以[在此了解更多 MFA 相关的概念](/concepts/mfa.md)。
+Multi-factor Authentication (MFA) is a very simple safety practice method. It can add an extra layer of protection in addition to username and password. After enabling multi-factor authentication, when users do operations, in addition to provide username and password (the first identity authentication), the second identity authentication is also required. The combination of multi-factor authentication will provide a higher level of security protection for your account and resources. You can learn more about MFA-related concepts in [here](/docs/concepts/mfa.md).
 
-你可以在此为你的应用开启多因素认证：
+You can enable multi-factor authentication for your applications here:
 
 ![](./images/Xnip2021-03-04_15-12-05.png)
 
-## 自适应 MFA
+## Adaptive MFA:
 
-Authing 中的多因素认证是自适应的，即会根据用户具备的验证手段动态验证：
+Approw multi-factor authentication is self-adaptive, which means dynamic authentication bases on authentication methods user-owned.
 
-- 如果用户绑定了手机号，且应用开启了短信验证码 MFA，就会使用手机号验证码作为 MFA 验证手段；
-- 如果用户绑定了手机号，且应用开启了电子邮件 MFA，就会使用邮件验证码作为 MFA 验证手段；
-- 如果用户没有绑定手机号、邮箱，会要求用户先绑定手机号。
+- If the user binds the phone number and the application has enabled the SMS verification code MFA, the mobile phone number verification code will be used as the MFA authentication method.
+- If the user binds the phone number and the application has enabled the Email MFA, the email verification code will be used as the MFA authentication method.
+- If the user does not bind any phone number or email, the user will be asked to bind a phone number first.
 
 ![](./images/Xnip2021-03-04_15-30-05.png)
 
-更多具体的接入流程请见[对用户进行多因素认证](/guides/authentication/mfa/)。
-
+For more specific access procedures, see [Setup Multi-Factor Authentication for Users](/docs/guides/authentication/mfa/).

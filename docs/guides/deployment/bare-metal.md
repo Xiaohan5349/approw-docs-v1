@@ -1,74 +1,72 @@
-# 基础部署模式
+# Basic Deployment
 
 <LastUpdated/>
 
-## 概述
+## Overview
 
-基于编排的容器化部署运维逐渐已成为目前的主流方式，无论是基于 Kubernetes 还是 Docker 的基础设施环境，都可以通过编排的方式快速的搭建业务组件，同时也可以高效的运维管理，这里我们推荐你使用基于容器的部署方案。
+Orchestration-based containerized deployment operation and maintenance have gradually become the current mainstream method. Whether it is an infrastructure environment based on Kubernetes or Docker, business components can be built quickly through orchestration, and efficient operation and maintenance management can also be achieved. Here we recommend you use a container-based deployment scheme.
 
-- [Docker 部署方案](./docker-compose.md)
-- [Kubernetes 部署模式](./kubernetes.md) 
+- [Docker deployment](./docker-compose.md)
+- [Kubernetes deployment](./kubernetes.md) 
 
-当然我们也提供了传统的基于物理机的部署方案，物理机部署的优势在于可以充分利用物理机的资源并且能够精细化控制部署流程。
-
-本文将介绍 Authing IDaaS 平台基础部署方案以及具体的操作指导。
-
-## 整体架构
+Of course, we also provide a traditional physical machine-based deployment solution. The advantage of physical machine deployment is that it can make full use of the resources of the physical machine and can finely control the deployment process.
+This article will introduce the basic deployment plan of Approw IDaaS platform and specific operation guidance.
+## Overall structure
 
 <img src="./images/basic-deployment.png" style="margin-top: 10px;" class="md-img-padding" />
 
-Authing IDaaS 平台架构中主要组件包括：对象存储服务、Redis、ElasticSearch、Postgres 及 Authing Server。Authing Server 作为 Authing IDaaS 平台的主服务，接收来自客户端的请求；对象存储作为存储静态资源的服务；Redis 存储 Session 信息、数据缓存等；Postgres 用来存储核心业务数据；ElasticSearch 用作数据统计分析、日志采集分析的工作。
+The main components of the Approw IDaaS platform architecture includes: object storage service, Redis, ElasticSearch, Postgres and Approw Server.Approw Server, as the main service of the Approw IDaaS platform, receives requests from clients; object storage is used as a service for storing static resources; Redis stores session information, data caching, etc.; Postgres is used to store core business data; ElasticSearch is used for data statistical analysis and logs collection and analyzes the work.
+## Deployment plan
 
-## 部署方案
+**1. Component planning**
 
-**1. 组件规划**
+| server | Component package | Function Description |
+| --- | --- | --- |
+| ElasticSearch | elasticsearch-7.7.0 | Search engine, log service |
+| Approw Server | Approw-server-1.2.0 | Approw main service |
+| Redis | redis-4.0.0 | Cache service |
+| PostgreSQL | postgres-12.5 | Database service |
+| Logstash | logstash-7.7.0 | Log collection and analysis service |
+| JDBC-River | jdbc-logstash-river:1.0.0 | Background data service |
+| Staticfiles | Approw-staticfiles:1.0.0 | Static resource service |
 
-|                         服务器                         |                            组件包                            |                          功能说明                           |
-| :----------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------------: |
-| ElasticSearch<img width=180 class="md-table-padding"/> | elasticsearch-7.7.0<img width=180 class="md-table-padding"/> | 搜索引擎、日志服务<img width=180 class="md-table-padding"/> |
-|                     Authing Server                     |                     authing-server-1.2.0                     |                       Authing 主服务                        |
-|                         Redis                          |                         redis-4.0.0                          |                          缓存服务                           |
-|                       PostgreSQL                       |                        postgres-12.5                         |                         数据库服务                          |
-|                        Logstash                        |                        logstash-7.7.0                        |                     日志收集、分析服务                      |
-|                       JDBC-River                       |                  jdbc-logstash-river:1.0.0                   |                        后台数据服务                         |
-|                      Staticfiles                       |                  authing-staticfiles:1.0.0                   |                        静态资源服务                         |
+**2. System environment requirements**
 
-**2. 系统环境要求**
+server configuration:
 
-服务器配置：
+| project | Minimum configuration | Recommended configuration |
+| --- | --- | --- |
+| CPU | X86 64 bit 8 core | X86 64 bit 16 core |
+| RAM | 32 GB | 64 GB and above |
+| hard disk | 500 GB | 2 TB |
+| Intranet bandwidth | 100 Mbps | 1 Gbps |
 
-| 项目 <img width=180 class="md-table-padding"/> | 最低配置<img width=180 class="md-table-padding"/> | 推荐配置 <img width=180 class="md-table-padding"/> |
-| :--------------------------------------------: | :-----------------------------------------------: | :------------------------------------------------: |
-|                      CPU                       |                  X86 64 位 8 核                   |                  X86 64 位 16 核                   |
-|                      内存                      |                       32 GB                       |                    64 GB 及以上                    |
-|                      硬盘                      |                      500 GB                       |                        2 TB                        |
-|                    内网带宽                    |                     100 Mbps                      |                       1 Gbps                       |
+Operating system environment requirements:
 
-操作系统环境要求：
-| 项目 <img width=180 class="md-table-padding"/> | 最低配置 <img width=180 class="md-table-padding"/> | 推荐配置 <img width=180 class="md-table-padding"/> |
-| :----: | :----: | :----: |
-| 操作系统平台 | linux/amd64 | - |
-| 内核版本 | linux 3.10.0 及以上 | - |
+| project | Minimum configuration | Recommended configuration |
+| --- | --- | --- |
+| Operating system platform | linux/amd64 | - |
+| Kernel version | linux 3.10.0 and above | - |
 
-**3. 相关文档**
+**3. Related Documents**
 
-| 名称 <img width=350 class="md-table-padding"/> | 说明 <img width=350 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|   《Authing IDaaS 平台使用指南 1.2.0 版本》    |        介绍 Authing IDaaS 平台操作指导         |
-|   《Authing IDaaS 平台产品文档 1.2.0 版本》    |        介绍 Authing IDaaS 平台产品功能         |
+| name | Description |
+| --- | --- |
+| &quot;Approw IDaaS Platform User Guide Version 1.2.0&quot; | Introduce Approw IDaaS platform operation guide |
+| &quot;Approw IDaaS Platform Product Documentation Version 1.2.0&quot; | Introduce Approw IDaaS platform product features |
 
-**注：以上资源请联系售前人员获取**
+**Note: Please contact the pre-sales staff for the above resources**
 
-**4. 安装包**
+**4. Installation package**
 
-| 名称 <img width=350 class="md-table-padding"/> | 说明 <img width=350 class="md-table-padding"/> |
-| :--------------------------------------------: | :--------------------------------------------: |
-|    authing-jdbc-logstash-river-1.0.0.tar.gz    |           Authing 后端数据服务安装包           |
-|          authing-server-1.2.0.tar.gz           |               Authing 服务安装包               |
-|        authing-staticfiles-1.0.0.tar.gz        |               静态资源服务安装包               |
-|    elasticsearch-7.7.0-linux-x86_64.tar.gz     |            ElasticSearch 服务安装包            |
-|       logstash-7.7.0-linux-x86_64.tar.gz       |              Logstash 服务安装包               |
-|       postgres-12.5-linux-x86_64.tar.gz        |             PostgreSQL 服务安装包              |
-|        redis-4.0.0-linux-x86_64.tar.gz         |                Redis 服务安装包                |
+| name | Description |
+| --- | --- |
+| Approw-jdbc-logstash-river-1.0.0.tar.gz | Approw back-end data service installation package |
+| Approw-server-1.2.0.tar.gz | Approw service installation package |
+| Approw-staticfiles-1.0.0.tar.gz | Static resource service installation package |
+| elasticsearch-7.7.0-linux-x86\_64.tar.gz | ElasticSearch service installation package |
+| logstash-7.7.0-linux-x86\_64.tar.gz | Logstash service installation package |
+| postgres-12.5-linux-x86\_64.tar.gz | PostgreSQL service installation package |
+| redis-4.0.0-linux-x86\_64.tar.gz | Redis service installation package |
 
-**注：以上资源请联系售前人员获取**
+**Note: Please contact the pre-sales staff for the above resources**

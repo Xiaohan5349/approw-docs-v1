@@ -1,25 +1,23 @@
-# 自定义配置项
+# Custom configuration items
 
-{{$localeConfig.brandName}} 一直以来都致力于带给开发者高度自定义的开发体验，所以我们提供以下自定义配置项，开发者可以根据自己业务的需要，在安全性和便捷性之间权衡。开发者可在 [{{$localeConfig.brandName}} 控制台](https://console.authing.cn/console/userpool) **设置** -&gt; **安全信息** -&gt; **App 扫码登录 Web 自定义配置** 处自定义配置。
+{{$localeConfig.brandName}} has always been devoting to bring developers a highly customized development experience. Therefore, we provide the following custom configuration items. Developers can balance security and convenience according to their business needs. Developers can customize the configuration in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) **Settings** -&gt; **Security Information** -&gt; **App Scan Code Login Web Custom Configuration**.
 
+![](/images/reference/Xnip2021-02-27_14-06-27.png)
 
-![](~@imagesZhCn/reference/Xnip2021-02-27_14-06-27.png)
+## QR code valid time
 
+The default 120 s.
 
-## 二维码有效时间
+## Whether to query the QR code status interface to return complete user information
 
-默认 120 s。
+It does not return by default. Since the query QR code status interface does not have permission verification, it means that there is a security risk to directly return user information (including the login credential token) on this interface, so we recommend that developers follow the best practice: query QR code The status interface only returns the user's nickname and avatar, and uses the ticket to get user information.
 
-## 是否在查询二维码状态接口返回完整用户信息
+## ticket valid time
 
-默认不返回。由于查询二维码状态接口是没有权限校验的，这意味着直接在此接口返回用户信息（包含登录凭证 token）是存在安全隐患的，所以我们推荐开发者遵循最佳实践：查询二维码状态接口只返回用户昵称和头像，使用 ticket 换取用户信息。
+The default is 300 s.
 
-## ticket 有效时间
+## Whether getting user information by ticket in the browser is allowed
 
-默认为 300 s。
+It is not allowed by default, it needs to be called on the server side, after the user pool key is initialized. [Click to learn how to initialize the back-end SDK](/reference/sdk-for-node/README.md).
 
-## 是否允许在浏览器使用 ticket 换取用户信息
-
-默认不允许，需要在服务器端调用，即需要使用用户池密钥初始化之后。[点击了解如何初始化后端 SDK](/reference/sdk-for-node/README.md)。
-
-一个典型的使用场景是：用户扫码同意授权、开发者得到 ticket 之后，发送到自己的后端，使用后端 SDK 换取用户信息，之后重定向到已登录页面，同时将用户信息写入 localStroage。
+A typical usage scenario is: after the user scans the QR code to agree to authorization, and the developer obtains the ticket, sends to backend, and gets user information by backend SDK, then redirects to the logged-in page, and writes the user information into localStroage at the same time.

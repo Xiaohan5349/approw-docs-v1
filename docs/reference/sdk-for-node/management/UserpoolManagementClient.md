@@ -1,144 +1,144 @@
-# 管理用户池配置
+# UserpoolManagementClient
 
 <LastUpdated/>
 
-> {{$localeConfig.brandName}} 用户池配置管理模块。
+> {{$localeConfig.brandName}} user pool configuration management client.
 
-请使用以下方式使用该模块：
+Please follow the instructions below to use this client:
 
 ```javascript
-import { ManagementClient } from "authing-js-sdk";
+import { ManagementClient } from "approw-js-sdk";
 const managementClient = new ManagementClient({
-  userPoolId: "YOUR_USERPOOL_ID",
-  secret: "YOUR_USERPOOL_SECRET",
+	userPoolId: "YOUR_USERPOOL_ID",
+	secret: "YOUR_USERPOOL_SECRET",
 });
 
-managementClient.userpool.detail; // 获取用户池配置
-managementClient.userpool.update; // 修改用户池配置
-managementClient.userpool.env; // 获取用户池配置的环境变量列表
+managementClient.userpool.detail; // get user pool detail information
+managementClient.userpool.update; // update user pool configuration
+managementClient.userpool.env; // get user pool configuration environment
 ```
 
-## 查询用户池配置
+## Get user pool details
 
 UserPoolManagementClient().detail()
 
-> 查询用户池配置
+> Get user pool details
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const userpool = await managementClient.userpool.detail();
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
-## 更新用户池配置
+## Update the user pool
 
 UserPoolManagementClient().update(updates)
 
-> 更新用户池配置
+> Update the user pool
 
-#### 参数
+#### Parameter
 
 - `updates` \<UpdateUserpoolInput\>
-- `updates.name` \<string\> 用户池名称
-- `updates.logo` \<string\> 用户池 logo
-- `updates.domain` \<string\> 用户池企业应用面板二级域名
-- `updates.description` \<string\> 描述信息
-- `updates.emailVerifiedDefault` \<boolean\> 设置邮箱默认为已验证状态（用户的 `emailVerified` 字段为 `true`）
-- `updates.sendWelcomeEmail` \<boolean\> 用户注册之后是否发送欢迎邮件
-- `updates.registerDisabled` \<boolean\> 是否关闭注册，当用户池关闭注册之后，普通用户将无法注册账号，只有管理员能够手动创建账号。
-- `updates.allowedOrigins` \<string\> 安全域配置，安全域（Allowed Origins） 是允许从 JavaScript 向 {{$localeConfig.brandName}} API 发出请求的 URL（通常与 CORS 一起使用）。 默认情况下，系统会允许你使用所有网址。 如果需要，此字段允许你输入其他来源。 你可以通过逐行分隔多个有效 URL，并在子域级别使用通配符（例如：`https://*.sample.com`）。
-  验证这些 URL 时不考虑查询字符串和哈希信息，如果带上了查询字符串和哈希信息系统会自动忽略整个域名。
-  如果有多条请以换行符分隔。
-- `updates.whitelist` \<Object\> 用户池白名单配置
-- `updates.whitelist.phoneEnabled` \<boolean\> 是否开启手机号白名单
-- `updates.whitelist.emailEnabled` \<boolean\> 是否开启邮箱白名单
-- `updates.whitelist.usernameEnabled` \<boolean\> 是否开启用户名白名单
-- `updates.tokenExpiresAfter` \<number\> token 过期时间
-- `updates.loginFailCheck` \<Object\> 频繁登录失败限制，开启之后，在规定时间内超过次数后再次登录需要验证码。如果你的业务存在同一区域同一时间段并发登录的场景，请将此检测关闭。
-- `updates.loginFailCheck.enabled` \<boolean\> 是否开启
-- `updates.loginFailCheck.timeInterval` \<number\> 检测周期，单位为秒。
-- `updates.loginFailCheck.limit` \<number\> 同一 IP 登录失败次数达到多少次的时候会触发限制条件。
-- `updates.frequentRegisterCheck` \<Object\> 频率注册限制，开启之后同一 IP 频繁注册账号时会触发频率限制，需要等一段时间之后才能重新注册。如果你的业务存在同一区域同一时间段并发注册的场景，请将此检测关闭。
-- `updates.frequentRegisterCheck.enabled` \<boolean\> 是否开启
-- `updates.frequentRegisterCheck.timeInterval` \<Object\> 检测周期，单位为秒。
-- `updates.frequentRegisterCheck.limit` \<Object\> 同一个周期内同一 IP 注册次数达到此数目时会触发频率限制。
+- `updates.name` \<string\> User pool name
+- `updates.logo` \<string\> User pool logo
+- `updates.domain` \<string\> User pool enterprise application panel second-level domain name
+- `updates.description` \<string\> Description information
+- `updates.emailVerifiedDefault` \<boolean\> Set the email to be verified as default (`emailVerified` field of the user is `true`)
+- `updates.sendWelcomeEmail` \<boolean\> Whether to send welcome email after user registration
+- `updates.registerDisabled` \<boolean\> Whether to disable the registration. When the user pool disables the registration, ordinary users will not be able to register an account, and only the administrator can create an account.
+- `updates.allowedOrigins` \<string\> Allowed Origins is the URL that allows requests from JavaScript to the {{$localeConfig.brandName}}  API (usually used with CORS). By default, the system will allow you to use all URLs. This field also allows you to enter other sources. You can separate multiple valid URLs line by line and use wildcards at the subdomain level (for example: `https://*.sample.com`). 
+The query string and hash information are not considered when verifying these URLs. If you bring the query string and hash information, the system will automatically ignore the entire domain name. 
+If there are more than one, please separate them with line breaks.
+- `updates.whitelist` \<Object\> User pool whitelist configuration
+- `updates.whitelist.phoneEnabled` \<boolean\> Whether to enable the whitelist of mobile phone numbers
+- `updates.whitelist.emailEnabled` \<boolean\> Whether to enable the mailbox whitelist
+- `updates.whitelist.usernameEnabled` \<boolean\> Whether to enable the username whitelist
+- `updates.tokenExpiresAfter` \<number\> Token expiration time
+- `updates.loginFailCheck` \<Object\>  Frequent login failure limit. If a user exceeds the number of times within the specified time, the system will require a verification code for login again. If you need to concurrent login in the same area at the same time period, please disable it.
+- `updates.loginFailCheck.enabled` \<boolean\> Whether to enable
+- `updates.loginFailCheck.timeInterval` \<number\> Check period, in seconds.
+- `updates.loginFailCheck.limit` \<number\> The limit condition will be triggered when the number of login failures for the same IP is reached.
+- `updates.frequentRegisterCheck` \<Object\> Frequency registration restriction. Frequency limit will be triggered when the same IP frequently registers an account, and it will take a while to register again. If you need to concurrent register in the same area and time period, please turn it off.
+- `updates.frequentRegisterCheck.enabled` \<boolean\> Whether to enable
+- `updates.frequentRegisterCheck.timeInterval` \<Object\> The detection period, in seconds.
+- `updates.frequentRegisterCheck.limit` \<Object\> The frequency limit will be triggered when the number of registrations of the same IP in the same period reaches this number.
 
-#### 示例
+#### Example
 
 ```javascript
 const userpool = await managementClient.userpool.update({
-  registerDisabled: true, // 关闭系统注册
+	registerDisabled: true, // disable the register system
 });
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<UserPool>`
+-   `Promise<UserPool>`
 
-## 获取环境变量列表
+## Get the environment variables list
 
 UserPoolManagementClient().listEnv()
 
-> 获取用户池环境变量列表。用户池配置的环境变量可以在 pipeline 场景下使用，详情请见：https://docs.authing.co/extensibility/pipeline/env.html
+> Get the user pool environment variables list. The environment variables configured by the user pool can be used in the pipeline scenario. Please check: `https://docs.approw.co/extensibility/pipeline/env.html` for details.
 
-#### 参数
+#### Parameter
 
-#### 示例
+#### Example
 
 ```javascript
 const envList = await managementClient.userpool.listEnv();
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<Env[]>`
+-   `Promise<Env[]>`
 
-## 添加环境变量
+## Add environment variables
 
 UserPoolManagementClient().addEnv(key, value)
 
-> 添加环境变量
+> Add environment variables
 
-#### 参数
+#### Parameter
 
-- `key` \<string\> 环境变量键
-- `value` \<any\> 环境变量值
+-   `key` \<string\> Environment variable key
+-   `value` \<any\> Environment variable value
 
-#### 示例
+#### Example
 
 ```javascript
 const envList = await managementClient.userpool.addEnv(
-  "LARK_WEBHOOK",
-  "xxxxxxx"
-); // 添加一个飞书群机器人 webhook 地址，之后可以在 pipeline 函数中使用（详细请见: https://docs.authing.co/extensibility/pipeline/usage.html）
+	"LARK_WEBHOOK",
+	"xxxxxxx"
+); // the webhppk address of adding a lark bot, you can use it later in pipeline function. (See more details in: https://docs.approw.co/extensibility/pipeline/usage.html)
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<Env[]>` 返回最新的环境变量列表
+- `Promise<Env[]>` Return the latest list of environment variables.
 
-## 删除环境变量
+## Delete environment variables
 
 UserPoolManagementClient().removeEnv(key)
 
-> 删除环境变量
+> Delete environment variables
 
-#### 参数
+#### Parameter
 
-- `key` \<string\> 环境变量键
+-   `key` \<string\> Environment variable key
 
-#### 示例
+#### Example
 
 ```javascript
 const envList = await managementClient.userpool.removeEnv("LARK_WEBHOOK");
 ```
 
-#### 返回值
+#### Return value
 
-- `Promise<Env[]>` 返回最新的环境变量列表
+- `Promise<Env[]>` Return the latest list of environment variables

@@ -1,12 +1,12 @@
-# 使用自定义数据库对用户进行认证
+# Authenticate users with custom database
 
 <LastUpdated/>
 
-使用自定义数据库可以满足以下场景的需求：
+The use of a custom database can meet the needs of the following scenarios:
 
-- **使用自己的数据库保存用户数据**：完全使用自己的数据库保存用户数据，这种模式下，{{$localeConfig.brandName}} 将不会存储你的任何用户信息。
-- **惰性迁移用户到 {{$localeConfig.brandName}}**：这种迁移用户的模式称为**惰性迁移（lazy migration）**，简单来说原理如下：最开始所有的原始用户数据在你的数据库，当用户第一次尝试在 Authing 登录时，Authing 会通过你配置的自定义数据库脚本在你的数据库查找并验证用户，如果成功，会将该用户迁移到 Authing 中；该用户第二次登录时，将使用 Authing 的数据库对其进行验证；当所有的用户都至少登录一次时，意味着迁移上云任务完成。
+- **Use your own database to save user data**: Use your own database to save user data. In this mode, Approw will not store any of your user information.
+- **Inert migration users to Approw**: This mode of migrating users is called **Inert migration**, the principle of this mode is: At the beginning, all the original user data is in your database. When the user tries to log in at Approw for the first time, Approw will find and verify the user in your database through the custom database script you configured. If successful, the user will be migrated to Approw; when the user logs in for the second time, the Approw database will be used to verify it; when all users log in at least once, it means that the migration to the cloud is complete.
 
-你可以通过以下方式配置自定义数据库：前往 [Authing 控制台](https://console.authing.cn/console/userpool) 的 **连接身份源** - **自定义数据库** 页面开启自定义数据库连接，详情请见[使用自定义数据库](/guides/database-connection/README.md)。
+You can configure a custom database in the following ways: Go to the [Approw console](https://console.approw.com/console/userpool) - **Connection** - **Custom Database ** to open a custom database connection. For details, see using a [Custom Database](/docs/guides/database-connection/README.md).
 
-![](~@imagesZhCn/guides/database-connection/Xnip2021-02-24_16-58-19.png)
+![](~@imagesEnUs/guides/database-connection/Xnip2021-02-24_16-58-19.png)

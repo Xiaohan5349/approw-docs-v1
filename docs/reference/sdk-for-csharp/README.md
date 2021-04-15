@@ -4,58 +4,57 @@ meta:
     content: C# SDK
 ---
 
-# {{$localeConfig.brandName}} - C#
+# {{$localeConfig.brandName}} - C
 
 <LastUpdated/>
 
+The {{$localeConfig.brandName}} Python SDK is comprised of two parts: `ManagementClient` and `AuthenticationClient`. All operations in `ManagementClient` are performed as an administrator, including managing users, managing roles, managing authority policies, and managing user pool configuration. All operations in `AuthenticationClient` are performed as the current terminal user, including login, registration, modification of user information, and logout.
 
-{{$localeConfig.brandName}} C# SDK 由两部分组成：`ManagementClient` 和 `AuthenticationClient`。`ManagementClient` 中进行的所有操作均以管理员的身份进行，包含管理用户、管理角色、管理权限策略、管理用户池配置等模块。`AuthenticationClient` 中的所有操作以当前终端用户的身份进行，包含登录、注册、修改用户资料、退出登录等方法。
+You should set the initialized `ManagementClient` instance to a global variable (initialize only once), and the `AuthenticationClient` should be initialized for each request.
 
-你应该将初始化过后的 `ManagementClient` 实例设置为一个全局变量（只初始化一次），而 `AuthenticationClient` 应该每次请求初始化一个。
+## Installation
 
-## 安装
-
-通过 Nuget 安装：
+Install via Nuget:
 
 ```
-Install-Package Authing.ApiClient
+Install-Package Approw.ApiClient
 ```
 
-## 使用管理模块
+## Use ManagementClient
 
-初始化 `ManagementClient` 需要 `userPoolId`（用户池 ID） 和 `secret`（用户池密钥）:
+Initialization of ManagementClient requires `userPoolId` and `secret`:
 
-> 你可以在此[了解如何获取 UserPoolId 和 Secret](/guides/faqs/get-userpool-id-and-secret.md) .
+> You can [learn how to get UserPoolId and Secret](/guides/faqs/get-userpool-id-and-secret.md) here.
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
-var managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+var managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 ```
 
-现在 `ManagementClient()` 实例就可以使用了。例如可以获取用户池中的用户列表：
+Now the `managementClient()` instance is ready to be used. For example, you can get the list of users in the user pool:
 
 ```csharp
-var managementClient = new ManagementClient("AUTHING_USERPOOL_ID", "AUTHING_USERPOOL_SECRET");
+var managementClient = new ManagementClient("APPROW_USERPOOL_ID", "APPROW_USERPOOL_SECRET");
 var data = await managementClient.Users.List();
 ```
 
-## 使用认证模块
+## Use AuthenticationClient
 
-初始化 `ManagementClient` 需要 `AppId` （应用 ID）：
+Initialization of `AuthenticationClient` requires `AppId`:
 
-> 你可以在控制台的 **应用** 中查看自己的应用列表。
+> You can view your own **application** list in the application of the console.
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
 var authenticationClient = new AuthenticationClient(opt =>
             {
-                opt.AppId = "AUTHING_APP_ID";
+                opt.AppId = "APPROW_APP_ID";
             });
 ```
 
-接下来可以进行注册登录等操作：
+Then, you can perform operations such as registration and login:
 
 ```csharp
 var username = GetRandomString(10);
@@ -66,7 +65,7 @@ var user = await authenticationClient.LoginByUsername(
 )
 ```
 
-完成登录之后，`update_profile` 等要求用户登录的方法就可用了：
+After login,`update_profile` and the other methods that require users to log in are available:
 
 ```csharp
 await authenticationClient.UpdateProfile(new UpdateUserInput() {
@@ -74,19 +73,19 @@ await authenticationClient.UpdateProfile(new UpdateUserInput() {
 })
 ```
 
-你也可以在初始化后设置 `AccessToken` 参数, 不需要每次都调用 `LoginByXXX` 方法:
+You can also set the `AccessToken` parameter after initialization, so that it is unnecessary to call the the `LoginByXXX` method every time:
 
 ```csharp
-using Authing.ApiClient;
+using Approw.ApiClient;
 
 var authenticationClient = new AuthenticationClient(opt =>
             {
-                opt.AppId = "AUTHING_APP_ID";
+                opt.AppId = "APPROW_APP_ID";
             });
 authenticationClient.AccessToken = "USER_TOKEN";
 ```
 
-再次执行 `UpdateProfile` 方法，发现也成功了:
+Executing the `UpdateProfile` method can also succeed:
 
 ```csharp
 await authenticationClient.UpdateProfile(new UpdateUserInput() {
@@ -94,44 +93,41 @@ await authenticationClient.UpdateProfile(new UpdateUserInput() {
 })
 ```
 
-## 私有化部署
+## Privatization deployment
 
-**私有化部署**场景需要指定你私有化的 Authing 服务的 GraphQL 端点（**不带协议头和 Path**），如果你不清楚可以联系 Authing IDaaS 服务管理员。
+**The privatization deployment** scenario needs to specify the GraphQL endpoint of your privatized {{$localeConfig.brandName}} service (**without protocol header and Path**). If you are not sure, you can contact the {{$localeConfig.brandName}} IDaaS service administrator.
 
-## 接口索引
+## Interface index
 
-可用的 Authentication 方法
+Available Authentication methods
 
-- 获取当前用户的用户资料: `CurrentUser`
-- 使用邮箱注册: `RegisterByEmail`
-- 使用用户名注册: `RegisterByUsername`
-- 使用手机号验证码注册: `RegisterByPhoneCode`
-- 使用邮箱登录: `LoginByEmail`
-- 使用用户名登录: `LoginByUsername`
-- 使用手机号验证码登录 `LoginByPhoneCode`
-- 使用手机号密码登录: `LoginByPhonePassword`
-- 发送邮件: `SendEmail`
-- 发送短信验证码: `SendSmsCode`
-- 检查 token 的有效状态: `CheckLoginStatus`
-- 使用手机号验证码重置密码: `ResetPasswordByPhoneCode`
-- 使用邮件验证码重置密码: `ResetPasswordByEmailCode`
-- 更新用户资料: `UpdateProfile`
-- 更新密码: `UpdatePassword`
-- 更新手机号: `UpdatePhone`
-- 更新邮箱: `UpdateEmail`
-- 刷新 token: `RefreshToken`
-- 绑定手机号: `BindPhone`
-- 解绑手机号: `UnbindPhone`
-- 添加当前用户自定义字段值: `SetUdv`
-- 获取当前用户的自定义字段值： `ListUdv`
-- 删除当前用户自定义字段值: `RemoveUdv`
+- Get the user profile of the current user: `getCurrentUser`
+- Register with email: `registerByEmail`
+- Register with username: `registerByUsername`
+- Register with mobile phone number verification code: `registerByPhoneCode`
+- Login with email: `loginByEmail`
+- Login with username: `loginByUsername`
+- Login with SMS code: `loginByPhoneCode`
+- Login with mobile phone number password: `loginByPhonePassword`
+- Send mail: `sendEmail`
+- Send SMS verification code: `sendSmsCode`
+- Check the valid status of the token: `checkLoginStatus`
+- Use the phone number verification code to reset the password: `resetPasswordByPhoneCode`
+- Use email verification code to reset password: `resetPasswordByEmailCode`
+- Update user profile: `updateProfile`
+- Update password: `updatePassword`
+- Update phone number: `updatePhone`
+- Update email: `updateEmail`
+- Refresh token: `refreshToken`
+- Bind mobile phone number: `bindPhone`
+- Unbind phone number: `unbindPhone`
 
-详情请见：
+Learn more:
 
 ::: page-ref /reference/sdk-for-csharp/authentication/
 :::
 
-管理模块包含以下子模块：
+ManagementClient contains the following sub-modules:
 
 ::: page-ref /reference/sdk-for-csharp/management/UsersManagementClient.md
 :::
@@ -157,6 +153,6 @@ await authenticationClient.UpdateProfile(new UpdateUserInput() {
 ::: page-ref /reference/sdk-for-csharp/management/WhitelistManagementClient.md
 :::
 
-## 获取帮助
+## Get help
 
-Join us on Gitter: [#authing-chat](https://gitter.im/authing-chat/community)
+Join us on Gitter: [#approw-chat](https://gitter.im/approw-chat/community)
