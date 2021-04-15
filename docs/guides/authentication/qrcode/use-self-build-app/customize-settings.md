@@ -4,6 +4,8 @@
 
 <!--![](./images/121.png)-->
 
+![](~@imagesEnUs/reference/Xnip2021-02-27_14-06-27.png)
+
 ![](./images/1.png)
 
 ## QR code valid time
