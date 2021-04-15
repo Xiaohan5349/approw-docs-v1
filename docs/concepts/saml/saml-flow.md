@@ -10,7 +10,7 @@ IdP: Identity Provider
 
 ## SAML Flow
 
-![](~@imagesEnUs/concepts/saml/saml-flow-overview.png)
+![](~@imagesEnUs/concepts/saml/saml-flow-1.png)
 
 1. User send access request to SP.
 2. SP generate SAML request and send it to IdP via browser redirect.
@@ -28,16 +28,16 @@ There are three bindings in SAML: HTTP Redirect Binding, HTTP POST Binding and H
 
 SP send SAML request via HTTP Redirect Binding. This SAML message is carried directly in the URL query sting of an HTTP GET request
 
-![](~@imagesEnUs/concepts/saml/HTTP-Redirect-Binding.png)
+![](~@imagesEnUs/concepts/saml/saml-flow-2.png))
 
 ### HTTP POST Binding
 
 IdP send SAML response to SP via HTTP POST Binding.
 
-![](~@imagesEnUs/concepts/saml/http-post-binding.png)
+![](~@imagesEnUs/concepts/saml/saml-flow-3.png))
 
 ### HTTP Artifact Binding
 
 SP and IdP only transmit artifacts in browser. Artifacts can be used to request SAML body via back channel. This avoids SAML Request and SAML Response exposed in the Front End.
 
-![](~@imagesEnUs/concepts/saml/HTTP-Artifact-Binding.png)
+![](~@imagesEnUs/concepts/saml/saml-flow-4.png))
