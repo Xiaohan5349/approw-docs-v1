@@ -2,11 +2,7 @@
 
 {{$localeConfig.brandName}} has always been devoting to bring developers a highly customized development experience. Therefore, we provide the following custom configuration items. Developers can balance security and convenience according to their business needs. Developers can customize the configuration in the [{{$localeConfig.brandName}} console](https://console.approw.com/console/userpool) **Settings** -&gt; **Security Information** -&gt; **App Scan Code Login Web Custom Configuration**.
 
-<!--![](./images/121.png)-->
-
 ![](~@imagesEnUs/reference/Xnip2021-02-27_14-06-27.png)
-
-![](./images/1.png)
 
 ## QR code valid time
 
