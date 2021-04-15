@@ -22,7 +22,7 @@ You can use the Approw console to create roles: In **Privilege Management** - **
 
 Add three roles:
 
-![](~@imagesEnUs/guides/access-control/tbac-createrole.png)
+![](~@imagesEnUs/guides/access-control/rbac-createrole.png)
 
 You can also use API & SDK to create roles. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
