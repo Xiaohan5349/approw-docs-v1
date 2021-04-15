@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-[Previously](./README.md#什么是基于角色的访问控制-rbac) we introduced what role-based access control (RBAC) is, and then this document describes how to quickly integrate the RBAC permission model into your system based on Approw.
+[Previously](./README.md) we introduced what role-based access control (RBAC) is, and then this document describes how to quickly integrate the RBAC permission model into your system based on Approw.
 
 First, we need to understand a few core concepts in Approw:
 
@@ -30,7 +30,7 @@ You can also use API & SDK to create roles. For details, please refer to [Role M
 
 On the role details page, you can grant this role to users. You can search for users by username, phone number, email or nickname:
 
-![](~@imagesEnUs/guides/access-control/Xnip2021-03-01_15-51-01.png)
+![](~@imagesEnUs/guides/access-control/rbac-authrizeuser.png)
 
 After selecting the user, click OK, and you can view the list of users granted for this role.
 
