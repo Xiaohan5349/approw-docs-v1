@@ -29,7 +29,8 @@ The configuration will be active immediately once you enable the customized data
 
 You need to login to the [Approw Console](https://console.approw.com/console/userpool) and then go to **Connect IdP** - **Customized Database** to **enable** this service on the top right corner
 
-![](https://cdn.authing.cn/img/20210111180702.png)
+<!-- ![](https://cdn.authing.cn/img/20210111180702.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/1.png)
 
 ## Choose User Scenarios
 
@@ -44,7 +45,8 @@ Now you need to setup database connection configuration, you can use **Connectio
 
 ### Connection URL
 
-![](https://cdn.authing.cn/blog/20201130162731.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130162731.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/2.png)
 
 The Connection URL usually is the URL with following format: `protocol://username:password@host:port/database` such as: `postgres://postgres:postgres@localhost:5432/database-name`. You can import these URLs in script by using global vriable `env.DB_CONNECTION_URI` as the code shows below:
 
@@ -59,7 +61,8 @@ await client.connect()
 
 ### Programmatic
 
-![](https://cdn.authing.cn/blog/20201130162823.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130162823.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/3.png)
 
 In this mode, you need to declare the Host, port, username, password, and database name of your customized database. You can import these parameters with the following global variables: `env.DB_HOST`, `env.DB_PORT`, `env.DB_USERNAME`, `env.DB_PASSWORD` and `env.DB_DATABASE` as the code shows below:
 
@@ -107,16 +110,18 @@ This database is open-source for all user freely, the connection information of 
 
 After setup configuration URI, click **Save** and then **Test** button at the bottom.
 
-![](https://cdn.authing.cn/blog/20201130173258.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130173258.png) -->
+![](~@imagesEnUs/guides/database-connection/configuration/4.png)
 
-<img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" />
-
+<!-- <img src="https://cdn.authing.cn/blog/20201130173519.png" height="400px" /> -->
+<!-- <img src="~@imagesEnUs/guides/database-connection/configuration/5.png" height="400px" /> -->
 In the jump out window, you need to fill in a user in the user list of the template userpool.
 
-![](https://cdn.authing.cn/blog/20201130173505.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130173505.png) -->
 
-<img src="https://cdn.authing.cn/blog/20201130174003.png" height="400px" />
+<!-- <img src="https://cdn.authing.cn/blog/20201130174003.png" height="400px" /> -->
+<img src="~@imagesEnUs/guides/database-connection/configuration/6.png" height="400px" />
 
-Click **Test** button and you will see notification about successful result.
+After click the **Test** button, you will see a notification about successful result.
 
-![](https://cdn.authing.cn/blog/20201130173939.png)
+<!-- ![](https://cdn.authing.cn/blog/20201130173939.png) -->

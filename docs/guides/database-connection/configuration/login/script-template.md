@@ -121,7 +121,7 @@ async function login(query, password, context) {
 
 When an unknown error occurs, we recommend throwing a standard `Error` object, Approw will catch this error and return it to the end user. For example, using `throw new Error("My nice error message")` and you will find this error log in the **History Log** of the customized database.
 
-![](https://cdn.authing.cn/img/20210111163154.png)
+<!-- ![](https://cdn.authing.cn/img/20210111163154.png) -->
 
 #### Use `bcrypt` to encrypt password
 
