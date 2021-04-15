@@ -3,7 +3,7 @@
 <LastUpdated/>
 
 {{$localeConfig.brandName}} provides several customization options. You will find it in **Applications** -> click your application -> **Register and Login**
-![Custom Style](./images/Xnip2021-03-04_15-01-53.png)
+![Custom Style](./images/custom-login-ui-1.png)
 
 ## Configurable Item
 
@@ -18,7 +18,7 @@ Social Registration/Login button will not show up in Login UI.
 ### Combine Registration and Login
 
 Once user enter username that does not exist in User Pool. Approw will create an account and login. User will receive account information from Approw.
-![Auto Register](./images/Xnip2021-03-04_15-06-48.png)
+![Auto Register](./images/custom-login-ui-2.png)
 
 ### Hide Forgot Password 
 
@@ -34,10 +34,10 @@ Forgot Password button will not show up in Login UI
 }
 ```
 
-![Custom CSS](./images/Xnip2021-03-04_15-14-42.png)
+![Custom CSS](./images/custom-login-ui-3.png)
 
 ::: hint-warning
 Note: You can check CSS class by Chrome Developer Tool. We have labeled out dom which can be customized. 
 :::
 
-![Custom CSS](./images/Xnip2021-03-04_15-40-29.png)
+<!--![Custom CSS](./images/Xnip2021-03-04_15-40-29.png)-->
