@@ -1,6 +1,6 @@
-# Authing doc
+# Approw doc
 
-## 使用
+## Use
 
 ```bash
 # start dev server
@@ -10,17 +10,18 @@ npm run docs:dev
 npm run docs:build
 ```
 
-## 常用组件
+## Common Components
 
 `page-ref`:
 
 ```bash
-# 普通 md: 绝对路径
+# Normal md: absolute path
 
 ::: page-ref /quickstart/hello-world.md
 :::
 
-# README.md 可省略
+# README.md can be omitted
+
 ::: page-ref /scan-qrcode/wxapp-qrcode/
 :::
 
@@ -49,18 +50,18 @@ text
 `api-method`:
 
 ````markdown
-<!-- 组件的 prop 都可以用 slot 代替，纯字符串时可以用 prop，有 Markdown 时用 slot -->
+<!-- All component props can be replaced by slots; props can be used for pure strings; use slot if there is Markdown -->
 
-<ApiMethodSpec method="get" host="https://core.authing.cn" path="/oauth/me" summary="使用 access_token 换取用户信息">
+<ApiMethodSpec method="get" host="https://core.approw.com" path="/oauth/me" summary="use access_token to exchange user infomation">
 <template slot="queryParams">
 <ApiMethodParam name="access_token" type="string" required description="access_token" />
 </template>
 <template slot="response">
-<ApiMethodResponse httpCode="200" description="请求结果">
+<ApiMethodResponse httpCode="200" description="Request result">
 
 ```json
 {
-  "a": "1"
+	"a": "1"
 }
 ```
 
@@ -69,36 +70,27 @@ text
 </ApiMethodSpec>
 ````
 
-## 插值
+## Interpolations
 
-按 vue 语法使用插值，可以在具体 md 文件的头部定义，也可使用全局变量（即 config 中的所有配置），常用的全局插值如下：
+Use interpolation according to vue syntax, which can be defined in the header of the specific md file, or global variables (that is, all configurations in config) can be used. Commonly used global interpolations are as follows:
 
-- \$localeConfig.brandName，品牌名，如 Authing
-- \$themeConfig.apiDomain，api 地址
-- \$themeConfig.sampleAppDomain，体验地址
-- \$themeConfig.consoleDomain，控制台地址
+-   \$localeConfig.brandName，brand name，如 Approw
+-   \$themeConfig.apiDomain，api domain
+-   \$themeConfig.sampleAppDomain，sample application domain
+-   \$themeConfig.consoleDomain，console domain
 
 ## 注意！！！
 
-写好的文档发布完后要去线上看一眼，刷新页面，然后点击菜单看能否跳到其他页面。很多情况会报以下错，会导致后续 vue 代码无法执行，跳转不了页面：
+After publishing the written document, check it online, refresh the page, and then click the menu to see if you can jump to other pages. In many cases, the following errors will be reported, which will cause the subsequent vue code to fail to execute and the page cannot be jumped:
 
 ```
 DOMException: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
 ```
 
-### 加粗内容不能有中文标点符号
+### Link cannot be bold
 
-### 链接无法加粗
-
-如：
+For example：
 
 ```markdown
-[**百度**](https://baidu.com)
-**[百度](https://baidu.com)**
-```
-
-都会导致报错，可用如下方法实现
-
-```html
-<a class="strong" href="https://baidu.com" target="_blank">百度</a>
+**[Google](https://google.com)**
 ```

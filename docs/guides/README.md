@@ -1,99 +1,97 @@
-# 使用指南概览
+# User guide overview
 
 <LastUpdated/>
 
-欢迎来到使用指南，这里将会正式开启你在 {{$localeConfig.brandName}} 的开发之旅！
+Welcome to the user guide, here will start your development journey in {{$localeConfig.brandName}}!
 
-在这里，你将主要学会两件事：
+Here, you will mainly learn two things:
 
-1. 集成认证，我们将一步一步地通过示例和代码引导你如何快速集成认证功能到你的应用系统中；
-2. 管理资源，如何管理你在 {{$localeConfig.brandName}} 中的资源，如应用、角色、用户目录、配置等。
+1. Integrated authentication, we will guide you step by step through examples and codes on how to quickly integrate authentication functions into your application system;
+2. Manage resources, how to manage your resources in {{$localeConfig.brandName}}, such as applications, roles, user directories, configurations, etc.
 
-在你正式开始进行开发之前，我们推荐你先了解 [{{$localeConfig.brandName}} 是什么](/concepts/)，以及 {{$localeConfig.brandName}} 中几个最核心的概念：[用户池](/concepts/user-pool.md)、[应用](/concepts/application.md)、[认证和授权的区别](/concepts/authentication-vs-authorization.md)。
+Before you start development, we recommend that you first understand what [{{$localeConfig.brandName}} is](/concepts/), and several core concepts in {{$localeConfig.brandName}}: [User Pool](/concepts/user-pool.md), [Application](/concepts/application.md), [the Difference Between Authentication And Authorization](/concepts/authentication-vs-authorization.md).
 
-## 集成认证到你的应用中
+## Integrate authentication into your application
 
-推荐首先阅读[快速开始：认证你的第一个用户](/guides/basics/authenticate-first-user/)，你将了解集成 {{$localeConfig.brandName}} 的完整步骤，帮助你快速上手。
+We recommend reading [Quick Start: Authenticate Your First User](/guides/basics/authenticate-first-user/) first, you will learn the complete steps of integrating {{$localeConfig.brandName}}， which helps you get started quickly .
 
-之后你可以按照主题来阅读指引：
+Afterwards, you can follow the topic to read the guide:
 
-1. 对用户进行认证
-   - 最基础的[账号密码认证](./authentication/basic/password/README.md)、[手机号验证码认证](./authentication/basic/sms/README.md) 手段；
-   - [如何接入社会化登录认证](/guides/authentication/social/)；
-   - [如何接入扫码登录认证](/guides/authentication/qrcode/use-self-build-app/)；
-   - [如何在小程序中进行认证](/guides/authentication/wechat-mini-program/)；
-   - [实现单点登录（SSO）](/guides/authentication/sso/)；
-   - [在移动端实现单点登录](/guides/authentication/mobile-sso/)；
-   - [如何集成多因素认证](/guides/authentication/mfa/)
-   - 对认证流程进行扩展：
-     - [添加用户自定义字段](/guides/authentication/extensibility/user-defined-field/)
-     - [IdToken 添加自定义字段](/guides/authentication/extensibility/customize-id-token.md)
-     - [使用自定义数据库对用户进行认证](/guides/authentication/extensibility/database-connection.md)
-     - [使用 Pipeline 对认证流程进行扩展](/guides/authentication/extensibility/pipeline.md)
-     - [使用 Webhook 监听认证事件](/guides/authentication/extensibility/webhook.md)
-2. 对用户进行权限管理
-   - [选择合适的权限模型](/guides/access-control/choose-the-right-access-control-model.md)
-   - [集成 RBAC 权限模型到你的应用系统](/guides/access-control/rbac.md)
-   - [集成 ABAC 权限模型到你的应用系统](/guides/access-control/abac.md)
-   - [使用权限分组管理权限资源](/guides/access-control/resource-group.md)
-   - [管理资源权限](/guides/access-control/resource-acl.md)
-3. 授权
+1. Authenticate the user
+    - Basic [Account & Password Authentication](./authentication/basic/password/README.md)、[SMS Verification Code Authentication](./authentication/basic/sms/README.md) methods；
+    - [Use Social Login Authentication](/guides/authentication/social/)；
+    - [Use The Self-built App to Implement QR Code Scanning Login](/guides/authentication/qrcode/use-self-build-app/)；
+    - [Implement Single Sign-on (SSO)](/guides/authentication/sso/)；
+    - [Implement Single Sign-on on Mobile](/guides/authentication/mobile-sso/)；
+    - [Integrate Multi-factor Authentication](/guides/authentication/mfa/)
+    - Extend the authentication process:
+        - [Add User Defined Fields](/guides/authentication/extensibility/user-defined-field/)
+        - [Add Customize Field with IdToken](/guides/authentication/extensibility/customize-id-token.md)
+        - [Authenticate Users with Custom Database](/guides/authentication/extensibility/database-connection.md)
+        - [Extend The Authentication Process with Pipeline](/guides/authentication/extensibility/pipeline.md)
+        - [Monitor Authentication Events with Webhook](/guides/authentication/extensibility/webhook.md)
+2. Authority management for users
+    - [Choose The Suitable Permission Model](/guides/access-control/choose-the-right-access-control-model.md)
+    - [Integrate RBAC Permission Model into Your Application System](/guides/access-control/rbac.md)
+    - [Integrate ABAC Permission Model into Your Application System](/guides/access-control/abac.md)
+    - [Use Privilege Grouping to Manage Privilege Resources](/guides/access-control/resource-group.md)
+    - [Manage Resource Privileges](/guides/access-control/resource-acl.md)
+3. Authorization
 
-   - [用户许可的应用间授权](/guides/authorization/user-consent-authz.md)
-   - [机器间（M2M）授权](/guides/authorization/m2m-authz.md)
+    - [User-consent, Inter-application Authorization](/guides/authorization/user-consent-authz.md)
+    - [M2M Authorization](/guides/authorization/m2m-authz.md)
 
-4. 管理用户账号
+4. Manage user accounts
 
-   - [了解用户资料所有字段的释义](/guides/user/user-profile.md)；
-   - [了解管理员如何创建账号](/guides/user/create-user/)；
-   - [了解如何管理用户账号](/guides/user/manage-profile.md)，如修改用户资料、绑定 MFA 等；
-   - [了解如何绑定账号](/guides/user/bind-social-account.md)；
-   - ...
+    - [User Fields Interpretation](/guides/user/user-profile.md)；
+    - [Learn How Administrator Create Accounts](/guides/user/create-user/)；
+    - [Manage User Accounts](/guides/user/manage-profile.md)，Such as modifying user information, binding MFA, etc.;
+    - [Bind Account](/guides/user/bind-social-account.md)；
+    - ...
 
-5. [打通微信生态账号体系](/guides/wechat-ecosystem/)的详细指引。
+## Manage your resources in {{$localeConfig.brandName}}
 
-## 管理你在 {{$localeConfig.brandName}} 中的资源
+We recommend to read [Console Overview](/guides/basics/console/) first, you will quickly understand what functions of the {{$localeConfig.brandName}} console can help you to understand {{$localeConfig.brandName}} The whole picture.
 
-推荐首先阅读[控制台概览](/guides/basics/console/)，你将快速了解 {{$localeConfig.brandName}} 控制台有哪些功能，能够帮助你大致了解 {{$localeConfig.brandName}} 的全貌。
+Afterwards, you can follow the topic to read the guide:
 
-之后你可以按照主题来阅读指引：
+1. [Manage User Directory](/guides/users/)
 
-1. [管理用户目录](/guides/users/)
+    - [Learn User Directory Setting](/guides/users/settings.md)；
+    - [How to Add User-defined Fields](/guides/users/user-defined-field/)；
+    - [How to Search for users](/guides/users/search.md)；
+    - [How to use LDAP User Directory in Approw](/guides/users/ldap-user-directory.md)。
 
-   - [了解用户目录有哪些配置项](/guides/users/settings.md)；
-   - [了解如何添加自定义用户字段](/guides/users/user-defined-field/)；
-   - [了解如何搜索用户](/guides/users/search.md)；
-   - [了解如何使用 LDAP 用户目录](/guides/users/ldap-user-directory.md)。
-2. [管理应用](/guides/app/)
-3. [成为联邦认证身份源](/guides/federation/)
-4. [连接外部身份源（Identity Provider）](/guides/connections/)
+2. [Application Management](/guides/app/)
+3. [Become a Source of Federation Authentication](/guides/federation/)
+4. [Integreate Third-Party Identity Providers](/guides/connections/)
 
-   - [配置社会化登录](/guides/connections/social.md)
-   - [配置标准协议身份提供商](/guides/connections/enterprise.md)
-   - [使用自定义数据库](/guides/database-connection/overview.md)
+    - [Integrate Social Authentication with Approw](/guides/connections/social.md)
+    - [Integrate Enterprise IdPs](/guides/connections/enterprise.md)
+    - [Integrate Customized Databases](/guides/database-connection/overview.md)
 
-5. [管理组织机构](/guides/org/)
+5. [Organization Management](/guides/org/)
 
-   - [创建或导入组织机构](/guides/org/create-or-import-org/README.md)；
-   - [管理组织机构](/guides/org/manage-org/README.md)；
-   - [管理成员生命周期](/guides/org/staff-life-cycle-management/README.md)；
-   - [使用 LDAP 协议对外开放组织机构数据](/guides/org/ldap-user-directory/README.md)。
+    - [Create Or Import An Organization](/guides/org/create-or-import-org/README.md)；
+    - [Manage The Organization](/guides/org/manage-org/README.md)；
+    - [Manage The Member Lifecycle](/guides/org/staff-life-cycle-management/README.md)；
+    - [Open Organizational Data to The Public Using The LDAP Protocol](/guides/org/ldap-user-directory/README.md)。
 
-6. [查看审计日志](/guides/audit/)
-7. 配置安全信息
+6. [View Audit Log](/guides/audit/)
+7. Configure security information
 
-   - [配置 Web 安全域](/guides/security/config-domain.md)
-   - [配置密码强度](/guides/security/config-password.md)
+    - [Configure Web Security Domain](/guides/security/config-domain.md)
+    - [Configure Password Strength](/guides/security/config-password.md)
 
-8. 配置用户池信息
-   - [修改用户池基础信息](/guides/userpool-config/basic-config.md)
-   - [配置邮件服务和模版](/guides/userpool-config/email/)
-   - [配置短信服务](/guides/userpool-config/sms/)
+8. Configure User Pool Information
+    - [Configure User Pool Basic Information](/guides/userpool-config/basic-config.md)
+    - [Configure Mail Services and Templates](/guides/userpool-config/email/)
+    - [Configure SMS Service](/guides/userpool-config/sms/)
 
-## 了解私有化部署方案
+## Undrstand the privatization deployment plan
 
-如果你需要私有化部署 {{$localeConfig.brandName}}，请阅读以下指引：
+If you need to privatize {{$localeConfig.brandName}}, please read the following guidelines:
 
-- [基础部署模式](/guides/deployment/bare-metal.md)；
-- [Docker 部署模式](/guides/deployment/docker-compose.md)；
-- [Kubernetes 部署模式](/guides/deployment/kubernetes.md)。
+-   [Basic Deployment](/guides/deployment/bare-metal.md)；
+-   [Docker Deployment](/guides/deployment/docker-compose.md)；
+-   [Kubernetes Deployment](/guides/deployment/kubernetes.md)。
