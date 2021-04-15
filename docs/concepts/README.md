@@ -8,7 +8,7 @@ You can connect any platform application to the {{$localeConfig.brandName}} syst
 
 You can choose our SDK (software development kit) or call related API (application programming interface) to access your application to the current technology you are using. When a user initiates an authorization request, {{$localeConfig.brandName}} will help you authenticate their identity and return the necessary user‘s information to your application.
 
-![](~@imagesEnUs/concepts/approw-connect.png)
+![](~@imagesEnUs/concepts/what-is-authing/authing-connect.png)
 
 ## Inside {{$localeConfig.brandName}} Engine
 
