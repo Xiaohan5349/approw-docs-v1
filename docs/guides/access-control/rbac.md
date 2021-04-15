@@ -22,7 +22,7 @@ You can use the Approw console to create roles: In **Privilege Management** - **
 
 Add three roles:
 
-![](~@imagesEnUs/guides/access-control/5186f15e-b02a-4b7b-b886-a3f26f5f07c8.png)
+![](~@imagesEnUs/guides/access-control/tbac-createrole.png)
 
 You can also use API & SDK to create roles. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
@@ -75,7 +75,7 @@ You can abstract some objects of the system as resources, and some operations ca
 
 We create these resources in Approw:
 
-![](~@imagesEnUs/guides/access-control/e23be4b2-0072-4989-bdf9-e0cc7c882397.png)
+![](~@imagesEnUs/guides/access-control/rbac-createrecourse.png)
 
 ## Authorized role to operate resource
 
@@ -83,7 +83,7 @@ Approw also supports authorization to users and roles at the same time. If the u
 
 In the following example, we authorize the Create and Delete permissions of the repository resource to the admin role:
 
-![](~@imagesEnUs/guides/access-control/0f443c28-85b5-4127-9177-0cdae41eb3c2.png)
+![](~@imagesEnUs/guides/access-control/rbac-authorizerecourse.png)
 
 ## Determine whether the user has permission on the backend
 
