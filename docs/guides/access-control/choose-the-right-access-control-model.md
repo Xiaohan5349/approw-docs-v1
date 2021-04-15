@@ -2,19 +2,19 @@
 
 <LastUpdated/>
 
-There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](#什么是基于角色的访问控制-rbac)and [Attribute-based access control (ABAC)](#什么是基于属性的访问控制-abac). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
+There are two permission models that are widely used by everyone: [Role-based access control (RBAC) ](/guides/access-control/rbac.md)and [Attribute-based access control (ABAC)](/guides/access-control/abac.md). Both have their own advantages and disadvantages: the RBAC model is simpler to construct, but the disadvantage is that it is impossible to achieve fine-grained authorization of resources (both are to authorize a certain type of resource rather than a specific resource); ABAC model construction is relatively complicated, and the learning cost is higher. The advantage is that it is fine-grained and can be dynamically executed according to the context.
 
 ## What is role-based access control (RBAC)
 
 Role-based access control (RBAC) refers to authorize related permissions through the user's role, which achieves more flexible access control. RBAC is simpler, more efficient and scalable than directly authorize user permissions.
 
-<img src="~@imagesEnUs/guides/rbac.png" alt="drawing"/>
+![](../basics/authenticate-first-user/images/rbac.png)
 
 When using RBAC, by analyzing the actual situation of users, based on common responsibilities and needs, grant them different roles. You can grant users one or more roles, and each role has one or more permissions. This relationship between user-role and role-permission allows us to no longer need to manage a single user separately. The user inherits the required permissions from the granted role.
 
 Take Gitlab's permission system as an example. There are three roles in the user system: Admin, Maintainer, and Operator. These three roles have different permissions. For example, only Admin has the permission to create and delete code repositories.
 
-![](../basics/authenticate-first-user/images/rbac.png)
+![](../basics/authenticate-first-user/images/rbac2.png)
 
 We grant a user the role of "Admin", and he has the two permissions of "Create Code Repository" and "Delete Code Repository".
 
