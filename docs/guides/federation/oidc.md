@@ -16,7 +16,7 @@ OpenID Connect protocol has the following authorization modes, which are:
 
 After becoming an OpenID Connect identity source, other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
-You can understand the OIDC protocol in depth [here](/docs/concepts/oidc/oidc-overview.md).
+You can understand the OIDC protocol in depth [here](/concepts/oidc/oidc-overview.md).
 
 ## Create an Application
 
@@ -48,7 +48,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/authorization-code-flow.png)
 
-[Check the document](/docs/federation/oidc/authorization-code/).
+[Check the document](/federation/oidc/authorization-code/).
 
 ## Implicit Mode
 
@@ -73,7 +73,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/implicit-flow.png)
 
-[Check the document](/docs/federation/oidc/implicit/).
+[Check the document](/federation/oidc/implicit/).
 
 ## Hybrid Mode
 
