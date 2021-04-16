@@ -1,4 +1,4 @@
-# Use social login authentication
+# Use Social Login Authentication
 
 <LastUpdated/>
 
