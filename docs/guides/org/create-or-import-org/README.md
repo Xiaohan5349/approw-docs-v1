@@ -15,7 +15,7 @@ You can choose to use the console or API & SDK to create an organization.
 {{$localeConfig.brandName}} organization supports importing organizations and users from the following methods:
 
 - [Windows Local Active Directory](https://en.wikipedia.org/wiki/Active_Directory)
-- [Excel](?import-org=excel#导入组织机构)
+- Excel
 - You can also use API & SDK to [write user import scripts](/docs/guides/migrations/use-api.md).
 
 Please read the corresponding documents separately:

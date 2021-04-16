@@ -35,9 +35,9 @@ Authentication protocol.
 | password | Authentication method based on account password.                                                                                        |
 | sms      | Authentication method based on SMS verification code.                                                                                      |
 | social   | The social login authentication default value when logging in with the {{$localeConfig.brandName}} integrated social login method.                                         |
-| ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../authentication/ldap/ldap.md).              |
-| saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../authentication/use-saml/).                    |
-| oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../authentication/oidc/oidc-authorization.md). |
+| ldap     | Use LDAP for authentication. For how to access LDAP, please refer to [Configuring LDAP Service](../../connections/ldap/).              |
+| saml     | Use SAML for authentication. For how to access SAML, please refer to  [Access SAML](../../connections/saml/).                    |
+| oidc     | Use OIDC protocol for authentication. For how to access OIDC, please refer to [Using OIDC Authorization](../../connections/oidc/). |
 
 ## Connection
 
@@ -55,21 +55,21 @@ Identity provider.
       <td style="text-align:left">ldap	</td>
       <td style="text-align:left">Use LDAP protocol to log in. An {{$localeConfig.brandName}} LDAP service corresponds to an {{$localeConfig.brandName}} user directory or a third-party user directory. For details, refer to
         <a
-        href="../../authentication/ldap/ldap">Configuring LDAP Service</a> and <a href="../../authentication/ldap/ldap-idp"> Using {{$localeConfig.brandName}} LDAP User Directory</a>.</td>
+        href="../../connections/ldap/">Configuring LDAP Service</a> and <a href="../../guides/users/ldap-user-directory/"> Using {{$localeConfig.brandName}} LDAP User Directory</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">saml</td>
-      <td style="text-align:left">Log in using the SAML protocol. For how to access SAML, refer to <a href="../../authentication/use-saml/">Accessing SAML</a>.</td>
+      <td style="text-align:left">Log in using the SAML protocol. For how to access SAML, refer to <a href="../../connections/saml/">Accessing SAML</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">oidc</td>
-      <td style="text-align:left">Use OIDC protocol authentication. For information on how to access OIDC, please refer to <a href="../../authentication/oidc/oidc-authorization">Using OIDC Authorization</a>.</td>
+      <td style="text-align:left">Use OIDC protocol authentication. For information on how to access OIDC, please refer to <a href="../../connections/oidc/">Using OIDC Authorization</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">github</td>
       <td style="text-align:left">Log in with GitHub. For details, refer to
         <a
-        href="../../social-login/web/github">Access GitHub Login</a>.</td>
+        href="../../connections/github">Access GitHub Login</a>.</td>
     </tr>
   </tbody>
 </table>
