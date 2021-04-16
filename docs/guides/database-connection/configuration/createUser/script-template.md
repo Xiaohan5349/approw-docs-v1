@@ -88,7 +88,7 @@ async function createUser(userinfo, context) {
 When the user already exists, you need to throw an error. You can design different error messages. For example:
 
 ```javascript
-async function login(query, password, context) {
+async function createUser(query, password, context) {
   // Implement your logic here
   throw new Error('User allready exists!')
 }
