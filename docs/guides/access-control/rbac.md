@@ -15,10 +15,10 @@ With the combination of users, roles, resources, and authorizations, we can get 
 
 ## Create roles
 
-You can use the Approw console to create roles: In **Privilege Management** - **Role Management** Click **Add Role **:
+You can use the Approw console to create roles: In **Authorization Management** - **Role** Click **Add Role **:
 
 - Role code: The unique id of the role. It only allowed to contain English letters, numbers, underscore \_ and hyphen -. Here we fill in `admin`.
-- Role description: the description of the role, here we fill in the`administrator`.
+- Role description: the description of the role, here we fill in the`Admin`.
 
 Add three roles:
 
