@@ -71,7 +71,7 @@ The context also includes the following information:
 When the user is created successfully, you need to return the user information to Approw, the format of user information can be found in the document of [of detailed fields of the user profile](/guides/user/user-profile.md). For example:
 
 ```javascript
-async function getUser(userinfo, context) {
+async function createUser(userinfo, context) {
   // Implement your logic here
   return {
     id: 1, // must not empty
@@ -99,7 +99,7 @@ async function login(query, password, context) {
 When the user meets other errors, you can catch the error and return a friendly notice such as
 
 ```javascript
-async function getUser(userinfo, context) {
+async function createUser(userinfo, context) {
   try {
     // Implement your logic here
   } catch (error) {
