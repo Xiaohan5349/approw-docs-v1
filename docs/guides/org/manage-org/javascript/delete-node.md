@@ -1,6 +1,6 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `deleteNode` 方法删除节点：
+Use the `deleteNode` method of the `OrgManagementClient` to delete a node:
 
 ```javascript
 const org = await managementClient.org.create('北京非凡科技', '北京非凡科技有限公司', 'feifan');

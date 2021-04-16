@@ -1,6 +1,6 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `addMembers` 方法往节点中添加成员：
+Use the `addMembers` method of `OrgManagementClient` to add members to the node:
 
 ```javascript
 cosnt { totalCount, list } = await managementClient.org.addMembers("NODE_ID", ["USER_ID"])

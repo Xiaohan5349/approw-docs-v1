@@ -1,7 +1,7 @@
-你可以点击其中一个节点，选择 **添加子节点**:
+You can click on one of the nodes and select **添Add Child Node**:
 
-![](https://cdn.authing.cn/blog/20201020144542.png)
+<img src="~@imagesEnUs/guides/org/1618522960.png" alt="drawing"/>
 
-输入节点名称和唯一标志（可选）即可：
+Enter the node name and unique identifier (optional):
 
-<img src="https://cdn.authing.cn/blog/20201020144628.png" height="300" style="display:block;margin: 0 auto;">
+<img src="~@imagesEnUs/guides/org/add-childnode.png" alt="drawing"/>

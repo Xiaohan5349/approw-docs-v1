@@ -1,78 +1,84 @@
 
-如果你想接入 LDAP 服务，请按照以下步骤完成 LDAP 配置。
+If you want to access the LDAP service, please follow the steps below to complete the LDAP configuration.
 
-#### 添加 LDAP 服务
+#### Add LDAP service
 
-![](https://cdn.authing.cn/blog/20201107163714.png)
+<img src="~@imagesEnUs/guides/ldap/1618514735.png" alt="drawing"/>
+
 ::: img-description
-添加 LDAP 服务
+Add LDAP service
 :::
 
-![](https://cdn.authing.cn/blog/20201107163722.png)
+<img src="~@imagesEnUs/guides/ldap/63722.png" alt="drawing"/>
+
 ::: img-description
-添加 LDAP 服务页面
+Add LDAP service page
 :::
 
-#### 填写相关信息
+#### Fill in the relevant information
 
-在弹出的对话框中填写相关信息，如果你不知道如何填写可以点击右上角的「点击这里」填充测试配置信息。
+Fill in the relevant information in the pop-up dialog box. If you don't know how to fill in, you can click "Click here" in the upper right corner to fill in the test configuration information.
 
-![](https://cdn.authing.cn/blog/20201107163734.png)
+<img src="~@imagesEnUs/guides/ldap/1618515603.png" alt="drawing"/>
+
 ::: img-description
-LDAP 服务信息测试
+LDAP service information test
 :::
 
-![](https://cdn.authing.cn/blog/20201107163752.png)
+<img src="~@imagesEnUs/guides/ldap/1618515977.png" alt="drawing"/>
+
 ::: img-description
-使用我们提供的 LDAP 服务信息
+Use the LDAP service information we provide
 :::
 
 #### 参数解释
 
-1. `LDAP 别名`，必填，自定义的 LDAP 服务名称
-2. `LDAP 链接`，必填，LDAP 服务器的地址，如：ldap://dc.fabrikam.com
-3. `Base DN`，必填，用于连接 LDAP 的用户名，此用户名将用于测试连接结果和搜索用户或用户组
-4. `密码`，必填，用于连接 LDAP 的密码，该密码将会被加密存储到数据库中
-5. `绑定端点`，必填，定义从哪个目录开始搜索，如：dc=fabrikam,dc=local
-6. `查询条件`，必填，如果这里是 mail 表示查询用户信息是通过邮箱信息来查询的。注意，该字段信息与 LDAP 数据库存储数据的字段相对应，如果如果存储用户邮箱信息的字段是 email, 这里就需要修改成 email。
+1. `LDAP alias`, required, custom LDAP service name
+2. `LDAP link`, required, the address of the LDAP server, such as: ldap://dc.fabrikam.com
+3. `Base DN`, required, the username used to connect to LDAP, this username will be used to test the connection results and search for users or user groups
+4. `Password`, required, the password used to connect to LDAP, the password will be encrypted and stored in the database
+5. `Binding endpoint`, required, defines which directory to start searching from, such as: dc=fabrikam,dc=local
+6. `Query conditions`, required. If it is mail, it means that the user information is inquired through the mailbox information. Note that this field information corresponds to the field stored in the LDAP database. If the field storing user mailbox information is email, you need to modify it to email here.
 
-#### 连通性测试
+#### Connectivity test
 
-连通性测试可以帮助你检查参数是否填写正确了，如果你填入了「测试配置」，那么点击页面上的「连通性测试」应该可以看到如下结果：
+The connectivity test can help you check whether the parameters are filled in correctly. If you fill in the "test configuration", then click on the "connectivity test" on the page and you should see the following results:
 
-![](https://cdn.authing.cn/blog/20201107165043.png)
+<img src="~@imagesEnUs/guides/ldap/1618516275.png" alt="drawing"/>
+
 ::: img-description
-连通性测试
+Connectivity test
 :::
 
-你可以用这个测试来测试不同的 `Base DN` 和`密码`。
+You can use this test to test different `Base DN` and `passwords`.
 
-#### 验证用户
+#### Authenticate user
 
-验证用户可以帮助你检查查询条件是否正确，如果查询条件不正确，会返回无法找到用户的错误。
+Authenticating users can help you check whether the query conditions are correct. If the query conditions are incorrect, it will return an error that the user cannot be found.
 
-我们给出的测试用户名是 `admin`，密码是 `admin`，查询条件是 `cn`，这是一个 `openLDAP` 提供的默认账密信息，点击「验证用户」后应该看到如下结果：
+The test user name we gave is `admin`, the password is `admin`, and the query condition is `cn`, which is the default account and secret information provided by `openLDAP`. After clicking "Authenticate User", you should see the following results:
 
-![](https://cdn.authing.cn/blog/20201107163802.png)
+<img src="~@imagesEnUs/guides/ldap/1618516587.png" alt="drawing"/>
+
 ::: img-description
-验证用户
+Authenticate user
 :::
 
-如果将查询条件从 `cn` 改为 `cnn`，那么此时应该返回如下结果：
+If the query condition is changed from `cn` to `cnn`, then the following results should be returned at this time:
 
-![](https://cdn.authing.cn/blog/20201107163810.png)
+<img src="~@imagesEnUs/guides/ldap/1618517319.png" alt="drawing"/>
+
 ::: img-description
-查询条件测试
+Query condition test
 :::
 
-用户可用此方式，通过修改 `绑定端点` 和 `查询条件` 完成对 LDAP 的调试。
+In this way, users can complete the debugging of LDAP by modifying the `bind endpoint` and `query condition`.
 
-配置完成后，访问任意 OAuth 应用或 OIDC 应用即可使用 LDAP 账号登录。
+After the configuration is complete, access any OAuth application or OIDC application to log in with an LDAP account.
 
 ::: hint-info
-我们准备了一个[LDAP 测试应用](https://ldap-test.authing.cn)可让你体验使用 LDAP 登录的全流程：
+We prepared a [LDAP test application](https://ldap-test.authing.cn) allows you to experience the whole process of logging in with LDAP:
+Test account: admin
 
-测试账户：admin
-
-测试密码：admin
+Test password: admin
 :::

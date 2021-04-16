@@ -16,7 +16,7 @@ OpenID Connect protocol has the following authorization modes, which are:
 
 After becoming an OpenID Connect identity source, other applications can use the process of the corresponding mode to complete user authentication and authorization.
 
-You can understand the OIDC protocol in depth [here](/docs/concepts/oidc/oidc-overview.md).
+You can understand the OIDC protocol in depth [here](/concepts/oidc/oidc-overview.md).
 
 ## Create an Application
 
@@ -48,7 +48,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/authorization-code-flow.png)
 
-[Check the document](/docs/federation/oidc/authorization-code/).
+[Check the document](/federation/oidc/authorization-code/).
 
 ## Implicit Mode
 
@@ -73,7 +73,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/implicit-flow.png)
 
-[Check the document](/docs/federation/oidc/implicit/).
+[Check the document](/federation/oidc/implicit/).
 
 ## Hybrid Mode
 
@@ -96,7 +96,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/hybrid-flow.png)
 
-[Check the document](/docs/federation/oidc/hybrid/).
+[Check the document](/federation/oidc/hybrid/).
 
 ## Client Credentials Mode
 
@@ -115,7 +115,7 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/client-credentials-flow.png)
 
-[Check the document](/docs/federation/oidc/client-credentials/).
+[Check the document](/federation/oidc/client-credentials/).
 
 ## Password Mode
 
@@ -135,17 +135,17 @@ Below is the workflow:
 
 ![](~@imagesEnUs/guides/federation/oidc/password-flow.png)
 
-[Check the document](/docs/federation/oidc/password/).
+[Check the document](/federation/oidc/password/).
 
 ## Refresh Access Token
 
-Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/docs/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
+Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
 
 ### Obtain Refresh Token
 
-If you want to obtain [Refresh Token](/docs/concepts/refresh-token.md), you need to send the request to Approw to get [Refresh Token](/docs/concepts/refresh-token.md).
+If you want to obtain [Refresh Token](/concepts/refresh-token.md), you need to send the request to Approw to get [Refresh Token](/concepts/refresh-token.md).
 
-Only **authorization code mode** and **password mode** can support [Refresh Token](/docs/concepts/refresh-token.md).
+Only **authorization code mode** and **password mode** can support [Refresh Token](/concepts/refresh-token.md).
 
 When the combination of authorization mode and Scope shown in the following table is sent to the Token endpoint, Approw will return Refresh Token.
 
@@ -160,7 +160,7 @@ Warning : When using the **authorization code mode**, you must carry the scope w
 
 #### Obtain Refresh Token in Authorization Code Mode
 
-When using the Authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/docs/federation/oidc/authorization-code/) to get further information.
+When using the Authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/federation/oidc/authorization-code/) to get further information.
 
 #### Obtain authorization code and refresh token example
 
@@ -201,7 +201,7 @@ POST https://${your app domain name}/oidc/token?grant_type=authorization_code
 
 #### Obtain Refresh Token in Password Mode
 
-In password mode, you will only use the **Token Endpoint**. See [Using Password Mode](/docs/federation/oidc/password) for more information.
+In password mode, you will only use the **Token Endpoint**. See [Using Password Mode](/federation/oidc/password) for more information.
 
 Include `offline_access` in the request scope of the password mode.
 

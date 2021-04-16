@@ -1,8 +1,8 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `moveNode` 方法移动节点：
+Use the `moveNode` method of the `OrgManagementClient` to move the node:
 
-> 需要指定所移动节点的新父节点（targetParentId）。
+> The new parent node (targetParentId) of the moved node needs to be specified.
 
 ```java
 Org org = managementClient.org().moveNode("orgId", "nodeId", "targetParentId").execute();

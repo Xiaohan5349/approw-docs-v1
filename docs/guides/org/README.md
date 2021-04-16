@@ -16,3 +16,4 @@ A common organizational structure is as follows:
 This is a typical tree structure with only one root node. Generally speaking, the root node is a company or an organization. Each node corresponds to a hierarchical department.
 
 In {{$localeConfig.brandName}}, you can [import organizations from third-party user directories such as LDAP, Active Directory, etc](./create-or-import-org/README.md). We also provide [two ways to manage organizations, console and SDK](./manage-org/README.md). Therefore, you can easily [manage the member lifecycle](./staff-life-cycle-management/README.md) and you can also [use the LDAP protocol to open organizational data to the outside world](./ldap-user-directory/README.md).
+
