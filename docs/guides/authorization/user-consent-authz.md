@@ -121,35 +121,35 @@ You can see that the user's AccessToken has the message permission scope. The **
 After Approw defines the API, you need to add an **API authentication interceptor** to your actual business API interface. For protected resources, only visitors who carry a legal AccessToken and have the required permissions are allowed. The code example is as follows:
 
 ```javascript
-var express = require('express')
-var app = express()
-var jwt = require('express-jwt')
-var jwks = require('jwks-rsa')
-var port = process.env.PORT || 8080
+var express = require("express");
+var app = express();
+var jwt = require("express-jwt");
+var jwks = require("jwks-rsa");
+var port = process.env.PORT || 8080;
 var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
     jwksUri:
-      'https://{Application domain}.authing.cn/oidc/.well-known/jwks.json',
+      "https://{Application domain}.authing.cn/oidc/.well-known/jwks.json",
   }),
-  audience: '{Programmatic access account ID}',
-  issuer: 'https://{Application domain}.authing.cn/oidc',
-  algorithms: ['RS256'],
-})
+  audience: "{Programmatic access account ID}",
+  issuer: "https://{Application domain}.authing.cn/oidc",
+  algorithms: ["RS256"],
+});
 // Verify the legitimacy of AccessToken
-app.use(jwtCheck)
+app.use(jwtCheck);
 
-app.post('/article', function(req, res) {
+app.post("/article", function(req, res) {
   // Verify that AccessToken has the required permissions
-  if (!req.user.scope.split(' ').incldues('write:article')) {
-    return res.status(401).json({ code: 401, message: 'Unauthorized' })
+  if (!req.user.scope.split(" ").incldues("write:article")) {
+    return res.status(401).json({ code: 401, message: "Unauthorized" });
   }
-  res.send('Secured Resource')
-})
+  res.send("Secured Resource");
+});
 
-app.listen(port)
+app.listen(port);
 ```
 
 For other content about Token verification, please refer to [Verification Token](/guides/faqs/how-to-validate-user-token.md).
