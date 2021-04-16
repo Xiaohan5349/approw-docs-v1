@@ -1,3 +1,3 @@
-点击右上角的编辑按钮：
+Click the edit button in the upper right corner:
 
-<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-22-08.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/1618523318.png" alt="drawing"/>

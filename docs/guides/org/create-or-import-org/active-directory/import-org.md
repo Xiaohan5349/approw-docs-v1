@@ -1,97 +1,97 @@
-#### 在 {{$localeConfig.brandName}} 控制台创建 AD 连接
+#### Create an AD connection in the {{$localeConfig.brandName}} console
 
-进入 [{{$localeConfig.brandName}} 控制台](https://console.authing.cn/console/userpool)，按照下图指引找到  **连接身份源**/**连接 Active Directory** ：
+Go to the [{{$localeConfig.brandName}} console](https://console.authing.cn/console/userpool) and follow the instructions in the figure below to find **Connect to Identity Source**/**Connect to Active Directory** ：
 
 ![](https://cdn.authing.cn/img/20210126190459.png)
 
 ::: img-description
-创建 AD 连接
+Create AD connection
 :::
 
-你需要输入以下字段信息：
+You need to enter the following field information:
 
-- **连接标志符**: 这是此连接的唯一标志符，设置之后不能修改。
-- **显示名称**: 如果设置，{{$localeConfig.brandName}} 登录表单将会显示一个 "使用 {displayName} 登录" 的按钮。
-- **应用 Logo**
+- **Connection identifier**: This is the only identifier for this connection and cannot be modified after setting.
+- **Display Name**: If set, the {{$localeConfig.brandName}} login form will display a "Login with {displayName} button.
+- **Application Logo**
 
-然后点击「**保存**」按钮，成功创建之后，你会得到一个 **Provisioning Ticket Url**，这个会在下面的步骤中使用：
+Then click the「**Save**」button. After successful creation, you will get a **Provisioning Ticket Url**, which will be used in the following steps:
 
 ![](https://cdn.authing.cn/blog/20201109141645.png)
 
-之后你需要为你的应用开启此 AD 连接：
+Then you need to open this AD connection for your application:
 
 ![](https://cdn.authing.cn/img/20210126190629.png)
 
-#### 在 Windows 运行 {{$localeConfig.brandName}} AD Connector
+#### Run {{$localeConfig.brandName}} AD Connector on Windows
 
-在安装 {{$localeConfig.brandName}} AD Connector 之前，请先确保满足以上条件：
+Before installing {{$localeConfig.brandName}}, please make sure that the above conditions are met:
 
-- Windows 服务器；
-- 服务器安装了 Active Directory；
-- 运行 {{$localeConfig.brandName}} AD Connector 的机器上，能够连通 Active Directory；
-- 一个具有 Active Directory 的读取权限的用户账密。
+- Windows server;
+- Active Directory is installed on the server;
+- The machine running {{$localeConfig.brandName}} AD Connector can connect to Active Directory;
+- A user account with read permission of Active Directory.
 
-首先你需要[下载](https://download.authing.cn/app/{{$localeConfig.brandName}}-AD-Connector-latest.exe) {{$localeConfig.brandName}} AD Connector，这是一个 exe 文件，需要运行在你的 Windows AD 服务器，负责和 {{$localeConfig.brandName}} 进行通信。{{$localeConfig.brandName}} AD Connector 需要**安装在局域网 AD 域环境**中，但不一定要安装到运行 AD 服务的服务器上，只要保证 {{$localeConfig.brandName}} AD Connector 能够访问到 AD 用户目录。
+First you need to [download](https://download.authing.cn/app/{{$localeConfig.brandName}}-AD-Connector-latest.exe) {{$localeConfig.brandName}} AD Connector，This is an exe file that needs to run on your Windows AD server and is responsible for communicating with {{$localeConfig.brandName}}. {{$localeConfig.brandName}} AD Connector need to be installed **in the LAN AD domain environment**, but it does not have to be installed on the server running the AD service, as long as {{$localeConfig.brandName}} AD Connector can Go to the AD user directory.
 
 ##### 安装 {{$localeConfig.brandName}} AD Connector
 
-点击[这里](https://download.authing.cn/app/{{$localeConfig.brandName}}-AD-Connector-latest.exe)下载最新的 {{$localeConfig.brandName}} AD Connector。
+Click[here](https://download.authing.cn/app/{{$localeConfig.brandName}}-AD-Connector-latest.exe)download the latest {{$localeConfig.brandName}} AD Connector.
 
-将下载的文件上传到 AD 域环境的机器上，双击应用，进行安装。
+Upload the downloaded file to the machine in the AD domain environment, and double-click the application to install it.
 
 ![](https://cdn.authing.cn/docs/20200414213654.png)
 
-系统可能提出警告，点击「仍要运行」。
+The system may warn you, click "Run anyway".
 
 ![](https://cdn.authing.cn/blog/image%20%28521%29.png)
 
-选择语言，点击「OK」。
+Select the language and click "OK".
 
 ![](https://cdn.authing.cn/docs/20200414213931.png)
 
-点击「下一步」。
+Click "Next".
 
 ![](https://cdn.authing.cn/blog/20201109213415.png)
 
-接受许可协议并点击「下一步」。
+Accept the license agreement and click "Next".
 
 ![](https://cdn.authing.cn/blog/20201109213443.png)
 
-选择软件安装目录，然后点击「安装」。
+Select the software installation directory, and then click "Install".
 
 ![](https://cdn.authing.cn/blog/20201109213500.png)
 
-等待安装完成。
+Wait for the installation to complete.
 
 ![](https://cdn.authing.cn/blog/20201109213517.png)
 
-点击「完成」，会弹出命令行窗口，等待安装完成。
+Click "Finish", a command line window will pop up and wait for the installation to complete.
 
 ![](https://cdn.authing.cn/docs/20200414214751.png)
 
-中途可能会出现缺少可选依赖的报错信息，可以忽略。看到以下界面说明安装成功，可按任意键退出：
+There may be an error message lacking optional dependencies in the middle, which can be ignored. See the following interface to indicate that the installation is successful, and you can press any key to exit:
 
 ![](https://cdn.authing.cn/docs/20200414214912.png)
 
-之后你可以在 Windows 的服务管理页面看到  AuthingADConnector 这个服务：
+Then you can see the AuthingADConnector service on the Windows service management page:
 
 ![](https://cdn.authing.cn/blog/20201109214605.png)
 
-接下来，打开浏览器，访问 http://127.0.0.1:9742，会看到以下界面：
+Next, open the browser and visit http://127.0.0.1:9742, you will see the following interface:
 
 ![](https://cdn.authing.cn/docs/eirog1.png)
 
-将你的 Provisioning Ticket Url、AD 服务器链接地址（请填写 **http://ws.authing.cn:8855** ）、Base DN、域用户名、密码填入，然后点击「**保存**」按钮。
+Fill in your Provisioning Ticket Url, AD server link address (please fill in **http://ws.authing.cn:8855** ）, Base DN, domain user name, and password, and then click "**Save** "Button.
 
 ![](https://cdn.authing.cn/docs/serths2.png)
-之后，点击「测试连接」，出现以下结果，说明连接正常：
+After that, click "Test Connection", the following result appears, indicating that the connection is normal:
 
 ![](https://cdn.authing.cn/docs/20200414220049.png)
 
 ::: hint-info
-如果遇到 Connector 与 {{$localeConfig.brandName}} 链接测试失败问题，请稍等一会儿，可能因为网络延迟问题，Connector 与 {{$localeConfig.brandName}} 握手尚未完成。
+If you encounter a connection test failure between Connector and {{$localeConfig.brandName}}, please wait for a while. The handshake between Connector and {{$localeConfig.brandName}} may not have been completed due to network delays.
 :::
 
 ::: hint-info
-如果遇到 AD 相关的错误，请检查 AD 服务器链接、账密信息是否正确。
+If you encounter AD-related errors, please check whether the AD server link and account and secret information are correct.
 :::

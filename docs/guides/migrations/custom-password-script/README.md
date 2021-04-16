@@ -21,7 +21,7 @@ This document introduces how to configure the password encryption function.
 
 In the user pool, click ** Expansion Capabilities** -&gt; **Custom Password Encryption** , as shown in the image below:
 
-![](https://cdn.authing.cn/blog/20200927202818.png)
+<img src="~@imagesEnUs/guides/migrate/custom-password.png" alt="drawing"/>
 
 ::: img-description
 User-defined password encryption method
@@ -163,13 +163,13 @@ The code package supported by {{$localeConfig.brandName}} can only be in .js for
 
 If you have not imported any package, you can directly upload the template file in .js format. If you have imported the package, please package it with node_modules in .zip format and upload it in the {{$localeConfig.brandName}} console.
 
-![](https://cdn.authing.cn/blog/image%20%28510%29.png)
+<img src="~@imagesEnUs/guides/migrate/custom-password-method.png" alt="drawing"/>
 
 ### Test password encryption function
 
 After the upload is successful, the developer can test the password encryption effect. As shown below, enter the original password in the input box and click「Encryption test」to see the encrypted password result（if no encryption function is uploaded, the {{$localeConfig.brandName}} default password encryption will be displayed）.
 
-![](https://cdn.authing.cn/blog/image%20%28529%29.png)
+<img src="~@imagesEnUs/guides/migrate/test-password-func.png" alt="drawing"/>
 
 ## Attention
 

@@ -18,27 +18,27 @@ You can also view the list of Pipeline template functions here: [https://github.
 
 First, select the Console's**Extention Capabilities** - **Custom Pipeline** page and you will see some tips.
 
-![](https://cdn.authing.cn/blog/20200927194309.png)
+<img src="~@imagesEnUs/guides/expand/pipeline1.png" alt="drawing"/>
 
 Select a trigger scene and click the 「+」 button. We have more than 20 templates to choose:
 
-![](https://cdn.authing.cn/blog/20200927194410.png)
+<img src="~@imagesEnUs/guides/expand/pipeline-temp.png" alt="drawing"/>
 
 Select "Registered Email Suffix White List" in Access Control.
 
-![](https://cdn.authing.cn/blog/20200927194723.png)
+<img src="~@imagesEnUs/guides/expand/pipeline-nonEmail.png" alt="drawing"/>
 
 ## Create a Pipeline Function
 
 The domain name whitelist we set here is "example.com", you can change it to your own domain name.
 
-![](https://cdn.authing.cn/blog/20200927194840.png)
+<img src="~@imagesEnUs/guides/expand/pipeline-code.png" alt="drawing"/>
 
 Click the "Save" button in the lower left corner, we will deploy this function to the cloud. It will take some time, please be patient.
 
 Back to the Pipeline function list page, you can see the function we just added.
 
-![](https://cdn.authing.cn/blog/20200927194910.png)
+<img src="~@imagesEnUs/guides/expand/pipeline-scen.png" alt="drawing"/>
 
 ::: hint-success
 If you have multiple Pipeline functions, you can drag to sort them.

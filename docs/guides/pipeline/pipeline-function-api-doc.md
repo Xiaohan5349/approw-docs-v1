@@ -79,7 +79,7 @@ The pipeline function set to asynchronous execution（ **asynchronous non-langua
 
 As shown in the image below, checking this box means to let the pipeline function execute asynchronously:
 
-![](https://cdn.authing.cn/blog/20200927195654.png)
+<img src="~@imagesEnUs/guides/expand/pipeline-async.png" alt="drawing"/>
 
 ## Pipeline function example <a id="demo"></a>
 

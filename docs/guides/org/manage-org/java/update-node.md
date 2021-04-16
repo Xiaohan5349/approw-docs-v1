@@ -1,6 +1,6 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `updateNode` 方法移动节点：
+Use the `updateNode` method of the `OrgManagementClient` to move the node:
 
 ```java
 UpdateNodeParam param = new UpdateNodeParam(0, "");
