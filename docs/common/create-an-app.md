@@ -4,7 +4,7 @@ To connect the user and IdP, you need to create an application. In [**Console**]
 
 <!-- ![](../../images/integration/ali-cloud/1-4.jpg) -->
 
-Fill Application Name, Verification URL and Callback URL. Than **Create**.
+Fill Application Name, Verification URL and Callback URL. Then **Create**.
 
 ![](~@imagesEnUs/integration/ali-cloud/1-5.jpg)
 
