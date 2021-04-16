@@ -6,7 +6,9 @@ Multi-factor Authentication (MFA) is a very simple safety practice method. It ca
 
 You can enable multi-factor authentication for your applications here:
 
+
 ![](./images/Xnip2021-03-04_15-12-05.png)
+
 
 ## Adaptive MFA:
 
@@ -15,7 +17,9 @@ Approw multi-factor authentication is self-adaptive, which means dynamic authent
 - If the user binds the phone number and the application has enabled the SMS verification code MFA, the mobile phone number verification code will be used as the MFA authentication method.
 - If the user binds the phone number and the application has enabled the Email MFA, the email verification code will be used as the MFA authentication method.
 - If the user does not bind any phone number or email, the user will be asked to bind a phone number first.
+- 
 
 ![](./images/Xnip2021-03-04_15-30-05.png)
+
 
 For more specific access procedures, see [Setup Multi-Factor Authentication for Users](/guides/authentication/mfa/).
