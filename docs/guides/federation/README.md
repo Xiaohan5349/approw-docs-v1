@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-## What is Federation Authentication?
+## What is federation authentication?
 
 In the early days of the Internet, your different type of account information was separated in different sites and applications, which has the following problems:
 
@@ -14,7 +14,7 @@ Federation authentication **unites** different identity providers through **stan
 
 ![](~@imagesEnUs/concepts/federation/1-1.png)
 
-## Why We Need Federation Authentication?
+## Why we need federation authentication?
 
 Federation authentication is a **distributed** identity authentication, when the user login into the **identity provider**, the user can select to log in to federal identity providers **trusted** by the current identity provider. Users can log in to a new system through federation authentication without having to register an account in the new system every time.
 
@@ -23,13 +23,13 @@ Using federation authentication has the following benefits:
 1. Users don’t need to create a new account every time.
 2. Users can freely access different organizations and sites after accessing federation authentication.
 
-## The Federation Authentication Principle
+## Federation authentication principle
 
 The following is the process of federation authentication, the user is redirected to the identity federation for authentication, the user authenticates in the identity federation first, and the identity federation authentication sends an assertion to Approw, which is equivalent to the user completing the authentication in Approw, Approw then sends the assertion to the business system, and the business system completes the login.
 
 ![](~@imagesEnUs/concepts/federation/1-2.png)
 
-## Approw’s Federation Authentication Abilities
+## Approw’s federation authentication abilities
 
 Approw supports multiple standard protocols for federation authentication. You can use [this application](https://federation-poc.approw.com/) to quickly experience.
 
