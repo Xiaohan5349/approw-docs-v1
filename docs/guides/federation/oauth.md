@@ -8,31 +8,41 @@ OAuth2.0 protocol has the following authorization modes, which are: **authorizat
 
 You can understand the OAuth2.0 protocol in depth [here](/concepts/oidc/oidc-overview.md).
 
-## Create an Application
+## Create an application
 
 In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-1.png)
+
 
 Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-2.png)
+
 
 Find your application, enter “Enable identity provider” tag.
 
+
 ![](~@imagesEnUs/guides/federation/oauth/1-1.png)
+
 
 In the "OAuth2.0 Identity Provider" card below, turn on the Enable OAuth2.0 Provider, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oauth/1-2.png)
 
-## Authorization Code Mode
+
+## Authorization code mode
 
 If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended.
 
 In **Console** > **Applications**, find your application in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `authorization_code` in the authorization mode, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oauth/1-3.png)
+
 
 There are the following processes.
 
@@ -44,16 +54,21 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oauth/authorization-code-flow.png)
+
 
 [Check the document](/federation/oauth2/authorization-code).
 
-## Implicit Mode
+## Implicit mode
 
 If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode** applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken will be returned directly from the **authentication endpoint**.
 
 In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `implicit` in the authorization mode, and then click Save.
+
+
 ![](~@imagesEnUs/guides/federation/oauth/1-4.png)
+
 
 There are the following processes.
 
@@ -64,17 +79,21 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oauth/implicit-flow.png)
+
 
 [Check the document](/federation/oauth2/implicit).
 
-## Password Mode
+## Password mode
 
 It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
 In **Console** > **Applications**, find your application, in the application details page, enter "Enable identity provider" tag, in the "OAuth2.0 Identity Provider" card below, check `password` in the authorization mode, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oauth/1-5.png)
+
 
 There are the following processes.
 
@@ -84,6 +103,8 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oauth/password-flow.png)
+
 
 [Check the document](/federation/oauth2/password).

@@ -1,4 +1,4 @@
-# APP Full Interface List For APP QR Code Login
+# APP Full Interface List for APP QR Code Login
 
 {{$localeConfig.brandName}} provides a REST-based QR code login interface, which developers can call directly.
 

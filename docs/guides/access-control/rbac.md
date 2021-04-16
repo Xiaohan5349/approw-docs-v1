@@ -22,7 +22,7 @@ You can use the Approw console to create roles: In **Authorization Management** 
 
 Add three roles:
 
-![](~@imagesEnUs/guides/access-control/rbac-createrole.png)
+![](~@imagesEnUs/guides/access-control/rbac-createroleCopy.png)
 
 You can also use API & SDK to create roles. For details, please refer to [Role Management SDK](/reference/sdk-for-node/management/RolesManagementClient.md).
 
@@ -75,7 +75,7 @@ You can abstract some objects of the system as resources, and some operations ca
 
 We create these resources in Approw:
 
-![](~@imagesEnUs/guides/access-control/rbac-createrecourse.png)
+![](~@imagesEnUs/guides/access-control/rbac-createrecourseCopy.png)
 
 ## Authorized role to operate resource
 

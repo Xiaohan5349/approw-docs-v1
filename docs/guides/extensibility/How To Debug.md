@@ -2,7 +2,7 @@
 
 This article describes how to use the Approw console to debug Pipeline functions.
 
-In the previous step, we have [created the first Pipeline function](https://docs.authing.cn/v2/guides/pipeline/write-your-first-pipeline-function.html), and at the same time review the function code as:
+In the previous step, we have [created the first Pipeline function](https://docs.approw.com/v2/guides/pipeline/write-your-first-pipeline-function.html), and at the same time review the function code as:
 
 ```js
 async function pipe(context, callback) {
@@ -18,7 +18,6 @@ async function pipe(context, callback) {
 }
 ```
 
-
 The function of the Pipeline function is to only allow the [example.com](http://example.com/)registration of mailboxes with thedomain name suffix.
 
 Click the debug button of the Pipeline function:
@@ -29,7 +28,7 @@ Click this button to open the debugging window: Approw will produce correspondin
 
 ![](RackMultipart20210320-4-2kprvl_html_21f8b1f1639ba0b7.png)
 
-**Notes that the data.userInfo.emailis**** xxxxxx@example.com ****.**
+**Notes that the data.userInfo.emailis\*\*** xxxxxx@example.com \***\*.**
 
 Click the &quot;Debug&quot; button: the debug result is output below, and we get the latest context object, indicating that this mailbox has passed the Pipeline function.
 
@@ -46,7 +45,8 @@ Need to use global Approw Pipeline built-in functionlogto view the running log, 
 Use the function editor to modify the code and add a line at the beginning of the function: Note that it is log instead of console.log.
 
 | Plain%20Textlog(context); |
-| --- |
+| ------------------------- |
+
 
 ![](RackMultipart20210320-4-2kprvl_html_3d491181cdf494b1.png)
 
