@@ -4,21 +4,27 @@
 
 This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/concepts/saml/saml-overview.md).
 
-## Create an Application
+## Create an application
 
 In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-1.png)
+
 
 Fill in the **Application Name**, for example, Web Note Project, feel free to fill in an **Subdomain**. Finally, click “Create”.
 
+
 ![](~@imagesEnUs/guides/federation/saml/1-1.png)
 
-## Configure SAML2 Identity Provider
+
+## Configure SAML2 identity provider
 
 To use your organization and users for SAML2 authentication, you need to enable and configure the application's SAML2 identity provider. Find your application and enter the "Enable Identity Provider" tab.
 
+
 ![](~@imagesEnUs/guides/federation/oauth/1-1.png)
+
 
 In the "SAML2 Identity Provider" card, turn on the Enable SAML2 Provider switch and fill in the **Default ACS address** and **Settings** information. Then click “Save”. The specific ACS address will be provided by the SAML SP, and the specific setting items need to be configured according to the requirements of the SAML SP.
 
@@ -26,7 +32,9 @@ In the "SAML2 Identity Provider" card, turn on the Enable SAML2 Provider switch 
 When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP metadata first, then it will provide you with the corresponding configuration information. At this time, it is recommended to fill in an **arbitrary** ACS address and the default setting information. Then **download** the Approw IdP **metadata** and upload it to the SP. Then **modify** the ACS address and setting information to the correct content obtained from the SP.
 :::
 
+
 ![](~@imagesEnUs/guides/federation/saml/1-3.png)
+
 
 **Default ACS Address**: By default, SAML2 Identity Provider will send the SAML Response to the consumer address specified in the SAML Request (go back where it comes from, by default, Approw will send the SAML assertion to the address specified by the `AssertionConsumerServiceURL` parameter in the SAML Request). If the consumer address is not specified in the SAML Request, Approw will send the SAML Response to the address filled in here. You can **get this address from SP** and fill it in here. If you can't find it at the SP, you can fill in one arbitrarily, but **some SPs will not specify the consumer address in the SAML Request**. In this case, **the correct address must be filled in here**.
 
@@ -67,7 +75,7 @@ When you create a SAML2 IdP in Approw, some SPs may ask you to upload the IdP me
 }
 ```
 
-**Custom SAML Response attributes**:
+**Custom SAML response attributes**:
 You can add some custom attributes to the SAML assertion, and the newly added attributes will appear in the Attribute of the SAML assertion.
 
 **Example**:
@@ -111,7 +119,7 @@ The content of this article will add the following attributes to the SAML assert
 </saml:Attribute>
 ```
 
-## Integration with Applications
+## Integration with applications
 
 Approw has already integrated SAML2 with Alibaba Cloud, Tencent Cloud, Huawei Cloud, AWS, and Kibana (AWS). Check the corresponding configuration documents for detailed steps.
 
