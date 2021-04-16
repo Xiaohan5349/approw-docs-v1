@@ -28,16 +28,16 @@ There are three bindings in SAML: HTTP Redirect Binding, HTTP POST Binding and H
 
 SP send SAML request via HTTP Redirect Binding. This SAML message is carried directly in the URL query sting of an HTTP GET request
 
-![](~@imagesEnUs/concepts/saml/saml-flow-2.png))
+![](~@imagesEnUs/concepts/saml/saml-flow-2.png)
 
 ### HTTP POST Binding
 
 IdP send SAML response to SP via HTTP POST Binding.
 
-![](~@imagesEnUs/concepts/saml/saml-flow-3.png))
+![](~@imagesEnUs/concepts/saml/saml-flow-3.png)
 
 ### HTTP Artifact Binding
 
 SP and IdP only transmit artifacts in browser. Artifacts can be used to request SAML body via back channel. This avoids SAML Request and SAML Response exposed in the Front End.
 
-![](~@imagesEnUs/concepts/saml/saml-flow-4.png))
+![](~@imagesEnUs/concepts/saml/saml-flow-4.png)
