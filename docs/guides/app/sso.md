@@ -12,25 +12,25 @@ At first you can create two applications follow the [guidelines](./create-app.md
 
 On the console’s **Applications** page, turn on the Enable application SSO switch.
 
-![](https://cdn.approw.com/docs/20201216143359.png)
+![](./images/SSO-1.png)
 
 ## Experience the Single Sign-on
 
 In console > Applications, click the application’s Login button.
 
-![](https://cdn.approw.com/docs/20201216143536.png)
+![](./images/SSO-2.png)
 
 Finish login on the login page:
-![](https://cdn.approw.com/docs/20201216143744.png)
+![](./images/SSO-3.png)
 
 After login success, it will redirect to the application callback address:
-![](https://cdn.approw.com/docs/20201216143917.png)
+![](./images/SSO-4.png)
 
 Next, click another application’s Login button:
-![](https://cdn.approw.com/docs/20201216144049.png)
+![](./images/SSO-5.png)
 
 The user doesn’t need to enter the password again, the user can directly enter the application callback address:
-![](https://cdn.approw.com/docs/20201216144215.png)
+![](./images/SSO-6.png)
 
 ## Using SDK for Single Sign-on
 
