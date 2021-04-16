@@ -13,7 +13,7 @@ You can define the following types of user defined fields:
 
 You can configure user defined fields on the **Configuration** - **Extend Fields** page:
 
-![](~@imagesEnUs/guides/authentication/udf1.png)
+![](~@imagesEnUs/guides/authentication/udf1Copy.png)
 
 After configuring the user defined fields, you can open the registration information completion page of the application to allow users to complete the information in these user defined fields.
 
@@ -27,7 +27,7 @@ Click Save, and then go to the login page of the app.
 
 After the user clicks registration, it will be redirected to the following registration information completion page:
 
-![](~@imagesEnUs/guides/authentication/udf3.png)
+![](~@imagesEnUs/guides/authentication/udf3Copy.png)
 
 After the user successfully registers, you can see the user defined field value that the user just entered on the user details page:
 
