@@ -30,7 +30,7 @@ authenticationClient.qrcode.startScanning("qrcode", {
 
 After running, it will automatically generate a QR code for APP scanning login:
 
-<img src="https://cdn.approw.com/blog/image%20%28619%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="./images/use-self-app1.png" style="display:block;margin: 0 auto;" height="250">
 
 After the code is scanned successfully, {{$localeConfig.brandName}} will call back the `onSuccess` function passed in by the developer. The callback parameters include `userInfo` and `ticket`, and the `ticket` can be used to [get user information](./full-api-list.md#To-get-user-information-by-ticket).
 
@@ -118,7 +118,7 @@ Let's take Objective-C as an example to implement consent to authorize login:
 
 After the mobile terminal confirms the authorization, you will see the relevant prompt on the web.
 
-<img src="https://cdn.approw.com/blog/image%20%28579%29.png" style="display:block;margin: 0 auto;" height="250">
+<img src="./images/use-self-app2.png" style="display:block;margin: 0 auto;" height="250">
 
 
 At this time, the entire login process is complete, and developers can use the ticket to get user information.
