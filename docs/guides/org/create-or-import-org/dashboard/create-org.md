@@ -1,4 +1,4 @@
-You can manually create an organization in**User Management** - **Organization** in the console:
+You can manually create an organization in **User Management** - **Organization** in the console:
 
 ![](~@imagesEnUs/guides/org/Xnip2021-02-24_19-52-07.png)
 

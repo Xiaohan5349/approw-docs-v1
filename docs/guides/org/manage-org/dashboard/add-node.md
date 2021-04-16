@@ -1,4 +1,4 @@
-You can click on one of the nodes and select **添Add Child Node**:
+You can click on one of the nodes and select **Add Child Node**:
 
 <img src="~@imagesEnUs/guides/org/1618522960.png" alt="drawing"/>
 
