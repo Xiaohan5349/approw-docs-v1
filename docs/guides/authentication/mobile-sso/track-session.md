@@ -1,52 +1,52 @@
 ---
 meta:
-  - name: description
-    content: Automatic Detection Login
+    - name: description
+      content: Automatic Detection Login
 ---
 
-# 移动端自动检测登录
+# Automatically detects login on Mobile
 
 <LastUpdated/>
 
-## 原理介绍
+## Principle introduction
 
-自动检测同一设备上关联应用的登录态，本质上就是建立起一个 deviceId （设备 ID） 与 Authing 服务器之间的 session 连接。
+Automatically detecting the login status of the associated application on the same device, which is essentially establishing a session connection between the deviceId (device ID) and the Approw server.
 
-当某个用户在某个应用上登录后，调用 Authing 接口创建一个 deviceId 与 Authing 服务器之间的 session，这样用户在同一设备的其他应用登录的时候，就能检测到此 session 的存在，从而跳过登录步骤，实现自动登录。
+When a user logs in on an application, the Approw interface is called to create a session between the deviceId and the Approw server, so that when the user logs in to other applications on the same device, the existence of this session can be detected and skipped Login steps to realize automatic login.
 
-假设你有三个 App: App 1、App2 和 App3，只要有其中一个 App 和 Authing 服务器建立了 session 关系，就可以检测到 session。
+Suppose you have three apps: App 1, App2, and App3. As long as one of the apps has established a session relationship with the Approw server, the session can be detected.
 
-## 开始接入
+## Start access
 
-### 获取设备 ID
+### Get device ID
 
 ::: hint-warning
-请在测试时务必验证自己在不同的 App 内获取到的 deviceId 是一致的！
+Please be sure to verify that the device Id you get in different apps is the same when testing!
 :::
 
 #### iOS
 
-iOS 设备的设备 ID 可以通过 [identifierForVendor](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) 获取，同一个 vendor 的应用获取到的设备 ID 是一样的。
+The device ID of the iOS can be obtained through [identifierForVendor](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor), and the device ID obtained by the same vendor application is the same.
 
 ::: hint-info
-什么情况下属于同一个 vendor？
+Under what circumstances belong to the same vendor?
 
-1. 从 App Store 下载的应用，基于在 App Store 登记的应用信息判断。
-2. 非 App Store 下载的应用
-   1. iOS 6 及之前，bundle id 的前两部分一致的应用属于同一 vendor，如 com.example.app1 和 com.example.app2 为同一 vendor。com.example.app1.xxx 和 com.example.app2.xxx 也属于同一 vendor。
-   2. iOS 7 及之后，bundle id 的除了最后一部分的其余部分一致的应用属于同一 vendor，如 com.example.app1 和 com.example.app2 为同一 vendor。但是 com.example.app1.xxx 和 com.example.app2.xxx 不属于同一 vendor。
+1. The application downloaded from the App Store is judged based on the application information registered in the App Store.
+2. Apps not downloaded from the App Store
+    1. Before iOS 6 and earlier, apps with the same first two parts of the bundle id belong to the same vendor, for example, com.example.app1 and com.example.app2 are the same vendor. com.example.app1.xxx and com.example.app2.xxx also belong to the same vendor.
+    2. For iOS 7 and later, apps with the same bundle id except for the last part belong to the same vendor, for example, com.example.app1 and com.example.app2 are the same vendor. But com.example.app1.xxx and com.example.app2.xxx do not belong to the same vendor.
 
 :::
 
-如果你的应用不属于同一 vendor，建议使用 [ASIdentifierManager](https://developer.apple.com/documentation/adsupport/asidentifiermanager)。
+If your application does not belong to the same vendor, it is recommended to use [ASIdentifierManager](https://developer.apple.com/documentation/adsupport/asidentifiermanager).
 
-Swift 5 代码示例：
+Swift 5 code sample:
 
 ```swift
 let deviceId = UIDevice.current.identifierForVendor!.uuidString
 ```
 
-OC 代码示例：
+OC code sample:
 
 ```objectivec
 UIDevice *currentDevice = [UIDevice currentDevice];
@@ -55,9 +55,9 @@ NSString *deviceId = [[currentDevice identifierForVendor] UUIDString];
 
 #### Android
 
-Android 设备可通过 [ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID) 获取：
+Android devices can be obtained through [ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID):
 
-Java 代码示例：
+Java code sample:
 
 ```java
 import android.provider.Settings.Secure;
@@ -65,26 +65,26 @@ private String android_id = Secure.getString(getContext().getContentResolver(),
                                                         Secure.ANDROID_ID);
 ```
 
-Kotlin 代码示例：
+Kotlin code sample:
 
 ```kotlin
 val deviceID = Settings.Secure.getString(contentResolver,
 Settings.Secure.ANDROID_ID)
 ```
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/oauth/sso/mobile/createSession" summary="创建 session">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/oauth/sso/mobile/createSession" summary="创建 session">
 <template slot="description">
 
-此接口用于在一个移动应用客户端内创建一个 session ，**且用户需处于登录状态**，在请求头中加上 authorization 请求头携带用户 token。
+This interface is used to create a session in a mobile application client, **and the user needs to be logged in**, add the authorization request header to the request header to carry the user token.
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="authorization" type="string" required description="登录用户的 token" />
+<ApiMethodParam name="authorization" type="string" required description="The token of the logged-in user" />
 <ApiMethodParam name="content-type" type="string" required description="application/json" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="deviceId" type="string" required description="设备 ID" />
-<ApiMethodParam name="userPoolId" type="string" required description="用户池 ID" />
+<ApiMethodParam name="deviceId" type="string" required description="device ID" />
+<ApiMethodParam name="userPoolId" type="string" required description="userpool ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -92,7 +92,7 @@ Settings.Secure.ANDROID_ID)
 ```js
 {
     code: 200,
-    message: "创建 session 成功!",
+    message: "Successfully created the session!",
     data: {
         sessionId: "xxxxxx", // session ID
     }
@@ -103,11 +103,11 @@ Settings.Secure.ANDROID_ID)
 </template>
 </ApiMethodSpec>
 
-Swift 代码示例：
+Swift code sample:
 
 ```swift
 func createSession(userPoolId: String, token: String){
-    // 移动端 SSO: createSession
+    // Mobile SSO: createSession
     struct MobileSSO: Encodable {
         let userPoolId: String
         let deviceId: String
@@ -120,7 +120,7 @@ func createSession(userPoolId: String, token: String){
         "Authorization": token ,
         "Accept": "application/json"
     ]
-    let api = "https://core.authing.cn/oauth/sso/mobile/createSession"
+    let api = "https://core.approw.com/oauth/sso/mobile/createSession"
     AF.request(api, method: .post, parameters: body, encoder: JSONParameterEncoder.default, headers: headers).response { response in
          debugPrint(response)
     }
@@ -128,28 +128,28 @@ func createSession(userPoolId: String, token: String){
 
 ```
 
-<ApiMethodSpec method="get" host="https://core.authing.cn" path="/oauth/sso/mobile/trackSession" summary="查询 session" description="此接口用于在移动应用客户端内查询 session，不需要用户处于登录态。">
+<ApiMethodSpec method="get" host="https://core.approw.com" path="/oauth/sso/mobile/trackSession" summary="Query session" description="This interface is used to query the session in the mobile application client, and the user does not need to be in the login state.">
 <template slot="headers">
 <ApiMethodParam name="content-type" type="string" required description="application/json" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="deviceId" type="string" required description="设备 ID" />
-<ApiMethodParam name="userPoolId" type="string" required description="用户池 ID" />
+<ApiMethodParam name="deviceId" type="string" required description="device ID" />
+<ApiMethodParam name="userPoolId" type="string" required description="userpool ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
 
 <template slot="description">
 
-分两种情况：直**接返回用户信息**和**返回 ticket**
+There are two cases: **return user information directly** and **return ticket**
 
 </template>
 
 ```js
-// 直接返回用户信息
+// Return user information directly
 {
     code: 200,
-    message: '获取 session 用户信息成功',
+    message: 'Succeeded in obtaining session user information',
     data: {
       "_id":"5e05bbf2d51b3761d5c71070",
       "email":"983132@qq.com",
@@ -159,7 +159,7 @@ func createSession(userPoolId: String, token: String){
       "username":"983132@qq.com",
       "nickname":"",
       "company":"",
-      "photo":"https://usercontents.authing.co/authing-avatar.png",
+      "photo":"https://usercontents.approw.com/approw-avatar.png",
       "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiOTgzMTMyQHFxLmNvbSIsImlxxxxxxxxx",
       "phone":"",
       "tokenExpiredAt":"2020-01-11T08:08:18.000Z",
@@ -171,14 +171,14 @@ func createSession(userPoolId: String, token: String){
     }
 }
 
-// 返回 ticket
+// Return ticket
 {
     code: 200,
-    message: '获取 session 用户信息成功',
+    message: 'Succeeded in obtaining session user information',
     data: {
       ticket: "xxxxdjdkxxxxx",
       nickname: "xxxx",
-      photo: "https://usercontents.authing.co/authing-avatar.png"
+      photo: "https://usercontents.approw.com/approw-avatar.png"
     }
 }
 ```
@@ -187,25 +187,25 @@ func createSession(userPoolId: String, token: String){
 </template>
 </ApiMethodSpec>
 
-如果查询到 session，Authing trackSession 将返回用户的昵称头像（用于展示目的）以及用于换取用户信息的 ticket：
+If the session is found, Authing trackSession will return the user's nickname avatar (for display purposes) and a ticket in exchange for user information:
 
-你可以在前端展示用户昵称和头像，如下图所示：
+You can display user nicknames and avatars on the front end, as shown in the following figure:
 
-![](https://cdn.authing.cn/blog/image%20%28462%29.png)
+![](https://cdn.approw.cn/blog/image%20%28462%29.png)
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/oauth/sso/mobile/exchangeUserInfoWithTicket" summary="使用 ticket 换取用户信息">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/oauth/sso/mobile/exchangeUserInfoWithTicket" summary="Use ticket in exchange for user information">
 <template slot="description">
 
-使用 ticket 换取用户信息，**此接口需要用户池密钥，请在后端调用**！
+Use ticket in exchange for user information. **This interface requires a user pool key, please call it on the backend**!
 
 </template>
 <template slot="headers">
 <ApiMethodParam name="content-type" type="string" required description="application/json" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="ticket" type="string" required description="trackSession 获取的 ticket" />
-<ApiMethodParam name="secret" type="string" required description="用户池密钥" />
-<ApiMethodParam name="userPoolId" type="string" required description="用户池 ID" />
+<ApiMethodParam name="ticket" type="string" required description="Ticket obtained by trackSession" />
+<ApiMethodParam name="secret" type="string" required description="userpool key" />
+<ApiMethodParam name="userPoolId" type="string" required description="userpool ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -213,7 +213,7 @@ func createSession(userPoolId: String, token: String){
 ```json
 {
    "code":200,
-   "message":"换取用户信息成功",
+   "message":"Success in exchange for user information",
    "data":{
       "_id":"5e05bbf2d51b3761d5c71070",
       "email":"983132@qq.com",
@@ -223,7 +223,7 @@ func createSession(userPoolId: String, token: String){
       "username":"983132@qq.com",
       "nickname":"",
       "company":"",
-      "photo":"https://usercontents.authing.co/authing-avatar.png",
+      "photo":"https://usercontents.approw.com/approw-avatar.png",
       "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiOTgzMTMyQHFxLmNvbSIsImlxxxxxxxxx",
       "phone":"",
       "tokenExpiredAt":"2020-01-11T08:08:18.000Z",
@@ -239,19 +239,19 @@ func createSession(userPoolId: String, token: String){
 </template>
 </ApiMethodSpec>
 
-<ApiMethodSpec method="post" host="https://core.authing.cn" path="/oauth/sso/mobile/destorySession" summary="销毁 session">
+<ApiMethodSpec method="post" host="https://core.approw.com" path="/oauth/sso/mobile/destorySession" summary="Destroy session">
 <template slot="description">
 
-此接口用于在一个移动应用客户端内销毁一个 session ，**且用户需处于登录状态，在请求头中加上 authorization 请求头携带用户 token**。由于存在多个应用，所以默认情况下只会销毁制定 App 的 session（trackSession 只要还有一个 App 有 session 就会查询到 session），如果你想清除所有 App 的 session，可以设置 destoryAll 为 true。
+This interface is used to destroy a session in a mobile application client, **and the user needs to be logged in, add the authorization request header to carry the user token** in the request header. Because there are multiple applications, by default, only the session of the specified App will be destroyed (trackSession will be queried as long as one App has a session). If you want to clear all App sessions, you can set destroyAll to true.
 
 </template>
 <template slot="headers">
-<ApiMethodParam name="authorization" type="string" required description="登录用户的 token" />
+<ApiMethodParam name="authorization" type="string" required description="The token of the logged-in user" />
 <ApiMethodParam name="content-type" type="string" required description="application/json" />
 </template>
 <template slot="bodyParams">
-<ApiMethodParam name="deviceId" type="string" required description="设备 ID" />
-<ApiMethodParam name="userPoolId" type="string" required description="用户池 ID" />
+<ApiMethodParam name="deviceId" type="string" required description="device ID" />
+<ApiMethodParam name="userPoolId" type="string" required description="userpool ID" />
 </template>
 <template slot="response">
 <ApiMethodResponse>
@@ -259,7 +259,7 @@ func createSession(userPoolId: String, token: String){
 ```js
 {
     code: 200,
-    message: "销毁 session 成功!"
+    message: "Successfully destroy session!"
 }
 ```
 
@@ -268,5 +268,5 @@ func createSession(userPoolId: String, token: String){
 </ApiMethodSpec>
 
 ::: hint-info
-你应该在每次用户退出登录以及删除 App 的时候调用此接口。
+You should call this interface every time the user logs out and deletes the app.
 :::
