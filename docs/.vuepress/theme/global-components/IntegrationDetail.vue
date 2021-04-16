@@ -32,11 +32,11 @@
               marginRight: '4px',
             }"
           />
-          回到列表
+          Back to Doc
         </RouterLink>
         <div class="integration-detail-btn-container">
           <AuthingButton :disabled="isFirstStep" @click="handlePrev"
-            >上一步</AuthingButton
+            >Previous</AuthingButton
           >
           <AuthingButton
             @click="handleNext"
@@ -44,7 +44,7 @@
               marginLeft: '24px',
             }"
             type="primary"
-            >{{ isLastStep ? '我知道了，返回列表' : '下一步' }}</AuthingButton
+            >{{ isLastStep ? 'Done' : 'Next' }}</AuthingButton
           >
         </div>
       </div>

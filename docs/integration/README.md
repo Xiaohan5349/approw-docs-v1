@@ -27,14 +27,14 @@
       },
       {
         key: 'ali-cloud-intl',
-        name: '阿里云（国际区）',
+        name: 'Alibaba Cloud',
         image: 'ali-cloud.png',
         image2x: 'ali-cloud@2x.png',
         category: 'cloud',
       },
       {
         key: 'aws',
-        name: 'AWS（中国区）',
+        name: 'AWS',
         image: 'aws.svg',
         image2x: 'aws.svg',
         category: 'cloud',
@@ -70,9 +70,9 @@
     ],
   categories:
     [
-      { key: 'all', name: '全部' },
-      { key: 'cloud', name: '云计算' },
-      { key: 'project', name: '项目管理' },
+      { key: 'all', name: 'All' },
+      { key: 'cloud', name: 'Cloud Computing' },
+      { key: 'project', name: 'Project Management' },
       { key: 'erp', name: 'ERP' },
     ],
 }
