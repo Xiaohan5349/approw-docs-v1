@@ -16,7 +16,7 @@ The method of using the Webhook is to configure the HTTP URL in the Approw platf
 
 On the **Extention Capabilities** - **Webhook** page，you can manage the webhook you defined：
 
-![](https://cdn.authing.cn/blog/20200927201310.png)
+<img src="~@imagesEnUs/guides/expand/config-webhook.png" alt="drawing"/>
 
 ::: img-description
 Webhook List
@@ -24,7 +24,7 @@ Webhook List
 
 A new Webhook can be created to subscribe to a specific event by clicking on the Create button in the upper right corner:
 
-![](https://cdn.authing.cn/blog/20200927201428.png)
+<img src="~@imagesEnUs/guides/expand/create-webhook.png" alt="drawing"/>
 
 ::: img-description
 Configuring Webhook
@@ -44,7 +44,7 @@ Configuring Webhook
 
 The Hook request events you just created are empty, so you can trigger a "test event" by clicking on "Test".
 
-![](https://cdn.authing.cn/blog/20200927201623.png)
+<img src="~@imagesEnUs/guides/expand/1618526758.png" alt="drawing"/>
 
 ::: img-description
 Webhook test
@@ -60,7 +60,7 @@ The requested data
 
 After a successful test you will see detailed request and return information.
 
-![](https://cdn.authing.cn/blog/20200927201638.png)
+<img src="~@imagesEnUs/guides/expand/webhook-result.png" alt="drawing"/>
 
 ## Supported events
 

@@ -1,9 +1,9 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `addNode` 方法添加节点：
+Use the `addNode` method of `OrgManagementClient` to add nodes:
 
 ```javascript
-const org = await managementClient.org.create('北京非凡科技', '北京非凡科技有限公司', 'feifan');
+const org = await managementClient.org.create('Beijing Feifan Technology','Beijing Feifan Technology Co., Ltd.','feifan');
 const { id: orgId, rootNode } = org
-const node = await managementClient.org.addNode(orgId, rootNode.id, { name: '运营部门' })
+const node = await managementClient.org.addNode(orgId, rootNode.id, { name: 'operation department' })
 ```

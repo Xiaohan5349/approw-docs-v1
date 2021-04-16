@@ -1,11 +1,11 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `addNode` 方法添加节点：
+Use the `addNode` method of `OrgManagementClient` to add nodes:
 
-> 需要指定父节点的 ID（withParentNodeId）。
+> Need to specify the ID of the parent node (withParentNodeId).
 
 ```java
-AddNodeV2Param param = new AddNodeV2Param("组织机构 ID", "节点名称")
-        .withParentNodeId("父节点 ID");
+AddNodeV2Param param = new AddNodeV2Param("Organization ID", "node name")
+        .withParentNodeId("Parent node ID");
 Node node = managementClient.org().addNode(param).execute();
 ```

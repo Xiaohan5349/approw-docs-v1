@@ -20,7 +20,7 @@ Privilege grouping can be understood as a namespace of privileges. The roles and
 
 ## Create privilege group
 
-Click the Add button in the privilege grouping menu of **Privilege Management** :
+Click the Add button in the privilege grouping menu of **Authorization Management** :
 ![](~@imagesEnUs/guides/access-control/group2.png)
 
 Fill in the group name and group id in the pop-up window. The id is used as a unique id to identify the authority group in the later authentication.

@@ -179,7 +179,7 @@ https://{your application domain name}/oidc/auth?client_id={Application ID}
 The following request example can obtain Access Token, Id Token, and Refresh Token from the Token endpoint. The value of the `code` parameter is the **authorization code** returned from the authentication endpoint in the previous step.
 
 ```http
-POST https://${your app domain name}/oidc/token?grant_type=authorization_code
+POST https://${your application domain name}/oidc/token?grant_type=authorization_code
 &redirect_uri={Callback URL}
 &code={Authroization code}
 &client_id={Application ID}
@@ -206,7 +206,7 @@ In password mode, you will only use the **Token Endpoint**. See [Using Password 
 Include `offline_access` in the request scope of the password mode.
 
 ```http
-POST https://${Your Application domain name}/oidc/token?grant_type=password
+POST https://${your application domain name}/oidc/token?grant_type=password
 &client_id={Application ID}
 &client_secret={Application Secret}
 &username={Username}

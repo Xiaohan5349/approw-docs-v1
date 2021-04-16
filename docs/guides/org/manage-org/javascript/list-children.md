@@ -1,8 +1,8 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `listChildren` 获取子节点列表：
+Use the `listChildren` of the `OrgManagementClient` to get the list of child nodes:
 
 ```javascript
-// 子节点列表
+// Child node list
 cosnt children = await managementClient.org.listChildren("ORGID", "NODEID")
 ```

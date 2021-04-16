@@ -2,7 +2,7 @@
 
 <LastUpdated/>
 
-This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/docs/concepts/saml/saml-overview.md).
+This article introduces how to enable Approw as SAML2 identity provider, provide **assertion** to other service providers. Approw can be integrated with third-party applications through the SAML2 protocol. You can understand the SAML2 protocol in depth [here](/concepts/saml/saml-overview.md).
 
 ## Create an Application
 
@@ -117,24 +117,24 @@ Approw has already integrated SAML2 with Alibaba Cloud, Tencent Cloud, Huawei Cl
 
 ### Log in Alibaba Cloud Console (China)
 
-Please check [the integrated documentation](/docs/integration/ali-cloud/).
+Please check [the integrated documentation](/integration/ali-cloud/).
 
 ### Log in Alibaba Cloud Console (International)
 
-Please check [the integrated documentation](/docs/integration/ali-cloud-intl/).
+Please check [the integrated documentation](/integration/ali-cloud-intl/).
 
 ### Log in Tencent Cloud Console
 
-Please check [the integrated documentation](/docs/integration/tencent-cloud/).
+Please check [the integrated documentation](/integration/tencent-cloud/).
 
 ### Log in AWS Console (China)
 
-Please check [the integrated documentation](/docs/integration/aws/).
+Please check [the integrated documentation](/integration/aws/).
 
 ### Log in Huawei Cloud Console (China)
 
-Please check [the integrated documentation](/docs/integration/huawei-cloud/).
+Please check [the integrated documentation](/integration/huawei-cloud/).
 
 ### Log in Kibana Console (AWS China)
 
-Please check [the integrated documentation](/docs/integration/aws-kibana/).
+Please check [the integrated documentation](/integration/aws-kibana/).

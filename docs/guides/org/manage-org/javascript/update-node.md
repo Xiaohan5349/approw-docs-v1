@@ -1,9 +1,9 @@
 !!!include(common/init-java-mngmt-sdk.md)!!!
 
-使用 `OrgManagementClient` 的 `updateNode` 修改节点信息：
+Use the `updateNode` of the `OrgManagementClient` to modify the node information:
 
 ```javascript
 await managementClient.org.updateNode("NDOEID", {
-   name: '新的节点名称'
+   name: 'New node name'
 })
 ```

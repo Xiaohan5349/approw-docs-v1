@@ -1,4 +1,4 @@
 
-选中需要移除的用户，点击出现的 **移除成员** 按钮：
+Select the user to be removed, and click the **Remove Member** button that appears:
 
-<img src="https://cdn.authing.cn/blog/20201020150405.png" height="400px" style="display:block;margin: 0 auto;">
+<img src="~@imagesEnUs/guides/org/1618525070.png" height="400" style="display:block;margin: 0 auto;" alt="drawing"/>

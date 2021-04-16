@@ -1,3 +1,3 @@
-你可以在每个节点的**下级节点**查看该节点的所有子节点：
+You can view all child nodes of each node in the **subordinate node**:
 
-<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-22-08.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/1618524441.png" alt="drawing"/>
