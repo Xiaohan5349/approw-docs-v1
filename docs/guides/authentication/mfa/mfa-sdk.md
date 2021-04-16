@@ -18,7 +18,7 @@ This includes: binding MFA authenticator, unbinding MFA authenticator, user seco
 
 <ApiMethodSpec method="get" :host="$themeConfig.apiDomain" path="/api/v2/mfa/authenticator" summary="Query the MFA information opened by the user" description="Return  the MFA information opened by the user">
 <template slot="headers">
-<ApiMethodParam name="x-authing-userpool-id" type="string" required description="User Pool ID" />
+<ApiMethodParam name="x-approw-userpool-id" type="string" required description="User Pool ID" />
 <ApiMethodParam name="Authorization" type="string" required description="Bearer <User Token>" />
 </template>
 <template slot="queryParams">
