@@ -18,7 +18,7 @@ You can read more about [account lifecycle management](/concepts/account-life-cy
 
 You can perform employee onboarding operations on the organization management page of the console:
 
-<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-39-48.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/1618525767.png" alt="drawing"/>
 
 ### Create an account
 
@@ -28,7 +28,7 @@ You can use your mobile phone number or email to create an account:
 
 ### Select the department of the employee
 
-<img src="~@imagesEnUs/guides/org/Xnip2021-02-27_14-42-12.png" alt="drawing"/>
+<img src="~@imagesEnUs/guides/org/1618525952.png" alt="drawing"/>
 
 ### Authorize the apps that the employee can access
 

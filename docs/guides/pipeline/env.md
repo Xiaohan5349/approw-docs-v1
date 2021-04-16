@@ -12,13 +12,13 @@ The environment variables in the Pipeline function are consistent with the conce
 
 You can configure environment variables on the **Setting** - **Environment Variable**：
 
-![](https://cdn.authing.cn/blog/20200927200619.png)
+<img src="~@imagesEnUs/guides/expand/env1.png" alt="drawing"/>
 
 Environment variables are a set of Key-Value Pair values, which can be used to save data such as WebHook links and keys.
 
 After entering Key and Value, click Add:
 
-![](https://cdn.authing.cn/blog/20200927200707.png)
+<img src="~@imagesEnUs/guides/expand/env2.png" alt="drawing"/>
 
 We set an environment variable whose Key is `LARK_WEBHOOK`, and the corresponding value can be obtained through `env.LARK_WEBHOOK` in the Pipeline function.
 

@@ -1,7 +1,8 @@
-点击 **添加成员** 按钮：
+Click the **Add Member** button:
 
-<img src="https://cdn.authing.cn/blog/20201020145325.png" alt="drawing" height="300"/>
+<img src="~@imagesEnUs/guides/org/1618524631.png" alt="drawing" height="300"/>
 
-输入关键词搜索需要添加的用户（可多选）：
+Enter keywords to search for the users to be added (multiple choices are available):
 
-<img src="https://cdn.authing.cn/blog/20201020145414.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
+<img src="~@imagesEnUs/guides/org/1618524805.png" alt="drawing" height="300" 
+style="display:block;margin: 0 auto;"/>
