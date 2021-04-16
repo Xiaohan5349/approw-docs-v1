@@ -7,7 +7,7 @@ In Approw, [User Pool](/concepts/user-pool.md) is the minimum unit to separate r
 If you have not created application in Approw, please refer to [How to create Application](./create-app.md).
 
 - [Configuring Login Method](./config-login-methods.md): Add Social Meida or Third Party Identity source in SSO.
-- [Registration Agreement](./agreements.md): Before registration, user must agree with your registration terms. You can customize the terms and link.
+- [Terms and Conditions](./agreements.md): Before registration, user must agree with your registration terms. You can customize the terms and link.
 - [Customize Login UI](./custom-styles.md): {{$localeConfig.brandName}} allows customization Login UI by changing CSS files.
 - [Federated Identity Source](./identity-provider.md): {{$localeConfig.brandName}} supports OIDC, OAuth2.0 and SAML. With some configuration. Approw can become an Identity Provider (IdP).
 - [Enable Multi-factor Authentication](./mfa.md): {{$localeConfig.brandName}} support MFA. eg: Text verification code, Email verification code, OTP, Face ID, Fingerprint, etc.
