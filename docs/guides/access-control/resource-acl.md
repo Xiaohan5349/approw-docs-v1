@@ -35,7 +35,7 @@ In the user list, click New to create a user.
 
 ## Create a role
 
-In - **Application**Authorization**Role Management**card, click the add button on the right:
+In **Application** - **Authorization** - **Role Management** card, click the add button on the right:
 
 ![](~@imagesEnUs/guides/authorization/add-role-1.png)
 
@@ -47,7 +47,7 @@ After creating the role, you can add users to this role:
 
 ## Privilege management
 
-Now that you have**resources** and **users**, next you have to define 「**who**」can do what「**operations**」on which「**resources**」In the application’s resource authorization card, click the Add button on the right.
+Now that you have **resources** and **users**, next you have to define 「**who**」can do what「**operations**」on which「**resources**」In the application’s resource authorization card, click the Add button on the right.
 
 ![](~@imagesEnUs/guides/authorization/acl-1.png)
 
