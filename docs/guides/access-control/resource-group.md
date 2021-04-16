@@ -10,7 +10,7 @@
 }
 ---
 
-# Use privilege grouping to manage privilege resources
+# Use Privilege Grouping to Manage Privilege Resources
 
 <LastUpdated/>
 

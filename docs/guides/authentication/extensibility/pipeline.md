@@ -1,4 +1,4 @@
-# Extend the authentication process with Pipeline
+# Extend the Authentication Process with Pipeline
 
 <LastUpdated/>
 

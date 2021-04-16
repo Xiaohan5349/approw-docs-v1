@@ -1,4 +1,4 @@
-# Monitor authentication events with Webhook
+# Monitor Authentication Events with Webhook
 
 <LastUpdated/>
 

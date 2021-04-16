@@ -1,4 +1,4 @@
-# Authenticate users with custom database
+# Authenticate Users with Custom Database
 
 <LastUpdated/>
 
