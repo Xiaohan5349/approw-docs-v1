@@ -1,4 +1,4 @@
-# Integrate ABAC Permission Model into Your Application system
+# Integrate ABAC Permission Model into Your Application System
 
 <LastUpdated/>
 
