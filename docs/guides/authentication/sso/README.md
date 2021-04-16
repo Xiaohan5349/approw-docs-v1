@@ -34,7 +34,7 @@ If it is the first time to register for {{$localeConfig.brandName}}, you can ski
 
 Go to **Console** &gt; **Applications** &gt; **Application List**, and click the "Create Application" button.
 
-![](https://cdn.approw.com/blog/20200927174331.png)
+![](./images/sso1.png)
 
 ::: img-description
 Create application
@@ -241,14 +241,14 @@ If the local port 8080 is already occupied, the application may run on other por
 
 Open the web application written by us, the current is not logged in, the page prompts the user to log in, and displays the login button. We click "Login".
 
-![Not logged in](https://cdn.approw.com/docs/20200405180101.png)
+![Not logged in](./images/sso2.png)
 ::: img-description
 Log entry
 :::
 
 The browser will redirect to the user authentication page of the OIDC application, and input the user name and password to log in.
 
-![](https://cdn.approw.com/blog/20200927174427.png)
+![](./images/sso3.png)
 
 ::: img-description
 Login in
@@ -256,7 +256,7 @@ Login in
 
 The browser is redirected to the callback link we set up earlier. This example still calls back to localhost:8080.
 
-![Has Logged](https://cdn.approw.com/docs/20200405180354.png)
+![Has Logged](./images/sso4.png)
 ::: img-description
 User Info
 :::
@@ -342,7 +342,7 @@ After logging in, we obtain user information by the `trackSession` function of t
 
 You can refresh this page some times, because you are currently logged in and the browser will always display user information. Next, we click the "Logout" button to single sign out.
 
-![](https://cdn.approw.com/docs/20200405180656.png)
+![](./images/sso5.png)
 ::: img-description
 Logout button
 :::
@@ -361,7 +361,7 @@ https://<appDomain>.approw.com/u
 
 If the user is not logged in, the user will be required to log in before entering the personal center; for the logged-in user, it will directly enter the personal center.
 
-![](https://cdn.approw.com/blog/20200927174731.png)
+![](./images/sso6.png)
 
 ::: img-description
 Personal center
