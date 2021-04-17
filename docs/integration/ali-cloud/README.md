@@ -10,7 +10,7 @@
     [
       {
         title: 'Setup {{$localeConfig.brandName}} IdP Configurations',
-        subTitle: 'Enable and Configure SAML2 Provider for {{$localeConfig.brandName}} Applications',
+        subTitle: 'Enable and configure SAML2 Provider for {{$localeConfig.brandName}} applications',
       },
       { title: 'Setup Alibaba Cloud Configurations', subTitle: 'Create Users in Alibaba Cloud and Enable User SSO' },
       {
