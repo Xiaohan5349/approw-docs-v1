@@ -12,7 +12,7 @@ How to verify token in the {{$localeConfig.brandName}} system: [Verify Token](/g
 
 JSON Web Token (JWT,[RFC 7519](https://tools.ietf.org/html/rfc7519)) is a JSON-based open standard ((RFC 7519). It is designed to be compact and secure, especially suitable for single sign-on (SSO) scenarios at distributed sites. In order to obtain resources from the resource server, JWT statements are generally used to pass authenticated users information between identity providers and service providers. Some additional declarations for other business logic can also be added. JWT Token encryption and use JWT Token directly for authentication are available.
 
-For details, please refer to this article: [What is JWT](https://www.jianshu.com/p/576dbf44b2ae)
+<!--For details, please refer to this article: [What is JWT](https://www.jianshu.com/p/576dbf44b2ae)-->
 
 ## Verification Flow
 
