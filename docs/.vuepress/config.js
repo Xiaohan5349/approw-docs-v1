@@ -241,7 +241,7 @@ module.exports = {
           { text: 'Guides', link: '/guides/' },
           { text: 'Development Integration', link: '/reference/' },
           {
-            text: 'Application integration',
+            text: 'Application Integration',
             link: '/integration/',
           },
         ],
