@@ -22,9 +22,9 @@ Before proceeding with this session, please make sure that you have completed th
 
 **1. Log in to the Approw console, create a new application, and specify the application domain name**
 
-<img src="./images/domain1.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-1.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/domain2.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-2.png" style="margin-top: 20px;" class="md-img-padding" />
 
 As shown above, we have created a Approw application and configure the application for the domain name:**https://custom-domain.approw.com**.
 Next, we will reverse proxy the user's custom domain name **https://custom-domain.approw.com**.
@@ -32,9 +32,9 @@ This application and domain name are just examples, you can create your own Appr
 
 **2. Create a user to log in to the Approw application**
 
-<img src="./images/domain3.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-3.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/domain4.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-4.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **3. Configure the Approw application domain name created above in the Nginx reverse proxy**
 
@@ -62,7 +62,7 @@ server {
     ssl_prefer_server_ciphers   on;
     proxy_ssl_session_reuse     off;
 
-    location / {
+    location  {
         # Redirect application domain name to custom domain name
         proxy_redirect https://custom-domain.approw.com https://custom-domain.littleimp.com:8088;
         # Application domain name configured above
@@ -87,10 +87,10 @@ server {
 ```
 
 **4. By custom domain example of `https://custom-domain.littleimp.com:8088` to access applications Approw**
-<img src="./images/domain5.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-5.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **5. Enter the user and password created above to log in to the Approw application**
-<img src="./images/domain6.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-6.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **6. Successfully log in to the Approw application through the custom domain name and visit the personal center**
-<img src="./images/domain7.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/custom-domain-7.png" style="margin-top: 20px;" class="md-img-padding" />

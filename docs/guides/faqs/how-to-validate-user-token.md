@@ -17,7 +17,7 @@ The following is a comparison of the advantages and disadvantages of local verif
 If you **directly** call the login method (loginByEmail, loginByPhone, loginByUsername) or use **OIDC authorization**, and the IdToken signature algorithm type is set to **HS256**, please use this method to verify the Token.‌
 The key can be obtained in the **console>application>application details**, as shown in the figure below:
 
-![](./images/app-id-and-secret.png)
+![](./images/appsecret.png)
 
 The following code to verify the legality takes Node as an example (need to install [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)).
 
@@ -40,7 +40,7 @@ To avoid exposing the application key on the client side, please verify the vali
 
 ### Use the application public key to verify the IdToken signed by the RS256 algorithm
 
-If you use the **RS256** signature algorithm, you need to use the **public key** to verify the signature. Approw uses a private key to sign the application, please use `https://<application domain>.approw.com/oidc/.well-known/jwks.jsonthe public key to verify the signature.Both **access_token** and **id_token** issued by Approw can be verified with the above public key.
+If you use the **RS256** signature algorithm, you need to use the **public key** to verify the signature. Approw uses a private key to sign the application, please use `https://www.approw.com/oidc/.well-known/jwks.json` the public key to verify the signature.Both **access_token** and **id_token** issued by Approw can be verified with the above public key.
 
 If you use javascript, you can use the jose library to verify the RS256 signature:
 
