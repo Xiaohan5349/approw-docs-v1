@@ -8,13 +8,13 @@ meta:
 
 <LastUpdated/>
 
-Approw supports using fields such as mailbox, user name, mobile phone number, nickname, etc to do the fuzzy search to users in both [console](./search.md) and [SDK](./search.md) modes:
+Approw supports using fields such as mailbox, user name, mobile phone number, nickname, etc to do the fuzzy search to users in both [console](./search.md#search-for-users-using-console) and [SDK](./search.md#search-for-users-using-SDK) modes:
 
 ## Search for users using console
 
 You can search for users by keywords on the **user management** -> **user list**:
 
-![](https://cdn.authing.cn/blog/20201019174154.png)
+![](./images/search-keyword.png)
 
 The fields that support search include email, username, mobile phone number, nickname, etc.
 

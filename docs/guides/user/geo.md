@@ -10,5 +10,4 @@ meta:
 
 You can check the location of the user's last login on the **user details** page:
 
-![](./images/user-geo.jpg)
-
+<!--- ![](./images/user-geo.jpg) --->

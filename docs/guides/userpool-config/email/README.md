@@ -88,4 +88,4 @@ Choose mail service provider Ali Mail Enterprise Edition
 
 You can configure Ali Mail Enterprise Edition in the settings - Message Service
 
-<StackSelector snippet="config-email-provider" selectLabel="Select Mail Provider" :order="['mxhichina', 'exmail', 'sendgrid', 'smtp']"/>
+<StackSelector snippet="config-email-provider" selectLabel="Select Mail Provider" :order="['smtp']"/>

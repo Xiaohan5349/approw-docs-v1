@@ -10,13 +10,12 @@ meta:
 
 ## Basic Information
 
-|
-| Value |
-| --- | --- |
-| Hostname | ldap://ldap.approw.com |
-| Port | 1389 |
+| Value                           |
+| ------------------------------- |
+| Hostname                        | ldap://ldap.approw.com |
+| Port                            | 1389 |
 | LDAP Distinguished Name(BindDN) | ou=users, o=APPROW_USERPOOL_ID, dc=approw, dc=cn |
-| Base DN | ou=users, o=APPROW_USERPOOL_ID, dc=approw, dc=cn |
+| Base DN                         | ou=users, o=APPROW_USERPOOL_ID, dc=approw, dc=cn |
 
 `BindDN` and `secret` use for identity validation. `BaseDN` defines where to find the user.
 
