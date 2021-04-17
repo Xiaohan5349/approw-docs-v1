@@ -32,9 +32,9 @@ This application and domain name are just examples, you can create your own Appr
 
 **2. Create a user to log in to the Approw application**
 
-<!-- <img src="./images/domain3.png" style="margin-top: 20px;" class="md-img-padding" />
+<img src="./images/domain3.png" style="margin-top: 20px;" class="md-img-padding" />
 
-<img src="./images/domain4.png" style="margin-top: 20px;" class="md-img-padding" /> -->
+<img src="./images/domain4.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **3. Configure the Approw application domain name created above in the Nginx reverse proxy**
 
@@ -86,11 +86,11 @@ server {
 }
 ```
 
-<!-- **4. By custom domain example of `https://custom-domain.littleimp.com:8088` to access applications Approw**
+**4. By custom domain example of `https://custom-domain.littleimp.com:8088` to access applications Approw**
 <img src="./images/domain5.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **5. Enter the user and password created above to log in to the Approw application**
 <img src="./images/domain6.png" style="margin-top: 20px;" class="md-img-padding" />
 
 **6. Successfully log in to the Approw application through the custom domain name and visit the personal center**
-<img src="./images/domain7.png" style="margin-top: 20px;" class="md-img-padding" /> -->
+<img src="./images/domain7.png" style="margin-top: 20px;" class="md-img-padding" />

@@ -1595,7 +1595,7 @@ const translatedZhCnNavBar = {
       ],
     },
     {
-      title: 'Frequently Asked Questions FAQs',
+      title: 'FAQs',
       children: [
         {
           title: 'How to get user pool ID',
