@@ -13,7 +13,7 @@ Next, we create applications, create resources, create users, and then define th
 
 ## Create application
 
-Please see the [Create application](/app/create.md)。
+Please see the [Create application](/guides/app/create-app.md)。
 
 ## Add Resources
 

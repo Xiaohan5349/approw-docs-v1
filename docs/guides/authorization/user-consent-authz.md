@@ -108,7 +108,7 @@ After the user logs in, he/she will jump to the business address of the caller, 
 
 ![](~@imagesEnUs/guides/authorization/user-consent-authz-4.png)
 
-Next, use the authorization code and the Key and Secret of the programmable access account to exchange for the user's AccessToken and IdToken. For more information about the OIDC authorization code mode, please check the [documentation](/authentication/oidc/oidc-authorization.md#使用授权码模式-authorization-code-flow).
+Next, use the authorization code and the Key and Secret of the programmable access account to exchange for the user's AccessToken and IdToken. For more information about the OIDC authorization code mode, please check the [documentation](/federation/oidc/authorization-code/).<!-- /authentication/oidc/oidc-authorization.md#使用授权码模式-authorization-code-flow -->
 
 ![](~@imagesEnUs/guides/authorization/user-consent-authz-5.png)
 

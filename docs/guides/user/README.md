@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-This chapter mainly introduces the operations of managing one single user, such as binding mailboxes, linking accounts, disabling accounts, etc. If you want to know how to manage user directory, please see [User Directory Management](/users/README.md).
+This chapter mainly introduces the operations of managing one single user, such as binding mailboxes, linking accounts, disabling accounts, etc. If you want to know how to manage user directory, please see [User Directory Management](/guides/users/README.md).
 
 User account management can be managed visually through the console, user personal center, or with the help of SDK & API. You can choose the method that suits you according to your business needs.
 
