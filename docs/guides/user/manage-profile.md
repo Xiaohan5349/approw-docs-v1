@@ -12,13 +12,13 @@ Managing user accounts includes completed procedures such as forgetting password
 
 Approw provides developers with a built-in, comprehensive, beautiful, and highly configurable login form. You can feel it by [clicking here](https://sample-sso.approw.com/) (we will call this login form as `Guard` in the following paragraphs), the address is `https://< YOUR_DOMAIN>.approw.com/`:
 
-<img src="https://cdn.authing.cn/blog/20201019174920.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
+<img src="./images/manage-profile1.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
 You can setup functions such as login and register, forgotten password, reset your email, send SMS verification code, scan code to log in.
 
 There will be a user personal center, you can try it by clicking [here](https://sample-sso.approw.com/u), the address is `https://<YOUR_DOMAIN>.approw.com/u`:
 
-![](https://cdn.authing.cn/blog/20201019175127.png)
+![](./images/manage-profile2.png)
 
 With the help of the hosted login page and personal center, users can complete personal information management by themselves.
 
@@ -26,13 +26,13 @@ With the help of the hosted login page and personal center, users can complete p
 
 Approw provides a built-in user personal center page (address: `https://<YOUR_DOMAIN>.approw.cn/u`), which can modify the basic user information:
 
-![](https://cdn.authing.cn/blog/20201019175127.png)
+![](./images/manage-profile3.png)
 
 ### Modify passwords
 
 When users remember the current password, he/she can modify the password by verifying the current password:
 
-![](https://cdn.authing.cn/blog/20201019181257.png)
+![](./images/manage-profile4.png)
 
 ### Forgotten passwords
 
@@ -40,31 +40,31 @@ When the user forgets the current password, the password can be reset through th
 
 Click forgotten password
 
-<img src="https://cdn.authing.cn/blog/20201019181634.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
+<img src="./images/manage-profile5.png" alt="drawing" height="500" style="display:block;margin: 0 auto;"/>
 
 You can choose to use your email or phone number for verification:
 
-<img src="https://cdn.authing.cn/blog/20201019193540.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
+<img src="./images/manage-profile6.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
 
-<img src="https://cdn.authing.cn/blog/20201019193845.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/>
+<!--- <img src="./images/manage-profile7.png" alt="drawing" height="300" style="display:block;margin: 0 auto;"/> --->
 
 ### Bind email
 
 End users can bind and unbind mailboxes in the **account binding** tab of the personal center:
 
-![](https://cdn.authing.cn/blog/20201019200112.png)
+![](./images/manage-profile8.png)
 
 ### Bind phone number
 
 End users can bind and unbind their phone numbers in the **account binding** tab of the personal center:
 
-![](https://cdn.authing.cn/blog/20201019200112.png)
+![](./images/manage-profile9.png)
 
 ### Bind MFA
 
 End users can bind MFA in the **MFA binding** tab of the personal center:
 
-![](https://cdn.authing.cn/blog/20201019200549.png)
+![](./images/manage-profile10.png)
 
 ## Use console
 
@@ -72,17 +72,17 @@ Administrators can use the console to manage user accounts visually.
 
 ### Edit user profile
 
-![](./images/Xnip2021-02-26_11-53-07.png)
+![](./images/manage-profile11.png)
 
 ### Deactivate account
 
 The administrator can deactivate the account on the user details page, and the deactivated account will not be able to log in again:
 
-![](https://cdn.authing.cn/blog/20201019200707.png)
+![](./images/manage-profile12.png)
 
 ### View original user's information
 
-![](./images/Xnip2021-02-26_11-53-56.png)
+![](./images/manage-profile13.png)
 
 ## Use SDK/API
 
