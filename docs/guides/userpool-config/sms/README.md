@@ -14,12 +14,16 @@ SMS verification allows users to log in using a one-time password sent to their 
 - The verification code is valid for 5 minutes.
 - The SMS interface QPS is 100.
 - It is recommended to use small login on the web side(opens new window)Get a mobile phone number for free.
-## Configure user-defined SMS service provider
+
+<!--
+  ## Configure user-defined SMS service provider
 
 We currently support the following SMS service providers:
+
 - Alibaba Cloud SMS Service
 - Chuanglan 253 SMS Service
 
 Choose SMS service provider Ali Cloud
 
 <StackSelector snippet="config-sms-provider" selectLabel="选择短信服务商" :order="['aliyun', '253']"/>
+-->

@@ -104,7 +104,7 @@ async function main() {
 				},
 				{
 					/**
-					 * Turn on this switch, the password field will be directly written into the Authing database, and Authing will not encrypt this field again
+					 * Turn on this switch, the password field will be directly written into the Approw database, and Approw will not encrypt this field again
 					 * If your password is not stored in plaintext, you should keep it turned on and write a password function calculation
 					 */
 					keepPassword: true,

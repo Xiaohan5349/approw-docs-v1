@@ -35,7 +35,7 @@ Configuring Webhook
 | Parameter name     | Parameter explanation                                                                                                                               |
 | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
 | Callback link     | The HTTP URL address for remotely receiving webhook events                                                                                                    |
-| Request key     | After setting the key (the value is set by the developer), Approw will attach this key to each request（HTTP Header：X-Authing-Token）. You can verify this key to avoid some illegal operations |
+| Request key     | After setting the key (the value is set by the developer), Approw will attach this key to each request（HTTP Header：X-Approw-Token）. You can verify this key to avoid some illegal operations |
 | Request data format | Specify the data format of the Request body when initiating a Webhook request. The optional values are `application/json` and `application/x-www-form-urlencoded`                      |
 | Trigger event     | [Whether to enable this Hook](use-webhook.md#支持的事件)                                                                                            |
 | Whether to enable this Hook         | Whether to enable this Hook                                                                                                                          |

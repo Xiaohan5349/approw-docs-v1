@@ -60,7 +60,7 @@ export const COMMON_NAME_TO_FANCY_NAME = {
   mxhichina: "阿里邮箱企业版",
   exmail: '腾讯企业邮箱',
   sendgrid: 'SnedGrid',
-  smtp: 'SMTP 邮件服务'
+  smtp: 'SMTP'
 }
 
 const COMMON_NAME_TO_ICON_NAME = {

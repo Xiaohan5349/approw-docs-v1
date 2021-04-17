@@ -1378,37 +1378,6 @@ const translatedZhCnNavBar = {
       ],
     },
     {
-      title: 'Open up WeChat ecology',
-      path: '/guides/wechat-ecosystem/',
-      children: [
-        {
-          title: 'PC website uses WeChat scan code to log in',
-          path: '/guides/wechat-ecosystem/wechat-pc/',
-        },
-        {
-          title: 'PC website use small program to scan code login',
-          path: '/guides/wechat-ecosystem/wechat-miniprogram-qrcode/',
-        },
-        {
-          title:
-            'Use WeChat authorization to log in to the web page within WeChat',
-          path: '/guides/wechat-ecosystem/wechat-webpage-authorization',
-        },
-        {
-          title: 'Log in with WeChat in the Mini Program',
-          path: '/guides/wechat-ecosystem/wechat-miniprogram',
-        },
-        {
-          title: 'Mobile APP use WeChat login',
-          path: '/guides/wechat-ecosystem/wechat-mobile',
-        },
-        {
-          title: 'Mobile APP use applet to log in',
-          path: '/guides/wechat-ecosystem/wechat-miniprogram-applaunch',
-        },
-      ],
-    },
-    {
       title: `Migrate users to ${BRAND_NAME_ZH_CN}`,
       path: '/guides/migrations/',
       children: [
@@ -1422,7 +1391,7 @@ const translatedZhCnNavBar = {
         },
         {
           title:
-            'Import users from corporate WeChat, DingTalk and other third-party identity sources',
+            'Import users from third-party identity sources',
           path: '/guides/migrations/import-from-third-party-identity-provider/',
         },
       ],
@@ -1595,7 +1564,7 @@ const translatedZhCnNavBar = {
       ],
     },
     {
-      title: 'Frequently Asked Questions FAQs',
+      title: 'FAQs',
       children: [
         {
           title: 'How to get user pool ID',

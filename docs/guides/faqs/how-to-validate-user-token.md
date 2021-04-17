@@ -1,4 +1,3 @@
-
 # How To Validate User Token?
 
 <LastUpdated/>
@@ -18,22 +17,22 @@ The following is a comparison of the advantages and disadvantages of local verif
 If you **directly** call the login method (loginByEmail, loginByPhone, loginByUsername) or use **OIDC authorization**, and the IdToken signature algorithm type is set to **HS256**, please use this method to verify the Token.‌
 The key can be obtained in the **console>application>application details**, as shown in the figure below:
 
-![](./images/app-id-and-secret.png)
+![](./images/appsecret.png)
 
 The following code to verify the legality takes Node as an example (need to install [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)).
 
 ```javascript
 const jwt = require("jsonwebtoken");
 try {
-	let decoded = jwt.verify("JSON Web Token from client", "your_secret"),
-		expired = Date.parse(new Date()) / 1000 > decoded.exp;
-	if (expired) {
-		// Expired
-	} else {
-		// Legal and not expired, normal release
-	}
+  let decoded = jwt.verify("JSON Web Token from client", "your_secret"),
+    expired = Date.parse(new Date()) / 1000 > decoded.exp;
+  if (expired) {
+    // Expired
+  } else {
+    // Legal and not expired, normal release
+  }
 } catch (error) {
-	// Illegal
+  // Illegal
 }
 ```
 
@@ -41,39 +40,38 @@ To avoid exposing the application key on the client side, please verify the vali
 
 ### Use the application public key to verify the IdToken signed by the RS256 algorithm
 
-If you use the **RS256** signature algorithm, you need to use the **public key** to verify the signature. Approw uses a private key to sign the application, please use `https://<application domain>.approw.cn/oidc/.well-known/jwks.jsonthe public key to verify the signature.Both **access_token** and **id_token** issued by Approw can be verified with the above public key.
+If you use the **RS256** signature algorithm, you need to use the **public key** to verify the signature. Approw uses a private key to sign the application, please use `https://www.approw.com/oidc/.well-known/jwks.json` the public key to verify the signature.Both **access_token** and **id_token** issued by Approw can be verified with the above public key.
 
 If you use javascript, you can use the jose library to verify the RS256 signature:
 
 ```javascript
-const jose = require('jose')
+const jose = require("jose");
 
 const keystore = jose.JWKS.asKeyStore({
-
-// The following parameter content is to copy the content returned from https://<application domain name>.Approw.cn/oidc/.well-known/jwks.json intactconst keystore = jose.JWKS.asKeyStore({
+  // The following parameter content is to copy the content returned from https://<application domain name>.Approw.com/oidc/.well-known/jwks.json intactconst keystore = jose.JWKS.asKeyStore({
   keys: [
     {
-      e: 'AQAB',
+      e: "AQAB",
       n:
-        'o8iCY52uBPOCnBSRCr3YtlZ0UTuQQ4NCeVMzV7JBtH-7Vuv0hwGJTb_hG-BeYOPz8i6YG_o367smV2r2mnXbC1cz_tBfHD4hA5vnJ1eCpKRWX-l6fYuS0UMti-Bmg0Su2IZxXF9T1Cu-AOlpgXFC1LlPABL4E0haHO8OwQ6QyEfiUIs0byAdf5zeEHFHseVHLjsM2pzWOvh5e_xt9NOJY4vB6iLtD5EIak04i1ND_O0Lz0OYbuV0KjluxaxoiexJ8kGo9W1SNza_2TqUAR6hsPkeOwwh-oHnNwZg8OEnwXFmNg-bW4KiBrQEG4yUVdFGENW6vAQaRa2bJX7obn4xCw',
-      kty: 'RSA',
-      alg: 'RS256',
-      use: 'sig',
-      kid: 'TfLOt3Lbn8_a8pRMuessamqj-o3DBCs1-owHLQ-VMqQ',
+        "o8iCY52uBPOCnBSRCr3YtlZ0UTuQQ4NCeVMzV7JBtH-7Vuv0hwGJTb_hG-BeYOPz8i6YG_o367smV2r2mnXbC1cz_tBfHD4hA5vnJ1eCpKRWX-l6fYuS0UMti-Bmg0Su2IZxXF9T1Cu-AOlpgXFC1LlPABL4E0haHO8OwQ6QyEfiUIs0byAdf5zeEHFHseVHLjsM2pzWOvh5e_xt9NOJY4vB6iLtD5EIak04i1ND_O0Lz0OYbuV0KjluxaxoiexJ8kGo9W1SNza_2TqUAR6hsPkeOwwh-oHnNwZg8OEnwXFmNg-bW4KiBrQEG4yUVdFGENW6vAQaRa2bJX7obn4xCw",
+      kty: "RSA",
+      alg: "RS256",
+      use: "sig",
+      kid: "TfLOt3Lbn8_a8pRMuessamqj-o3DBCs1-owHLQ-VMqQ",
     },
   ],
-})
-// The content of issuer in the option is https://<application domain name>.Approw.cn/oidc, and the content of audience is the application ID
+});
+// The content of issuer in the option is https://<application domain name>.Approw.com/oidc, and the content of audience is the application ID
 // id_token is very long, please slide to the right ->
 const res = jose.JWT.IdToken.verify(
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRmTE90M0xibjhfYThwUk11ZXNzYW1xai1vM0RCQ3MxLW93SExRLVZNcVEifQ.eyJzdWIiOiI1ZjcxOTk0NjUyNGVlMTA5OTIyOTQ5NmIiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vdXNlci1jb250ZW50cy9waG90b3MvOWE5ZGM0ZDctZTc1Ni00NWIxLTgxZDgtMDk1YTI4ZTQ3NmM2LmpwZyIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QxIiwicHJvZmlsZSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjAtMDktMzBUMDc6MTI6MTkuNDAxWiIsIndlYnNpdGUiOm51bGwsInpvbmVpbmZvIjpudWxsLCJlbWFpbCI6InRlc3QxQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJFNjViMVFvVVl0IiwiYXRfaGFzaCI6IkIzSWdPWUREYTBQejh2MV85cVpyQXciLCJhdWQiOiI1ZjE3YTUyOWY2NGZiMDA5Yjc5NGEyZmYiLCJleHAiOjE2MDE0NTM1NTgsImlhdCI6MTYwMTQ0OTk1OSwiaXNzIjoiaHR0cHM6Ly9vaWRjMS5hdXRoaW5nLmNuL29pZGMifQ.Z0TweYr9bCdYNJREVdvbJYcjXSfSsSNHBMqxTJeW-bnza0IIpBpEEVxlDG0Res6FZbcVzsQZzfJ9pj_nFgLjZxUUxv7Tpd13Sq_Ykg2JKepPf3-uoFqbORym07QEj4Uln0Quuh094MTb7z6bZZBEOYBac46zuj4uVp4vqk5HtCUSB4ASOAxwi7CeB1tKghISHz6PDcf6XJe_btHdzX1dparxtML-KvPxjpcHlt5emN88lpTAOX7Iq0EhsVE3PKrIDfCkG8XlL5y9TIW2Dz2iekcZ5PV17M35G6Dg2Q07Y_Apr18_oowOiQM5m_EbI90ist8CiqO9kBKreCOLMzub4Q',
+  "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRmTE90M0xibjhfYThwUk11ZXNzYW1xai1vM0RCQ3MxLW93SExRLVZNcVEifQ.eyJzdWIiOiI1ZjcxOTk0NjUyNGVlMTA5OTIyOTQ5NmIiLCJiaXJ0aGRhdGUiOm51bGwsImZhbWlseV9uYW1lIjpudWxsLCJnZW5kZXIiOiJVIiwiZ2l2ZW5fbmFtZSI6bnVsbCwibG9jYWxlIjpudWxsLCJtaWRkbGVfbmFtZSI6bnVsbCwibmFtZSI6bnVsbCwibmlja25hbWUiOm51bGwsInBpY3R1cmUiOiJodHRwczovL2ZpbGVzLmF1dGhpbmcuY28vdXNlci1jb250ZW50cy9waG90b3MvOWE5ZGM0ZDctZTc1Ni00NWIxLTgxZDgtMDk1YTI4ZTQ3NmM2LmpwZyIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QxIiwicHJvZmlsZSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjAtMDktMzBUMDc6MTI6MTkuNDAxWiIsIndlYnNpdGUiOm51bGwsInpvbmVpbmZvIjpudWxsLCJlbWFpbCI6InRlc3QxQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInBob25lX251bWJlciI6bnVsbCwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwibm9uY2UiOiJFNjViMVFvVVl0IiwiYXRfaGFzaCI6IkIzSWdPWUREYTBQejh2MV85cVpyQXciLCJhdWQiOiI1ZjE3YTUyOWY2NGZiMDA5Yjc5NGEyZmYiLCJleHAiOjE2MDE0NTM1NTgsImlhdCI6MTYwMTQ0OTk1OSwiaXNzIjoiaHR0cHM6Ly9vaWRjMS5hdXRoaW5nLmNuL29pZGMifQ.Z0TweYr9bCdYNJREVdvbJYcjXSfSsSNHBMqxTJeW-bnza0IIpBpEEVxlDG0Res6FZbcVzsQZzfJ9pj_nFgLjZxUUxv7Tpd13Sq_Ykg2JKepPf3-uoFqbORym07QEj4Uln0Quuh094MTb7z6bZZBEOYBac46zuj4uVp4vqk5HtCUSB4ASOAxwi7CeB1tKghISHz6PDcf6XJe_btHdzX1dparxtML-KvPxjpcHlt5emN88lpTAOX7Iq0EhsVE3PKrIDfCkG8XlL5y9TIW2Dz2iekcZ5PV17M35G6Dg2Q07Y_Apr18_oowOiQM5m_EbI90ist8CiqO9kBKreCOLMzub4Q",
   keystore,
   {
-    issuer: 'https://oidc1.approw.cn/oidc',
-    audience: '5f17a529f64fb009b794a2ff',
+    issuer: "https://oidc1.approw.com/oidc",
+    audience: "5f17a529f64fb009b794a2ff",
   }
-)
-console.log(res)
+);
+console.log(res);
 ```
 
 Result:
@@ -104,7 +102,7 @@ Result:
   aud: '5f17a529f64fb009b794a2ff',
   exp: 1601453558,
   iat: 1601449959,
-  iss: 'https://oidc1.approw.cn/oidc'
+  iss: 'https://oidc1.approw.com/oidc'
 }
 ```
 
@@ -114,18 +112,18 @@ Result:
 
 This endpoint can detect `access_token` and `id_token` effectiveness `refresh_token` can not be detected.
 
--   Interface Description: check whether issued `access_token` or `id_token` is valid.
+- Interface Description: check whether issued `access_token` or `id_token` is valid.
 
--   Interface Endpoint:`GET` `https://<your application domain>.approw.cn/api/v2/oidc/validate_token`
+- Interface Endpoint:`GET` `https://<your application domain>.approw.com/api/v2/oidc/validate_token`
 
--   Request parameters:
+- Request parameters:
 
 | Parameter    | Types of | Is it required | Description                 |
 | ------------ | -------- | -------------- | --------------------------- |
 | access_token | string   | no             | The content of AccessToken. |
 | id_token     | string   | no             | The content of the IdToken. |
 
--   Return data:
+- Return data:
 
 When `access_token` or `id_token` is legal, return decoded content of `access_token`/`id_token`
 
@@ -137,7 +135,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "iat": 1601456894,
     "exp": 1601460494,
     "scope": "openid profile email phone",
-    "iss": "https://oidc1.approw.cn/oidc",
+    "iss": "https://oidc1.approw.com/oidc",
     "aud": "5f17a529f64fb009b794a2ff"
 }
 
@@ -152,7 +150,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "middle_name": null,
     "name": null,
     "nickname": null,
-    "picture": "https://usercontents.approw.cn/approw-avatar.png",
+    "picture": "https://usercontents.approw.com/approw-avatar.png",
     "preferred_username": "test1",
     "profile": null,
     "updated_at": "2020-09-27T06:06:29.853Z",
@@ -167,7 +165,7 @@ When `access_token` or `id_token` is legal, return decoded content of `access_to
     "aud": "5f17a529f64fb009b794a2ff",
     "exp": 1601460494,
     "iat": 1601456894,
-    "iss": "https://oidc1.approw.cn/oidc",
+    "iss": "https://oidc1.approw.com/oidc",
 }
 ```
 
@@ -187,18 +185,18 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 
 ### Online verification OAuth2 AccessToken
 
--   Interface Description: You can verify whether `access_token` or `refresh_token` is valid.
+- Interface Description: You can verify whether `access_token` or `refresh_token` is valid.
 
--   Interface Endpoint:`POST` `https://<your applicaiton name>.approw.cn/oauth/token/introspection`
+- Interface Endpoint:`POST` `https://<your applicaiton name>.approw.com/oauth/token/introspection`
 
--   Request header:
+- Request header:
 
 | Parameter     | Types of | Is it required | Description                                                                                                                                                                                                                                                                      |
 | ------------- | -------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Content-Type  | string   | Yes            | application/x-www-form-urlencoded                                                                                                                                                                                                                                                |
 | Authorization | string   | no             | Is required if: In the console application configuration details, &quot;Configuring OAuth2.0 identity provider&quot; tab, the authentication method is set to verify token client_secret_basic. In the form of: Basic base64 (Application ID + &#39;:&#39; + Application Secret) |
 
--   Request parameters:
+- Request parameters:
 
 | Parameter       | Types of | Is it required | Description                                                                                                                                                                                                                                 |
 | --------------- | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -207,21 +205,21 @@ If `access_token` or `id_token` is illegal, it returns the following error messa
 | client_id       | string   | no             | Application ID, it is required when configuring the verification token authentication method as client_secret_post and none in the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab.  |
 | client_secret   | string   | no             | Application Secret, it is required when the authentication method of the withdrawal token is configured as client_secret_post In the console application configuration details, in the &quot;Configure OAuth2.0 Identity Provider&quot; tab |
 
--   Return data:
+- Return data:
 
 When the token is valid, the following content will be returned
 
 ```json
 {
-	"active": true,
-	"sub": "5dc10851ebafee30ce3fd5e9",
-	"client_id": "5cded22b4efab31716fa665f",
-	"exp": 1602423020,
-	"iat": 1602419420,
-	"iss": "https://core.approw.cn/oauth",
-	"jti": "SaPg48dbO66T77xkT8wy0",
-	"scope": "user",
-	"token_type": "Bearer"
+  "active": true,
+  "sub": "5dc10851ebafee30ce3fd5e9",
+  "client_id": "5cded22b4efab31716fa665f",
+  "exp": 1602423020,
+  "iat": 1602419420,
+  "iss": "https://core.approw.com/oauth",
+  "jti": "SaPg48dbO66T77xkT8wy0",
+  "scope": "user",
+  "token_type": "Bearer"
 }
 ```
 
@@ -229,6 +227,6 @@ When the token is invalid (expired, error, withdrawn), the following content wil
 
 ```json
 {
-	"active": false
+  "active": false
 }
 ```
