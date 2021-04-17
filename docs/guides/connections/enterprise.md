@@ -10,9 +10,9 @@ In {{$localeConfig.brandName}}, Enterprise IdPs mainly refers to applications th
 
 Approw now provides integration with IdPs that support these protocols:
 
-- <router-link to="/connections/oidc/" target="_blank">OIDC</router-link>
-- <router-link to="/connections/saml/" target="_blank">SAML</router-link>
-- <router-link to="/connections/cas/" target="_blank">CAS</router-link>
-- <router-link to="/connections/ldap/" target="_blank">LDAP</router-link>
-- <router-link to="/connections/windows-active-directory/" target="_blank">Windows Active Diretcory</router-link>
-- <router-link to="/connections/azure-active-directory/" target="_blank">Azure Active Directory</router-link>
+- [OIDC](/connections/oidc/)
+- [SAML](/connections/saml/)
+- [CAS](/connections/cas/)
+- [LDAP](/connections/ldap/)
+- [Windows Active Diretcory](/connections/windows-active-directory/)
+- [Azure Active Directory](/connections/azure-active-directory/)

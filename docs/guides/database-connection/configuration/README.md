@@ -18,7 +18,8 @@ Approw now support direct connection with these common databases and self-design
 - Web Services: You can package up your database as a service and prevent exploring database connection from public. For example, you can package up the authentication operation into an API: `https://mydomain.com/auth`.
 
 ::: hint-info
-If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API:[https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips)。
+<!-- If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API:[https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips). -->
+If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from our Endpoint.
 :::
 
 ## Enable Customized Database Connection

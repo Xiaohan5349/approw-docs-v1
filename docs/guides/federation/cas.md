@@ -54,7 +54,7 @@ Here is the flow chart:
 
 ![](~@imagesEnUs/guides/federation/cas/cas-flow.png)
 
-Here is the integration [document](/federation/cas/cas10) with more details.
+Here is the integration [document](/federation/cas/cas10/) with more details.
 
 <!-- approw-docs-v1/docs/federation/cas/cas10/ -->
 <!--/v2/federation/cas/cas10-->

@@ -50,4 +50,5 @@ if (!isPasswordValid) {
 
 ## Add Approw IP Address to Your Whitelist
 
-If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API: [https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips).
+<!-- If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from this API: [https://core.approw.com/api/v2/system/public-ips](https://core.approw.com/api/v2/system/public-ips). -->
+If the server that your script tries to access has a firewall, please add these IP addresses to its whitelist: 140.179.19.50 and 52.80.250.250. You can also get Approw external IP address from our Endpoint.
