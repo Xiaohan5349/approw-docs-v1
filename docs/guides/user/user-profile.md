@@ -22,7 +22,7 @@ All fields of the Approw user profile and their explainations are as follows:
 - `openid`: the openid returned by the third-party identity source user.
 - `nickname`: user's nickname, this field is not unique.
 - `photo`: user's photo in user profile.
-- `oauth`: for users registered through social authentication, this field stores the original user information returned by the third-party social authentication service provider. For example, for users registered in the Github, this field is the [original user information returned by the Github](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html) after parsed through JSON.
+- `oauth`: for users registered through social authentication, this field stores the original user information returned by the third-party social authentication service provider. <!-- For example, for users registered in the Github, this field is the [original user information returned by the Github](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html) after parsed through JSON. -->
 - `tokenExpiredAt`: token expired time, which is a time string that meets ISO8601 format, such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00".
 - `loginsCount`: The cumulative number of logins.
 - `lastLogin`: Last login time, a time that meets the ISO8601 format, such as "2017-06-07T14:34:08.700Z", "2017-06-07T14:34:08.700 or "2017-06-07T14:34:08+04:00".
