@@ -23,17 +23,17 @@ In this way, the Web and APP have established a consensus: QR code ID. The APP s
 
 Let's break it down in detail, the statuses of the QR code can be listed as follow:
 
-- Not scanned
-- Scanned, waiting for user confirmation
-- Scanned, user agrees to the authorization
-- Scanned, user cancels the authorization
-- Expired
+-   Not scanned
+-   Scanned, waiting for user confirmation
+-   Scanned, user agrees to the authorization
+-   Scanned, user cancels the authorization
+-   Expired
 
 The APP can modify the status of the QR code, which will use three interfaces:
 
-- Confirm that it has been scanned
-- Agree to authorization
-- Cancel authorization
+-   Confirm that it has been scanned
+-   Agree to authorization
+-   Cancel authorization
 
 Once the web terminal monitors that the QR code status has changed to **agree to authorization**, the login is complete.
 
