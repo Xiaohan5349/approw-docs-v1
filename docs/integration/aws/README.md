@@ -12,8 +12,8 @@
         title: 'Configure {{$localeConfig.brandName}} SAML2 IDP',
         subTitle: 'Enable and configure SAML2 Provider for {{$localeConfig.brandName}} applications.',
       },
-      { title: 'Configure AWS', subTitle: 'Create Identity Provider and role in AWS' },
-      { title: 'Login AWS with Approw IDP', subTitle: 'Use {{$localeConfig.brandName}} IdP to log in to AWS console' },
+      { title: 'Configure AWS', subTitle: 'Create Identity Provider and Role in AWS' },
+      { title: 'Login AWS with Approw IDP', subTitle: 'Use {{$localeConfig.brandName}} IDP to log in to AWS console' },
     ],
 }
 ---
