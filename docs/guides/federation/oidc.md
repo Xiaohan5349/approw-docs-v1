@@ -18,23 +18,29 @@ After becoming an OpenID Connect identity source, other applications can use the
 
 You can understand the OIDC protocol in depth [here](/concepts/oidc/oidc-overview.md).
 
-## Create an Application
+## Create an application
 
 In order for your application to have identity authentication capabilities, you need to create an application in Approw. It is recommended to fill in the name of your actual application project. In **Console** > **Applications**, click “Create Application”.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-1.png)
+
 
 Fill in the **Application Name**, for example, Web Note Project, specify an **Subdomain** for your project, where your users will complete authentication. Fill in the **Callback URL** as the **back-end route** of your project. Approw will send user information (authorization code actually) to this address. Finally, click “Create”.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-2.png)
 
-## Authorization Code Mode
+
+## Authorization code mode
 
 If your application project has a **back-end service** that can store secret key safety, the **authorization code mode** is recommended.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `authorization_code` in the authorization mode, check `code` in the return type, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-3.png)
+
 
 There are the following processes.
 
@@ -46,11 +52,13 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oidc/authorization-code-flow.png)
+
 
 [Check the document](/federation/oidc/authorization-code/).
 
-## Implicit Mode
+## Implicit mode
 
 If your application is a **SPA front-end application** and doesn’t have back-end services, it is recommended to use the **implicit mode** to complete user authentication and authorization. Implicit mode **fits the scenario that the secrete key cannot be stored safely** (such as front-end browsers). In **implicit mode**, applications don’t need to use code to exchange tokens, don’t need to call the `/token` endpoint, AccessToken and IdToken will be returned directly from the **authentication endpoint**.
 
@@ -60,7 +68,9 @@ Implicit mode **fits the scenario that the secrete key cannot be stored safely**
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `implicit` in the authorization mode, check `id_token token` and `id_token` in the return type, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-4.png)
+
 
 There are the following processes.
 
@@ -71,17 +81,21 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oidc/implicit-flow.png)
+
 
 [Check the document](/federation/oidc/implicit/).
 
-## Hybrid Mode
+## Hybrid mode
 
 In some scenarios, you may not only want to directly obtain token from the authentication endpoint but also obtain the authorization code for further obtaining the refresh token. It is recommended to use **hybrid mode**. In **hybrid mode**, applications will receive token and code. Applications can choose to send code to back-end services to obtain users’ AccessToken, IdToken, refresh token from `/token` endpoint.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `authorization_code` and `implicit` in the authorization mode, check `code id_token token`, `code id_token` and `code token` in the return type, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-5.png)
+
 
 There are the following processes.
 
@@ -94,17 +108,21 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oidc/hybrid-flow.png)
+
 
 [Check the document](/federation/oidc/hybrid/).
 
-## Client Credentials Mode
+## Client credentials mode
 
 Client credentials mode is used for server-to-server authorization (M2M authorization), there is no user involved. You need to create a programming access account, and give AK, SK secret key to your resource caller.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `RS256` as the id_token signature algorithm, check `client_credentials` in the authorization mode, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-6.png)
+
 
 There are the following processes.
 
@@ -113,17 +131,21 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oidc/client-credentials-flow.png)
+
 
 [Check the document](/federation/oidc/client-credentials/).
 
-## Password Mode
+## Password mode
 
 It is not recommended to use this mode, try to use other modes as much as you can. **Password mode** will be considered only when all other modes cannot solve the problem. If using password mode, please make sure your application code logic is very safe and will not be attacked by hackers, otherwise, **the user's account credentials will be directly disclosed**. It is generally used to integrate very old applications, otherwise, you should **never take** it as your first choice.
 
 In **Console** > **Applications**, find your application, in the application details page, in the "Configuration" card below, check `password` in the authorization mode, and then click Save.
 
+
 ![](~@imagesEnUs/guides/federation/oidc/1-7.png)
+
 
 There are the following processes.
 
@@ -133,15 +155,17 @@ There are the following processes.
 
 Below is the workflow:
 
+
 ![](~@imagesEnUs/guides/federation/oidc/password-flow.png)
+
 
 [Check the document](/federation/oidc/password/).
 
-## Refresh Access Token
+## Refresh access token
 
 Refresh Token is required to refresh Access Token. You can learn about Refresh Token [here](/concepts/refresh-token.md). Refresh Token is used to obtain a new Access Token to keep the user logged in.
 
-### Obtain Refresh Token
+### Obtain refresh token
 
 If you want to obtain [Refresh Token](/concepts/refresh-token.md), you need to send the request to Approw to get [Refresh Token](/concepts/refresh-token.md).
 
@@ -158,7 +182,7 @@ When the combination of authorization mode and Scope shown in the following tabl
 Warning : When using the **authorization code mode**, you must carry the scope when requesting the **authorization endpoint**(`/oidc/auth`), scope value **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Otherwise, Approw **will not return any Refresh Token**.
 :::
 
-#### Obtain Refresh Token in Authorization Code Mode
+#### Obtain refresh token in authorization code mode
 
 When using the Authorization code mode, you must carry the scope to access **authorization endpoint**(`/oidc/auth`), scope **must** include `offline_access`, and the prompt parameter **must** be included, which value must be `consent`. Obtaining an authorization code and send it to **Token Endopoint**, Approw will return Access Token, Id Token and Refresh Token. Check [Using OIDC Authorization Code Mode](/federation/oidc/authorization-code/) to get further information.
 
@@ -174,7 +198,7 @@ https://{your application domain name}/oidc/auth?client_id={Application ID}
 &state=4756806
 ```
 
-#### Obtaining Access Token, Id Token and Refresh Token Example
+#### Obtaining access token, id Token and refresh token example
 
 The following request example can obtain Access Token, Id Token, and Refresh Token from the Token endpoint. The value of the `code` parameter is the **authorization code** returned from the authentication endpoint in the previous step.
 
@@ -186,7 +210,7 @@ POST https://${your application domain name}/oidc/token?grant_type=authorization
 &client_secret={Application Secret}
 ```
 
-#### Response Example:
+#### Response example:
 
 ```json
 {
@@ -199,7 +223,7 @@ POST https://${your application domain name}/oidc/token?grant_type=authorization
 }
 ```
 
-#### Obtain Refresh Token in Password Mode
+#### Obtain refresh token in password mode
 
 In password mode, you will only use the **Token Endpoint**. See [Using Password Mode](/federation/oidc/password) for more information.
 

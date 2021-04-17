@@ -14,7 +14,7 @@ Approw supports using fields such as mailbox, user name, mobile phone number, ni
 
 You can search for users by keywords on the **user management** -> **user list**:
 
-![](https://cdn.authing.cn/blog/20201019174154.png)
+![](./images/search-keyword.png)
 
 The fields that support search include email, username, mobile phone number, nickname, etc.
 

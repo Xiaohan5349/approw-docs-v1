@@ -1,4 +1,4 @@
-# Use The Self-built App To Implement QR Code Scanning Login
+# Use The Self-built App to Implement QR Code Scanning Login
 
 <LastUpdated/>
 

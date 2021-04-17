@@ -8,7 +8,7 @@ meta:
 
 <LastUpdated/>
 
-If you want to customize the password encryption function, please upload the function fragment here（currently only supports Node.js）, please click [here](https://console.authing.cn/api/v2/password/template/download) to download the function template（Approw does not save the original password of the user）.
+If you want to customize the password encryption function, please upload the function fragment here（currently only supports Node.js）, please click [here](https://console.approw.com/api/v2/password/template/download) to download the function template（Approw does not save the original password of the user）.
 
 This function is suitable for the following scenarios:
 

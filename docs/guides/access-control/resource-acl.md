@@ -35,7 +35,7 @@ In the user list, click New to create a user.
 
 ## Create a role
 
-In **Application** - **Authorization** - **Role Management** card, click the add button on the right:
+In **Application** - **Authorization** - **Role** card, click the add button on the right:
 
 ![](~@imagesEnUs/guides/authorization/add-role-1.png)
 
@@ -51,7 +51,7 @@ Now that you have **resources** and **users**, next you have to define 「**who*
 
 ![](~@imagesEnUs/guides/authorization/acl-1.png)
 
-The **authorized principal** can select **users**. Here we select the user we just created, and select the book resource we just created in the resource type.
+The **Authorized subject** can select **User*. Here we select the user we just created, and select the book resource we just created in the resource type.
 
 ![](~@imagesEnUs/guides/authorization/acl-2.png)
 
