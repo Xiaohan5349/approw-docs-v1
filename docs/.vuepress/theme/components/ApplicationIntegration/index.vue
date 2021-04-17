@@ -6,7 +6,7 @@
         <div class="integration-banner-title">
           <h1>Application Integration</h1>
           <p class="description">
-            You can use Approw for most popular apps.
+            You can use Approw for most popular apps!
           </p>
         </div>
         <img
