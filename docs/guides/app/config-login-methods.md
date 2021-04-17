@@ -10,8 +10,8 @@ Beside basic login method, Approw support:
 - Identity Source Login
   - [OIDC](#configuring-oidc-identity-source-login)
   - [SAML](#configuring-saml-identity-source-login)
-  - [OAuth2.0](#configuring-oauth2.0-identity-source-login)
-  - [CAS](#configuring-cas-identity-source-login)
+<!--  - [OAuth2.0](#configuring-oauth2.0-identity-source-login) -->
+<!--   - [CAS](#configuring-cas-identity-source-login) -->
   - [Azure-AD](#configuring-azure-ad-identity-source-login)
   - [LDAP](#configuring-ldap-identity-source-login)
   - [Windows-AD](#configuring-windows-ad-identity-source-login)
@@ -47,7 +47,7 @@ Please refer to [Configuring SAML Identity Source Login](/connections/saml/) for
 
 ![](./images/login-method-2.png)
 
-### Configuring OAuth2.0 Identity Source Login
+<!--### Configuring OAuth2.0 Identity Source Login
 
 Please refer to [Configuring OAuth2.0 Identity Source Login](/connections/oidc/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
@@ -57,7 +57,7 @@ Please refer to [Configuring OAuth2.0 Identity Source Login](/connections/oidc/)
 
 Please refer to [Configuring CAS Identity Source Login](/connections/cas/) for steps. After configuration, you have to enable this login method in **Applications** tab.
 
-![](./images/login-method-4.png)
+![](./images/login-method-4.png)-->
 
 ### Configuring Azure AD Identity Source Login
 
