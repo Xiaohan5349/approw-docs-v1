@@ -4,7 +4,7 @@
       ref="inputRef"
       v-model="localKeyword"
       class="search-app"
-      placeholder="筛选相关应用"
+      placeholder="search app"
       @blur="$emit('blur')"
     />
     <div v-if="suggestions && suggestions.length" class="app-suggestions">

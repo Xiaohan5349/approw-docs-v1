@@ -4,9 +4,9 @@
     <section class="integration-banner">
       <div class="banner-inner">
         <div class="integration-banner-title">
-          <h1>应用集成</h1>
+          <h1>Application Integration</h1>
           <p class="description">
-            不要再为登录发愁，Authing 集成了所有主流应用 ！
+            You can use Approw for most popular apps.
           </p>
         </div>
         <img
