@@ -225,7 +225,7 @@ POST https://${your application domain name}/oidc/token?grant_type=authorization
 
 #### Obtain refresh token in password mode
 
-In password mode, you will only use the **Token Endpoint**. See [Using Password Mode](/federation/oidc/password) for more information.
+In password mode, you will only use the **Token Endpoint**. See [Use OIDC Password Mode](/federation/oidc/password) for more information.
 
 Include `offline_access` in the request scope of the password mode.
 
