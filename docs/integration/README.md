@@ -28,8 +28,8 @@
       {
         key: 'ali-cloud-intl',
         name: 'Alibaba Cloud',
-        image: 'ali-cloud.png',
-        image2x: 'ali-cloud@2x.png',
+        image: 'ali-cloud.jpg',
+        image2x: 'ali-cloud@2x.jpg',
         category: 'cloud',
       },
       {
